@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="195b8e3725604c2c8e816e9a006c8883" Name="Diagram1" ZoomLevel="69">
+        <EntityTypeShape EntityType="cangku_manage_dbModel.Sys_Menu_Info" Width="1.5" PointX="3.125" PointY="0.875" />
+        <EntityTypeShape EntityType="cangku_manage_dbModel.Sys_User_Role" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="cangku_manage_dbModel.Sys_User_Info" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="cangku_manage_dbModel.t_PersonInfo" Width="1.5" PointX="8.125" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
