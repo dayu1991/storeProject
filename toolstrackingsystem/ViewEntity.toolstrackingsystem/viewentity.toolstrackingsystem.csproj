@@ -44,8 +44,15 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="view\MenuInfoEntity.cs" />
     <Compile Include="view\RoleInfoEntity.cs" />
     <Compile Include="view\UserInfoEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dbentity.toolstrackingsystem\dbentity.toolstrackingsystem.csproj">
+      <Project>{b6f7ad4b-f315-49ac-aad4-74ebfcf183e5}</Project>
+      <Name>dbentity.toolstrackingsystem</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

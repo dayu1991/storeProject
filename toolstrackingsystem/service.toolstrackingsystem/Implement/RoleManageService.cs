@@ -40,5 +40,11 @@ namespace service.toolstrackingsystem
             }
             return _multiTableQueryRepository.QueryList<RoleInfoEntity>(sql,parameter).ToList();
         }
+
+
+        public bool InserUserRole(Sys_User_Role roleInfo)
+        {
+            return _roleManageRepository.Add(roleInfo)>0;
+        }
     }
 }

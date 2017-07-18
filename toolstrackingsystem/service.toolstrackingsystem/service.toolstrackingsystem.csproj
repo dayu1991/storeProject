@@ -55,8 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Implement\MenuManageService.cs" />
     <Compile Include="Implement\RoleManageService.cs" />
     <Compile Include="Implement\UserManageService.cs" />
+    <Compile Include="Interface\IMenuManageService.cs" />
     <Compile Include="Interface\IRoleManageService.cs" />
     <Compile Include="Interface\IUserManageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

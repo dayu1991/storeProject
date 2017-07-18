@@ -12,5 +12,6 @@ namespace service.toolstrackingsystem
     {
         List<Sys_User_Role> GetRoleInfoList();
         List<RoleInfoEntity> GetRoleInfoList(string RoleCode, string RoleName);
+        bool InserUserRole(Sys_User_Role roleInfo);
     }
 }

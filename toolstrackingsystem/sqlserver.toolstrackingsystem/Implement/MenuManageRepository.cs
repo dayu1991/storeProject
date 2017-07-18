@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace sqlserver.toolstrackingsystem
 {
-    public interface IRoleManageRepository : IRepositoryBase<Sys_User_Role>
+    public class MenuManageRepository : RepositoryBase<Sys_Menu_Info>, IMenuManageRepository
     {
-        List<Sys_User_Role> GetRoleInfoList();
-        List<Sys_User_Role> GetRoleInfoList(string RoleCode,string RoleName);
     }
 }

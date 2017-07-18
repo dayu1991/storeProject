@@ -130,7 +130,7 @@ namespace toolstrackingsystem
         }
         private void RoleInfo_Click(object sender, EventArgs e)
         {
-            SetTabShow("角色管理", "RrmEditRoleInfo");
+            SetTabShow("角色管理", "FrmEditRoleInfo");
         }
         private void ToolInfo_Click(object sender, EventArgs e)
         {

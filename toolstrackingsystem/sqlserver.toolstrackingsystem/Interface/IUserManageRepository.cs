@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace sqlserver.toolstrackingsystem
 {
-    public interface IUserManageRepository
+    public interface IUserManageRepository : IRepositoryBase<Sys_User_Info>
     {
         Sys_User_Info GetUserInfo(string UserCode, string Password);
         Sys_User_Info GetUserInfo(string UserCode);

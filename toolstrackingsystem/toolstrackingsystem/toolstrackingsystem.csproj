@@ -107,11 +107,17 @@
     <Compile Include="用户管理\frmEditUserinfo.Designer.cs">
       <DependentUpon>frmEditUserinfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="角色管理\RrmEditRoleInfo.cs">
+    <Compile Include="角色管理\FrmEditRoleInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="角色管理\RrmEditRoleInfo.Designer.cs">
-      <DependentUpon>RrmEditRoleInfo.cs</DependentUpon>
+    <Compile Include="角色管理\FrmEditRoleInfo.Designer.cs">
+      <DependentUpon>FrmEditRoleInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="角色管理\MenuInfoTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="角色管理\MenuInfoTree.Designer.cs">
+      <DependentUpon>MenuInfoTree.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -134,8 +140,11 @@
     <EmbeddedResource Include="用户管理\frmEditUserPass.resx">
       <DependentUpon>frmEditUserPass.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="角色管理\RrmEditRoleInfo.resx">
-      <DependentUpon>RrmEditRoleInfo.cs</DependentUpon>
+    <EmbeddedResource Include="角色管理\FrmEditRoleInfo.resx">
+      <DependentUpon>FrmEditRoleInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="角色管理\MenuInfoTree.resx">
+      <DependentUpon>MenuInfoTree.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Configs\unity.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

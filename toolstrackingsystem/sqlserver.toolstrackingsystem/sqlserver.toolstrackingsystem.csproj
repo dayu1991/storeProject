@@ -59,9 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CKConnection.cs" />
+    <Compile Include="Implement\MenuManageRepository.cs" />
     <Compile Include="Implement\MultiTableQueryRepository.cs" />
     <Compile Include="Implement\RoleManageRepository.cs" />
     <Compile Include="Implement\UserManageRepository.cs" />
+    <Compile Include="Interface\IMenuManageRepository.cs" />
     <Compile Include="Interface\IMultiTableQueryRepository.cs" />
     <Compile Include="Interface\IUserManageRepository.cs" />
     <Compile Include="Interface\IRoleManageRepository.cs" />
