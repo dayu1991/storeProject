@@ -62,6 +62,14 @@ namespace toolstrackingsystem
             rb.Items.Add(bi1);
             rpanel.Controls.Add(rb);
 
+            ButtonItem btnTool = new ButtonItem("bi2");
+            btnTool.Text = "常规工具";
+            btnTool.Icon = new Icon("../../image/manage.ico");
+            btnTool.ImagePosition = eImagePosition.Top;
+            btnTool.Click += new EventHandler(ToolInfo_Click);
+            rb.Items.Add(btnTool);
+            rpanel.Controls.Add(rb);
+
             #endregion
 
 
@@ -123,6 +131,10 @@ namespace toolstrackingsystem
         private void RoleInfo_Click(object sender, EventArgs e)
         {
             SetTabShow("角色管理", "RrmEditRoleInfo");
+        }
+        private void ToolInfo_Click(object sender, EventArgs e)
+        {
+            SetTabShow("常规工具", "ToolInfoManage");
         }
     }
 }
