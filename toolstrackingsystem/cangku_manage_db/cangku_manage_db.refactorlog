@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="69f5dd54-a762-46f1-96ed-d1335aada06e" ChangeDateTime="07/18/2017 14:05:24">
+    <Property Name="ElementName" Value="[dbo].[t_ToolInfo].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_ToolInfo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ToolId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ac410031-4a20-4e9e-8f76-d2fd4a3a0ea7" ChangeDateTime="07/18/2017 14:20:41">
+    <Property Name="ElementName" Value="[dbo].[t_ToolInfo].[Operator]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_ToolInfo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="OperatorUser" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8e0f130a-a61f-41ec-ac4a-3ea9317b485c" ChangeDateTime="07/18/2017 14:20:55">
+    <Property Name="ElementName" Value="[dbo].[t_ToolInfo].[OperatorUser]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_ToolInfo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="OperatorUserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0f9ee3b0-bd92-4cfe-89c3-b315632a277a" ChangeDateTime="07/18/2017 14:29:18">
+    <Property Name="ElementName" Value="[dbo].[t_ToolCategoryInfo].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_ToolCategoryInfo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CategoryId" />
+  </Operation>
+</Operations>
