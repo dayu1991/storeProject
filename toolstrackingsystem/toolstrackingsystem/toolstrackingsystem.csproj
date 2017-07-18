@@ -104,6 +104,9 @@
     <Compile Include="用户管理\frmEditUserinfo.Designer.cs">
       <DependentUpon>frmEditUserinfo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
