@@ -52,6 +52,16 @@ namespace toolstrackingsystem
             bi.Click += new EventHandler(button_suppliers_Click);
             rb.Items.Add(bi);
             rpanel.Controls.Add(rb);
+
+            ButtonItem bi1 = new ButtonItem("bi1");
+            bi1.Text = "角色管理";
+            string path1 = "../../image/manage.ico";
+            bi1.Icon = new Icon(path1);
+            bi1.ImagePosition = eImagePosition.Top;
+            bi1.Click += new EventHandler(RoleInfo_Click);
+            rb.Items.Add(bi1);
+            rpanel.Controls.Add(rb);
+
             #endregion
 
 
@@ -109,6 +119,10 @@ namespace toolstrackingsystem
         private void button_suppliers_Click(object sender, EventArgs e)
         {
             SetTabShow("客户管理", "frmEditUserinfo");
+        }
+        private void RoleInfo_Click(object sender, EventArgs e)
+        {
+            SetTabShow("角色管理", "RrmEditRoleInfo");
         }
     }
 }

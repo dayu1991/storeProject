@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.UserName_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -40,6 +40,11 @@
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.UserList_dataGridViewX = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.description_detail_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.Password_detail_textBox = new System.Windows.Forms.TextBox();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.Rolelist_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.UserName_Detail_textBox = new System.Windows.Forms.TextBox();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
@@ -48,11 +53,6 @@
             this.Delete_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.Edit_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.Add_buttonX = new DevComponents.DotNetBar.ButtonX();
-            this.Rolelist_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.Password_detail_textBox = new System.Windows.Forms.TextBox();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.description_detail_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserList_dataGridViewX)).BeginInit();
@@ -202,38 +202,38 @@
             // UserList_dataGridViewX
             // 
             this.UserList_dataGridViewX.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.UserList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.UserList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.UserList_dataGridViewX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.UserList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.UserList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.UserList_dataGridViewX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserList_dataGridViewX.EnableHeadersVisualStyles = false;
-            this.UserList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.UserList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.UserList_dataGridViewX.Location = new System.Drawing.Point(0, 0);
             this.UserList_dataGridViewX.MultiSelect = false;
             this.UserList_dataGridViewX.Name = "UserList_dataGridViewX";
             this.UserList_dataGridViewX.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.UserList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.UserList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.UserList_dataGridViewX.RowTemplate.Height = 23;
             this.UserList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.UserList_dataGridViewX.Size = new System.Drawing.Size(890, 326);
@@ -291,6 +291,65 @@
             // 
             this.groupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel3.TabIndex = 2;
+            // 
+            // description_detail_textBox
+            // 
+            // 
+            // 
+            // 
+            this.description_detail_textBox.Border.Class = "TextBoxBorder";
+            this.description_detail_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.description_detail_textBox.Location = new System.Drawing.Point(88, 58);
+            this.description_detail_textBox.Name = "description_detail_textBox";
+            this.description_detail_textBox.PreventEnterBeep = true;
+            this.description_detail_textBox.Size = new System.Drawing.Size(306, 21);
+            this.description_detail_textBox.TabIndex = 13;
+            // 
+            // labelX7
+            // 
+            this.labelX7.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX7.Location = new System.Drawing.Point(34, 58);
+            this.labelX7.Name = "labelX7";
+            this.labelX7.Size = new System.Drawing.Size(55, 23);
+            this.labelX7.TabIndex = 12;
+            this.labelX7.Text = "描述:";
+            // 
+            // Password_detail_textBox
+            // 
+            this.Password_detail_textBox.Location = new System.Drawing.Point(667, 21);
+            this.Password_detail_textBox.Name = "Password_detail_textBox";
+            this.Password_detail_textBox.PasswordChar = '*';
+            this.Password_detail_textBox.Size = new System.Drawing.Size(121, 21);
+            this.Password_detail_textBox.TabIndex = 11;
+            // 
+            // labelX6
+            // 
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Location = new System.Drawing.Point(625, 21);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(55, 23);
+            this.labelX6.TabIndex = 10;
+            this.labelX6.Text = "密码:";
+            // 
+            // Rolelist_comboBox
+            // 
+            this.Rolelist_comboBox.DisplayMember = "Text";
+            this.Rolelist_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Rolelist_comboBox.FormattingEnabled = true;
+            this.Rolelist_comboBox.ItemHeight = 15;
+            this.Rolelist_comboBox.Location = new System.Drawing.Point(471, 21);
+            this.Rolelist_comboBox.Name = "Rolelist_comboBox";
+            this.Rolelist_comboBox.Size = new System.Drawing.Size(142, 21);
+            this.Rolelist_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Rolelist_comboBox.TabIndex = 8;
             // 
             // labelX5
             // 
@@ -381,69 +440,11 @@
             this.Add_buttonX.Text = "添加";
             this.Add_buttonX.Click += new System.EventHandler(this.Add_buttonX_Click);
             // 
-            // Rolelist_comboBox
-            // 
-            this.Rolelist_comboBox.DisplayMember = "Text";
-            this.Rolelist_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.Rolelist_comboBox.FormattingEnabled = true;
-            this.Rolelist_comboBox.ItemHeight = 15;
-            this.Rolelist_comboBox.Location = new System.Drawing.Point(471, 21);
-            this.Rolelist_comboBox.Name = "Rolelist_comboBox";
-            this.Rolelist_comboBox.Size = new System.Drawing.Size(142, 21);
-            this.Rolelist_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.Rolelist_comboBox.TabIndex = 8;
-            // 
-            // labelX6
-            // 
-            this.labelX6.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(625, 21);
-            this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(55, 23);
-            this.labelX6.TabIndex = 10;
-            this.labelX6.Text = "密码:";
-            // 
-            // Password_detail_textBox
-            // 
-            this.Password_detail_textBox.Location = new System.Drawing.Point(667, 21);
-            this.Password_detail_textBox.Name = "Password_detail_textBox";
-            this.Password_detail_textBox.PasswordChar = '*';
-            this.Password_detail_textBox.Size = new System.Drawing.Size(121, 21);
-            this.Password_detail_textBox.TabIndex = 11;
-            // 
-            // labelX7
-            // 
-            this.labelX7.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(34, 58);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(55, 23);
-            this.labelX7.TabIndex = 12;
-            this.labelX7.Text = "描述:";
-            // 
-            // description_detail_textBox
-            // 
-            // 
-            // 
-            // 
-            this.description_detail_textBox.Border.Class = "TextBoxBorder";
-            this.description_detail_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.description_detail_textBox.Location = new System.Drawing.Point(88, 58);
-            this.description_detail_textBox.Name = "description_detail_textBox";
-            this.description_detail_textBox.PreventEnterBeep = true;
-            this.description_detail_textBox.Size = new System.Drawing.Size(306, 21);
-            this.description_detail_textBox.TabIndex = 13;
-            // 
             // frmEditUserinfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(934, 560);
             this.Controls.Add(this.groupPanel3);
             this.Controls.Add(this.groupPanel2);
