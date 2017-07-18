@@ -122,6 +122,12 @@
     <EmbeddedResource Include="用户管理\frmEditUserPass.resx">
       <DependentUpon>frmEditUserPass.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Configs\unity.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

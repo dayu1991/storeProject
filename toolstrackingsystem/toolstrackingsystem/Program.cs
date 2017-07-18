@@ -21,16 +21,17 @@ namespace toolstrackingsystem
         static void Main()
         {
 
-            //独立的log4net.config
-            log4net.Config.XmlConfigurator.Configure();
-            Application.EnableVisualStyles();
+            ILog logger = log4net.LogManager.GetLogger(typeof(Program)); Application.EnableVisualStyles();
+            logger.Info("程序开始启动");
             Application.SetCompatibleTextRenderingDefault(false);
+
             #region 声明unity注入全局变量
             container = new UnityContainer();
             UnityConfigurationSection configuration = ConfigurationManager.GetSection(UnityConfigurationSection.SectionName)
 as UnityConfigurationSection;
             configuration.Configure(container, "defaultContainer");
             #endregion
+
             FormLogin formLogin = new FormLogin();
             formLogin.ShowDialog();
             //DialogResult就是用来判断是否返回父窗体的
