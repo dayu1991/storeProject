@@ -15,5 +15,7 @@ namespace service.toolstrackingsystem
         /// <param name="classifyType">1：分类信息 2：配属信息</param>
         /// <returns></returns>
         List<t_ToolCategoryInfo> GetCategoryByClassify(int classifyType);
+
+        long AddToolInfo(t_ToolInfo toolInfo);
     }
 }
