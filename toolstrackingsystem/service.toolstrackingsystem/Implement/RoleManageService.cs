@@ -44,7 +44,8 @@ namespace service.toolstrackingsystem
 
         public bool InserUserRole(Sys_User_Role roleInfo)
         {
-            return _roleManageRepository.Add(roleInfo)>0;
+            //return _roleManageRepository.Add(roleInfo)>0;
+            return _roleManageRepository.InsertRoleInfo(roleInfo);
         }
     }
 }

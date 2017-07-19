@@ -131,8 +131,12 @@ namespace toolstrackingsystem
                     }
                 }
             }
-            userRole.MenuID = MenuID.Substring(MenuID.Length-1);
-            if (_roleManageService.InserUserRole(userRole))
+            Sys_User_Role role = new Sys_User_Role();
+            role.RoleCode = userRole.RoleCode;
+            role.RoleName = userRole.RoleName;
+            role.MenuID = MenuID.Substring(0, MenuID.Length - 1);
+            userRole.MenuID = MenuID.Substring(0,MenuID.Length-1);
+            if (_roleManageService.InserUserRole(role))
             {
                 this.DialogResult = DialogResult.OK;
                 MessageBox.Show("添加成功");
