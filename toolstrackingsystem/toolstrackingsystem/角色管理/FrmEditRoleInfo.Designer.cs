@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.RoleName_Detail_textBox = new System.Windows.Forms.TextBox();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
@@ -67,7 +67,7 @@
             this.groupPanel3.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel3.Location = new System.Drawing.Point(11, 419);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(896, 99);
+            this.groupPanel3.Size = new System.Drawing.Size(896, 78);
             // 
             // 
             // 
@@ -100,7 +100,7 @@
             // 
             // RoleName_Detail_textBox
             // 
-            this.RoleName_Detail_textBox.Location = new System.Drawing.Point(277, 40);
+            this.RoleName_Detail_textBox.Location = new System.Drawing.Point(277, 27);
             this.RoleName_Detail_textBox.Name = "RoleName_Detail_textBox";
             this.RoleName_Detail_textBox.Size = new System.Drawing.Size(120, 21);
             this.RoleName_Detail_textBox.TabIndex = 6;
@@ -112,7 +112,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(211, 40);
+            this.labelX4.Location = new System.Drawing.Point(211, 27);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(75, 23);
             this.labelX4.TabIndex = 5;
@@ -120,7 +120,7 @@
             // 
             // RoleCode_Detail_textBox
             // 
-            this.RoleCode_Detail_textBox.Location = new System.Drawing.Point(91, 40);
+            this.RoleCode_Detail_textBox.Location = new System.Drawing.Point(91, 27);
             this.RoleCode_Detail_textBox.Name = "RoleCode_Detail_textBox";
             this.RoleCode_Detail_textBox.Size = new System.Drawing.Size(114, 21);
             this.RoleCode_Detail_textBox.TabIndex = 4;
@@ -132,7 +132,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(27, 40);
+            this.labelX3.Location = new System.Drawing.Point(27, 27);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(62, 23);
             this.labelX3.TabIndex = 3;
@@ -142,29 +142,31 @@
             // 
             this.Delete_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Delete_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Delete_buttonX.Location = new System.Drawing.Point(698, 40);
+            this.Delete_buttonX.Location = new System.Drawing.Point(698, 27);
             this.Delete_buttonX.Name = "Delete_buttonX";
             this.Delete_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Delete_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Delete_buttonX.TabIndex = 2;
             this.Delete_buttonX.Text = "删除";
+            this.Delete_buttonX.Click += new System.EventHandler(this.Delete_buttonX_Click);
             // 
             // Edit_buttonX
             // 
             this.Edit_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Edit_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Edit_buttonX.Location = new System.Drawing.Point(586, 40);
+            this.Edit_buttonX.Location = new System.Drawing.Point(586, 27);
             this.Edit_buttonX.Name = "Edit_buttonX";
             this.Edit_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Edit_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Edit_buttonX.TabIndex = 1;
             this.Edit_buttonX.Text = "修改";
+            this.Edit_buttonX.Click += new System.EventHandler(this.Edit_buttonX_Click);
             // 
             // Add_buttonX
             // 
             this.Add_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Add_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Add_buttonX.Location = new System.Drawing.Point(463, 40);
+            this.Add_buttonX.Location = new System.Drawing.Point(463, 27);
             this.Add_buttonX.Name = "Add_buttonX";
             this.Add_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Add_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -174,23 +176,23 @@
             // 
             // RoleList_dataGridViewX
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.RoleList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.RoleList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.RoleList_dataGridViewX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.RoleList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.RoleList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle11;
             this.RoleList_dataGridViewX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RoleList_dataGridViewX.EnableHeadersVisualStyles = false;
             this.RoleList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -198,18 +200,19 @@
             this.RoleList_dataGridViewX.MultiSelect = false;
             this.RoleList_dataGridViewX.Name = "RoleList_dataGridViewX";
             this.RoleList_dataGridViewX.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.RoleList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.RoleList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.RoleList_dataGridViewX.RowTemplate.Height = 23;
             this.RoleList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.RoleList_dataGridViewX.Size = new System.Drawing.Size(890, 326);
             this.RoleList_dataGridViewX.TabIndex = 0;
+            this.RoleList_dataGridViewX.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RoleList_dataGridViewX_CellClick);
             // 
             // groupPanel2
             // 
@@ -354,7 +357,7 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "角色代码:";
             // 
-            // RrmEditRoleInfo
+            // FrmEditRoleInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -362,7 +365,7 @@
             this.Controls.Add(this.groupPanel3);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.groupPanel1);
-            this.Name = "RrmEditRoleInfo";
+            this.Name = "FrmEditRoleInfo";
             this.Text = "角色管理";
             this.Load += new System.EventHandler(this.RrmEditRoleInfo_Load);
             this.groupPanel3.ResumeLayout(false);

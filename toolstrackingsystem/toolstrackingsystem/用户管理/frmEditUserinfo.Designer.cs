@@ -221,7 +221,7 @@
             this.UserList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.UserList_dataGridViewX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserList_dataGridViewX.EnableHeadersVisualStyles = false;
-            this.UserList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.UserList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.UserList_dataGridViewX.Location = new System.Drawing.Point(0, 0);
             this.UserList_dataGridViewX.MultiSelect = false;
             this.UserList_dataGridViewX.Name = "UserList_dataGridViewX";
@@ -261,7 +261,7 @@
             this.groupPanel3.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel3.Location = new System.Drawing.Point(8, 417);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(896, 99);
+            this.groupPanel3.Size = new System.Drawing.Size(896, 94);
             // 
             // 
             // 
@@ -299,7 +299,7 @@
             // 
             this.description_detail_textBox.Border.Class = "TextBoxBorder";
             this.description_detail_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.description_detail_textBox.Location = new System.Drawing.Point(88, 58);
+            this.description_detail_textBox.Location = new System.Drawing.Point(88, 53);
             this.description_detail_textBox.Name = "description_detail_textBox";
             this.description_detail_textBox.PreventEnterBeep = true;
             this.description_detail_textBox.Size = new System.Drawing.Size(306, 21);
@@ -312,7 +312,7 @@
             // 
             // 
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(34, 58);
+            this.labelX7.Location = new System.Drawing.Point(34, 53);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(55, 23);
             this.labelX7.TabIndex = 12;
@@ -320,7 +320,7 @@
             // 
             // Password_detail_textBox
             // 
-            this.Password_detail_textBox.Location = new System.Drawing.Point(667, 21);
+            this.Password_detail_textBox.Location = new System.Drawing.Point(667, 16);
             this.Password_detail_textBox.Name = "Password_detail_textBox";
             this.Password_detail_textBox.PasswordChar = '*';
             this.Password_detail_textBox.Size = new System.Drawing.Size(121, 21);
@@ -333,7 +333,7 @@
             // 
             // 
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(625, 21);
+            this.labelX6.Location = new System.Drawing.Point(625, 16);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(55, 23);
             this.labelX6.TabIndex = 10;
@@ -345,7 +345,7 @@
             this.Rolelist_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Rolelist_comboBox.FormattingEnabled = true;
             this.Rolelist_comboBox.ItemHeight = 15;
-            this.Rolelist_comboBox.Location = new System.Drawing.Point(471, 21);
+            this.Rolelist_comboBox.Location = new System.Drawing.Point(471, 16);
             this.Rolelist_comboBox.Name = "Rolelist_comboBox";
             this.Rolelist_comboBox.Size = new System.Drawing.Size(142, 21);
             this.Rolelist_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -358,7 +358,7 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(409, 21);
+            this.labelX5.Location = new System.Drawing.Point(409, 16);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(75, 23);
             this.labelX5.TabIndex = 7;
@@ -366,7 +366,7 @@
             // 
             // UserName_Detail_textBox
             // 
-            this.UserName_Detail_textBox.Location = new System.Drawing.Point(274, 21);
+            this.UserName_Detail_textBox.Location = new System.Drawing.Point(274, 16);
             this.UserName_Detail_textBox.Name = "UserName_Detail_textBox";
             this.UserName_Detail_textBox.Size = new System.Drawing.Size(120, 21);
             this.UserName_Detail_textBox.TabIndex = 6;
@@ -378,7 +378,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(208, 21);
+            this.labelX4.Location = new System.Drawing.Point(208, 16);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(75, 23);
             this.labelX4.TabIndex = 5;
@@ -386,7 +386,7 @@
             // 
             // UserCode_Detail_textBox
             // 
-            this.UserCode_Detail_textBox.Location = new System.Drawing.Point(88, 21);
+            this.UserCode_Detail_textBox.Location = new System.Drawing.Point(88, 16);
             this.UserCode_Detail_textBox.Name = "UserCode_Detail_textBox";
             this.UserCode_Detail_textBox.Size = new System.Drawing.Size(114, 21);
             this.UserCode_Detail_textBox.TabIndex = 4;
@@ -398,7 +398,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(34, 21);
+            this.labelX3.Location = new System.Drawing.Point(34, 16);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(52, 23);
             this.labelX3.TabIndex = 3;
@@ -408,7 +408,7 @@
             // 
             this.Delete_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Delete_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Delete_buttonX.Location = new System.Drawing.Point(644, 58);
+            this.Delete_buttonX.Location = new System.Drawing.Point(644, 53);
             this.Delete_buttonX.Name = "Delete_buttonX";
             this.Delete_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Delete_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -420,7 +420,7 @@
             // 
             this.Edit_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Edit_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Edit_buttonX.Location = new System.Drawing.Point(532, 58);
+            this.Edit_buttonX.Location = new System.Drawing.Point(532, 53);
             this.Edit_buttonX.Name = "Edit_buttonX";
             this.Edit_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Edit_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -432,7 +432,7 @@
             // 
             this.Add_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Add_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Add_buttonX.Location = new System.Drawing.Point(409, 58);
+            this.Add_buttonX.Location = new System.Drawing.Point(409, 53);
             this.Add_buttonX.Name = "Add_buttonX";
             this.Add_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Add_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;

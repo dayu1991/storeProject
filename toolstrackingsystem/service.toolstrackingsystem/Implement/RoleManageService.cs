@@ -44,7 +44,44 @@ namespace service.toolstrackingsystem
 
         public bool InserUserRole(Sys_User_Role roleInfo)
         {
-            return _roleManageRepository.Add(roleInfo)>0;
+            string sql = "INSERT INTO Sys_User_Role(RoleCode,RoleName,MenuID)VALUES(@roleCode,@roleName,@menuID)";
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("roleCode", roleInfo.RoleCode);
+            parameters.Add("roleName",roleInfo.RoleName);
+            parameters.Add("menuID",roleInfo.MenuID);
+            return _roleManageRepository.ExecuteSql(sql,parameters)>0;
+            //return _roleManageRepository.Add(roleInfo)>0;
+        }
+        /// <summary>
+        /// 根据角色code获取角色信息
+        /// </summary>
+        /// <param name="roleCode"></param>
+        /// <returns></returns>
+        public Sys_User_Role GetRoleInfo(string roleCode)
+        {
+            string sql = "SELECT * FROM Sys_User_Role WHERE RoleCode=@roleCode";
+            DynamicParameters parameter = new DynamicParameters();
+            parameter.Add("roleCode",roleCode);
+            return _roleManageRepository.GetModel(sql,parameter);
+        }
+
+
+        public bool UpdateRoleInfo(Sys_User_Role roleInfo)
+        {
+            string sql = "UPDATE Sys_User_Role SET RoleName=@roleName,MenuID=@menuID WHERE RoleCode=@roleCode";
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("roleName",roleInfo.RoleName);
+            parameters.Add("menuID",roleInfo.MenuID);
+            parameters.Add("roleCode",roleInfo.RoleCode);
+            return _roleManageRepository.ExecuteSql(sql,parameters)>0;
+        }
+
+        public bool DeleteRoleInfo(string roleCode)
+        {
+            string sql = "DELETE FROM Sys_User_Role WHERE RoleCode=@roleCode";
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("roleCode", roleCode);
+            return _roleManageRepository.ExecuteSql(sql, parameters) > 0;
         }
     }
 }

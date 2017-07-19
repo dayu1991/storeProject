@@ -13,5 +13,8 @@ namespace service.toolstrackingsystem
         List<Sys_User_Role> GetRoleInfoList();
         List<RoleInfoEntity> GetRoleInfoList(string RoleCode, string RoleName);
         bool InserUserRole(Sys_User_Role roleInfo);
+        Sys_User_Role GetRoleInfo(string roleCode);
+        bool UpdateRoleInfo(Sys_User_Role roleInfo);
+        bool DeleteRoleInfo(string roleCode);
     }
 }
