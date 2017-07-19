@@ -19,7 +19,7 @@ namespace toolstrackingsystem
 {
     public partial class frmEditUserinfo : Office2007RibbonForm
     {
-        ILog logger = log4net.LogManager.GetLogger(typeof(FormLogin));
+        ILog logger = log4net.LogManager.GetLogger(typeof(frmEditUserinfo));
         private IUserManageService _userManageService;
         private IRoleManageService _roleManageService;
         private int selectIndex = 0;

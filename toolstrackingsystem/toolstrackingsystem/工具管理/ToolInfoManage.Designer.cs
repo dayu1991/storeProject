@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -41,24 +41,24 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.cbEditBlong = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.cbEditCategory = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.tbEditToolName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
-            this.tbEditLocation = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.tbEditModel = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.tbEditCheckTime = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.cbEditCheckTime = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.btnDelete = new DevComponents.DotNetBar.ButtonX();
+            this.btnEdit = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.tbEditMemo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
-            this.btnEdit = new DevComponents.DotNetBar.ButtonX();
-            this.btnDelete = new DevComponents.DotNetBar.ButtonX();
+            this.cbEditCheckTime = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.tbEditCheckTime = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbEditModel = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX9 = new DevComponents.DotNetBar.LabelX();
+            this.tbEditLocation = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX8 = new DevComponents.DotNetBar.LabelX();
+            this.tbEditToolName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.cbEditCategory = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.cbEditBlong = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.groupPanel2.SuspendLayout();
@@ -227,14 +227,14 @@
             // dataGridViewX1
             // 
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(10, 99);
             this.dataGridViewX1.Name = "dataGridViewX1";
@@ -298,160 +298,49 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 2;
             // 
-            // labelX5
+            // btnDelete
             // 
-            this.labelX5.BackColor = System.Drawing.Color.Transparent;
+            this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDelete.Location = new System.Drawing.Point(200, 85);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDelete.TabIndex = 23;
+            this.btnDelete.Text = "删除";
             // 
+            // btnEdit
             // 
+            this.btnEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnEdit.Location = new System.Drawing.Point(103, 85);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnEdit.TabIndex = 22;
+            this.btnEdit.Text = "修改";
             // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(4, 20);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(57, 23);
-            this.labelX5.TabIndex = 1;
-            this.labelX5.Text = "配属：";
+            // buttonX2
             // 
-            // cbEditBlong
+            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX2.Location = new System.Drawing.Point(721, 29);
+            this.buttonX2.Name = "buttonX2";
+            this.buttonX2.Size = new System.Drawing.Size(74, 43);
+            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX2.TabIndex = 21;
+            this.buttonX2.Text = "清空";
             // 
-            this.cbEditBlong.DisplayMember = "Text";
-            this.cbEditBlong.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbEditBlong.FormattingEnabled = true;
-            this.cbEditBlong.ItemHeight = 15;
-            this.cbEditBlong.Location = new System.Drawing.Point(36, 20);
-            this.cbEditBlong.Name = "cbEditBlong";
-            this.cbEditBlong.Size = new System.Drawing.Size(121, 21);
-            this.cbEditBlong.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbEditBlong.TabIndex = 5;
+            // btnAdd
             // 
-            // labelX6
-            // 
-            this.labelX6.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(163, 18);
-            this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(57, 23);
-            this.labelX6.TabIndex = 6;
-            this.labelX6.Text = "类别：";
-            // 
-            // cbEditCategory
-            // 
-            this.cbEditCategory.DisplayMember = "Text";
-            this.cbEditCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbEditCategory.FormattingEnabled = true;
-            this.cbEditCategory.ItemHeight = 15;
-            this.cbEditCategory.Location = new System.Drawing.Point(206, 20);
-            this.cbEditCategory.Name = "cbEditCategory";
-            this.cbEditCategory.Size = new System.Drawing.Size(121, 21);
-            this.cbEditCategory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbEditCategory.TabIndex = 7;
-            // 
-            // labelX7
-            // 
-            this.labelX7.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(347, 18);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(57, 23);
-            this.labelX7.TabIndex = 9;
-            this.labelX7.Text = "名称：";
-            // 
-            // tbEditToolName
-            // 
-            // 
-            // 
-            // 
-            this.tbEditToolName.Border.Class = "TextBoxBorder";
-            this.tbEditToolName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditToolName.Location = new System.Drawing.Point(399, 20);
-            this.tbEditToolName.Name = "tbEditToolName";
-            this.tbEditToolName.PreventEnterBeep = true;
-            this.tbEditToolName.Size = new System.Drawing.Size(100, 21);
-            this.tbEditToolName.TabIndex = 10;
-            // 
-            // labelX8
-            // 
-            this.labelX8.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(523, 14);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(57, 23);
-            this.labelX8.TabIndex = 11;
-            this.labelX8.Text = "位置：";
-            this.labelX8.Click += new System.EventHandler(this.labelX8_Click);
-            // 
-            // tbEditLocation
-            // 
-            // 
-            // 
-            // 
-            this.tbEditLocation.Border.Class = "TextBoxBorder";
-            this.tbEditLocation.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditLocation.Location = new System.Drawing.Point(561, 14);
-            this.tbEditLocation.Name = "tbEditLocation";
-            this.tbEditLocation.PreventEnterBeep = true;
-            this.tbEditLocation.Size = new System.Drawing.Size(100, 21);
-            this.tbEditLocation.TabIndex = 12;
-            // 
-            // tbEditModel
-            // 
-            // 
-            // 
-            // 
-            this.tbEditModel.Border.Class = "TextBoxBorder";
-            this.tbEditModel.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditModel.Location = new System.Drawing.Point(50, 51);
-            this.tbEditModel.Name = "tbEditModel";
-            this.tbEditModel.PreventEnterBeep = true;
-            this.tbEditModel.Size = new System.Drawing.Size(100, 21);
-            this.tbEditModel.TabIndex = 14;
-            // 
-            // labelX9
-            // 
-            this.labelX9.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(3, 49);
-            this.labelX9.Name = "labelX9";
-            this.labelX9.Size = new System.Drawing.Size(57, 23);
-            this.labelX9.TabIndex = 13;
-            this.labelX9.Text = "型号：";
-            // 
-            // tbEditCheckTime
-            // 
-            // 
-            // 
-            // 
-            this.tbEditCheckTime.Border.Class = "TextBoxBorder";
-            this.tbEditCheckTime.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditCheckTime.Location = new System.Drawing.Point(294, 51);
-            this.tbEditCheckTime.Name = "tbEditCheckTime";
-            this.tbEditCheckTime.PreventEnterBeep = true;
-            this.tbEditCheckTime.Size = new System.Drawing.Size(100, 21);
-            this.tbEditCheckTime.TabIndex = 16;
-            // 
-            // cbEditCheckTime
-            // 
-            // 
-            // 
-            // 
-            this.cbEditCheckTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbEditCheckTime.Location = new System.Drawing.Point(175, 47);
-            this.cbEditCheckTime.Name = "cbEditCheckTime";
-            this.cbEditCheckTime.Size = new System.Drawing.Size(100, 23);
-            this.cbEditCheckTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbEditCheckTime.TabIndex = 17;
-            this.cbEditCheckTime.Text = "下次更新时间";
+            this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAdd.Location = new System.Drawing.Point(13, 85);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAdd.TabIndex = 20;
+            this.btnAdd.Text = "增加";
             // 
             // tbEditMemo
             // 
@@ -479,49 +368,160 @@
             this.labelX10.TabIndex = 18;
             this.labelX10.Text = "备注：";
             // 
-            // btnAdd
+            // cbEditCheckTime
             // 
-            this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAdd.Location = new System.Drawing.Point(13, 85);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAdd.TabIndex = 20;
-            this.btnAdd.Text = "增加";
             // 
-            // buttonX2
             // 
-            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(721, 29);
-            this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(74, 43);
-            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX2.TabIndex = 21;
-            this.buttonX2.Text = "清空";
             // 
-            // btnEdit
+            this.cbEditCheckTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbEditCheckTime.Location = new System.Drawing.Point(175, 47);
+            this.cbEditCheckTime.Name = "cbEditCheckTime";
+            this.cbEditCheckTime.Size = new System.Drawing.Size(100, 23);
+            this.cbEditCheckTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbEditCheckTime.TabIndex = 17;
+            this.cbEditCheckTime.Text = "下次更新时间";
             // 
-            this.btnEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnEdit.Location = new System.Drawing.Point(103, 85);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnEdit.TabIndex = 22;
-            this.btnEdit.Text = "修改";
+            // tbEditCheckTime
             // 
-            // btnDelete
             // 
-            this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDelete.Location = new System.Drawing.Point(200, 85);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDelete.TabIndex = 23;
-            this.btnDelete.Text = "删除";
+            // 
+            // 
+            this.tbEditCheckTime.Border.Class = "TextBoxBorder";
+            this.tbEditCheckTime.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbEditCheckTime.Location = new System.Drawing.Point(294, 51);
+            this.tbEditCheckTime.Name = "tbEditCheckTime";
+            this.tbEditCheckTime.PreventEnterBeep = true;
+            this.tbEditCheckTime.Size = new System.Drawing.Size(100, 21);
+            this.tbEditCheckTime.TabIndex = 16;
+            // 
+            // tbEditModel
+            // 
+            // 
+            // 
+            // 
+            this.tbEditModel.Border.Class = "TextBoxBorder";
+            this.tbEditModel.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbEditModel.Location = new System.Drawing.Point(50, 51);
+            this.tbEditModel.Name = "tbEditModel";
+            this.tbEditModel.PreventEnterBeep = true;
+            this.tbEditModel.Size = new System.Drawing.Size(100, 21);
+            this.tbEditModel.TabIndex = 14;
+            // 
+            // labelX9
+            // 
+            this.labelX9.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX9.Location = new System.Drawing.Point(3, 49);
+            this.labelX9.Name = "labelX9";
+            this.labelX9.Size = new System.Drawing.Size(57, 23);
+            this.labelX9.TabIndex = 13;
+            this.labelX9.Text = "型号：";
+            // 
+            // tbEditLocation
+            // 
+            // 
+            // 
+            // 
+            this.tbEditLocation.Border.Class = "TextBoxBorder";
+            this.tbEditLocation.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbEditLocation.Location = new System.Drawing.Point(561, 14);
+            this.tbEditLocation.Name = "tbEditLocation";
+            this.tbEditLocation.PreventEnterBeep = true;
+            this.tbEditLocation.Size = new System.Drawing.Size(100, 21);
+            this.tbEditLocation.TabIndex = 12;
+            // 
+            // labelX8
+            // 
+            this.labelX8.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX8.Location = new System.Drawing.Point(523, 14);
+            this.labelX8.Name = "labelX8";
+            this.labelX8.Size = new System.Drawing.Size(57, 23);
+            this.labelX8.TabIndex = 11;
+            this.labelX8.Text = "位置：";
+            this.labelX8.Click += new System.EventHandler(this.labelX8_Click);
+            // 
+            // tbEditToolName
+            // 
+            // 
+            // 
+            // 
+            this.tbEditToolName.Border.Class = "TextBoxBorder";
+            this.tbEditToolName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbEditToolName.Location = new System.Drawing.Point(399, 20);
+            this.tbEditToolName.Name = "tbEditToolName";
+            this.tbEditToolName.PreventEnterBeep = true;
+            this.tbEditToolName.Size = new System.Drawing.Size(100, 21);
+            this.tbEditToolName.TabIndex = 10;
+            // 
+            // labelX7
+            // 
+            this.labelX7.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX7.Location = new System.Drawing.Point(347, 18);
+            this.labelX7.Name = "labelX7";
+            this.labelX7.Size = new System.Drawing.Size(57, 23);
+            this.labelX7.TabIndex = 9;
+            this.labelX7.Text = "名称：";
+            // 
+            // cbEditCategory
+            // 
+            this.cbEditCategory.DisplayMember = "Text";
+            this.cbEditCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbEditCategory.FormattingEnabled = true;
+            this.cbEditCategory.ItemHeight = 15;
+            this.cbEditCategory.Location = new System.Drawing.Point(206, 20);
+            this.cbEditCategory.Name = "cbEditCategory";
+            this.cbEditCategory.Size = new System.Drawing.Size(121, 21);
+            this.cbEditCategory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbEditCategory.TabIndex = 7;
+            // 
+            // labelX6
+            // 
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Location = new System.Drawing.Point(163, 18);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(57, 23);
+            this.labelX6.TabIndex = 6;
+            this.labelX6.Text = "类别：";
+            // 
+            // cbEditBlong
+            // 
+            this.cbEditBlong.DisplayMember = "Text";
+            this.cbEditBlong.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbEditBlong.FormattingEnabled = true;
+            this.cbEditBlong.ItemHeight = 15;
+            this.cbEditBlong.Location = new System.Drawing.Point(36, 20);
+            this.cbEditBlong.Name = "cbEditBlong";
+            this.cbEditBlong.Size = new System.Drawing.Size(121, 21);
+            this.cbEditBlong.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbEditBlong.TabIndex = 5;
+            // 
+            // labelX5
+            // 
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Location = new System.Drawing.Point(4, 20);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(57, 23);
+            this.labelX5.TabIndex = 1;
+            this.labelX5.Text = "配属：";
             // 
             // ToolInfoManage
             // 
@@ -533,6 +533,7 @@
             this.Controls.Add(this.groupPanel1);
             this.Name = "ToolInfoManage";
             this.Text = "ToolInfoManage";
+            this.Load += new System.EventHandler(this.ToolInfoManage_Load);
             this.groupPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.groupPanel2.ResumeLayout(false);
