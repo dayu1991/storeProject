@@ -26,6 +26,10 @@ namespace service.toolstrackingsystem
         {
             return _toolCategoryInfoRepository.GetCategoryByClassify(classifyType);
         }
+        public long AddToolInfo(t_ToolInfo toolInfo)
+        {
+            return _toolInfoRepository.Add(toolInfo);
+        }
 
 
     }

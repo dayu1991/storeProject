@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.category_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.belong_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbSearchcategory = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbSearchBlong = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
@@ -73,8 +73,8 @@
             this.groupPanel1.Controls.Add(this.labelX4);
             this.groupPanel1.Controls.Add(this.textBoxX1);
             this.groupPanel1.Controls.Add(this.labelX3);
-            this.groupPanel1.Controls.Add(this.category_comboBox);
-            this.groupPanel1.Controls.Add(this.belong_comboBox);
+            this.groupPanel1.Controls.Add(this.cbSearchcategory);
+            this.groupPanel1.Controls.Add(this.cbSearchBlong);
             this.groupPanel1.Controls.Add(this.labelX2);
             this.groupPanel1.Controls.Add(this.labelX1);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
@@ -174,29 +174,29 @@
             this.labelX3.TabIndex = 6;
             this.labelX3.Text = "编号：";
             // 
-            // category_comboBox
+            // cbSearchcategory
             // 
-            this.category_comboBox.DisplayMember = "Text";
-            this.category_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.category_comboBox.FormattingEnabled = true;
-            this.category_comboBox.ItemHeight = 15;
-            this.category_comboBox.Location = new System.Drawing.Point(220, 20);
-            this.category_comboBox.Name = "category_comboBox";
-            this.category_comboBox.Size = new System.Drawing.Size(121, 21);
-            this.category_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.category_comboBox.TabIndex = 5;
+            this.cbSearchcategory.DisplayMember = "Text";
+            this.cbSearchcategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbSearchcategory.FormattingEnabled = true;
+            this.cbSearchcategory.ItemHeight = 15;
+            this.cbSearchcategory.Location = new System.Drawing.Point(220, 20);
+            this.cbSearchcategory.Name = "cbSearchcategory";
+            this.cbSearchcategory.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchcategory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbSearchcategory.TabIndex = 5;
             // 
-            // belong_comboBox
+            // cbSearchBlong
             // 
-            this.belong_comboBox.DisplayMember = "Text";
-            this.belong_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.belong_comboBox.FormattingEnabled = true;
-            this.belong_comboBox.ItemHeight = 15;
-            this.belong_comboBox.Location = new System.Drawing.Point(57, 20);
-            this.belong_comboBox.Name = "belong_comboBox";
-            this.belong_comboBox.Size = new System.Drawing.Size(121, 21);
-            this.belong_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.belong_comboBox.TabIndex = 4;
+            this.cbSearchBlong.DisplayMember = "Text";
+            this.cbSearchBlong.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbSearchBlong.FormattingEnabled = true;
+            this.cbSearchBlong.ItemHeight = 15;
+            this.cbSearchBlong.Location = new System.Drawing.Point(57, 20);
+            this.cbSearchBlong.Name = "cbSearchBlong";
+            this.cbSearchBlong.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchBlong.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbSearchBlong.TabIndex = 4;
             // 
             // labelX2
             // 
@@ -227,14 +227,14 @@
             // dataGridViewX1
             // 
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(10, 99);
             this.dataGridViewX1.Name = "dataGridViewX1";
@@ -341,6 +341,7 @@
             this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAdd.TabIndex = 20;
             this.btnAdd.Text = "增加";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // tbEditMemo
             // 
@@ -548,8 +549,8 @@
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx category_comboBox;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx belong_comboBox;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbSearchcategory;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbSearchBlong;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
