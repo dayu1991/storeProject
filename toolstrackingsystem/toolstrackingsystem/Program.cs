@@ -32,19 +32,19 @@ as UnityConfigurationSection;
             configuration.Configure(container, "defaultContainer");
             #endregion
 
-            ToolInfoManage formLogin = new ToolInfoManage();
-            formLogin.ShowDialog();
-
-            //FormLogin formLogin = new FormLogin();
+            //ToolInfoManage formLogin = new ToolInfoManage();
             //formLogin.ShowDialog();
-            ////DialogResult就是用来判断是否返回父窗体的
-            //if (formLogin.DialogResult == DialogResult.OK)
-            //{
-            //    //在线程中打开主窗体
-            //    FormMain formtest = new FormMain();
-            //    formtest.Tag = formLogin.Tag;
-            //    Application.Run(formtest);
-            //}
+
+            FormLogin formLogin = new FormLogin();
+            formLogin.ShowDialog();
+            //DialogResult就是用来判断是否返回父窗体的
+            if (formLogin.DialogResult == DialogResult.OK)
+            {
+                //在线程中打开主窗体
+                FormMain formtest = new FormMain();
+                formtest.Tag = formLogin.Tag;
+                Application.Run(formtest);
+            }
         }
     }
 }
