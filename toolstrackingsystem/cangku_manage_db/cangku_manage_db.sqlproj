@@ -65,4 +65,7 @@
   <ItemGroup>
     <RefactorLog Include="cangku_manage_db.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="toolInfoInitData.sql" />
+  </ItemGroup>
 </Project>
