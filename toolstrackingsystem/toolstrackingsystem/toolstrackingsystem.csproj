@@ -131,6 +131,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="工具管理\ToolInfoManage.resx">
+      <DependentUpon>ToolInfoManage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="用户管理\FrmEditUser.resx">
       <DependentUpon>FrmEditUser.cs</DependentUpon>
     </EmbeddedResource>
