@@ -50,24 +50,6 @@ namespace toolstrackingsystem
             this.ribbonControl1.Items.Add(tabItem);
             RibbonBar rb = new RibbonBar();
 
-            ButtonItem bi = new ButtonItem("bi");
-            bi.Text = "用户管理";
-            string path = "../../image/manage.ico";
-            bi.Icon = new Icon(path);
-            bi.ImagePosition = eImagePosition.Top;
-            bi.Click += new EventHandler(button_suppliers_Click);
-            rb.Items.Add(bi);
-            rpanel.Controls.Add(rb);
-
-            ButtonItem bi1 = new ButtonItem("bi1");
-            bi1.Text = "角色管理";
-            string path1 = "../../image/manage.ico";
-            bi1.Icon = new Icon(path1);
-            bi1.ImagePosition = eImagePosition.Top;
-            bi1.Click += new EventHandler(RoleInfo_Click);
-            rb.Items.Add(bi1);
-            rpanel.Controls.Add(rb);
-
             ButtonItem btnTool = new ButtonItem("bi2");
             btnTool.Text = "常规工具";
             btnTool.Icon = new Icon("../../image/manage.ico");
@@ -143,29 +125,6 @@ namespace toolstrackingsystem
                 //选择该子窗体。
                 superTabControl2.SelectedTab = item;
             }
-        }
-        private void buttonItem1_Click(object sender, EventArgs e)
-        {
-            SetTabShow("添加用户", "FormAddUsers");
-        }
-
-        private void buttonItem14_Click(object sender, EventArgs e)
-        {
-            SetTabShow("查看用户", "FormEditUsers");
-        }
-
-        private void button_ClientFiles_Click(object sender, EventArgs e)
-        {
-            SetTabShow("客户档案", "FormClientFiles");
-        }
-
-        private void button_suppliers_Click(object sender, EventArgs e)
-        {
-            SetTabShow("客户管理", "frmEditUserinfo");
-        }
-        private void RoleInfo_Click(object sender, EventArgs e)
-        {
-            SetTabShow("角色管理", "FrmEditRoleInfo");
         }
         private void ToolInfo_Click(object sender, EventArgs e)
         {
