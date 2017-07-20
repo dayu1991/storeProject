@@ -80,7 +80,7 @@ namespace toolstrackingsystem
                 {
                     ButtonItem btnToolNew = new ButtonItem(childitem.FileName);
                     btnToolNew.Text = childitem.NavigationTitle;
-                    btnToolNew.Icon = new Icon("../../image/manage.ico");
+                    btnToolNew.Icon = new Icon("../../image/"+childitem.MenuICON+".ico");
                     btnToolNew.ImagePosition = eImagePosition.Top;
                     btnToolNew.Click += new EventHandler(Custom_Click);
                     btnToolNew.Tag = childitem.FileName;
