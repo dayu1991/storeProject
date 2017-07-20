@@ -31,8 +31,8 @@
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.MenuInfo_treeView = new System.Windows.Forms.TreeView();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.AddRole_button = new DevComponents.DotNetBar.ButtonX();
             this.Cancel_button = new DevComponents.DotNetBar.ButtonX();
+            this.AddRole_button = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -126,6 +126,17 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 1;
             // 
+            // Cancel_button
+            // 
+            this.Cancel_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.Cancel_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.Cancel_button.Location = new System.Drawing.Point(152, 3);
+            this.Cancel_button.Name = "Cancel_button";
+            this.Cancel_button.Size = new System.Drawing.Size(75, 23);
+            this.Cancel_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Cancel_button.TabIndex = 1;
+            this.Cancel_button.Text = "取消";
+            // 
             // AddRole_button
             // 
             this.AddRole_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -138,17 +149,6 @@
             this.AddRole_button.Text = "确定";
             this.AddRole_button.Click += new System.EventHandler(this.AddRole_button_Click);
             // 
-            // Cancel_button
-            // 
-            this.Cancel_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.Cancel_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Cancel_button.Location = new System.Drawing.Point(152, 3);
-            this.Cancel_button.Name = "Cancel_button";
-            this.Cancel_button.Size = new System.Drawing.Size(75, 23);
-            this.Cancel_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.Cancel_button.TabIndex = 1;
-            this.Cancel_button.Text = "取消";
-            // 
             // MenuInfoTree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -160,6 +160,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MenuInfoTree";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "菜单权限";
             this.Load += new System.EventHandler(this.MenuInfoTree_Load);
             this.groupPanel1.ResumeLayout(false);

@@ -10,5 +10,6 @@ namespace service.toolstrackingsystem
     public interface IMenuManageService
     {
         List<MenuInfoEntity> GetMenuTreeInfoList();
+        List<MenuInfoEntity> GetUserMenuInfoList(string MenuID);
     }
 }

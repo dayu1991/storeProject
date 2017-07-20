@@ -45,5 +45,35 @@ namespace service.toolstrackingsystem
             }
                 return MenuInfoEntityList;
         }
+        public List<MenuInfoEntity> GetUserMenuInfoList(string MenuID)
+        {
+            List<MenuInfoEntity> resultTemp = GetMenuTreeInfoList();
+            List<MenuInfoEntity> resultEntity = new List<MenuInfoEntity>();
+            string[] menuStr = MenuID.Split(',');
+            for (int i = 0; i < resultTemp.Count; i++)
+            {
+                var item = resultTemp[i];
+                int status = 0;
+                MenuInfoEntity temp = new MenuInfoEntity();
+                List<Sys_Menu_Info> childList = new List<Sys_Menu_Info>();
+                for (int j = 0; j < item.ChildMenuInfoList.Count; j++)
+                {
+                    var child = item.ChildMenuInfoList[j];
+                    if (menuStr.Contains(child.FileName))
+                    {
+                        childList.Add(child);
+                        //temp.ChildMenuInfoList.Add(child);
+                        status = 1;
+                    }
+                }
+                if (status == 1)
+                {
+                    temp.ParentMenuInfo = item.ParentMenuInfo;
+                    temp.ChildMenuInfoList = childList;
+                    resultEntity.Add(temp);
+                }
+            }
+            return resultEntity;
+        }
     }
 }

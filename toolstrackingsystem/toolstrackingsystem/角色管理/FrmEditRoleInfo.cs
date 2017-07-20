@@ -21,6 +21,7 @@ namespace toolstrackingsystem
     {
         ILog logger = log4net.LogManager.GetLogger(typeof(FormLogin));
         private IRoleManageService _roleManageService;
+        private int selectIndex = 0;
         public FrmEditRoleInfo()
         {
             this.EnableGlass = false;
@@ -83,6 +84,40 @@ namespace toolstrackingsystem
                 Search_buttonX_Click(sender,e);
                 RoleCode_Detail_textBox.Text = "";
                 RoleName_Detail_textBox.Text = "";
+            }
+        }
+        private void Edit_buttonX_Click(object sender, EventArgs e)
+        {
+            string roleCode = this.Tag.ToString();
+            FrmEditRole frmeditRole = new FrmEditRole();
+            frmeditRole.Tag = roleCode;
+            frmeditRole.ShowDialog();
+            if (frmeditRole.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                Search_buttonX_Click(sender,e);
+            }
+        }
+        private void RoleList_dataGridViewX_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            selectIndex = e.RowIndex;
+            string roleCode = RoleList_dataGridViewX.Rows[selectIndex].Cells[0].Value.ToString();
+            this.Tag = roleCode;
+        }
+        private void Delete_buttonX_Click(object sender, EventArgs e)
+        {
+            string roleCode = this.Tag.ToString();
+            if (string.IsNullOrEmpty(roleCode))
+            {
+                MessageBox.Show("请选择一行数据进行操作");
+                return;
+            }
+            if(MessageBox.Show("您确定要删除“" + roleCode + "”吗?", "询问", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                if(_roleManageService.DeleteRoleInfo(roleCode))
+                {
+                    MessageBox.Show("删除成功");
+                    Search_buttonX_Click(sender,e);
+                }
             }
         }
     }

@@ -39,6 +39,9 @@ as UnityConfigurationSection;
             configuration.Configure(container, "defaultContainer");
             #endregion
 
+            //ToolInfoManage formLogin = new ToolInfoManage();
+            //formLogin.ShowDialog();
+
             FormLogin formLogin = new FormLogin();
             formLogin.ShowDialog();
             //DialogResult就是用来判断是否返回父窗体的

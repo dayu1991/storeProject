@@ -12,12 +12,18 @@ using dbentity.toolstrackingsystem;
 using System.Reflection;
 using System.Runtime.Caching;
 using System.IO;
+using service.toolstrackingsystem;
+using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Configuration;
+using ViewEntity.toolstrackingsystem;
 
 namespace toolstrackingsystem
 {
     public partial class FormMain : Office2007RibbonForm
     {
         private Sys_User_Info userInfo = MemoryCache.Default.Get("userinfo") as Sys_User_Info;
+        private IRoleManageService _roleManageService;
+        private IMenuManageService _menuManageService;
         public FormMain()
         {
             this.EnableGlass = false;
@@ -32,7 +38,7 @@ namespace toolstrackingsystem
             superTabControl.Tabs.Clear();
             //获取用户信息
             Sys_User_Info userInfo = MemoryCache.Default.Get("userinfo") as Sys_User_Info;
-            label_login_user.Text = userInfo.UserName;
+
             #region 手动添加菜单项test
             RibbonTabItem tabItem = new RibbonTabItem();
             tabItem.Text = "基础数据";
@@ -71,6 +77,37 @@ namespace toolstrackingsystem
             rpanel.Controls.Add(rb);
 
             #endregion
+
+            //获取用户角色权限
+            _roleManageService = Program.container.Resolve<IRoleManageService>() as RoleManageService;
+            _menuManageService = Program.container.Resolve<IMenuManageService>() as MenuManageService;
+            Sys_User_Role roleInfo = _roleManageService.GetRoleInfo(userInfo.UserRole);
+            
+            List<MenuInfoEntity> resultEntity = _menuManageService.GetUserMenuInfoList(roleInfo.MenuID);
+            foreach (var item in resultEntity)
+            {
+                RibbonTabItem tabItemNew = new RibbonTabItem();
+                tabItemNew.Text = item.ParentMenuInfo.NavigationTitle;
+                RibbonPanel rpanelNew = new RibbonPanel();
+                rpanelNew.Dock = DockStyle.Fill;
+                tabItemNew.Panel = rpanelNew;
+                this.ribbonControl1.Items.Add(tabItemNew);
+                ribbonControl1.Controls.Add(rpanelNew);
+                RibbonBar rbNew = new RibbonBar();
+                foreach (var childitem in item.ChildMenuInfoList)
+                {
+                    ButtonItem btnToolNew = new ButtonItem(childitem.FileName);
+                    btnToolNew.Text = childitem.NavigationTitle;
+                    btnToolNew.Icon = new Icon("../../image/manage.ico");
+                    btnToolNew.ImagePosition = eImagePosition.Top;
+                    btnToolNew.Click += new EventHandler(Custom_Click);
+                    btnToolNew.Tag = childitem.FileName;
+                    rbNew.Items.Add(btnToolNew);
+                }
+                rpanelNew.Controls.Add(rbNew);
+            }
+
+            label_login_user.Text = userInfo.UserName;
 
 
         }
@@ -136,5 +173,11 @@ namespace toolstrackingsystem
         {
             SetTabShow("常规工具", "ToolInfoManage");
         }
+        #region 给动态添加的按钮绑定的事件
+        private void Custom_Click(object sender, EventArgs e)
+        {
+            SetTabShow(sender.ToString(), ((ButtonItem)sender).Tag.ToString());
+        }
+        #endregion
     }
 }

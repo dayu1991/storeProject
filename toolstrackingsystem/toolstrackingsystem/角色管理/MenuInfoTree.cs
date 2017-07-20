@@ -107,36 +107,27 @@ namespace toolstrackingsystem
         private void AddRole_button_Click(object sender, EventArgs e)
         {
             string MenuID = "";
-            for (int j=0;j<MenuInfo_treeView.Nodes.Count;j++)
+            for (int i = 0; i < MenuInfo_treeView.Nodes.Count; i++)
             {
-                var item = MenuInfo_treeView.Nodes[j];
-                if (item.IsSelected)
+                var item = MenuInfo_treeView.Nodes[i];
+                for (int j = 0; j < item.Nodes.Count; j++)
                 {
-                    for (int i = 0; i < item.Nodes.Count; i++)
+                    var childNode = item.Nodes[j];
+                    if (childNode.Checked)
                     {
-                        Sys_Menu_Info obj = item.Nodes[i].Tag as Sys_Menu_Info;
-                        MenuID += obj.FileName + ",";
-                    }
-                }
-                else
-                {
-                    for (int m = 0; m < item.Nodes.Count; m++)
-                    {
-                        var childItem = item.Nodes[m];
-                        if (childItem.IsSelected)
-                        { 
-                            Sys_Menu_Info obj = item.Nodes[m].Tag as Sys_Menu_Info;
-                            MenuID += obj.FileName+",";
-                        }
+                        Sys_Menu_Info roleInfo = childNode.Tag as Sys_Menu_Info;
+                        MenuID += roleInfo.FileName+",";
                     }
                 }
             }
+
             Sys_User_Role role = new Sys_User_Role();
             role.RoleCode = userRole.RoleCode;
             role.RoleName = userRole.RoleName;
             role.MenuID = MenuID.Substring(0, MenuID.Length - 1);
             userRole.MenuID = MenuID.Substring(0,MenuID.Length-1);
-            if (_roleManageService.InserUserRole(role))
+            if (_roleManageService.InserUserRole(userRole))
+
             {
                 this.DialogResult = DialogResult.OK;
                 MessageBox.Show("添加成功");
