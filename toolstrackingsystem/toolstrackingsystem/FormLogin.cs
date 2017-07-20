@@ -77,7 +77,8 @@ namespace toolstrackingsystem
         {
             this.styleManager1.ManagerStyle = eStyle.Office2010Blue;
             _userManageService = Program.container.Resolve<IUserManageService>() as UserManageService;
-
+            textBox_UserName.Text="admin";
+            textBox_PassWord.Text = "123456";
         }
     }
 }
