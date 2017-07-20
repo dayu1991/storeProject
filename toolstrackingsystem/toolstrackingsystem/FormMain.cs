@@ -100,15 +100,16 @@ namespace toolstrackingsystem
                     btnToolNew.Text = childitem.NavigationTitle;
                     btnToolNew.Icon = new Icon("../../image/manage.ico");
                     btnToolNew.ImagePosition = eImagePosition.Top;
-                    btnToolNew.Click += new EventHandler(ToolInfo_Click);
+                    //反射取得子窗体对象。
+                    object obj = Assembly.GetExecutingAssembly().CreateInstance(childitem.FileName, false);
+                    EventHandler abc = (EventHandler)obj;
+                    btnToolNew.Click += new EventHandler(abc);
                     rbNew.Items.Add(btnToolNew);
                 }
                 rpanelNew.Controls.Add(rbNew);
             }
 
             label_login_user.Text = userInfo.UserName;
-
-
         }
         private void SetTabShow(string tabName, string sfrmName)
         {
@@ -169,6 +170,14 @@ namespace toolstrackingsystem
             SetTabShow("角色管理", "FrmEditRoleInfo");
         }
         private void ToolInfo_Click(object sender, EventArgs e)
+        {
+            SetTabShow("常规工具", "ToolInfoManage");
+        }
+        private void Custom_Click(object sender, EventArgs e)
+        {
+            SetTabShow("常规工具", "ToolInfoManage");
+        }
+        private void FrmPerson(object sender, EventArgs e)
         {
             SetTabShow("常规工具", "ToolInfoManage");
         }
