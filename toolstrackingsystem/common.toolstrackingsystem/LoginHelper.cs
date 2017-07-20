@@ -15,10 +15,10 @@ namespace common.toolstrackingsystem
         private static Sys_User_Info userInfo = MemoryCache.Default["userinfo"] as Sys_User_Info;
 
         public static int ID { get { return userInfo.ID; } }
-        public string UserCode { get { return userInfo.UserCode; } }
-        public string UserName { get { return userInfo.UserName; } }
-        public string Description { get { return userInfo.Description; } }
-        public Nullable<System.DateTime> CreateTime { get { return userInfo.CreateTime; } }
-        public string UserRole { get { return userInfo.UserRole; } }
+        public static string UserCode { get { return userInfo.UserCode; } }
+        public static string UserName { get { return userInfo.UserName; } }
+        public static string Description { get { return userInfo.Description; } }
+        public static Nullable<System.DateTime> CreateTime { get { return userInfo.CreateTime; } }
+        public static string UserRole { get { return userInfo.UserRole; } }
     }
 }

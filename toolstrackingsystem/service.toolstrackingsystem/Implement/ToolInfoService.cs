@@ -31,6 +31,27 @@ namespace service.toolstrackingsystem
             return _toolInfoRepository.Add(toolInfo);
         }
 
+        /// <summary>
+        /// 是否存在编号的工具
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <returns></returns>
+        public bool IsExistsByCode(string toolCode)
+        {
+            return _toolInfoRepository.IsExistsByCode(toolCode);
+        }
 
+        /// <summary>
+        /// 获取工具列表
+        /// </summary>
+        /// <param name="blongValue"></param>
+        /// <param name="categoryValue"></param>
+        /// <param name="toolCode"></param>
+        /// <param name="toolName"></param>
+        /// <returns></returns>
+        public List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName)
+        {
+            return _toolInfoRepository.GetToolList(blongValue, categoryValue, toolCode, toolName);
+        }
     }
 }

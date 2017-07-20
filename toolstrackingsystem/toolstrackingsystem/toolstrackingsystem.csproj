@@ -189,6 +189,10 @@
     <Folder Include="image\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\common.toolstrackingsystem\common.toolstrackingsystem.csproj">
+      <Project>{65449b5a-59b0-414f-991e-6f4a1b995150}</Project>
+      <Name>common.toolstrackingsystem</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dbentity.toolstrackingsystem\dbentity.toolstrackingsystem.csproj">
       <Project>{b6f7ad4b-f315-49ac-aad4-74ebfcf183e5}</Project>
       <Name>dbentity.toolstrackingsystem</Name>

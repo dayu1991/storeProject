@@ -17,5 +17,22 @@ namespace service.toolstrackingsystem
         List<t_ToolCategoryInfo> GetCategoryByClassify(int classifyType);
 
         long AddToolInfo(t_ToolInfo toolInfo);
+
+        /// <summary>
+        /// 是否存在编号的工具
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <returns></returns>
+        bool IsExistsByCode(string toolCode);
+
+        /// <summary>
+        /// 获取工具列表
+        /// </summary>
+        /// <param name="blongValue"></param>
+        /// <param name="categoryValue"></param>
+        /// <param name="toolCode"></param>
+        /// <param name="toolName"></param>
+        /// <returns></returns>
+        List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName);
     }
 }
