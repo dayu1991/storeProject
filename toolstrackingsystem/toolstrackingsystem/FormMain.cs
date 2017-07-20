@@ -100,10 +100,8 @@ namespace toolstrackingsystem
                     btnToolNew.Text = childitem.NavigationTitle;
                     btnToolNew.Icon = new Icon("../../image/manage.ico");
                     btnToolNew.ImagePosition = eImagePosition.Top;
-                    //反射取得子窗体对象。
-                    object obj = Assembly.GetExecutingAssembly().CreateInstance(childitem.FileName, false);
-                    EventHandler abc = (EventHandler)obj;
-                    btnToolNew.Click += new EventHandler(abc);
+                    btnToolNew.Click += new EventHandler(Custom_Click);
+                    btnToolNew.Tag = childitem.FileName;
                     rbNew.Items.Add(btnToolNew);
                 }
                 rpanelNew.Controls.Add(rbNew);
@@ -173,13 +171,15 @@ namespace toolstrackingsystem
         {
             SetTabShow("常规工具", "ToolInfoManage");
         }
-        private void Custom_Click(object sender, EventArgs e)
-        {
-            SetTabShow("常规工具", "ToolInfoManage");
-        }
         private void FrmPerson(object sender, EventArgs e)
         {
             SetTabShow("常规工具", "ToolInfoManage");
         }
+        #region 给动态添加的按钮绑定的事件
+        private void Custom_Click(object sender, EventArgs e)
+        {
+            SetTabShow(sender.ToString(), ((ButtonItem)sender).Tag.ToString());
+        }
+        #endregion
     }
 }

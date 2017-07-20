@@ -33,5 +33,17 @@ namespace sqlserver.toolstrackingsystem
             }
             return base.QueryList(sql,parameter).ToList();
         }
+
+
+
+        public bool InsertRoleInfo(Sys_User_Role roleInfo)
+        {
+            string sql = "INSERT INTO Sys_User_Role (RoleCode,RoleName,MenuID)VALUES(@roleCode,@roleName,@MenuID)";
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("roleCode",roleInfo.RoleCode);
+            parameters.Add("roleName", roleInfo.RoleName);
+            parameters.Add("MenuID", roleInfo.MenuID);
+            return base.ExecuteSql(sql,parameters)>0;
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace sqlserver.toolstrackingsystem
     {
         List<Sys_User_Role> GetRoleInfoList();
         List<Sys_User_Role> GetRoleInfoList(string RoleCode,string RoleName);
+        bool InsertRoleInfo(Sys_User_Role roleInfo);
     }
 }

@@ -70,13 +70,15 @@ namespace toolstrackingsystem
             catch(Exception ex)
             {
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FormLogin", ex.Message, ex.StackTrace, ex.Source);
+                
             }
         }
         private void FormLogin_Load(object sender, EventArgs e)
         {
             this.styleManager1.ManagerStyle = eStyle.Office2010Blue;
             _userManageService = Program.container.Resolve<IUserManageService>() as UserManageService;
-
+            textBox_UserName.Text="admin";
+            textBox_PassWord.Text = "123456";
         }
     }
 }
