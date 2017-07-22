@@ -94,6 +94,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="作业人员\FrmEditWorker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="作业人员\FrmEditWorker.Designer.cs">
+      <DependentUpon>FrmEditWorker.cs</DependentUpon>
+    </Compile>
     <Compile Include="作业人员\FrmWorkerManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="作业人员\FrmEditWorker.resx">
+      <DependentUpon>FrmEditWorker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="作业人员\Frmworkermanager.resx">
       <DependentUpon>FrmWorkerManager.cs</DependentUpon>
     </EmbeddedResource>

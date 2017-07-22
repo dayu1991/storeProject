@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using dbentity.toolstrackingsystem;
 using sqlserver.toolstrackingsystem;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,11 @@ namespace service.toolstrackingsystem
     public class PersonManageService:IPersonManageService
     {
         private readonly IMultiTableQueryRepository _mutiTableQueryRepository;
-        public PersonManageService(IMultiTableQueryRepository multiTableQueryRepository)
+        private readonly IPersonManageRepository _personManageRepository;
+        public PersonManageService(IMultiTableQueryRepository multiTableQueryRepository, IPersonManageRepository personManageRepository)
         {
             this._mutiTableQueryRepository = multiTableQueryRepository;
+            this._personManageRepository = personManageRepository;
         }
         public List<PersonInfoEntity> GetPersonInfoList(PersonInfoEntity personInfo)
         {
@@ -72,6 +75,28 @@ namespace service.toolstrackingsystem
             }
             //sql += "LIMIT "+pageIndex+","+(pageIndex+pageSize);
             return _mutiTableQueryRepository.QueryList<PersonInfoEntity>(sql, parameters, out Count, sqlCount, false).ToList();
+        }
+    
+
+        public bool InsertPersonInfo(dbentity.toolstrackingsystem.t_PersonInfo personInfo)
+        {
+            return _personManageRepository.InsertPersonInfo(personInfo);
+        }
+
+
+        public t_PersonInfo GetPersonInfo(string personCode)
+        {
+            return _personManageRepository.GetPersonInfoByPersonCode(personCode);
+        }
+
+        public bool UpdatePersonInfo(t_PersonInfo personInfo)
+        {
+            return _personManageRepository.UpdatePersonInfo(personInfo);
+        }
+
+        public bool DeletePersonInfo(string personCode)
+        {
+            return _personManageRepository.DeletePersonInfo(personCode);
         }
     }
 }

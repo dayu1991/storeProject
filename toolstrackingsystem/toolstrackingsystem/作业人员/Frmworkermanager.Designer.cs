@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.description_detail_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.Remark_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.PersonName_Detail_textBox = new System.Windows.Forms.TextBox();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
@@ -41,6 +41,7 @@
             this.Edit_button = new DevComponents.DotNetBar.ButtonX();
             this.Add_button = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
             this.PersonList_dataGridViewX = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.PersonName_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -54,25 +55,24 @@
             this.Can_TakeOuttradioButton = new System.Windows.Forms.RadioButton();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Is_Receive_radioButton = new System.Windows.Forms.RadioButton();
-            this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
             this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PersonList_dataGridViewX)).BeginInit();
             this.groupPanel3.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // description_detail_textBox
+            // Remark_textBox
             // 
             // 
             // 
             // 
-            this.description_detail_textBox.Border.Class = "TextBoxBorder";
-            this.description_detail_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.description_detail_textBox.Location = new System.Drawing.Point(501, 18);
-            this.description_detail_textBox.Name = "description_detail_textBox";
-            this.description_detail_textBox.PreventEnterBeep = true;
-            this.description_detail_textBox.Size = new System.Drawing.Size(306, 21);
-            this.description_detail_textBox.TabIndex = 13;
+            this.Remark_textBox.Border.Class = "TextBoxBorder";
+            this.Remark_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Remark_textBox.Location = new System.Drawing.Point(553, 15);
+            this.Remark_textBox.Name = "Remark_textBox";
+            this.Remark_textBox.PreventEnterBeep = true;
+            this.Remark_textBox.Size = new System.Drawing.Size(306, 21);
+            this.Remark_textBox.TabIndex = 13;
             // 
             // labelX7
             // 
@@ -85,7 +85,7 @@
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(55, 23);
             this.labelX7.TabIndex = 12;
-            this.labelX7.Text = "描述:";
+            this.labelX7.Text = "备注:";
             // 
             // PersonName_Detail_textBox
             // 
@@ -148,6 +148,7 @@
             this.Edit_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Edit_button.TabIndex = 1;
             this.Edit_button.Text = "修改";
+            this.Edit_button.Click += new System.EventHandler(this.Edit_button_Click);
             // 
             // Add_button
             // 
@@ -159,6 +160,7 @@
             this.Add_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Add_button.TabIndex = 0;
             this.Add_button.Text = "添加";
+            this.Add_button.Click += new System.EventHandler(this.Add_button_Click);
             // 
             // groupPanel2
             // 
@@ -200,44 +202,57 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 4;
             // 
+            // pagerControl1
+            // 
+            this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pagerControl1.JumpText = "Go";
+            this.pagerControl1.Location = new System.Drawing.Point(0, 284);
+            this.pagerControl1.Name = "pagerControl1";
+            this.pagerControl1.PageIndex = 1;
+            this.pagerControl1.PageSize = 100;
+            this.pagerControl1.RecordCount = 0;
+            this.pagerControl1.Size = new System.Drawing.Size(887, 44);
+            this.pagerControl1.TabIndex = 1;
+            // 
             // PersonList_dataGridViewX
             // 
             this.PersonList_dataGridViewX.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PersonList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PersonList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.PersonList_dataGridViewX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PersonList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PersonList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle5;
             this.PersonList_dataGridViewX.EnableHeadersVisualStyles = false;
-            this.PersonList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.PersonList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.PersonList_dataGridViewX.Location = new System.Drawing.Point(0, 0);
             this.PersonList_dataGridViewX.MultiSelect = false;
             this.PersonList_dataGridViewX.Name = "PersonList_dataGridViewX";
             this.PersonList_dataGridViewX.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PersonList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PersonList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.PersonList_dataGridViewX.RowTemplate.Height = 23;
             this.PersonList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.PersonList_dataGridViewX.Size = new System.Drawing.Size(890, 282);
             this.PersonList_dataGridViewX.TabIndex = 0;
+            this.PersonList_dataGridViewX.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PersonList_dataGridViewX_CellClick);
             this.PersonList_dataGridViewX.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.PersonList_dataGridViewX_RowStateChanged);
             // 
             // Search_buttonX
@@ -306,7 +321,7 @@
             this.groupPanel3.Controls.Add(this.Pull_Out_button);
             this.groupPanel3.Controls.Add(this.Put_In_button);
             this.groupPanel3.Controls.Add(this.Can_TakeOuttradioButton);
-            this.groupPanel3.Controls.Add(this.description_detail_textBox);
+            this.groupPanel3.Controls.Add(this.Remark_textBox);
             this.groupPanel3.Controls.Add(this.labelX7);
             this.groupPanel3.Controls.Add(this.PersonName_Detail_textBox);
             this.groupPanel3.Controls.Add(this.labelX4);
@@ -385,6 +400,7 @@
             // Can_TakeOuttradioButton
             // 
             this.Can_TakeOuttradioButton.AutoSize = true;
+            this.Can_TakeOuttradioButton.Checked = true;
             this.Can_TakeOuttradioButton.Location = new System.Drawing.Point(413, 20);
             this.Can_TakeOuttradioButton.Name = "Can_TakeOuttradioButton";
             this.Can_TakeOuttradioButton.Size = new System.Drawing.Size(71, 16);
@@ -449,18 +465,6 @@
             this.Is_Receive_radioButton.Text = "领用权限";
             this.Is_Receive_radioButton.UseVisualStyleBackColor = true;
             // 
-            // pagerControl1
-            // 
-            this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(0, 284);
-            this.pagerControl1.Name = "pagerControl1";
-            this.pagerControl1.PageIndex = 1;
-            this.pagerControl1.PageSize = 100;
-            this.pagerControl1.RecordCount = 0;
-            this.pagerControl1.Size = new System.Drawing.Size(887, 44);
-            this.pagerControl1.TabIndex = 1;
-            // 
             // FrmWorkerManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -484,7 +488,7 @@
 
         #endregion
 
-        private DevComponents.DotNetBar.Controls.TextBoxX description_detail_textBox;
+        private DevComponents.DotNetBar.Controls.TextBoxX Remark_textBox;
         private DevComponents.DotNetBar.LabelX labelX7;
         private System.Windows.Forms.TextBox PersonName_Detail_textBox;
         private DevComponents.DotNetBar.LabelX labelX4;
