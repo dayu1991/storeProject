@@ -50,31 +50,36 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         public List<PersonInfoEntity> GetPersonInfoList(PersonInfoEntity personInfo, int pageIndex, int pageSize, out long Count)
         {
-            string sql = "SELECT TOP "+pageSize;
-            sql +=" PersonCode,PersonName,IsReceive,Remarks FROM t_PersonInfo WHERE 1=1 ";
-            sql += "AND PersonID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " PersonID FROM t_PersonInfo) ";
+            string sql = "SELECT TOP "+pageSize+" PersonCode,PersonName,IsReceive =case IsReceive when 1 then '是' when 0 then '否' end,Remarks FROM t_PersonInfo WHERE 1=1 ";
+            string sqlNotStr = "PersonID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " PersonID FROM t_PersonInfo WHERE 1=1 ";
             string sqlCount = "SELECT COUNT(*) FROM t_PersonInfo WHERE 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrEmpty(personInfo.PersonCode))
             {
                 sql += " AND PersonCode LIKE @personCode ";
-                sqlCount = " AND PersonCode LIKE @personCode ";
+                sqlCount += " AND PersonCode LIKE @personCode ";
+                sqlNotStr += " AND PersonCode LIKE @personCode ";
                 parameters.Add("personCode", string.Format("%{0}%", personInfo.PersonCode));
             }
             if (!string.IsNullOrEmpty(personInfo.PersonName))
             {
-                sql += " AND PersonName LIKE @personName ";
-                sqlCount += " AND PersonName LIKE @personName ";
+                string str = " AND PersonName LIKE @personName ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
                 parameters.Add("personName", string.Format("%{0}%", personInfo.PersonName));
             }
             if (!string.IsNullOrEmpty(personInfo.IsReceive))
             {
-                sql += " AND IsReceive=@isReceive ";
-                sqlCount +=  " AND IsReceive=@isReceive ";
+                string strSql = " AND IsReceive=@isReceive ";
+                sql += strSql;
+                sqlCount += strSql;
+                sqlNotStr += strSql;
                 parameters.Add("isReceive", personInfo.IsReceive);
             }
-            //sql += "LIMIT "+pageIndex+","+(pageIndex+pageSize);
-            return _mutiTableQueryRepository.QueryList<PersonInfoEntity>(sql, parameters, out Count, sqlCount, false).ToList();
+            sqlNotStr += ")";
+            string sqlfinal = string.Format("{0} AND {1}",sql,sqlNotStr);
+            return _mutiTableQueryRepository.QueryList<PersonInfoEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
         }
     
 
@@ -82,8 +87,6 @@ namespace service.toolstrackingsystem
         {
             return _personManageRepository.InsertPersonInfo(personInfo);
         }
-
-
         public t_PersonInfo GetPersonInfo(string personCode)
         {
             return _personManageRepository.GetPersonInfoByPersonCode(personCode);
