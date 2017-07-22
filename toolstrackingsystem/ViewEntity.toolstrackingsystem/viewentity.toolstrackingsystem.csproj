@@ -47,6 +47,7 @@
     <Compile Include="view\MenuInfoEntity.cs" />
     <Compile Include="view\PersonInfoEntity.cs" />
     <Compile Include="view\RoleInfoEntity.cs" />
+    <Compile Include="view\ToolInfoEntity.cs" />
     <Compile Include="view\UserInfoEntity.cs" />
   </ItemGroup>
   <ItemGroup>

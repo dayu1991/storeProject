@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewEntity.toolstrackingsystem.view;
 
 namespace sqlserver.toolstrackingsystem
 {
@@ -29,36 +30,80 @@ namespace sqlserver.toolstrackingsystem
             }
             return false;
         }
-        public List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName)
+        public List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount)
         {
             List<t_ToolInfo> list = new List<t_ToolInfo>();
-            string sql = @"select * from [dbo].[t_ToolInfo] where 1=1 ";
+            string sql = @"select * from (
+       select *,ROW_NUMBER() OVER (ORDER BY [ToolId] desc) as rank from [dbo].[t_ToolInfo]  where 1=1 {0}
+)  as t where  t.rank between @startPos and @endPos ";
+            string sqlCount = "select count(1) from [dbo].[t_ToolInfo] where 1=1 {0}";
+            string sqlWhere = "";
             DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("startPos", ((pageIndex - 1) * pageSize + 1));
+            parameters.Add("endPos", pageIndex*pageSize);
+
             if (blongValue>0)
             {
-                sql += " and  [ToolBelongId]=@ToolBelongId";
+                sqlWhere += " and  [ToolBelongId]=@ToolBelongId";
                 parameters.Add("ToolBelongId", blongValue);
 
             }
             if (categoryValue > 0)
             {
-                sql += " and [ToolCategoryId] =@ToolCategoryId";
+                sqlWhere += " and [ToolCategoryId] =@ToolCategoryId";
                 parameters.Add("ToolCategoryId", categoryValue);
             }
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
-                sql += string.Format(" and [ToolCode] LIKE '%{0}%'", "@ToolCode");
+                sqlWhere += string.Format(" and [ToolCode] LIKE '%{0}%'", "@ToolCode");
                 parameters.Add("ToolCode", toolCode);
 
             }
             if (!string.IsNullOrEmpty(toolName))
             {
-                sql += string.Format(" and [ToolName] LIKE '%{0}%'", "@ToolName");
+                sqlWhere += string.Format(" and [ToolName] LIKE '%{0}%'", "@ToolName");
                 parameters.Add("ToolName", toolName);
             }
-            sql += "order by [AddTime] desc";
-            return base.QueryList(sql, parameters).ToList();
+            sql= string.Format(sql,sqlWhere);
+            sqlCount = string.Format(sqlCount, sqlWhere);
+
+            var result = base.QueryList(sql, parameters, out totalCount, sqlCount, false);
+            return result.Any() ? result.ToList() : new List<t_ToolInfo>();
         }
+        public t_ToolInfo GetToolById(long ToolId)
+        { 
+            string sql = "select * from [dbo].[t_ToolInfo] where [ToolId]=@ToolId";
+            var sqlDy = new DynamicParameters();
+            sqlDy.Add("ToolId",ToolId);
+            return GetModel(sql, sqlDy);
+        }
+
+        public bool UpdateTool(t_ToolInfo entity)
+        {
+            return Update(entity);
+           
+        }
+        public bool DelToolById(long ToolId)
+        {
+            string sql = "delete from [dbo].[t_ToolInfo] where [ToolId]=@ToolId";
+            var sqlDy = new DynamicParameters();
+            sqlDy.Add("ToolId", ToolId);
+            var result =  ExcuteScalar(sql, sqlDy);
+            if (result != null && !string.IsNullOrWhiteSpace(result.ToString()))
+            {
+                int resultInt = 0;
+                if (int.TryParse(result.ToString(), out resultInt))
+                {
+                    return resultInt > 0;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
 
     }
 }

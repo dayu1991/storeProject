@@ -106,6 +106,12 @@
     <Compile Include="作业人员\FrmWorkerManager.Designer.cs">
       <DependentUpon>FrmWorkerManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="工具管理\DlgEditTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="工具管理\DlgEditTool.Designer.cs">
+      <DependentUpon>DlgEditTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="工具管理\ToolInfoManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="作业人员\Frmworkermanager.resx">
       <DependentUpon>FrmWorkerManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="工具管理\DlgEditTool.resx">
+      <DependentUpon>DlgEditTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="工具管理\ToolInfoManage.resx">
       <DependentUpon>ToolInfoManage.cs</DependentUpon>

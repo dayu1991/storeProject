@@ -123,9 +123,13 @@ namespace toolstrackingsystem
 
         private void PersonList_dataGridViewX_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            slectedIndex = e.RowIndex;
-            string personCode = PersonList_dataGridViewX.Rows[slectedIndex].Cells[0].Value.ToString();
-            this.Tag = personCode;
+            if (e.RowIndex >= 0)
+            {
+                slectedIndex = e.RowIndex;
+                string personCode = PersonList_dataGridViewX.Rows[slectedIndex].Cells[0].Value.ToString();
+                this.Tag = personCode;
+            }
+           
         }
 
         private void Edit_button_Click(object sender, EventArgs e)

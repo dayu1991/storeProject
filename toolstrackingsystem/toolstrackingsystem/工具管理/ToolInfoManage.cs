@@ -14,6 +14,7 @@ using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using dbentity.toolstrackingsystem;
 using common.toolstrackingsystem;
+using ViewEntity.toolstrackingsystem.view;
 namespace toolstrackingsystem
 {
     public partial class ToolInfoManage : Office2007RibbonForm
@@ -22,7 +23,9 @@ namespace toolstrackingsystem
         private IUserManageService _userManageService;
         private IToolInfoService _toolInfoService;
 
-        private int selectIndex = 0;
+        private int slectedIndex = 0;
+        private long ToolId = 0;
+
 
         public ToolInfoManage()
         {
@@ -72,6 +75,10 @@ namespace toolstrackingsystem
              this.cbSearchcategory.DataSource = cates;
             this.cbSearchcategory.DisplayMember = "CategoryName";
              this.cbSearchcategory.ValueMember = "CategoryId";
+             pagerControl1.OnPageChanged += new EventHandler(pagerControl1_OnPageChanged);
+
+             this.dtiCheckTime.Value = DateTime.Now.AddMonths(1); 
+             LoadData();
 
         }
 
@@ -81,9 +88,9 @@ namespace toolstrackingsystem
             {
                 var toolInfo = new t_ToolInfo();
                 toolInfo.ToolBelongId = int.Parse(this.cbEditBlong.SelectedValue.ToString());
-                toolInfo.ToolBelongName = this.cbEditBlong.SelectedText;
+                toolInfo.ToolBelongName = this.cbEditBlong.Text;
                 toolInfo.ToolCategoryId = int.Parse(this.cbEditCategory.SelectedValue.ToString());
-                toolInfo.ToolCategoryName = this.cbEditCategory.SelectedText;
+                toolInfo.ToolCategoryName = this.cbEditCategory.Text;
 
                 toolInfo.ToolName = this.tbEditToolName.Text;
                 toolInfo.Location = this.tbEditLocation.Text;
@@ -93,9 +100,9 @@ namespace toolstrackingsystem
                 toolInfo.AddTime = DateTime.Now;
                 toolInfo.IsDelete = false;
                 toolInfo.OperatorUserId = LoginHelper.ID;
-                toolInfo.OperatorUserName = LoginHelper.UserName;
+                toolInfo.OperatorUserName = LoginHelper.UserCode;
                 toolInfo.ToolCode = this.tbEditCode.Text;
-
+                
                 if (string.IsNullOrWhiteSpace(toolInfo.ToolCode))
                 {
                     MessageBox.Show("工具编号必须填写！");
@@ -108,6 +115,17 @@ namespace toolstrackingsystem
                     this.tbEditToolName.Focus();
                     return;
                 }
+                if (cbEditCheckTime.Checked == true)
+                {
+                    if (dtiCheckTime.Value < DateTime.Now)
+                    {
+                        MessageBox.Show("下次检测时间不能小于当前时间！");
+                        return;
+
+                    }
+
+                    toolInfo.CheckTime = dtiCheckTime.Value;
+                }
                 bool isExists = _toolInfoService.IsExistsByCode(toolInfo.ToolCode);
                 if (isExists)
                 {
@@ -119,7 +137,7 @@ namespace toolstrackingsystem
                 var result = _toolInfoService.AddToolInfo(toolInfo);
                 if (result > 0)
                 {
-                    Search_buttonX_Click(sender, e);
+                    LoadData();
 
                 }
                 else {
@@ -135,41 +153,121 @@ namespace toolstrackingsystem
 
         }
 
+        private void pagerControl1_OnPageChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
         private void Search_buttonX_Click(object sender, EventArgs e)
+        {
+            LoadData();
+
+           
+        }
+
+        private void LoadData()
         {
             try
             {
+
                 int blongValue = int.Parse(cbSearchBlong.SelectedValue.ToString());
                 int categoryValue = int.Parse(cbSearchcategory.SelectedValue.ToString());
                 string toolCode = tbSearchCode.Text;
                 string toolName = tbSearchName.Text;
+                long Count;
 
-                List<t_ToolInfo> resultEntity = _toolInfoService.GetToolList(blongValue, categoryValue, toolCode, toolName);
-
+                List<t_ToolInfo> resultEntity = _toolInfoService.GetToolList(blongValue, categoryValue, toolCode, toolName, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
+                pagerControl1.DrawControl(Convert.ToInt32(Count));
+                this.dataGridViewX1.AutoGenerateColumns = false;
                 this.dataGridViewX1.DataSource = resultEntity;
-                for (int i = 0; i < dataGridViewX1.Columns.Count; i++)
-                {
-                    dataGridViewX1.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
-                }
-                dataGridViewX1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                dataGridViewX1.Columns[0].HeaderText = "工具配属";
-                dataGridViewX1.Columns[1].HeaderText = "工具类别";
-                dataGridViewX1.Columns[2].HeaderText = "包编码";
-                dataGridViewX1.Columns[3].HeaderText = "包名称";
-                dataGridViewX1.Columns[4].HeaderText = "编码";
-                dataGridViewX1.Columns[5].HeaderText = "名称";
-
-                dataGridViewX1.Columns[6].HeaderText = "型号";
-                dataGridViewX1.Columns[7].HeaderText = "位置";
-                dataGridViewX1.Columns[8].HeaderText = "备注";
-                dataGridViewX1.Columns[9].HeaderText = "下次检测时间";
-
+                this.dataGridViewX1.Rows[0].Selected=true;
+                slectedIndex = 0;
+                ToolId = int.Parse(dataGridViewX1.Rows[0].Cells[0].Value.ToString());
 
             }
             catch (Exception ex)
             {
-                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--frmEditUserinfo--Search_buttonX_Click", ex.Message, ex.StackTrace, ex.Source);
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--Tool--Search_buttonX_Click", ex.Message, ex.StackTrace, ex.Source);
             }
+        }
+
+        private void dataGridViewX1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                slectedIndex = e.RowIndex;
+                ToolId = int.Parse(this.dataGridViewX1.Rows[slectedIndex].Cells[0].Value.ToString());
+            }
+           
+        }
+
+        private void buttonX2_Click(object sender, EventArgs e)
+        {
+            this.tbEditToolName.Text = "";
+            this.tbEditLocation.Text = "";
+            this.tbEditModel.Text = "";
+            this.tbEditMemo.Text = "";
+            this.tbEditCode.Text = "";
+            this.cbEditCheckTime.Checked = false;
+            this.dtiCheckTime.Value = DateTime.Now.AddMonths(1);
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ToolId <= 0)
+                {
+                    MessageBox.Show("请选中一条记录");
+                    return;
+                }
+                else {
+                    t_ToolInfo toolEntity = _toolInfoService.GetToolById(ToolId);
+                    if (toolEntity != null)
+                    {
+                        DlgEditTool formEdit = new DlgEditTool();
+                        formEdit.Tag = toolEntity;
+                        formEdit.ShowDialog();
+                        if (formEdit.DialogResult == DialogResult.OK)
+                        {
+                            LoadData();
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--Tool--edit", ex.Message, ex.StackTrace, ex.Source);
+
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ToolId <= 0)
+                {
+                    MessageBox.Show("请选中一条记录");
+                    return;
+                }
+                else
+                {
+                    bool toolEntity = _toolInfoService.DelToolById(ToolId);
+                    LoadData();                   
+                }
+            }
+            catch (Exception ex)
+            {
+                
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--Tool--delete", ex.Message, ex.StackTrace, ex.Source);
+            }
+        }
+
+        private void dataGridViewX1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            var num = (pagerControl1.PageIndex - 1) * pagerControl1.PageSize + 1 + e.Row.Index;
+            e.Row.HeaderCell.Value = string.Format("{0}", num); 
         }
     }
 }

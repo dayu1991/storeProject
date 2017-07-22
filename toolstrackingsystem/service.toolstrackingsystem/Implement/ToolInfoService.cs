@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewEntity.toolstrackingsystem.view;
 
 namespace service.toolstrackingsystem
 {
@@ -49,9 +50,24 @@ namespace service.toolstrackingsystem
         /// <param name="toolCode"></param>
         /// <param name="toolName"></param>
         /// <returns></returns>
-        public List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName)
+        public List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount)
         {
-            return _toolInfoRepository.GetToolList(blongValue, categoryValue, toolCode, toolName);
+            return _toolInfoRepository.GetToolList(blongValue, categoryValue, toolCode, toolName,pageIndex,pageSize,out totalCount);
         }
+        public t_ToolInfo GetToolById(long ToolId)
+        {
+            return _toolInfoRepository.GetToolById(ToolId);
+        }
+        public bool UpdateTool(t_ToolInfo entity)
+        {
+            return _toolInfoRepository.UpdateTool(entity);
+        }
+
+        public bool DelToolById(long ToolId)
+        {
+            return _toolInfoRepository.DelToolById(ToolId);
+        }
+
+
     }
 }

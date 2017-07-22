@@ -82,6 +82,10 @@
       <Project>{b6f7ad4b-f315-49ac-aad4-74ebfcf183e5}</Project>
       <Name>dbentity.toolstrackingsystem</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ViewEntity.toolstrackingsystem\viewentity.toolstrackingsystem.csproj">
+      <Project>{e8fd79dc-9e78-4280-98da-44c8c31ba6dc}</Project>
+      <Name>viewentity.toolstrackingsystem</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
