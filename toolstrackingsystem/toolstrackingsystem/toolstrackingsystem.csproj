@@ -54,10 +54,13 @@
     <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,6 +71,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cangku_manage_dbDataSet.cs">
+      <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cangku_manage_dbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +111,12 @@
     </Compile>
     <Compile Include="作业人员\FrmEditWorker.Designer.cs">
       <DependentUpon>FrmEditWorker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="作业人员\FrmPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="作业人员\FrmPrint.Designer.cs">
+      <DependentUpon>FrmPrint.cs</DependentUpon>
     </Compile>
     <Compile Include="作业人员\FrmWorkerManager.cs">
       <SubType>Form</SubType>
@@ -166,9 +184,13 @@
     <EmbeddedResource Include="作业人员\FrmEditWorker.resx">
       <DependentUpon>FrmEditWorker.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="作业人员\FrmPrint.resx">
+      <DependentUpon>FrmPrint.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="作业人员\Frmworkermanager.resx">
       <DependentUpon>FrmWorkerManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="作业人员\Report1.rdlc" />
     <EmbeddedResource Include="工具管理\ToolInfoManage.resx">
       <DependentUpon>ToolInfoManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +212,17 @@
     <EmbeddedResource Include="角色管理\MenuInfoTree.resx">
       <DependentUpon>MenuInfoTree.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="cangku_manage_dbDataSet.xsc">
+      <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="cangku_manage_dbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>cangku_manage_dbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="cangku_manage_dbDataSet.xss">
+      <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Configs\unity.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

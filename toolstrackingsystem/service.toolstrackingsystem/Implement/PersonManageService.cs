@@ -51,7 +51,7 @@ namespace service.toolstrackingsystem
         public List<PersonInfoEntity> GetPersonInfoList(PersonInfoEntity personInfo, int pageIndex, int pageSize, out long Count)
         {
             string sql = "SELECT TOP "+pageSize;
-            sql +=" PersonCode,PersonName,IsReceive,Remarks FROM t_PersonInfo WHERE 1=1 ";
+            sql += " PersonCode,PersonName,IsReceive =case IsReceive when 1 then '是' when 0 then '否' end,Remarks FROM t_PersonInfo WHERE 1=1 ";
             sql += "AND PersonID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " PersonID FROM t_PersonInfo) ";
             string sqlCount = "SELECT COUNT(*) FROM t_PersonInfo WHERE 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
@@ -82,8 +82,6 @@ namespace service.toolstrackingsystem
         {
             return _personManageRepository.InsertPersonInfo(personInfo);
         }
-
-
         public t_PersonInfo GetPersonInfo(string personCode)
         {
             return _personManageRepository.GetPersonInfoByPersonCode(personCode);

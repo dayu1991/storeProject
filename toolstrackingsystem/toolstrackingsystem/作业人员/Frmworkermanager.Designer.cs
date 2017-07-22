@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Remark_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.PersonName_Detail_textBox = new System.Windows.Forms.TextBox();
@@ -41,7 +41,6 @@
             this.Edit_button = new DevComponents.DotNetBar.ButtonX();
             this.Add_button = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
             this.PersonList_dataGridViewX = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.PersonName_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -52,9 +51,10 @@
             this.Print_button = new DevComponents.DotNetBar.ButtonX();
             this.Pull_Out_button = new DevComponents.DotNetBar.ButtonX();
             this.Put_In_button = new DevComponents.DotNetBar.ButtonX();
-            this.Can_TakeOuttradioButton = new System.Windows.Forms.RadioButton();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.Is_Receive_radioButton = new System.Windows.Forms.RadioButton();
+            this.Is_Receive_checkBox = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.Can_TakeOut_checkBox = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
             this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PersonList_dataGridViewX)).BeginInit();
             this.groupPanel3.SuspendLayout();
@@ -202,52 +202,40 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 4;
             // 
-            // pagerControl1
-            // 
-            this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(0, 284);
-            this.pagerControl1.Name = "pagerControl1";
-            this.pagerControl1.PageIndex = 1;
-            this.pagerControl1.PageSize = 100;
-            this.pagerControl1.RecordCount = 0;
-            this.pagerControl1.Size = new System.Drawing.Size(887, 44);
-            this.pagerControl1.TabIndex = 1;
-            // 
             // PersonList_dataGridViewX
             // 
             this.PersonList_dataGridViewX.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PersonList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PersonList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.PersonList_dataGridViewX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PersonList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PersonList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.PersonList_dataGridViewX.EnableHeadersVisualStyles = false;
             this.PersonList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.PersonList_dataGridViewX.Location = new System.Drawing.Point(0, 0);
             this.PersonList_dataGridViewX.MultiSelect = false;
             this.PersonList_dataGridViewX.Name = "PersonList_dataGridViewX";
             this.PersonList_dataGridViewX.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PersonList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PersonList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.PersonList_dataGridViewX.RowTemplate.Height = 23;
             this.PersonList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.PersonList_dataGridViewX.Size = new System.Drawing.Size(890, 282);
@@ -259,7 +247,7 @@
             // 
             this.Search_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Search_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Search_buttonX.Location = new System.Drawing.Point(578, 21);
+            this.Search_buttonX.Location = new System.Drawing.Point(606, 21);
             this.Search_buttonX.Name = "Search_buttonX";
             this.Search_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Search_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -317,10 +305,10 @@
             // 
             this.groupPanel3.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel3.Controls.Add(this.Can_TakeOut_checkBox);
             this.groupPanel3.Controls.Add(this.Print_button);
             this.groupPanel3.Controls.Add(this.Pull_Out_button);
             this.groupPanel3.Controls.Add(this.Put_In_button);
-            this.groupPanel3.Controls.Add(this.Can_TakeOuttradioButton);
             this.groupPanel3.Controls.Add(this.Remark_textBox);
             this.groupPanel3.Controls.Add(this.labelX7);
             this.groupPanel3.Controls.Add(this.PersonName_Detail_textBox);
@@ -374,6 +362,7 @@
             this.Print_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Print_button.TabIndex = 17;
             this.Print_button.Text = "打印";
+            this.Print_button.Click += new System.EventHandler(this.Print_button_Click);
             // 
             // Pull_Out_button
             // 
@@ -397,23 +386,11 @@
             this.Put_In_button.TabIndex = 15;
             this.Put_In_button.Text = "导出Excel";
             // 
-            // Can_TakeOuttradioButton
-            // 
-            this.Can_TakeOuttradioButton.AutoSize = true;
-            this.Can_TakeOuttradioButton.Checked = true;
-            this.Can_TakeOuttradioButton.Location = new System.Drawing.Point(413, 20);
-            this.Can_TakeOuttradioButton.Name = "Can_TakeOuttradioButton";
-            this.Can_TakeOuttradioButton.Size = new System.Drawing.Size(71, 16);
-            this.Can_TakeOuttradioButton.TabIndex = 14;
-            this.Can_TakeOuttradioButton.TabStop = true;
-            this.Can_TakeOuttradioButton.Text = "领用权限";
-            this.Can_TakeOuttradioButton.UseVisualStyleBackColor = true;
-            // 
             // groupPanel1
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel1.Controls.Add(this.Is_Receive_radioButton);
+            this.groupPanel1.Controls.Add(this.Is_Receive_checkBox);
             this.groupPanel1.Controls.Add(this.Search_buttonX);
             this.groupPanel1.Controls.Add(this.PersonName_textBox);
             this.groupPanel1.Controls.Add(this.labelX2);
@@ -453,17 +430,51 @@
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 3;
             // 
-            // Is_Receive_radioButton
+            // Is_Receive_checkBox
             // 
-            this.Is_Receive_radioButton.AutoSize = true;
-            this.Is_Receive_radioButton.Checked = true;
-            this.Is_Receive_radioButton.Location = new System.Drawing.Point(501, 25);
-            this.Is_Receive_radioButton.Name = "Is_Receive_radioButton";
-            this.Is_Receive_radioButton.Size = new System.Drawing.Size(71, 16);
-            this.Is_Receive_radioButton.TabIndex = 15;
-            this.Is_Receive_radioButton.TabStop = true;
-            this.Is_Receive_radioButton.Text = "领用权限";
-            this.Is_Receive_radioButton.UseVisualStyleBackColor = true;
+            this.Is_Receive_checkBox.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.Is_Receive_checkBox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Is_Receive_checkBox.Checked = true;
+            this.Is_Receive_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Is_Receive_checkBox.CheckValue = "Y";
+            this.Is_Receive_checkBox.Location = new System.Drawing.Point(500, 21);
+            this.Is_Receive_checkBox.Name = "Is_Receive_checkBox";
+            this.Is_Receive_checkBox.Size = new System.Drawing.Size(100, 23);
+            this.Is_Receive_checkBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Is_Receive_checkBox.TabIndex = 5;
+            this.Is_Receive_checkBox.Text = "领用权限";
+            // 
+            // Can_TakeOut_checkBox
+            // 
+            this.Can_TakeOut_checkBox.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.Can_TakeOut_checkBox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Can_TakeOut_checkBox.Checked = true;
+            this.Can_TakeOut_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Can_TakeOut_checkBox.CheckValue = "Y";
+            this.Can_TakeOut_checkBox.Location = new System.Drawing.Point(412, 15);
+            this.Can_TakeOut_checkBox.Name = "Can_TakeOut_checkBox";
+            this.Can_TakeOut_checkBox.Size = new System.Drawing.Size(87, 23);
+            this.Can_TakeOut_checkBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Can_TakeOut_checkBox.TabIndex = 18;
+            this.Can_TakeOut_checkBox.Text = "领用权限";
+            // 
+            // pagerControl1
+            // 
+            this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pagerControl1.JumpText = "Go";
+            this.pagerControl1.Location = new System.Drawing.Point(0, 284);
+            this.pagerControl1.Name = "pagerControl1";
+            this.pagerControl1.PageIndex = 1;
+            this.pagerControl1.PageSize = 100;
+            this.pagerControl1.RecordCount = 0;
+            this.pagerControl1.Size = new System.Drawing.Size(887, 44);
+            this.pagerControl1.TabIndex = 1;
             // 
             // FrmWorkerManager
             // 
@@ -509,8 +520,8 @@
         private DevComponents.DotNetBar.ButtonX Print_button;
         private DevComponents.DotNetBar.ButtonX Pull_Out_button;
         private DevComponents.DotNetBar.ButtonX Put_In_button;
-        private System.Windows.Forms.RadioButton Can_TakeOuttradioButton;
-        private System.Windows.Forms.RadioButton Is_Receive_radioButton;
         private PageControl.PagerControl pagerControl1;
+        private DevComponents.DotNetBar.Controls.CheckBoxX Is_Receive_checkBox;
+        private DevComponents.DotNetBar.Controls.CheckBoxX Can_TakeOut_checkBox;
     }
 }

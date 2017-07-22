@@ -57,7 +57,7 @@ namespace toolstrackingsystem
             PersonInfoEntity personInfo = new PersonInfoEntity();
             personInfo.PersonCode = PersonCode_textBox.Text;
             personInfo.PersonName = PersonName_textBox.Text;
-            personInfo.IsReceive = Is_Receive_radioButton.Checked == true ? "1" : "0";
+            personInfo.IsReceive = Is_Receive_checkBox.Checked == true ? "1" : "0";
             //数据总记录数
             long Count;
             //获取分页的数据
@@ -81,7 +81,7 @@ namespace toolstrackingsystem
                 t_PersonInfo personInfo = new t_PersonInfo();
                 personInfo.PersonCode = PersonCode_Detail_textBox.Text;
                 personInfo.PersonName = PersonName_Detail_textBox.Text;
-                personInfo.IsReceive = Can_TakeOuttradioButton.Checked == true ? "1" : "0";
+                personInfo.IsReceive = Can_TakeOut_checkBox.Checked == true ? "1" : "0";
                 personInfo.Remarks = Remark_textBox.Text;
                 if (string.IsNullOrEmpty(personInfo.PersonCode))
                 {
@@ -106,7 +106,7 @@ namespace toolstrackingsystem
                     MessageBox.Show("添加成功");
                     PersonCode_Detail_textBox.Text = "";
                     PersonName_Detail_textBox.Text = "";
-                    Can_TakeOuttradioButton.Checked = true;
+                    Can_TakeOut_checkBox.Checked = true;
                     Remark_textBox.Text = "";
                     Search_buttonX_Click(sender,e);
                 }
@@ -155,6 +155,12 @@ namespace toolstrackingsystem
             {
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmWorkerManager--Edit_button_Click", ex.Message, ex.StackTrace, ex.Source);
             }
+        }
+
+        private void Print_button_Click(object sender, EventArgs e)
+        {
+            FrmPrint printFrm = new FrmPrint();
+            printFrm.ShowDialog();
         }
     }
 }
