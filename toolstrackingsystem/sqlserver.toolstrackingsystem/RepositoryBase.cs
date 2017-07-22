@@ -868,7 +868,7 @@ namespace sqlserver.toolstrackingsystem
                 if (conn.State == ConnectionState.Open)
                 {
                     object countObject = conn.ExecuteScalar(fullCountSql, dynamicParams);
-                    resultCount = (long)countObject;//装箱后的数据，直接拆箱                  
+                    resultCount = (long)(Convert.ToInt32(countObject));//装箱后的数据，直接拆箱                  
                 }
             }
             catch (Exception)

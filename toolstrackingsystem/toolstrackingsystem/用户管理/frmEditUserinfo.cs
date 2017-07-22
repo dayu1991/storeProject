@@ -203,5 +203,95 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--frmEditUserinfo--Add_buttonX_Click", ex.Message, ex.StackTrace, ex.Source);
             }
         }
+
+        private void UserList_dataGridViewX_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void groupPanel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserName_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelX2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserCode_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelX1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupPanel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void description_detail_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelX7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Password_detail_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelX6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Rolelist_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelX5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserName_Detail_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelX4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserCode_Detail_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelX3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupPanel3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

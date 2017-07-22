@@ -101,6 +101,7 @@
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 0;
+            this.groupPanel1.Click += new System.EventHandler(this.groupPanel1_Click);
             // 
             // Search_buttonX
             // 
@@ -126,6 +127,7 @@
             this.UserName_textBox.PreventEnterBeep = true;
             this.UserName_textBox.Size = new System.Drawing.Size(137, 21);
             this.UserName_textBox.TabIndex = 3;
+            this.UserName_textBox.TextChanged += new System.EventHandler(this.UserName_textBox_TextChanged);
             // 
             // labelX2
             // 
@@ -139,6 +141,7 @@
             this.labelX2.Size = new System.Drawing.Size(75, 23);
             this.labelX2.TabIndex = 2;
             this.labelX2.Text = "用户名称:";
+            this.labelX2.Click += new System.EventHandler(this.labelX2_Click);
             // 
             // UserCode_textBox
             // 
@@ -146,6 +149,7 @@
             this.UserCode_textBox.Name = "UserCode_textBox";
             this.UserCode_textBox.Size = new System.Drawing.Size(137, 21);
             this.UserCode_textBox.TabIndex = 1;
+            this.UserCode_textBox.TextChanged += new System.EventHandler(this.UserCode_textBox_TextChanged);
             // 
             // labelX1
             // 
@@ -159,6 +163,7 @@
             this.labelX1.Size = new System.Drawing.Size(52, 23);
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "用户名:";
+            this.labelX1.Click += new System.EventHandler(this.labelX1_Click);
             // 
             // groupPanel2
             // 
@@ -198,6 +203,7 @@
             // 
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 1;
+            this.groupPanel2.Click += new System.EventHandler(this.groupPanel2_Click);
             // 
             // UserList_dataGridViewX
             // 
@@ -239,6 +245,7 @@
             this.UserList_dataGridViewX.Size = new System.Drawing.Size(890, 326);
             this.UserList_dataGridViewX.TabIndex = 0;
             this.UserList_dataGridViewX.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UserList_dataGridViewX_CellClick);
+            this.UserList_dataGridViewX.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UserList_dataGridViewX_CellContentClick);
             this.UserList_dataGridViewX.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.UserList_dataGridViewX_RowStateChanged);
             // 
             // groupPanel3
@@ -291,6 +298,7 @@
             // 
             this.groupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel3.TabIndex = 2;
+            this.groupPanel3.Click += new System.EventHandler(this.groupPanel3_Click);
             // 
             // description_detail_textBox
             // 
@@ -304,6 +312,7 @@
             this.description_detail_textBox.PreventEnterBeep = true;
             this.description_detail_textBox.Size = new System.Drawing.Size(306, 21);
             this.description_detail_textBox.TabIndex = 13;
+            this.description_detail_textBox.TextChanged += new System.EventHandler(this.description_detail_textBox_TextChanged);
             // 
             // labelX7
             // 
@@ -317,6 +326,7 @@
             this.labelX7.Size = new System.Drawing.Size(55, 23);
             this.labelX7.TabIndex = 12;
             this.labelX7.Text = "描述:";
+            this.labelX7.Click += new System.EventHandler(this.labelX7_Click);
             // 
             // Password_detail_textBox
             // 
@@ -325,6 +335,7 @@
             this.Password_detail_textBox.PasswordChar = '*';
             this.Password_detail_textBox.Size = new System.Drawing.Size(121, 21);
             this.Password_detail_textBox.TabIndex = 11;
+            this.Password_detail_textBox.TextChanged += new System.EventHandler(this.Password_detail_textBox_TextChanged);
             // 
             // labelX6
             // 
@@ -338,6 +349,7 @@
             this.labelX6.Size = new System.Drawing.Size(55, 23);
             this.labelX6.TabIndex = 10;
             this.labelX6.Text = "密码:";
+            this.labelX6.Click += new System.EventHandler(this.labelX6_Click);
             // 
             // Rolelist_comboBox
             // 
@@ -350,6 +362,7 @@
             this.Rolelist_comboBox.Size = new System.Drawing.Size(142, 21);
             this.Rolelist_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Rolelist_comboBox.TabIndex = 8;
+            this.Rolelist_comboBox.SelectedIndexChanged += new System.EventHandler(this.Rolelist_comboBox_SelectedIndexChanged);
             // 
             // labelX5
             // 
@@ -363,6 +376,7 @@
             this.labelX5.Size = new System.Drawing.Size(75, 23);
             this.labelX5.TabIndex = 7;
             this.labelX5.Text = "用户角色:";
+            this.labelX5.Click += new System.EventHandler(this.labelX5_Click);
             // 
             // UserName_Detail_textBox
             // 
@@ -370,6 +384,7 @@
             this.UserName_Detail_textBox.Name = "UserName_Detail_textBox";
             this.UserName_Detail_textBox.Size = new System.Drawing.Size(120, 21);
             this.UserName_Detail_textBox.TabIndex = 6;
+            this.UserName_Detail_textBox.TextChanged += new System.EventHandler(this.UserName_Detail_textBox_TextChanged);
             // 
             // labelX4
             // 
@@ -383,6 +398,7 @@
             this.labelX4.Size = new System.Drawing.Size(75, 23);
             this.labelX4.TabIndex = 5;
             this.labelX4.Text = "用户名称:";
+            this.labelX4.Click += new System.EventHandler(this.labelX4_Click);
             // 
             // UserCode_Detail_textBox
             // 
@@ -390,6 +406,7 @@
             this.UserCode_Detail_textBox.Name = "UserCode_Detail_textBox";
             this.UserCode_Detail_textBox.Size = new System.Drawing.Size(114, 21);
             this.UserCode_Detail_textBox.TabIndex = 4;
+            this.UserCode_Detail_textBox.TextChanged += new System.EventHandler(this.UserCode_Detail_textBox_TextChanged);
             // 
             // labelX3
             // 
@@ -403,6 +420,7 @@
             this.labelX3.Size = new System.Drawing.Size(52, 23);
             this.labelX3.TabIndex = 3;
             this.labelX3.Text = "用户名:";
+            this.labelX3.Click += new System.EventHandler(this.labelX3_Click);
             // 
             // Delete_buttonX
             // 

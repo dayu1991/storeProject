@@ -86,8 +86,20 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="PageControl\PagerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PageControl\PagerControl.Designer.cs">
+      <DependentUpon>PagerControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="作业人员\FrmWorkerManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="作业人员\FrmWorkerManager.Designer.cs">
+      <DependentUpon>FrmWorkerManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="工具管理\ToolInfoManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +145,9 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PageControl\PagerControl.resx">
+      <DependentUpon>PagerControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -142,6 +157,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="作业人员\Frmworkermanager.resx">
+      <DependentUpon>FrmWorkerManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="工具管理\ToolInfoManage.resx">
       <DependentUpon>ToolInfoManage.cs</DependentUpon>
     </EmbeddedResource>

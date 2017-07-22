@@ -44,9 +44,8 @@ namespace toolstrackingsystem
                     RoleList_dataGridViewX.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
                 }
                 RoleList_dataGridViewX.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                RoleList_dataGridViewX.Columns[0].HeaderText = "序号";
-                RoleList_dataGridViewX.Columns[1].HeaderText = "角色代码";
-                RoleList_dataGridViewX.Columns[2].HeaderText = "角色名称";
+                RoleList_dataGridViewX.Columns[0].HeaderText = "角色代码";
+                RoleList_dataGridViewX.Columns[1].HeaderText = "角色名称";
                 RoleList_dataGridViewX.Columns[2].HeaderText = "角色MenuID";
             }
             catch (Exception ex)
@@ -119,6 +118,16 @@ namespace toolstrackingsystem
                     Search_buttonX_Click(sender,e);
                 }
             }
+        }
+
+        private void RoleList_dataGridViewX_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+
+        }
+
+        private void RoleList_dataGridViewX_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
         }
     }
 }

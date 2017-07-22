@@ -45,6 +45,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="view\MenuInfoEntity.cs" />
+    <Compile Include="view\PersonInfoEntity.cs" />
     <Compile Include="view\RoleInfoEntity.cs" />
     <Compile Include="view\UserInfoEntity.cs" />
   </ItemGroup>
