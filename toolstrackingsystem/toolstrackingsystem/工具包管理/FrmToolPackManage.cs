@@ -22,6 +22,7 @@ namespace toolstrackingsystem
         ILog logger = log4net.LogManager.GetLogger(typeof(frmEditUserinfo));
         public IToolPackManageService _toolPackManageService;
         private List<ToolInfoForPackEntity> resultEntity = new List<ToolInfoForPackEntity>();
+        private int selectIndex;
         public FrmToolPackManage()
         {
             this.EnableGlass = false;
@@ -71,7 +72,13 @@ namespace toolstrackingsystem
                     return;
                 }
                 resultEntity = new List<ToolInfoForPackEntity>();
+                
                 resultEntity = _toolPackManageService.GetToolInfoForPack(toolInfo);
+                if (resultEntity.Count > 0)
+                {
+                    Pack_Code_textBox.Text = resultEntity[0].ToolBelongName;
+                    Pack_Name_textBox.Text = resultEntity[0].ToolCategoryName;
+                }
                 ToolInfoList_dataGridViewX.DataSource = resultEntity;
                 for (int i = 0; i < ToolInfoList_dataGridViewX.Columns.Count; i++)
                 {
@@ -85,11 +92,6 @@ namespace toolstrackingsystem
                 ToolInfoList_dataGridViewX.Columns[4].HeaderText = "型号";
                 ToolInfoList_dataGridViewX.Columns[5].HeaderText = "位置";
                 ToolInfoList_dataGridViewX.Columns[6].HeaderText = "备注";
-                
-                //foreach (var item in resultEntity)
-                //{
-                //    ToolInfoList_dataGridViewX.Rows.Add(item.ToolBelongName, item.ToolCategoryName, item.ToolCode, item.ToolName, item.ToolModels, item.Location, item.ToolRemarks);
-                //}
             }
             catch (Exception ex)
             {
@@ -105,6 +107,12 @@ namespace toolstrackingsystem
             try
             {
                 string toolCode = ToolInfoCode_Detail_textBox.Text;
+                if (ToolInfoList_dataGridViewX.Columns.Count <= 0)
+                {
+                    MessageBox.Show("请先输入工具包信息查询");
+                    Pack_Code_textBox.Focus();
+                    return;
+                }
                 if (string.IsNullOrEmpty(toolCode))
                 {
                     MessageBox.Show("工具编码不能为空");
@@ -127,19 +135,108 @@ namespace toolstrackingsystem
                 result.ToolModels = toolInfo.ToolModels;
                 result.ToolRemarks = toolInfo.ToolRemarks;
                 result.Location = toolInfo.Location;
+                foreach (var item in resultEntity)
+                {
+                    if (item.ToolCode == result.ToolCode)
+                    {
+                        MessageBox.Show("工具已在工具包内，请重新添加");
+                        return;
+                    }
+                }
+                if (toolInfo.PackCode != null)
+                {
+                    MessageBox.Show("该工具已经被组合到“"+toolInfo.PackName+"”"+"中");
+                    return;
+                }
                 resultEntity.Add(result);
-                ToolInfoList_dataGridViewX.Rows.Clear();
-                //return;
-                ToolInfoList_dataGridViewX.DataSource=null;
+                ToolInfoList_dataGridViewX.DataSource = null;
+                ToolInfoList_dataGridViewX.DataSource = resultEntity;
                 for (int i = 0; i < ToolInfoList_dataGridViewX.Columns.Count; i++)
                 {
                     ToolInfoList_dataGridViewX.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
                 }
                 ToolInfoList_dataGridViewX.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                ToolInfoList_dataGridViewX.Columns[0].HeaderText = "工具配属";
+                ToolInfoList_dataGridViewX.Columns[1].HeaderText = "工具类别";
+                ToolInfoList_dataGridViewX.Columns[2].HeaderText = "编码";
+                ToolInfoList_dataGridViewX.Columns[3].HeaderText = "名称";
+                ToolInfoList_dataGridViewX.Columns[4].HeaderText = "型号";
+                ToolInfoList_dataGridViewX.Columns[5].HeaderText = "位置";
+                ToolInfoList_dataGridViewX.Columns[6].HeaderText = "备注";
             }
             catch (Exception ex) {
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmToolPackManage--Add_button_Click", ex.Message, ex.StackTrace, ex.Source);
             }
+        }
+
+        private void Print_button_Click(object sender, EventArgs e)
+        {
+            ToolInfoCode_Detail_textBox.Text = "";
+        }
+
+        private void ToolInfoList_dataGridViewX_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            selectIndex = e.RowIndex;
+            this.Tag = ToolInfoList_dataGridViewX.Rows[selectIndex].Cells[2].Value.ToString();
+        }
+        private void Delete_button_Click(object sender, EventArgs e)
+        {
+            if (ToolInfoList_dataGridViewX.Rows.Count <= 0)
+            {
+                return;
+            }
+            string toolCode = ToolInfoList_dataGridViewX.Rows[selectIndex].Cells[2].Value.ToString();
+            if (string.IsNullOrEmpty(toolCode))
+            {
+                MessageBox.Show("请选择一条数据");
+                return;
+            }
+            foreach (var item in resultEntity)
+            {
+                if (item.ToolCode == toolCode)
+                {
+                    resultEntity.Remove(item);
+                    break;
+                }
+            }
+            ToolInfoList_dataGridViewX.DataSource = null;
+            ToolInfoList_dataGridViewX.DataSource = resultEntity;
+            for (int i = 0; i < ToolInfoList_dataGridViewX.Columns.Count; i++)
+            {
+                ToolInfoList_dataGridViewX.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+            ToolInfoList_dataGridViewX.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            ToolInfoList_dataGridViewX.Columns[0].HeaderText = "工具配属";
+            ToolInfoList_dataGridViewX.Columns[1].HeaderText = "工具类别";
+            ToolInfoList_dataGridViewX.Columns[2].HeaderText = "编码";
+            ToolInfoList_dataGridViewX.Columns[3].HeaderText = "名称";
+            ToolInfoList_dataGridViewX.Columns[4].HeaderText = "型号";
+            ToolInfoList_dataGridViewX.Columns[5].HeaderText = "位置";
+            ToolInfoList_dataGridViewX.Columns[6].HeaderText = "备注";
+            MessageBox.Show("删除成功");
+            if (ToolInfoList_dataGridViewX.Rows.Count == selectIndex)
+            {
+                selectIndex = 0;
+            }
+            else if (selectIndex!=0)
+            {
+                selectIndex -= 1;
+            }
+
+        }
+
+        private void Delete_button_CheckedChanged(object sender, EventArgs e)
+        {
+            //selectIndex = ;
+            //this.Tag = ToolInfoList_dataGridViewX.Rows[selectIndex].Cells[2].Value.ToString();
+        }
+
+        private void ToolInfoList_dataGridViewX_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        {
+        }
+        private void Edit_button_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

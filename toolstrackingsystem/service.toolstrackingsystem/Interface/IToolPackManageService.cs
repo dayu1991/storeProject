@@ -13,5 +13,6 @@ namespace service.toolstrackingsystem
         List<ToolInfoForPackEntity> GetToolInfoForPack(t_ToolInfo toolInfo);
         bool DeletePackInfo(string packCode);
         t_ToolInfo GetToolInfoByToolCode(string toolCode);
+        bool CompleteToolPack();
     }
 }

@@ -85,5 +85,14 @@ namespace service.toolstrackingsystem
             parameter.Add("toolCode",toolCode);
             return _toolPackManageRepository.GetModel(sql,parameter);
         }
+
+        /// <summary>
+        /// 完成组包（待完成）
+        /// </summary>
+        /// <returns></returns>
+        public bool CompleteToolPack()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
