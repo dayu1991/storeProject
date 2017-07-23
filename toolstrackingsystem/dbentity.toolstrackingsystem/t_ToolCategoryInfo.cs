@@ -16,7 +16,7 @@ namespace dbentity.toolstrackingsystem
     {
         public long CategoryId { get; set; }
         public string CategoryName { get; set; }
-        public long OperatorUserId { get; set; }
+        public string OperatorUserId { get; set; }
         public string OperatorUserName { get; set; }
         public Nullable<long> ParentId { get; set; }
         public int Level { get; set; }

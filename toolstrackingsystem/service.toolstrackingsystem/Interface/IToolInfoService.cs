@@ -13,7 +13,7 @@ namespace service.toolstrackingsystem
         /// <summary>
         /// 获取分类信息，配属信息
         /// </summary>
-        /// <param name="classifyType">1：分类信息 2：配属信息</param>
+        /// <param name="classifyType">0:全部 1：分类信息 2：配属信息</param>
         /// <returns></returns>
         List<t_ToolCategoryInfo> GetCategoryByClassify(int classifyType);
 
@@ -42,5 +42,12 @@ namespace service.toolstrackingsystem
         bool UpdateTool(t_ToolInfo entity);
 
         bool DelToolById(long ToolId);
+
+
+        List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName);
+
+        bool IsExistCategoryByName(string name, int classification);
+
+        long AddCateGory(t_ToolCategoryInfo category);
     }
 }

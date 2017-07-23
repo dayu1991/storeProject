@@ -15,6 +15,8 @@ using Microsoft.Practices.Unity.Configuration;
 using dbentity.toolstrackingsystem;
 using common.toolstrackingsystem;
 using ViewEntity.toolstrackingsystem.view;
+using System.IO;
+using NPOI.SS.UserModel;
 namespace toolstrackingsystem
 {
     public partial class ToolInfoManage : Office2007RibbonForm
@@ -32,7 +34,7 @@ namespace toolstrackingsystem
             this.EnableGlass = false;
             InitializeComponent();
         }
-       
+
 
         private void ToolInfoManage_Load(object sender, EventArgs e)
         {
@@ -54,31 +56,31 @@ namespace toolstrackingsystem
             blongs.Add(new t_ToolCategoryInfo
             {
                 CategoryId = 0,
-                CategoryName="请选择"
-            
+                CategoryName = "请选择"
+
             });
             blongs.AddRange(categoryBlongs);
 
             this.cbSearchBlong.DataSource = blongs;
             this.cbSearchBlong.DisplayMember = "CategoryName";
-             this.cbSearchBlong.ValueMember = "CategoryId";
+            this.cbSearchBlong.ValueMember = "CategoryId";
 
-             var cates = new List<t_ToolCategoryInfo>();
-             cates.Add(new t_ToolCategoryInfo
-             {
-                 CategoryId = 0,
-                 CategoryName = "请选择"
+            var cates = new List<t_ToolCategoryInfo>();
+            cates.Add(new t_ToolCategoryInfo
+            {
+                CategoryId = 0,
+                CategoryName = "请选择"
 
-             });
-             cates.AddRange(categoryCategory);
+            });
+            cates.AddRange(categoryCategory);
 
-             this.cbSearchcategory.DataSource = cates;
+            this.cbSearchcategory.DataSource = cates;
             this.cbSearchcategory.DisplayMember = "CategoryName";
-             this.cbSearchcategory.ValueMember = "CategoryId";
-             pagerControl1.OnPageChanged += new EventHandler(pagerControl1_OnPageChanged);
+            this.cbSearchcategory.ValueMember = "CategoryId";
+            pagerControl1.OnPageChanged += new EventHandler(pagerControl1_OnPageChanged);
 
-             this.dtiCheckTime.Value = DateTime.Now.AddMonths(1); 
-             LoadData();
+            this.dtiCheckTime.Value = DateTime.Now.AddMonths(1);
+            LoadData();
 
         }
 
@@ -99,10 +101,10 @@ namespace toolstrackingsystem
                 toolInfo.ToolRemarks = this.tbEditMemo.Text;
                 toolInfo.AddTime = DateTime.Now;
                 toolInfo.IsDelete = false;
-                toolInfo.OperatorUserId = LoginHelper.ID;
-                toolInfo.OperatorUserName = LoginHelper.UserCode;
+                toolInfo.OperatorUserId = LoginHelper.UserCode;
+                toolInfo.OperatorUserName = LoginHelper.UserName;
                 toolInfo.ToolCode = this.tbEditCode.Text;
-                
+
                 if (string.IsNullOrWhiteSpace(toolInfo.ToolCode))
                 {
                     MessageBox.Show("工具编号必须填写！");
@@ -140,7 +142,8 @@ namespace toolstrackingsystem
                     LoadData();
 
                 }
-                else {
+                else
+                {
                     MessageBox.Show("添加失败！");
                 }
             }
@@ -149,7 +152,7 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--RrmEditRoleInfo--Search_buttonX_Click", ex.Message, ex.StackTrace, ex.Source);
 
             }
-           
+
 
         }
 
@@ -161,7 +164,7 @@ namespace toolstrackingsystem
         {
             LoadData();
 
-           
+
         }
 
         private void LoadData()
@@ -179,7 +182,7 @@ namespace toolstrackingsystem
                 pagerControl1.DrawControl(Convert.ToInt32(Count));
                 this.dataGridViewX1.AutoGenerateColumns = false;
                 this.dataGridViewX1.DataSource = resultEntity;
-                this.dataGridViewX1.Rows[0].Selected=true;
+                this.dataGridViewX1.Rows[0].Selected = true;
                 slectedIndex = 0;
                 ToolId = int.Parse(dataGridViewX1.Rows[0].Cells[0].Value.ToString());
 
@@ -197,7 +200,7 @@ namespace toolstrackingsystem
                 slectedIndex = e.RowIndex;
                 ToolId = int.Parse(this.dataGridViewX1.Rows[slectedIndex].Cells[0].Value.ToString());
             }
-           
+
         }
 
         private void buttonX2_Click(object sender, EventArgs e)
@@ -220,7 +223,8 @@ namespace toolstrackingsystem
                     MessageBox.Show("请选中一条记录");
                     return;
                 }
-                else {
+                else
+                {
                     t_ToolInfo toolEntity = _toolInfoService.GetToolById(ToolId);
                     if (toolEntity != null)
                     {
@@ -254,12 +258,12 @@ namespace toolstrackingsystem
                 else
                 {
                     bool toolEntity = _toolInfoService.DelToolById(ToolId);
-                    LoadData();                   
+                    LoadData();
                 }
             }
             catch (Exception ex)
             {
-                
+
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--Tool--delete", ex.Message, ex.StackTrace, ex.Source);
             }
         }
@@ -267,7 +271,296 @@ namespace toolstrackingsystem
         private void dataGridViewX1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
             var num = (pagerControl1.PageIndex - 1) * pagerControl1.PageSize + 1 + e.Row.Index;
-            e.Row.HeaderCell.Value = string.Format("{0}", num); 
+            e.Row.HeaderCell.Value = string.Format("{0}", num);
         }
+
+        private void ExcelOut_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog fileDialog = new SaveFileDialog();
+                fileDialog.Filter = "Excel(*.xls)|*.xls|Excel(*.xlsx)|*.xlsx";
+                if (fileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    NPOI.SS.UserModel.IWorkbook book = null;
+                    if (fileDialog.FilterIndex == 1)
+                    {
+                        book = new NPOI.HSSF.UserModel.HSSFWorkbook();
+                    }
+                    else
+                    {
+                        book = new NPOI.XSSF.UserModel.XSSFWorkbook();
+                    }
+                    NPOI.SS.UserModel.ISheet sheet = book.CreateSheet("工具列表");
+                    // 添加表头
+                    NPOI.SS.UserModel.IRow row = sheet.CreateRow(0);
+                    for (int i = 1; i < dataGridViewX1.Columns.Count; i++)
+                    {
+
+                        var item = dataGridViewX1.Columns[i];
+                        NPOI.SS.UserModel.ICell cell = row.CreateCell(i - 1);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.HeaderText);
+                    }
+                    //获取数据
+                    int blongValue = int.Parse(cbSearchBlong.SelectedValue.ToString());
+                    int categoryValue = int.Parse(cbSearchcategory.SelectedValue.ToString());
+                    string toolCode = tbSearchCode.Text;
+                    string toolName = tbSearchName.Text;
+                    List<t_ToolInfo> entitys = _toolInfoService.GetToolList(blongValue, categoryValue, toolCode, toolName);
+                    // 添加数据
+                    for (int i = 0; i < entitys.Count; i++)
+                    {
+                        var item = entitys[i];
+                        row = sheet.CreateRow(i + 1);
+                        NPOI.SS.UserModel.ICell cell = row.CreateCell(0);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.ToolBelongName);
+                        cell = row.CreateCell(1);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.ToolCategoryName);
+                        cell = row.CreateCell(2);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.PackCode);
+                        cell = row.CreateCell(3);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.PackName);
+
+                        cell = row.CreateCell(4);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.ToolCode);
+
+                        cell = row.CreateCell(5);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.ToolName);
+
+                        cell = row.CreateCell(6);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.ToolModels);
+
+                        cell = row.CreateCell(7);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.Location);
+
+                        cell = row.CreateCell(8);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.ToolRemarks);
+                        if (item.CheckTime != null)
+                        {
+                            cell = row.CreateCell(9);
+                            cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                            cell.SetCellValue((item.CheckTime ?? DateTime.Now).ToString("yyyy-MM-dd"));
+                        }
+
+                    }
+                    // 写入 
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                    book.Write(ms);
+                    book = null;
+                    using (FileStream fs = new FileStream(fileDialog.FileName, FileMode.Create, FileAccess.Write))
+                    {
+                        byte[] data = ms.ToArray();
+                        fs.Write(data, 0, data.Length);
+                        fs.Flush();
+                    }
+                    ms.Close();
+                    ms.Dispose();
+                    MessageBox.Show("导出成功");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--ToolInfoManage--ExcelOutBtn_Click", ex.Message, ex.StackTrace, ex.Source);
+            }
+        }
+
+        private void ExcelIn_button_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    OpenFileDialog fileDialog = new OpenFileDialog();
+            //    fileDialog.Filter = "Excel(*.xls)|*.xls|Excel(*.xlsx)|*.xlsx";
+            //    if (fileDialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        //获取用户选择文件的后缀名
+            //        string extension = Path.GetExtension(openFileDialog.FileName);
+            //        //声明允许的后缀名
+            //        string[] str = new string[] { ".xls", ".xlsx" };
+            //        if (!((IList)str).Contains(extension))
+            //        {
+            //            MessageBox.Show("仅能上传xls的文件！");
+            //        }
+            //        else
+            //        {
+            //            //获取用户选择的文件，并判断文件大小不能超过20K，fileInfo.Length是以字节为单位的
+            //            FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
+            //            if (fileInfo.Length > 20480)
+            //            {
+            //                MessageBox.Show("上传的图片不能大于20K");
+            //            }
+            //            else
+            //            {
+            //                //在这里就可以写获取到正确文件后的代码了
+            //                FileStream stream = fileInfo.Open(FileMode.Open, System.IO.FileAccess.Read);
+            //                //支持xls和xlsx格式的excel文件
+            //                IWorkbook workbook;
+            //                if (extension == ".xls")
+            //                {
+            //                    workbook = new HSSFWorkbook(stream);
+            //                }
+            //                else if (extension == ".xlsx")
+            //                {
+            //                    workbook = new XSSFWorkbook(stream);
+            //                }
+            //                else
+            //                {
+            //                    MessageBox.Show("文件类型不对，只能导入xls,xlsx格式的文件"); ;
+            //                    return;
+            //                }
+            //                if (workbook.NumberOfSheets <= 0) //表单数量
+            //                {
+            //                    MessageBox.Show("文档没有数据");
+            //                }
+            //                ISheet sheet = workbook.GetSheetAt(0);
+            //                if (sheet == null)
+            //                {
+            //                    MessageBox.Show("文档没有数据");
+            //                    return;
+            //                }
+            //                IRow headerRow = sheet.GetRow(0);
+            //                if (headerRow == null)
+            //                {
+            //                    MessageBox.Show("文档表头没有数据");
+            //                    return;
+            //                }
+            //                int cellCount = headerRow.LastCellNum;
+            //                List<t_ToolInfo> InfoList = new List<t_ToolInfo>();
+            //                var cates = _toolInfoService.GetCategoryByClassify(0);
+            //                List<t_ToolCategoryInfo> blongCates = cates.Where(v => v.Classification = 1) == null ? new List<t_ToolCategoryInfo>() : cates.Where(v => v.Classification = 1).ToList();
+            //                List<t_ToolCategoryInfo> cateGoryCates = cates.Where(v => v.Classification = 2) == null ? new List<t_ToolCategoryInfo>() : cates.Where(v => v.Classification = 2).ToList();
+
+            //                bool isCheckSuccess = true;
+            //                string alertMsg = "";
+
+            //                for (int i = (sheet.FirstRowNum + 1); i < sheet.LastRowNum + 1; i++)
+            //                {
+            //                    IRow row = sheet.GetRow(i);
+            //                    if (row == null)
+            //                    {
+            //                        if (i == (sheet.FirstRowNum + 1))
+            //                        {
+            //                            isCheckSuccess = false;
+            //                            alertMsg += string.Format("第{0}行不能为空", i);
+            //                            break;
+            //                        }
+            //                        break;
+            //                    }
+            //                    var toolInfo = new t_ToolInfo();
+            //                    for (int j = row.FirstCellNum; j < cellCount; j++)
+            //                    {
+            //                        var cellJ = row.GetCell(j);
+            //                        if (cellJ != null)
+            //                        {
+            //                            switch()
+
+            //                            if (j == row.FirstCellNum)
+            //                            {
+            //                                var blongName = row.GetCell(j).ToString().Trim();
+            //                                if (string.IsNullOrWhiteSpace(blongName))
+            //                                {
+            //                                    alertMsg += string.Format("第{0}行配属不能为空", i);
+            //                                    isCheckSuccess = false;
+            //                                    return;
+            //                                }
+            //                                var haveCate = blongCates.FirstOrDefault(v=>v.CategoryName=blongName);
+            //                                if (haveCate != null && haveCate.CategoryId > 0)
+            //                                {
+            //                                    toolInfo = row.GetCell(j).ToString();
+            //                                }
+            //                                else { 
+                                            
+            //                                }
+            //                                if (string.IsNullOrEmpty(personInfo.PersonCode))
+            //                                {
+            //                                    MessageBox.Show("人员编码不能为空");
+            //                                    return;
+            //                                }
+            //                            }
+            //                            else if (j == row.FirstCellNum + 1)
+            //                            {
+            //                                personInfo.PersonName = row.GetCell(j).ToString();
+            //                                if (string.IsNullOrEmpty(personInfo.PersonName))
+            //                                {
+            //                                    MessageBox.Show("人员名称不能为空");
+            //                                    return;
+            //                                }
+            //                            }
+            //                            else if (j == row.FirstCellNum + 2)
+            //                            {
+            //                                personInfo.IsReceive = string.IsNullOrEmpty(row.GetCell(j).ToString()) ? "1" : row.GetCell(j).ToString();
+            //                                if (personInfo.IsReceive != "1" && personInfo.IsReceive != "0")
+            //                                {
+            //                                    MessageBox.Show("领用权限格式不正确");
+            //                                    return;
+            //                                }
+
+            //                            }
+            //                            else if (j == row.FirstCellNum + 3)
+            //                            {
+            //                                personInfo.Remarks = string.IsNullOrEmpty(row.GetCell(j).ToString()) ? "" : row.GetCell(j).ToString();
+            //                            }
+            //                        }
+            //                    }
+            //                    if (!string.IsNullOrEmpty(personInfo.PersonCode) && !string.IsNullOrEmpty(personInfo.PersonName))
+            //                    {
+            //                        personInfoList.Add(personInfo);
+            //                    }
+            //                }
+            //                if (personInfoList == null || personInfoList.Count <= 0)
+            //                {
+            //                    MessageBox.Show("文档数据为空");
+            //                    return;
+            //                }
+            //                if (_personManageService.ImportExcel(personInfoList))
+            //                {
+            //                    MessageBox.Show("导入数据成功");
+            //                    Search_buttonX_Click(sender, e);
+            //                }
+            //                else
+            //                {
+            //                    MessageBox.Show("导入数据失败");
+            //                    return;
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmWorkerManager--Pull_Out_button_Click", ex.Message, ex.StackTrace, ex.Source);
+            //}
+        }
+
+        private void btnAddBlong_Click(object sender, EventArgs e)
+        {
+            DigAddBlongTo dig = new DigAddBlongTo();
+            dig.ShowDialog();
+            if (dig.DialogResult == DialogResult.OK)
+            {
+                ToolInfoManage_Load(sender,e);
+            }
+        }
+
+        private void btnAddCate_Click(object sender, EventArgs e)
+        {
+            DlgAddCategory dig = new DlgAddCategory();
+            dig.ShowDialog();
+            if (dig.DialogResult == DialogResult.OK)
+            {
+                ToolInfoManage_Load(sender, e);
+            }
+        }
+
     }
 }

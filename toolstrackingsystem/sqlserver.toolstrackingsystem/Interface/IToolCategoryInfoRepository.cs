@@ -10,5 +10,7 @@ namespace sqlserver.toolstrackingsystem
     public interface IToolCategoryInfoRepository:IRepositoryBase<t_ToolCategoryInfo>
     {
         List<t_ToolCategoryInfo> GetCategoryByClassify(int classifyType);
+
+        bool IsExistCategoryByName(string name, int classification);
     }
 }

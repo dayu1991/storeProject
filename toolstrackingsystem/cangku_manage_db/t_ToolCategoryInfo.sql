@@ -2,7 +2,7 @@
 (
 	[CategoryId] BIGINT NOT NULL PRIMARY KEY IDENTITY, 
     [CategoryName] VARCHAR(100) NOT NULL, 
-    [OperatorUserId] BIGINT NOT NULL, 
+    [OperatorUserId] VARCHAR(50) NOT NULL, 
     [OperatorUserName] VARCHAR(50) NOT NULL, 
     [ParentId] BIGINT NULL, 
     [Level] INT NOT NULL, 
@@ -31,7 +31,7 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level2name = N'CategoryName'
 GO
 EXEC sp_addextendedproperty @name = N'MS_Description',
-    @value = N'操作人id',
+    @value = N'操作人code',
     @level0type = N'SCHEMA',
     @level0name = N'dbo',
     @level1type = N'TABLE',

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="cangku_manage_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="cangku_manage_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Sys_Menu_Info">
           <Key>
             <PropertyRef Name="MenuID" />
@@ -61,7 +61,7 @@
           </Key>
           <Property Name="CategoryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="OperatorUserId" Type="bigint" Nullable="false" />
+          <Property Name="OperatorUserId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="OperatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ParentId" Type="bigint" />
           <Property Name="Level" Type="int" Nullable="false" />
@@ -87,7 +87,7 @@
           <Property Name="CheckTime" Type="datetime" />
           <Property Name="Location" Type="varchar" MaxLength="100" />
           <Property Name="IsDelete" Type="bit" Nullable="false" />
-          <Property Name="OperatorUserId" Type="bigint" Nullable="false" />
+          <Property Name="OperatorUserId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="OperatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AddTime" Type="datetime" Nullable="false" />
           <Property Name="ModifyTime" Type="datetime" />
@@ -168,7 +168,7 @@
           </Key>
           <Property Name="CategoryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OperatorUserId" Type="Int64" Nullable="false" />
+          <Property Name="OperatorUserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="OperatorUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ParentId" Type="Int64" />
           <Property Name="Level" Type="Int32" Nullable="false" />
@@ -194,7 +194,7 @@
           <Property Name="CheckTime" Type="DateTime" Precision="3" />
           <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
-          <Property Name="OperatorUserId" Type="Int64" Nullable="false" />
+          <Property Name="OperatorUserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="OperatorUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifyTime" Type="DateTime" Precision="3" />
@@ -298,7 +298,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -313,7 +313,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
       </DesignerInfoPropertySet>

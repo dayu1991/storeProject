@@ -28,7 +28,7 @@ namespace dbentity.toolstrackingsystem
         public Nullable<System.DateTime> CheckTime { get; set; }
         public string Location { get; set; }
         public bool IsDelete { get; set; }
-        public long OperatorUserId { get; set; }
+        public string OperatorUserId { get; set; }
         public string OperatorUserName { get; set; }
         public System.DateTime AddTime { get; set; }
         public Nullable<System.DateTime> ModifyTime { get; set; }
