@@ -104,6 +104,42 @@ namespace sqlserver.toolstrackingsystem
             return false;
         }
 
+        public List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName)
+        {
+            List<t_ToolInfo> list = new List<t_ToolInfo>();
+            string sql = @"select * from [dbo].[t_ToolInfo]  where 1=1 {0} ORDER BY [ToolId] desc";
+            string sqlWhere = "";
+            DynamicParameters parameters = new DynamicParameters();          
+
+            if (blongValue > 0)
+            {
+                sqlWhere += " and  [ToolBelongId]=@ToolBelongId";
+                parameters.Add("ToolBelongId", blongValue);
+
+            }
+            if (categoryValue > 0)
+            {
+                sqlWhere += " and [ToolCategoryId] =@ToolCategoryId";
+                parameters.Add("ToolCategoryId", categoryValue);
+            }
+            if (!string.IsNullOrWhiteSpace(toolCode))
+            {
+                sqlWhere += string.Format(" and [ToolCode] LIKE '%{0}%'", "@ToolCode");
+                parameters.Add("ToolCode", toolCode);
+
+            }
+            if (!string.IsNullOrEmpty(toolName))
+            {
+                sqlWhere += string.Format(" and [ToolName] LIKE '%{0}%'", "@ToolName");
+                parameters.Add("ToolName", toolName);
+            }
+            sql = string.Format(sql, sqlWhere);
+
+            var result = base.QueryList(sql, parameters);
+            return result.Any() ? result.ToList() : new List<t_ToolInfo>();
+        }
+
+
 
     }
 }

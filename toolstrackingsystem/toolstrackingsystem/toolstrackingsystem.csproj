@@ -145,6 +145,18 @@
     <Compile Include="工具包管理\FrmToolPackManage.Designer.cs">
       <DependentUpon>FrmToolPackManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="工具管理\DigAddBlongTo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="工具管理\DigAddBlongTo.Designer.cs">
+      <DependentUpon>DigAddBlongTo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="工具管理\DlgAddCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="工具管理\DlgAddCategory.Designer.cs">
+      <DependentUpon>DlgAddCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="工具管理\DlgEditTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +231,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="工具包管理\FrmToolPackManage.resx">
       <DependentUpon>FrmToolPackManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="工具管理\DigAddBlongTo.resx">
+      <DependentUpon>DigAddBlongTo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="工具管理\DlgAddCategory.resx">
+      <DependentUpon>DlgAddCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="工具管理\DlgEditTool.resx">
       <DependentUpon>DlgEditTool.cs</DependentUpon>

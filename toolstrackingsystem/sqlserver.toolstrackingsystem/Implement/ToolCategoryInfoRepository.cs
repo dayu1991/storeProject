@@ -27,6 +27,32 @@ namespace sqlserver.toolstrackingsystem
             }
             return new List<t_ToolCategoryInfo>();
         }
+        public bool IsExistCategoryByName(string name, int classification)
+        {
+            string sql = "select count(1) from [t_ToolCategoryInfo] where [CategoryName]=@CategoryName ";
+
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CategoryName", name);
+            if (classification > 0)
+            {
+                sql += " and [Classification]=@Classification";
+                parameters.Add("@Classification", classification);
+            }
+            var result = ExcuteScalar(sql, parameters);
+            if (result != null && !string.IsNullOrWhiteSpace(result.ToString()))
+            {
+                int resultInt = 0;
+                if (int.TryParse(result.ToString(), out resultInt))
+                {
+                    return resultInt > 0;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
 
     }
 }

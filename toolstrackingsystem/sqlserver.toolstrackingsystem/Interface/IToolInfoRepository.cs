@@ -24,5 +24,7 @@ namespace sqlserver.toolstrackingsystem
         bool UpdateTool(t_ToolInfo entity);
 
         bool DelToolById(long ToolId);
+
+        List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName);
     }
 }

@@ -67,6 +67,21 @@ namespace service.toolstrackingsystem
         {
             return _toolInfoRepository.DelToolById(ToolId);
         }
+        public List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName)
+        {
+            return _toolInfoRepository.GetToolList(blongValue, categoryValue, toolCode, toolName);
+        }
+        public bool IsExistCategoryByName(string name, int classification)
+        {
+            return _toolCategoryInfoRepository.IsExistCategoryByName(name, classification);
+
+        }
+        public long AddCateGory(t_ToolCategoryInfo category)
+        {
+            return _toolCategoryInfoRepository.Add(category);
+
+        }
+
 
 
     }

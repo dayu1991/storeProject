@@ -16,7 +16,7 @@
 		[Location] varchar(100) NULL,  
   
     [IsDelete] BIT NOT NULL DEFAULT 0, 
-    [OperatorUserId] BIGINT NOT NULL, 
+    [OperatorUserId] VARCHAR(50) NOT NULL, 
     [OperatorUserName] VARCHAR(50) NOT NULL, 
     [AddTime] DATETIME NOT NULL, 
     [ModifyTime] DATETIME NULL
@@ -114,7 +114,7 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level2name = N'IsDelete'
 GO
 EXEC sp_addextendedproperty @name = N'MS_Description',
-    @value = N'操作人Id',
+    @value = N'操作人code',
     @level0type = N'SCHEMA',
     @level0name = N'dbo',
     @level1type = N'TABLE',
