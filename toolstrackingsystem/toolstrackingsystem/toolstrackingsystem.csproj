@@ -163,6 +163,12 @@
     <Compile Include="工具管理\ToolInfoManage.Designer.cs">
       <DependentUpon>ToolInfoManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="数据管理\FrmDBOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="数据管理\FrmDBOption.Designer.cs">
+      <DependentUpon>FrmDBOption.cs</DependentUpon>
+    </Compile>
     <Compile Include="用户管理\FrmEditUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     <EmbeddedResource Include="作业人员\Report1.rdlc" />
     <EmbeddedResource Include="工具管理\ToolInfoManage.resx">
       <DependentUpon>ToolInfoManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="数据管理\FrmDBOption.resx">
+      <DependentUpon>FrmDBOption.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="用户管理\FrmEditUser.resx">
       <DependentUpon>FrmEditUser.cs</DependentUpon>
