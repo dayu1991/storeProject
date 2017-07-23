@@ -65,12 +65,14 @@
     <Compile Include="Implement\RoleManageRepository.cs" />
     <Compile Include="Implement\ToolCategoryInfoRepository.cs" />
     <Compile Include="Implement\ToolInfoRepository.cs" />
+    <Compile Include="Implement\ToolPackManageRepository.cs" />
     <Compile Include="Implement\UserManageRepository.cs" />
     <Compile Include="Interface\IMenuManageRepository.cs" />
     <Compile Include="Interface\IMultiTableQueryRepository.cs" />
     <Compile Include="Interface\IPersonManageRepository.cs" />
     <Compile Include="Interface\IToolCategoryInfoRepository.cs" />
     <Compile Include="Interface\IToolInfoRepository.cs" />
+    <Compile Include="Interface\IToolPackManageRepository.cs" />
     <Compile Include="Interface\IUserManageRepository.cs" />
     <Compile Include="Interface\IRoleManageRepository.cs" />
     <Compile Include="IRepositoryBase.cs" />
