@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Remark_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.PersonName_Detail_textBox = new System.Windows.Forms.TextBox();
@@ -48,13 +48,15 @@
             this.PersonCode_textBox = new System.Windows.Forms.TextBox();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.Can_TakeOut_checkBox = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.Print_button = new DevComponents.DotNetBar.ButtonX();
             this.Pull_Out_button = new DevComponents.DotNetBar.ButtonX();
             this.Put_In_button = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Is_Receive_checkBox = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.Can_TakeOut_checkBox = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PersonList_dataGridViewX)).BeginInit();
             this.groupPanel3.SuspendLayout();
@@ -137,6 +139,7 @@
             this.Delete_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Delete_button.TabIndex = 2;
             this.Delete_button.Text = "删除";
+            this.Delete_button.Click += new System.EventHandler(this.Delete_button_Click);
             // 
             // Edit_button
             // 
@@ -205,37 +208,37 @@
             // PersonList_dataGridViewX
             // 
             this.PersonList_dataGridViewX.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PersonList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PersonList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.PersonList_dataGridViewX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PersonList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PersonList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle5;
             this.PersonList_dataGridViewX.EnableHeadersVisualStyles = false;
             this.PersonList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.PersonList_dataGridViewX.Location = new System.Drawing.Point(0, 0);
             this.PersonList_dataGridViewX.MultiSelect = false;
             this.PersonList_dataGridViewX.Name = "PersonList_dataGridViewX";
             this.PersonList_dataGridViewX.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PersonList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PersonList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.PersonList_dataGridViewX.RowTemplate.Height = 23;
             this.PersonList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.PersonList_dataGridViewX.Size = new System.Drawing.Size(890, 282);
@@ -352,6 +355,23 @@
             this.groupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel3.TabIndex = 5;
             // 
+            // Can_TakeOut_checkBox
+            // 
+            this.Can_TakeOut_checkBox.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.Can_TakeOut_checkBox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Can_TakeOut_checkBox.Checked = true;
+            this.Can_TakeOut_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Can_TakeOut_checkBox.CheckValue = "Y";
+            this.Can_TakeOut_checkBox.Location = new System.Drawing.Point(412, 15);
+            this.Can_TakeOut_checkBox.Name = "Can_TakeOut_checkBox";
+            this.Can_TakeOut_checkBox.Size = new System.Drawing.Size(87, 23);
+            this.Can_TakeOut_checkBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Can_TakeOut_checkBox.TabIndex = 18;
+            this.Can_TakeOut_checkBox.Text = "领用权限";
+            // 
             // Print_button
             // 
             this.Print_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -374,6 +394,7 @@
             this.Pull_Out_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Pull_Out_button.TabIndex = 16;
             this.Pull_Out_button.Text = "导入Excel";
+            this.Pull_Out_button.Click += new System.EventHandler(this.Pull_Out_button_Click);
             // 
             // Put_In_button
             // 
@@ -385,6 +406,7 @@
             this.Put_In_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Put_In_button.TabIndex = 15;
             this.Put_In_button.Text = "导出Excel";
+            this.Put_In_button.Click += new System.EventHandler(this.Put_In_button_Click);
             // 
             // groupPanel1
             // 
@@ -447,22 +469,9 @@
             this.Is_Receive_checkBox.TabIndex = 5;
             this.Is_Receive_checkBox.Text = "领用权限";
             // 
-            // Can_TakeOut_checkBox
+            // openFileDialog
             // 
-            this.Can_TakeOut_checkBox.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.Can_TakeOut_checkBox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Can_TakeOut_checkBox.Checked = true;
-            this.Can_TakeOut_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Can_TakeOut_checkBox.CheckValue = "Y";
-            this.Can_TakeOut_checkBox.Location = new System.Drawing.Point(412, 15);
-            this.Can_TakeOut_checkBox.Name = "Can_TakeOut_checkBox";
-            this.Can_TakeOut_checkBox.Size = new System.Drawing.Size(87, 23);
-            this.Can_TakeOut_checkBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.Can_TakeOut_checkBox.TabIndex = 18;
-            this.Can_TakeOut_checkBox.Text = "领用权限";
+            this.openFileDialog.FileName = "openFileDialog";
             // 
             // pagerControl1
             // 
@@ -523,5 +532,7 @@
         private PageControl.PagerControl pagerControl1;
         private DevComponents.DotNetBar.Controls.CheckBoxX Is_Receive_checkBox;
         private DevComponents.DotNetBar.Controls.CheckBoxX Can_TakeOut_checkBox;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

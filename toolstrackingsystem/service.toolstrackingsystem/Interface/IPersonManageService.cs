@@ -26,6 +26,6 @@ namespace service.toolstrackingsystem
          t_PersonInfo GetPersonInfo(string personCode);
          bool UpdatePersonInfo(t_PersonInfo personInfo);
          bool DeletePersonInfo(string personCode);
-
+         bool ImportExcel(List<t_PersonInfo> personInfoList);
     }
 }

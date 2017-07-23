@@ -101,5 +101,29 @@ namespace service.toolstrackingsystem
         {
             return _personManageRepository.DeletePersonInfo(personCode);
         }
+        public bool ImportExcel(List<t_PersonInfo> personInfoList)
+        {
+            bool IsSuccess = false;
+            foreach (var item in personInfoList)
+            {
+                if (GetPersonInfo(item.PersonCode) == null)
+                {
+                    if (InsertPersonInfo(item))
+                    {
+                        IsSuccess = true;
+                    }
+                    else
+                    {
+                        IsSuccess = false;
+                        return IsSuccess;
+                    }
+                }
+                else {
+                    IsSuccess = false;
+                    return IsSuccess;
+                }
+            }
+            return IsSuccess;
+        }
     }
 }

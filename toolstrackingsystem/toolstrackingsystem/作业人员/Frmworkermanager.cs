@@ -14,6 +14,11 @@ using Microsoft.Practices.Unity.Configuration;
 using ViewEntity.toolstrackingsystem;
 using dbentity.toolstrackingsystem;
 using log4net;
+using System.IO;
+using System.Collections;
+using NPOI.SS.UserModel;
+using NPOI.HSSF.UserModel;
+using NPOI.XSSF.UserModel;
 
 namespace toolstrackingsystem
 {
@@ -165,6 +170,241 @@ namespace toolstrackingsystem
         {
             FrmPrint printFrm = new FrmPrint();
             printFrm.ShowDialog();
+        }
+        /// <summary>
+        ///  导入excel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Pull_Out_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                fileDialog.Filter = "Excel(*.xls)|*.xls|Excel(*.xlsx)|*.xlsx";
+                if (fileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //获取用户选择文件的后缀名
+                    string extension = Path.GetExtension(openFileDialog.FileName);
+                    //声明允许的后缀名
+                    string[] str = new string[] { ".xls", ".xlsx" };
+                    if (!((IList)str).Contains(extension))
+                    {
+                        MessageBox.Show("仅能上传xls的文件！");
+                    }
+                    else
+                    {
+                        //获取用户选择的文件，并判断文件大小不能超过20K，fileInfo.Length是以字节为单位的
+                        FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
+                        if (fileInfo.Length > 20480)
+                        {
+                            MessageBox.Show("上传的图片不能大于20K");
+                        }
+                        else
+                        {
+                            //在这里就可以写获取到正确文件后的代码了
+                            FileStream stream = fileInfo.Open(FileMode.Open, System.IO.FileAccess.Read);
+                            //支持xls和xlsx格式的excel文件
+                            IWorkbook workbook;
+                            if (extension == ".xls")
+                            {
+                                workbook = new HSSFWorkbook(stream);
+                            }
+                            else if (extension == ".xlsx")
+                            {
+                                workbook = new XSSFWorkbook(stream);
+                            }
+                            else
+                            {
+                                MessageBox.Show("文件类型不对，只能导入xls,xlsx格式的文件"); ;
+                                return;
+                            }
+                            if (workbook.NumberOfSheets <= 0) //表单数量
+                            {
+                                MessageBox.Show("文档没有数据");
+                            }
+                            ISheet sheet = workbook.GetSheetAt(0);
+                            if (sheet == null)
+                            {
+                                MessageBox.Show("文档没有数据");
+                                return;
+                            }
+                            IRow headerRow = sheet.GetRow(0);
+                            if (headerRow == null)
+                            {
+                                MessageBox.Show("文档表头没有数据");
+                                return;
+                            }
+                            int cellCount = headerRow.LastCellNum;
+                            List<t_PersonInfo> personInfoList = new List<t_PersonInfo>();
+                            for (int i = (sheet.FirstRowNum + 1); i < sheet.LastRowNum + 1; i++)
+                            {
+                                IRow row = sheet.GetRow(i);
+                                if (row == null) //第一行为空
+                                {
+                                    if (i == 1)
+                                    {
+                                        MessageBox.Show("第一行数据为空");
+                                    }
+                                    continue;
+                                }
+                                var personInfo = new t_PersonInfo();
+                                for (int j = row.FirstCellNum; j < cellCount; j++)
+                                {
+                                    var cellJ = row.GetCell(j);
+                                    if (cellJ != null)
+                                    {
+
+                                        if (j == row.FirstCellNum)
+                                        {
+                                            personInfo.PersonCode = row.GetCell(j).ToString();
+                                            if (string.IsNullOrEmpty(personInfo.PersonCode))
+                                            {
+                                                MessageBox.Show("人员编码不能为空");
+                                                return;
+                                            }
+                                        }
+                                        else if (j == row.FirstCellNum + 1)
+                                        {
+                                            personInfo.PersonName = row.GetCell(j).ToString();
+                                            if (string.IsNullOrEmpty(personInfo.PersonName))
+                                            {
+                                                MessageBox.Show("人员名称不能为空");
+                                                return;
+                                            }
+                                        }
+                                        else if (j == row.FirstCellNum + 2)
+                                        {
+                                            personInfo.IsReceive = string.IsNullOrEmpty(row.GetCell(j).ToString()) ? "1" : row.GetCell(j).ToString();
+                                            if (personInfo.IsReceive != "1" && personInfo.IsReceive != "0")
+                                            {
+                                                MessageBox.Show("领用权限格式不正确");
+                                                return;
+                                            }
+
+                                        }
+                                        else if (j == row.FirstCellNum + 3)
+                                        {
+                                            personInfo.Remarks = string.IsNullOrEmpty(row.GetCell(j).ToString()) ? "" : row.GetCell(j).ToString();
+                                        }
+                                    }
+                                }
+                                if (!string.IsNullOrEmpty(personInfo.PersonCode) && !string.IsNullOrEmpty(personInfo.PersonName))
+                                {
+                                    personInfoList.Add(personInfo);
+                                }
+                            }
+                            if (personInfoList == null || personInfoList.Count <= 0)
+                            {
+                                MessageBox.Show("文档数据为空");
+                                return;
+                            }
+                            if (_personManageService.ImportExcel(personInfoList))
+                            {
+                                MessageBox.Show("导入数据成功");
+                                Search_buttonX_Click(sender, e);
+                            }
+                            else
+                            {
+                                MessageBox.Show("导入数据失败");
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmWorkerManager--Pull_Out_button_Click", ex.Message, ex.StackTrace, ex.Source);
+            }
+        }
+        private void Delete_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string personCode = this.Tag.ToString();
+                if (string.IsNullOrEmpty(personCode))
+                {
+                    MessageBox.Show("请选择要删除的数据");
+                    return;
+                }
+                if (MessageBox.Show("您确定要删除“" + personCode + "”吗", "询问", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    if (_personManageService.DeletePersonInfo(personCode))
+                    {
+                        MessageBox.Show("删除成功");
+                        Search_buttonX_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("删除失败");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmWorkerManager--Delete_button_Click", ex.Message, ex.StackTrace, ex.Source);
+            }
+        }
+        /// <summary>
+        /// 导出Excel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Put_In_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog fileDialog = new SaveFileDialog();
+                fileDialog.Filter = "Excel(*.xls)|*.xls|Excel(*.xlsx)|*.xlsx";
+                if (fileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    NPOI.SS.UserModel.IWorkbook book = null;
+                    if (fileDialog.FilterIndex == 1)
+                    {
+                        book = new NPOI.HSSF.UserModel.HSSFWorkbook();
+                    }
+                    else
+                    {
+                        book = new NPOI.XSSF.UserModel.XSSFWorkbook();
+                    }
+                    NPOI.SS.UserModel.ISheet sheet = book.CreateSheet("人员列表");
+                    // 添加表头
+                    NPOI.SS.UserModel.IRow row = sheet.CreateRow(0);
+                    int index = 0;
+                    for(int i=0;i<PersonList_dataGridViewX.Columns.Count;i++)
+                    {
+                        var item = PersonList_dataGridViewX.Columns[i];
+                        NPOI.SS.UserModel.ICell cell = row.CreateCell(i);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.HeaderText);
+                    }
+                    //获取打印数据
+                    List<PersonInfoEntity> personInfoEntity = new List<PersonInfoEntity>();
+
+                    // 添加数据
+                    for (int i = 0; i < personInfoEntity.Count; i++)
+                    {
+                        var item = personInfoEntity[i];
+                        index = 0;
+                        row = sheet.CreateRow(i + 1);
+                        //foreach (GridColumn item in this.gridView1.Columns)
+                        //{
+                        //    if (item.Visible)
+                        //    {
+                        //        NPOI.SS.UserModel.ICell cell = row.CreateCell(index);
+                        //        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        //        cell.SetCellValue(this.gridView1.GetRowCellValue(i, item).ToString());
+                        //        index++;
+                        //    }
+                        //}
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmWorkerManager--Put_In_button_Click", ex.Message, ex.StackTrace, ex.Source);
+            }
         }
     }
 }
