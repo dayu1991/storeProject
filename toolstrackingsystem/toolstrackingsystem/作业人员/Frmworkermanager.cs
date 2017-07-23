@@ -371,7 +371,6 @@ namespace toolstrackingsystem
                     NPOI.SS.UserModel.ISheet sheet = book.CreateSheet("人员列表");
                     // 添加表头
                     NPOI.SS.UserModel.IRow row = sheet.CreateRow(0);
-                    int index = 0;
                     for(int i=0;i<PersonList_dataGridViewX.Columns.Count;i++)
                     {
                         var item = PersonList_dataGridViewX.Columns[i];
@@ -379,26 +378,45 @@ namespace toolstrackingsystem
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.HeaderText);
                     }
-                    //获取打印数据
+                    //获取数据
                     List<PersonInfoEntity> personInfoEntity = new List<PersonInfoEntity>();
-
+                    PersonInfoEntity personInfo = new PersonInfoEntity();
+                    personInfo.PersonCode = PersonCode_textBox.Text;
+                    personInfo.PersonName = PersonName_textBox.Text;
+                    personInfo.IsReceive = Is_Receive_checkBox.Checked == true ? "1" : "0";
+                    personInfoEntity = _personManageService.GetPersonInfoList(personInfo);
                     // 添加数据
                     for (int i = 0; i < personInfoEntity.Count; i++)
                     {
                         var item = personInfoEntity[i];
-                        index = 0;
                         row = sheet.CreateRow(i + 1);
-                        //foreach (GridColumn item in this.gridView1.Columns)
-                        //{
-                        //    if (item.Visible)
-                        //    {
-                        //        NPOI.SS.UserModel.ICell cell = row.CreateCell(index);
-                        //        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        //        cell.SetCellValue(this.gridView1.GetRowCellValue(i, item).ToString());
-                        //        index++;
-                        //    }
-                        //}
+                        NPOI.SS.UserModel.ICell cell = row.CreateCell(0);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.PersonCode);
+                        cell = row.CreateCell(1);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.PersonName);
+                        cell = row.CreateCell(2);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.IsReceive=="1"?"是":"否");
+                        cell = row.CreateCell(3);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.Remarks);
                     }
+                    // 写入 
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                    book.Write(ms);
+                    book = null;
+                    using (FileStream fs = new FileStream(fileDialog.FileName, FileMode.Create, FileAccess.Write))
+                    {
+                        byte[] data = ms.ToArray();
+                        fs.Write(data, 0, data.Length);
+                        fs.Flush();
+                    }
+                    ms.Close();
+                    ms.Dispose();
+                    MessageBox.Show("导出成功");
+                    return;
                 }
             }
             catch (Exception ex)
