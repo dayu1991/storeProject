@@ -267,9 +267,7 @@
     <EmbeddedResource Include="角色管理\MenuInfoTree.resx">
       <DependentUpon>MenuInfoTree.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App_Data\ManageDb.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Content Include="App_Data\ManageDb.json" />
     <None Include="cangku_manage_dbDataSet.xsc">
       <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
     </None>
