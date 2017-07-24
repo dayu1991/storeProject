@@ -48,6 +48,7 @@
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.type_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.Delete_Pack_button = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.ToolInfoList_dataGridViewX)).BeginInit();
             this.groupPanel2.SuspendLayout();
             this.groupPanel3.SuspendLayout();
@@ -139,7 +140,7 @@
             // 
             this.Add_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Add_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Add_button.Location = new System.Drawing.Point(362, 30);
+            this.Add_button.Location = new System.Drawing.Point(341, 30);
             this.Add_button.Name = "Add_button";
             this.Add_button.Size = new System.Drawing.Size(75, 23);
             this.Add_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -151,7 +152,7 @@
             // 
             this.Edit_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Edit_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Edit_button.Location = new System.Drawing.Point(580, 30);
+            this.Edit_button.Location = new System.Drawing.Point(455, 30);
             this.Edit_button.Name = "Edit_button";
             this.Edit_button.Size = new System.Drawing.Size(75, 23);
             this.Edit_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -163,7 +164,7 @@
             // 
             this.Delete_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Delete_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Delete_button.Location = new System.Drawing.Point(470, 30);
+            this.Delete_button.Location = new System.Drawing.Point(670, 30);
             this.Delete_button.Name = "Delete_button";
             this.Delete_button.Size = new System.Drawing.Size(75, 23);
             this.Delete_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -179,7 +180,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(49, 30);
+            this.labelX3.Location = new System.Drawing.Point(28, 30);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(66, 23);
             this.labelX3.TabIndex = 3;
@@ -187,7 +188,7 @@
             // 
             // ToolInfoCode_Detail_textBox
             // 
-            this.ToolInfoCode_Detail_textBox.Location = new System.Drawing.Point(121, 30);
+            this.ToolInfoCode_Detail_textBox.Location = new System.Drawing.Point(100, 30);
             this.ToolInfoCode_Detail_textBox.Name = "ToolInfoCode_Detail_textBox";
             this.ToolInfoCode_Detail_textBox.Size = new System.Drawing.Size(204, 21);
             this.ToolInfoCode_Detail_textBox.TabIndex = 4;
@@ -196,7 +197,7 @@
             // 
             this.Print_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Print_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Print_button.Location = new System.Drawing.Point(688, 30);
+            this.Print_button.Location = new System.Drawing.Point(563, 30);
             this.Print_button.Name = "Print_button";
             this.Print_button.Size = new System.Drawing.Size(75, 23);
             this.Print_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -208,6 +209,7 @@
             // 
             this.groupPanel3.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel3.Controls.Add(this.Delete_Pack_button);
             this.groupPanel3.Controls.Add(this.Print_button);
             this.groupPanel3.Controls.Add(this.ToolInfoCode_Detail_textBox);
             this.groupPanel3.Controls.Add(this.labelX3);
@@ -376,11 +378,23 @@
             this.labelX5.TabIndex = 5;
             this.labelX5.Text = "包类别:";
             // 
+            // Delete_Pack_button
+            // 
+            this.Delete_Pack_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.Delete_Pack_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.Delete_Pack_button.Location = new System.Drawing.Point(777, 30);
+            this.Delete_Pack_button.Name = "Delete_Pack_button";
+            this.Delete_Pack_button.Size = new System.Drawing.Size(75, 23);
+            this.Delete_Pack_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Delete_Pack_button.TabIndex = 18;
+            this.Delete_Pack_button.Text = "删除包";
+            this.Delete_Pack_button.Click += new System.EventHandler(this.Delete_Pack_button_Click);
+            // 
             // FrmToolPackManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 531);
+            this.ClientSize = new System.Drawing.Size(950, 556);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.groupPanel3);
             this.Controls.Add(this.groupPanel2);
@@ -417,5 +431,6 @@
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.LabelX labelX5;
         private DevComponents.DotNetBar.Controls.ComboBoxEx type_comboBox;
+        private DevComponents.DotNetBar.ButtonX Delete_Pack_button;
     }
 }

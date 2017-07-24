@@ -43,14 +43,25 @@ namespace service.toolstrackingsystem
             if (!string.IsNullOrEmpty(toolInfo.PackCode))
             {
                 sql += " AND PackCode = @packCode ";
-                parameters.Add("packCode", string.Format("%{0}%", toolInfo.PackCode));
+                parameters.Add("packCode", toolInfo.PackCode);
             }
             if (!string.IsNullOrEmpty(toolInfo.PackName))
             {
                 sql += " AND PackName = @packName ";
-                parameters.Add("packName", string.Format("%{0}%", toolInfo.PackName));
+                parameters.Add("packName", toolInfo.PackName);
             }
             return _toolPackManageRepository.QueryList(sql,parameters).ToList();
+        }
+        public List<t_ToolInfo> GetToolInfoInPack(string packCode)
+        {
+            string sql = "SELECT * FROM t_ToolInfo WHERE 1=1 ";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrEmpty(packCode))
+            {
+                sql += " AND PackCode = @packCode ";
+                parameters.Add("packCode", string.Format("%{0}%", packCode));
+            }
+            return _toolPackManageRepository.QueryList(sql, parameters).ToList();
         }
         public bool DeletePackInfo(string packCode)
         {
@@ -85,14 +96,40 @@ namespace service.toolstrackingsystem
             parameter.Add("toolCode",toolCode);
             return _toolPackManageRepository.GetModel(sql,parameter);
         }
-
         /// <summary>
         /// 完成组包（待完成）
         /// </summary>
         /// <returns></returns>
-        public bool CompleteToolPack()
+        public bool CompleteToolPack(List<ToolInfoForPackEntity> toolInfoList,string packCode,string packName)
         {
-            throw new NotImplementedException();
+            bool IsSuccess = false;
+            //1.删除已有的包信息
+            List<t_ToolInfo> list = new List<t_ToolInfo>();
+            list = GetToolInfoInPack(packCode);
+            foreach (var item in list)
+            {
+                item.PackCode = null;
+                item.PackName = null;
+                if (!_toolPackManageRepository.Update(item))
+                {
+                    return IsSuccess;
+                }
+            }
+            list = null;
+            foreach (var item in toolInfoList)
+            {
+                t_ToolInfo toolInfo = new t_ToolInfo();
+                toolInfo = GetToolInfoByToolCode(item.ToolCode);
+                toolInfo.PackCode = packCode;
+                toolInfo.PackName = packName;
+                //2.更新最新的包信息
+                if (!_toolPackManageRepository.Update(toolInfo))
+                {
+                    return IsSuccess;
+                }
+            }
+            IsSuccess = true;
+            return IsSuccess;
         }
     }
 }

@@ -72,12 +72,25 @@ namespace toolstrackingsystem
                     return;
                 }
                 resultEntity = new List<ToolInfoForPackEntity>();
-                
-                resultEntity = _toolPackManageService.GetToolInfoForPack(toolInfo);
+                List<t_ToolInfo> toolInfoList = new List<t_ToolInfo>();
+                toolInfoList = _toolPackManageService.GetToolInfoInPack(toolInfo);
+                foreach (var item in toolInfoList)
+                {
+                    ToolInfoForPackEntity toolInfoInPack = new ToolInfoForPackEntity();
+                    toolInfoInPack.ToolBelongName = item.ToolBelongName;
+                    toolInfoInPack.ToolCategoryName = item.ToolCategoryName;
+                    toolInfoInPack.ToolCode = item.ToolCode;
+                    toolInfoInPack.ToolName = item.ToolName;
+                    toolInfoInPack.ToolModels = item.ToolModels;
+                    toolInfoInPack.Location = item.Location;
+                    toolInfoInPack.ToolRemarks = item.ToolRemarks;
+                    resultEntity.Add(toolInfoInPack);
+                }
+                //resultEntity = _toolPackManageService.GetToolInfoForPack(toolInfo);
                 if (resultEntity.Count > 0)
                 {
-                    Pack_Code_textBox.Text = resultEntity[0].ToolBelongName;
-                    Pack_Name_textBox.Text = resultEntity[0].ToolCategoryName;
+                    Pack_Code_textBox.Text = toolInfoList[0].PackCode;
+                    Pack_Name_textBox.Text = toolInfoList[0].PackName;
                 }
                 ToolInfoList_dataGridViewX.DataSource = resultEntity;
                 for (int i = 0; i < ToolInfoList_dataGridViewX.Columns.Count; i++)
@@ -234,9 +247,66 @@ namespace toolstrackingsystem
         private void ToolInfoList_dataGridViewX_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
         }
+        /// <summary>
+        /// 完成组包
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Edit_button_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (ToolInfoList_dataGridViewX.Rows.Count <= 0)
+                {
+                    MessageBox.Show("包中工具为空，不能保存");
+                    return;
+                }
+                string packCode = Pack_Code_textBox.Text;
+                string packName = Pack_Name_textBox.Text;
+                if (string.IsNullOrEmpty(packCode))
+                {
+                    MessageBox.Show("包编码不能为空");
+                    Pack_Code_textBox.Focus();
+                    return;
+                }
+                if (string.IsNullOrEmpty(packName))
+                {
+                    MessageBox.Show("包名称不能为空");
+                    Pack_Name_textBox.Focus();
+                    return;
+                }
+                if (_toolPackManageService.CompleteToolPack(resultEntity, packCode, packName))
+                {
+                    MessageBox.Show("组包完成");
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmToolPackManage--Edit_button_Click", ex.Message, ex.StackTrace, ex.Source);
+            }
+        }
+        /// <summary>
+        /// 删除包
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Delete_Pack_button_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("您确定要删除“" + Pack_Code_textBox.Text + "”包信息吗", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            { 
+                string packCode = Pack_Code_textBox.Text;
+                if(string.IsNullOrEmpty(packCode))
+                {
+                    MessageBox.Show("请输入有效的包编码");
+                    Pack_Code_textBox.Focus();
+                    return;
+                }
+                if (_toolPackManageService.DeletePackInfo(packCode))
+                {
+                    MessageBox.Show("删除成功");
+                    Search_buttonX_Click(sender, e);
+                }
+            }
         }
     }
 }
