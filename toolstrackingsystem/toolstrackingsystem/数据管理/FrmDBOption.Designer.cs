@@ -92,6 +92,7 @@
             this.btnEmpty.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnEmpty.TabIndex = 9;
             this.btnEmpty.Text = "清空数据";
+            this.btnEmpty.Click += new System.EventHandler(this.btnEmpty_Click);
             // 
             // btnRestore
             // 
@@ -103,6 +104,7 @@
             this.btnRestore.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRestore.TabIndex = 8;
             this.btnRestore.Text = "还原数据库";
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // btnBack
             // 
@@ -140,6 +142,8 @@
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.Size = new System.Drawing.Size(682, 494);
             this.dataGridViewX1.TabIndex = 2;
+            this.dataGridViewX1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellClick);
+            this.dataGridViewX1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewX1_RowStateChanged);
             // 
             // tbBlong
             // 
@@ -147,20 +151,23 @@
             this.tbBlong.HeaderText = "文件名称";
             this.tbBlong.Name = "tbBlong";
             this.tbBlong.ReadOnly = true;
+            this.tbBlong.Width = 200;
             // 
             // tbCatagory
             // 
-            this.tbCatagory.DataPropertyName = "Filetime";
+            this.tbCatagory.DataPropertyName = "AddTime";
             this.tbCatagory.HeaderText = "备份时间";
             this.tbCatagory.Name = "tbCatagory";
             this.tbCatagory.ReadOnly = true;
+            this.tbCatagory.Width = 130;
             // 
             // tbPackNo
             // 
-            this.tbPackNo.DataPropertyName = "UserName";
-            this.tbPackNo.HeaderText = "操作人";
+            this.tbPackNo.DataPropertyName = "FilePath";
+            this.tbPackNo.HeaderText = "路径";
             this.tbPackNo.Name = "tbPackNo";
             this.tbPackNo.ReadOnly = true;
+            this.tbPackNo.Width = 300;
             // 
             // FrmDBOption
             // 
@@ -171,6 +178,7 @@
             this.Controls.Add(this.groupPanel1);
             this.Name = "FrmDBOption";
             this.Text = "FrmDBOption";
+            this.Load += new System.EventHandler(this.FrmDBOption_Load);
             this.groupPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);
@@ -181,11 +189,11 @@
 
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tbBlong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tbCatagory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tbPackNo;
         private DevComponents.DotNetBar.ButtonX btnEmpty;
         private DevComponents.DotNetBar.ButtonX btnRestore;
         private DevComponents.DotNetBar.ButtonX btnBack;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tbBlong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tbCatagory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tbPackNo;
     }
 }
