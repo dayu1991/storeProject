@@ -22,9 +22,9 @@
     <Property Name="NewName" Value="OperatorUserId" />
   </Operation>
   <Operation Name="Rename Refactor" Key="0f9ee3b0-bd92-4cfe-89c3-b315632a277a" ChangeDateTime="07/18/2017 14:29:18">
-    <Property Name="ElementName" Value="[dbo].[t_ToolCategoryInfo].[Id]" />
+    <Property Name="ElementName" Value="[dbo].[t_ToolType].[Id]" />
     <Property Name="ElementType" Value="SqlSimpleColumn" />
-    <Property Name="ParentElementName" Value="[dbo].[t_ToolCategoryInfo]" />
+    <Property Name="ParentElementName" Value="[dbo].[t_ToolType]" />
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="CategoryId" />
   </Operation>

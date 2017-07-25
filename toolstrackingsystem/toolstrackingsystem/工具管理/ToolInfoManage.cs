@@ -41,42 +41,41 @@ namespace toolstrackingsystem
             _userManageService = Program.container.Resolve<IUserManageService>();
             _toolInfoService = Program.container.Resolve<IToolInfoService>();
             var categorys = _toolInfoService.GetCategoryByClassify(0);
-            var categoryBlongs = categorys.Where(v => v.Classification == 1).Any() ? categorys.Where(v => v.Classification == 1).ToList() : new List<t_ToolCategoryInfo>();
-            var categoryCategory = categorys.Where(v => v.Classification == 2).Any() ? categorys.Where(v => v.Classification == 2).ToList() : new List<t_ToolCategoryInfo>();
+            var categoryBlongs = categorys.Where(v => v.classification == 1).Any() ? categorys.Where(v => v.classification == 1).ToList() : new List<t_ToolType>();
+            var categoryCategory = categorys.Where(v => v.classification == 2).Any() ? categorys.Where(v => v.classification == 2).ToList() : new List<t_ToolType>();
             this.cbEditBlong.DataSource = categoryBlongs;
-            this.cbEditBlong.DisplayMember = "CategoryName";
-            this.cbEditBlong.ValueMember = "CategoryId";
+            this.cbEditBlong.DisplayMember = "TypeName";
+            this.cbEditBlong.ValueMember = "TypeName";
 
 
             this.cbEditCategory.DataSource = categoryCategory;
-            this.cbEditCategory.DisplayMember = "CategoryName";
-            this.cbEditCategory.ValueMember = "CategoryId";
+            this.cbEditCategory.DisplayMember = "TypeName";
+            this.cbEditCategory.ValueMember = "TypeName";
 
-            var blongs = new List<t_ToolCategoryInfo>();
-            blongs.Add(new t_ToolCategoryInfo
+            var blongs = new List<t_ToolType>();
+            blongs.Add(new t_ToolType
             {
-                CategoryId = 0,
-                CategoryName = "请选择"
+                TypeName = "请选择"
 
             });
             blongs.AddRange(categoryBlongs);
 
             this.cbSearchBlong.DataSource = blongs;
-            this.cbSearchBlong.DisplayMember = "CategoryName";
-            this.cbSearchBlong.ValueMember = "CategoryId";
+            this.cbSearchBlong.DisplayMember = "TypeName";
+            this.cbSearchBlong.ValueMember = "TypeName";
 
-            var cates = new List<t_ToolCategoryInfo>();
-            cates.Add(new t_ToolCategoryInfo
+            var cates = new List<t_ToolType>();
+            cates.Add(new t_ToolType
             {
-                CategoryId = 0,
-                CategoryName = "请选择"
+
+                TypeName = "请选择"
 
             });
             cates.AddRange(categoryCategory);
 
             this.cbSearchcategory.DataSource = cates;
-            this.cbSearchcategory.DisplayMember = "CategoryName";
-            this.cbSearchcategory.ValueMember = "CategoryId";
+            this.cbSearchcategory.DisplayMember = "TypeName";
+            this.cbSearchcategory.ValueMember = "TypeName";
             pagerControl1.OnPageChanged += new EventHandler(pagerControl1_OnPageChanged);
 
             this.dtiCheckTime.Value = DateTime.Now.AddMonths(1);
@@ -89,20 +88,16 @@ namespace toolstrackingsystem
             try
             {
                 var toolInfo = new t_ToolInfo();
-                toolInfo.ToolBelongId = int.Parse(this.cbEditBlong.SelectedValue.ToString());
-                toolInfo.ToolBelongName = this.cbEditBlong.Text;
-                toolInfo.ToolCategoryId = int.Parse(this.cbEditCategory.SelectedValue.ToString());
-                toolInfo.ToolCategoryName = this.cbEditCategory.Text;
+                toolInfo.TypeName = this.cbEditBlong.SelectedValue.ToString();
+                toolInfo.ChildTypeName =this.cbEditCategory.SelectedValue.ToString();
 
                 toolInfo.ToolName = this.tbEditToolName.Text;
                 toolInfo.Location = this.tbEditLocation.Text;
-                toolInfo.ToolModels = this.tbEditModel.Text;
+                toolInfo.Models = this.tbEditModel.Text;
 
-                toolInfo.ToolRemarks = this.tbEditMemo.Text;
-                toolInfo.AddTime = DateTime.Now;
-                toolInfo.IsDelete = false;
-                toolInfo.OperatorUserId = LoginHelper.UserCode;
-                toolInfo.OperatorUserName = LoginHelper.UserName;
+                toolInfo.Remarks = this.tbEditMemo.Text;
+                toolInfo.IsActive ="1";
+                toolInfo.OptionPerson = LoginHelper.UserCode;
                 toolInfo.ToolCode = this.tbEditCode.Text;
 
                 if (string.IsNullOrWhiteSpace(toolInfo.ToolCode))
@@ -126,7 +121,7 @@ namespace toolstrackingsystem
 
                     }
 
-                    toolInfo.CheckTime = dtiCheckTime.Value;
+                    toolInfo.CheckTime = dtiCheckTime.Value.ToString();
                 }
                 bool isExists = _toolInfoService.IsExistsByCode(toolInfo.ToolCode);
                 if (isExists)
@@ -276,103 +271,103 @@ namespace toolstrackingsystem
 
         private void ExcelOut_button_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SaveFileDialog fileDialog = new SaveFileDialog();
-                fileDialog.Filter = "Excel(*.xls)|*.xls|Excel(*.xlsx)|*.xlsx";
-                if (fileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    NPOI.SS.UserModel.IWorkbook book = null;
-                    if (fileDialog.FilterIndex == 1)
-                    {
-                        book = new NPOI.HSSF.UserModel.HSSFWorkbook();
-                    }
-                    else
-                    {
-                        book = new NPOI.XSSF.UserModel.XSSFWorkbook();
-                    }
-                    NPOI.SS.UserModel.ISheet sheet = book.CreateSheet("工具列表");
-                    // 添加表头
-                    NPOI.SS.UserModel.IRow row = sheet.CreateRow(0);
-                    for (int i = 1; i < dataGridViewX1.Columns.Count; i++)
-                    {
+            //try
+            //{
+            //    SaveFileDialog fileDialog = new SaveFileDialog();
+            //    fileDialog.Filter = "Excel(*.xls)|*.xls|Excel(*.xlsx)|*.xlsx";
+            //    if (fileDialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        NPOI.SS.UserModel.IWorkbook book = null;
+            //        if (fileDialog.FilterIndex == 1)
+            //        {
+            //            book = new NPOI.HSSF.UserModel.HSSFWorkbook();
+            //        }
+            //        else
+            //        {
+            //            book = new NPOI.XSSF.UserModel.XSSFWorkbook();
+            //        }
+            //        NPOI.SS.UserModel.ISheet sheet = book.CreateSheet("工具列表");
+            //        // 添加表头
+            //        NPOI.SS.UserModel.IRow row = sheet.CreateRow(0);
+            //        for (int i = 1; i < dataGridViewX1.Columns.Count; i++)
+            //        {
 
-                        var item = dataGridViewX1.Columns[i];
-                        NPOI.SS.UserModel.ICell cell = row.CreateCell(i - 1);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.HeaderText);
-                    }
-                    //获取数据
-                    int blongValue = int.Parse(cbSearchBlong.SelectedValue.ToString());
-                    int categoryValue = int.Parse(cbSearchcategory.SelectedValue.ToString());
-                    string toolCode = tbSearchCode.Text;
-                    string toolName = tbSearchName.Text;
-                    List<t_ToolInfo> entitys = _toolInfoService.GetToolList(blongValue, categoryValue, toolCode, toolName);
-                    // 添加数据
-                    for (int i = 0; i < entitys.Count; i++)
-                    {
-                        var item = entitys[i];
-                        row = sheet.CreateRow(i + 1);
-                        NPOI.SS.UserModel.ICell cell = row.CreateCell(0);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.ToolBelongName);
-                        cell = row.CreateCell(1);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.ToolCategoryName);
-                        cell = row.CreateCell(2);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.PackCode);
-                        cell = row.CreateCell(3);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.PackName);
+            //            var item = dataGridViewX1.Columns[i];
+            //            NPOI.SS.UserModel.ICell cell = row.CreateCell(i - 1);
+            //            cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+            //            cell.SetCellValue(item.HeaderText);
+            //        }
+            //        //获取数据
+            //        int blongValue = int.Parse(cbSearchBlong.SelectedValue.ToString());
+            //        int categoryValue = int.Parse(cbSearchcategory.SelectedValue.ToString());
+            //        string toolCode = tbSearchCode.Text;
+            //        string toolName = tbSearchName.Text;
+            //        List<t_ToolInfo> entitys = _toolInfoService.GetToolList(blongValue, categoryValue, toolCode, toolName);
+            //        // 添加数据
+            //        for (int i = 0; i < entitys.Count; i++)
+            //        {
+            //            var item = entitys[i];
+            //            row = sheet.CreateRow(i + 1);
+            //            NPOI.SS.UserModel.ICell cell = row.CreateCell(0);
+            //            cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+            //            cell.SetCellValue(item.ToolBelongName);
+            //            cell = row.CreateCell(1);
+            //            cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+            //            cell.SetCellValue(item.ToolCategoryName);
+            //            cell = row.CreateCell(2);
+            //            cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+            //            cell.SetCellValue(item.PackCode);
+            //            cell = row.CreateCell(3);
+            //            cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+            //            cell.SetCellValue(item.PackName);
 
-                        cell = row.CreateCell(4);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.ToolCode);
+            //            cell = row.CreateCell(4);
+            //            cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+            //            cell.SetCellValue(item.ToolCode);
 
-                        cell = row.CreateCell(5);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.ToolName);
+            //            cell = row.CreateCell(5);
+            //            cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+            //            cell.SetCellValue(item.ToolName);
 
-                        cell = row.CreateCell(6);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.ToolModels);
+            //            cell = row.CreateCell(6);
+            //            cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+            //            cell.SetCellValue(item.ToolModels);
 
-                        cell = row.CreateCell(7);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.Location);
+            //            cell = row.CreateCell(7);
+            //            cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+            //            cell.SetCellValue(item.Location);
 
-                        cell = row.CreateCell(8);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.ToolRemarks);
-                        if (item.CheckTime != null)
-                        {
-                            cell = row.CreateCell(9);
-                            cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                            cell.SetCellValue((item.CheckTime ?? DateTime.Now).ToString("yyyy-MM-dd"));
-                        }
+            //            cell = row.CreateCell(8);
+            //            cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+            //            cell.SetCellValue(item.ToolRemarks);
+            //            if (item.CheckTime != null)
+            //            {
+            //                cell = row.CreateCell(9);
+            //                cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+            //                cell.SetCellValue((item.CheckTime ?? DateTime.Now).ToString("yyyy-MM-dd"));
+            //            }
 
-                    }
-                    // 写入 
-                    System.IO.MemoryStream ms = new System.IO.MemoryStream();
-                    book.Write(ms);
-                    book = null;
-                    using (FileStream fs = new FileStream(fileDialog.FileName, FileMode.Create, FileAccess.Write))
-                    {
-                        byte[] data = ms.ToArray();
-                        fs.Write(data, 0, data.Length);
-                        fs.Flush();
-                    }
-                    ms.Close();
-                    ms.Dispose();
-                    MessageBox.Show("导出成功");
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--ToolInfoManage--ExcelOutBtn_Click", ex.Message, ex.StackTrace, ex.Source);
-            }
+            //        }
+            //        // 写入 
+            //        System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            //        book.Write(ms);
+            //        book = null;
+            //        using (FileStream fs = new FileStream(fileDialog.FileName, FileMode.Create, FileAccess.Write))
+            //        {
+            //            byte[] data = ms.ToArray();
+            //            fs.Write(data, 0, data.Length);
+            //            fs.Flush();
+            //        }
+            //        ms.Close();
+            //        ms.Dispose();
+            //        MessageBox.Show("导出成功");
+            //        return;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--ToolInfoManage--ExcelOutBtn_Click", ex.Message, ex.StackTrace, ex.Source);
+            //}
         }
 
         private void ExcelIn_button_Click(object sender, EventArgs e)
@@ -437,8 +432,8 @@ namespace toolstrackingsystem
             //                int cellCount = headerRow.LastCellNum;
             //                List<t_ToolInfo> InfoList = new List<t_ToolInfo>();
             //                var cates = _toolInfoService.GetCategoryByClassify(0);
-            //                List<t_ToolCategoryInfo> blongCates = cates.Where(v => v.Classification = 1) == null ? new List<t_ToolCategoryInfo>() : cates.Where(v => v.Classification = 1).ToList();
-            //                List<t_ToolCategoryInfo> cateGoryCates = cates.Where(v => v.Classification = 2) == null ? new List<t_ToolCategoryInfo>() : cates.Where(v => v.Classification = 2).ToList();
+            //                List<t_ToolType> blongCates = cates.Where(v => v.Classification = 1) == null ? new List<t_ToolType>() : cates.Where(v => v.Classification = 1).ToList();
+            //                List<t_ToolType> cateGoryCates = cates.Where(v => v.Classification = 2) == null ? new List<t_ToolType>() : cates.Where(v => v.Classification = 2).ToList();
 
             //                bool isCheckSuccess = true;
             //                string alertMsg = "";

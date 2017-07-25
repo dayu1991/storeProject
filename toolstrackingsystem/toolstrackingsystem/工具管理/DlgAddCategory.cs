@@ -41,15 +41,10 @@ namespace toolstrackingsystem
                     MessageBox.Show("名称已经存在！");
                     return;
                 }
-                var category = new t_ToolCategoryInfo();
-                category.CategoryName = name;
-                category.OperatorUserId = LoginHelper.UserCode;
-                category.OperatorUserName = LoginHelper.UserName;
-                category.ParentId = 0;
-                category.Level = 0;
-
-                category.Classification = 2;
-                category.AddTime = DateTime.Now;
+                var category = new t_ToolType();
+                category.TypeName = name;
+                category.OptionPerson = LoginHelper.UserCode;
+                category.classification = 2;
                 long isAdd = _toolInfoService.AddCateGory(category);
                 if (isAdd>0)
                 {

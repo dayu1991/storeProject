@@ -12,16 +12,13 @@ namespace dbentity.toolstrackingsystem
     using System;
     using System.Collections.Generic;
     
-    public partial class t_ToolCategoryInfo
+    public partial class t_ToolType
     {
-        public long CategoryId { get; set; }
-        public string CategoryName { get; set; }
-        public string OperatorUserId { get; set; }
-        public string OperatorUserName { get; set; }
-        public Nullable<long> ParentId { get; set; }
-        public int Level { get; set; }
-        public int Classification { get; set; }
-        public System.DateTime AddTime { get; set; }
-        public Nullable<System.DateTime> ModifyTime { get; set; }
+        public long TypeID { get; set; }
+        public string TypeName { get; set; }
+        public Nullable<int> classification { get; set; }
+        public string OptionPerson { get; set; }
+        public string fatherCode { get; set; }
+        public string childCode { get; set; }
     }
 }

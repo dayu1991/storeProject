@@ -14,9 +14,9 @@ namespace dbentity.toolstrackingsystem
     
     public partial class Sys_User_Role
     {
-        public string RoleCode { get; set; }
-        public string MenuID { get; set; }
         public int RoleID { get; set; }
+        public string RoleCode { get; set; }
         public string RoleName { get; set; }
+        public string MenuID { get; set; }
     }
 }

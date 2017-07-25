@@ -23,7 +23,7 @@ namespace service.toolstrackingsystem
            _multiTableQueryRepository = multiTableQueryRepository;
        }
 
-        public List<t_ToolCategoryInfo> GetCategoryByClassify(int classifyType)
+        public List<t_ToolType> GetCategoryByClassify(int classifyType)
         {
             return _toolCategoryInfoRepository.GetCategoryByClassify(classifyType);
         }
@@ -76,7 +76,7 @@ namespace service.toolstrackingsystem
             return _toolCategoryInfoRepository.IsExistCategoryByName(name, classification);
 
         }
-        public long AddCateGory(t_ToolCategoryInfo category)
+        public long AddCateGory(t_ToolType category)
         {
             return _toolCategoryInfoRepository.Add(category);
 
