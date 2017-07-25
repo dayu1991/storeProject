@@ -127,7 +127,6 @@ namespace toolstrackingsystem
             role.MenuID = MenuID.Substring(0, MenuID.Length - 1);
             userRole.MenuID = MenuID.Substring(0,MenuID.Length-1);
             if (_roleManageService.InserUserRole(userRole))
-
             {
                 this.DialogResult = DialogResult.OK;
                 MessageBox.Show("添加成功");
