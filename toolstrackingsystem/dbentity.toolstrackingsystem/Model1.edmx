@@ -55,13 +55,24 @@
           <Property Name="OptionPerson" Type="varchar" MaxLength="32" />
           <Property Name="IsReceive" Type="varchar" MaxLength="1" Nullable="false" />
         </EntityType>
+        <EntityType Name="t_ScrapToolInfo">
+          <Key>
+            <PropertyRef Name="ToolCode" />
+          </Key>
+          <Property Name="ScrapID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToolCode" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="ToolName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="ScrapTime" Type="varchar" MaxLength="24" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1024" />
+          <Property Name="OptionPerson" Type="varchar" MaxLength="32" />
+        </EntityType>
         <EntityType Name="t_ToolCategoryInfo">
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
           <Property Name="CategoryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="OperatorUserId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OperatorUserId" Type="bigint" Nullable="false" />
           <Property Name="OperatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ParentId" Type="bigint" />
           <Property Name="Level" Type="int" Nullable="false" />
@@ -97,6 +108,7 @@
           <EntitySet Name="Sys_User_Info" EntityType="Self.Sys_User_Info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_User_Role" EntityType="Self.Sys_User_Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_PersonInfo" EntityType="Self.t_PersonInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ScrapToolInfo" EntityType="Self.t_ScrapToolInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ToolCategoryInfo" EntityType="Self.t_ToolCategoryInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ToolInfo" EntityType="Self.t_ToolInfo" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -111,6 +123,7 @@
           <EntitySet Name="t_PersonInfo" EntityType="cangku_manage_dbModel.t_PersonInfo" />
           <EntitySet Name="t_ToolCategoryInfo" EntityType="cangku_manage_dbModel.t_ToolCategoryInfo" />
           <EntitySet Name="t_ToolInfo" EntityType="cangku_manage_dbModel.t_ToolInfo" />
+          <EntitySet Name="t_ScrapToolInfo" EntityType="cangku_manage_dbModel.t_ScrapToolInfo" />
         </EntityContainer>
         <EntityType Name="Sys_Menu_Info">
           <Key>
@@ -168,7 +181,7 @@
           </Key>
           <Property Name="CategoryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OperatorUserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperatorUserId" Type="Int64" Nullable="false" />
           <Property Name="OperatorUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ParentId" Type="Int64" />
           <Property Name="Level" Type="Int32" Nullable="false" />
@@ -198,6 +211,17 @@
           <Property Name="OperatorUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="t_ScrapToolInfo">
+          <Key>
+            <PropertyRef Name="ToolCode" />
+          </Key>
+          <Property Name="ScrapID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToolCode" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="ToolName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ScrapTime" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="OptionPerson" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -295,6 +319,18 @@
                 <ScalarProperty Name="ToolBelongName" ColumnName="ToolBelongName" />
                 <ScalarProperty Name="ToolBelongId" ColumnName="ToolBelongId" />
                 <ScalarProperty Name="ToolId" ColumnName="ToolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ScrapToolInfo">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.t_ScrapToolInfo">
+              <MappingFragment StoreEntitySet="t_ScrapToolInfo">
+                <ScalarProperty Name="OptionPerson" ColumnName="OptionPerson" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ScrapTime" ColumnName="ScrapTime" />
+                <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+                <ScalarProperty Name="ToolCode" ColumnName="ToolCode" />
+                <ScalarProperty Name="ScrapID" ColumnName="ScrapID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

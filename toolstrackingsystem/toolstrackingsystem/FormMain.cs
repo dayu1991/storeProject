@@ -140,5 +140,20 @@ namespace toolstrackingsystem
             SetTabShow(sender.ToString(), ((ButtonItem)sender).Tag.ToString());
         }
         #endregion
+        private void buttonItem7_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("确定要注销登录啊?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                Application.Exit();
+            }
+        }
+        private void login_buttonItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("确定要注销登录啊?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                Application.Exit();
+                System.Diagnostics.Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            }
+        }
     }
 }

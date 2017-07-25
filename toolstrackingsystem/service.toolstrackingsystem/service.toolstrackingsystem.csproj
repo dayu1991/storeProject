@@ -58,12 +58,16 @@
     <Compile Include="Implement\MenuManageService.cs" />
     <Compile Include="Implement\PersonManageService.cs" />
     <Compile Include="Implement\RoleManageService.cs" />
+    <Compile Include="Implement\ScrapToolInfoService.cs" />
     <Compile Include="Implement\ToolInfoService.cs" />
+    <Compile Include="Implement\ToolPackManageService.cs" />
     <Compile Include="Implement\UserManageService.cs" />
     <Compile Include="Interface\IMenuManageService.cs" />
     <Compile Include="Interface\IPersonManageService.cs" />
     <Compile Include="Interface\IRoleManageService.cs" />
+    <Compile Include="Interface\IScrapToolInfoService.cs" />
     <Compile Include="Interface\IToolInfoService.cs" />
+    <Compile Include="Interface\IToolPackManageService.cs" />
     <Compile Include="Interface\IUserManageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

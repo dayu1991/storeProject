@@ -67,6 +67,10 @@
     <Reference Include="NodaTime">
       <HintPath>..\packages\NodaTime.1.3.4\lib\net35-Client\NodaTime.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NPOI">
       <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.dll</HintPath>
     </Reference>
@@ -146,6 +150,18 @@
     </Compile>
     <Compile Include="作业人员\FrmWorkerManager.Designer.cs">
       <DependentUpon>FrmWorkerManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="工具包管理\FrmToolPackManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="工具包管理\FrmToolPackManage.Designer.cs">
+      <DependentUpon>FrmToolPackManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="工具报废\FrmScrapToolManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="工具报废\FrmScrapToolManage.Designer.cs">
+      <DependentUpon>FrmScrapToolManage.cs</DependentUpon>
     </Compile>
     <Compile Include="工具管理\DigAddBlongTo.cs">
       <SubType>Form</SubType>
@@ -236,6 +252,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="作业人员\Frmworkermanager.resx">
       <DependentUpon>FrmWorkerManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="工具包管理\FrmToolPackManage.resx">
+      <DependentUpon>FrmToolPackManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="工具报废\FrmScrapToolManage.resx">
+      <DependentUpon>FrmScrapToolManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="工具管理\DigAddBlongTo.resx">
       <DependentUpon>DigAddBlongTo.cs</DependentUpon>

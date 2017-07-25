@@ -88,6 +88,9 @@
     <Compile Include="t_PersonInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="t_ScrapToolInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="t_ToolCategoryInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
