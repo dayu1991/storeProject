@@ -12,15 +12,8 @@ namespace dbentity.toolstrackingsystem
     using System;
     using System.Collections.Generic;
     
-    public partial class Sys_User_Info
+    public partial class C__RefactorLog
     {
-        public int ID { get; set; }
-        public string UserCode { get; set; }
-        public string UserName { get; set; }
-        public string PassWord { get; set; }
-        public string UserRole { get; set; }
-        public string Description { get; set; }
-        public int IsActive { get; set; }
-        public Nullable<System.DateTime> CreateTime { get; set; }
+        public System.Guid OperationKey { get; set; }
     }
 }

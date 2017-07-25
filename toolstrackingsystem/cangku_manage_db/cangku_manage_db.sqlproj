@@ -59,13 +59,6 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="t_ToolInfo.sql" />
-    <Build Include="t_ToolCategoryInfo.sql" />
-  </ItemGroup>
-  <ItemGroup>
     <RefactorLog Include="cangku_manage_db.refactorlog" />
-  </ItemGroup>
-  <ItemGroup>
-    <PostDeploy Include="toolInfoInitData.sql" />
   </ItemGroup>
 </Project>

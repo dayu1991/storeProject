@@ -4,20 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using dbentity.toolstrackingsystem;
 using Dapper;
 
 namespace sqlserver.toolstrackingsystem
 {
-    public class ToolCategoryInfoRepository : RepositoryBase<t_ToolCategoryInfo>, IToolCategoryInfoRepository
+    public class ToolCategoryInfoRepository : RepositoryBase<t_ToolType>, IToolCategoryInfoRepository
     {
-        public List<t_ToolCategoryInfo> GetCategoryByClassify(int classifyType)
+        public List<t_ToolType> GetCategoryByClassify(int classifyType)
         {
-            string sql = "select * from t_ToolCategoryInfo where 1=1 ";
+            string sql = "select * from t_ToolType where 1=1 ";
             DynamicParameters parameter = new DynamicParameters();
             if (classifyType > 0)
             {
-                sql += "AND [Classification]=@Classification  ";
+                sql += "AND [classification]=@Classification  ";
                 parameter.Add("Classification", classifyType);
             }
             var result = QueryList(sql, parameter);
@@ -25,18 +24,18 @@ namespace sqlserver.toolstrackingsystem
             {
                 return result.ToList();
             }
-            return new List<t_ToolCategoryInfo>();
+            return new List<t_ToolType>();
         }
         public bool IsExistCategoryByName(string name, int classification)
         {
-            string sql = "select count(1) from [t_ToolCategoryInfo] where [CategoryName]=@CategoryName ";
+            string sql = "select count(1) from [t_ToolType] where [TypeName]=@TypeName ";
 
             DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@CategoryName", name);
+            parameters.Add("@TypeName", name);
             if (classification > 0)
             {
-                sql += " and [Classification]=@Classification";
-                parameters.Add("@Classification", classification);
+                sql += " and [classification]=@classification";
+                parameters.Add("@classification", classification);
             }
             var result = ExcuteScalar(sql, parameters);
             if (result != null && !string.IsNullOrWhiteSpace(result.ToString()))

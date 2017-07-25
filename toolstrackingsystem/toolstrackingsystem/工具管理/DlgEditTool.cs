@@ -32,34 +32,34 @@ namespace toolstrackingsystem
             try
             {
                 var categorys = _toolInfoService.GetCategoryByClassify(0);
-                var categoryBlongs = categorys.Where(v => v.Classification == 1).Any() ? categorys.Where(v => v.Classification == 1).ToList() : new List<t_ToolCategoryInfo>();
-                var categoryCategory = categorys.Where(v => v.Classification == 2).Any() ? categorys.Where(v => v.Classification == 2).ToList() : new List<t_ToolCategoryInfo>();
+                var categoryBlongs = categorys.Where(v => v.classification == 1).Any() ? categorys.Where(v => v.classification == 1).ToList() : new List<t_ToolType>();
+                var categoryCategory = categorys.Where(v => v.classification == 2).Any() ? categorys.Where(v => v.classification == 2).ToList() : new List<t_ToolType>();
                 t_ToolInfo  toolInfo = (t_ToolInfo)this.Tag;
                 this.cbEditBlong.DataSource = categoryBlongs;
-                this.cbEditBlong.DisplayMember = "CategoryName";
-                this.cbEditBlong.ValueMember = "CategoryId";
+                this.cbEditBlong.DisplayMember = "TypeName";
+                this.cbEditBlong.ValueMember = "TypeName";
 
 
                 this.cbEditCategory.DataSource = categoryCategory;
-                this.cbEditCategory.DisplayMember = "CategoryName";
-                this.cbEditCategory.ValueMember = "CategoryId";
+                this.cbEditCategory.DisplayMember = "TypeName";
+                this.cbEditCategory.ValueMember = "TypeName";
                 tbEditToolName.Text = toolInfo.ToolName;
                 tbEditLocation.Text = toolInfo.Location;
                 if (string.IsNullOrWhiteSpace(toolInfo.CheckTime.ToString()))
                 {
                     cbEditCheckTime.Checked = false;
-                    dtiCheckTime.Value = toolInfo.CheckTime ?? DateTime.Now;
+                    dtiCheckTime.Value = DateTime.Parse(toolInfo.CheckTime);
 
                 }
                 else
                 {
                     cbEditCheckTime.Checked = true;
-                    dtiCheckTime.Value = toolInfo.CheckTime??DateTime.Now;
+                    dtiCheckTime.Value = DateTime.Parse(toolInfo.CheckTime);
                 }
-                tbEditModel.Text = toolInfo.ToolModels;
-                tbEditMemo.Text = toolInfo.ToolRemarks;
-                cbEditBlong.SelectedValue = toolInfo.ToolBelongId;
-                cbEditCategory.SelectedValue = toolInfo.ToolCategoryId;
+                tbEditModel.Text = toolInfo.Models;
+                tbEditMemo.Text = toolInfo.Remarks;
+                cbEditBlong.SelectedValue = toolInfo.TypeName;
+                cbEditCategory.SelectedValue = toolInfo.ChildTypeName;
 
             }
             catch (Exception ex)
@@ -79,10 +79,8 @@ namespace toolstrackingsystem
         private void Save_Edit_button_Click(object sender, EventArgs e)
         {
             t_ToolInfo entity = (t_ToolInfo)this.Tag;
-            entity.ToolBelongId = int.Parse(this.cbEditBlong.SelectedValue.ToString());
-            entity.ToolBelongName = this.cbEditBlong.Text;
-            entity.ToolCategoryId = int.Parse(this.cbEditCategory.SelectedValue.ToString());
-            entity.ToolCategoryName = this.cbEditCategory.Text;
+            entity.TypeName = this.cbEditBlong.SelectedValue.ToString();
+            entity.ChildTypeName = this.cbEditCategory.SelectedValue.ToString();
             entity.ToolName = this.tbEditToolName.Text;
             entity.Location = this.tbEditLocation.Text;
             if (cbEditCheckTime.Checked)
@@ -92,7 +90,7 @@ namespace toolstrackingsystem
                     MessageBox.Show("下次检测时间不能小于当前时间！");
                     return;
                 }
-                entity.CheckTime = dtiCheckTime.Value;
+                entity.CheckTime = dtiCheckTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
             }
             if (string.IsNullOrWhiteSpace(entity.ToolName))
             {
@@ -100,9 +98,8 @@ namespace toolstrackingsystem
                 this.tbEditToolName.Focus();
                 return;
             }
-            entity.ToolModels = this.tbEditModel.Text;
-            entity.ToolRemarks = this.tbEditMemo.Text;
-            entity.ModifyTime = DateTime.Now;
+            entity.Models = this.tbEditModel.Text;
+            entity.Remarks = this.tbEditMemo.Text;
             if (_toolInfoService.UpdateTool(entity))
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;

@@ -12,21 +12,18 @@ namespace dbentity.toolstrackingsystem
     using System;
     using System.Collections.Generic;
     
-    public partial class t_ToolInfo
+    public partial class t_PersonCreditRecord
     {
-        public long ToolID { get; set; }
-        public string TypeName { get; set; }
-        public string ChildTypeName { get; set; }
+        public long CreditID { get; set; }
         public string PackCode { get; set; }
         public string PackName { get; set; }
-        public string CarGroupInfo { get; set; }
         public string ToolCode { get; set; }
         public string ToolName { get; set; }
-        public string Models { get; set; }
-        public string Location { get; set; }
-        public string Remarks { get; set; }
-        public string CheckTime { get; set; }
-        public string IsActive { get; set; }
+        public string PersonCode { get; set; }
+        public string PersonName { get; set; }
+        public string OutStoreTime { get; set; }
+        public string UserTimeInfo { get; set; }
         public string OptionPerson { get; set; }
+        public string OptionTime { get; set; }
     }
 }

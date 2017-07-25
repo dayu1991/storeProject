@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace sqlserver.toolstrackingsystem
 {
-    public interface IToolCategoryInfoRepository:IRepositoryBase<t_ToolCategoryInfo>
+    public interface IToolCategoryInfoRepository:IRepositoryBase<t_ToolType>
     {
-        List<t_ToolCategoryInfo> GetCategoryByClassify(int classifyType);
+        List<t_ToolType> GetCategoryByClassify(int classifyType);
 
         bool IsExistCategoryByName(string name, int classification);
     }
