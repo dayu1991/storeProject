@@ -30,7 +30,7 @@ namespace sqlserver.toolstrackingsystem
             }
             return false;
         }
-        public List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount)
+        public List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount)
         {
             List<t_ToolInfo> list = new List<t_ToolInfo>();
             string sql = @"select * from (
@@ -42,16 +42,16 @@ namespace sqlserver.toolstrackingsystem
             parameters.Add("startPos", ((pageIndex - 1) * pageSize + 1));
             parameters.Add("endPos", pageIndex*pageSize);
 
-            if (blongValue>0)
+            if (!string.IsNullOrWhiteSpace(blongValue))
             {
-                sqlWhere += " and  [ToolBelongId]=@ToolBelongId";
-                parameters.Add("ToolBelongId", blongValue);
+                sqlWhere += " and  [TypeName]=@TypeName";
+                parameters.Add("TypeName", blongValue);
 
             }
-            if (categoryValue > 0)
+            if (!string.IsNullOrWhiteSpace(categoryValue))
             {
-                sqlWhere += " and [ToolCategoryId] =@ToolCategoryId";
-                parameters.Add("ToolCategoryId", categoryValue);
+                sqlWhere += " and [ChildTypeName] =@ChildTypeName";
+                parameters.Add("ChildTypeName", categoryValue);
             }
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
@@ -70,11 +70,11 @@ namespace sqlserver.toolstrackingsystem
             var result = base.QueryList(sql, parameters, out totalCount, sqlCount, false);
             return result.Any() ? result.ToList() : new List<t_ToolInfo>();
         }
-        public t_ToolInfo GetToolById(long ToolId)
-        { 
-            string sql = "select * from [dbo].[t_ToolInfo] where [ToolId]=@ToolId";
+        public t_ToolInfo GetToolByCode(string ToolCode)
+        {
+            string sql = "select * from [dbo].[t_ToolInfo] where [ToolCode]=@ToolCode";
             var sqlDy = new DynamicParameters();
-            sqlDy.Add("ToolId",ToolId);
+            sqlDy.Add("ToolCode", ToolCode);
             return GetModel(sql, sqlDy);
         }
 
@@ -83,11 +83,11 @@ namespace sqlserver.toolstrackingsystem
             return Update(entity);
            
         }
-        public bool DelToolById(long ToolId)
+        public bool DelToolByCode(string ToolCode)
         {
-            string sql = "delete from [dbo].[t_ToolInfo] where [ToolId]=@ToolId";
+            string sql = "delete from [dbo].[t_ToolInfo] where [ToolCode]=@ToolCode";
             var sqlDy = new DynamicParameters();
-            sqlDy.Add("ToolId", ToolId);
+            sqlDy.Add("ToolCode", ToolCode);
             var result =  ExcuteScalar(sql, sqlDy);
             if (result != null && !string.IsNullOrWhiteSpace(result.ToString()))
             {
@@ -104,23 +104,23 @@ namespace sqlserver.toolstrackingsystem
             return false;
         }
 
-        public List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName)
+        public List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName)
         {
             List<t_ToolInfo> list = new List<t_ToolInfo>();
             string sql = @"select * from [dbo].[t_ToolInfo]  where 1=1 {0} ORDER BY [ToolId] desc";
             string sqlWhere = "";
-            DynamicParameters parameters = new DynamicParameters();          
+            DynamicParameters parameters = new DynamicParameters();
 
-            if (blongValue > 0)
+            if (!string.IsNullOrWhiteSpace(blongValue))
             {
-                sqlWhere += " and  [ToolBelongId]=@ToolBelongId";
-                parameters.Add("ToolBelongId", blongValue);
+                sqlWhere += " and  [TypeName]=@TypeName";
+                parameters.Add("TypeName", blongValue);
 
             }
-            if (categoryValue > 0)
+            if (!string.IsNullOrWhiteSpace(categoryValue))
             {
-                sqlWhere += " and [ToolCategoryId] =@ToolCategoryId";
-                parameters.Add("ToolCategoryId", categoryValue);
+                sqlWhere += " and [ChildTypeName] =@ChildTypeName";
+                parameters.Add("ChildTypeName", categoryValue);
             }
             if (!string.IsNullOrWhiteSpace(toolCode))
             {

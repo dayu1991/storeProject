@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CKConnection.cs" />
+    <Compile Include="Implement\CurrentCountInfoRepository.cs" />
+    <Compile Include="Implement\InStoreRepository.cs" />
     <Compile Include="Implement\MenuManageRepository.cs" />
     <Compile Include="Implement\MultiTableQueryRepository.cs" />
     <Compile Include="Implement\PersonManageRepository.cs" />
@@ -68,6 +70,8 @@
     <Compile Include="Implement\ToolInfoRepository.cs" />
     <Compile Include="Implement\ToolPackManageRepository.cs" />
     <Compile Include="Implement\UserManageRepository.cs" />
+    <Compile Include="Interface\ICurrentCountInfoRepository.cs" />
+    <Compile Include="Interface\IInStoreRepository.cs" />
     <Compile Include="Interface\IMenuManageRepository.cs" />
     <Compile Include="Interface\IMultiTableQueryRepository.cs" />
     <Compile Include="Interface\IPersonManageRepository.cs" />

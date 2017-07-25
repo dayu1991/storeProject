@@ -13,14 +13,22 @@ namespace service.toolstrackingsystem
     {
        private IToolCategoryInfoRepository _toolCategoryInfoRepository;
        private IToolInfoRepository _toolInfoRepository;
+              private IInStoreRepository _inStoreRepository;
+
+              private ICurrentCountInfoRepository _currentCountInfoRepository;
+
         private IMultiTableQueryRepository _multiTableQueryRepository;
         public ToolInfoService(IToolCategoryInfoRepository toolCategoryInfoRepository,
             IToolInfoRepository toolInfoRepository, 
-            IMultiTableQueryRepository multiTableQueryRepository)
+            IMultiTableQueryRepository multiTableQueryRepository,
+            IInStoreRepository inStoreRepository,
+            ICurrentCountInfoRepository currentCountInfoRepository)
        {
            _toolCategoryInfoRepository = toolCategoryInfoRepository;
            _toolInfoRepository = toolInfoRepository;
            _multiTableQueryRepository = multiTableQueryRepository;
+            _inStoreRepository=inStoreRepository;
+            _currentCountInfoRepository = currentCountInfoRepository;
        }
 
         public List<t_ToolType> GetCategoryByClassify(int classifyType)
@@ -29,7 +37,28 @@ namespace service.toolstrackingsystem
         }
         public long AddToolInfo(t_ToolInfo toolInfo)
         {
-            return _toolInfoRepository.Add(toolInfo);
+            _toolInfoRepository.Add(toolInfo);
+            var entity = new t_InStore();
+            entity.InStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            entity.OptionPerson = toolInfo.OptionPerson;
+            entity.ToolCode = toolInfo.ToolCode;
+            entity.ToolName = toolInfo.ToolName;
+            entity.TypeName = toolInfo.TypeName;
+            entity.ChildTypeName = toolInfo.ChildTypeName;
+            entity.OptionPerson = toolInfo.OptionPerson;
+            _inStoreRepository.Add(entity);
+            var entity1 = new t_CurrentCountInfo();
+            entity1.TypeName = toolInfo.TypeName;
+            entity1.ChildTypeName = toolInfo.ChildTypeName;
+            entity1.ToolCode = toolInfo.ToolCode;
+            entity1.ToolName = toolInfo.ToolName;
+            entity1.Models = toolInfo.Models;
+            entity1.Location = toolInfo.Location;
+            entity1.Remarks = toolInfo.Remarks;
+            entity1.InStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            entity1.OptionType = "录入";
+            entity1.OptionPerson = toolInfo.OptionPerson;
+            return _currentCountInfoRepository.Add(entity1);
         }
 
         /// <summary>
@@ -50,24 +79,24 @@ namespace service.toolstrackingsystem
         /// <param name="toolCode"></param>
         /// <param name="toolName"></param>
         /// <returns></returns>
-        public List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount)
+        public List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount)
         {
             return _toolInfoRepository.GetToolList(blongValue, categoryValue, toolCode, toolName,pageIndex,pageSize,out totalCount);
         }
-        public t_ToolInfo GetToolById(long ToolId)
+        public t_ToolInfo GetToolByCode(string toolCode)
         {
-            return _toolInfoRepository.GetToolById(ToolId);
+            return _toolInfoRepository.GetToolByCode(toolCode);
         }
         public bool UpdateTool(t_ToolInfo entity)
         {
             return _toolInfoRepository.UpdateTool(entity);
         }
 
-        public bool DelToolById(long ToolId)
+        public bool DelToolByCode(string ToolCode)
         {
-            return _toolInfoRepository.DelToolById(ToolId);
+            return _toolInfoRepository.DelToolByCode(ToolCode);
         }
-        public List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName)
+        public List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName)
         {
             return _toolInfoRepository.GetToolList(blongValue, categoryValue, toolCode, toolName);
         }

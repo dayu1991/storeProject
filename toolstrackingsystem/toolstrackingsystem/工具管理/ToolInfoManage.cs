@@ -26,7 +26,7 @@ namespace toolstrackingsystem
         private IToolInfoService _toolInfoService;
 
         private int slectedIndex = 0;
-        private long ToolId = 0;
+        private string SelectedToolCode ="";
 
 
         public ToolInfoManage()
@@ -38,6 +38,7 @@ namespace toolstrackingsystem
 
         private void ToolInfoManage_Load(object sender, EventArgs e)
         {
+            
             _userManageService = Program.container.Resolve<IUserManageService>();
             _toolInfoService = Program.container.Resolve<IToolInfoService>();
             var categorys = _toolInfoService.GetCategoryByClassify(0);
@@ -121,7 +122,7 @@ namespace toolstrackingsystem
 
                     }
 
-                    toolInfo.CheckTime = dtiCheckTime.Value.ToString();
+                    toolInfo.CheckTime = dtiCheckTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
                 }
                 bool isExists = _toolInfoService.IsExistsByCode(toolInfo.ToolCode);
                 if (isExists)
@@ -167,8 +168,11 @@ namespace toolstrackingsystem
             try
             {
 
-                int blongValue = int.Parse(cbSearchBlong.SelectedValue.ToString());
-                int categoryValue = int.Parse(cbSearchcategory.SelectedValue.ToString());
+                string blongValue = cbSearchBlong.SelectedValue.ToString();
+                blongValue = blongValue == "请选择" ? "" : blongValue;
+                string categoryValue = cbSearchcategory.SelectedValue.ToString();
+                categoryValue = categoryValue == "请选择" ? "" : categoryValue;
+
                 string toolCode = tbSearchCode.Text;
                 string toolName = tbSearchName.Text;
                 long Count;
@@ -179,7 +183,7 @@ namespace toolstrackingsystem
                 this.dataGridViewX1.DataSource = resultEntity;
                 this.dataGridViewX1.Rows[0].Selected = true;
                 slectedIndex = 0;
-                ToolId = int.Parse(dataGridViewX1.Rows[0].Cells[0].Value.ToString());
+                SelectedToolCode =dataGridViewX1.Rows[0].Cells[4].Value.ToString();
 
             }
             catch (Exception ex)
@@ -193,7 +197,7 @@ namespace toolstrackingsystem
             if (e.RowIndex >= 0)
             {
                 slectedIndex = e.RowIndex;
-                ToolId = int.Parse(this.dataGridViewX1.Rows[slectedIndex].Cells[0].Value.ToString());
+                SelectedToolCode = this.dataGridViewX1.Rows[slectedIndex].Cells[4].Value.ToString();
             }
 
         }
@@ -213,14 +217,14 @@ namespace toolstrackingsystem
         {
             try
             {
-                if (ToolId <= 0)
+                if (string.IsNullOrWhiteSpace(SelectedToolCode))
                 {
                     MessageBox.Show("请选中一条记录");
                     return;
                 }
                 else
                 {
-                    t_ToolInfo toolEntity = _toolInfoService.GetToolById(ToolId);
+                    t_ToolInfo toolEntity = _toolInfoService.GetToolByCode(SelectedToolCode);
                     if (toolEntity != null)
                     {
                         DlgEditTool formEdit = new DlgEditTool();
@@ -245,14 +249,14 @@ namespace toolstrackingsystem
         {
             try
             {
-                if (ToolId <= 0)
+                if (string.IsNullOrWhiteSpace(SelectedToolCode))
                 {
                     MessageBox.Show("请选中一条记录");
                     return;
                 }
                 else
                 {
-                    bool toolEntity = _toolInfoService.DelToolById(ToolId);
+                    bool toolEntity = _toolInfoService.DelToolByCode(SelectedToolCode);
                     LoadData();
                 }
             }

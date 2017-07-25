@@ -34,17 +34,17 @@ namespace service.toolstrackingsystem
         /// <param name="toolCode"></param>
         /// <param name="toolName"></param>
         /// <returns></returns>
-        List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount);
+        List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount);
 
-        t_ToolInfo GetToolById(long ToolId);
+        t_ToolInfo GetToolByCode(string Toolcode);
 
 
         bool UpdateTool(t_ToolInfo entity);
 
-        bool DelToolById(long ToolId);
+        bool DelToolByCode(string ToolId);
 
 
-        List<t_ToolInfo> GetToolList(int blongValue, int categoryValue, string toolCode, string toolName);
+        List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName);
 
         bool IsExistCategoryByName(string name, int classification);
 
