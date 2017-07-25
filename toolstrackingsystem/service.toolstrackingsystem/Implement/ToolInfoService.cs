@@ -111,6 +111,10 @@ namespace service.toolstrackingsystem
 
         }
 
+        public bool IsExistsInStoryByCode(string toolCode)
+        {
+            return _inStoreRepository.IsExistsInStoryByCode(toolCode);
+        }
 
 
     }

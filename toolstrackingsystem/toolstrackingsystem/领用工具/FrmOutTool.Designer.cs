@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnAddTool = new DevComponents.DotNetBar.ButtonX();
             this.btnOutContinue = new DevComponents.DotNetBar.ButtonX();
             this.tbEditCode = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
@@ -53,14 +54,18 @@
             this.tbPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCheckTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtiSelect = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtiSelect)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel2
             // 
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel2.Controls.Add(this.dtiSelect);
+            this.groupPanel2.Controls.Add(this.btnAddTool);
             this.groupPanel2.Controls.Add(this.btnOutContinue);
             this.groupPanel2.Controls.Add(this.tbEditCode);
             this.groupPanel2.Controls.Add(this.labelX11);
@@ -107,6 +112,18 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 3;
             this.groupPanel2.Text = "工具领用信息";
+            // 
+            // btnAddTool
+            // 
+            this.btnAddTool.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddTool.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAddTool.Location = new System.Drawing.Point(283, 22);
+            this.btnAddTool.Name = "btnAddTool";
+            this.btnAddTool.Size = new System.Drawing.Size(40, 23);
+            this.btnAddTool.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddTool.TabIndex = 33;
+            this.btnAddTool.Text = "增加";
+            this.btnAddTool.Click += new System.EventHandler(this.btnAddTool_Click);
             // 
             // btnOutContinue
             // 
@@ -168,7 +185,7 @@
             this.tbEditoutdescribes.Location = new System.Drawing.Point(73, 94);
             this.tbEditoutdescribes.Name = "tbEditoutdescribes";
             this.tbEditoutdescribes.PreventEnterBeep = true;
-            this.tbEditoutdescribes.Size = new System.Drawing.Size(627, 21);
+            this.tbEditoutdescribes.Size = new System.Drawing.Size(660, 21);
             this.tbEditoutdescribes.TabIndex = 19;
             // 
             // labelX10
@@ -191,7 +208,7 @@
             // 
             this.tbEditPersonName.Border.Class = "TextBoxBorder";
             this.tbEditPersonName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditPersonName.Location = new System.Drawing.Point(413, 60);
+            this.tbEditPersonName.Location = new System.Drawing.Point(446, 60);
             this.tbEditPersonName.Name = "tbEditPersonName";
             this.tbEditPersonName.PreventEnterBeep = true;
             this.tbEditPersonName.Size = new System.Drawing.Size(287, 21);
@@ -204,7 +221,7 @@
             // 
             // 
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(350, 56);
+            this.labelX9.Location = new System.Drawing.Point(383, 56);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(83, 23);
             this.labelX9.TabIndex = 13;
@@ -217,7 +234,7 @@
             // 
             this.tbEditPersonCode.Border.Class = "TextBoxBorder";
             this.tbEditPersonCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditPersonCode.Location = new System.Drawing.Point(413, 22);
+            this.tbEditPersonCode.Location = new System.Drawing.Point(446, 22);
             this.tbEditPersonCode.Name = "tbEditPersonCode";
             this.tbEditPersonCode.PreventEnterBeep = true;
             this.tbEditPersonCode.Size = new System.Drawing.Size(287, 21);
@@ -230,7 +247,7 @@
             // 
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(350, 22);
+            this.labelX8.Location = new System.Drawing.Point(383, 22);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(83, 23);
             this.labelX8.TabIndex = 11;
@@ -244,9 +261,10 @@
             this.cbEditOutTime.ItemHeight = 15;
             this.cbEditOutTime.Location = new System.Drawing.Point(73, 55);
             this.cbEditOutTime.Name = "cbEditOutTime";
-            this.cbEditOutTime.Size = new System.Drawing.Size(204, 21);
+            this.cbEditOutTime.Size = new System.Drawing.Size(126, 21);
             this.cbEditOutTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbEditOutTime.TabIndex = 7;
+            this.cbEditOutTime.SelectedIndexChanged += new System.EventHandler(this.cbEditOutTime_SelectedIndexChanged);
             // 
             // labelX6
             // 
@@ -277,14 +295,14 @@
             this.tbPosition,
             this.tbRemarks,
             this.tbCheckTime});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(6, 3);
             this.dataGridViewX1.Name = "dataGridViewX1";
@@ -363,6 +381,52 @@
             this.tbCheckTime.Name = "tbCheckTime";
             this.tbCheckTime.ReadOnly = true;
             // 
+            // dtiSelect
+            // 
+            // 
+            // 
+            // 
+            this.dtiSelect.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dtiSelect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiSelect.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dtiSelect.ButtonDropDown.Visible = true;
+            this.dtiSelect.IsPopupCalendarOpen = false;
+            this.dtiSelect.Location = new System.Drawing.Point(206, 54);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.dtiSelect.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiSelect.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.dtiSelect.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiSelect.MonthCalendar.DisplayMonth = new System.DateTime(2017, 7, 1, 0, 0, 0, 0);
+            this.dtiSelect.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.dtiSelect.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dtiSelect.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtiSelect.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dtiSelect.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiSelect.MonthCalendar.TodayButtonVisible = true;
+            this.dtiSelect.Name = "dtiSelect";
+            this.dtiSelect.Size = new System.Drawing.Size(179, 21);
+            this.dtiSelect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.dtiSelect.TabIndex = 34;
+            this.dtiSelect.Visible = false;
+            // 
             // FrmOutTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -372,8 +436,10 @@
             this.Controls.Add(this.groupPanel2);
             this.Name = "FrmOutTool";
             this.Text = "FrmOutTool";
+            this.Load += new System.EventHandler(this.FrmOutTool_Load);
             this.groupPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtiSelect)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -404,5 +470,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tbPosition;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbRemarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbCheckTime;
+        private DevComponents.DotNetBar.ButtonX btnAddTool;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtiSelect;
     }
 }

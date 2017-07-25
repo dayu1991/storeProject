@@ -49,5 +49,7 @@ namespace service.toolstrackingsystem
         bool IsExistCategoryByName(string name, int classification);
 
         long AddCateGory(t_ToolType category);
+
+        bool IsExistsInStoryByCode(string toolCode);
     }
 }
