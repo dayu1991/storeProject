@@ -98,15 +98,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cangku_manage_dbDataSet.cs">
-      <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="cangku_manage_dbDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,17 +285,6 @@
       <DependentUpon>MenuInfoTree.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="App_Data\ManageDb.json" />
-    <None Include="cangku_manage_dbDataSet.xsc">
-      <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="cangku_manage_dbDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>cangku_manage_dbDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="cangku_manage_dbDataSet.xss">
-      <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Configs\unity.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

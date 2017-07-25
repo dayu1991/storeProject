@@ -169,6 +169,11 @@ namespace toolstrackingsystem
         private void Print_button_Click(object sender, EventArgs e)
         {
             FrmPrint printFrm = new FrmPrint();
+            PersonInfoEntity personInfo = new PersonInfoEntity();
+            personInfo.PersonCode = PersonCode_textBox.Text;
+            personInfo.PersonName = PersonName_textBox.Text;
+            personInfo.IsReceive = Is_Receive_checkBox.Checked == true ? "1" : "0";
+            printFrm.Tag = personInfo;
             printFrm.ShowDialog();
         }
         /// <summary>

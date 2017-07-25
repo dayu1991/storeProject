@@ -403,7 +403,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(971, 558);
+            this.ClientSize = new System.Drawing.Size(1023, 597);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.groupPanel3);
             this.Name = "FrmScrapToolManage";

@@ -30,13 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
             this.t_PersonInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.t_PersonInfoTableAdapter = new toolstrackingsystem.cangku_manage_dbDataSetTableAdapters.t_PersonInfoTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
+            //this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            //this.t_PersonInfoTableAdapter = new //toolstrackingsystem.cangku_manage_dbDataSetTableAdapters.t_PersonInfoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.t_PersonInfoBindingSource)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // t_PersonInfoBindingSource
+            // 
+            //this.t_PersonInfoBindingSource.DataMember = "t_PersonInfo";
+            //this.t_PersonInfoBindingSource.DataSource = this.cangku_manage_dbDataSet;
+            // 
+            // cangku_manage_dbDataSet
+            // 
+            //this.cangku_manage_dbDataSet.DataSetName = "cangku_manage_dbDataSet";
+            //this.cangku_manage_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -50,19 +60,9 @@
             this.reportViewer1.Size = new System.Drawing.Size(723, 351);
             this.reportViewer1.TabIndex = 0;
             // 
-            // cangku_manage_dbDataSet
-            // 
-            this.cangku_manage_dbDataSet.DataSetName = "cangku_manage_dbDataSet";
-            this.cangku_manage_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // t_PersonInfoBindingSource
-            // 
-            this.t_PersonInfoBindingSource.DataMember = "t_PersonInfo";
-            this.t_PersonInfoBindingSource.DataSource = this.cangku_manage_dbDataSet;
-            // 
             // t_PersonInfoTableAdapter
             // 
-            this.t_PersonInfoTableAdapter.ClearBeforeFill = true;
+            //this.t_PersonInfoTableAdapter.ClearBeforeFill = true;
             // 
             // FrmPrint
             // 
@@ -75,8 +75,8 @@
             this.Text = "打印预览";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmPrint_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.t_PersonInfoBindingSource)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -85,7 +85,5 @@
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource t_PersonInfoBindingSource;
-        private cangku_manage_dbDataSet cangku_manage_dbDataSet;
-        private cangku_manage_dbDataSetTableAdapters.t_PersonInfoTableAdapter t_PersonInfoTableAdapter;
     }
 }
