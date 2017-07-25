@@ -28,8 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Delete_Pack_button = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -37,17 +41,17 @@
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.Print_button = new DevComponents.DotNetBar.ButtonX();
-            this.ToolInfoCode_Detail_textBox = new System.Windows.Forms.TextBox();
+            this.Scrap_ToolInfoCode_Detail_textBox = new System.Windows.Forms.TextBox();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.Delete_button = new DevComponents.DotNetBar.ButtonX();
             this.Search_Scraptool_button = new DevComponents.DotNetBar.ButtonX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.Pack_Code_textBox = new System.Windows.Forms.TextBox();
+            this.Tool_Code_textBox = new System.Windows.Forms.TextBox();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.ToolInfo_dataGridView = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
+            this.Scrap_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel3.SuspendLayout();
             this.groupPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScrapTool_dataGridViewX2)).BeginInit();
@@ -76,7 +80,7 @@
             this.groupPanel3.Controls.Add(this.buttonX1);
             this.groupPanel3.Controls.Add(this.Delete_Pack_button);
             this.groupPanel3.Controls.Add(this.Print_button);
-            this.groupPanel3.Controls.Add(this.ToolInfoCode_Detail_textBox);
+            this.groupPanel3.Controls.Add(this.Scrap_ToolInfoCode_Detail_textBox);
             this.groupPanel3.Controls.Add(this.labelX3);
             this.groupPanel3.Controls.Add(this.Delete_button);
             this.groupPanel3.Controls.Add(this.Search_Scraptool_button);
@@ -155,23 +159,40 @@
             // 
             // ScrapTool_dataGridViewX2
             // 
-            this.ScrapTool_dataGridViewX2.BackgroundColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ScrapTool_dataGridViewX2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.ScrapTool_dataGridViewX2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ScrapTool_dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ScrapTool_dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle8;
             this.ScrapTool_dataGridViewX2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScrapTool_dataGridViewX2.EnableHeadersVisualStyles = false;
             this.ScrapTool_dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.ScrapTool_dataGridViewX2.Location = new System.Drawing.Point(0, 0);
             this.ScrapTool_dataGridViewX2.Name = "ScrapTool_dataGridViewX2";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ScrapTool_dataGridViewX2.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.ScrapTool_dataGridViewX2.RowTemplate.Height = 23;
             this.ScrapTool_dataGridViewX2.Size = new System.Drawing.Size(459, 441);
             this.ScrapTool_dataGridViewX2.TabIndex = 1;
+            this.ScrapTool_dataGridViewX2.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.ScrapTool_dataGridViewX2_RowStateChanged);
             // 
             // buttonX2
             // 
@@ -183,6 +204,7 @@
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX2.TabIndex = 20;
             this.buttonX2.Text = "导出";
+            this.buttonX2.Click += new System.EventHandler(this.buttonX2_Click);
             // 
             // buttonX1
             // 
@@ -194,6 +216,7 @@
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.TabIndex = 19;
             this.buttonX1.Text = "打印";
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
             // Print_button
             // 
@@ -206,12 +229,12 @@
             this.Print_button.TabIndex = 17;
             this.Print_button.Text = "清空";
             // 
-            // ToolInfoCode_Detail_textBox
+            // Scrap_ToolInfoCode_Detail_textBox
             // 
-            this.ToolInfoCode_Detail_textBox.Location = new System.Drawing.Point(65, 27);
-            this.ToolInfoCode_Detail_textBox.Name = "ToolInfoCode_Detail_textBox";
-            this.ToolInfoCode_Detail_textBox.Size = new System.Drawing.Size(125, 21);
-            this.ToolInfoCode_Detail_textBox.TabIndex = 4;
+            this.Scrap_ToolInfoCode_Detail_textBox.Location = new System.Drawing.Point(65, 27);
+            this.Scrap_ToolInfoCode_Detail_textBox.Name = "Scrap_ToolInfoCode_Detail_textBox";
+            this.Scrap_ToolInfoCode_Detail_textBox.Size = new System.Drawing.Size(125, 21);
+            this.Scrap_ToolInfoCode_Detail_textBox.TabIndex = 4;
             // 
             // labelX3
             // 
@@ -247,6 +270,7 @@
             this.Search_Scraptool_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Search_Scraptool_button.TabIndex = 0;
             this.Search_Scraptool_button.Text = "查询";
+            this.Search_Scraptool_button.Click += new System.EventHandler(this.Search_Scraptool_button_Click);
             // 
             // labelX1
             // 
@@ -261,13 +285,13 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "工具编码:";
             // 
-            // Pack_Code_textBox
+            // Tool_Code_textBox
             // 
-            this.Pack_Code_textBox.Location = new System.Drawing.Point(67, 27);
-            this.Pack_Code_textBox.Name = "Pack_Code_textBox";
-            this.Pack_Code_textBox.Size = new System.Drawing.Size(121, 21);
-            this.Pack_Code_textBox.TabIndex = 1;
-            this.Pack_Code_textBox.TextChanged += new System.EventHandler(this.Pack_Code_textBox_TextChanged);
+            this.Tool_Code_textBox.Location = new System.Drawing.Point(67, 27);
+            this.Tool_Code_textBox.Name = "Tool_Code_textBox";
+            this.Tool_Code_textBox.Size = new System.Drawing.Size(121, 21);
+            this.Tool_Code_textBox.TabIndex = 1;
+            this.Tool_Code_textBox.TextChanged += new System.EventHandler(this.Tool_Code_textBox_TextChanged);
             // 
             // groupPanel1
             // 
@@ -275,8 +299,8 @@
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel1.Controls.Add(this.groupPanel2);
             this.groupPanel1.Controls.Add(this.checkBoxX1);
-            this.groupPanel1.Controls.Add(this.Search_buttonX);
-            this.groupPanel1.Controls.Add(this.Pack_Code_textBox);
+            this.groupPanel1.Controls.Add(this.Scrap_buttonX);
+            this.groupPanel1.Controls.Add(this.Tool_Code_textBox);
             this.groupPanel1.Controls.Add(this.labelX1);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(19, 13);
@@ -353,20 +377,36 @@
             // 
             // ToolInfo_dataGridView
             // 
-            this.ToolInfo_dataGridView.BackgroundColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ToolInfo_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.ToolInfo_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ToolInfo_dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ToolInfo_dataGridView.DefaultCellStyle = dataGridViewCellStyle11;
             this.ToolInfo_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ToolInfo_dataGridView.EnableHeadersVisualStyles = false;
             this.ToolInfo_dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.ToolInfo_dataGridView.Location = new System.Drawing.Point(0, 0);
             this.ToolInfo_dataGridView.Name = "ToolInfo_dataGridView";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ToolInfo_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.ToolInfo_dataGridView.RowTemplate.Height = 23;
             this.ToolInfo_dataGridView.Size = new System.Drawing.Size(432, 441);
             this.ToolInfo_dataGridView.TabIndex = 0;
@@ -388,16 +428,17 @@
             this.checkBoxX1.TabIndex = 5;
             this.checkBoxX1.Text = "视觉编码";
             // 
-            // Search_buttonX
+            // Scrap_buttonX
             // 
-            this.Search_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.Search_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Search_buttonX.Location = new System.Drawing.Point(310, 26);
-            this.Search_buttonX.Name = "Search_buttonX";
-            this.Search_buttonX.Size = new System.Drawing.Size(75, 23);
-            this.Search_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.Search_buttonX.TabIndex = 4;
-            this.Search_buttonX.Text = "报废";
+            this.Scrap_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.Scrap_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.Scrap_buttonX.Location = new System.Drawing.Point(310, 26);
+            this.Scrap_buttonX.Name = "Scrap_buttonX";
+            this.Scrap_buttonX.Size = new System.Drawing.Size(75, 23);
+            this.Scrap_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Scrap_buttonX.TabIndex = 4;
+            this.Scrap_buttonX.Text = "报废";
+            this.Scrap_buttonX.Click += new System.EventHandler(this.Scrap_buttonX_Click);
             // 
             // FrmScrapToolManage
             // 
@@ -430,16 +471,16 @@
         private DevComponents.DotNetBar.ButtonX buttonX2;
         private DevComponents.DotNetBar.ButtonX buttonX1;
         private DevComponents.DotNetBar.ButtonX Print_button;
-        private System.Windows.Forms.TextBox ToolInfoCode_Detail_textBox;
+        private System.Windows.Forms.TextBox Scrap_ToolInfoCode_Detail_textBox;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.ButtonX Delete_button;
         private DevComponents.DotNetBar.ButtonX Search_Scraptool_button;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private System.Windows.Forms.TextBox Pack_Code_textBox;
+        private System.Windows.Forms.TextBox Tool_Code_textBox;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.Controls.DataGridViewX ToolInfo_dataGridView;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
-        private DevComponents.DotNetBar.ButtonX Search_buttonX;
+        private DevComponents.DotNetBar.ButtonX Scrap_buttonX;
     }
 }

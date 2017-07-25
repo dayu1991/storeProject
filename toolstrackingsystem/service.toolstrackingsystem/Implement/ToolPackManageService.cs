@@ -22,7 +22,7 @@ namespace service.toolstrackingsystem
         }
         public List<ToolInfoForPackEntity> GetToolInfoForPack(t_ToolInfo toolInfo)
         {
-            string sql = "SELECT ToolBelongName,ToolCategoryName,ToolCode,ToolName,ToolModels,Location,ToolRemarks FROM t_ToolInfo WHERE 1=1 ";
+            string sql = "SELECT TypeName,ChildTypeName,ToolCode,ToolName,Models,Location,Remarks FROM t_ToolInfo WHERE 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrEmpty(toolInfo.PackCode))
             {
@@ -97,7 +97,7 @@ namespace service.toolstrackingsystem
             return _toolPackManageRepository.GetModel(sql,parameter);
         }
         /// <summary>
-        /// 完成组包（待完成）
+        /// 完成组包
         /// </summary>
         /// <returns></returns>
         public bool CompleteToolPack(List<ToolInfoForPackEntity> toolInfoList,string packCode,string packName)

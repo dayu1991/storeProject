@@ -9,6 +9,6 @@ namespace sqlserver.toolstrackingsystem
 {
     public interface IScrapToolInfoManageRepository:IRepositoryBase<t_ScrapToolInfo>
     {
-        
+        bool InsertScrapToolInfo(t_ScrapToolInfo scrapToolInfo);
     }
 }

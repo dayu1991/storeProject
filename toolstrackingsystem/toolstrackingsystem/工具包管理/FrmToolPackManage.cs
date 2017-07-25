@@ -77,13 +77,13 @@ namespace toolstrackingsystem
                 foreach (var item in toolInfoList)
                 {
                     ToolInfoForPackEntity toolInfoInPack = new ToolInfoForPackEntity();
-                    toolInfoInPack.ToolBelongName = item.TypeName;
-                    toolInfoInPack.ToolCategoryName = item.ChildTypeName;
+                    toolInfoInPack.TypeName = item.TypeName;
+                    toolInfoInPack.ChildTypeName = item.ChildTypeName;
                     toolInfoInPack.ToolCode = item.ToolCode;
                     toolInfoInPack.ToolName = item.ToolName;
-                    toolInfoInPack.ToolModels = item.Models;
+                    toolInfoInPack.Models = item.Models;
                     toolInfoInPack.Location = item.Location;
-                    toolInfoInPack.ToolRemarks = item.Remarks;
+                    toolInfoInPack.Remarks = item.Remarks;
                     resultEntity.Add(toolInfoInPack);
                 }
                 //resultEntity = _toolPackManageService.GetToolInfoForPack(toolInfo);
@@ -141,12 +141,12 @@ namespace toolstrackingsystem
                     return;
                 }
                 ToolInfoForPackEntity result = new ToolInfoForPackEntity();
-                result.ToolBelongName = toolInfo.TypeName;
-                result.ToolCategoryName = toolInfo.ChildTypeName;
+                result.TypeName = toolInfo.TypeName;
+                result.ChildTypeName = toolInfo.ChildTypeName;
                 result.ToolCode = toolInfo.ToolCode;
                 result.ToolName = toolInfo.ToolName;
-                result.ToolModels = toolInfo.Models;
-                result.ToolRemarks = toolInfo.Remarks;
+                result.Models = toolInfo.Models;
+                result.Remarks = toolInfo.Remarks;
                 result.Location = toolInfo.Location;
                 foreach (var item in resultEntity)
                 {

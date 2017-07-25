@@ -98,6 +98,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cangku_manage_dbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +152,12 @@
     </Compile>
     <Compile Include="工具包管理\FrmToolPackManage.Designer.cs">
       <DependentUpon>FrmToolPackManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="工具报废\FrmPrintScrapTools.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="工具报废\FrmPrintScrapTools.Designer.cs">
+      <DependentUpon>FrmPrintScrapTools.cs</DependentUpon>
     </Compile>
     <Compile Include="工具报废\FrmScrapToolManage.cs">
       <SubType>Form</SubType>
@@ -247,9 +258,13 @@
     <EmbeddedResource Include="工具包管理\FrmToolPackManage.resx">
       <DependentUpon>FrmToolPackManage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="工具报废\FrmPrintScrapTools.resx">
+      <DependentUpon>FrmPrintScrapTools.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="工具报废\FrmScrapToolManage.resx">
       <DependentUpon>FrmScrapToolManage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="工具报废\Report2.rdlc" />
     <EmbeddedResource Include="工具管理\DigAddBlongTo.resx">
       <DependentUpon>DigAddBlongTo.cs</DependentUpon>
     </EmbeddedResource>
@@ -285,6 +300,17 @@
       <DependentUpon>MenuInfoTree.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="App_Data\ManageDb.json" />
+    <None Include="cangku_manage_dbDataSet.xsc">
+      <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="cangku_manage_dbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>cangku_manage_dbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="cangku_manage_dbDataSet.xss">
+      <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Configs\unity.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

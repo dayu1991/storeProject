@@ -48,8 +48,10 @@
     <Compile Include="view\MenuInfoEntity.cs" />
     <Compile Include="view\PersonInfoEntity.cs" />
     <Compile Include="view\RoleInfoEntity.cs" />
+    <Compile Include="view\ScrapToolInfoEntity.cs" />
     <Compile Include="view\ToolInfoEntity.cs" />
     <Compile Include="view\ToolInfoForPackEntity.cs" />
+    <Compile Include="view\ToolInfoForScrapFrmEntity.cs" />
     <Compile Include="view\UserInfoEntity.cs" />
   </ItemGroup>
   <ItemGroup>

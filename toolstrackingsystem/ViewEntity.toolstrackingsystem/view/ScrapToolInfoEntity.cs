@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace ViewEntity.toolstrackingsystem
 {
-    public class ToolInfoForPackEntity
+    public class ScrapToolInfoEntity
     {
-        public string TypeName { get; set; }
-        public string ChildTypeName { get; set; }
         public string ToolCode { get; set; }
         public string ToolName { get; set; }
-        public string Models { get; set; }
-        public string Location { get; set; }
+        public string ScrapTime { get; set; }
         public string Remarks { get; set; }
+        public string OptionPerson { get; set; }
     }
 }
