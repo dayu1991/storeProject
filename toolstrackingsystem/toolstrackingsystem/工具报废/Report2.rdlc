@@ -12,7 +12,7 @@
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>5.56917cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -106,7 +106,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>废除时间</Value>
+                              <Value>报废时间</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>11pt</FontSize>
@@ -400,7 +400,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet2</DataSetName>
         <Height>1.2cm</Height>
-        <Width>12.5cm</Width>
+        <Width>15.56917cm</Width>
         <Style>
           <Border>
             <Style>None</Style>

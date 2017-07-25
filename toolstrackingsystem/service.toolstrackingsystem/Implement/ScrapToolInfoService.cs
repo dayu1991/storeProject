@@ -28,7 +28,7 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         public List<ToolInfoForScrapFrmEntity> GetToolInfoForScrapList(string toolCode)
         {
-            string sql = "SELECT TypeName,ChildName,ToolCode,ToolName,PackCode,PackName,Models,Location,Remarks FROM t_ToolInfo WHERE 1=1 AND IsActive=1 AND ToolCode=@toolCode";
+            string sql = "SELECT TypeName,ChildTypeName,ToolCode,ToolName,PackCode,PackName,Models,Location,Remarks FROM t_ToolInfo WHERE 1=1 AND IsActive=1 AND ToolCode=@toolCode";
             DynamicParameters parameter = new DynamicParameters();
             parameter.Add("toolCode",toolCode);
             return _mutiTableQueryRepository.QueryList<ToolInfoForScrapFrmEntity>(sql, parameter).ToList();

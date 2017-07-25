@@ -76,6 +76,7 @@ namespace service.toolstrackingsystem
             {
                 item.PackCode = null;
                 item.PackName = null;
+                item.CarGroupInfo = null;
                 //3.保存数据到数据库中
                 if (!_toolPackManageRepository.Update(item))
                 {
@@ -100,7 +101,7 @@ namespace service.toolstrackingsystem
         /// 完成组包
         /// </summary>
         /// <returns></returns>
-        public bool CompleteToolPack(List<ToolInfoForPackEntity> toolInfoList,string packCode,string packName)
+        public bool CompleteToolPack(List<ToolInfoForPackEntity> toolInfoList,string packCode,string packName,string carGroupInfo)
         {
             bool IsSuccess = false;
             //1.删除已有的包信息
@@ -110,6 +111,7 @@ namespace service.toolstrackingsystem
             {
                 item.PackCode = null;
                 item.PackName = null;
+                item.CarGroupInfo = null;
                 if (!_toolPackManageRepository.Update(item))
                 {
                     return IsSuccess;
@@ -122,6 +124,7 @@ namespace service.toolstrackingsystem
                 toolInfo = GetToolInfoByToolCode(item.ToolCode);
                 toolInfo.PackCode = packCode;
                 toolInfo.PackName = packName;
+                toolInfo.CarGroupInfo = carGroupInfo;
                 //2.更新最新的包信息
                 if (!_toolPackManageRepository.Update(toolInfo))
                 {

@@ -43,7 +43,15 @@ namespace toolstrackingsystem
 
                 dr[1] = "1";
 
-                dt.Rows.Add(dr); 
+                dt.Rows.Add(dr);
+
+                DataRow dr1 = dt.NewRow();
+
+                dr1[0] = "乘务工具包";
+
+                dr1[1] = "2";
+
+                dt.Rows.Add(dr1);
 
                 this.type_comboBox.DataSource = dt;
 
@@ -91,6 +99,11 @@ namespace toolstrackingsystem
                 {
                     Pack_Code_textBox.Text = toolInfoList[0].PackCode;
                     Pack_Name_textBox.Text = toolInfoList[0].PackName;
+                    if (!string.IsNullOrEmpty(toolInfoList[0].CarGroupInfo))
+                    {
+                        type_comboBox.SelectedValue = "2";
+                        cargroupinfo_textBox.Text = toolInfoList[0].CarGroupInfo;
+                    }
                 }
                 ToolInfoList_dataGridViewX.DataSource = resultEntity;
                 for (int i = 0; i < ToolInfoList_dataGridViewX.Columns.Count; i++)
@@ -275,7 +288,16 @@ namespace toolstrackingsystem
                     Pack_Name_textBox.Focus();
                     return;
                 }
-                if (_toolPackManageService.CompleteToolPack(resultEntity, packCode, packName))
+                if (type_comboBox.SelectedValue.ToString() == "2")
+                {
+                    if (cargroupinfo_textBox.Text == "")
+                    {
+                        MessageBox.Show("车组号不能为空");
+                        return;
+                    }
+                }
+                string carGroupInfo = cargroupinfo_textBox.Text;
+                if (_toolPackManageService.CompleteToolPack(resultEntity, packCode, packName, carGroupInfo))
                 {
                     MessageBox.Show("组包完成");
                 }
@@ -306,6 +328,18 @@ namespace toolstrackingsystem
                     MessageBox.Show("删除成功");
                     Search_buttonX_Click(sender, e);
                 }
+            }
+        }
+
+        private void type_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (type_comboBox.SelectedValue.ToString() == "2")
+            {
+                cargroupinfo_textBox.Enabled = true;
+            }
+            else {
+                cargroupinfo_textBox.Text = "";
+                cargroupinfo_textBox.Enabled = false;
             }
         }
     }

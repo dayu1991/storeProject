@@ -34,8 +34,6 @@ namespace toolstrackingsystem
             this.EnableGlass = false;
             InitializeComponent();
         }
-
-
         private void ToolInfoManage_Load(object sender, EventArgs e)
         {
             

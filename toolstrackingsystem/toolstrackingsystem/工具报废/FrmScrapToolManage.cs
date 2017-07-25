@@ -59,7 +59,7 @@ namespace toolstrackingsystem
         {
             try
             {
-                string toolCode = Tool_Code_textBox.Text;
+                    string toolCode = Tool_Code_textBox.Text;
                 if (string.IsNullOrEmpty(toolCode))
                 {
                     return;
@@ -70,15 +70,15 @@ namespace toolstrackingsystem
                     ToolInfo_dataGridView.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
                 }
                 ToolInfo_dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                ToolInfo_dataGridView.Columns[0].HeaderText = "配属";
-                ToolInfo_dataGridView.Columns[1].HeaderText = "类别";
-                ToolInfo_dataGridView.Columns[2].HeaderText = "工具编码";
-                ToolInfo_dataGridView.Columns[3].HeaderText = "名称";
-                ToolInfo_dataGridView.Columns[4].HeaderText = "型号";
-                ToolInfo_dataGridView.Columns[5].HeaderText = "位置";
-                ToolInfo_dataGridView.Columns[6].HeaderText = "备注";
-                ToolInfo_dataGridView.Columns[7].HeaderText = "包编码";
-                ToolInfo_dataGridView.Columns[8].HeaderText = "包名称";
+                ToolInfo_dataGridView.Columns[0].HeaderText = "包编码";
+                ToolInfo_dataGridView.Columns[1].HeaderText = "包名称";
+                ToolInfo_dataGridView.Columns[2].HeaderText = "配属";
+                ToolInfo_dataGridView.Columns[3].HeaderText = "类别";
+                ToolInfo_dataGridView.Columns[4].HeaderText = "工具编码";
+                ToolInfo_dataGridView.Columns[5].HeaderText = "名称";
+                ToolInfo_dataGridView.Columns[6].HeaderText = "型号";
+                ToolInfo_dataGridView.Columns[7].HeaderText = "位置";
+                ToolInfo_dataGridView.Columns[8].HeaderText = "备注";
             }
             catch (Exception ex)
             {
@@ -98,14 +98,19 @@ namespace toolstrackingsystem
         {
             try
             {
-                string toolCode = ToolInfo_dataGridView.Rows[selectIndex].Cells[2].Value.ToString();
+                if (ToolInfo_dataGridView.Rows.Count <= 0)
+                {
+                    MessageBox.Show("请先选择需要作废的工具");
+                    return;
+                }
+                string toolCode = ToolInfo_dataGridView.Rows[selectIndex].Cells[4].Value.ToString();
                 if (string.IsNullOrEmpty(toolCode))
                 {
-                    MessageBox.Show("请选择需要作废的工具信息");
+                    MessageBox.Show("请选择需要作废的工具");
                     return;
                 }
                 t_ScrapToolInfo scrapToolInfo = new t_ScrapToolInfo();
-                scrapToolInfo = _scrapToolInfoService.ScrapTool(toolCode, userInfo.UserRole);
+                scrapToolInfo = _scrapToolInfoService.ScrapTool(toolCode, userInfo.UserCode);
                 if (scrapToolInfo == null)
                 {
                     MessageBox.Show("作废失败，请重试");
@@ -119,16 +124,18 @@ namespace toolstrackingsystem
                 toolInfo.OptionPerson = scrapToolInfo.OptionPerson;
                 infoList.Add(toolInfo);
                 ScrapTool_dataGridViewX2.DataSource = infoList;
-                for (int i = 0; i < ToolInfo_dataGridView.Columns.Count; i++)
+                for (int i = 0; i < ScrapTool_dataGridViewX2.Columns.Count; i++)
                 {
                     ScrapTool_dataGridViewX2.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
                 }
                 ScrapTool_dataGridViewX2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 ScrapTool_dataGridViewX2.Columns[0].HeaderText = "工具编码";
-                ToolInfo_dataGridView.Columns[1].HeaderText = "名称";
-                ToolInfo_dataGridView.Columns[2].HeaderText = "废除时间";
-                ToolInfo_dataGridView.Columns[3].HeaderText = "备注";
-                ToolInfo_dataGridView.Columns[4].HeaderText = "操作人员";
+                ScrapTool_dataGridViewX2.Columns[1].HeaderText = "名称";
+                ScrapTool_dataGridViewX2.Columns[2].HeaderText = "报废时间";
+                ScrapTool_dataGridViewX2.Columns[3].HeaderText = "备注";
+                ScrapTool_dataGridViewX2.Columns[4].HeaderText = "操作人员";
+                //刷新页面
+                Tool_Code_textBox_TextChanged(sender,e);
             }
             catch (Exception ex)
             {
@@ -147,14 +154,14 @@ namespace toolstrackingsystem
                 string toolCode = Scrap_ToolInfoCode_Detail_textBox.Text;
                 infoList = _scrapToolInfoService.GetScrapToolInfoList(toolCode);
                 ScrapTool_dataGridViewX2.DataSource = infoList;
-                for (int i = 0; i < ToolInfo_dataGridView.Columns.Count; i++)
+                for (int i = 0; i < ScrapTool_dataGridViewX2.Columns.Count; i++)
                 {
                     ScrapTool_dataGridViewX2.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
                 }
                 ScrapTool_dataGridViewX2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 ScrapTool_dataGridViewX2.Columns[0].HeaderText = "工具编码";
                 ScrapTool_dataGridViewX2.Columns[1].HeaderText = "名称";
-                ScrapTool_dataGridViewX2.Columns[2].HeaderText = "废除时间";
+                ScrapTool_dataGridViewX2.Columns[2].HeaderText = "报废时间";
                 ScrapTool_dataGridViewX2.Columns[3].HeaderText = "备注";
                 ScrapTool_dataGridViewX2.Columns[4].HeaderText = "操作人员";
 
@@ -186,7 +193,7 @@ namespace toolstrackingsystem
                     {
                         book = new NPOI.XSSF.UserModel.XSSFWorkbook();
                     }
-                    NPOI.SS.UserModel.ISheet sheet = book.CreateSheet("人员列表");
+                    NPOI.SS.UserModel.ISheet sheet = book.CreateSheet("报废工具列表");
                     // 添加表头
                     NPOI.SS.UserModel.IRow row = sheet.CreateRow(0);
                     for (int i = 0; i < ScrapTool_dataGridViewX2.Columns.Count; i++)

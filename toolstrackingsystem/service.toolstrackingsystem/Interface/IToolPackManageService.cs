@@ -14,6 +14,6 @@ namespace service.toolstrackingsystem
         bool DeletePackInfo(string packCode);
         List<t_ToolInfo> GetToolInfoInPack(t_ToolInfo toolInfo);
         t_ToolInfo GetToolInfoByToolCode(string toolCode);
-        bool CompleteToolPack(List<ToolInfoForPackEntity> toolInfoList,string packCode,string packName);
+        bool CompleteToolPack(List<ToolInfoForPackEntity> toolInfoList,string packCode,string packName,string carGroupInfo);
     }
 }
