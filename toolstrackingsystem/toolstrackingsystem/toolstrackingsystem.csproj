@@ -147,6 +147,18 @@
     <Compile Include="作业人员\FrmWorkerManager.Designer.cs">
       <DependentUpon>FrmWorkerManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="入库查询\FrmInStoreManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="入库查询\FrmInStoreManage.Designer.cs">
+      <DependentUpon>FrmInStoreManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="入库查询\FrmPrintToolInStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="入库查询\FrmPrintToolInStore.Designer.cs">
+      <DependentUpon>FrmPrintToolInStore.cs</DependentUpon>
+    </Compile>
     <Compile Include="工具包管理\FrmToolPackManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +261,12 @@
     <Compile Include="角色管理\MenuInfoTree.Designer.cs">
       <DependentUpon>MenuInfoTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="超时未归还\FrmNotBackTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="超时未归还\FrmNotBackTool.Designer.cs">
+      <DependentUpon>FrmNotBackTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="领用工具\FrmOutTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +297,13 @@
     <EmbeddedResource Include="作业人员\Frmworkermanager.resx">
       <DependentUpon>FrmWorkerManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="入库查询\FrmInStoreManage.resx">
+      <DependentUpon>FrmInStoreManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="入库查询\FrmPrintToolInStore.resx">
+      <DependentUpon>FrmPrintToolInStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="入库查询\Report4.rdlc" />
     <EmbeddedResource Include="工具包管理\FrmToolPackManage.resx">
       <DependentUpon>FrmToolPackManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -334,6 +359,9 @@
       <DependentUpon>MenuInfoTree.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="App_Data\ManageDb.json" />
+    <EmbeddedResource Include="超时未归还\FrmNotBackTool.resx">
+      <DependentUpon>FrmNotBackTool.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="领用工具\FrmOutTool.resx">
       <DependentUpon>FrmOutTool.cs</DependentUpon>
     </EmbeddedResource>

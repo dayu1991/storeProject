@@ -15,5 +15,11 @@ namespace service.toolstrackingsystem
         /// </summary>
         /// <returns></returns>
         List<CurrentToolInfoEntity> GeCurrentCountToolList(t_CurrentCountInfo countInfo, int pageIndex, int pageSize, out long Count);
+        /// <summary>
+        /// 入库查询所需的工具信息
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <returns></returns>
+        List<ToolInfoInStoreEntity> GetToolInfoInStoreList(string toolCode, int pageIndex, int pageSize, out long Count);
     }
 }

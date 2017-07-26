@@ -23,7 +23,7 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         public List<CurrentToolInfoEntity> GeCurrentCountToolList(t_CurrentCountInfo countInfo, int pageIndex, int pageSize, out long Count)
         {
-            string sql = @"SELECT [TypeName]
+            string sql = @"SELECT TOP "+pageSize+@"[TypeName]
                                   ,[ChildTypeName]
                                   ,[PackCode]
                                   ,[PackName]
@@ -73,6 +73,29 @@ namespace service.toolstrackingsystem
             sqlNotStr += ")";
             string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
             return _mutiTableQueryRepository.QueryList<CurrentToolInfoEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
+        }
+        /// <summary>
+        /// 入库查询所需的工具信息
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <returns></returns>
+        public List<ToolInfoInStoreEntity> GetToolInfoInStoreList(string toolCode, int pageIndex, int pageSize, out long Count)
+        {
+            string sql = @"select TOP " + pageSize + "ins.InStoreTime,tool.OptionPerson,tool.TypeName,tool.ChildTypeName,tool.Models,tool.Location,tool.PackCode,tool.PackName,tool.ToolCode,tool.ToolName,tool.Remarks,tool.CheckTime from t_InStore ins join t_ToolInfo tool on ins.ToolCode = tool.ToolCode WHERE 1=1 ";
+            string sqlNotStr = "tool.toolID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " toolID FROM t_ToolInfo WHERE 1=1 ";
+            string sqlCount = "SELECT COUNT(*) FROM t_ToolInfo tool WHERE 1=1 ";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrEmpty(toolCode))
+            {
+                string str = " AND tool.ToolCode LIKE @toolCode ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("toolCode", string.Format("%{0}%", toolCode));
+            }
+            sqlNotStr += ")";
+            string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
+            return _mutiTableQueryRepository.QueryList<ToolInfoInStoreEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
         }
     } 
 }
