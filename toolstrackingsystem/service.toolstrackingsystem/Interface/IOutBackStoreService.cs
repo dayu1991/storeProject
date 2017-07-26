@@ -15,6 +15,6 @@ namespace service.toolstrackingsystem
         /// <param name="toolCode"></param>
         /// <param name="personCode"></param>
         /// <returns></returns>
-        List<NotBackToolEntity> GetNotBackToolInfoList(string toolCode, string personCode);
+        List<NotBackToolEntity> GetNotBackToolInfoList(string toolCode, string personCode,int pageIndex,int pageSize,out long Count);
     }
 }

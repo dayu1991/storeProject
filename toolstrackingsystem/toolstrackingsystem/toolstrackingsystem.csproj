@@ -261,6 +261,12 @@
     <Compile Include="超时未归还\FrmNotBackTool.Designer.cs">
       <DependentUpon>FrmNotBackTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="超时未归还\FrmPrintNotBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="超时未归还\FrmPrintNotBack.Designer.cs">
+      <DependentUpon>FrmPrintNotBack.cs</DependentUpon>
+    </Compile>
     <Compile Include="领用工具\FrmOutTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +359,10 @@
     <EmbeddedResource Include="超时未归还\FrmNotBackTool.resx">
       <DependentUpon>FrmNotBackTool.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="超时未归还\FrmPrintNotBack.resx">
+      <DependentUpon>FrmPrintNotBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="超时未归还\Report5.rdlc" />
     <EmbeddedResource Include="领用工具\FrmOutTool.resx">
       <DependentUpon>FrmOutTool.cs</DependentUpon>
     </EmbeddedResource>

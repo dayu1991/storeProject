@@ -1,22 +1,53 @@
-﻿using System;
+﻿using Dapper;
+using sqlserver.toolstrackingsystem;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewEntity.toolstrackingsystem;
 
 namespace service.toolstrackingsystem
 {
     public class OutBackStoreService : IOutBackStoreService
     {
+        private readonly IMultiTableQueryRepository _mutiTableQueryRepository;
+        public OutBackStoreService(IMultiTableQueryRepository multiTableQueryRepository)
+        {
+            _mutiTableQueryRepository = multiTableQueryRepository;
+        }
         /// <summary>
         /// 获取超时未归还的工具信息
         /// </summary>
         /// <param name="toolCode"></param>
         /// <param name="personCode"></param>
         /// <returns></returns>
-        public List<ViewEntity.toolstrackingsystem.NotBackToolEntity> GetNotBackToolInfoList(string toolCode, string personCode)
+        public List<NotBackToolEntity> GetNotBackToolInfoList(string toolCode, string personCode, int pageIndex, int pageSize, out long Count)
         {
-            throw new NotImplementedException();
+            string sql = @"SELECT top " + pageSize + @" obs.ToolCode,obs.ToolName,obs.PersonCode,OBS.PersonName,obs.OutStoreTime,obs.OptionPerson,obs.UserTimeInfo,ti.TypeName,ti.ChildTypeName,ti.PackCode,ti.PackName from t_OutBackStore obs join t_ToolInfo ti on obs.ToolCode = ti.ToolCode where obs.IsBack='0' and obs.UserTimeInfo< GETDATE()  ";
+            string sqlNotStr = "ti.ToolID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " ToolID FROM t_ToolInfo WHERE 1=1 ";
+            string sqlCount = "SELECT COUNT(*) FROM t_ToolInfo WHERE 1=1 ";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrEmpty(toolCode))
+            {
+                string str = " AND obs.ToolCode LIKE @toolCode ";
+                sql += str;
+                sqlCount += " AND ToolCode LIKE @toolCode ";
+                sqlNotStr += " AND ToolCode LIKE @toolCode "; ;
+                parameters.Add("toolCode", string.Format("%{0}%", toolCode));
+            }
+            if (!string.IsNullOrEmpty(personCode))
+            {
+                string str = " AND obs.PersonCode LIKE @personCode ";
+                sql += str;
+                sqlCount += " AND PersonCode LIKE @personCode ";
+                sqlNotStr += " AND PersonCode LIKE @personCode ";
+                parameters.Add("personCode", string.Format("%{0}%", personCode));
+            }
+            sqlNotStr += ")";
+            string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
+            return _mutiTableQueryRepository.QueryList<NotBackToolEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
+
         }
     }
 }
