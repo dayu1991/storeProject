@@ -10,5 +10,7 @@ namespace sqlserver.toolstrackingsystem
     public interface IInStoreRepository : IRepositoryBase<t_InStore>
     {
         bool IsExistsInStoryByCode(string toolCode);
+
+        bool DeleteByCode(string toolCode);
     }
 }

@@ -49,6 +49,38 @@ namespace toolstrackingsystem
                 return;
             }
             var person = _personManageService.GetPersonInfo(userCode);
+            if (person.IsReceive == "1")
+            {
+                string desc = tbEditoutdescribes.Text;
+                string endDate = "";
+                var selectValue = this.cbEditOutTime.SelectedText;
+                if (selectValue == "自定义")
+                {
+                    endDate = dtiSelect.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                }
+                else {
+                    var hours = this.cbEditOutTime.SelectedValue.ToString();
+                    endDate = DateTime.Now.AddHours(int.Parse(hours)).ToString("yyyy-MM-dd HH:mm:ss");
+                }
+                var successCodes = "";
+                foreach (var entity in ToolInfoList)
+                {
+
+                    if (_toolInfoService.IsExistsInStoryByCode(entity.ToolCode) && _toolInfoService.OutStore(entity, person, LoginHelper.UserCode, endDate, desc))
+                    {
+                        successCodes += entity.ToolCode;
+                    }
+                }
+
+                MessageBox.Show(string.Format("领用成功，领用成功工具{0}！", successCodes));
+                ToolInfoList = new List<t_ToolInfo>();
+                this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+                return;
+            }
+            else {
+                MessageBox.Show("用户没有领用权限！");
+                return;
+            }
         }
 
         private void btnOutContinue_Click(object sender, EventArgs e)

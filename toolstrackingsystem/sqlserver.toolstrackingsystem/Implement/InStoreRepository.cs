@@ -33,5 +33,27 @@ namespace sqlserver.toolstrackingsystem
             return false;
         }
 
+        public bool DeleteByCode(string toolCode)
+        {
+            string sql = "delete from [dbo].[t_InStore] where [ToolCode]=@ToolCode";
+            var sqlDy = new DynamicParameters();
+            sqlDy.Add("ToolCode", toolCode);
+            var result = ExcuteScalar(sql, sqlDy);
+            if (result != null && !string.IsNullOrWhiteSpace(result.ToString()))
+            {
+                int resultInt = 0;
+                if (int.TryParse(result.ToString(), out resultInt))
+                {
+                    return resultInt > 0;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
+
     }
 }

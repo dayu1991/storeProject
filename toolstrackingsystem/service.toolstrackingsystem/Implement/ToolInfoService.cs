@@ -16,19 +16,23 @@ namespace service.toolstrackingsystem
               private IInStoreRepository _inStoreRepository;
 
               private ICurrentCountInfoRepository _currentCountInfoRepository;
+              private IOutBackStoreRepository _outBackStoreRepository;
+
 
         private IMultiTableQueryRepository _multiTableQueryRepository;
         public ToolInfoService(IToolCategoryInfoRepository toolCategoryInfoRepository,
             IToolInfoRepository toolInfoRepository, 
             IMultiTableQueryRepository multiTableQueryRepository,
             IInStoreRepository inStoreRepository,
-            ICurrentCountInfoRepository currentCountInfoRepository)
+            ICurrentCountInfoRepository currentCountInfoRepository,
+            IOutBackStoreRepository outBackStoreRepository)
        {
            _toolCategoryInfoRepository = toolCategoryInfoRepository;
            _toolInfoRepository = toolInfoRepository;
            _multiTableQueryRepository = multiTableQueryRepository;
             _inStoreRepository=inStoreRepository;
             _currentCountInfoRepository = currentCountInfoRepository;
+            _outBackStoreRepository = outBackStoreRepository;
        }
 
         public List<t_ToolType> GetCategoryByClassify(int classifyType)
@@ -116,6 +120,46 @@ namespace service.toolstrackingsystem
             return _inStoreRepository.IsExistsInStoryByCode(toolCode);
         }
 
+        public bool OutStore(t_ToolInfo entity, t_PersonInfo person, string userCode,string toDate,string describ)
+        {
+            _inStoreRepository.DeleteByCode(entity.ToolCode);
+            var outBackStore = new t_OutBackStore();
+            outBackStore.ToolCode = entity.ToolCode;
+            outBackStore.ToolName = entity.ToolName;
+            outBackStore.OutStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            outBackStore.PersonCode = person.PersonCode;
+            outBackStore.PersonName = person.PersonName;
+
+            outBackStore.UserTimeInfo = toDate;
+            outBackStore.IsBack = "0";
+            outBackStore.outdescribes = toDate;
+            outBackStore.OptionPerson = userCode;
+            outBackStore.IsCredit = "1";
+
+            _outBackStoreRepository.Add(outBackStore);
+
+            var currentCount = new t_CurrentCountInfo();
+            currentCount.TypeName = entity.TypeName;
+            currentCount.ChildTypeName = entity.ChildTypeName;
+            currentCount.PackCode = entity.PackCode;
+            currentCount.PackName = entity.PackName;
+            currentCount.ToolCode = entity.ToolCode;
+
+
+            currentCount.ToolName = entity.ToolName;
+            currentCount.Models = entity.Models;
+            currentCount.Location = entity.Location;
+            currentCount.Remarks = entity.Remarks;
+            currentCount.OutStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            currentCount.OptionType = "领用";
+            currentCount.PersonCode = person.PersonCode;
+            currentCount.PersonName = person.PersonName;
+            currentCount.describes = describ;
+            currentCount.OptionPerson = userCode;
+            return _currentCountInfoRepository.Add(currentCount)>0;
+
+        }
 
     }
 }

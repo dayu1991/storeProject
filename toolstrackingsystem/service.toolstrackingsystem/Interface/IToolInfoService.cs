@@ -51,5 +51,7 @@ namespace service.toolstrackingsystem
         long AddCateGory(t_ToolType category);
 
         bool IsExistsInStoryByCode(string toolCode);
+
+        bool OutStore(t_ToolInfo entity, t_PersonInfo person, string userCode, string toDate, string describ);
     }
 }
