@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewEntity.toolstrackingsystem;
 using ViewEntity.toolstrackingsystem.view;
 
 namespace service.toolstrackingsystem
@@ -53,5 +54,11 @@ namespace service.toolstrackingsystem
         bool IsExistsInStoryByCode(string toolCode);
 
         bool OutStore(t_ToolInfo entity, t_PersonInfo person, string userCode, string toDate, string describ);
+
+        t_OutBackStore GetToolOutByCode(string toolCode);
+
+        bool IsExistsOutStoreByCode(string toolcode, string isBack);
+
+        bool BackStore(OutBackStoreEntity entity, t_PersonInfo person, string opeartPerson, string desc);
     }
 }

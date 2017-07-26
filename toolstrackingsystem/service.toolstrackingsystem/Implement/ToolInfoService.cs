@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewEntity.toolstrackingsystem;
 using ViewEntity.toolstrackingsystem.view;
 
 namespace service.toolstrackingsystem
@@ -160,6 +161,57 @@ namespace service.toolstrackingsystem
             return _currentCountInfoRepository.Add(currentCount)>0;
 
         }
+
+        public t_OutBackStore GetToolOutByCode(string toolCode)
+        {
+            return _outBackStoreRepository.GetToolOutByCode(toolCode);
+        }
+        public bool IsExistsOutStoreByCode(string toolcode, string isBack)
+        {
+            return _outBackStoreRepository.IsExistsByCode(toolcode, isBack);
+        }
+        public bool BackStore(OutBackStoreEntity entity, t_PersonInfo person, string opeartPerson, string desc)
+        {
+            var entityInStory = new t_InStore();
+            entityInStory.InStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            entityInStory.ToolCode = entity.ToolCode;
+            entityInStory.ToolName = entity.ToolName;
+            entityInStory.TypeName = entity.TypeName;
+            entityInStory.ChildTypeName = entity.ChildTypeName;
+            entityInStory.OptionPerson = opeartPerson;
+            _inStoreRepository.Add(entityInStory);
+
+            t_OutBackStore entityOut = _outBackStoreRepository.GetToolOutByCode(entity.ToolCode);
+            entityOut.IsBack = "1";
+            entityOut.BackTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            entityOut.BackPesonCode = person.PersonCode;
+            entityOut.BackPersonName = person.PersonName;
+            entityOut.backdescribes = desc;
+            _outBackStoreRepository.Update(entityOut);
+
+            var entity1 = new t_CurrentCountInfo();
+            entity1.TypeName = entity.TypeName;
+            entity1.ChildTypeName = entity.ChildTypeName;
+            entity1.ToolCode = entity.ToolCode;
+            entity1.ToolName = entity.ToolName;
+            entity1.Models = entity.Models;
+            entity1.Location = entity.Location;
+            entity1.Remarks = entity.Remarks;
+            entity1.BackTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            entity1.OptionType = "归还";
+            entity1.PersonCode = entity.PersonCode;
+            entity1.PersonName = entity.PersonName;
+
+            entity1.BackPesonCode = person.PersonCode;
+            entity1.BackPersonName = person.PersonName;
+
+            entity1.describes = desc;
+
+            entity1.OptionPerson = opeartPerson;
+            return _currentCountInfoRepository.Add(entity1)>0;
+        }
+
+
 
     }
 }
