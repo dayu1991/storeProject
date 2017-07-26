@@ -255,6 +255,12 @@
     <Compile Include="角色管理\MenuInfoTree.Designer.cs">
       <DependentUpon>MenuInfoTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="超时未归还\FrmNotBackTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="超时未归还\FrmNotBackTool.Designer.cs">
+      <DependentUpon>FrmNotBackTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="领用工具\FrmOutTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -344,6 +350,9 @@
       <DependentUpon>MenuInfoTree.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="App_Data\ManageDb.json" />
+    <EmbeddedResource Include="超时未归还\FrmNotBackTool.resx">
+      <DependentUpon>FrmNotBackTool.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="领用工具\FrmOutTool.resx">
       <DependentUpon>FrmOutTool.cs</DependentUpon>
     </EmbeddedResource>

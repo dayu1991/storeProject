@@ -57,6 +57,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Implement\CurrentCountInfoService.cs" />
     <Compile Include="Implement\MenuManageService.cs" />
+    <Compile Include="Implement\OutBackStoreService.cs" />
     <Compile Include="Implement\PersonManageService.cs" />
     <Compile Include="Implement\RoleManageService.cs" />
     <Compile Include="Implement\ScrapToolInfoService.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Implement\UserManageService.cs" />
     <Compile Include="Interface\ICurrentCountInfoService.cs" />
     <Compile Include="Interface\IMenuManageService.cs" />
+    <Compile Include="Interface\IOutBackStoreService.cs" />
     <Compile Include="Interface\IPersonManageService.cs" />
     <Compile Include="Interface\IRoleManageService.cs" />
     <Compile Include="Interface\IScrapToolInfoService.cs" />
