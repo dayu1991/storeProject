@@ -201,6 +201,12 @@
     <Compile Include="流水账\FrmCurrentCountManage.Designer.cs">
       <DependentUpon>FrmCurrentCountManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="流水账\PrintCurrentCountInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="流水账\PrintCurrentCountInfo.Designer.cs">
+      <DependentUpon>PrintCurrentCountInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="用户管理\FrmEditUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,6 +302,10 @@
     <EmbeddedResource Include="流水账\FrmCurrentCountManage.resx">
       <DependentUpon>FrmCurrentCountManage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="流水账\PrintCurrentCountInfo.resx">
+      <DependentUpon>PrintCurrentCountInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="流水账\Report3.rdlc" />
     <EmbeddedResource Include="用户管理\FrmEditUser.resx">
       <DependentUpon>FrmEditUser.cs</DependentUpon>
     </EmbeddedResource>
