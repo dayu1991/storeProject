@@ -22,7 +22,7 @@ namespace toolstrackingsystem
 {
     public partial class FrmOutTool : Office2007RibbonForm
     {
-        ILog logger = log4net.LogManager.GetLogger(typeof(ToolInfoManage));
+        ILog logger = log4net.LogManager.GetLogger(typeof(FrmOutTool));
         private IUserManageService _userManageService;
         private IToolInfoService _toolInfoService;
         private IPersonManageService _personManageService;
@@ -49,6 +49,11 @@ namespace toolstrackingsystem
                 return;
             }
             var person = _personManageService.GetPersonInfo(userCode);
+            if (person == null || string.IsNullOrWhiteSpace(person.PersonCode))
+            {
+                MessageBox.Show("不存在的人员编码！");
+                return;
+            }
             if (person.IsReceive == "1")
             {
                 string desc = tbEditoutdescribes.Text;
@@ -85,7 +90,8 @@ namespace toolstrackingsystem
 
         private void btnOutContinue_Click(object sender, EventArgs e)
         {
-
+            ToolInfoList = new List<t_ToolInfo>();
+            this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
         }
 
         private void btnAddTool_Click(object sender, EventArgs e)

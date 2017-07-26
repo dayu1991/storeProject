@@ -189,6 +189,12 @@
     <Compile Include="工具管理\ToolInfoManage.Designer.cs">
       <DependentUpon>ToolInfoManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="归还工具\FrmReturnTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="归还工具\FrmReturnTool.Designer.cs">
+      <DependentUpon>FrmReturnTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="数据管理\FrmDBOption.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +301,9 @@
     <EmbeddedResource Include="作业人员\Report1.rdlc" />
     <EmbeddedResource Include="工具管理\ToolInfoManage.resx">
       <DependentUpon>ToolInfoManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="归还工具\FrmReturnTool.resx">
+      <DependentUpon>FrmReturnTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="数据管理\FrmDBOption.resx">
       <DependentUpon>FrmDBOption.cs</DependentUpon>

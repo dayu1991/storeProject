@@ -48,6 +48,7 @@
     <Compile Include="view\DbManageEntity.cs" />
     <Compile Include="view\DropDownCtrolObj.cs" />
     <Compile Include="view\MenuInfoEntity.cs" />
+    <Compile Include="view\OutBackStoreEntity.cs" />
     <Compile Include="view\PersonInfoEntity.cs" />
     <Compile Include="view\RoleInfoEntity.cs" />
     <Compile Include="view\ScrapToolInfoEntity.cs" />
