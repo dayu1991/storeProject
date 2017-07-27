@@ -35,7 +35,6 @@ namespace service.toolstrackingsystem
                                   ,[PersonName]
                                   ,[OutStoreTime]
                                   ,[UserTimeInfo]
-                                  ,[OptionPerson]
                                   ,[OptionTime]
                               FROM [dbo].[t_PersonCreditRecord] WHERE 1=1";
             string sqlNotStr = "CreditID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " CreditID FROM [dbo].[t_PersonCreditRecord] WHERE 1=1 ";

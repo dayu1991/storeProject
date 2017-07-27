@@ -147,6 +147,18 @@
     <Compile Include="作业人员\FrmWorkerManager.Designer.cs">
       <DependentUpon>FrmWorkerManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="信用查询\FrmCreditQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="信用查询\FrmCreditQuery.Designer.cs">
+      <DependentUpon>FrmCreditQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="信用查询\FrmPrintPersonCreditRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="信用查询\FrmPrintPersonCreditRecord.Designer.cs">
+      <DependentUpon>FrmPrintPersonCreditRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="入库查询\FrmInStoreManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +315,13 @@
     <EmbeddedResource Include="作业人员\Frmworkermanager.resx">
       <DependentUpon>FrmWorkerManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="信用查询\FrmCreditQuery.resx">
+      <DependentUpon>FrmCreditQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="信用查询\FrmPrintPersonCreditRecord.resx">
+      <DependentUpon>FrmPrintPersonCreditRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="信用查询\Report6.rdlc" />
     <EmbeddedResource Include="入库查询\FrmInStoreManage.resx">
       <DependentUpon>FrmInStoreManage.cs</DependentUpon>
     </EmbeddedResource>

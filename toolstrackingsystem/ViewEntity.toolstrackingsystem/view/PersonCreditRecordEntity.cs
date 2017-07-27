@@ -16,7 +16,6 @@ namespace ViewEntity.toolstrackingsystem
         public string PersonName { get; set; }
         public string OutStoreTime { get; set; }
         public string UserTimeInfo { get; set; }
-        public string OptionPerson { get; set; }
         public string OptionTime { get; set; }
     }
 }
