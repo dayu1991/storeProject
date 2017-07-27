@@ -213,6 +213,18 @@
     <Compile Include="工具管理\ToolInfoManage.Designer.cs">
       <DependentUpon>ToolInfoManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="库存\FrmPrintStockInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存\FrmPrintStockInfo.Designer.cs">
+      <DependentUpon>FrmPrintStockInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="库存\FrmStockInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="库存\FrmStockInfo.Designer.cs">
+      <DependentUpon>FrmStockInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="归还工具\FrmReturnTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -352,6 +364,13 @@
     <EmbeddedResource Include="工具管理\ToolInfoManage.resx">
       <DependentUpon>ToolInfoManage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="库存\FrmPrintStockInfo.resx">
+      <DependentUpon>FrmPrintStockInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存\FrmStockInfo.resx">
+      <DependentUpon>FrmStockInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="库存\Report7.rdlc" />
     <EmbeddedResource Include="归还工具\FrmReturnTool.resx">
       <DependentUpon>FrmReturnTool.cs</DependentUpon>
     </EmbeddedResource>

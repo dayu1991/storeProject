@@ -1,4 +1,5 @@
-﻿using dbentity.toolstrackingsystem;
+﻿using Dapper;
+using dbentity.toolstrackingsystem;
 using sqlserver.toolstrackingsystem;
 using System;
 using System.Collections.Generic;
@@ -210,8 +211,194 @@ namespace service.toolstrackingsystem
             entity1.OptionPerson = opeartPerson;
             return _currentCountInfoRepository.Add(entity1)>0;
         }
+       /// <summary>
+       /// 获取库存中的工具信息
+       /// </summary>
+       /// <param name="toolInfo"></param>
+       /// <param name="pageIndex"></param>
+       /// <param name="pageSize"></param>
+       /// <param name="totalCount"></param>
+       /// <returns></returns>
+        public List<ToolInfoForStockInfoEntity> GetToolInfoListForStock(t_ToolInfo toolInfo, int pageIndex, int pageSize, out long totalCount)
+        {
+            string sql = @"SELECT TOP "+pageSize+@" [ToolID]
+                                  ,[TypeName]
+                                  ,[ChildTypeName]
+                                  ,[PackCode]
+                                  ,[PackName]
+                                  ,[CarGroupInfo]
+                                  ,[ToolCode]
+                                  ,[ToolName]
+                                  ,[Models]
+                                  ,[Location]
+                                  ,[Remarks]
+                                  ,[CheckTime]
+                                  ,[IsActive]
+                                  ,[OptionPerson]
+                              FROM [cangku_manage_db].[dbo].[t_ToolInfo] WHERE 1=1";
+            string sqlNotStr = "[ToolID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [ToolID] FROM [dbo].[t_ToolInfo] WHERE 1=1 ";
+            string sqlCount = "SELECT COUNT(*) FROM [dbo].[t_ToolInfo] WHERE IsAcTive=1 ";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
+            {
+                string str = " AND TypeName LIKE @typeName ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("typeName", string.Format("%{0}%", toolInfo.TypeName));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.ChildTypeName))
+            {
+                string str = " AND ChildTypeName LIKE @childTypeName ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("childTypeName", string.Format("%{0}%", toolInfo.ChildTypeName));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.ToolCode))
+            {
+                string str = " AND ToolCode LIKE @toolCode ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("toolCode", string.Format("%{0}%", toolInfo.ToolCode));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.ToolName))
+            {
+                string str = " AND ToolName LIKE @toolName ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("toolName", string.Format("%{0}%", toolInfo.ToolName));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.Models))
+            {
+                string str = " AND Models LIKE @models ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("models", string.Format("%{0}%", toolInfo.Models));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.Location))
+            {
+                string str = " AND Location LIKE @location ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("location", string.Format("%{0}%", toolInfo.Location));
+            }
+            sqlNotStr += ")";
+            string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
+            return _multiTableQueryRepository.QueryList<ToolInfoForStockInfoEntity>(sqlfinal, parameters, out totalCount, sqlCount, false).ToList();
+        }
+       /// <summary>
+       /// 总库存查询
+       /// </summary>
+       /// <returns></returns>
+        public int GetCountInToolInfo(t_ToolInfo toolInfo)
+        {
+            string sql = "SELECT COUNT(1) FROM t_ToolInfo WHERE IsActive=1";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
+            {
+                string str = " AND TypeName LIKE @typeName ";
+                sql += str;
+                parameters.Add("typeName", string.Format("%{0}%", toolInfo.TypeName));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.ChildTypeName))
+            {
+                string str = " AND ChildTypeName LIKE @childTypeName ";
+                sql += str;
+                parameters.Add("childTypeName", string.Format("%{0}%", toolInfo.ChildTypeName));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.ToolCode))
+            {
+                string str = " AND ToolCode LIKE @toolCode ";
+                sql += str;
+                parameters.Add("toolCode", string.Format("%{0}%", toolInfo.ToolCode));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.ToolName))
+            {
+                string str = " AND ToolName LIKE @toolName ";
+                sql += str;
+                parameters.Add("toolName", string.Format("%{0}%", toolInfo.ToolName));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.Models))
+            {
+                string str = " AND Models LIKE @models ";
+                sql += str;
+                parameters.Add("models", string.Format("%{0}%", toolInfo.Models));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.Location))
+            {
+                string str = " AND Location LIKE @location ";
+                sql += str;
+                parameters.Add("location", string.Format("%{0}%", toolInfo.Location));
+            }
 
+            return (int)_toolInfoRepository.QueryRecordCount(sql, parameters);
+        }
+       /// <summary>
+       /// 获取导出的库存数据
+       /// </summary>
+       /// <param name="toolInfo"></param>
+       /// <returns></returns>
+        public List<ToolInfoForStockInfoEntity> GetToolInfoListForStock(t_ToolInfo toolInfo)
+        {
+            string sql = @"SELECT  [ToolID]
+                                  ,[TypeName]
+                                  ,[ChildTypeName]
+                                  ,[PackCode]
+                                  ,[PackName]
+                                  ,[CarGroupInfo]
+                                  ,[ToolCode]
+                                  ,[ToolName]
+                                  ,[Models]
+                                  ,[Location]
+                                  ,[Remarks]
+                                  ,[CheckTime]
+                                  ,[IsActive]
+                                  ,[OptionPerson]
+                              FROM [cangku_manage_db].[dbo].[t_ToolInfo] WHERE IsAcTive=1";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
+            {
+                string str = " AND TypeName LIKE @typeName ";
+                sql += str;
+                parameters.Add("typeName", string.Format("%{0}%", toolInfo.TypeName));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.ChildTypeName))
+            {
+                string str = " AND ChildTypeName LIKE @childTypeName ";
+                sql += str;
+                parameters.Add("childTypeName", string.Format("%{0}%", toolInfo.ChildTypeName));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.ToolCode))
+            {
+                string str = " AND ToolCode LIKE @toolCode ";
+                sql += str;
+                parameters.Add("toolCode", string.Format("%{0}%", toolInfo.ToolCode));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.ToolName))
+            {
+                string str = " AND ToolName LIKE @toolName ";
+                sql += str;
+                parameters.Add("toolName", string.Format("%{0}%", toolInfo.ToolName));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.Models))
+            {
+                string str = " AND Models LIKE @models ";
+                sql += str;
+                parameters.Add("models", string.Format("%{0}%", toolInfo.Models));
+            }
+            if (!string.IsNullOrWhiteSpace(toolInfo.Location))
+            {
+                string str = " AND Location LIKE @location ";
+                sql += str;
+                parameters.Add("location", string.Format("%{0}%", toolInfo.Location));
+            }
+            return _multiTableQueryRepository.QueryList<ToolInfoForStockInfoEntity>(sql, parameters).ToList();
 
-
+        }
     }
 }

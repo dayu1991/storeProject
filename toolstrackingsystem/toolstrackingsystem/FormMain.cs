@@ -38,25 +38,25 @@ namespace toolstrackingsystem
             superTabControl.Tabs.Clear();
             //获取用户信息
             Sys_User_Info userInfo = MemoryCache.Default.Get("userinfo") as Sys_User_Info;
-
-            #region 手动添加菜单项test
-            RibbonTabItem tabItem = new RibbonTabItem();
-            tabItem.Text = "基础数据";
-            RibbonPanel rpanel = new RibbonPanel();
-            rpanel.Dock = DockStyle.Fill;
-            tabItem.Panel = rpanel;
-            ribbonControl1.Controls.Add(rpanel);
             ribbonControl1.TitleText = "北京动车段工具管理应用系统v1.1[" + userInfo.UserName + "]";
-            this.ribbonControl1.Items.Add(tabItem);
-            RibbonBar rb = new RibbonBar();
+            #region 手动添加菜单项test
+            //RibbonTabItem tabItem = new RibbonTabItem();
+            //tabItem.Text = "基础数据";
+            //RibbonPanel rpanel = new RibbonPanel();
+            //rpanel.Dock = DockStyle.Fill;
+            //tabItem.Panel = rpanel;
+            //ribbonControl1.Controls.Add(rpanel);
+            //ribbonControl1.TitleText = "北京动车段工具管理应用系统v1.1[" + userInfo.UserName + "]";
+            //this.ribbonControl1.Items.Add(tabItem);
+            //RibbonBar rb = new RibbonBar();
 
-            ButtonItem btnTool = new ButtonItem("bi2");
-            btnTool.Text = "常规工具";
-            btnTool.Icon = new Icon("../../image/manage.ico");
-            btnTool.ImagePosition = eImagePosition.Top;
-            btnTool.Click += new EventHandler(ToolInfo_Click);
-            rb.Items.Add(btnTool);
-            rpanel.Controls.Add(rb);
+            //ButtonItem btnTool = new ButtonItem("bi2");
+            //btnTool.Text = "常规工具";
+            //btnTool.Icon = new Icon("../../image/manage.ico");
+            //btnTool.ImagePosition = eImagePosition.Top;
+            //btnTool.Click += new EventHandler(ToolInfo_Click);
+            //rb.Items.Add(btnTool);
+            //rpanel.Controls.Add(rb);
 
             #endregion
 

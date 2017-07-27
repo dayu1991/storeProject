@@ -20,7 +20,6 @@ namespace sqlserver.toolstrackingsystem
             parameters.Add("remarks",scrapToolInfo.Remarks);
             parameters.Add("optionPerson",scrapToolInfo.OptionPerson);
             return base.ExecuteSql(sql,parameters)>0;
-            throw new NotImplementedException();
         }
     }
 }

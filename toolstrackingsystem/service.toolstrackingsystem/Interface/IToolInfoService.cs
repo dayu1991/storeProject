@@ -60,5 +60,8 @@ namespace service.toolstrackingsystem
         bool IsExistsOutStoreByCode(string toolcode, string isBack);
 
         bool BackStore(OutBackStoreEntity entity, t_PersonInfo person, string opeartPerson, string desc);
+        List<ToolInfoForStockInfoEntity> GetToolInfoListForStock(t_ToolInfo toolInfo, int pageIndex, int pageSize, out long totalCount);
+        int GetCountInToolInfo(t_ToolInfo toolInfo);
+        List<ToolInfoForStockInfoEntity> GetToolInfoListForStock(t_ToolInfo toolInfo);
     }
 }
