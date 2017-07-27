@@ -64,6 +64,7 @@
     <Compile Include="Implement\MenuManageRepository.cs" />
     <Compile Include="Implement\MultiTableQueryRepository.cs" />
     <Compile Include="Implement\OutBackStoreRepository.cs" />
+    <Compile Include="Implement\PersonCreditRecordRepository.cs" />
     <Compile Include="Implement\PersonManageRepository.cs" />
     <Compile Include="Implement\RoleManageRepository.cs" />
     <Compile Include="Implement\ScrapToolInfoManageRepository.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Interface\IMenuManageRepository.cs" />
     <Compile Include="Interface\IMultiTableQueryRepository.cs" />
     <Compile Include="Interface\IOutBackStoreRepository.cs" />
+    <Compile Include="Interface\IPersonCreditRecordRepository.cs" />
     <Compile Include="Interface\IPersonManageRepository.cs" />
     <Compile Include="Interface\IScrapToolInfoManageRepository.cs" />
     <Compile Include="Interface\IToolCategoryInfoRepository.cs" />
