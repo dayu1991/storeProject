@@ -30,13 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrintScrapTools));
             this.t_ScrapToolInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.t_ScrapToolInfoTableAdapter = new toolstrackingsystem.cangku_manage_dbDataSetTableAdapters.t_ScrapToolInfoTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.t_ScrapToolInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // t_ScrapToolInfoBindingSource
+            // 
+            this.t_ScrapToolInfoBindingSource.DataMember = "t_ScrapToolInfo";
+            this.t_ScrapToolInfoBindingSource.DataSource = this.cangku_manage_dbDataSet;
+            // 
+            // cangku_manage_dbDataSet
+            // 
+            this.cangku_manage_dbDataSet.DataSetName = "cangku_manage_dbDataSet";
+            this.cangku_manage_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -50,16 +61,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(723, 351);
             this.reportViewer1.TabIndex = 0;
             // 
-            // cangku_manage_dbDataSet
-            // 
-            this.cangku_manage_dbDataSet.DataSetName = "cangku_manage_dbDataSet";
-            this.cangku_manage_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // t_ScrapToolInfoBindingSource
-            // 
-            this.t_ScrapToolInfoBindingSource.DataMember = "t_ScrapToolInfo";
-            this.t_ScrapToolInfoBindingSource.DataSource = this.cangku_manage_dbDataSet;
-            // 
             // t_ScrapToolInfoTableAdapter
             // 
             this.t_ScrapToolInfoTableAdapter.ClearBeforeFill = true;
@@ -71,11 +72,12 @@
             this.ClientSize = new System.Drawing.Size(723, 351);
             this.Controls.Add(this.reportViewer1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrintScrapTools";
             this.Text = "打印预览";
             this.Load += new System.EventHandler(this.FrmPrintScrapTools_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.t_ScrapToolInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

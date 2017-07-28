@@ -31,13 +31,24 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrintPersonCreditRecord));
             this.t_PersonCreditRecordBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.t_PersonCreditRecordTableAdapter = new toolstrackingsystem.cangku_manage_dbDataSetTableAdapters.t_PersonCreditRecordTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.t_PersonCreditRecordBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // t_PersonCreditRecordBindingSource
+            // 
+            this.t_PersonCreditRecordBindingSource.DataMember = "t_PersonCreditRecord";
+            this.t_PersonCreditRecordBindingSource.DataSource = this.cangku_manage_dbDataSet;
+            // 
+            // cangku_manage_dbDataSet
+            // 
+            this.cangku_manage_dbDataSet.DataSetName = "cangku_manage_dbDataSet";
+            this.cangku_manage_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -51,16 +62,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(723, 351);
             this.reportViewer1.TabIndex = 0;
             // 
-            // cangku_manage_dbDataSet
-            // 
-            this.cangku_manage_dbDataSet.DataSetName = "cangku_manage_dbDataSet";
-            this.cangku_manage_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // t_PersonCreditRecordBindingSource
-            // 
-            this.t_PersonCreditRecordBindingSource.DataMember = "t_PersonCreditRecord";
-            this.t_PersonCreditRecordBindingSource.DataSource = this.cangku_manage_dbDataSet;
-            // 
             // t_PersonCreditRecordTableAdapter
             // 
             this.t_PersonCreditRecordTableAdapter.ClearBeforeFill = true;
@@ -72,11 +73,12 @@
             this.ClientSize = new System.Drawing.Size(723, 351);
             this.Controls.Add(this.reportViewer1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrintPersonCreditRecord";
             this.Text = "打印预览";
             this.Load += new System.EventHandler(this.FrmPrintPersonCreditRecord_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.t_PersonCreditRecordBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

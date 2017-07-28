@@ -90,6 +90,12 @@ namespace toolstrackingsystem
             }
 
             label_login_user.Text = userInfo.UserName;
+            //timer启动
+            this.timer1.Start();
+            //判断连接服务器IP
+            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["MPConnection"].ConnectionString;
+            string ip = connStr.Split(';')[0].Split('=')[1].ToString();
+            Message_label.Text = "连接到服务器" + ip;
         }
         private void SetTabShow(string tabName, string sfrmName)
         {
@@ -154,6 +160,10 @@ namespace toolstrackingsystem
                 Application.Exit();
                 System.Diagnostics.Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
             }
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.Current_Time_label.Text = DateTime.Now.ToString("yyyy年MM月dd日 HH:mm:ss");
         }
     }
 }

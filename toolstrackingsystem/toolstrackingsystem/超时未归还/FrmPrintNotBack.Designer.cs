@@ -30,13 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrintNotBack));
             this.t_ToolInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.t_ToolInfoTableAdapter = new toolstrackingsystem.cangku_manage_dbDataSetTableAdapters.t_ToolInfoTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.t_ToolInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // t_ToolInfoBindingSource
+            // 
+            this.t_ToolInfoBindingSource.DataMember = "t_ToolInfo";
+            this.t_ToolInfoBindingSource.DataSource = this.cangku_manage_dbDataSet;
+            // 
+            // cangku_manage_dbDataSet
+            // 
+            this.cangku_manage_dbDataSet.DataSetName = "cangku_manage_dbDataSet";
+            this.cangku_manage_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -50,16 +61,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(723, 351);
             this.reportViewer1.TabIndex = 0;
             // 
-            // cangku_manage_dbDataSet
-            // 
-            this.cangku_manage_dbDataSet.DataSetName = "cangku_manage_dbDataSet";
-            this.cangku_manage_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // t_ToolInfoBindingSource
-            // 
-            this.t_ToolInfoBindingSource.DataMember = "t_ToolInfo";
-            this.t_ToolInfoBindingSource.DataSource = this.cangku_manage_dbDataSet;
-            // 
             // t_ToolInfoTableAdapter
             // 
             this.t_ToolInfoTableAdapter.ClearBeforeFill = true;
@@ -71,11 +72,12 @@
             this.ClientSize = new System.Drawing.Size(723, 351);
             this.Controls.Add(this.reportViewer1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrintNotBack";
             this.Text = "打印预览";
             this.Load += new System.EventHandler(this.FrmPrintNotBack_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.t_ToolInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

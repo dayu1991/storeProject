@@ -29,20 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.applicationButton1 = new DevComponents.DotNetBar.ApplicationButton();
+            this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
+            this.itemContainer2 = new DevComponents.DotNetBar.ItemContainer();
+            this.itemContainer3 = new DevComponents.DotNetBar.ItemContainer();
+            this.buttonItem7 = new DevComponents.DotNetBar.ButtonItem();
+            this.login_buttonItem = new DevComponents.DotNetBar.ButtonItem();
             this.qatCustomizeItem1 = new DevComponents.DotNetBar.QatCustomizeItem();
             this.superTabControl2 = new DevComponents.DotNetBar.SuperTabControl();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.Current_Time_label = new DevComponents.DotNetBar.LabelX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.label_login_user = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
-            this.itemContainer2 = new DevComponents.DotNetBar.ItemContainer();
-            this.itemContainer3 = new DevComponents.DotNetBar.ItemContainer();
-            this.login_buttonItem = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem7 = new DevComponents.DotNetBar.ButtonItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Message_label = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).BeginInit();
             this.groupPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -103,6 +108,71 @@
             this.applicationButton1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.itemContainer1});
             this.applicationButton1.Text = "系统";
+            // 
+            // itemContainer1
+            // 
+            // 
+            // 
+            // 
+            this.itemContainer1.BackgroundStyle.Class = "RibbonFileMenuContainer";
+            this.itemContainer1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.itemContainer1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
+            this.itemContainer1.Name = "itemContainer1";
+            this.itemContainer1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.itemContainer2});
+            // 
+            // 
+            // 
+            this.itemContainer1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // itemContainer2
+            // 
+            // 
+            // 
+            // 
+            this.itemContainer2.BackgroundStyle.Class = "RibbonFileMenuTwoColumnContainer";
+            this.itemContainer2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.itemContainer2.ItemSpacing = 0;
+            this.itemContainer2.Name = "itemContainer2";
+            this.itemContainer2.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.itemContainer3});
+            // 
+            // 
+            // 
+            this.itemContainer2.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // itemContainer3
+            // 
+            // 
+            // 
+            // 
+            this.itemContainer3.BackgroundStyle.Class = "RibbonFileMenuColumnOneContainer";
+            this.itemContainer3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.itemContainer3.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
+            this.itemContainer3.MinimumSize = new System.Drawing.Size(120, 0);
+            this.itemContainer3.Name = "itemContainer3";
+            this.itemContainer3.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonItem7,
+            this.login_buttonItem});
+            // 
+            // 
+            // 
+            this.itemContainer3.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // buttonItem7
+            // 
+            this.buttonItem7.BeginGroup = true;
+            this.buttonItem7.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.buttonItem7.Name = "buttonItem7";
+            this.buttonItem7.SubItemsExpandWidth = 24;
+            this.buttonItem7.Text = "退出系统";
+            this.buttonItem7.Click += new System.EventHandler(this.buttonItem7_Click);
+            // 
+            // login_buttonItem
+            // 
+            this.login_buttonItem.Name = "login_buttonItem";
+            this.login_buttonItem.Text = "重新登录";
+            this.login_buttonItem.Click += new System.EventHandler(this.login_buttonItem_Click);
             // 
             // qatCustomizeItem1
             // 
@@ -182,6 +252,9 @@
             // 
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel2.Controls.Add(this.Message_label);
+            this.groupPanel2.Controls.Add(this.Current_Time_label);
+            this.groupPanel2.Controls.Add(this.labelX2);
             this.groupPanel2.Controls.Add(this.label_login_user);
             this.groupPanel2.Controls.Add(this.labelX1);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
@@ -219,6 +292,31 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 3;
             // 
+            // Current_Time_label
+            // 
+            this.Current_Time_label.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.Current_Time_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Current_Time_label.Location = new System.Drawing.Point(326, 3);
+            this.Current_Time_label.Name = "Current_Time_label";
+            this.Current_Time_label.Size = new System.Drawing.Size(165, 23);
+            this.Current_Time_label.TabIndex = 3;
+            // 
+            // labelX2
+            // 
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(600, 3);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(75, 23);
+            this.labelX2.TabIndex = 2;
+            this.labelX2.Text = "消息类型:";
+            // 
             // label_login_user
             // 
             this.label_login_user.BackColor = System.Drawing.Color.Transparent;
@@ -244,70 +342,23 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "当前用户:";
             // 
-            // itemContainer1
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // Message_label
+            // 
+            this.Message_label.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
-            // 
-            this.itemContainer1.BackgroundStyle.Class = "RibbonFileMenuContainer";
-            this.itemContainer1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.itemContainer1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemContainer1.Name = "itemContainer1";
-            this.itemContainer1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.itemContainer2});
-            // 
-            // 
-            // 
-            this.itemContainer1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // itemContainer2
-            // 
-            // 
-            // 
-            // 
-            this.itemContainer2.BackgroundStyle.Class = "RibbonFileMenuTwoColumnContainer";
-            this.itemContainer2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.itemContainer2.ItemSpacing = 0;
-            this.itemContainer2.Name = "itemContainer2";
-            this.itemContainer2.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.itemContainer3});
-            // 
-            // 
-            // 
-            this.itemContainer2.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // itemContainer3
-            // 
-            // 
-            // 
-            // 
-            this.itemContainer3.BackgroundStyle.Class = "RibbonFileMenuColumnOneContainer";
-            this.itemContainer3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.itemContainer3.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
-            this.itemContainer3.MinimumSize = new System.Drawing.Size(120, 0);
-            this.itemContainer3.Name = "itemContainer3";
-            this.itemContainer3.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem7,
-            this.login_buttonItem});
-            // 
-            // 
-            // 
-            this.itemContainer3.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // login_buttonItem
-            // 
-            this.login_buttonItem.Name = "login_buttonItem";
-            this.login_buttonItem.Text = "重新登录";
-            this.login_buttonItem.Click += new System.EventHandler(this.login_buttonItem_Click);
-            // 
-            // buttonItem7
-            // 
-            this.buttonItem7.BeginGroup = true;
-            this.buttonItem7.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem7.Name = "buttonItem7";
-            this.buttonItem7.SubItemsExpandWidth = 24;
-            this.buttonItem7.Text = "退出系统";
-            this.buttonItem7.Click += new System.EventHandler(this.buttonItem7_Click);
+            this.Message_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Message_label.Location = new System.Drawing.Point(666, 3);
+            this.Message_label.Name = "Message_label";
+            this.Message_label.Size = new System.Drawing.Size(199, 23);
+            this.Message_label.TabIndex = 4;
+            this.Message_label.Text = "连接到服务器";
             // 
             // FormMain
             // 
@@ -318,6 +369,7 @@
             this.Controls.Add(this.superTabControl2);
             this.Controls.Add(this.ribbonControl1);
             this.Controls.Add(this.groupPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormTest";
@@ -345,5 +397,9 @@
         private DevComponents.DotNetBar.ItemContainer itemContainer3;
         private DevComponents.DotNetBar.ButtonItem buttonItem7;
         private DevComponents.DotNetBar.ButtonItem login_buttonItem;
+        private System.Windows.Forms.Timer timer1;
+        private DevComponents.DotNetBar.LabelX Current_Time_label;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.DotNetBar.LabelX Message_label;
     }
 }

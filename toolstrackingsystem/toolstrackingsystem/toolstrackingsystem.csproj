@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Retrospect.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DapperExtensions, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -303,6 +306,11 @@
     <Compile Include="领用工具\FrmOutTool.Designer.cs">
       <DependentUpon>FrmOutTool.cs</DependentUpon>
     </Compile>
+    <Content Include="image\Retrospect.ico" />
+    <Content Include="Retrospect.ico" />
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -447,9 +455,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="image\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\common.toolstrackingsystem\common.toolstrackingsystem.csproj">
       <Project>{65449b5a-59b0-414f-991e-6f4a1b995150}</Project>
