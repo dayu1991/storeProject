@@ -12,9 +12,11 @@ namespace service.toolstrackingsystem
     public class OutBackStoreService : IOutBackStoreService
     {
         private readonly IMultiTableQueryRepository _mutiTableQueryRepository;
-        public OutBackStoreService(IMultiTableQueryRepository multiTableQueryRepository)
+        private readonly IOutBackStoreRepository _outBackStoreRepository;
+        public OutBackStoreService(IMultiTableQueryRepository multiTableQueryRepository, IOutBackStoreRepository outBackStoreRepository)
         {
             _mutiTableQueryRepository = multiTableQueryRepository;
+            _outBackStoreRepository = outBackStoreRepository;
         }
         /// <summary>
         /// 获取超时未归还的工具信息
@@ -48,6 +50,68 @@ namespace service.toolstrackingsystem
             string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
             return _mutiTableQueryRepository.QueryList<NotBackToolEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
 
+        }
+        /// <summary>
+        /// 获取数据删除页面所需数据
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="personCode"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="Count"></param>
+        /// <returns></returns>
+        public List<OutBackInfoForDeleteEntity> GetOutBackInfoForDelete(string toolCode, string personCode, int pageIndex, int pageSize, out long Count)
+        {
+            string sql = @"SELECT TOP " + pageSize + @"[OutBackStoreID]
+                                  ,[ToolCode]
+                                  ,[ToolName]
+                                  ,[OutStoreTime]
+                                  ,[PersonCode]
+                                  ,[PersonName]
+                                  ,[UserTimeInfo]
+                                  ,[IsBack]= case [IsBack] WHEN '1' THEN '是' WHEN '0' THEN '否' END
+                                  ,[BackTime]
+                                  ,[BackPesonCode]
+                                  ,[BackPersonName]
+                                  ,[outdescribes]
+                                  ,[backdescribes]
+                                  ,[OptionPerson]
+                              FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
+            string sqlNotStr = "[OutBackStoreID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [OutBackStoreID] FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
+            string sqlCount = "SELECT COUNT(*) FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
+            DynamicParameters parameters = new DynamicParameters();
+            if (string.IsNullOrWhiteSpace(toolCode))
+            {
+                string str = " AND [ToolCode] LIKE @toolCode ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("toolCode", string.Format("%{0}%", toolCode));
+            }
+            if (string.IsNullOrWhiteSpace(personCode))
+            {
+                string str = " AND [PersonCode] LIKE @personCode ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("personCode", string.Format("%{0}%", personCode));
+            }
+            sqlNotStr += ")";
+            string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
+            return _mutiTableQueryRepository.QueryList<OutBackInfoForDeleteEntity>(sql, parameters, out Count, sqlCount, false).ToList();
+        }
+
+        /// <summary>
+        /// 删除某条领用信息
+        /// </summary>
+        /// <param name="OutBackStoreID"></param>
+        /// <returns></returns>
+        public bool DeleteOutBackInfo(string OutBackStoreID)
+        {
+            string sql = "DELETE FROM t_OutBackStore WHERE OutBackStoreID=@outBackStoreID";
+            DynamicParameters parameter = new DynamicParameters();
+            parameter.Add("outBackStoreID", OutBackStoreID);
+            return _outBackStoreRepository.ExecuteSql(sql,parameter)>0;
         }
     }
 }

@@ -282,6 +282,12 @@
     <Compile Include="角色管理\MenuInfoTree.Designer.cs">
       <DependentUpon>MenuInfoTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="记录删除\FrmDeleteData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="记录删除\FrmDeleteData.Designer.cs">
+      <DependentUpon>FrmDeleteData.cs</DependentUpon>
+    </Compile>
     <Compile Include="超时未归还\FrmNotBackTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -411,6 +417,9 @@
       <DependentUpon>MenuInfoTree.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="App_Data\ManageDb.json" />
+    <EmbeddedResource Include="记录删除\FrmDeleteData.resx">
+      <DependentUpon>FrmDeleteData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="超时未归还\FrmNotBackTool.resx">
       <DependentUpon>FrmNotBackTool.cs</DependentUpon>
     </EmbeddedResource>

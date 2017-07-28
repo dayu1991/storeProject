@@ -48,6 +48,7 @@
     <Compile Include="view\DbManageEntity.cs" />
     <Compile Include="view\DropDownCtrolObj.cs" />
     <Compile Include="view\MenuInfoEntity.cs" />
+    <Compile Include="view\OutBackInfoForDeleteEntity.cs" />
     <Compile Include="view\OutBackStoreEntity.cs" />
     <Compile Include="view\NotBackToolEntity.cs" />
     <Compile Include="view\PersonCreditRecordEntity.cs" />
