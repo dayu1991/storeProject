@@ -42,12 +42,14 @@
             this.superTabControl2 = new DevComponents.DotNetBar.SuperTabControl();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.Message_label = new DevComponents.DotNetBar.LabelX();
             this.Current_Time_label = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.label_login_user = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.Message_label = new DevComponents.DotNetBar.LabelX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.Select_buttonItem = new DevComponents.DotNetBar.ButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).BeginInit();
             this.groupPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -108,6 +110,7 @@
             this.applicationButton1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.itemContainer1});
             this.applicationButton1.Text = "系统";
+            this.applicationButton1.Click += new System.EventHandler(this.applicationButton1_Click);
             // 
             // itemContainer1
             // 
@@ -119,7 +122,8 @@
             this.itemContainer1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
             this.itemContainer1.Name = "itemContainer1";
             this.itemContainer1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.itemContainer2});
+            this.itemContainer2,
+            this.Select_buttonItem});
             // 
             // 
             // 
@@ -252,6 +256,7 @@
             // 
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel2.Controls.Add(this.labelX3);
             this.groupPanel2.Controls.Add(this.Message_label);
             this.groupPanel2.Controls.Add(this.Current_Time_label);
             this.groupPanel2.Controls.Add(this.labelX2);
@@ -291,6 +296,19 @@
             // 
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 3;
+            // 
+            // Message_label
+            // 
+            this.Message_label.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.Message_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Message_label.Location = new System.Drawing.Point(666, 3);
+            this.Message_label.Name = "Message_label";
+            this.Message_label.Size = new System.Drawing.Size(199, 23);
+            this.Message_label.TabIndex = 4;
+            this.Message_label.Text = "连接到服务器";
             // 
             // Current_Time_label
             // 
@@ -347,18 +365,23 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Message_label
+            // labelX3
             // 
-            this.Message_label.BackColor = System.Drawing.Color.Transparent;
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
-            this.Message_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Message_label.Location = new System.Drawing.Point(666, 3);
-            this.Message_label.Name = "Message_label";
-            this.Message_label.Size = new System.Drawing.Size(199, 23);
-            this.Message_label.TabIndex = 4;
-            this.Message_label.Text = "连接到服务器";
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(262, 3);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(75, 23);
+            this.labelX3.TabIndex = 5;
+            this.labelX3.Text = "当前时间:";
+            // 
+            // Select_buttonItem
+            // 
+            this.Select_buttonItem.Name = "Select_buttonItem";
+            this.Select_buttonItem.Text = "选择数据库";
             // 
             // FormMain
             // 
@@ -401,5 +424,7 @@
         private DevComponents.DotNetBar.LabelX Current_Time_label;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX Message_label;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.ButtonItem Select_buttonItem;
     }
 }

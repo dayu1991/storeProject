@@ -161,6 +161,7 @@ namespace toolstrackingsystem
                 userInfo.UserRole = Rolelist_comboBox.SelectedValue.ToString();
                 userInfo.PassWord = Password_detail_textBox.Text;
                 userInfo.Description = description_detail_textBox.Text;
+                userInfo.IsActive = 1;
                 if (string.IsNullOrEmpty(userInfo.UserCode))
                 {
                     MessageBox.Show("用户名不能为空");

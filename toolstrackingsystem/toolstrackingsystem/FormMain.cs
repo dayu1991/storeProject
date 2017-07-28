@@ -88,8 +88,13 @@ namespace toolstrackingsystem
                 }
                 rpanelNew.Controls.Add(rbNew);
             }
-
             label_login_user.Text = userInfo.UserName;
+            #region 判断用户是否为服务端用户
+            if (userInfo.UserRole != "ServerRole")
+            {
+                Select_buttonItem.Visible = false;
+            }
+            #endregion
             //timer启动
             this.timer1.Start();
             //判断连接服务器IP
@@ -164,6 +169,11 @@ namespace toolstrackingsystem
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.Current_Time_label.Text = DateTime.Now.ToString("yyyy年MM月dd日 HH:mm:ss");
+        }
+
+        private void applicationButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

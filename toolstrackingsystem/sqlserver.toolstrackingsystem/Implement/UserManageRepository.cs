@@ -19,7 +19,7 @@ namespace sqlserver.toolstrackingsystem
         public Sys_User_Info GetUserInfo(string UserCode, string Password)
         {
             Sys_User_Info entity = new Sys_User_Info();
-            string sql = "SELECT * FROM Sys_User_Info WHERE UserCode=@UserCode AND PassWord = @Password";
+            string sql = "SELECT * FROM Sys_User_Info WHERE IsActive=1 AND UserCode=@UserCode AND PassWord = @Password";
             DynamicParameters parameter = new DynamicParameters();
             parameter.Add("@UserCode", UserCode);
             parameter.Add("@Password", Password);
