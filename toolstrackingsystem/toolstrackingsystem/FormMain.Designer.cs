@@ -38,18 +38,18 @@
             this.itemContainer3 = new DevComponents.DotNetBar.ItemContainer();
             this.buttonItem7 = new DevComponents.DotNetBar.ButtonItem();
             this.login_buttonItem = new DevComponents.DotNetBar.ButtonItem();
+            this.Select_buttonItem = new DevComponents.DotNetBar.ButtonItem();
             this.qatCustomizeItem1 = new DevComponents.DotNetBar.QatCustomizeItem();
             this.superTabControl2 = new DevComponents.DotNetBar.SuperTabControl();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.Message_label = new DevComponents.DotNetBar.LabelX();
             this.Current_Time_label = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.label_login_user = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.Select_buttonItem = new DevComponents.DotNetBar.ButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).BeginInit();
             this.groupPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -178,6 +178,12 @@
             this.login_buttonItem.Text = "重新登录";
             this.login_buttonItem.Click += new System.EventHandler(this.login_buttonItem_Click);
             // 
+            // Select_buttonItem
+            // 
+            this.Select_buttonItem.Name = "Select_buttonItem";
+            this.Select_buttonItem.Text = "选择数据库";
+            this.Select_buttonItem.Click += new System.EventHandler(this.Select_buttonItem_Click);
+            // 
             // qatCustomizeItem1
             // 
             this.qatCustomizeItem1.Name = "qatCustomizeItem1";
@@ -297,6 +303,19 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 3;
             // 
+            // labelX3
+            // 
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(262, 3);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(70, 23);
+            this.labelX3.TabIndex = 5;
+            this.labelX3.Text = "当前时间:";
+            // 
             // Message_label
             // 
             this.Message_label.BackColor = System.Drawing.Color.Transparent;
@@ -317,9 +336,9 @@
             // 
             // 
             this.Current_Time_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Current_Time_label.Location = new System.Drawing.Point(326, 3);
+            this.Current_Time_label.Location = new System.Drawing.Point(333, 3);
             this.Current_Time_label.Name = "Current_Time_label";
-            this.Current_Time_label.Size = new System.Drawing.Size(165, 23);
+            this.Current_Time_label.Size = new System.Drawing.Size(195, 23);
             this.Current_Time_label.TabIndex = 3;
             // 
             // labelX2
@@ -364,24 +383,6 @@
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // labelX3
-            // 
-            this.labelX3.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(262, 3);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(75, 23);
-            this.labelX3.TabIndex = 5;
-            this.labelX3.Text = "当前时间:";
-            // 
-            // Select_buttonItem
-            // 
-            this.Select_buttonItem.Name = "Select_buttonItem";
-            this.Select_buttonItem.Text = "选择数据库";
             // 
             // FormMain
             // 

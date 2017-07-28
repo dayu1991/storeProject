@@ -18,6 +18,13 @@ namespace sqlserver.toolstrackingsystem
         private static string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MPConnection"].ConnectionString;
         public static IDbConnection GetConnection()
         {
+            #region 判断cache里是否有设置好的客户端连接字符串
+            if (MemoryCache.Default.Get("clientName")!=null)
+            {
+                string connName = MemoryCache.Default.Get("clientName").ToString();
+                defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
+            }
+            #endregion
             return new SqlConnection(defaultConnectionString);
         }
         /// <summary>

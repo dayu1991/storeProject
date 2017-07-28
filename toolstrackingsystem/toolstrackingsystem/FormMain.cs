@@ -39,6 +39,8 @@ namespace toolstrackingsystem
             //获取用户信息
             Sys_User_Info userInfo = MemoryCache.Default.Get("userinfo") as Sys_User_Info;
             ribbonControl1.TitleText = "北京动车段工具管理应用系统v1.1[" + userInfo.UserName + "]";
+            label_login_user.Text = userInfo.UserName;
+
             #region 手动添加菜单项test
             //RibbonTabItem tabItem = new RibbonTabItem();
             //tabItem.Text = "基础数据";
@@ -60,7 +62,7 @@ namespace toolstrackingsystem
 
             #endregion
 
-            //获取用户角色权限
+            #region 获取用户角色权限
             _roleManageService = Program.container.Resolve<IRoleManageService>() as RoleManageService;
             _menuManageService = Program.container.Resolve<IMenuManageService>() as MenuManageService;
             Sys_User_Role roleInfo = _roleManageService.GetRoleInfo(userInfo.UserRole);
@@ -88,19 +90,24 @@ namespace toolstrackingsystem
                 }
                 rpanelNew.Controls.Add(rbNew);
             }
-            label_login_user.Text = userInfo.UserName;
+
+            #endregion
+
             #region 判断用户是否为服务端用户
             if (userInfo.UserRole != "ServerRole")
             {
                 Select_buttonItem.Visible = false;
             }
             #endregion
-            //timer启动
-            this.timer1.Start();
-            //判断连接服务器IP
+
+            #region 判断连接服务器IP
             string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["MPConnection"].ConnectionString;
             string ip = connStr.Split(';')[0].Split('=')[1].ToString();
             Message_label.Text = "连接到服务器" + ip;
+            #endregion
+
+            //timer启动
+            this.timer1.Start();
         }
         private void SetTabShow(string tabName, string sfrmName)
         {
@@ -170,10 +177,40 @@ namespace toolstrackingsystem
         {
             this.Current_Time_label.Text = DateTime.Now.ToString("yyyy年MM月dd日 HH:mm:ss");
         }
-
         private void applicationButton1_Click(object sender, EventArgs e)
         {
 
+        }
+        /// <summary>
+        /// 选择数据库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Select_buttonItem_Click(object sender, EventArgs e)
+        {
+            FrmSelectClient FrmClient = new FrmSelectClient();
+            if (userInfo.UserRole == "ServerRole")
+            {
+                FrmClient.ShowDialog();
+                if (FrmClient.DialogResult == DialogResult.OK)
+                {
+                    #region 判断cache里是否有设置好的客户端连接字符串
+                    if (MemoryCache.Default.Get("clientName") != null)
+                    {
+                        string connName = MemoryCache.Default.Get("clientName").ToString();
+                        string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
+                        string ip = connStr.Split(';')[0].Split('=')[1].ToString();
+                        Message_label.Text = "连接到服务器" + ip;
+                        MessageBox.Show("设置成功");
+                    }
+                    #endregion
+
+                }
+            }
+            else {
+                MessageBox.Show("您没有权限选择客户端");
+            }
+            
         }
     }
 }

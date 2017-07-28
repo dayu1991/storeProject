@@ -106,12 +106,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +294,12 @@
     <Compile Include="超时未归还\FrmPrintNotBack.Designer.cs">
       <DependentUpon>FrmPrintNotBack.cs</DependentUpon>
     </Compile>
+    <Compile Include="选择客户端%28服务端用户专用%29\FrmSelectClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="选择客户端%28服务端用户专用%29\FrmSelectClient.Designer.cs">
+      <DependentUpon>FrmSelectClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="领用工具\FrmOutTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -418,6 +418,9 @@
       <DependentUpon>FrmPrintNotBack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="超时未归还\Report5.rdlc" />
+    <EmbeddedResource Include="选择客户端%28服务端用户专用%29\FrmSelectClient.resx">
+      <DependentUpon>FrmSelectClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="领用工具\FrmOutTool.resx">
       <DependentUpon>FrmOutTool.cs</DependentUpon>
     </EmbeddedResource>
