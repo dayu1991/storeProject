@@ -20,5 +20,19 @@ namespace common.toolstrackingsystem
             string encoded = BitConverter.ToString(md5.ComputeHash(Encoding.Default.GetBytes(input))).Replace("-", "");
             return encoded;
         }
+        /// <summary>
+        /// 取得配置文件中的appSettings值
+        /// </summary>
+        /// <param name="sKey">appSettings key值</param>
+        /// <returns>value值</returns>
+        public static string GetConfigValue(string sKey)
+        {
+            string sValue = null;
+            if ((sValue = System.Configuration.ConfigurationManager.AppSettings[sKey]) == null)
+            {
+                sValue = "";
+            }
+            return sValue;
+        }
     }
 }

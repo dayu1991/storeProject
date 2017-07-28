@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sqllog", "Sqllog", "{A33B4D
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "cangku_manage_db", "cangku_manage_db\cangku_manage_db.sqlproj", "{4171E4C7-84E2-4597-A2B0-1FB6569863E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toolstrackingsystem.server", "toolstrackingsystem.server\toolstrackingsystem.server.csproj", "{753C8E23-F72D-4142-AA2E-4492A4390F3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{4171E4C7-84E2-4597-A2B0-1FB6569863E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4171E4C7-84E2-4597-A2B0-1FB6569863E7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4171E4C7-84E2-4597-A2B0-1FB6569863E7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{753C8E23-F72D-4142-AA2E-4492A4390F3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{753C8E23-F72D-4142-AA2E-4492A4390F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{753C8E23-F72D-4142-AA2E-4492A4390F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{753C8E23-F72D-4142-AA2E-4492A4390F3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
