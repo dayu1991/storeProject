@@ -63,5 +63,8 @@ namespace service.toolstrackingsystem
         List<ToolInfoForStockInfoEntity> GetToolInfoListForStock(t_ToolInfo toolInfo, int pageIndex, int pageSize, out long totalCount);
         int GetCountInToolInfo(t_ToolInfo toolInfo);
         List<ToolInfoForStockInfoEntity> GetToolInfoListForStock(t_ToolInfo toolInfo);
+        List<ToolInfoForRepairEntity> GetToolInfoForRepair(string toolCode, int pageIndex, int pageSize, out long totalCount);
+        bool UpdateToolRepared(string toolCode);
+        bool UpdateToolReparedIsActive(string toolCode);
     }
 }

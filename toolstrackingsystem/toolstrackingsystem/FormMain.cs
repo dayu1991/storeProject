@@ -32,7 +32,7 @@ namespace toolstrackingsystem
         private void FormTest_Load(object sender, EventArgs e)
         {
             //修改界面默认显示颜色
-            this.styleManager1.ManagerStyle = eStyle.Office2010Silver;
+            this.styleManager1.ManagerStyle = eStyle.OfficeMobile2014;
             //默认清空所有的tab页
             SuperTabControl superTabControl = new SuperTabControl();
             superTabControl.Tabs.Clear();

@@ -75,7 +75,7 @@ namespace toolstrackingsystem
         }
         private void FormLogin_Load(object sender, EventArgs e)
         {
-            this.styleManager1.ManagerStyle = eStyle.Office2010Blue;
+            this.styleManager1.ManagerStyle = eStyle.OfficeMobile2014;
             _userManageService = Program.container.Resolve<IUserManageService>() as UserManageService;
             textBox_UserName.Text="admin";
             textBox_PassWord.Text = "123456";

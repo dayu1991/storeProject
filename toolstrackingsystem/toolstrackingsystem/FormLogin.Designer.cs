@@ -37,6 +37,7 @@
             this.textBox_PassWord = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.LoginButton = new DevComponents.DotNetBar.ButtonX();
             this.ResetButton = new DevComponents.DotNetBar.ButtonX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.SuspendLayout();
             // 
             // styleManager1
@@ -51,7 +52,7 @@
             // 
             this.textBox_UserName.Border.Class = "TextBoxBorder";
             this.textBox_UserName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBox_UserName.Location = new System.Drawing.Point(217, 50);
+            this.textBox_UserName.Location = new System.Drawing.Point(217, 90);
             this.textBox_UserName.Name = "textBox_UserName";
             this.textBox_UserName.PreventEnterBeep = true;
             this.textBox_UserName.Size = new System.Drawing.Size(100, 21);
@@ -63,7 +64,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(160, 50);
+            this.labelX1.Location = new System.Drawing.Point(160, 90);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(51, 23);
             this.labelX1.TabIndex = 2;
@@ -75,7 +76,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(160, 102);
+            this.labelX2.Location = new System.Drawing.Point(160, 142);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(75, 23);
             this.labelX2.TabIndex = 3;
@@ -88,7 +89,7 @@
             // 
             this.textBox_PassWord.Border.Class = "TextBoxBorder";
             this.textBox_PassWord.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBox_PassWord.Location = new System.Drawing.Point(217, 102);
+            this.textBox_PassWord.Location = new System.Drawing.Point(217, 142);
             this.textBox_PassWord.Name = "textBox_PassWord";
             this.textBox_PassWord.PasswordChar = '*';
             this.textBox_PassWord.PreventEnterBeep = true;
@@ -99,7 +100,7 @@
             // 
             this.LoginButton.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.LoginButton.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.LoginButton.Location = new System.Drawing.Point(159, 151);
+            this.LoginButton.Location = new System.Drawing.Point(159, 191);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(68, 23);
             this.LoginButton.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -111,18 +112,32 @@
             // 
             this.ResetButton.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.ResetButton.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.ResetButton.Location = new System.Drawing.Point(245, 151);
+            this.ResetButton.Location = new System.Drawing.Point(245, 191);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(68, 23);
             this.ResetButton.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ResetButton.TabIndex = 6;
             this.ResetButton.Text = "重置";
             // 
+            // labelX3
+            // 
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Font = new System.Drawing.Font("宋体", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX3.Location = new System.Drawing.Point(73, 25);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(348, 38);
+            this.labelX3.TabIndex = 7;
+            this.labelX3.Text = "北京动车段工具管理追溯系统";
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 262);
+            this.Controls.Add(this.labelX3);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.textBox_PassWord);
@@ -148,5 +163,6 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBox_PassWord;
         private DevComponents.DotNetBar.ButtonX LoginButton;
         private DevComponents.DotNetBar.ButtonX ResetButton;
+        private DevComponents.DotNetBar.LabelX labelX3;
     }
 }

@@ -58,6 +58,7 @@
     <Compile Include="view\ToolBorrowEntity.cs" />
     <Compile Include="view\ToolInfoEntity.cs" />
     <Compile Include="view\ToolInfoForPackEntity.cs" />
+    <Compile Include="view\ToolInfoForRepairEntity.cs" />
     <Compile Include="view\ToolInfoForScrapFrmEntity.cs" />
     <Compile Include="view\ToolInfoForStockInfoEntity.cs" />
     <Compile Include="view\ToolInfoInStoreEntity.cs" />

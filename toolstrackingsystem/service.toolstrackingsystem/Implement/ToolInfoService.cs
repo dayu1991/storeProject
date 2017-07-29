@@ -400,5 +400,77 @@ namespace service.toolstrackingsystem
             return _multiTableQueryRepository.QueryList<ToolInfoForStockInfoEntity>(sql, parameters).ToList();
 
         }
+       /// <summary>
+       /// 获取保修所需的实体信息（分页）
+       /// </summary>
+       /// <param name="toolCode"></param>
+       /// <param name="pageIndex"></param>
+       /// <param name="pageSize"></param>
+       /// <param name="totalCount"></param>
+       /// <returns></returns>
+        public List<ToolInfoForRepairEntity> GetToolInfoForRepair(string toolCode, int pageIndex, int pageSize, out long totalCount)
+        {
+            string sql = @"SELECT TOP " + pageSize + @" [TypeName]
+                                  ,[ChildTypeName]
+                                  ,[PackCode]
+                                  ,[PackName]
+                                  ,[ToolCode]
+                                  ,[ToolName]
+                                  ,[Models]
+                                  ,[Location]
+                                  ,[Remarks]
+                                  ,[CheckTime]
+                                  ,[IsActive] = case IsActive WHEN '0' THEN '否' WHEN '1' THEN '有' WHEN '2' THEN '送修' END
+                                  ,[OptionPerson]
+                              FROM [cangku_manage_db].[dbo].[t_ToolInfo] WHERE 1=1";
+            string sqlNotStr = "[ToolID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [ToolID] FROM [dbo].[t_ToolInfo] WHERE 1=1 ";
+            string sqlCount = "SELECT COUNT(*) FROM [dbo].[t_ToolInfo] WHERE IsAcTive=1 ";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrWhiteSpace(toolCode))
+            {
+                string str = " AND ToolCode LIKE @toolCode ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("toolCode", string.Format("%{0}%", toolCode));
+            }
+            sqlNotStr += ")";
+            string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
+            return _multiTableQueryRepository.QueryList<ToolInfoForRepairEntity>(sqlfinal, parameters, out totalCount, sqlCount, false).ToList();
+
+        }
+       /// <summary>
+       /// 设置工具为保修
+       /// </summary>
+       /// <param name="toolCode"></param>
+       /// <returns></returns>
+        public bool UpdateToolRepared(string toolCode)
+        {
+            bool IsSuccess = false;
+            t_ToolInfo toolInfo = GetToolByCode(toolCode);
+            if (toolInfo == null)
+            {
+                return IsSuccess;
+            }
+            toolInfo.IsActive = "2";//2为送修状态
+            return IsSuccess = UpdateTool(toolInfo);
+        }
+
+       /// <summary>
+       /// 设置工具维修状态改为正常
+       /// </summary>
+       /// <param name="toolCode"></param>
+       /// <returns></returns>
+        public bool UpdateToolReparedIsActive(string toolCode)
+        {
+            bool IsSuccess = false;
+            t_ToolInfo toolInfo = GetToolByCode(toolCode);
+            if (toolInfo == null)
+            {
+                return IsSuccess;
+            }
+            toolInfo.IsActive = "1";//2为送修状态
+            return IsSuccess = UpdateTool(toolInfo);
+        }
     }
 }
