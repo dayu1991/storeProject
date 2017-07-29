@@ -312,6 +312,18 @@
     <Compile Include="领用工具\FrmOutTool.Designer.cs">
       <DependentUpon>FrmOutTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="领用查询\FrmPrintToolBorrow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="领用查询\FrmPrintToolBorrow.Designer.cs">
+      <DependentUpon>FrmPrintToolBorrow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="领用查询\FrmQueryBorrow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="领用查询\FrmQueryBorrow.Designer.cs">
+      <DependentUpon>FrmQueryBorrow.cs</DependentUpon>
+    </Compile>
     <Content Include="image\Retrospect.ico" />
     <Content Include="Retrospect.ico" />
     <EmbeddedResource Include="FormLogin.resx">
@@ -433,6 +445,13 @@
     <EmbeddedResource Include="领用工具\FrmOutTool.resx">
       <DependentUpon>FrmOutTool.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="领用查询\FrmPrintToolBorrow.resx">
+      <DependentUpon>FrmPrintToolBorrow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="领用查询\FrmQueryBorrow.resx">
+      <DependentUpon>FrmQueryBorrow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="领用查询\Report8.rdlc" />
     <None Include="cangku_manage_dbDataSet.xsc">
       <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
     </None>

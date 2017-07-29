@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSelectClient));
             this.Clients_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.confirm__button = new DevComponents.DotNetBar.ButtonX();
             this.cancel_button = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Clients_comboBox
@@ -47,18 +49,6 @@
             this.Clients_comboBox.Size = new System.Drawing.Size(121, 21);
             this.Clients_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Clients_comboBox.TabIndex = 0;
-            // 
-            // labelX1
-            // 
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(37, 38);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(75, 23);
-            this.labelX1.TabIndex = 1;
-            this.labelX1.Text = "客户端名称:";
             // 
             // confirm__button
             // 
@@ -88,6 +78,7 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.label1);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
@@ -102,6 +93,15 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 4;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(42, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "客户端名称:";
+            // 
             // FrmSelectClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -109,14 +109,16 @@
             this.ClientSize = new System.Drawing.Size(284, 162);
             this.Controls.Add(this.cancel_button);
             this.Controls.Add(this.confirm__button);
-            this.Controls.Add(this.labelX1);
             this.Controls.Add(this.Clients_comboBox);
             this.Controls.Add(this.panelEx1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmSelectClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "选择客户端";
             this.Load += new System.EventHandler(this.FrmSelectClient_Load);
+            this.panelEx1.ResumeLayout(false);
+            this.panelEx1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -124,9 +126,9 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.ComboBoxEx Clients_comboBox;
-        private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.ButtonX confirm__button;
         private DevComponents.DotNetBar.ButtonX cancel_button;
         private DevComponents.DotNetBar.PanelEx panelEx1;
+        private System.Windows.Forms.Label label1;
     }
 }

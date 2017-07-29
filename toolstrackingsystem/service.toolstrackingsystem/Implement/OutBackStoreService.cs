@@ -80,7 +80,7 @@ namespace service.toolstrackingsystem
             string sqlNotStr = "[OutBackStoreID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [OutBackStoreID] FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
             string sqlCount = "SELECT COUNT(*) FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
-            if (string.IsNullOrWhiteSpace(toolCode))
+            if (!string.IsNullOrWhiteSpace(toolCode))
             {
                 string str = " AND [ToolCode] LIKE @toolCode ";
                 sql += str;
@@ -88,7 +88,7 @@ namespace service.toolstrackingsystem
                 sqlNotStr += str;
                 parameters.Add("toolCode", string.Format("%{0}%", toolCode));
             }
-            if (string.IsNullOrWhiteSpace(personCode))
+            if (!string.IsNullOrWhiteSpace(personCode))
             {
                 string str = " AND [PersonCode] LIKE @personCode ";
                 sql += str;
@@ -112,6 +112,94 @@ namespace service.toolstrackingsystem
             DynamicParameters parameter = new DynamicParameters();
             parameter.Add("outBackStoreID", OutBackStoreID);
             return _outBackStoreRepository.ExecuteSql(sql,parameter)>0;
+        }
+        /// <summary>
+        /// 获取领用查询所需的领用工具信息
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="personCode"></param>
+        /// <param name="dateTimeFrom"></param>
+        /// <param name="dateTimeTo"></param>
+        /// <returns></returns>
+        public List<ToolBorrowEntity> GetToolBorrowList(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count)
+        {
+            string sql = "select top " + pageSize + " tl.TypeName,tl.ChildTypeName,tl.PackCode,tl.PackName,obs.ToolCode,obs.ToolName,obs.PersonCode,obs.PersonName,obs.OutStoreTime,obs.outdescribes,sui.UserName as OptionPerson from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode join Sys_User_Info sui on obs.OptionPerson=sui.UserCode  WHERE 1=1 ";
+            string sqlNotStr = "ob.OutBackStoreID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [OutBackStoreID] FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
+            string sqlCount = "SELECT COUNT(*) FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrWhiteSpace(toolCode))
+            {
+                string str = " AND obs.ToolCode LIKE @toolCode ";
+                sql += str;
+                sqlCount += " AND ToolCode LIKE @toolCode ";
+                sqlNotStr += " AND ToolCode LIKE @toolCode ";
+                parameters.Add("toolCode", string.Format("%{0}%", toolCode));
+            }
+            if (!string.IsNullOrWhiteSpace(personCode))
+            {
+                string str = " AND obs.PersonCode LIKE @personCode ";
+                sql += str;
+                sqlCount += " AND PersonCode LIKE @personCode ";
+                sqlNotStr += " AND PersonCode LIKE @personCode ";
+                parameters.Add("personCode", string.Format("%{0}%", personCode));
+            }
+            if (!string.IsNullOrWhiteSpace(dateTimeFrom))
+            {
+                string str = " AND obs.OutStoreTime >=  @dateTimeFrom ";
+                sql += str;
+                sqlCount += " AND OutStoreTime >=  @dateTimeFrom  ";
+                sqlNotStr += " AND OutStoreTime >=  @dateTimeFrom  ";
+                parameters.Add("dateTimeFrom", dateTimeFrom);
+            }
+            if (!string.IsNullOrWhiteSpace(dateTimeTo))
+            {
+                string str = " AND obs.OutStoreTime <=  @dateTimeTo ";
+                sql += str;
+                sqlCount += " AND OutStoreTime <=  @dateTimeTo  ";
+                sqlNotStr += " AND OutStoreTime <=  @dateTimeTo  ";
+                parameters.Add("dateTimeFrom", dateTimeFrom);
+            }
+            sqlNotStr += ")";
+            string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
+            return _mutiTableQueryRepository.QueryList<ToolBorrowEntity>(sql, parameters, out Count, sqlCount, false).ToList();
+        }
+        /// <summary>
+        /// 获取领用查询所需的领用工具导出信息
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="personCode"></param>
+        /// <param name="dateTimeFrom"></param>
+        /// <param name="dateTimeTo"></param>
+        /// <returns></returns>
+        public List<ToolBorrowEntity> GetToolBorrowList(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo)
+        {
+            string sql = "select  tl.TypeName,tl.ChildTypeName,tl.PackCode,tl.PackName,obs.ToolCode,obs.ToolName,obs.PersonCode,obs.PersonName,obs.OutStoreTime,obs.outdescribes,sui.UserName as OptionPerson from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode join Sys_User_Info sui on obs.OptionPerson=sui.UserCode  WHERE 1=1 ";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrWhiteSpace(toolCode))
+            {
+                string str = " AND obs.ToolCode LIKE @toolCode ";
+                sql += str;
+                parameters.Add("toolCode", string.Format("%{0}%", toolCode));
+            }
+            if (!string.IsNullOrWhiteSpace(personCode))
+            {
+                string str = " AND obs.PersonCode LIKE @personCode ";
+                sql += str;
+                parameters.Add("personCode", string.Format("%{0}%", personCode));
+            }
+            if (!string.IsNullOrWhiteSpace(dateTimeFrom))
+            {
+                string str = " AND obs.OutStoreTime >=  @dateTimeFrom ";
+                sql += str;
+                parameters.Add("dateTimeFrom", dateTimeFrom);
+            }
+            if (!string.IsNullOrWhiteSpace(dateTimeTo))
+            {
+                string str = " AND obs.OutStoreTime <=  @dateTimeTo ";
+                sql += str;
+                parameters.Add("dateTimeFrom", dateTimeFrom);
+            }
+            return _mutiTableQueryRepository.QueryList<ToolBorrowEntity>(sql, parameters).ToList();
         }
     }
 }

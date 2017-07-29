@@ -39,7 +39,7 @@ namespace toolstrackingsystem
         }
         private void pagerControl1_OnPageChanged(object sender, EventArgs e)
         {
-
+            LoadData();
         }
         private void LoadData()
         {

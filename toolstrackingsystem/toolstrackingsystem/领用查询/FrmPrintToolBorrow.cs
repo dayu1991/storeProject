@@ -8,25 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
-using System.Data.SqlClient;
 using dbentity.toolstrackingsystem;
+using System.Data.SqlClient;
 using System.Runtime.Caching;
 
 namespace toolstrackingsystem
 {
-    public partial class PrintCurrentCountInfo : Office2007Form
+    public partial class FrmPrintToolBorrow : Office2007Form
     {
-        public PrintCurrentCountInfo()
+        public FrmPrintToolBorrow()
         {
             this.EnableGlass = false;
             InitializeComponent();
         }
 
-        private void PrintCurrentCountInfo_Load(object sender, EventArgs e)
+        private void FrmPrintToolBorrow_Load(object sender, EventArgs e)
         {
 
             //this.reportViewer1.RefreshReport();
-
             string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MPConnection"].ConnectionString;
             #region 判断cache里是否有设置好的客户端连接字符串
             if (MemoryCache.Default.Get("clientName") != null)
@@ -37,42 +36,27 @@ namespace toolstrackingsystem
             #endregion
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
-                t_CurrentCountInfo countInfo = (t_CurrentCountInfo)this.Tag;
-                string sql = @"SELECT [TypeName]
-                        ,[ChildTypeName]
-                        ,[PackCode]
-                        ,[PackName]
-                        ,[ToolCode]
-                        ,[ToolName]
-                        ,[Models]
-                        ,[Location]
-                        ,[Remarks]
-                        ,[InStoreTime]
-                        ,[OutStoreTime]
-                        ,[BackTime]
-                        ,[OptionType]
-                        ,[PersonCode]
-                        ,[PersonName]
-                        ,[BackPesonCode]
-                        ,[BackPersonName]
-                        ,[describes]
-                        ,[OptionPerson]
-                    FROM [dbo].[t_CurrentCountInfo] WHERE 1=1 ";
-                if (!string.IsNullOrEmpty(countInfo.OptionType))
-                {
-                    string str = " AND OptionType LIKE '"+countInfo.OptionType+"'";
-                    sql += str;
-                }
-                if (!string.IsNullOrEmpty(countInfo.ToolCode))
-                {
-                    string str = " AND ToolCode LIKE '"+countInfo.ToolCode+"'";
-                    sql += str;
-                }
-                if (!string.IsNullOrEmpty(countInfo.PersonCode))
-                {
-                    string str = " AND PersonCode LIKE '"+countInfo.PersonCode+"'";
-                    sql += str;
-                }
+                string sql = "select  tl.TypeName as OutBackStoreID,tl.ChildTypeName as IsBack,tl.PackCode as BackTime,tl.PackName as backdescribes,obs.ToolCode,obs.ToolName,obs.PersonCode,obs.PersonName,obs.OutStoreTime,obs.outdescribes,sui.UserName as OptionPerson from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode join Sys_User_Info sui on obs.OptionPerson=sui.UserCode  WHERE 1=1 ";
+            t_OutBackStore outbackInfo = this.Tag as t_OutBackStore;
+            if (!string.IsNullOrWhiteSpace(outbackInfo.ToolCode))
+            {
+                string str = " AND obs.ToolCode LIKE '"+outbackInfo.ToolCode+"'";
+                sql += str;
+            }
+            if (!string.IsNullOrWhiteSpace(outbackInfo.ToolName))
+            {
+                string str = " AND obs.PersonCode LIKE '"+outbackInfo.ToolName+"'";
+            }
+            if (!string.IsNullOrWhiteSpace(outbackInfo.OutStoreTime))
+            {
+                string str = " AND obs.OutStoreTime >=  '"+outbackInfo.OutStoreTime+"'";
+                sql += str;
+            }
+            if (!string.IsNullOrWhiteSpace(outbackInfo.BackTime))
+            {
+                string str = " AND obs.OutStoreTime <=  '"+outbackInfo.BackTime+"'";
+                sql += str;
+            }
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataSet c_ds = new DataSet();
@@ -104,6 +88,8 @@ namespace toolstrackingsystem
 
                 this.reportViewer1.RefreshReport();
             }
+
+
         }
     }
 }

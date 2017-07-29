@@ -32,6 +32,24 @@ namespace service.toolstrackingsystem
         /// <param name="OutBackStoreID"></param>
         /// <returns></returns>
         bool DeleteOutBackInfo(string OutBackStoreID);
+        /// <summary>
+        /// 获取领用查询所需的领用工具分页信息
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="personCode"></param>
+        /// <param name="dateTimeFrom"></param>
+        /// <param name="dateTimeTo"></param>
+        /// <returns></returns>
+        List<ToolBorrowEntity> GetToolBorrowList(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo,int pageIndex,int pageSize,out long Count);
+        /// <summary>
+        /// 获取领用查询所需的领用工具导出信息
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="personCode"></param>
+        /// <param name="dateTimeFrom"></param>
+        /// <param name="dateTimeTo"></param>
+        /// <returns></returns>
+        List<ToolBorrowEntity> GetToolBorrowList(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo);
 
     }
 }
