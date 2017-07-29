@@ -50,6 +50,24 @@ namespace service.toolstrackingsystem
         /// <param name="dateTimeTo"></param>
         /// <returns></returns>
         List<ToolBorrowEntity> GetToolBorrowList(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo);
+        /// <summary>
+        /// 获取领用查询所需的归还工具分页信息
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="personCode"></param>
+        /// <param name="dateTimeFrom"></param>
+        /// <param name="dateTimeTo"></param>
+        /// <returns></returns>
+        List<ToolReturnEntity> GetToolReturnList(string toolCode, string backPersonCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count);
+        /// <summary>
+        /// 获取领用查询所需的归还工具导出信息
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="personCode"></param>
+        /// <param name="dateTimeFrom"></param>
+        /// <param name="dateTimeTo"></param>
+        /// <returns></returns>
+        List<ToolReturnEntity> GetToolReturnList(string toolCode, string backPersonCode, string dateTimeFrom, string dateTimeTo);
 
     }
 }

@@ -228,6 +228,18 @@
     <Compile Include="归还工具\FrmReturnTool.Designer.cs">
       <DependentUpon>FrmReturnTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="归还查询\FrmPrintToolReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="归还查询\FrmPrintToolReturn.Designer.cs">
+      <DependentUpon>FrmPrintToolReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="归还查询\FrmQueryReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="归还查询\FrmQueryReturn.Designer.cs">
+      <DependentUpon>FrmQueryReturn.cs</DependentUpon>
+    </Compile>
     <Compile Include="数据管理\FrmDBOption.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,6 +412,13 @@
     <EmbeddedResource Include="归还工具\FrmReturnTool.resx">
       <DependentUpon>FrmReturnTool.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="归还查询\FrmPrintToolReturn.resx">
+      <DependentUpon>FrmPrintToolReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="归还查询\FrmQueryReturn.resx">
+      <DependentUpon>FrmQueryReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="归还查询\Report9.rdlc" />
     <EmbeddedResource Include="数据管理\FrmDBOption.resx">
       <DependentUpon>FrmDBOption.cs</DependentUpon>
     </EmbeddedResource>
