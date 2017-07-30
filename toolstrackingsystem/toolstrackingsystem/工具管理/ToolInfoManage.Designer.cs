@@ -447,6 +447,7 @@
             this.Print_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Print_button.TabIndex = 31;
             this.Print_button.Text = "打印";
+            this.Print_button.Click += new System.EventHandler(this.Print_button_Click);
             // 
             // ExcelIn_button
             // 

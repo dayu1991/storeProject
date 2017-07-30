@@ -16,6 +16,7 @@ using service.toolstrackingsystem;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using ViewEntity.toolstrackingsystem;
+using log4net;
 
 namespace toolstrackingsystem
 {
@@ -24,6 +25,8 @@ namespace toolstrackingsystem
         private Sys_User_Info userInfo = MemoryCache.Default.Get("userinfo") as Sys_User_Info;
         private IRoleManageService _roleManageService;
         private IMenuManageService _menuManageService;
+        ILog logger = log4net.LogManager.GetLogger(typeof(FormMain));
+
         public FormMain()
         {
             this.EnableGlass = false;
@@ -107,42 +110,52 @@ namespace toolstrackingsystem
             #endregion
 
             //timer启动
-            this.timer1.Start();
+            this.timer1.Start();           
         }
         private void SetTabShow(string tabName, string sfrmName)
         {
-            bool isOpen = false;
-            foreach (SuperTabItem item in superTabControl2.Tabs)
+            try
             {
-                //已打开
-                if (item.Name == tabName)
+                bool isOpen = false;
+                foreach (SuperTabItem item in superTabControl2.Tabs)
                 {
+                    //已打开
+                    if (item.Name == tabName)
+                    {
+                        superTabControl2.SelectedTab = item;
+                        isOpen = true;
+                        break;
+                    }
+                }
+                if (!isOpen)
+                {
+                    //反射取得子窗体对象。
+                    object obj = Assembly.GetExecutingAssembly().CreateInstance("toolstrackingsystem." + sfrmName, false);
+                    //需要强转
+                    Form form = (Form)obj;
+                    //设置该子窗体不为顶级窗体，否则不能加入到别的控件中
+                    form.TopLevel = false;
+                    form.Visible = true;
+                    //布满父控件
+                    //form.Dock = DockStyle.Fill;
+                    //创建一个tab
+                    SuperTabItem item = superTabControl2.CreateTab(tabName);
+                    //设置显示名和控件名
+                    item.Text = tabName;
+                    item.Name = tabName;
+                    //将子窗体添加到Tab中
+                    item.AttachedControl.Controls.Add(form);
+                    //选择该子窗体。
                     superTabControl2.SelectedTab = item;
-                    isOpen = true;
-                    break;
                 }
             }
-            if (!isOpen)
+            catch (Exception ex)
             {
-                //反射取得子窗体对象。
-                object obj = Assembly.GetExecutingAssembly().CreateInstance("toolstrackingsystem." + sfrmName, false);
-                //需要强转
-                Form form = (Form)obj;
-                //设置该子窗体不为顶级窗体，否则不能加入到别的控件中
-                form.TopLevel = false;
-                form.Visible = true;
-                //布满父控件
-                //form.Dock = DockStyle.Fill;
-                //创建一个tab
-                SuperTabItem item = superTabControl2.CreateTab(tabName);
-                //设置显示名和控件名
-                item.Text = tabName;
-                item.Name = tabName;
-                //将子窗体添加到Tab中
-                item.AttachedControl.Controls.Add(form);
-                //选择该子窗体。
-                superTabControl2.SelectedTab = item;
+
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FormMain--SetTabShow", ex.Message, ex.StackTrace, ex.Source);
+
             }
+           
         }
         private void ToolInfo_Click(object sender, EventArgs e)
         {

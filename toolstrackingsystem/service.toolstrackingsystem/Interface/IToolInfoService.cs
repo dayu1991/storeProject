@@ -18,7 +18,7 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         List<t_ToolType> GetCategoryByClassify(int classifyType);
 
-        long AddToolInfo(t_ToolInfo toolInfo);
+        long AddToolInfo(t_ToolInfo toolInfo, string OptionType);
 
         /// <summary>
         /// 是否存在编号的工具
@@ -66,5 +66,12 @@ namespace service.toolstrackingsystem
         List<ToolInfoForRepairEntity> GetToolInfoForRepair(string toolCode, int pageIndex, int pageSize, out long totalCount);
         bool UpdateToolRepared(string toolCode);
         bool UpdateToolReparedIsActive(string toolCode);
+
+        /// <summary>
+        /// 导入工具
+        /// </summary>
+        /// <param name="InfoList"></param>
+        /// <returns></returns>
+        bool ImportToolInfoExcel(List<t_ToolInfo> InfoList);
     }
 }
