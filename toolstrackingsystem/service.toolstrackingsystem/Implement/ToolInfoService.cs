@@ -41,7 +41,7 @@ namespace service.toolstrackingsystem
         {
             return _toolCategoryInfoRepository.GetCategoryByClassify(classifyType);
         }
-        public long AddToolInfo(t_ToolInfo toolInfo)
+        public long AddToolInfo(t_ToolInfo toolInfo, string OptionType)
         {
             _toolInfoRepository.Add(toolInfo);
             var entity = new t_InStore();
@@ -62,7 +62,7 @@ namespace service.toolstrackingsystem
             entity1.Location = toolInfo.Location;
             entity1.Remarks = toolInfo.Remarks;
             entity1.InStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            entity1.OptionType = "录入";
+            entity1.OptionType = OptionType;
             entity1.OptionPerson = toolInfo.OptionPerson;
             return _currentCountInfoRepository.Add(entity1);
         }
@@ -471,6 +471,20 @@ namespace service.toolstrackingsystem
             }
             toolInfo.IsActive = "1";//2为送修状态
             return IsSuccess = UpdateTool(toolInfo);
+        }
+
+        /// <summary>
+        /// 导入工具
+        /// </summary>
+        /// <param name="InfoList"></param>
+        /// <returns></returns>
+        public bool ImportToolInfoExcel(List<t_ToolInfo> InfoList)
+        {
+            foreach (var toolInfo in InfoList)
+            {
+                AddToolInfo(toolInfo, "导入");
+            }
+            return true;
         }
     }
 }

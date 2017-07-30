@@ -17,6 +17,10 @@ using common.toolstrackingsystem;
 using ViewEntity.toolstrackingsystem.view;
 using System.IO;
 using NPOI.SS.UserModel;
+using System.Threading;
+using System.Net.Sockets;
+using NPOI.HSSF.UserModel;
+using NPOI.XSSF.UserModel;
 namespace toolstrackingsystem
 {
     public partial class ToolInfoManage : Office2007RibbonForm
@@ -26,8 +30,11 @@ namespace toolstrackingsystem
         private IToolInfoService _toolInfoService;
 
         private int slectedIndex = 0;
-        private string SelectedToolCode ="";
-
+        private string SelectedToolCode = "";
+        private Thread threadClient;
+        private Socket socketClient = Program.SocketClient;
+        //代理用来设置text的值 （实现另一个线程操作主线程的对象）
+        private delegate void SetTextCallback(string text);
 
         public ToolInfoManage()
         {
@@ -36,7 +43,7 @@ namespace toolstrackingsystem
         }
         private void ToolInfoManage_Load(object sender, EventArgs e)
         {
-            
+
             _userManageService = Program.container.Resolve<IUserManageService>();
             _toolInfoService = Program.container.Resolve<IToolInfoService>();
             var categorys = _toolInfoService.GetCategoryByClassify(0);
@@ -80,6 +87,15 @@ namespace toolstrackingsystem
             this.dtiCheckTime.Value = DateTime.Now.AddMonths(1);
             LoadData();
 
+            threadClient = new Thread(RecMsg);
+
+            //将窗体线程设置为与后台同步
+            threadClient.IsBackground = true;
+
+            //启动线程
+            threadClient.Start();
+
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -88,14 +104,14 @@ namespace toolstrackingsystem
             {
                 var toolInfo = new t_ToolInfo();
                 toolInfo.TypeName = this.cbEditBlong.SelectedValue.ToString();
-                toolInfo.ChildTypeName =this.cbEditCategory.SelectedValue.ToString();
+                toolInfo.ChildTypeName = this.cbEditCategory.SelectedValue.ToString();
 
                 toolInfo.ToolName = this.tbEditToolName.Text;
                 toolInfo.Location = this.tbEditLocation.Text;
                 toolInfo.Models = this.tbEditModel.Text;
 
                 toolInfo.Remarks = this.tbEditMemo.Text;
-                toolInfo.IsActive ="1";
+                toolInfo.IsActive = "1";
                 toolInfo.OptionPerson = LoginHelper.UserCode;
                 toolInfo.ToolCode = this.tbEditCode.Text;
 
@@ -130,11 +146,10 @@ namespace toolstrackingsystem
                     return;
                 }
 
-                var result = _toolInfoService.AddToolInfo(toolInfo);
+                var result = _toolInfoService.AddToolInfo(toolInfo,"录入");
                 if (result > 0)
                 {
                     LoadData();
-
                 }
                 else
                 {
@@ -143,7 +158,7 @@ namespace toolstrackingsystem
             }
             catch (Exception ex)
             {
-                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--RrmEditRoleInfo--Search_buttonX_Click", ex.Message, ex.StackTrace, ex.Source);
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--toolInfoManage--btnAdd_Click", ex.Message, ex.StackTrace, ex.Source);
 
             }
 
@@ -181,7 +196,8 @@ namespace toolstrackingsystem
                 this.dataGridViewX1.DataSource = resultEntity;
                 this.dataGridViewX1.Rows[0].Selected = true;
                 slectedIndex = 0;
-                SelectedToolCode =dataGridViewX1.Rows[0].Cells[4].Value.ToString();
+                SelectedToolCode = dataGridViewX1.Rows[0].Cells[4].Value.ToString();
+
 
             }
             catch (Exception ex)
@@ -189,6 +205,8 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--Tool--Search_buttonX_Click", ex.Message, ex.StackTrace, ex.Source);
             }
         }
+
+
 
         private void dataGridViewX1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -291,17 +309,20 @@ namespace toolstrackingsystem
                     NPOI.SS.UserModel.ISheet sheet = book.CreateSheet("工具列表");
                     // 添加表头
                     NPOI.SS.UserModel.IRow row = sheet.CreateRow(0);
-                    for (int i = 1; i < dataGridViewX1.Columns.Count; i++)
+                    for (int i = 0; i < dataGridViewX1.Columns.Count; i++)
                     {
 
                         var item = dataGridViewX1.Columns[i];
-                        NPOI.SS.UserModel.ICell cell = row.CreateCell(i - 1);
+                        NPOI.SS.UserModel.ICell cell = row.CreateCell(i);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.HeaderText);
                     }
                     //获取数据
                     string blongValue = cbSearchBlong.SelectedValue.ToString();
                     string categoryValue = cbSearchcategory.SelectedValue.ToString();
+                    blongValue = blongValue == "请选择" ? "" : blongValue;
+                    categoryValue = categoryValue == "请选择" ? "" : categoryValue;
+
                     string toolCode = tbSearchCode.Text;
                     string toolName = tbSearchName.Text;
                     List<t_ToolInfo> entitys = _toolInfoService.GetToolList(blongValue, categoryValue, toolCode, toolName);
@@ -310,15 +331,19 @@ namespace toolstrackingsystem
                     {
                         var item = entitys[i];
                         row = sheet.CreateRow(i + 1);
+                        row = sheet.CreateRow(i + 1);
                         NPOI.SS.UserModel.ICell cell = row.CreateCell(0);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.TypeName);
                         cell = row.CreateCell(1);
+                        cell = row.CreateCell(1);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.ChildTypeName);
                         cell = row.CreateCell(2);
+                        cell = row.CreateCell(2);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.PackCode);
+                        cell = row.CreateCell(3);
                         cell = row.CreateCell(3);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.PackName);
@@ -342,6 +367,7 @@ namespace toolstrackingsystem
                         cell = row.CreateCell(8);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.Remarks);
+            //            if (item.CheckTime != null)
                         cell = row.CreateCell(9);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.CheckTime);
@@ -371,169 +397,222 @@ namespace toolstrackingsystem
 
         private void ExcelIn_button_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    OpenFileDialog fileDialog = new OpenFileDialog();
-            //    fileDialog.Filter = "Excel(*.xls)|*.xls|Excel(*.xlsx)|*.xlsx";
-            //    if (fileDialog.ShowDialog() == DialogResult.OK)
-            //    {
-            //        //获取用户选择文件的后缀名
-            //        string extension = Path.GetExtension(openFileDialog.FileName);
-            //        //声明允许的后缀名
-            //        string[] str = new string[] { ".xls", ".xlsx" };
-            //        if (!((IList)str).Contains(extension))
-            //        {
-            //            MessageBox.Show("仅能上传xls的文件！");
-            //        }
-            //        else
-            //        {
-            //            //获取用户选择的文件，并判断文件大小不能超过20K，fileInfo.Length是以字节为单位的
-            //            FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
-            //            if (fileInfo.Length > 20480)
-            //            {
-            //                MessageBox.Show("上传的图片不能大于20K");
-            //            }
-            //            else
-            //            {
-            //                //在这里就可以写获取到正确文件后的代码了
-            //                FileStream stream = fileInfo.Open(FileMode.Open, System.IO.FileAccess.Read);
-            //                //支持xls和xlsx格式的excel文件
-            //                IWorkbook workbook;
-            //                if (extension == ".xls")
-            //                {
-            //                    workbook = new HSSFWorkbook(stream);
-            //                }
-            //                else if (extension == ".xlsx")
-            //                {
-            //                    workbook = new XSSFWorkbook(stream);
-            //                }
-            //                else
-            //                {
-            //                    MessageBox.Show("文件类型不对，只能导入xls,xlsx格式的文件"); ;
-            //                    return;
-            //                }
-            //                if (workbook.NumberOfSheets <= 0) //表单数量
-            //                {
-            //                    MessageBox.Show("文档没有数据");
-            //                }
-            //                ISheet sheet = workbook.GetSheetAt(0);
-            //                if (sheet == null)
-            //                {
-            //                    MessageBox.Show("文档没有数据");
-            //                    return;
-            //                }
-            //                IRow headerRow = sheet.GetRow(0);
-            //                if (headerRow == null)
-            //                {
-            //                    MessageBox.Show("文档表头没有数据");
-            //                    return;
-            //                }
-            //                int cellCount = headerRow.LastCellNum;
-            //                List<t_ToolInfo> InfoList = new List<t_ToolInfo>();
-            //                var cates = _toolInfoService.GetCategoryByClassify(0);
-            //                List<t_ToolType> blongCates = cates.Where(v => v.Classification = 1) == null ? new List<t_ToolType>() : cates.Where(v => v.Classification = 1).ToList();
-            //                List<t_ToolType> cateGoryCates = cates.Where(v => v.Classification = 2) == null ? new List<t_ToolType>() : cates.Where(v => v.Classification = 2).ToList();
+            try
+            {
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                fileDialog.Filter = "Excel(*.xls)|*.xls|Excel(*.xlsx)|*.xlsx";
+                if (fileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //获取用户选择文件的后缀名
+                    string extension = Path.GetExtension(fileDialog.FileName);
+                    //声明允许的后缀名
+                    string[] str = new string[] { ".xls", ".xlsx" };
+                    if (!str.Contains(extension))
+                    {
+                        MessageBox.Show("仅能上传xls的文件！");
+                    }
+                    else
+                    {
+                        //获取用户选择的文件，并判断文件大小不能超过20K，fileInfo.Length是以字节为单位的
+                        FileInfo fileInfo = new FileInfo(fileDialog.FileName);
+                        if (fileInfo.Length > 20480)
+                        {
+                            MessageBox.Show("上传的文件不能大于20K");
+                        }
+                        else
+                        {
+                            //在这里就可以写获取到正确文件后的代码了
+                            FileStream stream = fileInfo.Open(FileMode.Open, System.IO.FileAccess.Read);
+                            //支持xls和xlsx格式的excel文件
+                            IWorkbook workbook;
+                            if (extension == ".xls")
+                            {
+                                workbook = new HSSFWorkbook(stream);
+                            }
+                            else if (extension == ".xlsx")
+                            {
+                                workbook = new XSSFWorkbook(stream);
+                            }
+                            else
+                            {
+                                MessageBox.Show("文件类型不对，只能导入xls,xlsx格式的文件"); ;
+                                return;
+                            }
+                            if (workbook.NumberOfSheets <= 0) //表单数量
+                            {
+                                MessageBox.Show("文档没有数据");
+                            }
+                            ISheet sheet = workbook.GetSheetAt(0);
+                            if (sheet == null)
+                            {
+                                MessageBox.Show("文档没有数据");
+                                return;
+                            }
+                            IRow headerRow = sheet.GetRow(0);
+                            if (headerRow == null)
+                            {
+                                MessageBox.Show("文档表头没有数据");
+                                return;
+                            }
+                            int cellCount = headerRow.LastCellNum;
+                            List<t_ToolInfo> InfoList = new List<t_ToolInfo>();
+                            var cates = _toolInfoService.GetCategoryByClassify(0);
+                            List<t_ToolType> blongCates = cates.Where(v => v.classification == 1) == null ? new List<t_ToolType>() : cates.Where(v => v.classification == 1).ToList();
+                            List<t_ToolType> cateGoryCates = cates.Where(v => v.classification == 2) == null ? new List<t_ToolType>() : cates.Where(v => v.classification == 2).ToList();
 
-            //                bool isCheckSuccess = true;
-            //                string alertMsg = "";
+                            bool isCheckSuccess = true;
+                            string alertMsg = "";
 
-            //                for (int i = (sheet.FirstRowNum + 1); i < sheet.LastRowNum + 1; i++)
-            //                {
-            //                    IRow row = sheet.GetRow(i);
-            //                    if (row == null)
-            //                    {
-            //                        if (i == (sheet.FirstRowNum + 1))
-            //                        {
-            //                            isCheckSuccess = false;
-            //                            alertMsg += string.Format("第{0}行不能为空", i);
-            //                            break;
-            //                        }
-            //                        break;
-            //                    }
-            //                    var toolInfo = new t_ToolInfo();
-            //                    for (int j = row.FirstCellNum; j < cellCount; j++)
-            //                    {
-            //                        var cellJ = row.GetCell(j);
-            //                        if (cellJ != null)
-            //                        {
-            //                            switch()
+                            for (int i = (sheet.FirstRowNum + 1); i < sheet.LastRowNum + 1; i++)
+                            {
+                                IRow row = sheet.GetRow(i);
+                               
+                                var toolInfo = new t_ToolInfo();
+                                bool checkSuccess = true;
+                                for (int j = row.FirstCellNum; j < cellCount; j++)
+                                {
+                                    var cellJ = row.GetCell(j);
+                                    if (cellJ != null)
+                                    {
 
-            //                            if (j == row.FirstCellNum)
-            //                            {
-            //                                var blongName = row.GetCell(j).ToString().Trim();
-            //                                if (string.IsNullOrWhiteSpace(blongName))
-            //                                {
-            //                                    alertMsg += string.Format("第{0}行配属不能为空", i);
-            //                                    isCheckSuccess = false;
-            //                                    return;
-            //                                }
-            //                                var haveCate = blongCates.FirstOrDefault(v=>v.CategoryName=blongName);
-            //                                if (haveCate != null && haveCate.CategoryId > 0)
-            //                                {
-            //                                    toolInfo = row.GetCell(j).ToString();
-            //                                }
-            //                                else { 
-                                            
-            //                                }
-            //                                if (string.IsNullOrEmpty(personInfo.PersonCode))
-            //                                {
-            //                                    MessageBox.Show("人员编码不能为空");
-            //                                    return;
-            //                                }
-            //                            }
-            //                            else if (j == row.FirstCellNum + 1)
-            //                            {
-            //                                personInfo.PersonName = row.GetCell(j).ToString();
-            //                                if (string.IsNullOrEmpty(personInfo.PersonName))
-            //                                {
-            //                                    MessageBox.Show("人员名称不能为空");
-            //                                    return;
-            //                                }
-            //                            }
-            //                            else if (j == row.FirstCellNum + 2)
-            //                            {
-            //                                personInfo.IsReceive = string.IsNullOrEmpty(row.GetCell(j).ToString()) ? "1" : row.GetCell(j).ToString();
-            //                                if (personInfo.IsReceive != "1" && personInfo.IsReceive != "0")
-            //                                {
-            //                                    MessageBox.Show("领用权限格式不正确");
-            //                                    return;
-            //                                }
+                                        if (j == row.FirstCellNum)// 配属
+                                        {
+                                            var blongName = row.GetCell(j).ToString().Trim();
+                                            if (string.IsNullOrWhiteSpace(blongName))
+                                            {
+                                                checkSuccess = false;
+                                                break;
+                                            }
+                                            var haveCate = blongCates.FirstOrDefault(v => v.TypeName == blongName);
+                                            if (haveCate != null)
+                                            {
+                                                toolInfo.TypeName = blongName;
+                                            }
+                                            else { 
+                                            //增加配属
+                                                var toolType = new t_ToolType();
+                                                  toolType.TypeName = blongName;
+                                                  toolType.OptionPerson = LoginHelper.UserCode;
+                                                  toolType.classification = 1;
+                                                  _toolInfoService.AddCateGory(toolType);
+                                                  blongCates.Add(toolType);
+                                                 toolInfo.TypeName = blongName;
 
-            //                            }
-            //                            else if (j == row.FirstCellNum + 3)
-            //                            {
-            //                                personInfo.Remarks = string.IsNullOrEmpty(row.GetCell(j).ToString()) ? "" : row.GetCell(j).ToString();
-            //                            }
-            //                        }
-            //                    }
-            //                    if (!string.IsNullOrEmpty(personInfo.PersonCode) && !string.IsNullOrEmpty(personInfo.PersonName))
-            //                    {
-            //                        personInfoList.Add(personInfo);
-            //                    }
-            //                }
-            //                if (personInfoList == null || personInfoList.Count <= 0)
-            //                {
-            //                    MessageBox.Show("文档数据为空");
-            //                    return;
-            //                }
-            //                if (_personManageService.ImportExcel(personInfoList))
-            //                {
-            //                    MessageBox.Show("导入数据成功");
-            //                    Search_buttonX_Click(sender, e);
-            //                }
-            //                else
-            //                {
-            //                    MessageBox.Show("导入数据失败");
-            //                    return;
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmWorkerManager--Pull_Out_button_Click", ex.Message, ex.StackTrace, ex.Source);
-            //}
+                                            }                                          
+                                        }
+                                        else if (j == row.FirstCellNum + 1) //分类
+                                        {
+                                            var thisValue = row.GetCell(j).ToString().Trim();
+                                            if (string.IsNullOrWhiteSpace(thisValue))
+                                            {
+                                                checkSuccess = false;
+                                                break;
+                                            }
+                                            var haveCate = cateGoryCates.FirstOrDefault(v => v.TypeName == thisValue);
+                                            if (haveCate != null)
+                                            {
+                                                toolInfo.ChildTypeName = thisValue;
+                                            }
+                                            else
+                                            {
+                                                //增加分类
+                                                var toolType = new t_ToolType();
+                                                toolType.TypeName = thisValue;
+                                                toolType.OptionPerson = LoginHelper.UserCode;
+                                                toolType.classification =2;
+                                                _toolInfoService.AddCateGory(toolType);
+                                                blongCates.Add(toolType);
+                                                toolInfo.ChildTypeName = thisValue;
+
+                                            }                     
+                                        }
+                                        else if (j == row.FirstCellNum + 2)// 包编码
+                                        {
+                                            var thisValue = row.GetCell(j).ToString().Trim();
+                                            toolInfo.PackCode = thisValue;
+                                        }
+                                        else if (j == row.FirstCellNum + 3)// 包名称
+                                        {
+                                            var thisValue = row.GetCell(j).ToString().Trim();
+                                            toolInfo.PackName = thisValue;
+                                        }
+                                        else if (j == row.FirstCellNum +4)//编码
+                                        {
+                                            var thisValue = row.GetCell(j).ToString().Trim();
+                                            if (_toolInfoService.IsExistsByCode(thisValue))
+                                            {
+                                                checkSuccess = false;
+                                                break;
+                                            }
+                                            toolInfo.ToolCode = thisValue;
+                                        }
+                                        else if (j == row.FirstCellNum + 5)//名称
+                                        {
+                                            var thisValue = row.GetCell(j).ToString().Trim();
+                                            toolInfo.ToolName = thisValue;
+                                        }
+                                        else if (j == row.FirstCellNum + 6)//型号
+                                        {
+                                            var thisValue = row.GetCell(j).ToString().Trim();
+                                            toolInfo.Models = thisValue;
+                                        }
+                                        else if (j == row.FirstCellNum + 7)//位置
+                                        {
+                                            var thisValue = row.GetCell(j).ToString().Trim();
+                                            toolInfo.Location = thisValue;
+                                        }
+                                        else if (j == row.FirstCellNum + 8)//备注
+                                        {
+                                            var thisValue = row.GetCell(j).ToString().Trim();
+                                            toolInfo.Remarks = thisValue;
+                                        }
+                                        else if (j == row.FirstCellNum + 9)//下次检测时间
+                                        {
+                                            var thisValue = row.GetCell(j).ToString().Trim();
+                                            DateTime dt;
+                                            if (DateTime.TryParse(thisValue, out dt))
+                                            {
+                                                toolInfo.CheckTime = dt.ToString("yyyy-MM-dd HH:mm:ss");
+                                            }
+                                            else {
+                                                toolInfo.CheckTime = "";
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (checkSuccess && !string.IsNullOrEmpty(toolInfo.ToolCode) && !string.IsNullOrEmpty(toolInfo.TypeName) && !string.IsNullOrEmpty(toolInfo.ChildTypeName))
+                                {
+                                    toolInfo.IsActive = "1";
+                                    toolInfo.OptionPerson = LoginHelper.UserCode;
+                                    InfoList.Add(toolInfo);
+                                }
+                            }
+
+
+                            if (InfoList == null || InfoList.Count <= 0)
+                            {
+                                MessageBox.Show("文档数据为空");
+                                return;
+                            }
+                            if (_toolInfoService.ImportToolInfoExcel(InfoList))
+                            {
+                                MessageBox.Show(string.Format("成功导入{0}条数据", InfoList.Count));
+                                Search_buttonX_Click(sender, e);
+                            }
+                            else
+                            {
+                                MessageBox.Show("导入数据失败");
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--toolInfoManage--ExcelIn_button_Click", ex.Message, ex.StackTrace, ex.Source);
+            }
         }
 
         private void btnAddBlong_Click(object sender, EventArgs e)
@@ -542,7 +621,7 @@ namespace toolstrackingsystem
             dig.ShowDialog();
             if (dig.DialogResult == DialogResult.OK)
             {
-                ToolInfoManage_Load(sender,e);
+                ToolInfoManage_Load(sender, e);
             }
         }
 
@@ -554,6 +633,64 @@ namespace toolstrackingsystem
             {
                 ToolInfoManage_Load(sender, e);
             }
+        }
+
+
+        #region 接收服务端发来信息的方法
+        private void RecMsg()
+        {
+            while (true) //持续监听服务端发来的消息
+            {
+                if (socketClient != null && socketClient.Connected && socketClient.Available > 0)
+                {
+                    //定义一个1024*200的内存缓冲区 用于临时性存储接收到的信息
+                    byte[] arrRecMsg = new byte[1024 * 200];
+
+                    //将客户端套接字接收到的数据存入内存缓冲区, 并获取其长度
+                    int length = socketClient.Receive(arrRecMsg);
+
+                    string strData = Encoding.Default.GetString(arrRecMsg, 0, length);
+                    var totalText = strData;
+                    SetText(totalText);
+                }
+            }
+        }
+        private void SetText(string text)
+        {
+            //获取当前有焦点的控件，然后给当前控件赋值
+            Control ctl = this.ActiveControl;
+            if (ctl is TextBox) //只给textbox赋值
+            {
+                // InvokeRequired需要比较调用线程ID和创建线程ID
+                // 如果它们不相同则返回true
+                if (ctl.InvokeRequired)
+                {
+                    SetTextCallback d = new SetTextCallback(SetText);
+                    this.Invoke(d, new object[] { text });
+                }
+                else
+                {
+                    ctl.Text = text;
+                }
+            }
+        }
+
+        #endregion
+
+        private void Print_button_Click(object sender, EventArgs e)
+        {
+            FrmPrintToolInfo printFrm = new FrmPrintToolInfo();
+            t_ToolInfo tool = new t_ToolInfo();
+            tool.TypeName= cbSearchBlong.SelectedValue.ToString();
+            tool.ChildTypeName = cbSearchcategory.SelectedValue.ToString();
+            tool.TypeName = tool.TypeName == "请选择" ? "" : tool.TypeName;
+            tool.ChildTypeName = tool.ChildTypeName == "请选择" ? "" : tool.ChildTypeName;
+
+            tool.ToolCode = tbSearchCode.Text;
+            tool.ToolName = tbSearchName.Text;
+
+            printFrm.Tag = tool;
+            printFrm.ShowDialog();
         }
 
     }
