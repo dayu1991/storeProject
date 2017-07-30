@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.dtiSelect = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.btnAddTool = new DevComponents.DotNetBar.ButtonX();
             this.btnOutContinue = new DevComponents.DotNetBar.ButtonX();
             this.tbEditCode = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -54,10 +55,9 @@
             this.tbPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCheckTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtiSelect = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.groupPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtiSelect)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel2
@@ -81,7 +81,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(6, 417);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1056, 199);
+            this.groupPanel2.Size = new System.Drawing.Size(1056, 157);
             // 
             // 
             // 
@@ -112,6 +112,52 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 3;
             this.groupPanel2.Text = "工具领用信息";
+            // 
+            // dtiSelect
+            // 
+            // 
+            // 
+            // 
+            this.dtiSelect.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dtiSelect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiSelect.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dtiSelect.ButtonDropDown.Visible = true;
+            this.dtiSelect.IsPopupCalendarOpen = false;
+            this.dtiSelect.Location = new System.Drawing.Point(206, 54);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.dtiSelect.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiSelect.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.dtiSelect.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiSelect.MonthCalendar.DisplayMonth = new System.DateTime(2017, 7, 1, 0, 0, 0, 0);
+            this.dtiSelect.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.dtiSelect.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dtiSelect.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtiSelect.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dtiSelect.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiSelect.MonthCalendar.TodayButtonVisible = true;
+            this.dtiSelect.Name = "dtiSelect";
+            this.dtiSelect.Size = new System.Drawing.Size(179, 21);
+            this.dtiSelect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.dtiSelect.TabIndex = 34;
+            this.dtiSelect.Visible = false;
             // 
             // btnAddTool
             // 
@@ -381,65 +427,19 @@
             this.tbCheckTime.Name = "tbCheckTime";
             this.tbCheckTime.ReadOnly = true;
             // 
-            // dtiSelect
-            // 
-            // 
-            // 
-            // 
-            this.dtiSelect.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.dtiSelect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dtiSelect.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.dtiSelect.ButtonDropDown.Visible = true;
-            this.dtiSelect.IsPopupCalendarOpen = false;
-            this.dtiSelect.Location = new System.Drawing.Point(206, 54);
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.dtiSelect.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dtiSelect.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            this.dtiSelect.MonthCalendar.ClearButtonVisible = true;
-            // 
-            // 
-            // 
-            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.dtiSelect.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dtiSelect.MonthCalendar.DisplayMonth = new System.DateTime(2017, 7, 1, 0, 0, 0, 0);
-            this.dtiSelect.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            // 
-            // 
-            // 
-            this.dtiSelect.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.dtiSelect.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.dtiSelect.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.dtiSelect.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dtiSelect.MonthCalendar.TodayButtonVisible = true;
-            this.dtiSelect.Name = "dtiSelect";
-            this.dtiSelect.Size = new System.Drawing.Size(179, 21);
-            this.dtiSelect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dtiSelect.TabIndex = 34;
-            this.dtiSelect.Visible = false;
-            // 
             // FrmOutTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1068, 630);
+            this.ClientSize = new System.Drawing.Size(1108, 630);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.groupPanel2);
             this.Name = "FrmOutTool";
             this.Text = "FrmOutTool";
             this.Load += new System.EventHandler(this.FrmOutTool_Load);
             this.groupPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtiSelect)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);
 
         }

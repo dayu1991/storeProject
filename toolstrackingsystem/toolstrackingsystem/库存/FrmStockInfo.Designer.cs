@@ -28,11 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.ToolName_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.Count_sum_button = new DevComponents.DotNetBar.ButtonX();
+            this.Location_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.Model_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.Tool_Child_Type_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.ToolType_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.Print_button = new DevComponents.DotNetBar.ButtonX();
             this.export_button = new DevComponents.DotNetBar.ButtonX();
             this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
@@ -41,17 +52,6 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.TollList_dataGridViewX = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.ToolType_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.Tool_Child_Type_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.Location_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.Model_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.Count_sum_button = new DevComponents.DotNetBar.ButtonX();
-            this.ToolName_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TollList_dataGridViewX)).BeginInit();
@@ -112,6 +112,155 @@
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 12;
+            // 
+            // ToolName_textBox
+            // 
+            this.ToolName_textBox.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.ToolName_textBox.Border.Class = "TextBoxBorder";
+            this.ToolName_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ToolName_textBox.DisabledBackColor = System.Drawing.Color.White;
+            this.ToolName_textBox.ForeColor = System.Drawing.Color.Black;
+            this.ToolName_textBox.Location = new System.Drawing.Point(685, 17);
+            this.ToolName_textBox.Name = "ToolName_textBox";
+            this.ToolName_textBox.PreventEnterBeep = true;
+            this.ToolName_textBox.Size = new System.Drawing.Size(126, 21);
+            this.ToolName_textBox.TabIndex = 31;
+            // 
+            // Count_sum_button
+            // 
+            this.Count_sum_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.Count_sum_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.Count_sum_button.Location = new System.Drawing.Point(434, 56);
+            this.Count_sum_button.Name = "Count_sum_button";
+            this.Count_sum_button.Size = new System.Drawing.Size(75, 23);
+            this.Count_sum_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Count_sum_button.TabIndex = 30;
+            this.Count_sum_button.Text = "总库存";
+            this.Count_sum_button.Click += new System.EventHandler(this.Count_sum_button_Click);
+            // 
+            // Location_textBox
+            // 
+            this.Location_textBox.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.Location_textBox.Border.Class = "TextBoxBorder";
+            this.Location_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Location_textBox.DisabledBackColor = System.Drawing.Color.White;
+            this.Location_textBox.ForeColor = System.Drawing.Color.Black;
+            this.Location_textBox.Location = new System.Drawing.Point(284, 56);
+            this.Location_textBox.Name = "Location_textBox";
+            this.Location_textBox.PreventEnterBeep = true;
+            this.Location_textBox.Size = new System.Drawing.Size(110, 21);
+            this.Location_textBox.TabIndex = 28;
+            // 
+            // labelX5
+            // 
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Location = new System.Drawing.Point(221, 56);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(75, 23);
+            this.labelX5.TabIndex = 27;
+            this.labelX5.Text = "位置:";
+            // 
+            // Model_textBox
+            // 
+            this.Model_textBox.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.Model_textBox.Border.Class = "TextBoxBorder";
+            this.Model_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Model_textBox.DisabledBackColor = System.Drawing.Color.White;
+            this.Model_textBox.ForeColor = System.Drawing.Color.Black;
+            this.Model_textBox.Location = new System.Drawing.Point(109, 56);
+            this.Model_textBox.Name = "Model_textBox";
+            this.Model_textBox.PreventEnterBeep = true;
+            this.Model_textBox.Size = new System.Drawing.Size(89, 21);
+            this.Model_textBox.TabIndex = 26;
+            // 
+            // labelX6
+            // 
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Location = new System.Drawing.Point(48, 56);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(75, 23);
+            this.labelX6.TabIndex = 25;
+            this.labelX6.Text = "型号";
+            // 
+            // labelX4
+            // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Location = new System.Drawing.Point(628, 17);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(75, 23);
+            this.labelX4.TabIndex = 23;
+            this.labelX4.Text = "工具名称:";
+            // 
+            // Tool_Child_Type_comboBox
+            // 
+            this.Tool_Child_Type_comboBox.DisplayMember = "Text";
+            this.Tool_Child_Type_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Tool_Child_Type_comboBox.FormattingEnabled = true;
+            this.Tool_Child_Type_comboBox.ItemHeight = 15;
+            this.Tool_Child_Type_comboBox.Location = new System.Drawing.Point(284, 17);
+            this.Tool_Child_Type_comboBox.Name = "Tool_Child_Type_comboBox";
+            this.Tool_Child_Type_comboBox.Size = new System.Drawing.Size(110, 21);
+            this.Tool_Child_Type_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Tool_Child_Type_comboBox.TabIndex = 22;
+            // 
+            // labelX3
+            // 
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(221, 17);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(96, 23);
+            this.labelX3.TabIndex = 21;
+            this.labelX3.Text = "工具类别:";
+            // 
+            // ToolType_comboBox
+            // 
+            this.ToolType_comboBox.DisplayMember = "Text";
+            this.ToolType_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ToolType_comboBox.FormattingEnabled = true;
+            this.ToolType_comboBox.ItemHeight = 15;
+            this.ToolType_comboBox.Location = new System.Drawing.Point(109, 17);
+            this.ToolType_comboBox.Name = "ToolType_comboBox";
+            this.ToolType_comboBox.Size = new System.Drawing.Size(89, 21);
+            this.ToolType_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ToolType_comboBox.TabIndex = 20;
+            // 
+            // labelX1
+            // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(48, 17);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(75, 23);
+            this.labelX1.TabIndex = 19;
+            this.labelX1.Text = "工具配属:";
             // 
             // Print_button
             // 
@@ -185,37 +334,37 @@
             // TollList_dataGridViewX
             // 
             this.TollList_dataGridViewX.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TollList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TollList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.TollList_dataGridViewX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TollList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TollList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.TollList_dataGridViewX.EnableHeadersVisualStyles = false;
             this.TollList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.TollList_dataGridViewX.Location = new System.Drawing.Point(1, 3);
             this.TollList_dataGridViewX.MultiSelect = false;
             this.TollList_dataGridViewX.Name = "TollList_dataGridViewX";
             this.TollList_dataGridViewX.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TollList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TollList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.TollList_dataGridViewX.RowTemplate.Height = 23;
             this.TollList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.TollList_dataGridViewX.Size = new System.Drawing.Size(890, 340);
@@ -263,155 +412,6 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 13;
             // 
-            // labelX1
-            // 
-            this.labelX1.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(48, 17);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(75, 23);
-            this.labelX1.TabIndex = 19;
-            this.labelX1.Text = "工具配属:";
-            // 
-            // ToolType_comboBox
-            // 
-            this.ToolType_comboBox.DisplayMember = "Text";
-            this.ToolType_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ToolType_comboBox.FormattingEnabled = true;
-            this.ToolType_comboBox.ItemHeight = 15;
-            this.ToolType_comboBox.Location = new System.Drawing.Point(109, 17);
-            this.ToolType_comboBox.Name = "ToolType_comboBox";
-            this.ToolType_comboBox.Size = new System.Drawing.Size(89, 21);
-            this.ToolType_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ToolType_comboBox.TabIndex = 20;
-            // 
-            // labelX3
-            // 
-            this.labelX3.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(221, 17);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(96, 23);
-            this.labelX3.TabIndex = 21;
-            this.labelX3.Text = "工具类别:";
-            // 
-            // Tool_Child_Type_comboBox
-            // 
-            this.Tool_Child_Type_comboBox.DisplayMember = "Text";
-            this.Tool_Child_Type_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.Tool_Child_Type_comboBox.FormattingEnabled = true;
-            this.Tool_Child_Type_comboBox.ItemHeight = 15;
-            this.Tool_Child_Type_comboBox.Location = new System.Drawing.Point(284, 17);
-            this.Tool_Child_Type_comboBox.Name = "Tool_Child_Type_comboBox";
-            this.Tool_Child_Type_comboBox.Size = new System.Drawing.Size(110, 21);
-            this.Tool_Child_Type_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.Tool_Child_Type_comboBox.TabIndex = 22;
-            // 
-            // labelX4
-            // 
-            this.labelX4.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(628, 17);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(75, 23);
-            this.labelX4.TabIndex = 23;
-            this.labelX4.Text = "工具名称:";
-            // 
-            // Location_textBox
-            // 
-            this.Location_textBox.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.Location_textBox.Border.Class = "TextBoxBorder";
-            this.Location_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Location_textBox.DisabledBackColor = System.Drawing.Color.White;
-            this.Location_textBox.ForeColor = System.Drawing.Color.Black;
-            this.Location_textBox.Location = new System.Drawing.Point(284, 56);
-            this.Location_textBox.Name = "Location_textBox";
-            this.Location_textBox.PreventEnterBeep = true;
-            this.Location_textBox.Size = new System.Drawing.Size(110, 21);
-            this.Location_textBox.TabIndex = 28;
-            // 
-            // labelX5
-            // 
-            this.labelX5.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(221, 56);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(75, 23);
-            this.labelX5.TabIndex = 27;
-            this.labelX5.Text = "位置:";
-            // 
-            // Model_textBox
-            // 
-            this.Model_textBox.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.Model_textBox.Border.Class = "TextBoxBorder";
-            this.Model_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Model_textBox.DisabledBackColor = System.Drawing.Color.White;
-            this.Model_textBox.ForeColor = System.Drawing.Color.Black;
-            this.Model_textBox.Location = new System.Drawing.Point(109, 56);
-            this.Model_textBox.Name = "Model_textBox";
-            this.Model_textBox.PreventEnterBeep = true;
-            this.Model_textBox.Size = new System.Drawing.Size(89, 21);
-            this.Model_textBox.TabIndex = 26;
-            // 
-            // labelX6
-            // 
-            this.labelX6.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(48, 56);
-            this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(75, 23);
-            this.labelX6.TabIndex = 25;
-            this.labelX6.Text = "型号";
-            // 
-            // Count_sum_button
-            // 
-            this.Count_sum_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.Count_sum_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Count_sum_button.Location = new System.Drawing.Point(434, 56);
-            this.Count_sum_button.Name = "Count_sum_button";
-            this.Count_sum_button.Size = new System.Drawing.Size(75, 23);
-            this.Count_sum_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.Count_sum_button.TabIndex = 30;
-            this.Count_sum_button.Text = "总库存";
-            this.Count_sum_button.Click += new System.EventHandler(this.Count_sum_button_Click);
-            // 
-            // ToolName_textBox
-            // 
-            this.ToolName_textBox.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.ToolName_textBox.Border.Class = "TextBoxBorder";
-            this.ToolName_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ToolName_textBox.DisabledBackColor = System.Drawing.Color.White;
-            this.ToolName_textBox.ForeColor = System.Drawing.Color.Black;
-            this.ToolName_textBox.Location = new System.Drawing.Point(685, 17);
-            this.ToolName_textBox.Name = "ToolName_textBox";
-            this.ToolName_textBox.PreventEnterBeep = true;
-            this.ToolName_textBox.Size = new System.Drawing.Size(126, 21);
-            this.ToolName_textBox.TabIndex = 31;
-            // 
             // pagerControl1
             // 
             this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -429,7 +429,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(937, 593);
+            this.ClientSize = new System.Drawing.Size(937, 566);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.groupPanel2);
             this.Name = "FrmStockInfo";

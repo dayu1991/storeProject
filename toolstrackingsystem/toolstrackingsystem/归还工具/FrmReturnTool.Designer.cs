@@ -28,20 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.btnAddTool = new DevComponents.DotNetBar.ButtonX();
-            this.btnReturnContinue = new DevComponents.DotNetBar.ButtonX();
-            this.tbEditCode = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX11 = new DevComponents.DotNetBar.LabelX();
-            this.btnReturn = new DevComponents.DotNetBar.ButtonX();
-            this.tbEditoutdescribes = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.tbEditPersonName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.tbEditPersonCode = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.tbTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbChildTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPackNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +42,18 @@
             this.tbPersonCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPersonName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCheckTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnAddTool = new DevComponents.DotNetBar.ButtonX();
+            this.btnReturnContinue = new DevComponents.DotNetBar.ButtonX();
+            this.tbEditCode = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
+            this.btnReturn = new DevComponents.DotNetBar.ButtonX();
+            this.tbEditoutdescribes = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
+            this.tbEditPersonName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX9 = new DevComponents.DotNetBar.LabelX();
+            this.tbEditPersonCode = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX8 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.groupPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -76,14 +76,14 @@
             this.tbPersonCode,
             this.tbPersonName,
             this.tbCheckTime});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(6, 4);
             this.dataGridViewX1.Name = "dataGridViewX1";
@@ -91,6 +91,90 @@
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.Size = new System.Drawing.Size(1056, 408);
             this.dataGridViewX1.TabIndex = 5;
+            // 
+            // tbTypeName
+            // 
+            this.tbTypeName.DataPropertyName = "TypeName";
+            this.tbTypeName.HeaderText = "工具配属";
+            this.tbTypeName.Name = "tbTypeName";
+            this.tbTypeName.ReadOnly = true;
+            // 
+            // tbChildTypeName
+            // 
+            this.tbChildTypeName.DataPropertyName = "ChildTypeName";
+            this.tbChildTypeName.HeaderText = "工具类别";
+            this.tbChildTypeName.Name = "tbChildTypeName";
+            this.tbChildTypeName.ReadOnly = true;
+            // 
+            // tbPackNo
+            // 
+            this.tbPackNo.DataPropertyName = "PackCode";
+            this.tbPackNo.HeaderText = "包编号";
+            this.tbPackNo.Name = "tbPackNo";
+            this.tbPackNo.ReadOnly = true;
+            // 
+            // tbPackName
+            // 
+            this.tbPackName.DataPropertyName = "PackName";
+            this.tbPackName.HeaderText = "包名称";
+            this.tbPackName.Name = "tbPackName";
+            this.tbPackName.ReadOnly = true;
+            // 
+            // tbToolCode
+            // 
+            this.tbToolCode.DataPropertyName = "ToolCode";
+            this.tbToolCode.HeaderText = "编号";
+            this.tbToolCode.Name = "tbToolCode";
+            this.tbToolCode.ReadOnly = true;
+            // 
+            // tbToolName
+            // 
+            this.tbToolName.DataPropertyName = "ToolName";
+            this.tbToolName.HeaderText = "名称";
+            this.tbToolName.Name = "tbToolName";
+            this.tbToolName.ReadOnly = true;
+            // 
+            // tbModel
+            // 
+            this.tbModel.DataPropertyName = "Models";
+            this.tbModel.HeaderText = "型号";
+            this.tbModel.Name = "tbModel";
+            this.tbModel.ReadOnly = true;
+            // 
+            // tbPosition
+            // 
+            this.tbPosition.DataPropertyName = "Location";
+            this.tbPosition.HeaderText = "位置";
+            this.tbPosition.Name = "tbPosition";
+            this.tbPosition.ReadOnly = true;
+            // 
+            // tbOutStoreTime
+            // 
+            this.tbOutStoreTime.DataPropertyName = "OutStoreTime";
+            this.tbOutStoreTime.HeaderText = "领用时间";
+            this.tbOutStoreTime.Name = "tbOutStoreTime";
+            this.tbOutStoreTime.ReadOnly = true;
+            // 
+            // tbPersonCode
+            // 
+            this.tbPersonCode.DataPropertyName = "PersonCode";
+            this.tbPersonCode.HeaderText = "人员编码";
+            this.tbPersonCode.Name = "tbPersonCode";
+            this.tbPersonCode.ReadOnly = true;
+            // 
+            // tbPersonName
+            // 
+            this.tbPersonName.DataPropertyName = "PersonName";
+            this.tbPersonName.HeaderText = "人员姓名";
+            this.tbPersonName.Name = "tbPersonName";
+            this.tbPersonName.ReadOnly = true;
+            // 
+            // tbCheckTime
+            // 
+            this.tbCheckTime.DataPropertyName = "OptionPersonName";
+            this.tbCheckTime.HeaderText = "操作人员";
+            this.tbCheckTime.Name = "tbCheckTime";
+            this.tbCheckTime.ReadOnly = true;
             // 
             // groupPanel2
             // 
@@ -282,95 +366,11 @@
             this.labelX8.TabIndex = 11;
             this.labelX8.Text = "人员编码：";
             // 
-            // tbTypeName
-            // 
-            this.tbTypeName.DataPropertyName = "TypeName";
-            this.tbTypeName.HeaderText = "工具配属";
-            this.tbTypeName.Name = "tbTypeName";
-            this.tbTypeName.ReadOnly = true;
-            // 
-            // tbChildTypeName
-            // 
-            this.tbChildTypeName.DataPropertyName = "ChildTypeName";
-            this.tbChildTypeName.HeaderText = "工具类别";
-            this.tbChildTypeName.Name = "tbChildTypeName";
-            this.tbChildTypeName.ReadOnly = true;
-            // 
-            // tbPackNo
-            // 
-            this.tbPackNo.DataPropertyName = "PackCode";
-            this.tbPackNo.HeaderText = "包编号";
-            this.tbPackNo.Name = "tbPackNo";
-            this.tbPackNo.ReadOnly = true;
-            // 
-            // tbPackName
-            // 
-            this.tbPackName.DataPropertyName = "PackName";
-            this.tbPackName.HeaderText = "包名称";
-            this.tbPackName.Name = "tbPackName";
-            this.tbPackName.ReadOnly = true;
-            // 
-            // tbToolCode
-            // 
-            this.tbToolCode.DataPropertyName = "ToolCode";
-            this.tbToolCode.HeaderText = "编号";
-            this.tbToolCode.Name = "tbToolCode";
-            this.tbToolCode.ReadOnly = true;
-            // 
-            // tbToolName
-            // 
-            this.tbToolName.DataPropertyName = "ToolName";
-            this.tbToolName.HeaderText = "名称";
-            this.tbToolName.Name = "tbToolName";
-            this.tbToolName.ReadOnly = true;
-            // 
-            // tbModel
-            // 
-            this.tbModel.DataPropertyName = "Models";
-            this.tbModel.HeaderText = "型号";
-            this.tbModel.Name = "tbModel";
-            this.tbModel.ReadOnly = true;
-            // 
-            // tbPosition
-            // 
-            this.tbPosition.DataPropertyName = "Location";
-            this.tbPosition.HeaderText = "位置";
-            this.tbPosition.Name = "tbPosition";
-            this.tbPosition.ReadOnly = true;
-            // 
-            // tbOutStoreTime
-            // 
-            this.tbOutStoreTime.DataPropertyName = "OutStoreTime";
-            this.tbOutStoreTime.HeaderText = "领用时间";
-            this.tbOutStoreTime.Name = "tbOutStoreTime";
-            this.tbOutStoreTime.ReadOnly = true;
-            // 
-            // tbPersonCode
-            // 
-            this.tbPersonCode.DataPropertyName = "PersonCode";
-            this.tbPersonCode.HeaderText = "人员编码";
-            this.tbPersonCode.Name = "tbPersonCode";
-            this.tbPersonCode.ReadOnly = true;
-            // 
-            // tbPersonName
-            // 
-            this.tbPersonName.DataPropertyName = "PersonName";
-            this.tbPersonName.HeaderText = "人员姓名";
-            this.tbPersonName.Name = "tbPersonName";
-            this.tbPersonName.ReadOnly = true;
-            // 
-            // tbCheckTime
-            // 
-            this.tbCheckTime.DataPropertyName = "OptionPersonName";
-            this.tbCheckTime.HeaderText = "操作人员";
-            this.tbCheckTime.Name = "tbCheckTime";
-            this.tbCheckTime.ReadOnly = true;
-            // 
             // FrmReturnTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1079, 614);
+            this.ClientSize = new System.Drawing.Size(1101, 632);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.dataGridViewX1);
             this.Name = "FrmReturnTool";
