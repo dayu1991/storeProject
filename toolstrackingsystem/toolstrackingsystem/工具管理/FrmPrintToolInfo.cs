@@ -1,5 +1,6 @@
 ﻿using dbentity.toolstrackingsystem;
 using DevComponents.DotNetBar;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,8 @@ namespace toolstrackingsystem
 {
     public partial class FrmPrintToolInfo : Office2007Form
     {
+        ILog logger = log4net.LogManager.GetLogger(typeof(ToolInfoManage));
+
         public FrmPrintToolInfo()
         {
             this.EnableGlass = false;
@@ -24,13 +27,7 @@ namespace toolstrackingsystem
 
         private void FrmPrintToolInfo_Load(object sender, EventArgs e)
         {
-            // TODO:  这行代码将数据加载到表“cangku_manage_dbDataSet.t_ToolInfo”中。您可以根据需要移动或删除它。
-            //this.t_ToolInfoTableAdapter.Fill(this.cangku_manage_dbDataSet.t_ToolInfo);
-
-            //this.reportViewer1.RefreshReport();
-
-
-
+            
             string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MPConnection"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
@@ -63,25 +60,19 @@ namespace toolstrackingsystem
                         conn.Open();
                     }
                     adapter.Fill(c_ds);
+                    this.reportViewer1.LocalReport.DataSources.Clear();
+
+                    this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet2", c_ds.Tables[0]));
+
+                    //显示报表
+
+                    this.reportViewer1.RefreshReport();
                 }
                 catch (Exception ex)
                 {
+                    logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--frmprinttoolinfo--FrmPrintToolInfo_Load", ex.Message, ex.StackTrace, ex.Source);
 
-
-                }
-                //为报表浏览器指定报表文件
-
-                //this.reportViewer1.LocalReport.ReportEmbeddedResource = "report.Report1.rdlc";
-
-                //指定数据集,数据集名称后为表,不是DataSet类型的数据集
-
-                this.reportViewer1.LocalReport.DataSources.Clear();
-
-                this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet2", c_ds.Tables[0]));
-
-                //显示报表
-
-                this.reportViewer1.RefreshReport();
+                }              
             }
         }
     }

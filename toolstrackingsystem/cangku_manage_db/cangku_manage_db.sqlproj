@@ -61,4 +61,7 @@
   <ItemGroup>
     <RefactorLog Include="cangku_manage_db.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ScriptLog.sql" />
+  </ItemGroup>
 </Project>
