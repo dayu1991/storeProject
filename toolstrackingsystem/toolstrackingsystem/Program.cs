@@ -98,25 +98,33 @@ as UnityConfigurationSection;
             var logger = loggerObj as ILog;
 
 
-            while (!(SocketClient != null && SocketClient.Connected))
+            while (true)
             {
-                try
+                if (!(SocketClient != null && SocketClient.Connected))
                 {
-                    SocketClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    try
+                    {
+                        SocketClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-                    IPAddress ipaddressObj = IPAddress.Parse(ScanIpAddress);
-                    //将获取的ip地址和端口号绑定到网络节点endpoint上
-                    IPEndPoint endpoint = new IPEndPoint(ipaddressObj, int.Parse(ScanPort));
+                        IPAddress ipaddressObj = IPAddress.Parse(ScanIpAddress);
+                        //将获取的ip地址和端口号绑定到网络节点endpoint上
+                        IPEndPoint endpoint = new IPEndPoint(ipaddressObj, int.Parse(ScanPort));
 
-                    //这里客户端套接字连接到网络节点(服务端)用的方法是Connect 而不是Bind
-                    SocketClient.Connect(endpoint);
-                    Thread.Sleep(10000);
+                        //这里客户端套接字连接到网络节点(服务端)用的方法是Connect 而不是Bind
+                        SocketClient.Connect(endpoint);
+                        Thread.Sleep(10000);
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "program--StartScanListion", ex.Message, ex.StackTrace, ex.Source);
+                        Thread.Sleep(10000);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "program--StartScanListion", ex.Message, ex.StackTrace, ex.Source);
-                    Thread.Sleep(10000);
+                    Thread.Sleep(10000);//10s
                 }
+               
             }
 
 

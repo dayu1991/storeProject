@@ -31,34 +31,35 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrintToolInfo));
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
             this.t_ToolInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.t_ToolInfoTableAdapter = new toolstrackingsystem.cangku_manage_dbDataSetTableAdapters.t_ToolInfoTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.t_ToolInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // t_ToolInfoBindingSource
             // 
-            reportDataSource1.Name = "DataSet2";
-            reportDataSource1.Value = this.t_ToolInfoBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "toolstrackingsystem.工具管理.ToolInfo.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(-6, -2);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(861, 503);
-            this.reportViewer1.TabIndex = 0;
+            this.t_ToolInfoBindingSource.DataMember = "t_ToolInfo";
+            this.t_ToolInfoBindingSource.DataSource = this.cangku_manage_dbDataSet;
             // 
             // cangku_manage_dbDataSet
             // 
             this.cangku_manage_dbDataSet.DataSetName = "cangku_manage_dbDataSet";
             this.cangku_manage_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // t_ToolInfoBindingSource
+            // reportViewer1
             // 
-            this.t_ToolInfoBindingSource.DataMember = "t_ToolInfo";
-            this.t_ToolInfoBindingSource.DataSource = this.cangku_manage_dbDataSet;
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DataSet2";
+            reportDataSource1.Value = this.t_ToolInfoBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "toolstrackingsystem.工具管理.ToolInfo.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(849, 495);
+            this.reportViewer1.TabIndex = 0;
             // 
             // t_ToolInfoTableAdapter
             // 
@@ -74,9 +75,10 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrintToolInfo";
             this.Text = "打印预览";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmPrintToolInfo_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.t_ToolInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
