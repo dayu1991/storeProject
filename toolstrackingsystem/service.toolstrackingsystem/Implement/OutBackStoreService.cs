@@ -292,5 +292,32 @@ namespace service.toolstrackingsystem
             return _mutiTableQueryRepository.QueryList<ToolReturnEntity>(sql, parameters).ToList();
 
         }
+
+        /// <summary>
+        /// 获取超时未归还的导出工具信息
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="personCode"></param>
+        /// <returns></returns>
+        public List<NotBackToolEntity> GetNotBackToolInfoList(string toolCode, string personCode)
+        {
+            string sql = @"SELECT  obs.ToolCode,obs.ToolName,obs.PersonCode,OBS.PersonName,obs.OutStoreTime,obs.OptionPerson,obs.UserTimeInfo,ti.TypeName,ti.ChildTypeName,ti.PackCode,ti.PackName from t_OutBackStore obs join t_ToolInfo ti on obs.ToolCode = ti.ToolCode where obs.IsBack='0' and obs.UserTimeInfo< GETDATE()  ";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrEmpty(toolCode))
+            {
+                string str = " AND obs.ToolCode LIKE @toolCode ";
+                sql += str;
+                parameters.Add("toolCode", string.Format("%{0}%", toolCode));
+            }
+            if (!string.IsNullOrEmpty(personCode))
+            {
+                string str = " AND obs.PersonCode LIKE @personCode ";
+                sql += str;
+                parameters.Add("personCode", string.Format("%{0}%", personCode));
+            }
+            return _mutiTableQueryRepository.QueryList<NotBackToolEntity>(sql, parameters).ToList();
+
+
+        }
     }
 }

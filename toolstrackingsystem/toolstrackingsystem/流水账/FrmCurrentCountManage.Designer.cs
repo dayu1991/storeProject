@@ -65,7 +65,7 @@
             this.groupPanel1.Controls.Add(this.PersonCode_textBox);
             this.groupPanel1.Controls.Add(this.labelX1);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel1.Location = new System.Drawing.Point(19, 13);
+            this.groupPanel1.Location = new System.Drawing.Point(6, 8);
             this.groupPanel1.Name = "groupPanel1";
             this.groupPanel1.Size = new System.Drawing.Size(896, 70);
             // 
@@ -104,7 +104,7 @@
             this.OptionType_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.OptionType_comboBox.FormattingEnabled = true;
             this.OptionType_comboBox.ItemHeight = 15;
-            this.OptionType_comboBox.Location = new System.Drawing.Point(78, 21);
+            this.OptionType_comboBox.Location = new System.Drawing.Point(65, 16);
             this.OptionType_comboBox.Name = "OptionType_comboBox";
             this.OptionType_comboBox.Size = new System.Drawing.Size(101, 21);
             this.OptionType_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -117,7 +117,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(18, 21);
+            this.labelX3.Location = new System.Drawing.Point(5, 16);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(72, 23);
             this.labelX3.TabIndex = 19;
@@ -127,7 +127,7 @@
             // 
             this.Print_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Print_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Print_button.Location = new System.Drawing.Point(792, 21);
+            this.Print_button.Location = new System.Drawing.Point(779, 16);
             this.Print_button.Name = "Print_button";
             this.Print_button.Size = new System.Drawing.Size(75, 23);
             this.Print_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -139,7 +139,7 @@
             // 
             this.export_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.export_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.export_button.Location = new System.Drawing.Point(698, 21);
+            this.export_button.Location = new System.Drawing.Point(685, 16);
             this.export_button.Name = "export_button";
             this.export_button.Size = new System.Drawing.Size(75, 23);
             this.export_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -151,7 +151,7 @@
             // 
             this.Search_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Search_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Search_buttonX.Location = new System.Drawing.Point(601, 21);
+            this.Search_buttonX.Location = new System.Drawing.Point(588, 16);
             this.Search_buttonX.Name = "Search_buttonX";
             this.Search_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Search_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -166,7 +166,7 @@
             // 
             this.ToolCode_textBox.Border.Class = "TextBoxBorder";
             this.ToolCode_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ToolCode_textBox.Location = new System.Drawing.Point(468, 21);
+            this.ToolCode_textBox.Location = new System.Drawing.Point(455, 16);
             this.ToolCode_textBox.Name = "ToolCode_textBox";
             this.ToolCode_textBox.PreventEnterBeep = true;
             this.ToolCode_textBox.Size = new System.Drawing.Size(105, 21);
@@ -179,7 +179,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(402, 21);
+            this.labelX2.Location = new System.Drawing.Point(389, 16);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(75, 23);
             this.labelX2.TabIndex = 2;
@@ -187,7 +187,7 @@
             // 
             // PersonCode_textBox
             // 
-            this.PersonCode_textBox.Location = new System.Drawing.Point(259, 21);
+            this.PersonCode_textBox.Location = new System.Drawing.Point(246, 16);
             this.PersonCode_textBox.Name = "PersonCode_textBox";
             this.PersonCode_textBox.Size = new System.Drawing.Size(119, 21);
             this.PersonCode_textBox.TabIndex = 1;
@@ -199,7 +199,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(185, 21);
+            this.labelX1.Location = new System.Drawing.Point(172, 16);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(72, 23);
             this.labelX1.TabIndex = 0;
@@ -231,7 +231,7 @@
             this.TollList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.TollList_dataGridViewX.EnableHeadersVisualStyles = false;
             this.TollList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.TollList_dataGridViewX.Location = new System.Drawing.Point(0, 0);
+            this.TollList_dataGridViewX.Location = new System.Drawing.Point(-13, -5);
             this.TollList_dataGridViewX.MultiSelect = false;
             this.TollList_dataGridViewX.Name = "TollList_dataGridViewX";
             this.TollList_dataGridViewX.ReadOnly = true;
@@ -256,7 +256,7 @@
             this.groupPanel2.Controls.Add(this.pagerControl1);
             this.groupPanel2.Controls.Add(this.TollList_dataGridViewX);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(19, 89);
+            this.groupPanel2.Location = new System.Drawing.Point(6, 84);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(896, 433);
             // 
@@ -293,7 +293,7 @@
             // 
             this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(-1, 382);
+            this.pagerControl1.Location = new System.Drawing.Point(-14, 377);
             this.pagerControl1.Name = "pagerControl1";
             this.pagerControl1.PageIndex = 1;
             this.pagerControl1.PageSize = 100;

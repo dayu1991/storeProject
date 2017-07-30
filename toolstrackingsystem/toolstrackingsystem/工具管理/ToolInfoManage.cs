@@ -331,19 +331,19 @@ namespace toolstrackingsystem
                     {
                         var item = entitys[i];
                         row = sheet.CreateRow(i + 1);
-
+                        row = sheet.CreateRow(i + 1);
                         NPOI.SS.UserModel.ICell cell = row.CreateCell(0);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.TypeName);
-
+                        cell = row.CreateCell(1);
                         cell = row.CreateCell(1);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.ChildTypeName);
-
+                        cell = row.CreateCell(2);
                         cell = row.CreateCell(2);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.PackCode);
-
+                        cell = row.CreateCell(3);
                         cell = row.CreateCell(3);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.PackName);
@@ -367,7 +367,7 @@ namespace toolstrackingsystem
                         cell = row.CreateCell(8);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.Remarks);
-
+            //            if (item.CheckTime != null)
                         cell = row.CreateCell(9);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.CheckTime);

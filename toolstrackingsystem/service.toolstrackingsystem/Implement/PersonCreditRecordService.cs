@@ -53,5 +53,29 @@ namespace service.toolstrackingsystem
             return _mutiTableQueryRepository.QueryList<PersonCreditRecordEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
 
         }
+
+        public List<PersonCreditRecordEntity> GetPersonCreditRecordList(t_PersonCreditRecord personInfo)
+        {
+            string sql = @"SELECT  [PackCode]
+                                  ,[PackName]
+                                  ,[ToolCode]
+                                  ,[ToolName]
+                                  ,[PersonCode]
+                                  ,[PersonName]
+                                  ,[OutStoreTime]
+                                  ,[UserTimeInfo]
+                                  ,[OptionTime]
+                              FROM [dbo].[t_PersonCreditRecord] WHERE 1=1";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrEmpty(personInfo.PersonCode))
+            {
+                string str = " AND PersonCode LIKE @personCode ";
+                sql += str;
+                parameters.Add("personCode", string.Format("%{0}%", personInfo.PersonCode));
+            }
+            return _mutiTableQueryRepository.QueryList<PersonCreditRecordEntity>(sql, parameters).ToList();
+
+
+        }
     }
 }
