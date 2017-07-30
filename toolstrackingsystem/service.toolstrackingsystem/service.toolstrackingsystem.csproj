@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Implement\AddressInfoService.cs" />
     <Compile Include="Implement\CurrentCountInfoService.cs" />
     <Compile Include="Implement\MenuManageService.cs" />
     <Compile Include="Implement\OutBackStoreService.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Implement\ToolPackManageService.cs" />
     <Compile Include="Implement\ToolTypeService.cs" />
     <Compile Include="Implement\UserManageService.cs" />
+    <Compile Include="Interface\IAddressInfoService.cs" />
     <Compile Include="Interface\ICurrentCountInfoService.cs" />
     <Compile Include="Interface\IMenuManageService.cs" />
     <Compile Include="Interface\IOutBackStoreService.cs" />

@@ -25,7 +25,6 @@ namespace dbentity.toolstrackingsystem
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public virtual DbSet<Sys_Menu_Info> Sys_Menu_Info { get; set; }
         public virtual DbSet<Sys_User_Info> Sys_User_Info { get; set; }
         public virtual DbSet<Sys_User_Role> Sys_User_Role { get; set; }
@@ -37,5 +36,6 @@ namespace dbentity.toolstrackingsystem
         public virtual DbSet<t_ScrapToolInfo> t_ScrapToolInfo { get; set; }
         public virtual DbSet<t_ToolInfo> t_ToolInfo { get; set; }
         public virtual DbSet<t_ToolType> t_ToolType { get; set; }
+        public virtual DbSet<Sys_AddressInfo> Sys_AddressInfo { get; set; }
     }
 }

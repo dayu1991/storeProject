@@ -15,6 +15,7 @@ using Microsoft.Practices.Unity;
 using System.Configuration;
 using Microsoft.Practices.Unity.Configuration;
 using log4net;
+using common.toolstrackingsystem;
 
 namespace toolstrackingsystem
 {
@@ -22,6 +23,7 @@ namespace toolstrackingsystem
     {
         ILog logger = log4net.LogManager.GetLogger(typeof(FormLogin));
         private IUserManageService _userManageService;
+        private IAddressInfoService _addressInfoService;
         public FormLogin()
         {
             this.EnableGlass = false;
@@ -77,6 +79,22 @@ namespace toolstrackingsystem
         {
             this.styleManager1.ManagerStyle = eStyle.OfficeMobile2014;
             _userManageService = Program.container.Resolve<IUserManageService>() as UserManageService;
+            _addressInfoService = Program.container.Resolve<IAddressInfoService>() as AddressInfoService;
+            #region 判断客户端是否注册过
+            //string mac = CommonHelper.GetMacAddress();
+            //if (string.IsNullOrEmpty(mac))
+            //{
+            //    MessageBox.Show("获取mac地址失败，请检查您的网络设备！");
+            //    Application.Exit();
+            //}
+            //mac = mac.Replace(":","-");
+            //string encode = CommonHelper.GetMd5(CommonHelper.GetMd5(mac));
+            //if (!_addressInfoService.IsExistAddress(encode))
+            //{
+            //    MessageBox.Show("该客户端尚未注册，请联系管理员！");
+            //    Application.Exit();
+            //}
+            #endregion
             textBox_UserName.Text="admin";
             textBox_PassWord.Text = "123456";
         }

@@ -4,12 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="cangku_manage_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="__RefactorLog">
+    <Schema Namespace="cangku_manage_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Sys_AddressInfo">
           <Key>
-            <PropertyRef Name="OperationKey" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Sys_Menu_Info">
           <Key>
@@ -176,7 +178,7 @@
           <Property Name="childCode" Type="varchar" MaxLength="6" />
         </EntityType>
         <EntityContainer Name="cangku_manage_dbModelStoreContainer">
-          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_AddressInfo" EntityType="Self.Sys_AddressInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_Menu_Info" EntityType="Self.Sys_Menu_Info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_User_Info" EntityType="Self.Sys_User_Info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_User_Role" EntityType="Self.Sys_User_Role" Schema="dbo" store:Type="Tables" />
@@ -194,7 +196,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="cangku_manage_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="cangku_manage_dbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__RefactorLog" EntityType="cangku_manage_dbModel.C__RefactorLog" />
           <EntitySet Name="Sys_Menu_Info" EntityType="cangku_manage_dbModel.Sys_Menu_Info" />
           <EntitySet Name="Sys_User_Info" EntityType="cangku_manage_dbModel.Sys_User_Info" />
           <EntitySet Name="Sys_User_Role" EntityType="cangku_manage_dbModel.Sys_User_Role" />
@@ -206,13 +207,8 @@
           <EntitySet Name="t_ScrapToolInfo" EntityType="cangku_manage_dbModel.t_ScrapToolInfo" />
           <EntitySet Name="t_ToolInfo" EntityType="cangku_manage_dbModel.t_ToolInfo" />
           <EntitySet Name="t_ToolType" EntityType="cangku_manage_dbModel.t_ToolType" />
+          <EntitySet Name="Sys_AddressInfo" EntityType="cangku_manage_dbModel.Sys_AddressInfo" />
         </EntityContainer>
-        <EntityType Name="C__RefactorLog">
-          <Key>
-            <PropertyRef Name="OperationKey" />
-          </Key>
-          <Property Name="OperationKey" Type="Guid" Nullable="false" />
-        </EntityType>
         <EntityType Name="Sys_Menu_Info">
           <Key>
             <PropertyRef Name="MenuID" />
@@ -377,19 +373,20 @@
           <Property Name="fatherCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="childCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Sys_AddressInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="cangku_manage_dbModelStoreContainer" CdmEntityContainer="cangku_manage_dbEntities">
-          <EntitySetMapping Name="C__RefactorLog">
-            <EntityTypeMapping TypeName="cangku_manage_dbModel.C__RefactorLog">
-              <MappingFragment StoreEntitySet="__RefactorLog">
-                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Sys_Menu_Info">
             <EntityTypeMapping TypeName="cangku_manage_dbModel.Sys_Menu_Info">
               <MappingFragment StoreEntitySet="Sys_Menu_Info">
@@ -562,6 +559,15 @@
                 <ScalarProperty Name="classification" ColumnName="classification" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_AddressInfo">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.Sys_AddressInfo">
+              <MappingFragment StoreEntitySet="Sys_AddressInfo">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

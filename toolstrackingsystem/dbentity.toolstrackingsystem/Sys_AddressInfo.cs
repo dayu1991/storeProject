@@ -12,8 +12,10 @@ namespace dbentity.toolstrackingsystem
     using System;
     using System.Collections.Generic;
     
-    public partial class C__RefactorLog
+    public partial class Sys_AddressInfo
     {
-        public System.Guid OperationKey { get; set; }
+        public int ID { get; set; }
+        public string Address { get; set; }
+        public int IsActive { get; set; }
     }
 }
