@@ -182,6 +182,12 @@ namespace toolstrackingsystem
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.HeaderText);
                     }
+                    //获取数据
+                    t_CurrentCountInfo countInfo = new t_CurrentCountInfo();
+                    countInfo.OptionType = OptionType_comboBox.SelectedValue.ToString() == "1" ? "" : OptionType_comboBox.SelectedValue.ToString();
+                    countInfo.PersonCode = PersonCode_textBox.Text;
+                    countInfo.ToolCode = ToolCode_textBox.Text;
+                    resultList = _CurrentCountInfoService.GeCurrentCountToolList(countInfo);
                     // 添加数据
                     for (int i = 0; i < resultList.Count; i++)
                     {

@@ -17,6 +17,13 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         List<NotBackToolEntity> GetNotBackToolInfoList(string toolCode, string personCode,int pageIndex,int pageSize,out long Count);
         /// <summary>
+        /// 获取超时未归还的导出工具信息
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="personCode"></param>
+        /// <returns></returns>
+        List<NotBackToolEntity> GetNotBackToolInfoList(string toolCode, string personCode);
+        /// <summary>
         /// 获取数据删除页面所需数据
         /// </summary>
         /// <param name="toolCode"></param>

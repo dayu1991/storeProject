@@ -117,6 +117,10 @@ namespace toolstrackingsystem
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.HeaderText);
                     }
+                    //获取数据
+                    t_PersonCreditRecord personInfo = new t_PersonCreditRecord();
+                    personInfo.PersonCode = PersonCode_textBox.Text;
+                    resultList = _personCreditRecordService.GetPersonCreditRecordList(personInfo);
                     // 添加数据
                     for (int i = 0; i < resultList.Count; i++)
                     {

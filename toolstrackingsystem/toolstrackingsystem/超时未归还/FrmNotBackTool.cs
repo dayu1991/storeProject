@@ -113,6 +113,10 @@ namespace toolstrackingsystem
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.HeaderText);
                     }
+                    //获取数据
+                    string personCode = PersonCode_textBox.Text;
+                    string toolCode = ToolCode_textBox.Text;
+                    resultList = _outBackStoreService.GetNotBackToolInfoList(toolCode, personCode);
                     // 添加数据
                     for (int i = 0; i < resultList.Count; i++)
                     {
