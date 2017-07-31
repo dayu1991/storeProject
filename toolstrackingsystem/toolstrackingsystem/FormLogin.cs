@@ -95,8 +95,12 @@ namespace toolstrackingsystem
             //    Application.Exit();
             //}
             #endregion
-            textBox_UserName.Text="admin";
-            textBox_PassWord.Text = "123456";
+        }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            textBox_UserName.Text="";
+            textBox_PassWord.Text="";
         }
     }
 }

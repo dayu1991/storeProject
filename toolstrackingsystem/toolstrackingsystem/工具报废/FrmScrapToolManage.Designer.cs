@@ -87,7 +87,7 @@
             this.groupPanel3.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel3.Location = new System.Drawing.Point(520, 8);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(479, 515);
+            this.groupPanel3.Size = new System.Drawing.Size(479, 543);
             // 
             // 
             // 
@@ -179,7 +179,7 @@
             this.ScrapTool_dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle2;
             this.ScrapTool_dataGridViewX2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ScrapTool_dataGridViewX2.EnableHeadersVisualStyles = false;
-            this.ScrapTool_dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.ScrapTool_dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.ScrapTool_dataGridViewX2.Location = new System.Drawing.Point(0, 0);
             this.ScrapTool_dataGridViewX2.Name = "ScrapTool_dataGridViewX2";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -306,7 +306,7 @@
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(6, 8);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(508, 515);
+            this.groupPanel1.Size = new System.Drawing.Size(508, 543);
             // 
             // 
             // 
@@ -398,7 +398,7 @@
             this.ToolInfo_dataGridView.DefaultCellStyle = dataGridViewCellStyle5;
             this.ToolInfo_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ToolInfo_dataGridView.EnableHeadersVisualStyles = false;
-            this.ToolInfo_dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.ToolInfo_dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.ToolInfo_dataGridView.Location = new System.Drawing.Point(0, 0);
             this.ToolInfo_dataGridView.Name = "ToolInfo_dataGridView";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -446,7 +446,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1040, 565);
+            this.ClientSize = new System.Drawing.Size(1040, 612);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.groupPanel3);
             this.Name = "FrmScrapToolManage";

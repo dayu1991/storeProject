@@ -118,6 +118,7 @@
             this.ResetButton.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ResetButton.TabIndex = 6;
             this.ResetButton.Text = "重置";
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // labelX3
             // 
