@@ -185,6 +185,7 @@ namespace toolstrackingsystem
 
                     }
                 }
+                Thread.Sleep(200);
             }
         }
         private void SetText(string text)

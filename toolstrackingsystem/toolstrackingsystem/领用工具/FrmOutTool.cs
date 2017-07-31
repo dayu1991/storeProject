@@ -231,6 +231,7 @@ namespace toolstrackingsystem
 
                     }
                 }
+                Thread.Sleep(200);
             }
         }
         private void SetText(string text)
@@ -254,6 +255,11 @@ namespace toolstrackingsystem
         }
 
         #endregion
+
+        private void FrmOutTool_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
        
     }
 }
