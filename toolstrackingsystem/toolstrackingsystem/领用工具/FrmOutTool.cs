@@ -256,10 +256,6 @@ namespace toolstrackingsystem
 
         #endregion
 
-        private void FrmOutTool_FormClosed(object sender, FormClosedEventArgs e)
-        {
 
-        }
-       
     }
 }

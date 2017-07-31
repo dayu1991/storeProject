@@ -59,11 +59,11 @@ namespace toolstrackingsystem
             this.cbEditCategory.ValueMember = "TypeName";
 
             var blongs = new List<t_ToolType>();
-            blongs.Add(new t_ToolType
-            {
-                TypeName = "请选择"
+            //blongs.Add(new t_ToolType
+            //{
+            //    TypeName = "请选择"
 
-            });
+            //});
             blongs.AddRange(categoryBlongs);
 
             this.cbSearchBlong.DataSource = blongs;
@@ -71,12 +71,12 @@ namespace toolstrackingsystem
             this.cbSearchBlong.ValueMember = "TypeName";
 
             var cates = new List<t_ToolType>();
-            cates.Add(new t_ToolType
-            {
+            //cates.Add(new t_ToolType
+            //{
 
-                TypeName = "请选择"
+            //    TypeName = "请选择"
 
-            });
+            //});
             cates.AddRange(categoryCategory);
 
             this.cbSearchcategory.DataSource = cates;

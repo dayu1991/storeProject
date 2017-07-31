@@ -353,6 +353,7 @@
             this.dataGridViewX1.Location = new System.Drawing.Point(6, 3);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
+            this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.Size = new System.Drawing.Size(1056, 408);
             this.dataGridViewX1.TabIndex = 4;
@@ -436,7 +437,6 @@
             this.Controls.Add(this.groupPanel2);
             this.Name = "FrmOutTool";
             this.Text = "FrmOutTool";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmOutTool_FormClosed);
             this.Load += new System.EventHandler(this.FrmOutTool_Load);
             this.groupPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtiSelect)).EndInit();
