@@ -72,8 +72,8 @@ namespace toolstrackingsystem
             ToolList_dataGridViewX.Columns[3].HeaderText = "包名称";
             ToolList_dataGridViewX.Columns[4].HeaderText = "工具编码";
             ToolList_dataGridViewX.Columns[5].HeaderText = "工具名称";
-            ToolList_dataGridViewX.Columns[6].HeaderText = "归还人员编码";
-            ToolList_dataGridViewX.Columns[7].HeaderText = "归还人员名称";
+            ToolList_dataGridViewX.Columns[6].HeaderText = "人员编码";
+            ToolList_dataGridViewX.Columns[7].HeaderText = "人员名称";
             ToolList_dataGridViewX.Columns[8].HeaderText = "归还时间";
             ToolList_dataGridViewX.Columns[9].HeaderText = "归还说明";
             ToolList_dataGridViewX.Columns[10].HeaderText = "操作人员";
