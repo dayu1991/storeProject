@@ -77,30 +77,29 @@ namespace service.toolstrackingsystem
                                   ,obs.[backdescribes]
                                   ,sui.UserName as [OptionPerson]
                               FROM [cangku_manage_db].[dbo].[t_OutBackStore] obs join Sys_User_Info sui on obs.OptionPerson = sui.UserCode WHERE 1=1 ";
-            string sqlNotStr = "obs.[OutBackStoreID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [OutBackStoreID] FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
-            string sqlCount = "SELECT COUNT(*) FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
+            string sqlNotStr = "obs.[OutBackStoreID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " obs.[OutBackStoreID] FROM [cangku_manage_db].[dbo].[t_OutBackStore] obs join Sys_User_Info sui on obs.OptionPerson = sui.UserCode WHERE 1=1 ";
+            string sqlCount = "SELECT COUNT(*) FROM [cangku_manage_db].[dbo].[t_OutBackStore] obs join Sys_User_Info sui on obs.OptionPerson = sui.UserCode WHERE 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
                 string str = " AND obs.[ToolCode] LIKE @toolCode ";
                 sql += str;
-                sqlCount += " AND [ToolCode] LIKE @toolCode ";
-                sqlNotStr += " AND [ToolCode] LIKE @toolCode ";
+                sqlCount += str;
+                sqlNotStr += str;
                 parameters.Add("toolCode", string.Format("%{0}%", toolCode));
             }
             if (!string.IsNullOrWhiteSpace(personCode))
             {
                 string str = " AND obs.[PersonCode] LIKE @personCode ";
                 sql += str;
-                sqlCount += " AND [PersonCode] LIKE @personCode "; ;
-                sqlNotStr += " AND [PersonCode] LIKE @personCode "; ;
+                sqlCount += str;
+                sqlNotStr += str; ;
                 parameters.Add("personCode", string.Format("%{0}%", personCode));
             }
             sqlNotStr += ")";
             string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
             return _mutiTableQueryRepository.QueryList<OutBackInfoForDeleteEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
         }
-
         /// <summary>
         /// 删除某条领用信息
         /// </summary>

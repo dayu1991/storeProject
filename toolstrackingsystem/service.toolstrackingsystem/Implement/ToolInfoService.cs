@@ -295,9 +295,9 @@ namespace service.toolstrackingsystem
        /// 总库存查询
        /// </summary>
        /// <returns></returns>
-        public int GetCountInToolInfo(t_ToolInfo toolInfo)
+        public List<CountToolInfoEntity> GetCountInToolInfo(t_ToolInfo toolInfo)
         {
-            string sql = "SELECT COUNT(1) FROM t_ToolInfo WHERE IsActive=1";
+            string sql = "SELECT ChildTypeName AS TypeName, COUNT(1) as Quantity FROM t_ToolInfo WHERE IsActive=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
             {
@@ -335,8 +335,8 @@ namespace service.toolstrackingsystem
                 sql += str;
                 parameters.Add("location", string.Format("%{0}%", toolInfo.Location));
             }
-
-            return (int)_toolInfoRepository.QueryRecordCount(sql, parameters);
+            sql += " GROUP BY ChildTypeName";
+            return _multiTableQueryRepository.QueryList<CountToolInfoEntity>(sql, parameters).ToList();
         }
        /// <summary>
        /// 获取导出的库存数据

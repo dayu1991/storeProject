@@ -90,6 +90,12 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmEditUser", ex.Message, ex.StackTrace, ex.Source);
             }
             #endregion
+            #region 初始化日期选择控件
+            from_dateTimeInput.ShowUpDown = true;
+            to_dateTimeInput.ShowUpDown = true;
+            from_dateTimeInput.CustomFormat = "yyyy年MM月dd日 HH:mm:ss";
+            to_dateTimeInput.CustomFormat = "yyyy年MM月dd日 HH:mm:ss";
+            #endregion
         }
         private void Search_buttonX_Click(object sender, EventArgs e)
         {
@@ -103,7 +109,6 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmCurrentCountManage--Search_buttonX_Click", ex.Message, ex.StackTrace, ex.Source);
             }
         }
-
         private void pagerControl1_OnPageChanged(object sender, EventArgs e)
         {
             LoadData();
@@ -117,7 +122,7 @@ namespace toolstrackingsystem
             //数据总记录数
             long Count;
             //获取分页的数据
-            resultList = _CurrentCountInfoService.GeCurrentCountToolList(countInfo, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
+            resultList = _CurrentCountInfoService.GetCurrentCountToolList(countInfo, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
             TollList_dataGridViewX.DataSource = resultList;
             pagerControl1.DrawControl(Convert.ToInt32(Count));
             for (int i = 0; i < TollList_dataGridViewX.Columns.Count; i++)
