@@ -109,6 +109,9 @@
     <Compile Include="t_ToolInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="t_ToolPrepairRecord.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="t_ToolType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

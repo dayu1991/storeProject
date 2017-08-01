@@ -15,6 +15,7 @@ using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using System.IO;
 using dbentity.toolstrackingsystem;
+using System.Runtime.Caching;
 
 namespace toolstrackingsystem
 {
@@ -23,6 +24,7 @@ namespace toolstrackingsystem
         ILog logger = log4net.LogManager.GetLogger(typeof(FrmToolRepair));
         private IToolInfoService _toolInfoService;
         private List<ToolInfoForRepairEntity> resultList = new List<ToolInfoForRepairEntity>();
+        private Sys_User_Info userInfo = MemoryCache.Default.Get("userinfo") as Sys_User_Info;
         private int selectedIndex;
         public FrmToolRepair()
         {
@@ -90,7 +92,7 @@ namespace toolstrackingsystem
                     return;
                 }
                 string toolCode = TollList_dataGridViewX.Rows[selectedIndex].Cells[4].Value.ToString();
-                if (_toolInfoService.UpdateToolRepared(toolCode))
+                if (_toolInfoService.UpdateToolRepared(toolCode,userInfo.UserCode))
                 {
                     MessageBox.Show("设置成功");
                     Search_buttonX_Click(sender, e);
@@ -115,7 +117,7 @@ namespace toolstrackingsystem
                     return;
                 }
                 string toolCode = TollList_dataGridViewX.Rows[selectedIndex].Cells[4].Value.ToString();
-                if (_toolInfoService.UpdateToolReparedIsActive(toolCode))
+                if (_toolInfoService.UpdateToolReparedIsActive(toolCode,userInfo.UserCode))
                 {
                     MessageBox.Show("恢复成功");
                     Search_buttonX_Click(sender, e);

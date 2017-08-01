@@ -13,13 +13,13 @@ namespace service.toolstrackingsystem
 {
    public class ToolInfoService:IToolInfoService
     {
-       private IToolCategoryInfoRepository _toolCategoryInfoRepository;
-       private IToolInfoRepository _toolInfoRepository;
-              private IInStoreRepository _inStoreRepository;
+        private IToolCategoryInfoRepository _toolCategoryInfoRepository;
+        private IToolInfoRepository _toolInfoRepository;
+        private IInStoreRepository _inStoreRepository;
 
-              private ICurrentCountInfoRepository _currentCountInfoRepository;
-              private IOutBackStoreRepository _outBackStoreRepository;
-
+        private ICurrentCountInfoRepository _currentCountInfoRepository;
+        private IOutBackStoreRepository _outBackStoreRepository;
+        private IToolPrepairRecordRepository _toolPrepairRecordRepository;
 
         private IMultiTableQueryRepository _multiTableQueryRepository;
         public ToolInfoService(IToolCategoryInfoRepository toolCategoryInfoRepository,
@@ -27,7 +27,7 @@ namespace service.toolstrackingsystem
             IMultiTableQueryRepository multiTableQueryRepository,
             IInStoreRepository inStoreRepository,
             ICurrentCountInfoRepository currentCountInfoRepository,
-            IOutBackStoreRepository outBackStoreRepository)
+            IOutBackStoreRepository outBackStoreRepository,IToolPrepairRecordRepository toolPrepairRecordRepository)
        {
            _toolCategoryInfoRepository = toolCategoryInfoRepository;
            _toolInfoRepository = toolInfoRepository;
@@ -35,6 +35,7 @@ namespace service.toolstrackingsystem
             _inStoreRepository=inStoreRepository;
             _currentCountInfoRepository = currentCountInfoRepository;
             _outBackStoreRepository = outBackStoreRepository;
+            _toolPrepairRecordRepository = toolPrepairRecordRepository;
        }
 
         public List<t_ToolType> GetCategoryByClassify(int classifyType)
@@ -444,7 +445,7 @@ namespace service.toolstrackingsystem
        /// </summary>
        /// <param name="toolCode"></param>
        /// <returns></returns>
-        public bool UpdateToolRepared(string toolCode)
+        public bool UpdateToolRepared(string toolCode,string userCode)
         {
             bool IsSuccess = false;
             t_ToolInfo toolInfo = GetToolByCode(toolCode);
@@ -453,7 +454,19 @@ namespace service.toolstrackingsystem
                 return IsSuccess;
             }
             toolInfo.IsActive = "2";//2为送修状态
-            return IsSuccess = UpdateTool(toolInfo);
+            IsSuccess = UpdateTool(toolInfo);
+            //往送修表插入一条记录
+            t_ToolPrepairRecord prepairInfo = new t_ToolPrepairRecord();
+            if(!IsSuccess)
+            {
+                return IsSuccess;
+            }
+            prepairInfo.ToolCode = toolInfo.ToolCode;
+            prepairInfo.ToolName = toolInfo.ToolName;
+            prepairInfo.OptionPerson = userCode;
+            prepairInfo.PrepairTime = DateTime.Now.ToString();
+            prepairInfo.IsActive = 0;
+            return IsSuccess =  _toolPrepairRecordRepository.Add(prepairInfo)>0;
         }
 
        /// <summary>
@@ -461,18 +474,27 @@ namespace service.toolstrackingsystem
        /// </summary>
        /// <param name="toolCode"></param>
        /// <returns></returns>
-        public bool UpdateToolReparedIsActive(string toolCode)
+        public bool UpdateToolReparedIsActive(string toolCode,string userCode)
         {
             bool IsSuccess = false;
-            t_ToolInfo toolInfo = GetToolByCode(toolCode);
-            if (toolInfo == null)
+            t_ToolPrepairRecord toolPrepairInfo = new t_ToolPrepairRecord();
+            toolPrepairInfo = _toolPrepairRecordRepository.GetToolPrepairRecordByToolCode(toolCode);
+            if (toolPrepairInfo == null)
             {
                 return IsSuccess;
             }
+            toolPrepairInfo.BackTime = DateTime.Now.ToString();
+            toolPrepairInfo.BackOptionPerson = userCode;
+            toolPrepairInfo.IsActive = 1;
+            IsSuccess = _toolPrepairRecordRepository.Update(toolPrepairInfo);
+            if (!IsSuccess)
+            {
+                return IsSuccess;
+            }
+            t_ToolInfo toolInfo = GetToolByCode(toolCode);
             toolInfo.IsActive = "1";//2为送修状态
             return IsSuccess = UpdateTool(toolInfo);
         }
-
         /// <summary>
         /// 导入工具
         /// </summary>

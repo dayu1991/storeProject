@@ -37,5 +37,6 @@ namespace dbentity.toolstrackingsystem
         public virtual DbSet<t_ToolInfo> t_ToolInfo { get; set; }
         public virtual DbSet<t_ToolType> t_ToolType { get; set; }
         public virtual DbSet<Sys_AddressInfo> Sys_AddressInfo { get; set; }
+        public virtual DbSet<t_ToolPrepairRecord> t_ToolPrepairRecord { get; set; }
     }
 }

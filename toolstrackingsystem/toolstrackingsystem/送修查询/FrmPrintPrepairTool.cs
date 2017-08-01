@@ -10,18 +10,18 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using System.Data.SqlClient;
 using System.Runtime.Caching;
+using dbentity.toolstrackingsystem;
 
 namespace toolstrackingsystem
 {
-    public partial class FrmPrintPersonCreditRecord : Office2007Form
+    public partial class FrmPrintPrepairTool : Office2007Form
     {
-        public FrmPrintPersonCreditRecord()
+        public FrmPrintPrepairTool()
         {
-            this.EnableGlass = false;
             InitializeComponent();
         }
 
-        private void FrmPrintPersonCreditRecord_Load(object sender, EventArgs e)
+        private void FrmPrintPrepairTool_Load(object sender, EventArgs e)
         {
 
             //this.reportViewer1.RefreshReport();
@@ -35,20 +35,18 @@ namespace toolstrackingsystem
             #endregion
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
-                string personCode = this.Tag.ToString();
-                string sql = @"SELECT [PackCode]
-                                  ,[PackName]
-                                  ,[ToolCode]
-                                  ,[ToolName]
-                                  ,[PersonCode]
-                                  ,[PersonName]
-                                  ,[OutStoreTime]
-                                  ,[UserTimeInfo]
-                                  ,[OptionTime]
-                              FROM [dbo].[t_PersonCreditRecord] WHERE 1=1";
-                if (!string.IsNullOrEmpty(personCode))
+                t_ToolPrepairRecord prepairInfo = (t_ToolPrepairRecord)this.Tag;
+                string sql = @"SELECT tpr.[ToolCode]
+                                      ,tpr.[ToolName]
+                                      ,tpr.[PrepairTime]
+                                      ,tpr.[BackTime]
+                                      ,sui.UserName as [OptionPerson]
+                                      ,sui1.UserName as [BackOptionPerson]
+                                      ,[IsActive] = case tpr.IsActive WHEN 0 THEN '送修' WHEN 1 THEN '可用' END
+                                  FROM [cangku_manage_db].[dbo].[t_ToolPrepairRecord] tpr join Sys_User_Info sui on tpr.OptionPerson = sui.UserCode join Sys_User_Info sui1 on tpr.BackOptionPerson = sui1.UserCode WHERE 1=1";
+                if (!string.IsNullOrEmpty(prepairInfo.ToolCode))
                 {
-                    string str = " AND PersonCode LIKE @personCode ";
+                    string str = " AND tpr.ToolCode LIKE '" + prepairInfo.ToolCode + "'";
                     sql += str;
                 }
                 SqlCommand cmd = new SqlCommand(sql, conn);

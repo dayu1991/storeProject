@@ -166,6 +166,19 @@
           <Property Name="IsActive" Type="varchar" MaxLength="2" />
           <Property Name="OptionPerson" Type="varchar" MaxLength="32" />
         </EntityType>
+        <EntityType Name="t_ToolPrepairRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToolCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ToolName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrepairTime" Type="varchar" MaxLength="50" />
+          <Property Name="BackTime" Type="varchar" MaxLength="50" />
+          <Property Name="OptionPerson" Type="varchar" MaxLength="50" />
+          <Property Name="BackOptionPerson" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="t_ToolType">
           <Key>
             <PropertyRef Name="TypeID" />
@@ -189,6 +202,7 @@
           <EntitySet Name="t_PersonInfo" EntityType="Self.t_PersonInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ScrapToolInfo" EntityType="Self.t_ScrapToolInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ToolInfo" EntityType="Self.t_ToolInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ToolPrepairRecord" EntityType="Self.t_ToolPrepairRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ToolType" EntityType="Self.t_ToolType" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -208,6 +222,7 @@
           <EntitySet Name="t_ToolInfo" EntityType="cangku_manage_dbModel.t_ToolInfo" />
           <EntitySet Name="t_ToolType" EntityType="cangku_manage_dbModel.t_ToolType" />
           <EntitySet Name="Sys_AddressInfo" EntityType="cangku_manage_dbModel.Sys_AddressInfo" />
+          <EntitySet Name="t_ToolPrepairRecord" EntityType="cangku_manage_dbModel.t_ToolPrepairRecord" />
         </EntityContainer>
         <EntityType Name="Sys_Menu_Info">
           <Key>
@@ -380,6 +395,19 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_ToolPrepairRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToolCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ToolName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PrepairTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BackTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OptionPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
+          <Property Name="BackOptionPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -567,6 +595,20 @@
               <MappingFragment StoreEntitySet="Sys_AddressInfo">
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ToolPrepairRecord">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.t_ToolPrepairRecord">
+              <MappingFragment StoreEntitySet="t_ToolPrepairRecord">
+                <ScalarProperty Name="BackOptionPerson" ColumnName="BackOptionPerson" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OptionPerson" ColumnName="OptionPerson" />
+                <ScalarProperty Name="BackTime" ColumnName="BackTime" />
+                <ScalarProperty Name="PrepairTime" ColumnName="PrepairTime" />
+                <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+                <ScalarProperty Name="ToolCode" ColumnName="ToolCode" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

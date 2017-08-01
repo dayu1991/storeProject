@@ -64,8 +64,8 @@ namespace service.toolstrackingsystem
         List<CountToolInfoEntity> GetCountInToolInfo(t_ToolInfo toolInfo);
         List<ToolInfoForStockInfoEntity> GetToolInfoListForStock(t_ToolInfo toolInfo);
         List<ToolInfoForRepairEntity> GetToolInfoForRepair(string toolCode, int pageIndex, int pageSize, out long totalCount);
-        bool UpdateToolRepared(string toolCode);
-        bool UpdateToolReparedIsActive(string toolCode);
+        bool UpdateToolRepared(string toolCode, string userCode);
+        bool UpdateToolReparedIsActive(string toolCode, string userCode);
 
         /// <summary>
         /// 导入工具

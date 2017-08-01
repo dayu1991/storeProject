@@ -68,6 +68,7 @@
     <Compile Include="Implement\ScrapToolInfoService.cs" />
     <Compile Include="Implement\ToolInfoService.cs" />
     <Compile Include="Implement\ToolPackManageService.cs" />
+    <Compile Include="Implement\ToolPrepairRecordService.cs" />
     <Compile Include="Implement\ToolTypeService.cs" />
     <Compile Include="Implement\UserManageService.cs" />
     <Compile Include="Interface\IAddressInfoService.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Interface\IScrapToolInfoService.cs" />
     <Compile Include="Interface\IToolInfoService.cs" />
     <Compile Include="Interface\IToolPackManageService.cs" />
+    <Compile Include="Interface\IToolPrepairRecordService.cs" />
     <Compile Include="Interface\IToolTypeService.cs" />
     <Compile Include="Interface\IUserManageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
