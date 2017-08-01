@@ -14,7 +14,7 @@ namespace service.toolstrackingsystem
         /// 获取符合条件的工具信息
         /// </summary>
         /// <returns></returns>
-        List<CurrentToolInfoEntity> GeCurrentCountToolList(t_CurrentCountInfo countInfo, int pageIndex, int pageSize, out long Count);
+        List<CurrentToolInfoEntity> GetCurrentCountToolList(t_CurrentCountInfo countInfo, int pageIndex, int pageSize, out long Count);
         /// <summary>
         /// 获取符合条件的导出工具信息
         /// </summary>

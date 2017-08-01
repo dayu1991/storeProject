@@ -116,23 +116,17 @@ namespace toolstrackingsystem
             toolInfo.ToolName = ToolName_textBox.Text;
             toolInfo.Location = Location_textBox.Text;
             toolInfo.Models = Model_textBox.Text;
-            //数据总记录数
-            long Count;
             //获取分页的数据
-            int Quantity = _toolInfoService.GetCountInToolInfo(toolInfo);
-            DataTable dt = new DataTable();
-            dt.Columns.Add("name");
-            dt.Columns.Add("value");
-            DataRow dr = dt.NewRow();
-
-            dr[0] = "汇总";
-
-            dr[1] = Quantity;
-
-            dt.Rows.Add(dr);
-
-            TollList_dataGridViewX.DataSource = dt;
-            pagerControl1.DrawControl(Convert.ToInt32(1));
+            List<CountToolInfoEntity> resultEntity = _toolInfoService.GetCountInToolInfo(toolInfo);
+            CountToolInfoEntity sumCountTool = new CountToolInfoEntity();
+            sumCountTool.TypeName = "汇总";
+            foreach (var item in resultEntity)
+            {
+                sumCountTool.Quantity += item.Quantity;
+            }
+            resultEntity.Add(sumCountTool);
+            TollList_dataGridViewX.DataSource = resultEntity;
+            pagerControl1.DrawControl(Convert.ToInt32(sumCountTool.Quantity));
             for (int i = 0; i < TollList_dataGridViewX.Columns.Count; i++)
             {
                 TollList_dataGridViewX.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;

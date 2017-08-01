@@ -90,6 +90,12 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmEditUser", ex.Message, ex.StackTrace, ex.Source);
             }
             #endregion
+            #region 初始化日期选择控件
+            from_dateTimeInput.ShowUpDown = true;
+            to_dateTimeInput.ShowUpDown = true;
+            from_dateTimeInput.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            to_dateTimeInput.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            #endregion
         }
         private void Search_buttonX_Click(object sender, EventArgs e)
         {
@@ -103,7 +109,6 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmCurrentCountManage--Search_buttonX_Click", ex.Message, ex.StackTrace, ex.Source);
             }
         }
-
         private void pagerControl1_OnPageChanged(object sender, EventArgs e)
         {
             LoadData();
@@ -114,10 +119,13 @@ namespace toolstrackingsystem
             countInfo.OptionType = OptionType_comboBox.SelectedValue.ToString() == "1" ? "" : OptionType_comboBox.SelectedValue.ToString();
             countInfo.PersonCode = PersonCode_textBox.Text;
             countInfo.ToolCode = ToolCode_textBox.Text;
+            countInfo.OptionPerson = optionperson_textBox.Text;
+            countInfo.OutStoreTime = from_dateTimeInput.Text;
+            countInfo.BackTime = to_dateTimeInput.Text;
             //数据总记录数
             long Count;
             //获取分页的数据
-            resultList = _CurrentCountInfoService.GeCurrentCountToolList(countInfo, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
+            resultList = _CurrentCountInfoService.GetCurrentCountToolList(countInfo, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
             TollList_dataGridViewX.DataSource = resultList;
             pagerControl1.DrawControl(Convert.ToInt32(Count));
             for (int i = 0; i < TollList_dataGridViewX.Columns.Count; i++)
@@ -140,8 +148,10 @@ namespace toolstrackingsystem
             TollList_dataGridViewX.Columns[12].HeaderText = "操作类型";
             TollList_dataGridViewX.Columns[13].HeaderText = "人员编码";
             TollList_dataGridViewX.Columns[14].HeaderText = "人员名称";
-            TollList_dataGridViewX.Columns[15].HeaderText = "归还人编码";
-            TollList_dataGridViewX.Columns[16].HeaderText = "归还人名称";
+            TollList_dataGridViewX.Columns[15].HeaderText = "归还人员编码";
+            TollList_dataGridViewX.Columns[15].Width = 120;
+            TollList_dataGridViewX.Columns[16].HeaderText = "归还人员名称";
+            TollList_dataGridViewX.Columns[16].Width = 120;
             TollList_dataGridViewX.Columns[17].HeaderText = "描述";
             TollList_dataGridViewX.Columns[18].HeaderText = "操作员";
             pagerControl1.DrawControl(Convert.ToInt32(Count));

@@ -61,7 +61,7 @@ namespace service.toolstrackingsystem
 
         bool BackStore(OutBackStoreEntity entity, t_PersonInfo person, string opeartPerson, string desc);
         List<ToolInfoForStockInfoEntity> GetToolInfoListForStock(t_ToolInfo toolInfo, int pageIndex, int pageSize, out long totalCount);
-        int GetCountInToolInfo(t_ToolInfo toolInfo);
+        List<CountToolInfoEntity> GetCountInToolInfo(t_ToolInfo toolInfo);
         List<ToolInfoForStockInfoEntity> GetToolInfoListForStock(t_ToolInfo toolInfo);
         List<ToolInfoForRepairEntity> GetToolInfoForRepair(string toolCode, int pageIndex, int pageSize, out long totalCount);
         bool UpdateToolRepared(string toolCode);

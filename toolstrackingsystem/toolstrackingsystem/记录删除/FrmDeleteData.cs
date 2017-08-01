@@ -56,17 +56,23 @@ namespace toolstrackingsystem
                 TollList_dataGridViewX.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
             }
             TollList_dataGridViewX.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            TollList_dataGridViewX.MultiSelect = true;
             TollList_dataGridViewX.Columns[0].HeaderText = "ID";
             TollList_dataGridViewX.Columns[1].HeaderText = "工具编码";
             TollList_dataGridViewX.Columns[2].HeaderText = "工具名称";
             TollList_dataGridViewX.Columns[3].HeaderText = "领用时间";
             TollList_dataGridViewX.Columns[4].HeaderText = "领用人员编码";
+            TollList_dataGridViewX.Columns[4].Width = 120;
             TollList_dataGridViewX.Columns[5].HeaderText = "领用人员名称";
+            TollList_dataGridViewX.Columns[5].Width = 120;
             TollList_dataGridViewX.Columns[6].HeaderText = "截止归还时间";
+            TollList_dataGridViewX.Columns[6].Width = 120;
             TollList_dataGridViewX.Columns[7].HeaderText = "是否归还";
             TollList_dataGridViewX.Columns[8].HeaderText = "归还时间";
             TollList_dataGridViewX.Columns[9].HeaderText = "归还人员编码";
+            TollList_dataGridViewX.Columns[9].Width = 120;
             TollList_dataGridViewX.Columns[10].HeaderText = "归还人员名称";
+            TollList_dataGridViewX.Columns[10].Width = 120;
             TollList_dataGridViewX.Columns[11].HeaderText = "领用说明";
             TollList_dataGridViewX.Columns[12].HeaderText = "归还说明";
             TollList_dataGridViewX.Columns[13].HeaderText = "操作人员";
@@ -90,20 +96,32 @@ namespace toolstrackingsystem
         }
         private void Delete_button_Click(object sender, EventArgs e)
         {
+            
             string ID = TollList_dataGridViewX.Rows[slectedIndex].Cells[0].Value.ToString();
-            if (string.IsNullOrEmpty(ID))
+            if (TollList_dataGridViewX.SelectedRows.Count <= 0)
             {
                 MessageBox.Show("请选择一条需要删除的记录");
                 return;
             }
-            if (MessageBox.Show("您确定要删除“" + TollList_dataGridViewX.Rows[slectedIndex].Cells[1].Value.ToString() + "”包信息吗", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            foreach (DataGridViewRow item in TollList_dataGridViewX.SelectedRows)
             {
-                if (_outBackStoreService.DeleteOutBackInfo(ID))
-                {
-                    MessageBox.Show("删除成功");
-                    Search_buttonX_Click(sender,e);
-                }
+                _outBackStoreService.DeleteOutBackInfo(item.Cells[0].Value.ToString());
             }
+            MessageBox.Show("删除成功");
+            Search_buttonX_Click(sender,e);
+            //if (string.IsNullOrEmpty(ID))
+            //{
+            //    MessageBox.Show("请选择一条需要删除的记录");
+            //    return;
+            //}
+            //if (MessageBox.Show("您确定要删除“" + TollList_dataGridViewX.Rows[slectedIndex].Cells[1].Value.ToString() + "”包信息吗", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            //{
+            //    if (_outBackStoreService.DeleteOutBackInfo(ID))
+            //    {
+            //        MessageBox.Show("删除成功");
+            //        Search_buttonX_Click(sender,e);
+            //    }
+            //}
         }
     }
 }

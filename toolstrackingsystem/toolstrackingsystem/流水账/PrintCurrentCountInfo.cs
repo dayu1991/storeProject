@@ -38,41 +38,62 @@ namespace toolstrackingsystem
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
                 t_CurrentCountInfo countInfo = (t_CurrentCountInfo)this.Tag;
-                string sql = @"SELECT [TypeName]
-                        ,[ChildTypeName]
-                        ,[PackCode]
-                        ,[PackName]
-                        ,[ToolCode]
-                        ,[ToolName]
-                        ,[Models]
-                        ,[Location]
-                        ,[Remarks]
-                        ,[InStoreTime]
-                        ,[OutStoreTime]
-                        ,[BackTime]
-                        ,[OptionType]
-                        ,[PersonCode]
-                        ,[PersonName]
-                        ,[BackPesonCode]
-                        ,[BackPersonName]
-                        ,[describes]
-                        ,[OptionPerson]
-                    FROM [dbo].[t_CurrentCountInfo] WHERE 1=1 ";
+                string sql = @"SELECT tci.[TypeName]
+                                  ,tci.[ChildTypeName]
+                                  ,tci.[PackCode]
+                                  ,tci.[PackName]
+                                  ,tci.[ToolCode]
+                                  ,tci.[ToolName]
+                                  ,tci.[Models]
+                                  ,tci.[Location]
+                                  ,tci.[Remarks]
+                                  ,tci.[InStoreTime]
+                                  ,tci.[OutStoreTime]
+                                  ,tci.[BackTime]
+                                  ,tci.[OptionType]
+                                  ,tci.[PersonCode]
+                                  ,tci.[PersonName]
+                                  ,tci.[BackPesonCode]
+                                  ,tci.[BackPersonName]
+                                  ,tci.[describes]
+                                  ,sui.UserName as [OptionPerson]
+                              FROM [dbo].[t_CurrentCountInfo] tci JOIN Sys_User_Info  sui ON tci.[OptionPerson] = sui.UserCode WHERE 1=1 ";
                 if (!string.IsNullOrEmpty(countInfo.OptionType))
                 {
-                    string str = " AND OptionType LIKE '"+countInfo.OptionType+"'";
+                    string str = " AND tci.OptionType LIKE '" + countInfo.OptionType + "'";
                     sql += str;
                 }
                 if (!string.IsNullOrEmpty(countInfo.ToolCode))
                 {
-                    string str = " AND ToolCode LIKE '"+countInfo.ToolCode+"'";
+                    string str = " AND tci.ToolCode LIKE '" + countInfo.ToolCode + "'";
                     sql += str;
                 }
                 if (!string.IsNullOrEmpty(countInfo.PersonCode))
                 {
-                    string str = " AND PersonCode LIKE '"+countInfo.PersonCode+"'";
+                    string str = " AND tci.PersonCode LIKE '" + countInfo.PersonCode + "'";
                     sql += str;
                 }
+                if (!string.IsNullOrEmpty(countInfo.OptionPerson))
+                {
+                    string str = " AND tci.OptionPerson LIKE '" + countInfo.OptionPerson + "'";
+                    sql += str;
+                }
+                if (!string.IsNullOrEmpty(countInfo.OutStoreTime) && !string.IsNullOrEmpty(countInfo.BackTime))
+                {
+                    string str = " AND((tci.OutStoreTime>= '" + countInfo.OutStoreTime + "' AND tci.OutStoreTime<='" + countInfo.BackTime + "') OR (tci.BackTime>= '" + countInfo.OutStoreTime + "'  AND tci.BackTime<='" + countInfo.BackTime + "'))";
+                    sql += str;
+                }
+                else if (string.IsNullOrEmpty(countInfo.OutStoreTime) && !string.IsNullOrEmpty(countInfo.BackTime))
+                {
+                    string str = " AND(tci.OutStoreTime<='" + countInfo.BackTime + "' OR tci.BackTime<='" + countInfo.BackTime + "')";
+                    sql += str;
+                }
+                else if (!string.IsNullOrEmpty(countInfo.OutStoreTime) && string.IsNullOrEmpty(countInfo.BackTime))
+                {
+                    string str = " AND(tci.OutStoreTime>='" + countInfo.OutStoreTime + "' OR tci.BackTime>='" + countInfo.OutStoreTime + "')";
+                    sql += str;
+                }
+
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataSet c_ds = new DataSet();
