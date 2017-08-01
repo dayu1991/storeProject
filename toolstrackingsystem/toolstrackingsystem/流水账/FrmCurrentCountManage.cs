@@ -140,8 +140,10 @@ namespace toolstrackingsystem
             TollList_dataGridViewX.Columns[12].HeaderText = "操作类型";
             TollList_dataGridViewX.Columns[13].HeaderText = "人员编码";
             TollList_dataGridViewX.Columns[14].HeaderText = "人员名称";
-            TollList_dataGridViewX.Columns[15].HeaderText = "归还人编码";
-            TollList_dataGridViewX.Columns[16].HeaderText = "归还人名称";
+            TollList_dataGridViewX.Columns[15].HeaderText = "归还人员编码";
+            TollList_dataGridViewX.Columns[15].Width = 120;
+            TollList_dataGridViewX.Columns[16].HeaderText = "归还人员名称";
+            TollList_dataGridViewX.Columns[16].Width = 120;
             TollList_dataGridViewX.Columns[17].HeaderText = "描述";
             TollList_dataGridViewX.Columns[18].HeaderText = "操作员";
             pagerControl1.DrawControl(Convert.ToInt32(Count));

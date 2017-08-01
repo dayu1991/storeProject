@@ -214,6 +214,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.TollList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.TollList_dataGridViewX.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.TollList_dataGridViewX.RowTemplate.Height = 23;
             this.TollList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.TollList_dataGridViewX.Size = new System.Drawing.Size(890, 380);

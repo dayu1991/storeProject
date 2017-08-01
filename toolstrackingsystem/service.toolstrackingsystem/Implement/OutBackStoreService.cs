@@ -62,43 +62,43 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         public List<OutBackInfoForDeleteEntity> GetOutBackInfoForDelete(string toolCode, string personCode, int pageIndex, int pageSize, out long Count)
         {
-            string sql = @"SELECT TOP " + pageSize + @"[OutBackStoreID]
-                                  ,[ToolCode]
-                                  ,[ToolName]
-                                  ,[OutStoreTime]
-                                  ,[PersonCode]
-                                  ,[PersonName]
-                                  ,[UserTimeInfo]
-                                  ,[IsBack]= case [IsBack] WHEN '1' THEN '是' WHEN '0' THEN '否' END
-                                  ,[BackTime]
-                                  ,[BackPesonCode]
-                                  ,[BackPersonName]
-                                  ,[outdescribes]
-                                  ,[backdescribes]
-                                  ,[OptionPerson]
-                              FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
-            string sqlNotStr = "[OutBackStoreID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [OutBackStoreID] FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
+            string sql = @"SELECT TOP " + pageSize + @" obs.[OutBackStoreID]
+                                  ,obs.[ToolCode]
+                                  ,obs.[ToolName]
+                                  ,obs.[OutStoreTime]
+                                  ,obs.[PersonCode]
+                                  ,obs.[PersonName]
+                                  ,obs.[UserTimeInfo]
+                                  ,[IsBack] = case obs.[IsBack] WHEN '1' THEN '是' WHEN '0' THEN '否' END
+                                  ,obs.[BackTime]
+                                  ,obs.[BackPesonCode]
+                                  ,obs.[BackPersonName]
+                                  ,obs.[outdescribes]
+                                  ,obs.[backdescribes]
+                                  ,sui.UserName as [OptionPerson]
+                              FROM [cangku_manage_db].[dbo].[t_OutBackStore] obs join Sys_User_Info sui on obs.OptionPerson = sui.UserCode WHERE 1=1 ";
+            string sqlNotStr = "obs.[OutBackStoreID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [OutBackStoreID] FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
             string sqlCount = "SELECT COUNT(*) FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
-                string str = " AND [ToolCode] LIKE @toolCode ";
+                string str = " AND obs.[ToolCode] LIKE @toolCode ";
                 sql += str;
-                sqlCount += str;
-                sqlNotStr += str;
+                sqlCount += " AND [ToolCode] LIKE @toolCode ";
+                sqlNotStr += " AND [ToolCode] LIKE @toolCode ";
                 parameters.Add("toolCode", string.Format("%{0}%", toolCode));
             }
             if (!string.IsNullOrWhiteSpace(personCode))
             {
-                string str = " AND [PersonCode] LIKE @personCode ";
+                string str = " AND obs.[PersonCode] LIKE @personCode ";
                 sql += str;
-                sqlCount += str;
-                sqlNotStr += str;
+                sqlCount += " AND [PersonCode] LIKE @personCode "; ;
+                sqlNotStr += " AND [PersonCode] LIKE @personCode "; ;
                 parameters.Add("personCode", string.Format("%{0}%", personCode));
             }
             sqlNotStr += ")";
             string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
-            return _mutiTableQueryRepository.QueryList<OutBackInfoForDeleteEntity>(sql, parameters, out Count, sqlCount, false).ToList();
+            return _mutiTableQueryRepository.QueryList<OutBackInfoForDeleteEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
         }
 
         /// <summary>

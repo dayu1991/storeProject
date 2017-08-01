@@ -231,7 +231,7 @@
             this.TollList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.TollList_dataGridViewX.EnableHeadersVisualStyles = false;
             this.TollList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.TollList_dataGridViewX.Location = new System.Drawing.Point(-13, -5);
+            this.TollList_dataGridViewX.Location = new System.Drawing.Point(-13, 0);
             this.TollList_dataGridViewX.MultiSelect = false;
             this.TollList_dataGridViewX.Name = "TollList_dataGridViewX";
             this.TollList_dataGridViewX.ReadOnly = true;
@@ -243,6 +243,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.TollList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.TollList_dataGridViewX.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.TollList_dataGridViewX.RowTemplate.Height = 23;
             this.TollList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.TollList_dataGridViewX.Size = new System.Drawing.Size(890, 380);
@@ -258,7 +259,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(6, 84);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(896, 433);
+            this.groupPanel2.Size = new System.Drawing.Size(896, 438);
             // 
             // 
             // 
@@ -293,7 +294,7 @@
             // 
             this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(-14, 377);
+            this.pagerControl1.Location = new System.Drawing.Point(-14, 382);
             this.pagerControl1.Name = "pagerControl1";
             this.pagerControl1.PageIndex = 1;
             this.pagerControl1.PageSize = 100;

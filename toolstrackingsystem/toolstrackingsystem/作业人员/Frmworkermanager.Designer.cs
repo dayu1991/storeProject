@@ -41,6 +41,7 @@
             this.Edit_button = new DevComponents.DotNetBar.ButtonX();
             this.Add_button = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
             this.PersonList_dataGridViewX = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.PersonName_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -56,7 +57,6 @@
             this.Is_Receive_checkBox = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
             this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PersonList_dataGridViewX)).BeginInit();
             this.groupPanel3.SuspendLayout();
@@ -205,6 +205,18 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 4;
             // 
+            // pagerControl1
+            // 
+            this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pagerControl1.JumpText = "Go";
+            this.pagerControl1.Location = new System.Drawing.Point(0, 284);
+            this.pagerControl1.Name = "pagerControl1";
+            this.pagerControl1.PageIndex = 1;
+            this.pagerControl1.PageSize = 100;
+            this.pagerControl1.RecordCount = 0;
+            this.pagerControl1.Size = new System.Drawing.Size(887, 44);
+            this.pagerControl1.TabIndex = 1;
+            // 
             // PersonList_dataGridViewX
             // 
             this.PersonList_dataGridViewX.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -239,6 +251,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.PersonList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.PersonList_dataGridViewX.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.PersonList_dataGridViewX.RowTemplate.Height = 23;
             this.PersonList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.PersonList_dataGridViewX.Size = new System.Drawing.Size(890, 282);
@@ -472,18 +485,6 @@
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
-            // 
-            // pagerControl1
-            // 
-            this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(0, 284);
-            this.pagerControl1.Name = "pagerControl1";
-            this.pagerControl1.PageIndex = 1;
-            this.pagerControl1.PageSize = 100;
-            this.pagerControl1.RecordCount = 0;
-            this.pagerControl1.Size = new System.Drawing.Size(887, 44);
-            this.pagerControl1.TabIndex = 1;
             // 
             // FrmWorkerManager
             // 

@@ -73,6 +73,7 @@ namespace toolstrackingsystem
             TollList_dataGridViewX.Columns[5].HeaderText = "人员名称";
             TollList_dataGridViewX.Columns[6].HeaderText = "领用时间";
             TollList_dataGridViewX.Columns[7].HeaderText = "截止归还时间";
+            TollList_dataGridViewX.Columns[7].Width = 120;
             TollList_dataGridViewX.Columns[8].HeaderText = "检测时间";
             pagerControl1.DrawControl(Convert.ToInt32(Count));
         }
