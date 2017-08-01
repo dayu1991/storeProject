@@ -93,8 +93,8 @@ namespace toolstrackingsystem
             #region 初始化日期选择控件
             from_dateTimeInput.ShowUpDown = true;
             to_dateTimeInput.ShowUpDown = true;
-            from_dateTimeInput.CustomFormat = "yyyy年MM月dd日 HH:mm:ss";
-            to_dateTimeInput.CustomFormat = "yyyy年MM月dd日 HH:mm:ss";
+            from_dateTimeInput.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            to_dateTimeInput.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             #endregion
         }
         private void Search_buttonX_Click(object sender, EventArgs e)
@@ -119,6 +119,9 @@ namespace toolstrackingsystem
             countInfo.OptionType = OptionType_comboBox.SelectedValue.ToString() == "1" ? "" : OptionType_comboBox.SelectedValue.ToString();
             countInfo.PersonCode = PersonCode_textBox.Text;
             countInfo.ToolCode = ToolCode_textBox.Text;
+            countInfo.OptionPerson = optionperson_textBox.Text;
+            countInfo.OutStoreTime = from_dateTimeInput.Text;
+            countInfo.BackTime = to_dateTimeInput.Text;
             //数据总记录数
             long Count;
             //获取分页的数据

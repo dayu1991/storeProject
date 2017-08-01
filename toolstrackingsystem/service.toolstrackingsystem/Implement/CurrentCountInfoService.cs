@@ -70,6 +70,39 @@ namespace service.toolstrackingsystem
                 sqlNotStr += str;
                 parameters.Add("personCode", string.Format("%{0}%", countInfo.PersonCode));
             }
+            if (!string.IsNullOrEmpty(countInfo.OptionPerson))
+            {
+                string str = " AND tci.OptionPerson LIKE @optionPerson ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("optionPerson", string.Format("%{0}%", countInfo.OptionPerson));
+            }
+            if (!string.IsNullOrEmpty(countInfo.OutStoreTime)&&!string.IsNullOrEmpty(countInfo.BackTime))
+            {
+                string str = " AND((tci.OutStoreTime>= @outStoreTime AND tci.OutStoreTime<=@backTime) OR (tci.BackTime>= @outStoreTime AND tci.BackTime<=@backTime))";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("outStoreTime", string.Format("%{0}%", countInfo.OutStoreTime));
+                parameters.Add("backTime", string.Format("%{0}%", countInfo.BackTime));
+            }
+            else if (string.IsNullOrEmpty(countInfo.OutStoreTime) && !string.IsNullOrEmpty(countInfo.BackTime))
+            {
+                string str = " AND(tci.OutStoreTime<=@backTime OR tci.BackTime<=@backTime)";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("backTime", string.Format("%{0}%", countInfo.BackTime));
+            }
+            else if (!string.IsNullOrEmpty(countInfo.OutStoreTime) && string.IsNullOrEmpty(countInfo.BackTime)) 
+            {
+                string str = " AND(tci.OutStoreTime>=@outStoreTime OR tci.BackTime>=@outStoreTime)";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("outStoreTime", string.Format("%{0}%", countInfo.OutStoreTime));
+            }
             sqlNotStr += ")";
             string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
             return _mutiTableQueryRepository.QueryList<CurrentToolInfoEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
@@ -138,7 +171,7 @@ namespace service.toolstrackingsystem
                                   ,tci.[BackPesonCode]
                                   ,tci.[BackPersonName]
                                   ,tci.[describes]
-                                  ,sui.UserCode as [OptionPerson]
+                                  ,sui.UserName as [OptionPerson]
                               FROM [dbo].[t_CurrentCountInfo] tci JOIN Sys_User_Info  sui ON tci.[OptionPerson] = sui.UserCode WHERE 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrEmpty(countInfo.OptionType))
@@ -159,6 +192,32 @@ namespace service.toolstrackingsystem
                 sql += str;
                 parameters.Add("personCode", string.Format("%{0}%", countInfo.PersonCode));
             }
+            if (!string.IsNullOrEmpty(countInfo.OptionPerson))
+            {
+                string str = " AND tci.OptionPerson LIKE @optionPerson ";
+                sql += str;
+                parameters.Add("optionPerson", string.Format("%{0}%", countInfo.OptionPerson));
+            }
+            if (!string.IsNullOrEmpty(countInfo.OutStoreTime) && !string.IsNullOrEmpty(countInfo.BackTime))
+            {
+                string str = " AND((tci.OutStoreTime>= @outStoreTime AND tci.OutStoreTime<=@backTime) OR (tci.BackTime>= @outStoreTime AND tci.BackTime<=@backTime))";
+                sql += str;
+                parameters.Add("outStoreTime", string.Format("%{0}%", countInfo.OutStoreTime));
+                parameters.Add("backTime", string.Format("%{0}%", countInfo.BackTime));
+            }
+            else if (string.IsNullOrEmpty(countInfo.OutStoreTime) && !string.IsNullOrEmpty(countInfo.BackTime))
+            {
+                string str = " AND(tci.OutStoreTime<=@backTime OR tci.BackTime<=@backTime)";
+                sql += str;
+                parameters.Add("backTime", string.Format("%{0}%", countInfo.BackTime));
+            }
+            else if (!string.IsNullOrEmpty(countInfo.OutStoreTime) && string.IsNullOrEmpty(countInfo.BackTime))
+            {
+                string str = " AND(tci.OutStoreTime>=@outStoreTime OR tci.BackTime>=@outStoreTime)";
+                sql += str;
+                parameters.Add("outStoreTime", string.Format("%{0}%", countInfo.OutStoreTime));
+            }
+
             return _mutiTableQueryRepository.QueryList<CurrentToolInfoEntity>(sql, parameters).ToList();
 
         }
