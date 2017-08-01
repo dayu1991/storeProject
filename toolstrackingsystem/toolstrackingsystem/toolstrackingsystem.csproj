@@ -330,6 +330,18 @@
     <Compile Include="选择客户端%28服务端用户专用%29\FrmSelectClient.Designer.cs">
       <DependentUpon>FrmSelectClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="配属分类管理\FrmBlongManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="配属分类管理\FrmBlongManage.Designer.cs">
+      <DependentUpon>FrmBlongManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="配属分类管理\FrmCategoryManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="配属分类管理\FrmCategoryManage.Designer.cs">
+      <DependentUpon>FrmCategoryManage.cs</DependentUpon>
+    </Compile>
     <Compile Include="领用工具\FrmOutTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -538,6 +550,12 @@
     <EmbeddedResource Include="超时未归还\Report5.rdlc" />
     <EmbeddedResource Include="选择客户端%28服务端用户专用%29\FrmSelectClient.resx">
       <DependentUpon>FrmSelectClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="配属分类管理\FrmBlongManage.resx">
+      <DependentUpon>FrmBlongManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="配属分类管理\FrmCategoryManage.resx">
+      <DependentUpon>FrmCategoryManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="领用工具\FrmOutTool.resx">
       <DependentUpon>FrmOutTool.cs</DependentUpon>
