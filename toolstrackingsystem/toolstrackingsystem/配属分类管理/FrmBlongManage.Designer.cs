@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.tbSearchName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
@@ -55,7 +55,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(13, 16);
+            this.labelX4.Location = new System.Drawing.Point(145, 12);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(57, 23);
             this.labelX4.TabIndex = 8;
@@ -68,7 +68,7 @@
             // 
             this.tbSearchName.Border.Class = "TextBoxBorder";
             this.tbSearchName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbSearchName.Location = new System.Drawing.Point(64, 18);
+            this.tbSearchName.Location = new System.Drawing.Point(194, 12);
             this.tbSearchName.Name = "tbSearchName";
             this.tbSearchName.PreventEnterBeep = true;
             this.tbSearchName.Size = new System.Drawing.Size(245, 21);
@@ -78,7 +78,7 @@
             // 
             this.Search_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Search_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Search_buttonX.Location = new System.Drawing.Point(315, 16);
+            this.Search_buttonX.Location = new System.Drawing.Point(501, 12);
             this.Search_buttonX.Name = "Search_buttonX";
             this.Search_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Search_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -94,9 +94,9 @@
             this.groupPanel1.Controls.Add(this.tbSearchName);
             this.groupPanel1.Controls.Add(this.labelX4);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel1.Location = new System.Drawing.Point(16, 11);
+            this.groupPanel1.Location = new System.Drawing.Point(6, 9);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(448, 54);
+            this.groupPanel1.Size = new System.Drawing.Size(937, 54);
             // 
             // 
             // 
@@ -131,27 +131,27 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
-            this.dataGridViewX1.BackgroundColor = System.Drawing.Color.Silver;
+            this.dataGridViewX1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tbTypeId,
             this.tbTypeName,
             this.tbChildTypeName});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(3, 71);
+            this.dataGridViewX1.Location = new System.Drawing.Point(6, 69);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(461, 501);
+            this.dataGridViewX1.Size = new System.Drawing.Size(937, 324);
             this.dataGridViewX1.TabIndex = 5;
             this.dataGridViewX1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellClick);
             this.dataGridViewX1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewX1_RowStateChanged);
@@ -185,9 +185,9 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(4, 20);
+            this.labelX5.Location = new System.Drawing.Point(145, 19);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(57, 23);
+            this.labelX5.Size = new System.Drawing.Size(49, 23);
             this.labelX5.TabIndex = 1;
             this.labelX5.Text = "配属：";
             // 
@@ -195,7 +195,7 @@
             // 
             this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAdd.Location = new System.Drawing.Point(194, 20);
+            this.btnAdd.Location = new System.Drawing.Point(501, 19);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -207,7 +207,7 @@
             // 
             this.btnEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnEdit.Location = new System.Drawing.Point(275, 20);
+            this.btnEdit.Location = new System.Drawing.Point(623, 19);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -225,9 +225,9 @@
             this.groupPanel2.Controls.Add(this.tbEditName);
             this.groupPanel2.Controls.Add(this.labelX5);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(3, 578);
+            this.groupPanel2.Location = new System.Drawing.Point(6, 399);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(448, 83);
+            this.groupPanel2.Size = new System.Drawing.Size(937, 65);
             // 
             // 
             // 
@@ -262,7 +262,7 @@
             // 
             this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDelete.Location = new System.Drawing.Point(357, 20);
+            this.btnDelete.Location = new System.Drawing.Point(740, 19);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -277,17 +277,17 @@
             // 
             this.tbEditName.Border.Class = "TextBoxBorder";
             this.tbEditName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditName.Location = new System.Drawing.Point(44, 20);
+            this.tbEditName.Location = new System.Drawing.Point(194, 19);
             this.tbEditName.Name = "tbEditName";
             this.tbEditName.PreventEnterBeep = true;
-            this.tbEditName.Size = new System.Drawing.Size(144, 21);
+            this.tbEditName.Size = new System.Drawing.Size(245, 21);
             this.tbEditName.TabIndex = 12;
             // 
             // FrmBlongManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 675);
+            this.ClientSize = new System.Drawing.Size(988, 515);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.groupPanel1);
