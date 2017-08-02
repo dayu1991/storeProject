@@ -31,9 +31,6 @@ namespace common.toolstrackingsystem
             }
         }
 
-
-
-
         #region 写出文件
         public static void WriteFile(string path, string content, bool isAppend, System.Text.Encoding encoding = null)
         {
