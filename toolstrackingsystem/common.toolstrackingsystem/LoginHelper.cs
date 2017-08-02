@@ -11,7 +11,6 @@ namespace common.toolstrackingsystem
 
     public class LoginHelper
     {
-
         private static Sys_User_Info userInfo = MemoryCache.Default["userinfo"] as Sys_User_Info;
 
         public static int ID { get { return userInfo.ID; } }

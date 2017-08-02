@@ -41,9 +41,9 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(25, 92);
+            this.labelX5.Location = new System.Drawing.Point(57, 37);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(92, 23);
+            this.labelX5.Size = new System.Drawing.Size(73, 23);
             this.labelX5.TabIndex = 15;
             this.labelX5.Text = "分类名称：";
             // 
@@ -54,7 +54,7 @@
             // 
             this.tbEditName.Border.Class = "TextBoxBorder";
             this.tbEditName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditName.Location = new System.Drawing.Point(123, 92);
+            this.tbEditName.Location = new System.Drawing.Point(123, 37);
             this.tbEditName.Name = "tbEditName";
             this.tbEditName.PreventEnterBeep = true;
             this.tbEditName.Size = new System.Drawing.Size(100, 21);
@@ -64,7 +64,7 @@
             // 
             this.Cancel_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Cancel_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Cancel_button.Location = new System.Drawing.Point(159, 202);
+            this.Cancel_button.Location = new System.Drawing.Point(148, 101);
             this.Cancel_button.Name = "Cancel_button";
             this.Cancel_button.Size = new System.Drawing.Size(75, 23);
             this.Cancel_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -76,7 +76,7 @@
             // 
             this.Save_Edit_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Save_Edit_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Save_Edit_button.Location = new System.Drawing.Point(42, 202);
+            this.Save_Edit_button.Location = new System.Drawing.Point(55, 101);
             this.Save_Edit_button.Name = "Save_Edit_button";
             this.Save_Edit_button.Size = new System.Drawing.Size(75, 23);
             this.Save_Edit_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -88,14 +88,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(284, 166);
             this.Controls.Add(this.Cancel_button);
             this.Controls.Add(this.Save_Edit_button);
             this.Controls.Add(this.tbEditName);
             this.Controls.Add(this.labelX5);
             this.DoubleBuffered = true;
             this.Name = "DlgAddCategory";
-            this.Text = "DlgAddCategory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "添加类别";
             this.Load += new System.EventHandler(this.DlgAddCategory_Load);
             this.ResumeLayout(false);
 
