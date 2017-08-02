@@ -30,6 +30,38 @@ namespace sqlserver.toolstrackingsystem
             }
             return false;
         }
+
+
+        public bool IsExistToolByType(string typeName, int type)
+        {
+            string sql="";
+            DynamicParameters parameters = new DynamicParameters();
+
+            if (type == 1)
+            {
+                sql = "select count(1) from t_ToolInfo where [TypeName]=@TypeName";
+                parameters.Add("@TypeName", typeName);
+            }
+            else {
+                sql = "select count(1) from t_ToolInfo where [ChildTypeName]=@ChildTypeName";
+                parameters.Add("@ChildTypeName", typeName);
+            }
+            var result = ExcuteScalar(sql, parameters);
+            if (result != null && !string.IsNullOrWhiteSpace(result.ToString()))
+            {
+                int resultInt = 0;
+                if (int.TryParse(result.ToString(), out resultInt))
+                {
+                    return resultInt > 0;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
         public List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount)
         {
             List<t_ToolInfo> list = new List<t_ToolInfo>();
@@ -55,14 +87,14 @@ namespace sqlserver.toolstrackingsystem
             }
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
-                sqlWhere += string.Format(" and [ToolCode] LIKE '%{0}%'", "@ToolCode");
-                parameters.Add("ToolCode", toolCode);
+                sqlWhere += " and [ToolCode] LIKE @ToolCode";
+                parameters.Add("ToolCode", string.Format("%{0}%", toolCode));
 
             }
             if (!string.IsNullOrEmpty(toolName))
             {
-                sqlWhere += string.Format(" and [ToolName] LIKE '%{0}%'", "@ToolName");
-                parameters.Add("ToolName", toolName);
+                sqlWhere += " and [ToolName] LIKE @ToolName";
+                parameters.Add("ToolName", string.Format("%{0}%", toolName));
             }
             sql= string.Format(sql,sqlWhere);
             sqlCount = string.Format(sqlCount, sqlWhere);
@@ -124,14 +156,14 @@ namespace sqlserver.toolstrackingsystem
             }
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
-                sqlWhere += string.Format(" and [ToolCode] LIKE '%{0}%'", "@ToolCode");
-                parameters.Add("ToolCode", toolCode);
+                sqlWhere +=" and [ToolCode] LIKE @ToolCode";
+                parameters.Add("ToolCode", string.Format("%{0}%", toolCode));
 
             }
             if (!string.IsNullOrEmpty(toolName))
             {
-                sqlWhere += string.Format(" and [ToolName] LIKE '%{0}%'", "@ToolName");
-                parameters.Add("ToolName", toolName);
+                sqlWhere += " and [ToolName] LIKE @ToolName";
+                parameters.Add("ToolName", string.Format("%{0}%", toolName));
             }
             sql = string.Format(sql, sqlWhere);
 
@@ -139,6 +171,7 @@ namespace sqlserver.toolstrackingsystem
             return result.Any() ? result.ToList() : new List<t_ToolInfo>();
         }
 
+        
 
 
     }

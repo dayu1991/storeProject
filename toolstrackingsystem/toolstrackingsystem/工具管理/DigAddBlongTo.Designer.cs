@@ -41,10 +41,10 @@
             // 
             this.tbEditName.Border.Class = "TextBoxBorder";
             this.tbEditName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditName.Location = new System.Drawing.Point(103, 92);
+            this.tbEditName.Location = new System.Drawing.Point(73, 92);
             this.tbEditName.Name = "tbEditName";
             this.tbEditName.PreventEnterBeep = true;
-            this.tbEditName.Size = new System.Drawing.Size(100, 21);
+            this.tbEditName.Size = new System.Drawing.Size(130, 21);
             this.tbEditName.TabIndex = 21;
             // 
             // labelX5
@@ -58,7 +58,7 @@
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(92, 23);
             this.labelX5.TabIndex = 20;
-            this.labelX5.Text = "配属名称：";
+            this.labelX5.Text = "名称：";
             // 
             // Cancel_button
             // 
@@ -95,7 +95,7 @@
             this.Controls.Add(this.labelX5);
             this.DoubleBuffered = true;
             this.Name = "DigAddBlongTo";
-            this.Text = "DigAddBlongTo";
+            this.Text = "修改";
             this.Load += new System.EventHandler(this.DigAddBlongTo_Load);
             this.ResumeLayout(false);
 

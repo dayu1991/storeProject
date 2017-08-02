@@ -19,6 +19,8 @@ namespace toolstrackingsystem
     public partial class DigAddBlongTo : Office2007Form
     {
         ILog logger = log4net.LogManager.GetLogger(typeof(DigAddBlongTo));
+        private IUserManageService _userManageService;
+
         private IToolInfoService _toolInfoService;
         public DigAddBlongTo()
         {
@@ -68,7 +70,9 @@ namespace toolstrackingsystem
 
         private void DigAddBlongTo_Load(object sender, EventArgs e)
         {
+            _userManageService = Program.container.Resolve<IUserManageService>();
             _toolInfoService = Program.container.Resolve<IToolInfoService>();
+          
         }
     }
 }

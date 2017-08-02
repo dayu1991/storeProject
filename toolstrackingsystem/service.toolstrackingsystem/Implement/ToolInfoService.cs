@@ -38,9 +38,9 @@ namespace service.toolstrackingsystem
             _toolPrepairRecordRepository = toolPrepairRecordRepository;
        }
 
-        public List<t_ToolType> GetCategoryByClassify(int classifyType)
+        public List<t_ToolType> GetCategoryByClassify(int classifyType, string name = "")
         {
-            return _toolCategoryInfoRepository.GetCategoryByClassify(classifyType);
+            return _toolCategoryInfoRepository.GetCategoryByClassify(classifyType,name);
         }
         public long AddToolInfo(t_ToolInfo toolInfo, string OptionType)
         {
@@ -103,6 +103,12 @@ namespace service.toolstrackingsystem
         {
             return _toolInfoRepository.DelToolByCode(ToolCode);
         }
+
+        public bool DelTypeById(string SelectedToolCode)
+        {
+            return _toolCategoryInfoRepository.DelTypeById(SelectedToolCode);
+        }
+
         public List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName)
         {
             return _toolInfoRepository.GetToolList(blongValue, categoryValue, toolCode, toolName);
@@ -508,5 +514,23 @@ namespace service.toolstrackingsystem
             }
             return true;
         }
+
+        public t_ToolType GetCategoryById(string SelectedToolCode)
+        {
+            return _toolCategoryInfoRepository.GetModelById(SelectedToolCode);
+
+        }
+
+        public bool UpdateType(t_ToolType type)
+        {
+            return _toolCategoryInfoRepository.Update(type);
+        }
+
+        public bool IsExistToolByType(string typeName, int type)
+        {
+            return _toolInfoRepository.IsExistToolByType(typeName, type);
+        }
+
+
     }
 }

@@ -34,14 +34,15 @@
             this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.tbTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbChildTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.btnEdit = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.tbTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbChildTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
-            this.tbEditLocation = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbEditName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.groupPanel2.SuspendLayout();
@@ -83,6 +84,7 @@
             this.Search_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Search_buttonX.TabIndex = 10;
             this.Search_buttonX.Text = "查找";
+            this.Search_buttonX.Click += new System.EventHandler(this.Search_buttonX_Click);
             // 
             // groupPanel1
             // 
@@ -132,6 +134,7 @@
             this.dataGridViewX1.BackgroundColor = System.Drawing.Color.Silver;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tbTypeId,
             this.tbTypeName,
             this.tbChildTypeName});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -150,6 +153,30 @@
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.Size = new System.Drawing.Size(461, 501);
             this.dataGridViewX1.TabIndex = 5;
+            this.dataGridViewX1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellClick);
+            this.dataGridViewX1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewX1_RowStateChanged);
+            // 
+            // tbTypeId
+            // 
+            this.tbTypeId.DataPropertyName = "TypeID";
+            this.tbTypeId.HeaderText = "Column1";
+            this.tbTypeId.Name = "tbTypeId";
+            this.tbTypeId.ReadOnly = true;
+            this.tbTypeId.Visible = false;
+            // 
+            // tbTypeName
+            // 
+            this.tbTypeName.DataPropertyName = "TypeName";
+            this.tbTypeName.HeaderText = "工具配属";
+            this.tbTypeName.Name = "tbTypeName";
+            this.tbTypeName.ReadOnly = true;
+            // 
+            // tbChildTypeName
+            // 
+            this.tbChildTypeName.DataPropertyName = "OptionPerson";
+            this.tbChildTypeName.HeaderText = "操作人";
+            this.tbChildTypeName.Name = "tbChildTypeName";
+            this.tbChildTypeName.ReadOnly = true;
             // 
             // labelX5
             // 
@@ -174,6 +201,7 @@
             this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAdd.TabIndex = 20;
             this.btnAdd.Text = "增加";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
@@ -185,6 +213,7 @@
             this.btnEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnEdit.TabIndex = 22;
             this.btnEdit.Text = "修改";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // groupPanel2
             // 
@@ -193,12 +222,12 @@
             this.groupPanel2.Controls.Add(this.btnDelete);
             this.groupPanel2.Controls.Add(this.btnEdit);
             this.groupPanel2.Controls.Add(this.btnAdd);
-            this.groupPanel2.Controls.Add(this.tbEditLocation);
+            this.groupPanel2.Controls.Add(this.tbEditName);
             this.groupPanel2.Controls.Add(this.labelX5);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(3, 578);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(448, 61);
+            this.groupPanel2.Size = new System.Drawing.Size(448, 83);
             // 
             // 
             // 
@@ -229,20 +258,6 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 6;
             // 
-            // tbTypeName
-            // 
-            this.tbTypeName.DataPropertyName = "TypeName";
-            this.tbTypeName.HeaderText = "工具配属";
-            this.tbTypeName.Name = "tbTypeName";
-            this.tbTypeName.ReadOnly = true;
-            // 
-            // tbChildTypeName
-            // 
-            this.tbChildTypeName.DataPropertyName = "OptionPerson";
-            this.tbChildTypeName.HeaderText = "操作人";
-            this.tbChildTypeName.Name = "tbChildTypeName";
-            this.tbChildTypeName.ReadOnly = true;
-            // 
             // btnDelete
             // 
             this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -253,30 +268,32 @@
             this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDelete.TabIndex = 23;
             this.btnDelete.Text = "删除";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // tbEditLocation
+            // tbEditName
             // 
             // 
             // 
             // 
-            this.tbEditLocation.Border.Class = "TextBoxBorder";
-            this.tbEditLocation.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditLocation.Location = new System.Drawing.Point(44, 20);
-            this.tbEditLocation.Name = "tbEditLocation";
-            this.tbEditLocation.PreventEnterBeep = true;
-            this.tbEditLocation.Size = new System.Drawing.Size(144, 21);
-            this.tbEditLocation.TabIndex = 12;
+            this.tbEditName.Border.Class = "TextBoxBorder";
+            this.tbEditName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbEditName.Location = new System.Drawing.Point(44, 20);
+            this.tbEditName.Name = "tbEditName";
+            this.tbEditName.PreventEnterBeep = true;
+            this.tbEditName.Size = new System.Drawing.Size(144, 21);
+            this.tbEditName.TabIndex = 12;
             // 
             // FrmBlongManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 653);
+            this.ClientSize = new System.Drawing.Size(468, 675);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.groupPanel1);
             this.Name = "FrmBlongManage";
             this.Text = "FrmBlongManage";
+            this.Load += new System.EventHandler(this.FrmBlongManage_Load);
             this.groupPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.groupPanel2.ResumeLayout(false);
@@ -291,14 +308,15 @@
         private DevComponents.DotNetBar.ButtonX Search_buttonX;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tbTypeName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tbChildTypeName;
         private DevComponents.DotNetBar.LabelX labelX5;
         private DevComponents.DotNetBar.ButtonX btnAdd;
         private DevComponents.DotNetBar.ButtonX btnEdit;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.ButtonX btnDelete;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbEditLocation;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbEditName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tbTypeId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tbTypeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tbChildTypeName;
 
     }
 }
