@@ -55,14 +55,22 @@ namespace sqlserver.toolstrackingsystem
             }
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
-                sqlWhere += string.Format(" and [ToolCode] LIKE '%{0}%'", "@ToolCode");
-                parameters.Add("ToolCode", toolCode);
+                //sqlWhere += string.Format(" and [ToolCode] LIKE '%{0}%'", "@ToolCode");
+                //parameters.Add("ToolCode", toolCode);
+                #region 解决工具编码查询不到数据的问题
+                sqlWhere += " and [ToolCode] LIKE @ToolCode";
+                parameters.Add("ToolCode", string.Format("%{0}%", toolCode));
+                #endregion
 
             }
             if (!string.IsNullOrEmpty(toolName))
             {
-                sqlWhere += string.Format(" and [ToolName] LIKE '%{0}%'", "@ToolName");
-                parameters.Add("ToolName", toolName);
+                //sqlWhere += string.Format(" and [ToolName] LIKE '%{0}%'", "@ToolName");
+                //parameters.Add("ToolName", toolName);
+                #region 解决工具编码查询不到数据的问题
+                sqlWhere += " and [ToolName] LIKE @ToolName";
+                parameters.Add("ToolName", string.Format("%{0}%", toolName));
+                #endregion
             }
             sql= string.Format(sql,sqlWhere);
             sqlCount = string.Format(sqlCount, sqlWhere);
