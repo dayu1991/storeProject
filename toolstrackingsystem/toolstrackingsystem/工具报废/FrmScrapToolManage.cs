@@ -16,6 +16,8 @@ using dbentity.toolstrackingsystem;
 using System.Runtime.Caching;
 using ViewEntity.toolstrackingsystem;
 using System.IO;
+using System.Threading;
+using System.Net.Sockets;
 
 namespace toolstrackingsystem
 {
@@ -27,6 +29,10 @@ namespace toolstrackingsystem
         private IScrapToolInfoService _scrapToolInfoService;
         private IToolInfoService _toolInfoService;
         private int selectIndex=0;
+        private Thread threadClient;
+        private Socket socketClient = Program.SocketClient;
+        //代理用来设置text的值 （实现另一个线程操作主线程的对象）
+        private delegate void SetTextCallback(string text);
         public FrmScrapToolManage()
         {
             this.EnableGlass = false;
@@ -36,6 +42,14 @@ namespace toolstrackingsystem
         {
             _scrapToolInfoService  =Program.container.Resolve<IScrapToolInfoService>() as ScrapToolInfoService;
             _toolInfoService = Program.container.Resolve<IToolInfoService>() as ToolInfoService;
+
+            threadClient = new Thread(RecMsg);
+
+            //将窗体线程设置为与后台同步
+            threadClient.IsBackground = true;
+
+            //启动线程
+            threadClient.Start();
         }
         private void ToolInfo_dataGridView_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
@@ -258,5 +272,50 @@ namespace toolstrackingsystem
             printFrm.Tag = Scrap_ToolInfoCode_Detail_textBox.Text;
             printFrm.ShowDialog();
         }
+        #region 接收服务端发来信息的方法
+        private void RecMsg()
+        {
+            while (true) //持续监听服务端发来的消息
+            {
+                if (socketClient != null && socketClient.Connected && socketClient.Available > 0)
+                {
+                    //定义一个1024*200的内存缓冲区 用于临时性存储接收到的信息
+                    byte[] arrRecMsg = new byte[1024 * 200];
+
+                    //将客户端套接字接收到的数据存入内存缓冲区, 并获取其长度
+                    int length = socketClient.Receive(arrRecMsg);
+
+                    string strData = Encoding.Default.GetString(arrRecMsg, 0, length);
+                    var totalText = strData;
+                    if (!string.IsNullOrWhiteSpace(totalText))
+                    {
+                        SetText(totalText);
+
+                    }
+                }
+                Thread.Sleep(200);
+            }
+        }
+        private void SetText(string text)
+        {
+            //获取当前有焦点的控件，然后给当前控件赋值
+            Control ctl = this.ActiveControl;
+            if (ctl is TextBox) //只给textbox赋值
+            {
+                // InvokeRequired需要比较调用线程ID和创建线程ID
+                // 如果它们不相同则返回true
+                if (ctl.InvokeRequired)
+                {
+                    SetTextCallback d = new SetTextCallback(SetText);
+                    this.Invoke(d, new object[] { text });
+                }
+                else
+                {
+                    ctl.Text = text;
+                }
+            }
+        }
+
+        #endregion
     }
 }

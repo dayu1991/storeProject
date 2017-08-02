@@ -50,7 +50,6 @@
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.ToolInfo_dataGridView = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.Scrap_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel3.SuspendLayout();
             this.groupPanel4.SuspendLayout();
@@ -159,7 +158,7 @@
             // 
             // ScrapTool_dataGridViewX2
             // 
-            this.ScrapTool_dataGridViewX2.BackgroundColor = System.Drawing.Color.Silver;
+            this.ScrapTool_dataGridViewX2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -291,7 +290,7 @@
             // 
             this.Tool_Code_textBox.Location = new System.Drawing.Point(67, 27);
             this.Tool_Code_textBox.Name = "Tool_Code_textBox";
-            this.Tool_Code_textBox.Size = new System.Drawing.Size(121, 21);
+            this.Tool_Code_textBox.Size = new System.Drawing.Size(152, 21);
             this.Tool_Code_textBox.TabIndex = 1;
             this.Tool_Code_textBox.TextChanged += new System.EventHandler(this.Tool_Code_textBox_TextChanged);
             // 
@@ -300,7 +299,6 @@
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel1.Controls.Add(this.groupPanel2);
-            this.groupPanel1.Controls.Add(this.checkBoxX1);
             this.groupPanel1.Controls.Add(this.Scrap_buttonX);
             this.groupPanel1.Controls.Add(this.Tool_Code_textBox);
             this.groupPanel1.Controls.Add(this.labelX1);
@@ -379,7 +377,7 @@
             // 
             // ToolInfo_dataGridView
             // 
-            this.ToolInfo_dataGridView.BackgroundColor = System.Drawing.Color.Silver;
+            this.ToolInfo_dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -418,25 +416,11 @@
             this.ToolInfo_dataGridView.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.ToolInfo_dataGridView_CellStateChanged);
             this.ToolInfo_dataGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.ToolInfo_dataGridView_RowStateChanged);
             // 
-            // checkBoxX1
-            // 
-            this.checkBoxX1.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(204, 26);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(100, 24);
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 5;
-            this.checkBoxX1.Text = "视觉编码";
-            // 
             // Scrap_buttonX
             // 
             this.Scrap_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Scrap_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Scrap_buttonX.Location = new System.Drawing.Point(310, 26);
+            this.Scrap_buttonX.Location = new System.Drawing.Point(238, 27);
             this.Scrap_buttonX.Name = "Scrap_buttonX";
             this.Scrap_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Scrap_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -484,7 +468,6 @@
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.Controls.DataGridViewX ToolInfo_dataGridView;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
         private DevComponents.DotNetBar.ButtonX Scrap_buttonX;
     }
 }

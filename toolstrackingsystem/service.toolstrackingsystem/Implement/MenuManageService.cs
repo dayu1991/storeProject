@@ -19,7 +19,7 @@ namespace service.toolstrackingsystem
         }
         public List<Sys_Menu_Info> GetMenuInfoList() 
         {
-            string sql = "SELECT * from Sys_Menu_Info WHERE 1=1";
+            string sql = "SELECT * from Sys_Menu_Info WHERE 1=1 AND IsActive=1";
             DynamicParameters parameters = new DynamicParameters();
             return _menuManageRepository.QueryList(sql, parameters).ToList() ;
         }
