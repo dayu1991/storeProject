@@ -64,7 +64,6 @@ namespace toolstrackingsystem
             //rpanel.Controls.Add(rb);
 
             #endregion
-
             #region 获取用户角色权限
             _roleManageService = Program.container.Resolve<IRoleManageService>() as RoleManageService;
             _menuManageService = Program.container.Resolve<IMenuManageService>() as MenuManageService;

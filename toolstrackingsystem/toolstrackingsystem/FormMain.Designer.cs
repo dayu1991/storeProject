@@ -78,21 +78,21 @@
             this.qatCustomizeItem1});
             this.ribbonControl1.Size = new System.Drawing.Size(1018, 136);
             this.ribbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonControl1.SystemText.MaximizeRibbonText = "&Maximize the Ribbon";
-            this.ribbonControl1.SystemText.MinimizeRibbonText = "Mi&nimize the Ribbon";
-            this.ribbonControl1.SystemText.QatAddItemText = "&Add to Quick Access Toolbar";
-            this.ribbonControl1.SystemText.QatCustomizeMenuLabel = "<b>Customize Quick Access Toolbar</b>";
-            this.ribbonControl1.SystemText.QatCustomizeText = "&Customize Quick Access Toolbar...";
-            this.ribbonControl1.SystemText.QatDialogAddButton = "&Add >>";
-            this.ribbonControl1.SystemText.QatDialogCancelButton = "Cancel";
-            this.ribbonControl1.SystemText.QatDialogCaption = "Customize Quick Access Toolbar";
-            this.ribbonControl1.SystemText.QatDialogCategoriesLabel = "&Choose commands from:";
-            this.ribbonControl1.SystemText.QatDialogOkButton = "OK";
-            this.ribbonControl1.SystemText.QatDialogPlacementCheckbox = "&Place Quick Access Toolbar below the Ribbon";
-            this.ribbonControl1.SystemText.QatDialogRemoveButton = "&Remove";
-            this.ribbonControl1.SystemText.QatPlaceAboveRibbonText = "&Place Quick Access Toolbar above the Ribbon";
-            this.ribbonControl1.SystemText.QatPlaceBelowRibbonText = "&Place Quick Access Toolbar below the Ribbon";
-            this.ribbonControl1.SystemText.QatRemoveItemText = "&Remove from Quick Access Toolbar";
+            this.ribbonControl1.SystemText.MaximizeRibbonText = "放大工具栏";
+            this.ribbonControl1.SystemText.MinimizeRibbonText = "缩小工具栏";
+            this.ribbonControl1.SystemText.QatAddItemText = "添加快捷方式到工具栏";
+            this.ribbonControl1.SystemText.QatCustomizeMenuLabel = "<b>自定义快捷方式工具栏</b>";
+            this.ribbonControl1.SystemText.QatCustomizeText = "自定义快捷方式工具栏...";
+            this.ribbonControl1.SystemText.QatDialogAddButton = "添加 >>";
+            this.ribbonControl1.SystemText.QatDialogCancelButton = "<<取消";
+            this.ribbonControl1.SystemText.QatDialogCaption = "自定义快捷工具栏";
+            this.ribbonControl1.SystemText.QatDialogCategoriesLabel = "&选择菜单项:";
+            this.ribbonControl1.SystemText.QatDialogOkButton = "确定";
+            this.ribbonControl1.SystemText.QatDialogPlacementCheckbox = "快速移动到工具栏下方";
+            this.ribbonControl1.SystemText.QatDialogRemoveButton = "删除";
+            this.ribbonControl1.SystemText.QatPlaceAboveRibbonText = "移到菜单栏上方";
+            this.ribbonControl1.SystemText.QatPlaceBelowRibbonText = "移到菜单栏下方";
+            this.ribbonControl1.SystemText.QatRemoveItemText = "从快捷方式工具栏删除";
             this.ribbonControl1.TabGroupHeight = 14;
             this.ribbonControl1.TabIndex = 0;
             this.ribbonControl1.Text = "ribbonControl1";
@@ -167,6 +167,7 @@
             // 
             this.buttonItem7.BeginGroup = true;
             this.buttonItem7.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.buttonItem7.Icon = ((System.Drawing.Icon)(resources.GetObject("buttonItem7.Icon")));
             this.buttonItem7.Name = "buttonItem7";
             this.buttonItem7.SubItemsExpandWidth = 24;
             this.buttonItem7.Text = "退出系统";
@@ -174,12 +175,16 @@
             // 
             // login_buttonItem
             // 
+            this.login_buttonItem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.login_buttonItem.Icon = ((System.Drawing.Icon)(resources.GetObject("login_buttonItem.Icon")));
             this.login_buttonItem.Name = "login_buttonItem";
             this.login_buttonItem.Text = "重新登录";
             this.login_buttonItem.Click += new System.EventHandler(this.login_buttonItem_Click);
             // 
             // Select_buttonItem
             // 
+            this.Select_buttonItem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.Select_buttonItem.Icon = ((System.Drawing.Icon)(resources.GetObject("Select_buttonItem.Icon")));
             this.Select_buttonItem.Name = "Select_buttonItem";
             this.Select_buttonItem.Text = "选择数据库";
             this.Select_buttonItem.Click += new System.EventHandler(this.Select_buttonItem_Click);
@@ -396,7 +401,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormTest";
+            this.Text = "主页面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormTest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).EndInit();
