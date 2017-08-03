@@ -106,5 +106,9 @@ namespace service.toolstrackingsystem
             userInfo.PassWord = CommonHelper.GetMd5(userInfo.PassWord);
             return _userManageRepository.InsertUserInfo(userInfo);
         }
+        public List<Sys_User_Info> GetUserListByUserRole(string UserRole)
+        {
+            return _userManageRepository.GetUserList(UserRole);
+        }
     }
 }

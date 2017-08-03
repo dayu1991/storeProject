@@ -21,6 +21,7 @@ namespace toolstrackingsystem
     {
         ILog logger = log4net.LogManager.GetLogger(typeof(FormLogin));
         private IRoleManageService _roleManageService;
+        private IUserManageService _userManageService;
         private int selectIndex = 0;
         public FrmEditRoleInfo()
         {
@@ -30,6 +31,7 @@ namespace toolstrackingsystem
         private void RrmEditRoleInfo_Load(object sender, EventArgs e)
         {
             _roleManageService = Program.container.Resolve<IRoleManageService>() as RoleManageService;
+            _userManageService = Program.container.Resolve<IUserManageService>() as UserManageService;
         }
         private void Search_buttonX_Click(object sender, EventArgs e)
         {
@@ -108,6 +110,11 @@ namespace toolstrackingsystem
             if (string.IsNullOrEmpty(roleCode))
             {
                 MessageBox.Show("请选择一行数据进行操作");
+                return;
+            }
+            if (_userManageService.GetUserListByUserRole(roleCode).Count > 0)
+            {
+                MessageBox.Show("该角色已被占用，无法删除");
                 return;
             }
             if(MessageBox.Show("您确定要删除“" + roleCode + "”吗?", "询问", MessageBoxButtons.OKCancel) == DialogResult.OK)

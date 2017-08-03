@@ -14,6 +14,7 @@ namespace service.toolstrackingsystem
     {
         private IRoleManageRepository _roleManageRepository;
         private IMultiTableQueryRepository _multiTableQueryRepository;
+        private IUserManageRepository _userManageRepository;
         public RoleManageService(IRoleManageRepository roleManageRepository, IMultiTableQueryRepository multiTableQueryRepository)
         {
             this._roleManageRepository = roleManageRepository;
@@ -40,8 +41,6 @@ namespace service.toolstrackingsystem
             }
             return _multiTableQueryRepository.QueryList<RoleInfoEntity>(sql,parameter).ToList();
         }
-
-
         public bool InserUserRole(Sys_User_Role roleInfo)
         {
             string sql = "INSERT INTO Sys_User_Role(RoleCode,RoleName,MenuID)VALUES(@roleCode,@roleName,@menuID)";
@@ -64,8 +63,6 @@ namespace service.toolstrackingsystem
             parameter.Add("roleCode",roleCode);
             return _roleManageRepository.GetModel(sql,parameter);
         }
-
-
         public bool UpdateRoleInfo(Sys_User_Role roleInfo)
         {
             string sql = "UPDATE Sys_User_Role SET RoleName=@roleName,MenuID=@menuID WHERE RoleCode=@roleCode";
@@ -75,7 +72,6 @@ namespace service.toolstrackingsystem
             parameters.Add("roleCode",roleInfo.RoleCode);
             return _roleManageRepository.ExecuteSql(sql,parameters)>0;
         }
-
         public bool DeleteRoleInfo(string roleCode)
         {
             string sql = "DELETE FROM Sys_User_Role WHERE RoleCode=@roleCode";

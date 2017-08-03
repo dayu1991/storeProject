@@ -18,5 +18,6 @@ namespace service.toolstrackingsystem
         List<Sys_User_Info> GetUserInfoList(string UserCode, string DateTimeFrom, string DateTimeTo);
         bool UpdateUserInfo(Sys_User_Info userInfo);
         bool DeleteUser(Sys_User_Info userInfo);
+        List<Sys_User_Info> GetUserListByUserRole(string UserRole);
     }
 }

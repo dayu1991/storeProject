@@ -115,11 +115,21 @@ namespace sqlserver.toolstrackingsystem
             parameter.Add("id", userInfo.UserCode);
             return base.ExecuteSql(sql, parameter) > 0;
         }
-
-
         public bool InsertUserInfo(Sys_User_Info userInfo)
         {
             return base.Add(userInfo)>0;
+        }
+        /// <summary>
+        /// 根据角色代码获取用户列表
+        /// </summary>
+        /// <param name="UserRole"></param>
+        /// <returns></returns>
+        public List<Sys_User_Info> GetUserList(string userRole)
+        {
+            string sql = "SELECT * FROM Sys_User_Info WHERE UserRole=@userRole";
+            DynamicParameters parameter = new DynamicParameters();
+            parameter.Add("userRole", userRole);
+            return base.QueryList(sql, parameter).ToList();
         }
     }
 }

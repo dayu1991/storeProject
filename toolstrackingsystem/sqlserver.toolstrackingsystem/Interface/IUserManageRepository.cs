@@ -16,5 +16,11 @@ namespace sqlserver.toolstrackingsystem
         List<Sys_User_Info> GetUserInfoList(string UserCode, string DateTimeFrom, string DateTimeTo);
         bool UpdateUserInfo(Sys_User_Info userInfo);
         bool DeleteUser(Sys_User_Info userInfo);
+        /// <summary>
+        /// 根据角色代码获取用户列表
+        /// </summary>
+        /// <param name="UserRole"></param>
+        /// <returns></returns>
+        List<Sys_User_Info> GetUserList(string userRole);
     }
 }
