@@ -50,6 +50,7 @@
             this.label_login_user = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).BeginInit();
             this.groupPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -267,6 +268,7 @@
             // 
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel2.Controls.Add(this.labelX4);
             this.groupPanel2.Controls.Add(this.labelX3);
             this.groupPanel2.Controls.Add(this.Message_label);
             this.groupPanel2.Controls.Add(this.Current_Time_label);
@@ -315,9 +317,9 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(262, 3);
+            this.labelX3.Location = new System.Drawing.Point(522, 3);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(70, 23);
+            this.labelX3.Size = new System.Drawing.Size(60, 23);
             this.labelX3.TabIndex = 5;
             this.labelX3.Text = "当前时间:";
             // 
@@ -328,9 +330,9 @@
             // 
             // 
             this.Message_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Message_label.Location = new System.Drawing.Point(666, 3);
+            this.Message_label.Location = new System.Drawing.Point(840, 3);
             this.Message_label.Name = "Message_label";
-            this.Message_label.Size = new System.Drawing.Size(199, 23);
+            this.Message_label.Size = new System.Drawing.Size(166, 23);
             this.Message_label.TabIndex = 4;
             this.Message_label.Text = "连接到服务器";
             // 
@@ -341,9 +343,9 @@
             // 
             // 
             this.Current_Time_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Current_Time_label.Location = new System.Drawing.Point(333, 3);
+            this.Current_Time_label.Location = new System.Drawing.Point(588, 3);
             this.Current_Time_label.Name = "Current_Time_label";
-            this.Current_Time_label.Size = new System.Drawing.Size(195, 23);
+            this.Current_Time_label.Size = new System.Drawing.Size(171, 23);
             this.Current_Time_label.TabIndex = 3;
             // 
             // labelX2
@@ -353,9 +355,9 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(600, 3);
+            this.labelX2.Location = new System.Drawing.Point(774, 3);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(75, 23);
+            this.labelX2.Size = new System.Drawing.Size(68, 23);
             this.labelX2.TabIndex = 2;
             this.labelX2.Text = "消息类型:";
             // 
@@ -388,6 +390,19 @@
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // labelX4
+            // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Location = new System.Drawing.Point(164, 3);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(298, 23);
+            this.labelX4.TabIndex = 6;
+            this.labelX4.Text = "北京艾森博威科技发展有限公司&&北京动车段联合研制";
             // 
             // FormMain
             // 
@@ -432,5 +447,6 @@
         private DevComponents.DotNetBar.LabelX Message_label;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.ButtonItem Select_buttonItem;
+        private DevComponents.DotNetBar.LabelX labelX4;
     }
 }
