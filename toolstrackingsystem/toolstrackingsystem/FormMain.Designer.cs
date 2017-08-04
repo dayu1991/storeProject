@@ -43,6 +43,7 @@
             this.superTabControl2 = new DevComponents.DotNetBar.SuperTabControl();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.Message_label = new DevComponents.DotNetBar.LabelX();
             this.Current_Time_label = new DevComponents.DotNetBar.LabelX();
@@ -50,7 +51,6 @@
             this.label_login_user = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).BeginInit();
             this.groupPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -77,7 +77,7 @@
             this.ribbonControl1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.ribbonControl1.QuickToolbarItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.qatCustomizeItem1});
-            this.ribbonControl1.Size = new System.Drawing.Size(1018, 136);
+            this.ribbonControl1.Size = new System.Drawing.Size(1373, 136);
             this.ribbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonControl1.SystemText.MaximizeRibbonText = "放大工具栏";
             this.ribbonControl1.SystemText.MinimizeRibbonText = "缩小工具栏";
@@ -218,7 +218,7 @@
             this.superTabControl2.ReorderTabsEnabled = true;
             this.superTabControl2.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControl2.SelectedTabIndex = -1;
-            this.superTabControl2.Size = new System.Drawing.Size(1018, 391);
+            this.superTabControl2.Size = new System.Drawing.Size(1373, 391);
             this.superTabControl2.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl2.TabIndex = 1;
             this.superTabControl2.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.VisualStudio2008Document;
@@ -232,7 +232,7 @@
             this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupPanel1.Location = new System.Drawing.Point(5, 1);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(1018, 527);
+            this.groupPanel1.Size = new System.Drawing.Size(1373, 527);
             // 
             // 
             // 
@@ -279,7 +279,7 @@
             this.groupPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupPanel2.Location = new System.Drawing.Point(5, 493);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1018, 35);
+            this.groupPanel2.Size = new System.Drawing.Size(1373, 35);
             // 
             // 
             // 
@@ -310,6 +310,19 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 3;
             // 
+            // labelX4
+            // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Location = new System.Drawing.Point(164, 3);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(298, 23);
+            this.labelX4.TabIndex = 6;
+            this.labelX4.Text = "北京艾森博威科技发展有限公司&&北京动车段联合研制";
+            // 
             // labelX3
             // 
             this.labelX3.BackColor = System.Drawing.Color.Transparent;
@@ -317,7 +330,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(522, 3);
+            this.labelX3.Location = new System.Drawing.Point(562, 3);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(60, 23);
             this.labelX3.TabIndex = 5;
@@ -330,7 +343,7 @@
             // 
             // 
             this.Message_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Message_label.Location = new System.Drawing.Point(840, 3);
+            this.Message_label.Location = new System.Drawing.Point(932, 3);
             this.Message_label.Name = "Message_label";
             this.Message_label.Size = new System.Drawing.Size(166, 23);
             this.Message_label.TabIndex = 4;
@@ -343,7 +356,7 @@
             // 
             // 
             this.Current_Time_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Current_Time_label.Location = new System.Drawing.Point(588, 3);
+            this.Current_Time_label.Location = new System.Drawing.Point(628, 3);
             this.Current_Time_label.Name = "Current_Time_label";
             this.Current_Time_label.Size = new System.Drawing.Size(171, 23);
             this.Current_Time_label.TabIndex = 3;
@@ -355,7 +368,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(774, 3);
+            this.labelX2.Location = new System.Drawing.Point(866, 3);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(68, 23);
             this.labelX2.TabIndex = 2;
@@ -391,24 +404,11 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // labelX4
-            // 
-            this.labelX4.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(164, 3);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(298, 23);
-            this.labelX4.TabIndex = 6;
-            this.labelX4.Text = "北京艾森博威科技发展有限公司&&北京动车段联合研制";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 530);
+            this.ClientSize = new System.Drawing.Size(1383, 530);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.superTabControl2);
             this.Controls.Add(this.ribbonControl1);
