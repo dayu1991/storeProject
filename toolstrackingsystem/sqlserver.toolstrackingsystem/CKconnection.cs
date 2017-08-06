@@ -15,7 +15,7 @@ namespace sqlserver.toolstrackingsystem
     /// </summary>
     public class CKConnection
     {
-        private static string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MPConnection"].ConnectionString;
+        private static string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
         public static IDbConnection GetConnection()
         {
             #region 判断cache里是否有设置好的客户端连接字符串

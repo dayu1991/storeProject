@@ -104,9 +104,9 @@ namespace toolstrackingsystem
             #endregion
 
             #region 判断连接服务器IP
-            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["MPConnection"].ConnectionString;
+            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
             string ip = connStr.Split(';')[0].Split('=')[1].ToString();
-            Message_label.Text = "连接到服务器" + ip;
+            Message_label.Text = "连接到服务器" + ip+" 当前数据库：东所";
             #endregion
 
             //timer启动
@@ -213,7 +213,23 @@ namespace toolstrackingsystem
                         string connName = MemoryCache.Default.Get("clientName").ToString();
                         string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
                         string ip = connStr.Split(';')[0].Split('=')[1].ToString();
-                        Message_label.Text = "连接到服务器" + ip;
+                        string dataBase = MemoryCache.Default.Get("clientName").ToString();
+                        switch (dataBase)
+                        { 
+                            case "DongSuo":
+                                dataBase = "东所";
+                                break;
+                            case "XiSuo":
+                                dataBase = "西所";
+                                break;
+                            case "NanSuo":
+                                dataBase = "南所";
+                                break;
+                            case "ShiJiaZhuang":
+                                dataBase = "石家庄所";
+                                break;
+                        }
+                        Message_label.Text = "连接到服务器：" + ip + " 当前数据库：" + dataBase;
                         MessageBox.Show("设置成功");
                     }
                     #endregion

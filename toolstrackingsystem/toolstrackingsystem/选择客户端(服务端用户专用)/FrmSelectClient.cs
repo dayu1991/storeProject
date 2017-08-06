@@ -36,8 +36,8 @@ namespace toolstrackingsystem
             foreach (var item in clientsArr)
             {
                 DataRow dr = dt.NewRow();
-                dr[0] = item;
-                dr[1] = item;
+                dr[0] = item.Split(':')[0];
+                dr[1] = item.Split(':')[1];
                 dt.Rows.Add(dr);
             }
 
@@ -46,6 +46,10 @@ namespace toolstrackingsystem
             this.Clients_comboBox.DisplayMember = "name";
 
             this.Clients_comboBox.ValueMember = "value";
+            if (MemoryCache.Default.Get("clientName") != null)
+            {
+                this.Clients_comboBox.SelectedValue = MemoryCache.Default.Get("clientName").ToString();
+            }
         }
         /// <summary>
         /// 确定选择哪个客户端后，把value值存进memoryCache中
@@ -58,10 +62,14 @@ namespace toolstrackingsystem
             {
                 ObjectCache oCache = MemoryCache.Default;
                 object fileContents = oCache["clientName"];
+                CacheItemPolicy policy = new CacheItemPolicy();
                 if (fileContents == null)
                 {
-                    CacheItemPolicy policy = new CacheItemPolicy();
                     //policy.AbsoluteExpiration = DateTime.Now.AddMinutes(120);//取得或设定值，这个值会指定是否应该在指定期间过后清除
+                    fileContents = this.Clients_comboBox.SelectedValue.ToString(); //这里赋值;
+                    oCache.Set("clientName", fileContents, policy);
+                }
+                else {
                     fileContents = this.Clients_comboBox.SelectedValue.ToString(); //这里赋值;
                     oCache.Set("clientName", fileContents, policy);
                 }

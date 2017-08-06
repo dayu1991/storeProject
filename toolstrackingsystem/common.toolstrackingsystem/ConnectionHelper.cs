@@ -13,7 +13,7 @@ namespace common.toolstrackingsystem
     /// </summary>
     public class ConnectionHelper
     {
-        private static string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MPConnection"].ConnectionString;
+        private static string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
         public static SqlConnection GetConnection()
         {
             return new SqlConnection(defaultConnectionString);

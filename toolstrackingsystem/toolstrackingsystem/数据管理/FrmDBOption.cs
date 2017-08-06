@@ -20,7 +20,7 @@ namespace toolstrackingsystem
     public partial class FrmDBOption : Office2007RibbonForm
     {
         ILog logger = log4net.LogManager.GetLogger(typeof(frmEditUserinfo));
-        SqlConnection conn = ConnectionHelper.GetConnectionByKey("MPConnection");
+        SqlConnection conn = ConnectionHelper.GetConnectionByKey("DongSuo");
         private static List<DbManageEntity> dbManageEntitys;
         private static string currentPath = AppDomain.CurrentDomain.BaseDirectory;
         private static string jsonFile = currentPath + "App_Data\\ManageDb.json";

@@ -27,7 +27,7 @@ namespace toolstrackingsystem
             //this.t_ToolInfoTableAdapter.Fill(this.cangku_manage_dbDataSet.t_ToolInfo);
 
             //this.reportViewer1.RefreshReport();
-            string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MPConnection"].ConnectionString;
+            string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
                 t_OutBackStore countInfo = (t_OutBackStore)this.Tag;

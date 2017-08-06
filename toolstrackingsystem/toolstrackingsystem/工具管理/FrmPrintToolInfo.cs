@@ -27,8 +27,8 @@ namespace toolstrackingsystem
 
         private void FrmPrintToolInfo_Load(object sender, EventArgs e)
         {
-            
-            string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MPConnection"].ConnectionString;
+
+            string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
                 t_ToolInfo toolInfo = (t_ToolInfo)this.Tag;

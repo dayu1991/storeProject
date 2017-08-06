@@ -27,5 +27,55 @@ namespace sqlserver.toolstrackingsystem
             }
             return false;
         }
+        /// <summary>
+        /// 插入地址
+        /// </summary>
+        /// <param name="addressInfo"></param>
+        /// <returns></returns>
+        public bool InsertAddressInfo(Sys_AddressInfo addressInfo)
+        {
+            return base.Add(addressInfo)>0;
+        }
+        /// <summary>
+        /// 更新地址
+        /// </summary>
+        /// <param name="addressInfo"></param>
+        /// <returns></returns>
+        public bool UpdateAddressInfo(Sys_AddressInfo addressInfo)
+        {
+            return base.Update(addressInfo);
+        }
+        /// <summary>
+        /// 删除地址
+        /// </summary>
+        /// <param name="macAddress"></param>
+        /// <returns></returns>
+        public bool DeleteAddressInfo(string macAddress)
+        {
+            string sql = "DELETE FROM Sys_AddressInfo WHERE MacAddress = @macAddress";
+            DynamicParameters parameter = new DynamicParameters();
+            parameter.Add("macAddress",macAddress);
+            return base.ExecuteSql(sql,parameter)>0;
+        }
+        public Sys_AddressInfo GetAddressInfoByMac(string macAddress)
+        {
+            string sql = "SELECT * FROM Sys_AddressInfo WHERE MacAddress = @macAddress";
+            DynamicParameters parameter = new DynamicParameters();
+            parameter.Add("macAddress", macAddress);
+            return base.GetModel(sql,parameter);
+        }
+        public List<Sys_AddressInfo> GetAddressList(string macAddress)
+        {
+            string sql = @"SELECT [MacAddress]
+                                  ,[Address]
+                                  ,[IsActive] = case [IsActive] when 1 then '是' when 0 then '否' end
+                            FROM [dbo].[Sys_AddressInfo] LIKE @macAddress";
+            DynamicParameters parameter = new DynamicParameters();
+            if (!string.IsNullOrWhiteSpace(macAddress))
+            {
+                parameter.Add("macAddress", string.Format("%{0}%", macAddress));
+            }
+            return base.QueryList(sql, parameter).ToList();
+        }
     }
 }

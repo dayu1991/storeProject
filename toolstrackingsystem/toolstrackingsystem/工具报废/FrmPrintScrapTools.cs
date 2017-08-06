@@ -24,7 +24,7 @@ namespace toolstrackingsystem
         {
 
             //this.reportViewer1.RefreshReport();
-            string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MPConnection"].ConnectionString;
+            string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
                 string toolCode = this.Tag.ToString();

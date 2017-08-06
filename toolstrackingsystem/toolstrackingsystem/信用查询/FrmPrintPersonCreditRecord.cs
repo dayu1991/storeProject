@@ -25,7 +25,7 @@ namespace toolstrackingsystem
         {
 
             //this.reportViewer1.RefreshReport();
-            string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MPConnection"].ConnectionString;
+            string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
             #region 判断cache里是否有设置好的客户端连接字符串
             if (MemoryCache.Default.Get("clientName") != null)
             {

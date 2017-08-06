@@ -118,6 +118,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="地址管理\FrmAddressManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="地址管理\FrmAddressManage.Designer.cs">
+      <DependentUpon>FrmAddressManage.cs</DependentUpon>
+    </Compile>
     <Compile Include="PageControl\PagerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -167,6 +173,12 @@
     </Compile>
     <Compile Include="入库查询\FrmPrintToolInStore.Designer.cs">
       <DependentUpon>FrmPrintToolInStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="地址管理\FrmEditAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="地址管理\FrmEditAddress.Designer.cs">
+      <DependentUpon>FrmEditAddress.cs</DependentUpon>
     </Compile>
     <Compile Include="工具包管理\FrmToolPackManage.cs">
       <SubType>Form</SubType>
@@ -433,6 +445,9 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="地址管理\FrmAddressManage.resx">
+      <DependentUpon>FrmAddressManage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PageControl\PagerControl.resx">
       <DependentUpon>PagerControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -468,6 +483,9 @@
       <DependentUpon>FrmPrintToolInStore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="入库查询\Report4.rdlc" />
+    <EmbeddedResource Include="地址管理\FrmEditAddress.resx">
+      <DependentUpon>FrmEditAddress.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="工具包管理\FrmToolPackManage.resx">
       <DependentUpon>FrmToolPackManage.cs</DependentUpon>
     </EmbeddedResource>
