@@ -88,10 +88,15 @@ namespace toolstrackingsystem
             //    Application.Exit();
             //}
             //mac = mac.Replace(":", "-");
+            //if (_addressInfoService.GetAddressInfoByMac(mac) == null)
+            //{
+            //    MessageBox.Show("该客户端尚未注册，请联系管理员！");
+            //    Application.Exit();
+            //}
             //string encode = CommonHelper.GetMd5(CommonHelper.GetMd5(mac));
             //if (!_addressInfoService.IsExistAddress(encode))
             //{
-            //    MessageBox.Show("该客户端尚未注册，请联系管理员！");
+            //    MessageBox.Show("该客户端注册秘钥不正确，请联系管理员！");
             //    Application.Exit();
             //}
             #endregion

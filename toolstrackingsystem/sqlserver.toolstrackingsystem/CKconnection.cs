@@ -1,4 +1,5 @@
-﻿using dbentity.toolstrackingsystem;
+﻿using common.toolstrackingsystem;
+using dbentity.toolstrackingsystem;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,11 +16,11 @@ namespace sqlserver.toolstrackingsystem
     /// </summary>
     public class CKConnection
     {
-        private static string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
+        private static string defaultConnectionString = MemoryCacheHelper.GetConnectionStr();
         public static IDbConnection GetConnection()
         {
             #region 判断cache里是否有设置好的客户端连接字符串
-            if (MemoryCache.Default.Get("clientName")!=null)
+            if (MemoryCache.Default.Get("clientName") != null)
             {
                 string connName = MemoryCache.Default.Get("clientName").ToString();
                 defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;

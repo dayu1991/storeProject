@@ -336,6 +336,18 @@
     <Compile Include="超时未归还\FrmPrintNotBack.Designer.cs">
       <DependentUpon>FrmPrintNotBack.cs</DependentUpon>
     </Compile>
+    <Compile Include="送修查询\FrmPrepairTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="送修查询\FrmPrepairTool.Designer.cs">
+      <DependentUpon>FrmPrepairTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="送修查询\FrmPrintPrepairTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="送修查询\FrmPrintPrepairTool.Designer.cs">
+      <DependentUpon>FrmPrintPrepairTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="选择客户端%28服务端用户专用%29\FrmSelectClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -572,6 +584,13 @@
       <DependentUpon>FrmPrintNotBack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="超时未归还\Report5.rdlc" />
+    <EmbeddedResource Include="送修查询\FrmPrepairTool.resx">
+      <DependentUpon>FrmPrepairTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="送修查询\FrmPrintPrepairTool.resx">
+      <DependentUpon>FrmPrintPrepairTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="送修查询\Report10.rdlc" />
     <EmbeddedResource Include="选择客户端%28服务端用户专用%29\FrmSelectClient.resx">
       <DependentUpon>FrmSelectClient.cs</DependentUpon>
     </EmbeddedResource>

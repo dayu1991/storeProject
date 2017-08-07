@@ -17,6 +17,7 @@ using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using ViewEntity.toolstrackingsystem;
 using log4net;
+using common.toolstrackingsystem;
 
 namespace toolstrackingsystem
 {
@@ -64,6 +65,7 @@ namespace toolstrackingsystem
             //rpanel.Controls.Add(rb);
 
             #endregion
+
             #region 获取用户角色权限
             _roleManageService = Program.container.Resolve<IRoleManageService>() as RoleManageService;
             _menuManageService = Program.container.Resolve<IMenuManageService>() as MenuManageService;
@@ -104,7 +106,7 @@ namespace toolstrackingsystem
             #endregion
 
             #region 判断连接服务器IP
-            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
+            string connStr = MemoryCacheHelper.GetConnectionStr();
             string ip = connStr.Split(';')[0].Split('=')[1].ToString();
             Message_label.Text = "连接到服务器" + ip+" 当前数据库：东所";
             #endregion
@@ -201,45 +203,55 @@ namespace toolstrackingsystem
         /// <param name="e"></param>
         private void Select_buttonItem_Click(object sender, EventArgs e)
         {
-            FrmSelectClient FrmClient = new FrmSelectClient();
-            if (userInfo.UserRole == "ServerRole")
-            {
-                FrmClient.ShowDialog();
-                if (FrmClient.DialogResult == DialogResult.OK)
-                {
-                    #region 判断cache里是否有设置好的客户端连接字符串
-                    if (MemoryCache.Default.Get("clientName") != null)
-                    {
-                        string connName = MemoryCache.Default.Get("clientName").ToString();
-                        string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
-                        string ip = connStr.Split(';')[0].Split('=')[1].ToString();
-                        string dataBase = MemoryCache.Default.Get("clientName").ToString();
-                        switch (dataBase)
-                        { 
-                            case "DongSuo":
-                                dataBase = "东所";
-                                break;
-                            case "XiSuo":
-                                dataBase = "西所";
-                                break;
-                            case "NanSuo":
-                                dataBase = "南所";
-                                break;
-                            case "ShiJiaZhuang":
-                                dataBase = "石家庄所";
-                                break;
-                        }
-                        Message_label.Text = "连接到服务器：" + ip + " 当前数据库：" + dataBase;
-                        MessageBox.Show("设置成功");
-                    }
-                    #endregion
 
+            try
+            {
+                FrmSelectClient FrmClient = new FrmSelectClient();
+                if (userInfo.UserRole == "ServerRole")
+                {
+                    FrmClient.ShowDialog();
+                    if (FrmClient.DialogResult == DialogResult.OK)
+                    {
+                        #region 判断cache里是否有设置好的客户端连接字符串
+                        if (MemoryCache.Default.Get("clientName") != null)
+                        {
+                            string connName = MemoryCache.Default.Get("clientName").ToString();
+                            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
+                            string ip = connStr.Split(';')[0].Split('=')[1].ToString();
+                            string dataBase = MemoryCache.Default.Get("clientName").ToString();
+                            switch (dataBase)
+                            {
+                                case "DongSuo":
+                                    dataBase = "东所";
+                                    break;
+                                case "XiSuo":
+                                    dataBase = "西所";
+                                    break;
+                                case "NanSuo":
+                                    dataBase = "南所";
+                                    break;
+                                case "ShiJiaZhuang":
+                                    dataBase = "石家庄所";
+                                    break;
+                            }
+                            Message_label.Text = "连接到服务器：" + ip + " 当前数据库：" + dataBase;
+                            MessageBox.Show("设置成功");
+                        }
+                        #endregion
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("您没有权限选择客户端");
                 }
             }
-            else {
-                MessageBox.Show("您没有权限选择客户端");
+            catch (Exception ex)
+            {
+
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FormMain--Select_buttonItem_Click", ex.Message, ex.StackTrace, ex.Source);
+
             }
-            
         }
     }
 }
