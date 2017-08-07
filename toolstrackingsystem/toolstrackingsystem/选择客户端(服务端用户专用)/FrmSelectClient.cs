@@ -50,6 +50,11 @@ namespace toolstrackingsystem
             {
                 this.Clients_comboBox.SelectedValue = MemoryCache.Default.Get("clientName").ToString();
             }
+            else {
+                string connStr = MemoryCacheHelper.GetConnectionStr();
+                string dataBase = connStr.Split(';')[1].Split('=')[1].ToString();
+                this.Clients_comboBox.SelectedValue = dataBase;
+            }
         }
         /// <summary>
         /// 确定选择哪个客户端后，把value值存进memoryCache中

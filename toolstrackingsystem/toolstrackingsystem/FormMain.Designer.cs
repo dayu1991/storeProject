@@ -77,7 +77,6 @@
             this.ribbonControl1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.ribbonControl1.QuickToolbarItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.qatCustomizeItem1});
-
             this.ribbonControl1.Size = new System.Drawing.Size(1373, 136);
             this.ribbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonControl1.SystemText.MaximizeRibbonText = "放大工具栏";
@@ -346,7 +345,7 @@
             this.Message_label.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.Message_label.Location = new System.Drawing.Point(932, 3);
             this.Message_label.Name = "Message_label";
-            this.Message_label.Size = new System.Drawing.Size(296, 23);
+            this.Message_label.Size = new System.Drawing.Size(416, 23);
             this.Message_label.TabIndex = 4;
             this.Message_label.Text = "连接到服务器";
             // 
