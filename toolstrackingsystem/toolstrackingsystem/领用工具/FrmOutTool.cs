@@ -111,7 +111,7 @@ namespace toolstrackingsystem
                 MessageBox.Show("请填入工具编码");
                 return;
             }
-            var tool = _toolInfoService.GetToolByCode(toolCode);
+            var tool = _toolInfoService.GetToolByCode(toolCode); 
             if (tool != null && !string.IsNullOrWhiteSpace(tool.ToolCode)&&tool.IsActive=="1")
             {
                 if (string.IsNullOrWhiteSpace(tool.PackCode)) //不存在包
@@ -133,8 +133,17 @@ namespace toolstrackingsystem
                 }
             }
             else {
-                MessageBox.Show("不存在此编码的常规工具！");
-                return;
+                var tools = _toolInfoService.GetToolByCodeOrPackCode(toolCode);
+                if (tools.Any())
+                {
+                    foreach (var item in tools)
+                    {
+                        item.OptionPerson = LoginHelper.UserName;  
+                    }
+                    ToolInfoList.AddRange(tools);
+                    this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+                }
+
             }
         }
 

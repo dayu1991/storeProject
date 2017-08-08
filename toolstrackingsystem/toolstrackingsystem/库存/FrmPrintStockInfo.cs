@@ -51,7 +51,7 @@ namespace toolstrackingsystem
                                   ,[CheckTime]
                                   ,[IsActive]
                                   ,[OptionPerson]
-                              FROM [cangku_manage_db].[dbo].[t_ToolInfo] WHERE IsAcTive=1";
+                              FROM [t_ToolInfo] WHERE IsAcTive=1";
                 if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
                 {
                     string str = " AND TypeName LIKE  '"+toolInfo.TypeName+"'";

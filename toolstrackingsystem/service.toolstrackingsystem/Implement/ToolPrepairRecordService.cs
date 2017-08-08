@@ -29,9 +29,9 @@ namespace service.toolstrackingsystem
                                   ,sui.UserName as [OptionPerson]
                                   ,sui1.UserName as [BackOptionPerson]
                                   ,[IsActive] = case tpr.IsActive WHEN 1 THEN '可用' WHEN 0 THEN '送修' END
-                              FROM [cangku_manage_db].[dbo].[t_ToolPrepairRecord] tpr join Sys_User_Info sui on tpr.OptionPerson = sui.UserCode join Sys_User_Info sui1 on tpr.BackOptionPerson = sui1.UserCode WHERE 1=1";
-            string sqlNotStr = "tpr.[ID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [ID] FROM [cangku_manage_db].[dbo].[t_ToolPrepairRecord] WHERE 1=1 ";
-            string sqlCount = "SELECT COUNT(*) FROM [cangku_manage_db].[dbo].[t_ToolPrepairRecord] WHERE IsAcTive=1 ";
+                              FROM [t_ToolPrepairRecord] tpr join Sys_User_Info sui on tpr.OptionPerson = sui.UserCode join Sys_User_Info sui1 on tpr.BackOptionPerson = sui1.UserCode WHERE 1=1";
+            string sqlNotStr = "tpr.[ID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [ID] FROM [t_ToolPrepairRecord] WHERE 1=1 ";
+            string sqlCount = "SELECT COUNT(*) FROM [t_ToolPrepairRecord] WHERE IsAcTive=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(prepairInfo.ToolCode))
             {
@@ -54,7 +54,7 @@ namespace service.toolstrackingsystem
                                   ,sui.UserName as [OptionPerson]
                                   ,sui1.UserName as [BackOptionPerson]
                                   ,[IsActive] = case tpr.IsActive WHEN 1 THEN '可用' WHEN 0 THEN '送修' END
-                              FROM [cangku_manage_db].[dbo].[t_ToolPrepairRecord] tpr join Sys_User_Info sui on tpr.OptionPerson = sui.UserCode join Sys_User_Info sui1 on tpr.BackOptionPerson = sui1.UserCode WHERE 1=1";
+                              FROM [t_ToolPrepairRecord] tpr join Sys_User_Info sui on tpr.OptionPerson = sui.UserCode join Sys_User_Info sui1 on tpr.BackOptionPerson = sui1.UserCode WHERE 1=1";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(prepairInfo.ToolCode))
             {

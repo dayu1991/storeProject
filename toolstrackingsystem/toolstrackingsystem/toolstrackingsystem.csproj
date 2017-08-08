@@ -336,6 +336,18 @@
     <Compile Include="超时未归还\FrmPrintNotBack.Designer.cs">
       <DependentUpon>FrmPrintNotBack.cs</DependentUpon>
     </Compile>
+    <Compile Include="送修查询\FrmPrepairTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="送修查询\FrmPrepairTool.Designer.cs">
+      <DependentUpon>FrmPrepairTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="送修查询\FrmPrintPrepairTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="送修查询\FrmPrintPrepairTool.Designer.cs">
+      <DependentUpon>FrmPrintPrepairTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="选择客户端%28服务端用户专用%29\FrmSelectClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -481,6 +493,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="入库查询\FrmPrintToolInStore.resx">
       <DependentUpon>FrmPrintToolInStore.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="入库查询\Report4.rdlc" />
     <EmbeddedResource Include="地址管理\FrmEditAddress.resx">
@@ -491,6 +504,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="工具报废\FrmPrintScrapTools.resx">
       <DependentUpon>FrmPrintScrapTools.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="工具报废\FrmScrapToolManage.resx">
       <DependentUpon>FrmScrapToolManage.cs</DependentUpon>
@@ -508,6 +522,7 @@
     <EmbeddedResource Include="作业人员\Report1.rdlc" />
     <EmbeddedResource Include="工具管理\FrmPrintToolInfo.resx">
       <DependentUpon>FrmPrintToolInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="工具管理\ToolInfo.rdlc" />
     <EmbeddedResource Include="工具管理\ToolInfoManage.resx">
@@ -541,6 +556,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="流水账\PrintCurrentCountInfo.resx">
       <DependentUpon>PrintCurrentCountInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="流水账\Report3.rdlc" />
     <EmbeddedResource Include="用户管理\FrmEditUser.resx">
@@ -572,6 +588,13 @@
       <DependentUpon>FrmPrintNotBack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="超时未归还\Report5.rdlc" />
+    <EmbeddedResource Include="送修查询\FrmPrepairTool.resx">
+      <DependentUpon>FrmPrepairTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="送修查询\FrmPrintPrepairTool.resx">
+      <DependentUpon>FrmPrintPrepairTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="送修查询\Report10.rdlc" />
     <EmbeddedResource Include="选择客户端%28服务端用户专用%29\FrmSelectClient.resx">
       <DependentUpon>FrmSelectClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -589,6 +612,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="领用查询\FrmPrintToolBorrow.resx">
       <DependentUpon>FrmPrintToolBorrow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="领用查询\FrmQueryBorrow.resx">
       <DependentUpon>FrmQueryBorrow.cs</DependentUpon>
