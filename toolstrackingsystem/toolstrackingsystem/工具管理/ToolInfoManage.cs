@@ -415,9 +415,9 @@ namespace toolstrackingsystem
                     {
                         //获取用户选择的文件，并判断文件大小不能超过20K，fileInfo.Length是以字节为单位的
                         FileInfo fileInfo = new FileInfo(fileDialog.FileName);
-                        if (fileInfo.Length > 204800)
+                        if (fileInfo.Length > 20480000)
                         {
-                            MessageBox.Show("上传的文件不能大于200K");
+                            MessageBox.Show("上传的文件不能大于20000K");
                         }
                         else
                         {

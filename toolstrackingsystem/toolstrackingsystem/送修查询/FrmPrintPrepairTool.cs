@@ -43,7 +43,7 @@ namespace toolstrackingsystem
                                       ,sui.UserName as [OptionPerson]
                                       ,sui1.UserName as [BackOptionPerson]
                                       ,[IsActive] = case tpr.IsActive WHEN 0 THEN '送修' WHEN 1 THEN '可用' END
-                                  FROM [cangku_manage_db].[dbo].[t_ToolPrepairRecord] tpr join Sys_User_Info sui on tpr.OptionPerson = sui.UserCode join Sys_User_Info sui1 on tpr.BackOptionPerson = sui1.UserCode WHERE 1=1";
+                                  FROM [t_ToolPrepairRecord] tpr join Sys_User_Info sui on tpr.OptionPerson = sui.UserCode join Sys_User_Info sui1 on tpr.BackOptionPerson = sui1.UserCode WHERE 1=1";
                 if (!string.IsNullOrEmpty(prepairInfo.ToolCode))
                 {
                     string str = " AND tpr.ToolCode LIKE '" + prepairInfo.ToolCode + "'";

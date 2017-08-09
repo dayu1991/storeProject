@@ -38,6 +38,7 @@ namespace service.toolstrackingsystem
         List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount);
 
         t_ToolInfo GetToolByCode(string Toolcode);
+        List<t_ToolInfo> GetToolByCodeOrPackCode(string code);
 
 
         bool UpdateTool(t_ToolInfo entity);

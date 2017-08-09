@@ -94,6 +94,39 @@ namespace service.toolstrackingsystem
         {
             return _toolInfoRepository.GetToolByCode(toolCode);
         }
+        public List<t_ToolInfo> GetToolByCodeOrPackCode(string code)
+        {
+            var list = new List<t_ToolInfo>();
+//            var entity = _toolInfoRepository.GetToolByCode(code);
+//            if (entity != null && !string.IsNullOrWhiteSpace(entity.ToolCode))
+//            {
+//                list.Add(entity);
+//            }
+//            else {
+//                string sql = @"SELECT *
+//                              FROM [t_ToolInfo] WHERE 1=1 AND [PackCode]=@PackCode AND [IsActive]=1";
+               
+//                DynamicParameters parameters = new DynamicParameters();
+//                parameters.Add("PackCode", code);
+//                var result = _multiTableQueryRepository.QueryList<t_ToolInfo>(sql, parameters);
+//                if(result!=null&&result.Any())
+//                {
+//                    list.AddRange(result.ToList());
+//                }
+//            }
+            string sql = @"SELECT *
+                              FROM [t_ToolInfo] WHERE 1=1 AND [PackCode]=@PackCode AND [IsActive]=1";
+
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("PackCode", code);
+            var result = _multiTableQueryRepository.QueryList<t_ToolInfo>(sql, parameters);
+            if (result != null && result.Any())
+            {
+                list.AddRange(result.ToList());
+            }
+            return list;
+        }
+
         public bool UpdateTool(t_ToolInfo entity)
         {
             return _toolInfoRepository.UpdateTool(entity);
@@ -242,7 +275,7 @@ namespace service.toolstrackingsystem
                                   ,[CheckTime]
                                   ,[IsActive]
                                   ,[OptionPerson]
-                              FROM [cangku_manage_db].[dbo].[t_ToolInfo] WHERE 1=1";
+                              FROM [t_ToolInfo] WHERE 1=1";
             string sqlNotStr = "[ToolID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [ToolID] FROM [dbo].[t_ToolInfo] WHERE 1=1 ";
             string sqlCount = "SELECT COUNT(*) FROM [dbo].[t_ToolInfo] WHERE IsAcTive=1 ";
             DynamicParameters parameters = new DynamicParameters();
@@ -366,7 +399,7 @@ namespace service.toolstrackingsystem
                                   ,[CheckTime]
                                   ,[IsActive]
                                   ,[OptionPerson]
-                              FROM [cangku_manage_db].[dbo].[t_ToolInfo] WHERE IsAcTive=1";
+                              FROM [t_ToolInfo] WHERE IsAcTive=1";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
             {
@@ -429,7 +462,7 @@ namespace service.toolstrackingsystem
                                   ,[CheckTime]
                                   ,[IsActive] = case IsActive WHEN '0' THEN '否' WHEN '1' THEN '有' WHEN '2' THEN '送修' END
                                   ,[OptionPerson]
-                              FROM [cangku_manage_db].[dbo].[t_ToolInfo] WHERE 1=1";
+                              FROM [t_ToolInfo] WHERE 1=1";
             string sqlNotStr = "[ToolID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [ToolID] FROM [dbo].[t_ToolInfo] WHERE 1=1 ";
             string sqlCount = "SELECT COUNT(*) FROM [dbo].[t_ToolInfo] WHERE IsAcTive=1 ";
             DynamicParameters parameters = new DynamicParameters();

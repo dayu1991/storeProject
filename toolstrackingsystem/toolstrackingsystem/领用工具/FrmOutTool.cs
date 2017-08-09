@@ -39,7 +39,7 @@ namespace toolstrackingsystem
             this.EnableGlass = false;
             InitializeComponent();
         }
-
+        
         private void btnOut_Click(object sender, EventArgs e)
         {
             if (ToolInfoList.Count == 0)
@@ -86,6 +86,8 @@ namespace toolstrackingsystem
                 MessageBox.Show(string.Format("领用成功，领用成功工具{0}！", successCodes));
                 ToolInfoList = new List<t_ToolInfo>();
                 this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+                tbEditCode.Text = "";
+                tbEditPersonCode.Text = "";
                 return;
             }
             else {
@@ -111,7 +113,7 @@ namespace toolstrackingsystem
                 MessageBox.Show("请填入工具编码");
                 return;
             }
-            var tool = _toolInfoService.GetToolByCode(toolCode);
+            var tool = _toolInfoService.GetToolByCode(toolCode); 
             if (tool != null && !string.IsNullOrWhiteSpace(tool.ToolCode)&&tool.IsActive=="1")
             {
                 if (string.IsNullOrWhiteSpace(tool.PackCode)) //不存在包
@@ -133,9 +135,20 @@ namespace toolstrackingsystem
                 }
             }
             else {
-                MessageBox.Show("不存在此编码的常规工具！");
-                return;
+                var tools = _toolInfoService.GetToolByCodeOrPackCode(toolCode);
+                if (tools.Any())
+                {
+                    foreach (var item in tools)
+                    {
+                        item.OptionPerson = LoginHelper.UserName;  
+                    }
+                    ToolInfoList.AddRange(tools);
+                    this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+                }
+
             }
+            tbEditCode.Text = "";
+            tbEditPersonCode.Text = "";
         }
 
         private void FrmOutTool_Load(object sender, EventArgs e)
@@ -237,20 +250,34 @@ namespace toolstrackingsystem
         private void SetText(string text)
         {
             //获取当前有焦点的控件，然后给当前控件赋值
-            Control ctl = this.ActiveControl;
-            if (ctl is TextBox) //只给textbox赋值
+            //Control ctl = this.ActiveControl;
+            //if (ctl is TextBox) //只给textbox赋值
+            //{
+            //    // InvokeRequired需要比较调用线程ID和创建线程ID
+            //    // 如果它们不相同则返回true
+            //    if (ctl.InvokeRequired)
+            //    {
+            //        SetTextCallback d = new SetTextCallback(SetText);
+            //        this.Invoke(d, new object[] { text });
+            //    }
+            //    else
+            //    {
+            //        ctl.Text = text;
+            //        btnAddTool_Click(null, null);
+                    
+            //    }
+            //}
+
+            if (tbEditCode.InvokeRequired)
             {
-                // InvokeRequired需要比较调用线程ID和创建线程ID
-                // 如果它们不相同则返回true
-                if (ctl.InvokeRequired)
-                {
-                    SetTextCallback d = new SetTextCallback(SetText);
-                    this.Invoke(d, new object[] { text });
-                }
-                else
-                {
-                    ctl.Text = text;
-                }
+                SetTextCallback d = new SetTextCallback(SetText);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                tbEditCode.Text = "";
+                tbEditCode.Text = text;
+                //btnAddTool_Click(null, null);
             }
         }
 

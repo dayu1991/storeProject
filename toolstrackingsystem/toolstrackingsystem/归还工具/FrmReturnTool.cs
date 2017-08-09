@@ -91,8 +91,41 @@ namespace toolstrackingsystem
             }
             else
             {
-                MessageBox.Show("不存在此编码的常规工具！");
-                return;
+                var tools = _toolInfoService.GetToolByCodeOrPackCode(toolCode);
+                if (tools.Any())
+                {
+                    foreach (var item in tools)
+                    {
+                        var toolOut = _toolInfoService.GetToolOutByCode(item.ToolCode);
+                        if (toolOut != null && toolOut.IsBack == "0")
+                        {
+                            OutBackStoreEntity entity = new OutBackStoreEntity();
+                            entity.TypeName = item.TypeName;
+                            entity.ChildTypeName = item.ChildTypeName;
+                            entity.PackCode = item.PackCode;
+                            entity.PackName = item.PackName;
+                            entity.ToolCode = item.ToolCode;
+                            entity.ToolName = item.ToolName;
+                            entity.Models = item.Models;
+                            entity.Location = item.Location;
+                            entity.Remarks = item.Remarks;
+                            entity.OutStoreTime = toolOut.OutStoreTime;
+                            entity.PersonCode = toolOut.PersonCode;
+                            entity.PersonName = toolOut.PersonName;
+                            entity.OutBackStoreID = toolOut.OutBackStoreID;
+                            entity.OptionPersonCode = LoginHelper.UserCode;
+                            entity.OptionPersonName = LoginHelper.UserName;
+
+                            ToolInfoList.Add(entity);
+                        }
+                    }
+                    this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+
+                }
+                else {
+                    MessageBox.Show("不存在的工具包编号！");
+                    return;
+                }
             }
         }
 

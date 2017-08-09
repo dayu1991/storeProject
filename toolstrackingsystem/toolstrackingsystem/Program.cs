@@ -112,6 +112,8 @@ as UnityConfigurationSection;
 
                         //这里客户端套接字连接到网络节点(服务端)用的方法是Connect 而不是Bind
                         SocketClient.Connect(endpoint);
+                        logger.ErrorFormat("智能相机链接成功Ip:{0}port:{1}", ScanIpAddress, ScanPort);
+
                         Thread.Sleep(10000);
                     }
                     catch (Exception ex)

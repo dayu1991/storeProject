@@ -190,7 +190,7 @@ namespace toolstrackingsystem
                 if (fileDialog.ShowDialog() == DialogResult.OK)
                 {
                     //获取用户选择文件的后缀名
-                    string extension = Path.GetExtension(openFileDialog.FileName);
+                    string extension = Path.GetExtension(fileDialog.FileName);
                     //声明允许的后缀名
                     string[] str = new string[] { ".xls", ".xlsx" };
                     if (!((IList)str).Contains(extension))
@@ -200,10 +200,10 @@ namespace toolstrackingsystem
                     else
                     {
                         //获取用户选择的文件，并判断文件大小不能超过20K，fileInfo.Length是以字节为单位的
-                        FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
-                        if (fileInfo.Length > 20480)
+                        FileInfo fileInfo = new FileInfo(fileDialog.FileName);
+                        if (fileInfo.Length > 20480000)
                         {
-                            MessageBox.Show("上传的图片不能大于20K");
+                            MessageBox.Show("上传的图片不能大于20000K");
                         }
                         else
                         {
