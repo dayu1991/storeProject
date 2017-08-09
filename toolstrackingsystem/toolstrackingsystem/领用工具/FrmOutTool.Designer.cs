@@ -286,6 +286,7 @@
             this.tbEditPersonCode.PreventEnterBeep = true;
             this.tbEditPersonCode.Size = new System.Drawing.Size(287, 21);
             this.tbEditPersonCode.TabIndex = 12;
+            this.tbEditPersonCode.TextChanged += new System.EventHandler(this.tbEditPersonCode_TextChanged);
             // 
             // labelX8
             // 

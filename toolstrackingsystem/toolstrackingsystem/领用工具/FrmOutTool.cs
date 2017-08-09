@@ -29,8 +29,7 @@ namespace toolstrackingsystem
         private IToolInfoService _toolInfoService;
         private IPersonManageService _personManageService;
         private List<t_ToolInfo> ToolInfoList = new List<t_ToolInfo>();
-        private Thread threadClient;
-        private Socket socketClient = Program.SocketClient;
+        private Thread threadClientO;
         //代理用来设置text的值 （实现另一个线程操作主线程的对象）
         private delegate void SetTextCallback(string text);
 
@@ -42,7 +41,7 @@ namespace toolstrackingsystem
         
         private void btnOut_Click(object sender, EventArgs e)
         {
-            if (ToolInfoList.Count == 0)
+            if (ToolInfoList==null||ToolInfoList.Count == 0)
             {
                 MessageBox.Show("请先增加工具信息");
                 return;
@@ -51,7 +50,7 @@ namespace toolstrackingsystem
 
             if (string.IsNullOrWhiteSpace(userCode))
             {
-                MessageBox.Show("请填写人员编码！");
+                MessageBox.Show("请填写人员编号！");
                 return;
             }
             var person = _personManageService.GetPersonInfo(userCode);
@@ -64,8 +63,8 @@ namespace toolstrackingsystem
             {
                 string desc = tbEditoutdescribes.Text;
                 string endDate = "";
-                var selectValue = this.cbEditOutTime.SelectedText;
-                if (selectValue == "自定义")
+                var selectValue = this.cbEditOutTime.SelectedValue.ToString();
+                if (selectValue == "0")
                 {
                     endDate = dtiSelect.Value.ToString("yyyy-MM-dd HH:mm:ss");
                 }
@@ -73,21 +72,24 @@ namespace toolstrackingsystem
                     var hours = this.cbEditOutTime.SelectedValue.ToString();
                     endDate = DateTime.Now.AddHours(int.Parse(hours)).ToString("yyyy-MM-dd HH:mm:ss");
                 }
-                var successCodes = "";
+                int successCount = 0;
                 foreach (var entity in ToolInfoList)
                 {
 
                     if (_toolInfoService.IsExistsInStoryByCode(entity.ToolCode) && _toolInfoService.OutStore(entity, person, LoginHelper.UserCode, endDate, desc))
                     {
-                        successCodes += entity.ToolCode;
+                        successCount += 1;
                     }
                 }
 
-                MessageBox.Show(string.Format("领用成功，领用成功工具{0}！", successCodes));
+                MessageBox.Show(string.Format("领用成功，领用成功{0}件工具！", successCount));
                 ToolInfoList = new List<t_ToolInfo>();
                 this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
                 tbEditCode.Text = "";
                 tbEditPersonCode.Text = "";
+                tbEditPersonName.Text = "";
+                cbEditOutTime.SelectedValue = "1";
+                tbEditoutdescribes.Text = "";
                 return;
             }
             else {
@@ -100,9 +102,11 @@ namespace toolstrackingsystem
         {
             ToolInfoList = new List<t_ToolInfo>();
             this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
-            this.tbEditCode.Text = "";
-            this.tbEditoutdescribes.Text = "";
-            this.cbEditOutTime.SelectedText = "1小时";
+            tbEditCode.Text = "";
+            tbEditPersonCode.Text = "";
+            tbEditPersonName.Text = "";
+            cbEditOutTime.SelectedValue = "1";
+            tbEditoutdescribes.Text = "";
         }
 
         private void btnAddTool_Click(object sender, EventArgs e)
@@ -164,21 +168,25 @@ namespace toolstrackingsystem
             this.cbEditOutTime.ValueMember = "SelectValue";
             this.dataGridViewX1.AutoGenerateColumns = false;
 
-            threadClient = new Thread(RecMsg);
+            threadClientO = new Thread(RecMsg);
 
             //将窗体线程设置为与后台同步
-            threadClient.IsBackground = true;
+            threadClientO.IsBackground = true;
 
             //启动线程
-            threadClient.Start();
+            threadClientO.Start();
         }
 
         private void cbEditOutTime_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectValue = this.cbEditOutTime.SelectedText;
-            if (selectValue == "自定义")
+            var selectValue = this.cbEditOutTime.SelectedValue.ToString();
+            if (selectValue == "0")
             {
                 this.dtiSelect.Visible = true;
+            }
+            else {
+                this.dtiSelect.Visible = false;
+
             }
         }
 
@@ -187,6 +195,7 @@ namespace toolstrackingsystem
         {
             while (true) //持续监听服务端发来的消息
             {
+                Socket socketClient = Program.SocketClient;
                 if (socketClient != null && socketClient.Connected && socketClient.Available > 0)
                 {
                     //定义一个1024*200的内存缓冲区 用于临时性存储接收到的信息
@@ -200,10 +209,9 @@ namespace toolstrackingsystem
                     if (!string.IsNullOrWhiteSpace(totalText))
                     {
                         SetText(totalText);
-
                     }
                 }
-                Thread.Sleep(200);
+                Thread.Sleep(100);
             }
         }
         private void SetText(string text)
@@ -226,18 +234,23 @@ namespace toolstrackingsystem
                     
             //    }
             //}
-
-            if (tbEditCode.InvokeRequired)
-            {
-                SetTextCallback d = new SetTextCallback(SetText);
-                this.Invoke(d, new object[] { text });
-            }
-            else
-            {
-                tbEditCode.Text = "";
-                tbEditCode.Text = text;
-                //btnAddTool_Click(null, null);
-            }
+               if (tbEditCode.InvokeRequired)
+                {
+                    SetTextCallback d = new SetTextCallback(SetText);
+                    this.Invoke(d, new object[] { text });
+                }
+                else
+                {
+                    if (tbEditCode.Focused)
+                    {
+             
+                    tbEditCode.Text = "";
+                    tbEditCode.Text = text;
+                    }
+                    //btnAddTool_Click(null, null);
+                }
+            
+           
         }
 
         #endregion
@@ -272,14 +285,18 @@ namespace toolstrackingsystem
                                 ToolInfoList.Add(tool);
                                 this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
                             }
-                           
+
                         }
                         else
                         {
                             MessageBox.Show("此编码的工具仓库中已经没有啦！");
                             return;
                         }
-                    }                  
+                    }
+                    else {
+                        MessageBox.Show("该工具不能被领用！");
+                        return;
+                    }
                    
                 }
                 else //包
@@ -289,18 +306,52 @@ namespace toolstrackingsystem
                     {
                         foreach (var item in tools)
                         {
-                            item.OptionPerson = LoginHelper.UserName;
+                            if (_toolInfoService.IsExistsInStoryByCode(item.ToolCode)) //有库存
+                            {
+                                bool isContain = false;
+                                foreach (var itemHave in ToolInfoList)
+                                {
+                                    if (itemHave != null && itemHave.ToolCode == item.ToolCode)
+                                    {
+                                        isContain = true;
+                                    }
+                                }
+                                if (!isContain)
+                                {
+                                    item.OptionPerson = LoginHelper.UserName;
+                                    ToolInfoList.Add(item);
+                                }
+
+                            }
                         }
-                        ToolInfoList.AddRange(tools);
                         this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
                     }
 
-                }
-                tbEditCode.Text = "";
-                tbEditPersonCode.Text = "";
-              
+                }                         
             }
             
+        }
+
+        private void tbEditPersonCode_TextChanged(object sender, EventArgs e)
+        {
+            tbEditPersonName.Text = "";
+            var personCode = tbEditPersonCode.Text;
+            if (!string.IsNullOrWhiteSpace(personCode))
+            {
+                var person = _personManageService.GetPersonInfo(personCode);
+                if (person != null)
+                {
+                    if (person.IsReceive == "1")
+                    {
+                        tbEditPersonName.Text = person.PersonName;
+                    }
+                    else {
+                        MessageBox.Show("没有领用权限！");
+                        return;
+                    }
+                }               
+
+            }
         }
 
     }
