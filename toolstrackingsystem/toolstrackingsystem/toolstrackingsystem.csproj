@@ -493,6 +493,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="入库查询\FrmPrintToolInStore.resx">
       <DependentUpon>FrmPrintToolInStore.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="入库查询\Report4.rdlc" />
     <EmbeddedResource Include="地址管理\FrmEditAddress.resx">
@@ -503,6 +504,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="工具报废\FrmPrintScrapTools.resx">
       <DependentUpon>FrmPrintScrapTools.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="工具报废\FrmScrapToolManage.resx">
       <DependentUpon>FrmScrapToolManage.cs</DependentUpon>
@@ -520,6 +522,7 @@
     <EmbeddedResource Include="作业人员\Report1.rdlc" />
     <EmbeddedResource Include="工具管理\FrmPrintToolInfo.resx">
       <DependentUpon>FrmPrintToolInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="工具管理\ToolInfo.rdlc" />
     <EmbeddedResource Include="工具管理\ToolInfoManage.resx">
@@ -553,6 +556,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="流水账\PrintCurrentCountInfo.resx">
       <DependentUpon>PrintCurrentCountInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="流水账\Report3.rdlc" />
     <EmbeddedResource Include="用户管理\FrmEditUser.resx">
@@ -608,6 +612,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="领用查询\FrmPrintToolBorrow.resx">
       <DependentUpon>FrmPrintToolBorrow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="领用查询\FrmQueryBorrow.resx">
       <DependentUpon>FrmQueryBorrow.cs</DependentUpon>

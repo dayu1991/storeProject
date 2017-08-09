@@ -123,6 +123,9 @@ namespace toolstrackingsystem
                 case "ShiJiaZhuang":
                     dataBase = "石家庄所";
                     break;
+                default:
+                    dataBase = "东所";
+                    break;
             }
             Message_label.Text = "连接到服务器" + ip+" 当前数据库："+dataBase;
             #endregion
@@ -249,12 +252,14 @@ namespace toolstrackingsystem
                                 case "ShiJiaZhuang":
                                     dataBase = "石家庄所";
                                     break;
+                                default:
+                                    dataBase = "东所";
+                                    break;
                             }
                             Message_label.Text = "连接到服务器：" + ip + " 当前数据库：" + dataBase;
                             MessageBox.Show("设置成功");
                         }
                         #endregion
-
                     }
                 }
                 else

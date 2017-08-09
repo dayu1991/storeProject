@@ -13,6 +13,7 @@ namespace common.toolstrackingsystem
     /// </summary>
     public class ConnectionHelper
     {
+
         public static string defaultConnectionString = MemoryCacheHelper.GetConnectionStr();
         public static SqlConnection GetConnection()
         {

@@ -232,7 +232,7 @@
             // 
             this.btnAddTool.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddTool.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddTool.Location = new System.Drawing.Point(283, 22);
+            this.btnAddTool.Location = new System.Drawing.Point(304, 22);
             this.btnAddTool.Name = "btnAddTool";
             this.btnAddTool.Size = new System.Drawing.Size(40, 23);
             this.btnAddTool.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -259,7 +259,7 @@
             // 
             this.tbEditCode.Border.Class = "TextBoxBorder";
             this.tbEditCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditCode.Location = new System.Drawing.Point(73, 22);
+            this.tbEditCode.Location = new System.Drawing.Point(94, 22);
             this.tbEditCode.Name = "tbEditCode";
             this.tbEditCode.PreventEnterBeep = true;
             this.tbEditCode.Size = new System.Drawing.Size(204, 21);
@@ -276,7 +276,7 @@
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(123, 23);
             this.labelX11.TabIndex = 27;
-            this.labelX11.Text = "工具编码：";
+            this.labelX11.Text = "工具/包编码：";
             // 
             // btnReturn
             // 

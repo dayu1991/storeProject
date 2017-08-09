@@ -76,9 +76,9 @@ namespace service.toolstrackingsystem
                                   ,obs.[outdescribes]
                                   ,obs.[backdescribes]
                                   ,sui.UserName as [OptionPerson]
-                              FROM [cangku_manage_db].[dbo].[t_OutBackStore] obs join Sys_User_Info sui on obs.OptionPerson = sui.UserCode WHERE 1=1 ";
-            string sqlNotStr = "obs.[OutBackStoreID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " obs.[OutBackStoreID] FROM [cangku_manage_db].[dbo].[t_OutBackStore] obs join Sys_User_Info sui on obs.OptionPerson = sui.UserCode WHERE 1=1 ";
-            string sqlCount = "SELECT COUNT(*) FROM [cangku_manage_db].[dbo].[t_OutBackStore] obs join Sys_User_Info sui on obs.OptionPerson = sui.UserCode WHERE 1=1 ";
+                              FROM [t_OutBackStore] obs join Sys_User_Info sui on obs.OptionPerson = sui.UserCode WHERE 1=1 ";
+            string sqlNotStr = "obs.[OutBackStoreID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " obs.[OutBackStoreID] FROM [t_OutBackStore] obs join Sys_User_Info sui on obs.OptionPerson = sui.UserCode WHERE 1=1 ";
+            string sqlCount = "SELECT COUNT(*) FROM [t_OutBackStore] obs join Sys_User_Info sui on obs.OptionPerson = sui.UserCode WHERE 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
@@ -123,8 +123,8 @@ namespace service.toolstrackingsystem
         public List<ToolBorrowEntity> GetToolBorrowList(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count)
         {
             string sql = "select top " + pageSize + " tl.TypeName,tl.ChildTypeName,tl.PackCode,tl.PackName,obs.ToolCode,obs.ToolName,obs.PersonCode,obs.PersonName,obs.OutStoreTime,obs.outdescribes,sui.UserName as OptionPerson from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode join Sys_User_Info sui on obs.OptionPerson=sui.UserCode  WHERE 1=1 ";
-            string sqlNotStr = "ob.OutBackStoreID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [OutBackStoreID] FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
-            string sqlCount = "SELECT COUNT(*) FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
+            string sqlNotStr = "ob.OutBackStoreID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [OutBackStoreID] FROM [t_OutBackStore] WHERE 1=1 ";
+            string sqlCount = "SELECT COUNT(*) FROM [t_OutBackStore] WHERE 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
@@ -212,8 +212,8 @@ namespace service.toolstrackingsystem
         public List<ToolReturnEntity> GetToolReturnList(string toolCode, string backPersonCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count)
         {
             string sql = "select top " + pageSize + " tl.TypeName,tl.ChildTypeName,tl.PackCode,tl.PackName,obs.ToolCode,obs.ToolName,obs.BackPesonCode,obs.BackPersonName,obs.BackTime,obs.backdescribes,sui.UserName as OptionPerson from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode join Sys_User_Info sui on obs.OptionPerson=sui.UserCode  WHERE 1=1 ";
-            string sqlNotStr = "ob.OutBackStoreID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [OutBackStoreID] FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
-            string sqlCount = "SELECT COUNT(*) FROM [cangku_manage_db].[dbo].[t_OutBackStore] WHERE 1=1 ";
+            string sqlNotStr = "ob.OutBackStoreID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [OutBackStoreID] FROM [t_OutBackStore] WHERE 1=1 ";
+            string sqlCount = "SELECT COUNT(*) FROM [t_OutBackStore] WHERE 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
