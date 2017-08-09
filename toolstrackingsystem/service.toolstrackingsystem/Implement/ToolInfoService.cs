@@ -182,7 +182,7 @@ namespace service.toolstrackingsystem
 
             outBackStore.UserTimeInfo = toDate;
             outBackStore.IsBack = "0";
-            outBackStore.outdescribes = toDate;
+            outBackStore.outdescribes = describ;
             outBackStore.OptionPerson = userCode;
             outBackStore.IsCredit = "1";
 

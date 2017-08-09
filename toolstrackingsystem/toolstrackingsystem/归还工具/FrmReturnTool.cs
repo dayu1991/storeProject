@@ -32,8 +32,7 @@ namespace toolstrackingsystem
         private List<OutBackStoreEntity> ToolInfoList = new List<OutBackStoreEntity>();
 
 
-        private Thread threadClient;
-        private Socket socketClient = Program.SocketClient;
+        private Thread threadClientR;
         //代理用来设置text的值 （实现另一个线程操作主线程的对象）
         private delegate void SetTextCallback(string text);
         public FrmReturnTool()
@@ -44,89 +43,103 @@ namespace toolstrackingsystem
 
         private void btnAddTool_Click(object sender, EventArgs e)
         {
+            LoadToolData();
+        }
+        private void LoadToolData()
+        {
             var toolCode = this.tbEditCode.Text;
-            if (string.IsNullOrWhiteSpace(toolCode))
+            if (!string.IsNullOrWhiteSpace(toolCode))
             {
-                MessageBox.Show("请填入工具编码");
-                return;
-            }
-            var tool = _toolInfoService.GetToolByCode(toolCode);
-            if (tool != null && !string.IsNullOrWhiteSpace(tool.ToolCode) && tool.IsActive == "1")
-            {
-                if (string.IsNullOrWhiteSpace(tool.PackCode)) //不存在包
+                var tool = _toolInfoService.GetToolByCode(toolCode);
+                if (tool != null && string.IsNullOrWhiteSpace(tool.PackCode))
                 {
                     var toolOut = _toolInfoService.GetToolOutByCode(toolCode);
                     if (toolOut != null && toolOut.IsBack == "0")
                     {
-                        OutBackStoreEntity entity = new OutBackStoreEntity();
-                        entity.TypeName = tool.TypeName;
-                        entity.ChildTypeName = tool.ChildTypeName;
-                        entity.PackCode = tool.PackCode;
-                        entity.PackName = tool.PackName;
-                        entity.ToolCode = tool.ToolCode;
-                        entity.ToolName = tool.ToolName;
-                        entity.Models = tool.Models;
-                        entity.Location = tool.Location;
-                        entity.Remarks = tool.Remarks;
-                        entity.OutStoreTime = toolOut.OutStoreTime;
-                        entity.PersonCode = toolOut.PersonCode;
-                        entity.PersonName = toolOut.PersonName;
-                        entity.OutBackStoreID = toolOut.OutBackStoreID;
-                        entity.OptionPersonCode =LoginHelper.UserCode;
-                        entity.OptionPersonName = LoginHelper.UserName;
-
-                        ToolInfoList.Add(entity);
-                        this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
-                    }
-                    else {
-                        MessageBox.Show("不存在工具的领用信息！");
-                        return;
-                    }                   
-                }
-                else
-                {
-                    MessageBox.Show("此编码的工具已经被打包！");
-                    return;
-                }
-            }
-            else
-            {
-                var tools = _toolInfoService.GetToolByCodeOrPackCode(toolCode);
-                if (tools.Any())
-                {
-                    foreach (var item in tools)
-                    {
-                        var toolOut = _toolInfoService.GetToolOutByCode(item.ToolCode);
-                        if (toolOut != null && toolOut.IsBack == "0")
+                        bool isContain = false;
+                        foreach (var item in ToolInfoList)
+                        {
+                            if (item != null && item.ToolCode == toolOut.ToolCode)
+                            {
+                                isContain = true;
+                            }
+                        }
+                        if (!isContain)
                         {
                             OutBackStoreEntity entity = new OutBackStoreEntity();
-                            entity.TypeName = item.TypeName;
-                            entity.ChildTypeName = item.ChildTypeName;
-                            entity.PackCode = item.PackCode;
-                            entity.PackName = item.PackName;
-                            entity.ToolCode = item.ToolCode;
-                            entity.ToolName = item.ToolName;
-                            entity.Models = item.Models;
-                            entity.Location = item.Location;
-                            entity.Remarks = item.Remarks;
+                            entity.TypeName = tool.TypeName;
+                            entity.ChildTypeName = tool.ChildTypeName;
+                            entity.PackCode = tool.PackCode;
+                            entity.PackName = tool.PackName;
+                            entity.ToolCode = tool.ToolCode;
+                            entity.ToolName = tool.ToolName;
+                            entity.Models = tool.Models;
+                            entity.Location = tool.Location;
+                            entity.Remarks = tool.Remarks;
                             entity.OutStoreTime = toolOut.OutStoreTime;
                             entity.PersonCode = toolOut.PersonCode;
                             entity.PersonName = toolOut.PersonName;
                             entity.OutBackStoreID = toolOut.OutBackStoreID;
                             entity.OptionPersonCode = LoginHelper.UserCode;
                             entity.OptionPersonName = LoginHelper.UserName;
-
                             ToolInfoList.Add(entity);
+                            this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
                         }
-                    }
-                    this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("不存在工具的领用信息！");
+                        return;
+                    }
                 }
-                else {
-                    MessageBox.Show("不存在的工具包编号！");
-                    return;
+
+                else //包
+                {
+                    var tools = _toolInfoService.GetToolByCodeOrPackCode(toolCode);
+                    if (tools.Any())
+                    {
+                        foreach (var item in tools)
+                        {
+                            var toolOut = _toolInfoService.GetToolOutByCode(item.ToolCode);
+                            if (toolOut != null && toolOut.IsBack == "0")
+                            {
+                                bool isContain = false;
+                                foreach (var itemHave in ToolInfoList)
+                                {
+                                    if (itemHave != null && itemHave.ToolCode == toolOut.ToolCode)
+                                    {
+                                        isContain = true;
+                                    }
+                                }
+                                if (!isContain)
+                                {
+                                    OutBackStoreEntity entity = new OutBackStoreEntity();
+                                    entity.TypeName = item.TypeName;
+                                    entity.ChildTypeName = item.ChildTypeName;
+                                    entity.PackCode = item.PackCode;
+                                    entity.PackName = item.PackName;
+                                    entity.ToolCode = item.ToolCode;
+                                    entity.ToolName = item.ToolName;
+                                    entity.Models = item.Models;
+                                    entity.Location = item.Location;
+                                    entity.Remarks = item.Remarks;
+                                    entity.OutStoreTime = toolOut.OutStoreTime;
+                                    entity.PersonCode = toolOut.PersonCode;
+                                    entity.PersonName = toolOut.PersonName;
+                                    entity.OutBackStoreID = toolOut.OutBackStoreID;
+                                    entity.OptionPersonCode = LoginHelper.UserCode;
+                                    entity.OptionPersonName = LoginHelper.UserName;
+
+                                    ToolInfoList.Add(entity);
+                                }
+                            }
+                        }
+                        this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+                    }
                 }
             }
+
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -153,20 +166,23 @@ namespace toolstrackingsystem
             {
                 string desc = tbEditoutdescribes.Text;
 
-                var successCodes = "";
+                int successCount = 0;
                 foreach (var entity in ToolInfoList)
                 {
 
                     if (_toolInfoService.IsExistsOutStoreByCode(entity.ToolCode, "0") && _toolInfoService.BackStore(entity, person, LoginHelper.UserCode, desc))
                     {
-                        successCodes += entity.ToolCode;
+                        successCount += 1;
                     }
                 }
 
-                MessageBox.Show(string.Format("归还成功，领用成功工具{0}！", successCodes));
+                MessageBox.Show(string.Format("归还成功，成功归还{0}件工具！", successCount));
                 ToolInfoList = new List<OutBackStoreEntity>();
                 this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
-                return;
+                tbEditCode.Text = "";
+                tbEditPersonCode.Text = "";
+                tbEditPersonName.Text = "";
+                tbEditoutdescribes.Text = "";
             }
             else
             {
@@ -179,8 +195,10 @@ namespace toolstrackingsystem
         {
             ToolInfoList = new List<OutBackStoreEntity>();
             this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
-            this.tbEditCode.Text = "";
-            this.tbEditoutdescribes.Text = "";
+            tbEditCode.Text = "";
+            tbEditPersonCode.Text = "";
+            tbEditPersonName.Text = "";
+            tbEditoutdescribes.Text = "";
         }
 
         private void FrmReturnTool_Load(object sender, EventArgs e)
@@ -189,19 +207,20 @@ namespace toolstrackingsystem
             _toolInfoService = Program.container.Resolve<IToolInfoService>();
             _personManageService = Program.container.Resolve<IPersonManageService>();
             this.dataGridViewX1.AutoGenerateColumns = false;
-            threadClient = new Thread(RecMsg);
+            threadClientR = new Thread(RecMsg);
 
             //将窗体线程设置为与后台同步
-            threadClient.IsBackground = true;
+            threadClientR.IsBackground = true;
 
             //启动线程
-            threadClient.Start();
+            threadClientR.Start();
         }
         #region 接收服务端发来信息的方法
         private void RecMsg()
         {
             while (true) //持续监听服务端发来的消息
             {
+                Socket socketClient = Program.SocketClient;
                 if (socketClient != null && socketClient.Connected && socketClient.Available > 0)
                 {
                     //定义一个1024*200的内存缓冲区 用于临时性存储接收到的信息
@@ -218,29 +237,58 @@ namespace toolstrackingsystem
 
                     }
                 }
-                Thread.Sleep(200);
+                Thread.Sleep(100);
             }
         }
         private void SetText(string text)
         {
-            //获取当前有焦点的控件，然后给当前控件赋值
-            Control ctl = this.ActiveControl;
-            if (ctl is TextBox) //只给textbox赋值
-            {
-                // InvokeRequired需要比较调用线程ID和创建线程ID
-                // 如果它们不相同则返回true
-                if (ctl.InvokeRequired)
+           
+                if (tbEditCode.InvokeRequired)
                 {
                     SetTextCallback d = new SetTextCallback(SetText);
                     this.Invoke(d, new object[] { text });
                 }
                 else
                 {
-                    ctl.Text = text;
+                    if (tbEditCode.Focused)
+                    {
+                        tbEditCode.Text = "";
+                        tbEditCode.Text = text;
+                    }
                 }
-            }
+            
+            
         }
 
         #endregion
+
+        private void tbEditCode_TextChanged(object sender, EventArgs e)
+        {
+            LoadToolData();
+
+        }
+
+        private void tbEditPersonCode_TextChanged(object sender, EventArgs e)
+        {
+            tbEditPersonName.Text = "";
+            var personCode = tbEditPersonCode.Text;
+            if (!string.IsNullOrWhiteSpace(personCode))
+            {
+                var person = _personManageService.GetPersonInfo(personCode);
+                if (person != null)
+                {
+                    if (person.IsReceive == "1")
+                    {
+                        tbEditPersonName.Text = person.PersonName;
+                    }
+                    else
+                    {
+                        MessageBox.Show("没有领用归还权限！");
+                        return;
+                    }
+                }
+
+            }
+        }
     }
 }
