@@ -33,7 +33,7 @@
             this.dtiSelect = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.btnAddTool = new DevComponents.DotNetBar.ButtonX();
             this.btnOutContinue = new DevComponents.DotNetBar.ButtonX();
-            this.tbEditCode = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbEditCodeOut = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.btnOut = new DevComponents.DotNetBar.ButtonX();
             this.tbEditoutdescribes = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -67,7 +67,7 @@
             this.groupPanel2.Controls.Add(this.dtiSelect);
             this.groupPanel2.Controls.Add(this.btnAddTool);
             this.groupPanel2.Controls.Add(this.btnOutContinue);
-            this.groupPanel2.Controls.Add(this.tbEditCode);
+            this.groupPanel2.Controls.Add(this.tbEditCodeOut);
             this.groupPanel2.Controls.Add(this.labelX11);
             this.groupPanel2.Controls.Add(this.btnOut);
             this.groupPanel2.Controls.Add(this.tbEditoutdescribes);
@@ -183,19 +183,19 @@
             this.btnOutContinue.Text = "继续领用";
             this.btnOutContinue.Click += new System.EventHandler(this.btnOutContinue_Click);
             // 
-            // tbEditCode
+            // tbEditCodeOut
             // 
             // 
             // 
             // 
-            this.tbEditCode.Border.Class = "TextBoxBorder";
-            this.tbEditCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditCode.Location = new System.Drawing.Point(99, 20);
-            this.tbEditCode.Name = "tbEditCode";
-            this.tbEditCode.PreventEnterBeep = true;
-            this.tbEditCode.Size = new System.Drawing.Size(204, 21);
-            this.tbEditCode.TabIndex = 28;
-            this.tbEditCode.TextChanged += new System.EventHandler(this.tbEditCode_TextChanged);
+            this.tbEditCodeOut.Border.Class = "TextBoxBorder";
+            this.tbEditCodeOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbEditCodeOut.Location = new System.Drawing.Point(99, 20);
+            this.tbEditCodeOut.Name = "tbEditCodeOut";
+            this.tbEditCodeOut.PreventEnterBeep = true;
+            this.tbEditCodeOut.Size = new System.Drawing.Size(204, 21);
+            this.tbEditCodeOut.TabIndex = 28;
+            this.tbEditCodeOut.TextChanged += new System.EventHandler(this.tbEditCode_TextChanged);
             // 
             // labelX11
             // 
@@ -440,6 +440,7 @@
             this.Controls.Add(this.groupPanel2);
             this.Name = "FrmOutTool";
             this.Text = "FrmOutTool";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmOutTool_FormClosing);
             this.Load += new System.EventHandler(this.FrmOutTool_Load);
             this.groupPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtiSelect)).EndInit();
@@ -451,7 +452,7 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbEditCode;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbEditCodeOut;
         private DevComponents.DotNetBar.LabelX labelX11;
         private DevComponents.DotNetBar.ButtonX btnOut;
         private DevComponents.DotNetBar.Controls.TextBoxX tbEditoutdescribes;

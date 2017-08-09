@@ -32,6 +32,7 @@ namespace toolstrackingsystem
         private Thread threadClientO;
         //代理用来设置text的值 （实现另一个线程操作主线程的对象）
         private delegate void SetTextCallback(string text);
+        private delegate bool GetBoolCallback();
 
         public FrmOutTool()
         {
@@ -85,7 +86,7 @@ namespace toolstrackingsystem
                 MessageBox.Show(string.Format("领用成功，领用成功{0}件工具！", successCount));
                 ToolInfoList = new List<t_ToolInfo>();
                 this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
-                tbEditCode.Text = "";
+                tbEditCodeOut.Text = "";
                 tbEditPersonCode.Text = "";
                 tbEditPersonName.Text = "";
                 cbEditOutTime.SelectedValue = "1";
@@ -102,7 +103,7 @@ namespace toolstrackingsystem
         {
             ToolInfoList = new List<t_ToolInfo>();
             this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
-            tbEditCode.Text = "";
+            tbEditCodeOut.Text = "";
             tbEditPersonCode.Text = "";
             tbEditPersonName.Text = "";
             cbEditOutTime.SelectedValue = "1";
@@ -208,10 +209,25 @@ namespace toolstrackingsystem
                     var totalText = strData;
                     if (!string.IsNullOrWhiteSpace(totalText))
                     {
-                        SetText(totalText);
+                        //if (IsForcus())
+                        //{
+                            SetText(totalText);
+                        //}
                     }
                 }
                 Thread.Sleep(100);
+            }
+        }
+        private bool IsForcus()
+        {
+            if (tbEditCodeOut.InvokeRequired)
+            {
+                GetBoolCallback d = new GetBoolCallback(IsForcus);
+                return bool.Parse(this.Invoke(d).ToString());
+            }
+            else
+            {               
+                return tbEditCodeOut.Focused;              
             }
         }
         private void SetText(string text)
@@ -234,19 +250,19 @@ namespace toolstrackingsystem
                     
             //    }
             //}
-               if (tbEditCode.InvokeRequired)
+               if (tbEditCodeOut.InvokeRequired)
                 {
                     SetTextCallback d = new SetTextCallback(SetText);
                     this.Invoke(d, new object[] { text });
                 }
                 else
                 {
-                    if (tbEditCode.Focused)
-                    {
+                    //if (tbEditCode.Focused)
+                    //{
              
-                    tbEditCode.Text = "";
-                    tbEditCode.Text = text;
-                    }
+                    //tbEditCode.Text = "";
+                    tbEditCodeOut.Text = text;
+                    //}
                     //btnAddTool_Click(null, null);
                 }
             
@@ -261,7 +277,7 @@ namespace toolstrackingsystem
         }
         private void LoadToolData()
         {
-            var toolCode = this.tbEditCode.Text.Trim();
+            var toolCode = this.tbEditCodeOut.Text.Trim();
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
                 var tool = _toolInfoService.GetToolByCode(toolCode);
@@ -352,6 +368,11 @@ namespace toolstrackingsystem
                 }               
 
             }
+        }
+
+        private void FrmOutTool_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MessageBox.Show("没有领用权限！");
         }
 
     }

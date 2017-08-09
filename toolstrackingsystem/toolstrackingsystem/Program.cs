@@ -114,7 +114,7 @@ as UnityConfigurationSection;
                         SocketClient.Connect(endpoint);
                         logger.ErrorFormat("智能相机链接成功Ip:{0}port:{1}", ScanIpAddress, ScanPort);
 
-                        Thread.Sleep(10000);
+                        Thread.Sleep(5000);
                     }
                     catch (Exception ex)
                     {

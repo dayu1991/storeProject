@@ -35,6 +35,8 @@ namespace toolstrackingsystem
         private Thread threadClientR;
         //代理用来设置text的值 （实现另一个线程操作主线程的对象）
         private delegate void SetTextCallback(string text);
+        private delegate bool GetBoolCallback();
+
         public FrmReturnTool()
         {
             this.EnableGlass = false;
@@ -233,11 +235,26 @@ namespace toolstrackingsystem
                     var totalText = strData;
                     if (!string.IsNullOrWhiteSpace(totalText))
                     {
-                        SetText(totalText);
-
+                        //if (IsForcus())
+                        //{
+                            SetText(totalText);
+                        //}
                     }
                 }
                 Thread.Sleep(100);
+            }
+        }
+
+        private bool IsForcus()
+        {
+            if (tbEditCode.InvokeRequired)
+            {
+                GetBoolCallback d = new GetBoolCallback(IsForcus);
+                return bool.Parse(this.Invoke(d).ToString());
+            }
+            else
+            {
+                return tbEditCode.Focused;
             }
         }
         private void SetText(string text)
@@ -250,11 +267,7 @@ namespace toolstrackingsystem
                 }
                 else
                 {
-                    if (tbEditCode.Focused)
-                    {
-                        tbEditCode.Text = "";
-                        tbEditCode.Text = text;
-                    }
+                    tbEditCode.Text = text;
                 }
             
             

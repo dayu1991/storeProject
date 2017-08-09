@@ -140,6 +140,10 @@ namespace toolstrackingsystem
                 bool isOpen = false;
                 foreach (SuperTabItem item in superTabControl2.Tabs)
                 {
+                    //if (item. == "FrmReturnTool" || item == "FrmOutTool")
+                    //{
+ 
+                    //}
                     //已打开
                     if (item.Name == tabName)
                     {
@@ -167,7 +171,7 @@ namespace toolstrackingsystem
                     //将子窗体添加到Tab中
                     item.AttachedControl.Controls.Add(form);
                     //选择该子窗体。
-                    superTabControl2.SelectedTab = item;
+                    superTabControl2.SelectedTab = item.;
                 }
             }
             catch (Exception ex)
@@ -273,6 +277,19 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FormMain--Select_buttonItem_Click", ex.Message, ex.StackTrace, ex.Source);
 
             }
+        }
+
+        private void superTabControl2_TabItemClose(object sender, SuperTabStripTabItemCloseEventArgs e)
+        {
+            string slectedTab = this.superTabControl2.SelectedTab.Text;//获取当前TabItem的显示文本
+
+            string controlName = null;
+
+            tablItem.TryGetValue(slectedTab, out controlName);//获取当前TabItem中内嵌的Form的Name属性值
+
+            Form frm = this.superTabControl2.SelectedPanel.Controls.Find(controlName, false)[0] as Form;//获取内嵌的Form对象
+
+            frm.Close(); //调用form的close事件，即触发了内嵌窗体的关闭事件
         }
     }
 }
