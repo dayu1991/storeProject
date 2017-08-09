@@ -110,7 +110,7 @@ namespace sqlserver.toolstrackingsystem
         /// <returns></returns>
         public bool DeleteUser(Sys_User_Info userInfo)
         {
-            string sql = "DELETE FROM Sys_User_Info WHERE ID=@id";
+            string sql = "DELETE FROM Sys_User_Info WHERE UserCode=@id";
             DynamicParameters parameter = new DynamicParameters();
             parameter.Add("id", userInfo.UserCode);
             return base.ExecuteSql(sql, parameter) > 0;
