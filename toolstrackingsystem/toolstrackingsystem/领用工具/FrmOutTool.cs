@@ -256,6 +256,12 @@ namespace toolstrackingsystem
 
         #endregion
 
+        private void tbEditCode_TextChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(tbEditCode.Text);
+            return ;
+        }
+
 
     }
 }
