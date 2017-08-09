@@ -59,11 +59,11 @@ namespace toolstrackingsystem
             this.cbEditCategory.ValueMember = "TypeName";
 
             var blongs = new List<t_ToolType>();
-            //blongs.Add(new t_ToolType
-            //{
-            //    TypeName = "请选择"
+            blongs.Add(new t_ToolType
+            {
+                TypeName = "全部"
 
-            //});
+            });
             blongs.AddRange(categoryBlongs);
 
             this.cbSearchBlong.DataSource = blongs;
@@ -71,12 +71,12 @@ namespace toolstrackingsystem
             this.cbSearchBlong.ValueMember = "TypeName";
 
             var cates = new List<t_ToolType>();
-            //cates.Add(new t_ToolType
-            //{
+            cates.Add(new t_ToolType
+            {
 
-            //    TypeName = "请选择"
+                TypeName = "全部"
 
-            //});
+            });
             cates.AddRange(categoryCategory);
 
             this.cbSearchcategory.DataSource = cates;
@@ -182,9 +182,9 @@ namespace toolstrackingsystem
             {
 
                 string blongValue = cbSearchBlong.SelectedValue.ToString();
-                blongValue = blongValue == "请选择" ? "" : blongValue;
+                blongValue = blongValue == "全部" ? "" : blongValue;
                 string categoryValue = cbSearchcategory.SelectedValue.ToString();
-                categoryValue = categoryValue == "请选择" ? "" : categoryValue;
+                categoryValue = categoryValue == "全部" ? "" : categoryValue;
 
                 string toolCode = tbSearchCode.Text;
                 string toolName = tbSearchName.Text;
@@ -320,8 +320,8 @@ namespace toolstrackingsystem
                     //获取数据
                     string blongValue = cbSearchBlong.SelectedValue.ToString();
                     string categoryValue = cbSearchcategory.SelectedValue.ToString();
-                    blongValue = blongValue == "请选择" ? "" : blongValue;
-                    categoryValue = categoryValue == "请选择" ? "" : categoryValue;
+                    blongValue = blongValue == "全部" ? "" : blongValue;
+                    categoryValue = categoryValue == "全部" ? "" : categoryValue;
 
                     string toolCode = tbSearchCode.Text;
                     string toolName = tbSearchName.Text;
@@ -688,8 +688,8 @@ namespace toolstrackingsystem
             t_ToolInfo tool = new t_ToolInfo();
             tool.TypeName= cbSearchBlong.SelectedValue.ToString();
             tool.ChildTypeName = cbSearchcategory.SelectedValue.ToString();
-            tool.TypeName = tool.TypeName == "请选择" ? "" : tool.TypeName;
-            tool.ChildTypeName = tool.ChildTypeName == "请选择" ? "" : tool.ChildTypeName;
+            tool.TypeName = tool.TypeName == "全部" ? "" : tool.TypeName;
+            tool.ChildTypeName = tool.ChildTypeName == "全部" ? "" : tool.ChildTypeName;
 
             tool.ToolCode = tbSearchCode.Text;
             tool.ToolName = tbSearchName.Text;

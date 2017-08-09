@@ -107,48 +107,7 @@ namespace toolstrackingsystem
 
         private void btnAddTool_Click(object sender, EventArgs e)
         {
-            var toolCode = this.tbEditCode.Text;
-            if (string.IsNullOrWhiteSpace(toolCode))
-            {
-                MessageBox.Show("请填入工具编码");
-                return;
-            }
-            var tool = _toolInfoService.GetToolByCode(toolCode); 
-            if (tool != null && !string.IsNullOrWhiteSpace(tool.ToolCode)&&tool.IsActive=="1")
-            {
-                if (string.IsNullOrWhiteSpace(tool.PackCode)) //不存在包
-                {
-                    if (_toolInfoService.IsExistsInStoryByCode(toolCode)) //有库存
-                    {
-                        tool.OptionPerson = LoginHelper.UserName;
-                        ToolInfoList.Add(tool);
-                        this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
-                    }
-                    else {
-                        MessageBox.Show("此编码的工具仓库中已经没有啦！");
-                        return;
-                    }
-                }
-                else {
-                    MessageBox.Show("此编码的工具已经被打包！");
-                    return;
-                }
-            }
-            else {
-                var tools = _toolInfoService.GetToolByCodeOrPackCode(toolCode);
-                if (tools.Any())
-                {
-                    foreach (var item in tools)
-                    {
-                        item.OptionPerson = LoginHelper.UserName;  
-                    }
-                    ToolInfoList.AddRange(tools);
-                    this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
-                }
-
-            }
-            tbEditCode.Text = "";
-            tbEditPersonCode.Text = "";
+            LoadToolData();
         }
 
         private void FrmOutTool_Load(object sender, EventArgs e)
@@ -285,10 +244,64 @@ namespace toolstrackingsystem
 
         private void tbEditCode_TextChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(tbEditCode.Text);
-            return ;
+            LoadToolData();
         }
+        private void LoadToolData()
+        {
+            var toolCode = this.tbEditCode.Text.Trim();
+            if (!string.IsNullOrWhiteSpace(toolCode))
+            {
+                var tool = _toolInfoService.GetToolByCode(toolCode);
+                if (tool != null &&string.IsNullOrWhiteSpace(tool.PackCode)) //工具
+                {
+                    if (tool.IsActive == "1") //不存在包
+                    {
+                        if (_toolInfoService.IsExistsInStoryByCode(toolCode)) //有库存
+                        {
+                            bool isContain = false;
+                            foreach (var item in ToolInfoList)
+                            {
+                                if (item != null && item.ToolCode == tool.ToolCode)
+                                {
+                                    isContain = true;
+                                }
+                            }
+                            if (!isContain)
+                            {
+                                tool.OptionPerson = LoginHelper.UserName;
+                                ToolInfoList.Add(tool);
+                                this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+                            }
+                           
+                        }
+                        else
+                        {
+                            MessageBox.Show("此编码的工具仓库中已经没有啦！");
+                            return;
+                        }
+                    }                  
+                   
+                }
+                else //包
+                {
+                    var tools = _toolInfoService.GetToolByCodeOrPackCode(toolCode);
+                    if (tools.Any())
+                    {
+                        foreach (var item in tools)
+                        {
+                            item.OptionPerson = LoginHelper.UserName;
+                        }
+                        ToolInfoList.AddRange(tools);
+                        this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+                    }
 
+                }
+                tbEditCode.Text = "";
+                tbEditPersonCode.Text = "";
+              
+            }
+            
+        }
 
     }
 }
