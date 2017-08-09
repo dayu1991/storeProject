@@ -16,13 +16,16 @@ using Microsoft.Practices.Unity.Configuration;
 using System.IO;
 using dbentity.toolstrackingsystem;
 using System.Runtime.Caching;
+using service.toolstrackingsystem;
 
 namespace toolstrackingsystem
 {
     public partial class FrmPrepairTool : Office2007RibbonForm
     {
         ILog logger = log4net.LogManager.GetLogger(typeof(FormLogin));
-        IToolPrepairRecordService _toolPrepairRecordService;
+        private IToolPrepairRecordService _toolPrepairRecordService;
+        private IPersonManageService _personManageService;
+
         List<ToolPrepairEntity> resultList = new List<ToolPrepairEntity>();
         public FrmPrepairTool()
         {
