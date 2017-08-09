@@ -28,5 +28,7 @@ namespace sqlserver.toolstrackingsystem
         List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName);
 
         bool IsExistToolByType(string typeName, int type);
+
+        bool InsertToolInfo(t_ToolInfo toolInfo);
     }
 }

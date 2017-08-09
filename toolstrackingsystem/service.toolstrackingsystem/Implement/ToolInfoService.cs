@@ -44,28 +44,36 @@ namespace service.toolstrackingsystem
         }
         public long AddToolInfo(t_ToolInfo toolInfo, string OptionType)
         {
-            _toolInfoRepository.Add(toolInfo);
-            var entity = new t_InStore();
-            entity.InStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            entity.OptionPerson = toolInfo.OptionPerson;
-            entity.ToolCode = toolInfo.ToolCode;
-            entity.ToolName = toolInfo.ToolName;
-            entity.TypeName = toolInfo.TypeName;
-            entity.ChildTypeName = toolInfo.ChildTypeName;
-            entity.OptionPerson = toolInfo.OptionPerson;
-            _inStoreRepository.Add(entity);
-            var entity1 = new t_CurrentCountInfo();
-            entity1.TypeName = toolInfo.TypeName;
-            entity1.ChildTypeName = toolInfo.ChildTypeName;
-            entity1.ToolCode = toolInfo.ToolCode;
-            entity1.ToolName = toolInfo.ToolName;
-            entity1.Models = toolInfo.Models;
-            entity1.Location = toolInfo.Location;
-            entity1.Remarks = toolInfo.Remarks;
-            entity1.InStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            entity1.OptionType = OptionType;
-            entity1.OptionPerson = toolInfo.OptionPerson;
-            return _currentCountInfoRepository.Add(entity1);
+            //_toolInfoRepository.Add(toolInfo);
+            if (_toolInfoRepository.GetToolByCode(toolInfo.ToolCode) == null)
+            {
+                _toolInfoRepository.InsertToolInfo(toolInfo);
+                var entity = new t_InStore();
+                entity.InStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                entity.OptionPerson = toolInfo.OptionPerson;
+                entity.ToolCode = toolInfo.ToolCode;
+                entity.ToolName = toolInfo.ToolName;
+                entity.TypeName = toolInfo.TypeName;
+                entity.ChildTypeName = toolInfo.ChildTypeName;
+                entity.OptionPerson = toolInfo.OptionPerson;
+                if (!_inStoreRepository.IsExistsInStoryByCode(entity.ToolCode))
+                { 
+                    _inStoreRepository.Add(entity);
+                    var entity1 = new t_CurrentCountInfo();
+                    entity1.TypeName = toolInfo.TypeName;
+                    entity1.ChildTypeName = toolInfo.ChildTypeName;
+                    entity1.ToolCode = toolInfo.ToolCode;
+                    entity1.ToolName = toolInfo.ToolName;
+                    entity1.Models = toolInfo.Models;
+                    entity1.Location = toolInfo.Location;
+                    entity1.Remarks = toolInfo.Remarks;
+                    entity1.InStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    entity1.OptionType = OptionType;
+                    entity1.OptionPerson = toolInfo.OptionPerson;
+                    return _currentCountInfoRepository.Add(entity1);
+                }
+            }
+            return 0;
         }
 
         /// <summary>

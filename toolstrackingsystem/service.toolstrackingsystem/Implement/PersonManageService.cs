@@ -112,15 +112,6 @@ namespace service.toolstrackingsystem
                     {
                         IsSuccess = true;
                     }
-                    else
-                    {
-                        IsSuccess = false;
-                        return IsSuccess;
-                    }
-                }
-                else {
-                    IsSuccess = false;
-                    return IsSuccess;
                 }
             }
             return IsSuccess;

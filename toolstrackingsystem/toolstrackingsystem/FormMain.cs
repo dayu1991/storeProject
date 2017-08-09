@@ -111,16 +111,16 @@ namespace toolstrackingsystem
             string dataBase = connStr.Split(';')[1].Split('=')[1].ToString();
             switch (dataBase)
             {
-                case "DongSuo":
+                case "toolInfo_DongSuo":
                     dataBase = "东所";
                     break;
-                case "XiSuo":
+                case "toolInfo_XiSuo":
                     dataBase = "西所";
                     break;
-                case "NanSuo":
+                case "toolInfo_NanSuo":
                     dataBase = "南所";
                     break;
-                case "ShiJiaZhuang":
+                case "toolInfo_ShiJiaZhuang":
                     dataBase = "石家庄所";
                     break;
                 default:

@@ -53,7 +53,7 @@ namespace toolstrackingsystem
             else {
                 string connStr = MemoryCacheHelper.GetConnectionStr();
                 string dataBase = connStr.Split(';')[1].Split('=')[1].ToString();
-                this.Clients_comboBox.SelectedValue = dataBase;
+                this.Clients_comboBox.SelectedValue = dataBase.Split('_')[1].ToString();
             }
         }
         /// <summary>
@@ -71,6 +71,7 @@ namespace toolstrackingsystem
                 if (fileContents == null)
                 {
                     //policy.AbsoluteExpiration = DateTime.Now.AddMinutes(120);//取得或设定值，这个值会指定是否应该在指定期间过后清除
+
                     fileContents = this.Clients_comboBox.SelectedValue.ToString(); //这里赋值;
                     oCache.Set("clientName", fileContents, policy);
                 }
