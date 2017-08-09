@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
+using common.toolstrackingsystem;
 
 namespace toolstrackingsystem
 {
@@ -26,7 +27,7 @@ namespace toolstrackingsystem
         {
 
             //this.reportViewer1.RefreshReport();
-            string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
+            string defaultConnectionString = MemoryCacheHelper.GetConnectionStr(); ;
             #region 判断cache里是否有设置好的客户端连接字符串
             if (MemoryCache.Default.Get("clientName") != null)
             {

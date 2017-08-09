@@ -13,7 +13,8 @@ namespace common.toolstrackingsystem
     /// </summary>
     public class ConnectionHelper
     {
-        private static string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["NanSuo"].ConnectionString;
+
+        public static string defaultConnectionString = MemoryCacheHelper.GetConnectionStr();
         public static SqlConnection GetConnection()
         {
             return new SqlConnection(defaultConnectionString);

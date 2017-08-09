@@ -1,4 +1,5 @@
-﻿using dbentity.toolstrackingsystem;
+﻿using common.toolstrackingsystem;
+using dbentity.toolstrackingsystem;
 using DevComponents.DotNetBar;
 using log4net;
 using System;
@@ -8,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Caching;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,7 +30,14 @@ namespace toolstrackingsystem
         private void FrmPrintToolInfo_Load(object sender, EventArgs e)
         {
 
-            string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
+            string defaultConnectionString = MemoryCacheHelper.GetConnectionStr(); ;
+            #region 判断cache里是否有设置好的客户端连接字符串
+            if (MemoryCache.Default.Get("clientName") != null)
+            {
+                string connName = MemoryCache.Default.Get("clientName").ToString();
+                defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
+            }
+            #endregion
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
                 t_ToolInfo toolInfo = (t_ToolInfo)this.Tag;

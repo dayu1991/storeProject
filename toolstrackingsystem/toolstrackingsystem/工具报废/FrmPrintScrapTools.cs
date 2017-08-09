@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using System.Data.SqlClient;
+using common.toolstrackingsystem;
+using System.Runtime.Caching;
 
 namespace toolstrackingsystem
 {
@@ -24,7 +26,14 @@ namespace toolstrackingsystem
         {
 
             //this.reportViewer1.RefreshReport();
-            string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
+            string defaultConnectionString = ConnectionHelper.defaultConnectionString;
+            #region 判断cache里是否有设置好的客户端连接字符串
+            if (MemoryCache.Default.Get("clientName") != null)
+            {
+                string connName = MemoryCache.Default.Get("clientName").ToString();
+                defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
+            }
+            #endregion
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
                 string toolCode = this.Tag.ToString();

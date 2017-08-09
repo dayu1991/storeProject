@@ -15,6 +15,8 @@ using Microsoft.Practices.Unity.Configuration;
 using dbentity.toolstrackingsystem;
 using ViewEntity.toolstrackingsystem;
 using System.Data.SqlClient;
+using common.toolstrackingsystem;
+using System.Runtime.Caching;
 
 namespace toolstrackingsystem
 {
@@ -35,7 +37,14 @@ namespace toolstrackingsystem
             //this.reportViewer1.RefreshReport();
 
 
-            string defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
+            string defaultConnectionString = MemoryCacheHelper.GetConnectionStr();
+            #region 判断cache里是否有设置好的客户端连接字符串
+            if (MemoryCache.Default.Get("clientName") != null)
+            {
+                string connName = MemoryCache.Default.Get("clientName").ToString();
+                defaultConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
+            }
+            #endregion
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
                 PersonInfoEntity personInfo = (PersonInfoEntity)this.Tag;

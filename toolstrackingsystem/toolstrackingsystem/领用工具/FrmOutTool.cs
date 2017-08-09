@@ -39,7 +39,7 @@ namespace toolstrackingsystem
             this.EnableGlass = false;
             InitializeComponent();
         }
-
+        
         private void btnOut_Click(object sender, EventArgs e)
         {
             if (ToolInfoList.Count == 0)
@@ -86,6 +86,8 @@ namespace toolstrackingsystem
                 MessageBox.Show(string.Format("领用成功，领用成功工具{0}！", successCodes));
                 ToolInfoList = new List<t_ToolInfo>();
                 this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+                tbEditCode.Text = "";
+                tbEditPersonCode.Text = "";
                 return;
             }
             else {
@@ -145,6 +147,8 @@ namespace toolstrackingsystem
                 }
 
             }
+            tbEditCode.Text = "";
+            tbEditPersonCode.Text = "";
         }
 
         private void FrmOutTool_Load(object sender, EventArgs e)
@@ -259,6 +263,8 @@ namespace toolstrackingsystem
                 else
                 {
                     ctl.Text = text;
+                    btnAddTool_Click(null, null);
+                    
                 }
             }
         }
