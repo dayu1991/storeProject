@@ -141,19 +141,24 @@ namespace toolstrackingsystem
                 bool isOpen = false;
                 foreach (SuperTabItem item in superTabControl2.Tabs)
                 {
-                    if (item.Text == "领用工具")
+                    if (tabName == "领用工具")
                     {
-                        if (tabName == "归还工具")
+                        if (item.Text == "归还工具")
                         {
                             //关闭领用
-                            //this.superTabControl2
+                            FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
+                            toolFrm.IsConnect = false;
+                            toolFrm.IsListening = false;
                         }
                     }
-                    else if (item.Text == "归还工具")
+                    else if (tabName == "归还工具")
                     {
-                        if (tabName == "领用工具")
+                        if (item.Text == "领用工具")
                         {
-                            //关闭归还
+                            //关闭领用
+                            FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
+                            toolFrm.IsConnect = false;
+                            toolFrm.IsListening = false;
                         }
                     }
                     //已打开

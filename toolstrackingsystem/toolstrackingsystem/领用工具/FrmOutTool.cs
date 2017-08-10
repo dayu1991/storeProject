@@ -33,8 +33,8 @@ namespace toolstrackingsystem
 
         private Thread threadClientO;
         private Thread threadClientCon = null;
-        private bool IsConnect = true;
-        private bool IsListening = true;
+        public bool IsConnect = true;
+        public bool IsListening = true;
 
 
         //代理用来设置text的值 （实现另一个线程操作主线程的对象）
