@@ -224,6 +224,7 @@
             this.superTabControl2.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.VisualStudio2008Document;
             this.superTabControl2.Text = "superTabControl1";
             this.superTabControl2.TabItemClose += new System.EventHandler<DevComponents.DotNetBar.SuperTabStripTabItemCloseEventArgs>(this.superTabControl2_TabItemClose);
+            this.superTabControl2.SelectedTabChanged += new System.EventHandler<DevComponents.DotNetBar.SuperTabStripSelectedTabChangedEventArgs>(this.superTabControl2_SelectedTabChanged);
             // 
             // groupPanel1
             // 

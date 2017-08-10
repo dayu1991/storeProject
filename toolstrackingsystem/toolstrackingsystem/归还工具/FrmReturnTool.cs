@@ -233,51 +233,57 @@ namespace toolstrackingsystem
         #region 接收服务端发来信息的方法
         private void RecMsg()
         {
-            while (IsListening) //持续监听服务端发来的消息
+            while (true) //持续监听服务端发来的消息
             {
-                if (SocketClient != null && SocketClient.Connected && SocketClient.Available > 0)
+                if (IsListening)
                 {
-                    //定义一个1024*200的内存缓冲区 用于临时性存储接收到的信息
-                    byte[] arrRecMsg = new byte[1024 * 200];
-
-                    //将客户端套接字接收到的数据存入内存缓冲区, 并获取其长度
-                    int length = SocketClient.Receive(arrRecMsg);
-
-                    string strData = Encoding.Default.GetString(arrRecMsg, 0, length);
-                    var totalText = strData;
-                    if (!string.IsNullOrWhiteSpace(totalText))
+                    if (SocketClient != null && SocketClient.Connected && SocketClient.Available > 0)
                     {
-                        //if (IsForcus())
-                        //{
+                        //定义一个1024*200的内存缓冲区 用于临时性存储接收到的信息
+                        byte[] arrRecMsg = new byte[1024 * 200];
+
+                        //将客户端套接字接收到的数据存入内存缓冲区, 并获取其长度
+                        int length = SocketClient.Receive(arrRecMsg);
+
+                        string strData = Encoding.Default.GetString(arrRecMsg, 0, length);
+                        var totalText = strData;
+                        if (!string.IsNullOrWhiteSpace(totalText))
+                        {
+                            //if (IsForcus())
+                            //{
                             SetText(totalText);
-                        //}
+                            //}
+                        }
                     }
+                    Thread.Sleep(100);
+
                 }
-                Thread.Sleep(100);
-            }
-            try
-            {
-                //if (threadClientO != null)
-                //    threadClientO.Abort();
-                if (SocketClient != null && SocketClient.Connected)
-                {
-                    //关闭Socket之前，首选需要把双方的Socket Shutdown掉
-                    SocketClient.Shutdown(SocketShutdown.Both);
+                else {
+                    try
+                    {
+                        //if (threadClientO != null)
+                        //    threadClientO.Abort();
+                        if (SocketClient != null && SocketClient.Connected)
+                        {
+                            //关闭Socket之前，首选需要把双方的Socket Shutdown掉
+                            SocketClient.Shutdown(SocketShutdown.Both);
 
-                    //Shutdown掉Socket后主线程停止10ms，保证Socket的Shutdown完成
-                    System.Threading.Thread.Sleep(10);
+                            //Shutdown掉Socket后主线程停止10ms，保证Socket的Shutdown完成
+                            System.Threading.Thread.Sleep(10);
 
-                    //关闭客户端Socket,清理资源
-                    SocketClient.Close();
+                            //关闭客户端Socket,清理资源
+                            SocketClient.Close();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "frmReturnTool--shutdown", ex.Message, ex.StackTrace, ex.Source);
+
+                    }
+                    Thread.Sleep(2000);
                 }
             }
-            catch (Exception ex)
-            {
-
-                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "frmReturnTool--shutdown", ex.Message, ex.StackTrace, ex.Source);
-
-            }
-
         }
 
         private bool IsForcus()
@@ -371,33 +377,40 @@ namespace toolstrackingsystem
             var logger = loggerObj as ILog;
 
 
-            while (IsConnect)
+            while (true)
             {
-                if (!(SocketClient != null && SocketClient.Connected))
+                if (IsConnect)
                 {
-                    try
+                    if (!(SocketClient != null && SocketClient.Connected))
                     {
-                        SocketClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                        try
+                        {
+                            SocketClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-                        IPAddress ipaddressObj = IPAddress.Parse(ScanIpAddress);
-                        //将获取的ip地址和端口号绑定到网络节点endpoint上
-                        IPEndPoint endpoint = new IPEndPoint(ipaddressObj, int.Parse(ScanPort));
+                            IPAddress ipaddressObj = IPAddress.Parse(ScanIpAddress);
+                            //将获取的ip地址和端口号绑定到网络节点endpoint上
+                            IPEndPoint endpoint = new IPEndPoint(ipaddressObj, int.Parse(ScanPort));
 
-                        //这里客户端套接字连接到网络节点(服务端)用的方法是Connect 而不是Bind
-                        SocketClient.Connect(endpoint);
-                        logger.ErrorFormat("智能相机链接成功Ip:{0}port:{1}", ScanIpAddress, ScanPort);
+                            //这里客户端套接字连接到网络节点(服务端)用的方法是Connect 而不是Bind
+                            SocketClient.Connect(endpoint);
+                            logger.ErrorFormat("智能相机链接成功Ip:{0}port:{1}", ScanIpAddress, ScanPort);
 
-                        Thread.Sleep(5000);
+                            Thread.Sleep(5000);
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "program--StartScanListion", ex.Message, ex.StackTrace, ex.Source);
+                            Thread.Sleep(2000);
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "program--StartScanListion", ex.Message, ex.StackTrace, ex.Source);
-                        Thread.Sleep(5000);
+                        Thread.Sleep(2000);//10s
                     }
+
                 }
-                else
-                {
-                    Thread.Sleep(5000);//10s
+                else {
+                    Thread.Sleep(2000);
                 }
             }
         }

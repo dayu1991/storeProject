@@ -28,7 +28,7 @@ namespace toolstrackingsystem
         private IMenuManageService _menuManageService;
         ILog logger = log4net.LogManager.GetLogger(typeof(FormMain));
         private Dictionary<string, string> tablItemDic = new Dictionary<string, string>();
-
+        private int i = 0;
         public FormMain()
         {
             this.EnableGlass = false;
@@ -217,6 +217,7 @@ namespace toolstrackingsystem
         private void Custom_Click(object sender, EventArgs e)
         {
             SetTabShow(sender.ToString(), ((ButtonItem)sender).Tag.ToString());
+            i++;
         }
         #endregion
         private void buttonItem7_Click(object sender, EventArgs e)
@@ -315,9 +316,51 @@ namespace toolstrackingsystem
                 Form frm = frms[0] as Form;//获取内嵌的Form对象
 
                 frm.Close(); //调用form的close事件，即触发了内嵌窗体的关闭事件
+                
+            }
+            //this.superTabControl2.SelectedPanel.Controls.Find()     
+        }
+
+        private void superTabControl2_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
+        {
+            if (i != 0)
+            {
+
+                if (this.superTabControl2.SelectedTab.Text == "领用工具")
+                {
+                    foreach (SuperTabItem item in superTabControl2.Tabs)
+                    {
+                            if (item.Text == "归还工具")
+                            {
+                                //关闭归还
+                                FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
+                                toolFrm.IsConnect = false;
+                                toolFrm.IsListening = false;
+                            }
+                    }
+                    FrmOutTool frmTool = (FrmOutTool)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
+                    frmTool.IsConnect = true;
+                    frmTool.IsListening = true;
+                    return;
+                }
+                if (this.superTabControl2.SelectedTab.Text == "归还工具")
+                {
+                    foreach (SuperTabItem item in superTabControl2.Tabs)
+                    {
+                        if (item.Text == "领用工具")
+                        {
+                            //关闭领用
+                            FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
+                            toolFrm.IsConnect = false;
+                            toolFrm.IsListening = false;
+                        }
+                    }
+                    FrmReturnTool frmTool = (FrmReturnTool)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
+                    frmTool.IsConnect = true;
+                    frmTool.IsListening = true;
+                }
             }
 
-         
         }
     }
 }
