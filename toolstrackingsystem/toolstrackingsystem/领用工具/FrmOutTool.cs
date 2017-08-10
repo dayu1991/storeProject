@@ -20,6 +20,7 @@ using NPOI.SS.UserModel;
 using ViewEntity.toolstrackingsystem;
 using System.Threading;
 using System.Net.Sockets;
+using System.Net;
 namespace toolstrackingsystem
 {
     public partial class FrmOutTool : Office2007RibbonForm
@@ -33,6 +34,12 @@ namespace toolstrackingsystem
         //代理用来设置text的值 （实现另一个线程操作主线程的对象）
         private delegate void SetTextCallback(string text);
         private delegate bool GetBoolCallback();
+
+
+        public static Socket SocketClient;
+        public static string ScanIpAddress = CommonHelper.GetConfigValue("scanAddress");
+        public static string ScanPort = CommonHelper.GetConfigValue("scanPort");
+
 
         public FrmOutTool()
         {
@@ -117,6 +124,7 @@ namespace toolstrackingsystem
 
         private void FrmOutTool_Load(object sender, EventArgs e)
         {
+            StartScanListion(logger);
             _userManageService = Program.container.Resolve<IUserManageService>();
             _toolInfoService = Program.container.Resolve<IToolInfoService>();
             _personManageService = Program.container.Resolve<IPersonManageService>();
@@ -196,14 +204,13 @@ namespace toolstrackingsystem
         {
             while (true) //持续监听服务端发来的消息
             {
-                Socket socketClient = Program.SocketClient;
-                if (socketClient != null && socketClient.Connected && socketClient.Available > 0)
+                if (SocketClient != null && SocketClient.Connected && SocketClient.Available > 0)
                 {
                     //定义一个1024*200的内存缓冲区 用于临时性存储接收到的信息
                     byte[] arrRecMsg = new byte[1024 * 200];
 
                     //将客户端套接字接收到的数据存入内存缓冲区, 并获取其长度
-                    int length = socketClient.Receive(arrRecMsg);
+                    int length = SocketClient.Receive(arrRecMsg);
 
                     string strData = Encoding.Default.GetString(arrRecMsg, 0, length);
                     var totalText = strData;
@@ -372,7 +379,98 @@ namespace toolstrackingsystem
 
         private void FrmOutTool_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("没有领用权限！");
+            this.Dispose();
+            //MessageBox.Show("没有领用权限！");
+        }
+
+
+
+
+        private void StartScanListion(ILog logger)
+        {
+            if (string.IsNullOrWhiteSpace(ScanIpAddress) || string.IsNullOrWhiteSpace(ScanPort))
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1}", "program--StartScanListion", "您必须完善您的智能相机配置!");
+                return;
+            }
+            try
+            {
+
+                Thread threadClient = new Thread(new ParameterizedThreadStart(ConnectTo)); //链接重试
+
+                //将窗体线程设置为与后台同步
+                threadClient.IsBackground = true;
+
+                //启动线程
+                threadClient.Start(logger);
+
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "program--StartScanListion", ex.Message, ex.StackTrace, ex.Source);
+
+            }
+        }
+        private  void ConnectTo(object loggerObj)
+        {
+            var logger = loggerObj as ILog;
+
+
+            while (true)
+            {
+                if (!(SocketClient != null && SocketClient.Connected))
+                {
+                    try
+                    {
+                        SocketClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+                        IPAddress ipaddressObj = IPAddress.Parse(ScanIpAddress);
+                        //将获取的ip地址和端口号绑定到网络节点endpoint上
+                        IPEndPoint endpoint = new IPEndPoint(ipaddressObj, int.Parse(ScanPort));
+
+                        //这里客户端套接字连接到网络节点(服务端)用的方法是Connect 而不是Bind
+                        SocketClient.Connect(endpoint);
+                        logger.ErrorFormat("智能相机链接成功Ip:{0}port:{1}", ScanIpAddress, ScanPort);
+
+                        Thread.Sleep(5000);
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "program--StartScanListion", ex.Message, ex.StackTrace, ex.Source);
+                        Thread.Sleep(5000);
+                    }
+                }
+                else
+                {
+                    Thread.Sleep(5000);//10s
+                }
+            }
+        }
+
+        private void FrmOutTool_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
+            try
+            {
+                if (SocketClient != null && SocketClient.Connected)
+                {
+                    //关闭Socket之前，首选需要把双方的Socket Shutdown掉
+                    SocketClient.Shutdown(SocketShutdown.Both);
+
+                    //Shutdown掉Socket后主线程停止10ms，保证Socket的Shutdown完成
+                    System.Threading.Thread.Sleep(10);
+
+                    //关闭客户端Socket,清理资源
+                    SocketClient.Close();                    
+                }
+                //在点击按钮前socket已经被关闭  可能是服务端操作的断开     
+            }
+            catch (Exception ex)
+            {
+
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "frmOutTool--shutdown", ex.Message, ex.StackTrace, ex.Source);
+
+            }
         }
 
     }
