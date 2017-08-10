@@ -15,7 +15,7 @@ namespace common.toolstrackingsystem
             {
                 return System.Configuration.ConfigurationManager.ConnectionStrings[clientName.ToString()].ConnectionString;
             }
-            return System.Configuration.ConfigurationManager.ConnectionStrings["XiSuo"].ConnectionString;
+            return System.Configuration.ConfigurationManager.ConnectionStrings["DongSuo"].ConnectionString;
         }
     }
 }

@@ -27,6 +27,7 @@ namespace toolstrackingsystem
         private IRoleManageService _roleManageService;
         private IMenuManageService _menuManageService;
         ILog logger = log4net.LogManager.GetLogger(typeof(FormMain));
+        private Dictionary<string, string> tablItemDic = new Dictionary<string, string>();
 
         public FormMain()
         {
@@ -171,7 +172,12 @@ namespace toolstrackingsystem
                     //将子窗体添加到Tab中
                     item.AttachedControl.Controls.Add(form);
                     //选择该子窗体。
-                    superTabControl2.SelectedTab = item.;
+                    superTabControl2.SelectedTab = item;
+                    if (!tablItemDic.ContainsKey(tabName))
+                    {
+                        tablItemDic.Add(tabName, sfrmName);
+
+                    }
                 }
             }
             catch (Exception ex)
@@ -285,11 +291,16 @@ namespace toolstrackingsystem
 
             string controlName = null;
 
-            tablItem.TryGetValue(slectedTab, out controlName);//获取当前TabItem中内嵌的Form的Name属性值
+            tablItemDic.TryGetValue(slectedTab, out controlName);//获取当前TabItem中内嵌的Form的Name属性值
+            var frms = this.superTabControl2.SelectedPanel.Controls.Find(controlName, false);
+            if(frms!=null&&frms.Length>0)
+            {
+                Form frm = frms[0] as Form;//获取内嵌的Form对象
 
-            Form frm = this.superTabControl2.SelectedPanel.Controls.Find(controlName, false)[0] as Form;//获取内嵌的Form对象
+                frm.Close(); //调用form的close事件，即触发了内嵌窗体的关闭事件
+            }
 
-            frm.Close(); //调用form的close事件，即触发了内嵌窗体的关闭事件
+         
         }
     }
 }

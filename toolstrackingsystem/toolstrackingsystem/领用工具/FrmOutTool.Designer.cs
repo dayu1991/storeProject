@@ -441,6 +441,7 @@
             this.Name = "FrmOutTool";
             this.Text = "FrmOutTool";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmOutTool_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmOutTool_FormClosed);
             this.Load += new System.EventHandler(this.FrmOutTool_Load);
             this.groupPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtiSelect)).EndInit();

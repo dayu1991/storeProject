@@ -58,7 +58,7 @@ as UnityConfigurationSection;
             if (formLogin.DialogResult == DialogResult.OK)
             {
                 //启动智能相机监听程序
-                StartScanListion(logger);
+                //StartScanListion(logger);
 
 
                 //在线程中打开主窗体
@@ -126,10 +126,7 @@ as UnityConfigurationSection;
                 {
                     Thread.Sleep(10000);//10s
                 }
-               
             }
-
-
         }
 
     }
