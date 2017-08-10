@@ -304,12 +304,12 @@ namespace toolstrackingsystem
 
         private void superTabControl2_TabItemClose(object sender, SuperTabStripTabItemCloseEventArgs e)
         {
-            string slectedTab = this.superTabControl2.SelectedTab.Text;//获取当前TabItem的显示文本
-
+            string slectedTab = e.Tab.Text; ;//获取当前TabItem的显示文本
+            
             string controlName = null;
 
             tablItemDic.TryGetValue(slectedTab, out controlName);//获取当前TabItem中内嵌的Form的Name属性值
-            var frms = this.superTabControl2.SelectedPanel.Controls.Find(controlName, false);
+            var frms = this.superTabControl2.Controls.Find(controlName, true);
             if(frms!=null&&frms.Length>0)
             {
                 Form frm = frms[0] as Form;//获取内嵌的Form对象
