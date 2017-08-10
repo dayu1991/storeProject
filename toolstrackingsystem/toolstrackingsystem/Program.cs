@@ -23,9 +23,9 @@ namespace toolstrackingsystem
     static class Program
     {
         public static UnityContainer container;
-        public static Socket SocketClient;
-        public static string ScanIpAddress = CommonHelper.GetConfigValue("scanAddress");
-        public static string ScanPort = CommonHelper.GetConfigValue("scanPort");
+        private static Socket SocketClient;
+        private static string ScanIpAddress = CommonHelper.GetConfigValue("scanAddress");
+        private static string ScanPort = CommonHelper.GetConfigValue("scanPort");
 
 
         /// <summary>

@@ -141,10 +141,21 @@ namespace toolstrackingsystem
                 bool isOpen = false;
                 foreach (SuperTabItem item in superTabControl2.Tabs)
                 {
-                    //if (item. == "FrmReturnTool" || item == "FrmOutTool")
-                    //{
- 
-                    //}
+                    if (item.Text == "领用工具")
+                    {
+                        if (tabName == "归还工具")
+                        {
+                            //关闭领用
+                            //this.superTabControl2
+                        }
+                    }
+                    else if (item.Text == "归还工具")
+                    {
+                        if (tabName == "领用工具")
+                        {
+                            //关闭归还
+                        }
+                    }
                     //已打开
                     if (item.Name == tabName)
                     {
@@ -155,6 +166,7 @@ namespace toolstrackingsystem
                 }
                 if (!isOpen)
                 {
+                   
                     //反射取得子窗体对象。
                     object obj = Assembly.GetExecutingAssembly().CreateInstance("toolstrackingsystem." + sfrmName, false);
                     //需要强转

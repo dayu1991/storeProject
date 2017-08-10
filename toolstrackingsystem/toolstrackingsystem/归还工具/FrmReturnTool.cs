@@ -34,13 +34,19 @@ namespace toolstrackingsystem
 
 
         private Thread threadClientR;
+        private Thread threadClientConR = null;
+
+        private bool IsConnect = true;
+        private bool IsListening = true;
+
+
         //代理用来设置text的值 （实现另一个线程操作主线程的对象）
         private delegate void SetTextCallback(string text);
         private delegate bool GetBoolCallback();
 
-        public static Socket SocketClient;
-        public static string ScanIpAddress = CommonHelper.GetConfigValue("scanAddress");
-        public static string ScanPort = CommonHelper.GetConfigValue("scanPort");
+        private static Socket SocketClient;
+        private static string ScanIpAddress = CommonHelper.GetConfigValue("scanAddress");
+        private static string ScanPort = CommonHelper.GetConfigValue("scanPort");
 
 
         public FrmReturnTool()
@@ -227,7 +233,7 @@ namespace toolstrackingsystem
         #region 接收服务端发来信息的方法
         private void RecMsg()
         {
-            while (true) //持续监听服务端发来的消息
+            while (IsListening) //持续监听服务端发来的消息
             {
                 if (SocketClient != null && SocketClient.Connected && SocketClient.Available > 0)
                 {
@@ -249,6 +255,29 @@ namespace toolstrackingsystem
                 }
                 Thread.Sleep(100);
             }
+            try
+            {
+                //if (threadClientO != null)
+                //    threadClientO.Abort();
+                if (SocketClient != null && SocketClient.Connected)
+                {
+                    //关闭Socket之前，首选需要把双方的Socket Shutdown掉
+                    SocketClient.Shutdown(SocketShutdown.Both);
+
+                    //Shutdown掉Socket后主线程停止10ms，保证Socket的Shutdown完成
+                    System.Threading.Thread.Sleep(10);
+
+                    //关闭客户端Socket,清理资源
+                    SocketClient.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "frmReturnTool--shutdown", ex.Message, ex.StackTrace, ex.Source);
+
+            }
+
         }
 
         private bool IsForcus()
@@ -342,7 +371,7 @@ namespace toolstrackingsystem
             var logger = loggerObj as ILog;
 
 
-            while (true)
+            while (IsConnect)
             {
                 if (!(SocketClient != null && SocketClient.Connected))
                 {
@@ -375,6 +404,8 @@ namespace toolstrackingsystem
 
         private void FrmReturnTool_FormClosed(object sender, FormClosedEventArgs e)
         {
+            IsConnect = false;
+            IsListening = false;
             this.Dispose();
         }
 

@@ -30,15 +30,21 @@ namespace toolstrackingsystem
         private IToolInfoService _toolInfoService;
         private IPersonManageService _personManageService;
         private List<t_ToolInfo> ToolInfoList = new List<t_ToolInfo>();
+
         private Thread threadClientO;
+        private Thread threadClientCon = null;
+        private bool IsConnect = true;
+        private bool IsListening = true;
+
+
         //代理用来设置text的值 （实现另一个线程操作主线程的对象）
         private delegate void SetTextCallback(string text);
         private delegate bool GetBoolCallback();
 
 
-        public static Socket SocketClient;
-        public static string ScanIpAddress = CommonHelper.GetConfigValue("scanAddress");
-        public static string ScanPort = CommonHelper.GetConfigValue("scanPort");
+        private  Socket SocketClient;
+        private  string ScanIpAddress = CommonHelper.GetConfigValue("scanAddress");
+        private  string ScanPort = CommonHelper.GetConfigValue("scanPort");
 
 
         public FrmOutTool()
@@ -202,7 +208,7 @@ namespace toolstrackingsystem
         #region 接收服务端发来信息的方法
         private void RecMsg()
         {
-            while (true) //持续监听服务端发来的消息
+            while (IsListening) //持续监听服务端发来的消息
             {
                 if (SocketClient != null && SocketClient.Connected && SocketClient.Available > 0)
                 {
@@ -223,7 +229,31 @@ namespace toolstrackingsystem
                     }
                 }
                 Thread.Sleep(100);
+            }           
+
+            try
+            {
+                //if (threadClientO != null)
+                //    threadClientO.Abort();
+                if (SocketClient != null && SocketClient.Connected)
+                {
+                    //关闭Socket之前，首选需要把双方的Socket Shutdown掉
+                    SocketClient.Shutdown(SocketShutdown.Both);
+
+                    //Shutdown掉Socket后主线程停止10ms，保证Socket的Shutdown完成
+                    System.Threading.Thread.Sleep(10);
+
+                    //关闭客户端Socket,清理资源
+                    SocketClient.Close();
+                }
             }
+            catch (Exception ex)
+            {
+
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "frmOutTool--shutdown", ex.Message, ex.StackTrace, ex.Source);
+
+            }
+            
         }
         private bool IsForcus()
         {
@@ -396,13 +426,13 @@ namespace toolstrackingsystem
             try
             {
 
-                Thread threadClient = new Thread(new ParameterizedThreadStart(ConnectTo)); //链接重试
+                threadClientCon = new Thread(new ParameterizedThreadStart(ConnectTo)); //链接重试
 
                 //将窗体线程设置为与后台同步
-                threadClient.IsBackground = true;
+                threadClientCon.IsBackground = true;
 
                 //启动线程
-                threadClient.Start(logger);
+                threadClientCon.Start(logger);
 
             }
             catch (Exception ex)
@@ -415,8 +445,7 @@ namespace toolstrackingsystem
         {
             var logger = loggerObj as ILog;
 
-
-            while (true)
+            while (IsConnect)
             {
                 if (!(SocketClient != null && SocketClient.Connected))
                 {
@@ -445,32 +474,16 @@ namespace toolstrackingsystem
                     Thread.Sleep(5000);//10s
                 }
             }
+            //if (threadClientCon != null)
+                    //threadClientCon.Abort();
+
         }
 
         private void FrmOutTool_FormClosed(object sender, FormClosedEventArgs e)
         {
+            IsConnect = false;
+            IsListening = false;
             this.Dispose();
-            try
-            {
-                if (SocketClient != null && SocketClient.Connected)
-                {
-                    //关闭Socket之前，首选需要把双方的Socket Shutdown掉
-                    SocketClient.Shutdown(SocketShutdown.Both);
-
-                    //Shutdown掉Socket后主线程停止10ms，保证Socket的Shutdown完成
-                    System.Threading.Thread.Sleep(10);
-
-                    //关闭客户端Socket,清理资源
-                    SocketClient.Close();                    
-                }
-                //在点击按钮前socket已经被关闭  可能是服务端操作的断开     
-            }
-            catch (Exception ex)
-            {
-
-                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "frmOutTool--shutdown", ex.Message, ex.StackTrace, ex.Source);
-
-            }
         }
 
     }
