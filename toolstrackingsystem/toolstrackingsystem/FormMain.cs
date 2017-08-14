@@ -343,7 +343,7 @@ namespace toolstrackingsystem
                     frmTool.IsListening = true;
                     return;
                 }
-                if (this.superTabControl2.SelectedTab.Text == "归还工具")
+                else if (this.superTabControl2.SelectedTab.Text == "归还工具")
                 {
                     foreach (SuperTabItem item in superTabControl2.Tabs)
                     {
@@ -358,6 +358,25 @@ namespace toolstrackingsystem
                     FrmReturnTool frmTool = (FrmReturnTool)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
                     frmTool.IsConnect = true;
                     frmTool.IsListening = true;
+                }
+                else {
+                    foreach (SuperTabItem item in superTabControl2.Tabs)
+                    {
+                        if (item.Text == "领用工具")
+                        {
+                            //关闭领用
+                            FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
+                            toolFrm.IsConnect = false;
+                            toolFrm.IsListening = false;
+                        }
+                        if (item.Text == "归还工具")
+                        {
+                            //关闭归还
+                            FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
+                            toolFrm.IsConnect = false;
+                            toolFrm.IsListening = false;
+                        }
+                    }
                 }
             }
 

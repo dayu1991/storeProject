@@ -169,7 +169,7 @@ namespace toolstrackingsystem
                         return;
                     }
                 }
-                if (toolInfo.PackCode != null)
+                if (!string.IsNullOrEmpty(toolInfo.PackCode))
                 {
                     MessageBox.Show("该工具已经被组合到“"+toolInfo.PackName+"”"+"中");
                     return;
