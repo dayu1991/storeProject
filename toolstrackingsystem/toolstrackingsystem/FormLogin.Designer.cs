@@ -38,6 +38,7 @@
             this.LoginButton = new DevComponents.DotNetBar.ButtonX();
             this.ResetButton = new DevComponents.DotNetBar.ButtonX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.scan_checkBox = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.SuspendLayout();
             // 
             // styleManager1
@@ -76,7 +77,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(160, 142);
+            this.labelX2.Location = new System.Drawing.Point(160, 126);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(75, 23);
             this.labelX2.TabIndex = 3;
@@ -89,7 +90,7 @@
             // 
             this.textBox_PassWord.Border.Class = "TextBoxBorder";
             this.textBox_PassWord.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBox_PassWord.Location = new System.Drawing.Point(217, 142);
+            this.textBox_PassWord.Location = new System.Drawing.Point(217, 126);
             this.textBox_PassWord.Name = "textBox_PassWord";
             this.textBox_PassWord.PasswordChar = '*';
             this.textBox_PassWord.PreventEnterBeep = true;
@@ -133,11 +134,25 @@
             this.labelX3.TabIndex = 7;
             this.labelX3.Text = "北京动车段工具管理追溯系统";
             // 
+            // scan_checkBox
+            // 
+            // 
+            // 
+            // 
+            this.scan_checkBox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.scan_checkBox.Location = new System.Drawing.Point(217, 155);
+            this.scan_checkBox.Name = "scan_checkBox";
+            this.scan_checkBox.Size = new System.Drawing.Size(100, 23);
+            this.scan_checkBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.scan_checkBox.TabIndex = 8;
+            this.scan_checkBox.Text = "扫码登录";
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 262);
+            this.Controls.Add(this.scan_checkBox);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.LoginButton);
@@ -165,5 +180,6 @@
         private DevComponents.DotNetBar.ButtonX LoginButton;
         private DevComponents.DotNetBar.ButtonX ResetButton;
         private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.Controls.CheckBoxX scan_checkBox;
     }
 }

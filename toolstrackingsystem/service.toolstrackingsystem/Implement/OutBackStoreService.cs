@@ -229,7 +229,7 @@ namespace service.toolstrackingsystem
                 sql += str;
                 sqlCount += " AND BackPesonCode LIKE @backPersonCode ";
                 sqlNotStr += " AND BackPesonCode LIKE @backPersonCode ";
-                parameters.Add("personCode", string.Format("%{0}%", backPersonCode));
+                parameters.Add("backPersonCode", string.Format("%{0}%", backPersonCode));
             }
             if (!string.IsNullOrWhiteSpace(dateTimeFrom))
             {

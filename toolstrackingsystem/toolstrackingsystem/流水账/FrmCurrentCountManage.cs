@@ -283,7 +283,6 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmCurrentCountManage--export_button_Click", ex.Message, ex.StackTrace, ex.Source);
             }
         }
-
         private void Print_button_Click(object sender, EventArgs e)
         {
             try

@@ -24,6 +24,7 @@ namespace toolstrackingsystem
         ILog logger = log4net.LogManager.GetLogger(typeof(FormLogin));
         private IUserManageService _userManageService;
         private IAddressInfoService _addressInfoService;
+        private IPersonManageService _personManageService;
         public FormLogin()
         {
             this.EnableGlass = false;
@@ -33,22 +34,43 @@ namespace toolstrackingsystem
         {
             string UserCode = textBox_UserName.Text;
             string Pass = textBox_PassWord.Text;
+            
             if (string.IsNullOrEmpty(UserCode))
             {
                 MessageBox.Show("用户名不能为空");
                 return;
             }
-
-            if (string.IsNullOrEmpty(Pass))
+            if (!scan_checkBox.Checked)
             {
-                MessageBox.Show("密码不能为空");
-                return;
+                if (string.IsNullOrEmpty(Pass))
+                {
+                    MessageBox.Show("密码不能为空");
+                    return;
+                }
             }
             try
             { 
                 //登录成功后，登录窗体关闭，主窗体打开
                 Sys_User_Info userInfo = new Sys_User_Info();
-                userInfo = _userManageService.GetUserInfo(UserCode, Pass);
+                if (!scan_checkBox.Checked)
+                {
+                    userInfo = _userManageService.GetUserInfo(UserCode, Pass);
+                }
+                else {
+                    t_PersonInfo personInfo = new t_PersonInfo();
+                    personInfo = _personManageService.GetPersonInfo(UserCode);
+                    if (personInfo == null)
+                    {
+                        MessageBox.Show("用户名不存在");
+                        return;
+                    }
+                    else {
+                        userInfo.UserCode = personInfo.PersonCode;
+                        userInfo.UserName = personInfo.PersonName;
+                        userInfo.UserRole = "SuperAuthority";
+                        userInfo.IsActive = 1;
+                    }
+                }
                 if (userInfo != null)
                 {
                     ObjectCache oCache = MemoryCache.Default;
@@ -80,6 +102,7 @@ namespace toolstrackingsystem
             this.styleManager1.ManagerStyle = eStyle.OfficeMobile2014;
             _userManageService = Program.container.Resolve<IUserManageService>() as UserManageService;
             _addressInfoService = Program.container.Resolve<IAddressInfoService>() as AddressInfoService;
+            _personManageService = Program.container.Resolve<IPersonManageService>() as PersonManageService;
             #region 判断客户端是否注册过
             //string mac = CommonHelper.GetMacAddress();
             //if (string.IsNullOrEmpty(mac))
