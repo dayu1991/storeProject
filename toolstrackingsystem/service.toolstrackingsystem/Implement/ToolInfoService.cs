@@ -269,23 +269,14 @@ namespace service.toolstrackingsystem
        /// <returns></returns>
         public List<ToolInfoForStockInfoEntity> GetToolInfoListForStock(t_ToolInfo toolInfo, int pageIndex, int pageSize, out long totalCount)
         {
-            string sql = @"SELECT TOP "+pageSize+@" [ToolID]
-                                  ,[TypeName]
+            string sql = @"SELECT TOP "+pageSize+ @" [TypeName]
                                   ,[ChildTypeName]
-                                  ,[PackCode]
-                                  ,[PackName]
-                                  ,[CarGroupInfo]
                                   ,[ToolCode]
                                   ,[ToolName]
-                                  ,[Models]
-                                  ,[Location]
-                                  ,[Remarks]
-                                  ,[CheckTime]
-                                  ,[IsActive]
-                                  ,[OptionPerson]
-                              FROM [t_ToolInfo] WHERE 1=1";
-            string sqlNotStr = "[ToolID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [ToolID] FROM [dbo].[t_ToolInfo] WHERE 1=1 ";
-            string sqlCount = "SELECT COUNT(*) FROM [dbo].[t_ToolInfo] WHERE IsAcTive=1 ";
+                                  ,[InStoreTime]
+                              FROM [t_InStore] WHERE 1=1";
+            string sqlNotStr = "[InStoreID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [InStoreID] FROM [dbo].[t_InStore] WHERE 1=1 ";
+            string sqlCount = "SELECT COUNT(*) FROM [dbo].[t_InStore]";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
             {
@@ -318,22 +309,6 @@ namespace service.toolstrackingsystem
                 sqlCount += str;
                 sqlNotStr += str;
                 parameters.Add("toolName", string.Format("%{0}%", toolInfo.ToolName));
-            }
-            if (!string.IsNullOrWhiteSpace(toolInfo.Models))
-            {
-                string str = " AND Models LIKE @models ";
-                sql += str;
-                sqlCount += str;
-                sqlNotStr += str;
-                parameters.Add("models", string.Format("%{0}%", toolInfo.Models));
-            }
-            if (!string.IsNullOrWhiteSpace(toolInfo.Location))
-            {
-                string str = " AND Location LIKE @location ";
-                sql += str;
-                sqlCount += str;
-                sqlNotStr += str;
-                parameters.Add("location", string.Format("%{0}%", toolInfo.Location));
             }
             sqlNotStr += ")";
             string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
@@ -345,7 +320,7 @@ namespace service.toolstrackingsystem
        /// <returns></returns>
         public List<CountToolInfoEntity> GetCountInToolInfo(t_ToolInfo toolInfo)
         {
-            string sql = "SELECT ChildTypeName AS TypeName, COUNT(1) as Quantity FROM t_ToolInfo WHERE IsActive=1 ";
+            string sql = "SELECT ChildTypeName AS TypeName, COUNT(1) as Quantity FROM t_ToolInfo WHERE 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
             {
@@ -370,18 +345,6 @@ namespace service.toolstrackingsystem
                 string str = " AND ToolName LIKE @toolName ";
                 sql += str;
                 parameters.Add("toolName", string.Format("%{0}%", toolInfo.ToolName));
-            }
-            if (!string.IsNullOrWhiteSpace(toolInfo.Models))
-            {
-                string str = " AND Models LIKE @models ";
-                sql += str;
-                parameters.Add("models", string.Format("%{0}%", toolInfo.Models));
-            }
-            if (!string.IsNullOrWhiteSpace(toolInfo.Location))
-            {
-                string str = " AND Location LIKE @location ";
-                sql += str;
-                parameters.Add("location", string.Format("%{0}%", toolInfo.Location));
             }
             sql += " GROUP BY ChildTypeName";
             return _multiTableQueryRepository.QueryList<CountToolInfoEntity>(sql, parameters).ToList();
@@ -393,21 +356,13 @@ namespace service.toolstrackingsystem
        /// <returns></returns>
         public List<ToolInfoForStockInfoEntity> GetToolInfoListForStock(t_ToolInfo toolInfo)
         {
-            string sql = @"SELECT  [ToolID]
-                                  ,[TypeName]
+            string sql = @"SELECT  [TypeName]
                                   ,[ChildTypeName]
-                                  ,[PackCode]
-                                  ,[PackName]
-                                  ,[CarGroupInfo]
                                   ,[ToolCode]
                                   ,[ToolName]
-                                  ,[Models]
-                                  ,[Location]
-                                  ,[Remarks]
-                                  ,[CheckTime]
-                                  ,[IsActive]
+                                  ,[InStoreTime]
                                   ,[OptionPerson]
-                              FROM [t_ToolInfo] WHERE IsAcTive=1";
+                              FROM [t_InStore] WHERE 1=1";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
             {
@@ -432,18 +387,6 @@ namespace service.toolstrackingsystem
                 string str = " AND ToolName LIKE @toolName ";
                 sql += str;
                 parameters.Add("toolName", string.Format("%{0}%", toolInfo.ToolName));
-            }
-            if (!string.IsNullOrWhiteSpace(toolInfo.Models))
-            {
-                string str = " AND Models LIKE @models ";
-                sql += str;
-                parameters.Add("models", string.Format("%{0}%", toolInfo.Models));
-            }
-            if (!string.IsNullOrWhiteSpace(toolInfo.Location))
-            {
-                string str = " AND Location LIKE @location ";
-                sql += str;
-                parameters.Add("location", string.Format("%{0}%", toolInfo.Location));
             }
             return _multiTableQueryRepository.QueryList<ToolInfoForStockInfoEntity>(sql, parameters).ToList();
 

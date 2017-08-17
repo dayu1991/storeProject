@@ -1,4 +1,6 @@
-﻿using Dapper;
+﻿using common.toolstrackingsystem;
+using Dapper;
+using dbentity.toolstrackingsystem;
 using sqlserver.toolstrackingsystem;
 using System;
 using System.Collections.Generic;
@@ -13,10 +15,12 @@ namespace service.toolstrackingsystem
     {
         private readonly IMultiTableQueryRepository _mutiTableQueryRepository;
         private readonly IOutBackStoreRepository _outBackStoreRepository;
-        public OutBackStoreService(IMultiTableQueryRepository multiTableQueryRepository, IOutBackStoreRepository outBackStoreRepository)
+        private readonly IInStoreRepository _inStoreRepository;
+        public OutBackStoreService(IMultiTableQueryRepository multiTableQueryRepository, IOutBackStoreRepository outBackStoreRepository, IInStoreRepository inStoreRepository)
         {
             _mutiTableQueryRepository = multiTableQueryRepository;
             _outBackStoreRepository = outBackStoreRepository;
+            _inStoreRepository = inStoreRepository;
         }
         /// <summary>
         /// 获取超时未归还的工具信息
@@ -107,10 +111,36 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         public bool DeleteOutBackInfo(string OutBackStoreID)
         {
+            bool IsSuccess = false;
+            //1.获取需要删除的信息
+            t_OutBackStore outBackInfo = new t_OutBackStore();
+            outBackInfo = GetOutBackStoreInfoByID(OutBackStoreID);
+            if (outBackInfo != null)
+            {
+                if (outBackInfo.IsBack != "1")
+                {
+                    //1.判断该条信息是否归还，未归还则在仓库中手动增加一条信息
+                    var toolInfo = GetToolInfoByToolCode(outBackInfo.ToolCode);
+                    if(toolInfo!=null)
+                    {
+                        t_InStore instore = new t_InStore();
+                    
+                        instore.InStoreTime = DateTime.Now.ToString();
+                        instore.TypeName = toolInfo.TypeName;
+                        instore.ToolCode = toolInfo.ToolCode;
+                        instore.ChildTypeName = toolInfo.ChildTypeName;
+                        instore.ToolName = toolInfo.ToolName;
+                        instore.OptionPerson = LoginHelper.UserCode;
+
+                        IsSuccess = _inStoreRepository.InsertInstoreInfo(instore);
+                    }
+                }
+            }
             string sql = "DELETE FROM t_OutBackStore WHERE OutBackStoreID=@outBackStoreID";
             DynamicParameters parameter = new DynamicParameters();
             parameter.Add("outBackStoreID", OutBackStoreID);
-            return _outBackStoreRepository.ExecuteSql(sql,parameter)>0;
+            IsSuccess = _outBackStoreRepository.ExecuteSql(sql, parameter) > 0;
+            return IsSuccess;
         }
         /// <summary>
         /// 获取领用查询所需的领用工具信息
@@ -317,6 +347,45 @@ namespace service.toolstrackingsystem
             return _mutiTableQueryRepository.QueryList<NotBackToolEntity>(sql, parameters).ToList();
 
 
+        }
+        public t_OutBackStore GetOutBackStoreInfoByID(string outBackStoreID)
+        {
+            string sql = "SELECT * FROM t_OutBackStore WHERE OutBackStoreID=@outBackStoreID";
+            DynamicParameters parameter = new DynamicParameters();
+            parameter.Add("outBackStoreID", outBackStoreID);
+            return _outBackStoreRepository.GetModel(sql, parameter);
+        }
+        public t_ToolInfo GetToolInfoByToolCode(string toolCode)
+        {
+            string sql = "SELECT * FROM t_ToolInfo WHERE ToolCode=@toolCode";
+            DynamicParameters parameter = new DynamicParameters();
+            parameter.Add("toolCode",toolCode);
+            return _mutiTableQueryRepository.QueryList<t_ToolInfo>(sql, parameter).FirstOrDefault();
+        }
+        public bool InsertIntoStoreToolInfo(t_InStore toolInfo)
+        {
+            string sql = @"INSERT INTO [dbo].[t_InStore]
+           ([TypeName]
+           ,[ChildTypeName]
+           ,[ToolCode]
+           ,[ToolName]
+           ,[InStoreTime]
+           ,[OptionPerson])
+     VALUES
+           ('@typeName'
+           ,'@childTypeName'
+           ,'@toolCode'
+           ,'@toolName'
+           ,'@inStoreTime'
+           ,'@optionPerson'";
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("typeName",toolInfo.TypeName);
+            parameters.Add("childTypeName", toolInfo.ChildTypeName);
+            parameters.Add("toolCode", toolInfo.ToolCode);
+            parameters.Add("toolName", toolInfo.ToolName);
+            parameters.Add("inStoreTime", toolInfo.InStoreTime);
+            parameters.Add("optionPerson", toolInfo.OptionPerson);
+            return _inStoreRepository.ExecuteSql(sql,parameters)>0;
         }
     }
 }

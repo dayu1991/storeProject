@@ -53,6 +53,10 @@ namespace sqlserver.toolstrackingsystem
             }
             return false;
         }
+        public bool InsertInstoreInfo(t_InStore inStoreInfo)
+        {
+            return base.Add(inStoreInfo)>0;
+        }
 
 
     }

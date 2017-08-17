@@ -12,5 +12,6 @@ namespace sqlserver.toolstrackingsystem
         bool IsExistsInStoryByCode(string toolCode);
 
         bool DeleteByCode(string toolCode);
+        bool InsertInstoreInfo(t_InStore inStoreInfo);
     }
 }

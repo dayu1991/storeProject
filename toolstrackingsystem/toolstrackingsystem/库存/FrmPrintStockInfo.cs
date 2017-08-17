@@ -38,21 +38,13 @@ namespace toolstrackingsystem
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
                 t_ToolInfo toolInfo = (t_ToolInfo)this.Tag;
-                string sql = @"SELECT  [ToolID]
-                                  ,[TypeName]
+                string sql = @"SELECT  [TypeName]
                                   ,[ChildTypeName]
-                                  ,[PackCode]
-                                  ,[PackName]
-                                  ,[CarGroupInfo]
                                   ,[ToolCode]
                                   ,[ToolName]
-                                  ,[Models]
-                                  ,[Location]
-                                  ,[Remarks]
-                                  ,[CheckTime]
-                                  ,[IsActive]
+                                  ,[InStoreTime]
                                   ,[OptionPerson]
-                              FROM [t_ToolInfo] WHERE IsAcTive=1";
+                              FROM [t_InStore] WHERE 1=1";
                 if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
                 {
                     string str = " AND TypeName LIKE  '"+toolInfo.TypeName+"'";
@@ -71,16 +63,6 @@ namespace toolstrackingsystem
                 if (!string.IsNullOrWhiteSpace(toolInfo.ToolName))
                 {
                     string str = " AND ToolName LIKE '"+toolInfo.ToolName+"'";
-                    sql += str;
-                }
-                if (!string.IsNullOrWhiteSpace(toolInfo.Models))
-                {
-                    string str = " AND Models LIKE '"+toolInfo.Models+"'";
-                    sql += str;
-                }
-                if (!string.IsNullOrWhiteSpace(toolInfo.Location))
-                {
-                    string str = " AND Location LIKE '"+toolInfo.Location+"'";
                     sql += str;
                 }
                 SqlCommand cmd = new SqlCommand(sql, conn);

@@ -91,15 +91,9 @@ namespace toolstrackingsystem
             TollList_dataGridViewX.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             TollList_dataGridViewX.Columns[0].HeaderText = "配属";
             TollList_dataGridViewX.Columns[1].HeaderText = "类别";
-            TollList_dataGridViewX.Columns[2].HeaderText = "包编码";
-            TollList_dataGridViewX.Columns[3].HeaderText = "包名称";
-            TollList_dataGridViewX.Columns[4].HeaderText = "工具编码";
-            TollList_dataGridViewX.Columns[5].HeaderText = "工具名称";
-            TollList_dataGridViewX.Columns[6].HeaderText = "型号";
-            TollList_dataGridViewX.Columns[7].HeaderText = "位置";
-            TollList_dataGridViewX.Columns[8].HeaderText = "下次检测时间";
-            TollList_dataGridViewX.Columns[8].Width = 120;
-            TollList_dataGridViewX.Columns[9].HeaderText = "备注";
+            TollList_dataGridViewX.Columns[2].HeaderText = "工具编码";
+            TollList_dataGridViewX.Columns[3].HeaderText = "工具名称";
+            TollList_dataGridViewX.Columns[4].HeaderText = "入库时间";
             pagerControl1.DrawControl(Convert.ToInt32(Count));
         }
         /// <summary>
@@ -196,28 +190,15 @@ namespace toolstrackingsystem
                         cell.SetCellValue(item.ChildTypeName);
                         cell = row.CreateCell(2);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.PackCode);
                         cell = row.CreateCell(3);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.PackName);
+                        cell.SetCellValue(item.ToolCode);
                         cell = row.CreateCell(4);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.ToolCode);
+                        cell.SetCellValue(item.ToolName);
                         cell = row.CreateCell(5);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.ToolName);
-                        cell = row.CreateCell(6);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.Models);
-                        cell = row.CreateCell(7);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.Location);
-                        cell = row.CreateCell(8);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.CheckTime);
-                        cell = row.CreateCell(9);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.Remarks);
+                        cell.SetCellValue(item.InStoreTime);
                     }
                     // 写入 
                     System.IO.MemoryStream ms = new System.IO.MemoryStream();
