@@ -40,13 +40,10 @@ namespace toolstrackingsystem
                 MessageBox.Show("用户名不能为空");
                 return;
             }
-            if (!scan_checkBox.Checked)
+            if (string.IsNullOrEmpty(Pass))
             {
-                if (string.IsNullOrEmpty(Pass))
-                {
-                    MessageBox.Show("密码不能为空");
-                    return;
-                }
+                MessageBox.Show("密码不能为空");
+                return;
             }
             try
             { 
@@ -64,7 +61,13 @@ namespace toolstrackingsystem
                         MessageBox.Show("用户名不存在");
                         return;
                     }
-                    else {
+                    if (Pass != "1")
+                    {
+                        MessageBox.Show("密码不正确");
+                        return;
+                    }
+                    else
+                    {
                         userInfo.UserCode = personInfo.PersonCode;
                         userInfo.UserName = personInfo.PersonName;
                         userInfo.UserRole = "SuperAuthority";

@@ -19,6 +19,7 @@ using System.Collections;
 using NPOI.SS.UserModel;
 using NPOI.HSSF.UserModel;
 using NPOI.XSSF.UserModel;
+using toolstrackingsystem.loading;
 
 namespace toolstrackingsystem
 {
@@ -304,7 +305,18 @@ namespace toolstrackingsystem
                                 MessageBox.Show("文档数据为空");
                                 return;
                             }
-                            if (_personManageService.ImportExcel(personInfoList))
+                            bool IsSuccess = false;
+                            LoadingHandler.Show(this, args =>
+                            {
+                                for (int i = 0; i < 100; i++)
+                                {
+                                    args.Execute(ex =>
+                                    {
+                                        IsSuccess = _personManageService.ImportExcel(personInfoList);
+                                    });
+                                }
+                            });
+                            if (IsSuccess)
                             {
                                 MessageBox.Show("导入数据成功");
                                 Search_buttonX_Click(sender, e);

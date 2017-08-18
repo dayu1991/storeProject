@@ -118,6 +118,13 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="loading\HFSoft.Component.Windows.cs" />
+    <Compile Include="loading\LoadingForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="loading\LoadingForms.Designer.cs">
+      <DependentUpon>LoadingForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="地址管理\FrmAddressManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -456,6 +463,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loading\LoadingForms.resx">
+      <DependentUpon>LoadingForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="地址管理\FrmAddressManage.resx">
       <DependentUpon>FrmAddressManage.cs</DependentUpon>

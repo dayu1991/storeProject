@@ -21,6 +21,7 @@ using System.Threading;
 using System.Net.Sockets;
 using NPOI.HSSF.UserModel;
 using NPOI.XSSF.UserModel;
+using toolstrackingsystem.loading;
 namespace toolstrackingsystem
 {
     public partial class ToolInfoManage : Office2007RibbonForm
@@ -595,13 +596,34 @@ namespace toolstrackingsystem
                                 MessageBox.Show("文档数据为空");
                                 return;
                             }
-                            if (_toolInfoService.ImportToolInfoExcel(InfoList))
+                            bool IsSuccess = false;
+                            LoadingHandler.Show(this, args =>
+                            {
+                                for (int i = 0; i < 100; i++)
+                                {
+                                    args.Execute(ex =>
+                                    {
+                                        IsSuccess = _toolInfoService.ImportToolInfoExcel(InfoList);
+                                        //if (_toolInfoService.ImportToolInfoExcel(InfoList))
+                                        //{
+                                        //    MessageBox.Show(string.Format("成功导入{0}条数据", InfoList.Count));
+                                        //    Search_buttonX_Click(sender, e);
+                                        //}
+                                        //else
+                                        //{
+                                        //    MessageBox.Show("导入数据失败");
+                                        //    return;
+                                        //}
+                                    });
+                                    System.Threading.Thread.Sleep(50);
+                                }
+                            });
+                            if (IsSuccess)
                             {
                                 MessageBox.Show(string.Format("成功导入{0}条数据", InfoList.Count));
                                 Search_buttonX_Click(sender, e);
                             }
-                            else
-                            {
+                            else {
                                 MessageBox.Show("导入数据失败");
                                 return;
                             }
