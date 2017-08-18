@@ -12,7 +12,7 @@ namespace sqlserver.toolstrackingsystem
     {
         public t_OutBackStore GetToolOutByCode(string toolCode)
         {
-            string sql = "select * from [dbo].[t_OutBackStore] where [ToolCode]=@ToolCode";
+            string sql = "select * from [dbo].[t_OutBackStore] where IsBack='0' AND [ToolCode]=@ToolCode ";
             var sqlDy = new DynamicParameters();
             sqlDy.Add("ToolCode", toolCode);
             return GetModel(sql, sqlDy);

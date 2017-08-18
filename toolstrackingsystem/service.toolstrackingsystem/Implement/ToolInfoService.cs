@@ -172,6 +172,7 @@ namespace service.toolstrackingsystem
 
         public bool OutStore(t_ToolInfo entity, t_PersonInfo person, string userCode,string toDate,string describ)
         {
+            //1.删除库存
             _inStoreRepository.DeleteByCode(entity.ToolCode);
             var outBackStore = new t_OutBackStore();
             outBackStore.ToolCode = entity.ToolCode;
@@ -207,6 +208,7 @@ namespace service.toolstrackingsystem
             currentCount.PersonName = person.PersonName;
             currentCount.describes = describ;
             currentCount.OptionPerson = userCode;
+            //2.outbackstore表增加领用记录
             return _currentCountInfoRepository.Add(currentCount)>0;
 
         }
