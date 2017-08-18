@@ -178,9 +178,11 @@ namespace toolstrackingsystem
                 SelectText = "自定义",
                 SelectValue = "0"
             });
+
             this.cbEditOutTime.DataSource = blongs;
             this.cbEditOutTime.DisplayMember = "SelectText";
             this.cbEditOutTime.ValueMember = "SelectValue";
+            this.cbEditOutTime.SelectedValue = "12";
             this.dataGridViewX1.AutoGenerateColumns = false;
 
             threadClientO = new Thread(RecMsg);
