@@ -184,7 +184,8 @@ namespace toolstrackingsystem
             this.cbEditOutTime.ValueMember = "SelectValue";
             this.cbEditOutTime.SelectedValue = "12";
             this.dataGridViewX1.AutoGenerateColumns = false;
-
+            //人员编码默认获取焦点
+            this.tbEditPersonCode.Focus();
             threadClientO = new Thread(RecMsg);
 
             //将窗体线程设置为与后台同步

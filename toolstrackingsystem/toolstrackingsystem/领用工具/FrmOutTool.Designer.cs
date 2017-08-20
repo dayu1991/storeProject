@@ -194,7 +194,7 @@
             this.tbEditCodeOut.Name = "tbEditCodeOut";
             this.tbEditCodeOut.PreventEnterBeep = true;
             this.tbEditCodeOut.Size = new System.Drawing.Size(204, 21);
-            this.tbEditCodeOut.TabIndex = 28;
+            this.tbEditCodeOut.TabIndex = 1;
             this.tbEditCodeOut.TextChanged += new System.EventHandler(this.tbEditCode_TextChanged);
             // 
             // labelX11
@@ -285,7 +285,7 @@
             this.tbEditPersonCode.Name = "tbEditPersonCode";
             this.tbEditPersonCode.PreventEnterBeep = true;
             this.tbEditPersonCode.Size = new System.Drawing.Size(287, 21);
-            this.tbEditPersonCode.TabIndex = 12;
+            this.tbEditPersonCode.TabIndex = 2;
             this.tbEditPersonCode.TextChanged += new System.EventHandler(this.tbEditPersonCode_TextChanged);
             // 
             // labelX8

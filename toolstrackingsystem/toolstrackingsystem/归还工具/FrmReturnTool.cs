@@ -153,7 +153,6 @@ namespace toolstrackingsystem
                     }
                 }
             }
-
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -223,7 +222,7 @@ namespace toolstrackingsystem
             _personManageService = Program.container.Resolve<IPersonManageService>();
             this.dataGridViewX1.AutoGenerateColumns = false;
             threadClientR = new Thread(RecMsg);
-
+            //人员编码默认获取焦点
             //将窗体线程设置为与后台同步
             threadClientR.IsBackground = true;
 

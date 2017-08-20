@@ -338,10 +338,13 @@ namespace toolstrackingsystem
                                 toolFrm.IsListening = false;
                             }
                     }
-                    FrmOutTool frmTool = (FrmOutTool)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
-                    frmTool.IsConnect = true;
-                    frmTool.IsListening = true;
-                    return;
+                    if (this.superTabControl2.SelectedTab.AttachedControl.Controls.Count>0)
+                    {
+                         FrmOutTool frmTool = (FrmOutTool)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
+                         frmTool.IsConnect = true;
+                         frmTool.IsListening = true;
+                         return;
+                    }
                 }
                 else if (this.superTabControl2.SelectedTab.Text == "归还工具")
                 {
@@ -355,9 +358,12 @@ namespace toolstrackingsystem
                             toolFrm.IsListening = false;
                         }
                     }
-                    FrmReturnTool frmTool = (FrmReturnTool)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
-                    frmTool.IsConnect = true;
-                    frmTool.IsListening = true;
+                    if (this.superTabControl2.SelectedTab.AttachedControl.Controls.Count>0)
+                    {
+                        FrmReturnTool frmTool = (FrmReturnTool)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
+                        frmTool.IsConnect = true;
+                        frmTool.IsListening = true;
+                    }
                 }
                 else {
                     foreach (SuperTabItem item in superTabControl2.Tabs)

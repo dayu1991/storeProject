@@ -420,7 +420,7 @@
             this.pagerControl1.Location = new System.Drawing.Point(0, 345);
             this.pagerControl1.Name = "pagerControl1";
             this.pagerControl1.PageIndex = 1;
-            this.pagerControl1.PageSize = 100;
+            this.pagerControl1.PageSize = 50;
             this.pagerControl1.RecordCount = 0;
             this.pagerControl1.Size = new System.Drawing.Size(891, 46);
             this.pagerControl1.TabIndex = 1;
