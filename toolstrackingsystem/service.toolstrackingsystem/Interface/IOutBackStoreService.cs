@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dbentity.toolstrackingsystem;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -75,6 +76,17 @@ namespace service.toolstrackingsystem
         /// <param name="dateTimeTo"></param>
         /// <returns></returns>
         List<ToolReturnEntity> GetToolReturnList(string toolCode, string backPersonCode, string dateTimeFrom, string dateTimeTo);
-
+        /// <summary>
+        /// 查询未归还的工具
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <returns></returns>
+        t_OutBackStore GetToolInfoNotBackByToolCode(string toolCode);
+        /// <summary>
+        /// 根据包编码获取未归还的工具信息
+        /// </summary>
+        /// <param name="packCode"></param>
+        /// <returns></returns>
+        List<t_OutBackStore> GetToolInfoNotBackByPackCode(string packCode);
     }
 }

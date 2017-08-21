@@ -387,5 +387,29 @@ namespace service.toolstrackingsystem
             parameters.Add("optionPerson", toolInfo.OptionPerson);
             return _inStoreRepository.ExecuteSql(sql,parameters)>0;
         }
+        /// <summary>
+        /// 获取未归还的工具信息
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <returns></returns>
+        public t_OutBackStore GetToolInfoNotBackByToolCode(string toolCode)
+        {
+            string sql = "SELECT * FROM t_OutBackStore WHERE IsBack='0' AND ToolCode=@toolCode";
+            DynamicParameters parameter = new DynamicParameters();
+            parameter.Add("toolCode", toolCode);
+            return _mutiTableQueryRepository.QueryList<t_OutBackStore>(sql, parameter).FirstOrDefault();
+        }
+        /// <summary>
+        /// 根据包编码获取未归还的工具信息
+        /// </summary>
+        /// <param name="packCode"></param>
+        /// <returns></returns>
+        public List<t_OutBackStore> GetToolInfoNotBackByPackCode(string packCode)
+        {
+            string sql = "SELECT * FROM t_OutBackStore obs join t_ToolInfo ti on obs.ToolCode = ti.ToolCode where ti.PackCode= @packCode AND obs.IsBack='0'";
+            DynamicParameters parameter = new DynamicParameters();
+            parameter.Add("packCode",packCode);
+            return _mutiTableQueryRepository.QueryList<t_OutBackStore>(sql,parameter).ToList();
+        }
     }
 }

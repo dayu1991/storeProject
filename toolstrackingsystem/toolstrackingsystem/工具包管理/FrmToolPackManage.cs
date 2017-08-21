@@ -21,6 +21,8 @@ namespace toolstrackingsystem
     {
         ILog logger = log4net.LogManager.GetLogger(typeof(frmEditUserinfo));
         public IToolPackManageService _toolPackManageService;
+        public IToolInfoService _toolInfoService;
+        public IOutBackStoreService _outBackStoreService;
         private List<ToolInfoForPackEntity> resultEntity = new List<ToolInfoForPackEntity>();
         private int selectIndex;
         public FrmToolPackManage()
@@ -31,6 +33,8 @@ namespace toolstrackingsystem
         private void FrmToolPackManage_Load(object sender, EventArgs e)
         {
             _toolPackManageService = Program.container.Resolve<IToolPackManageService>() as ToolPackManageService;
+            _toolInfoService = Program.container.Resolve<IToolInfoService>() as ToolInfoService;
+            _outBackStoreService = Program.container.Resolve<IOutBackStoreService>() as OutBackStoreService;
             #region 初始化combox角色下拉框
             try
             {
@@ -217,6 +221,17 @@ namespace toolstrackingsystem
                 MessageBox.Show("请选择一条数据");
                 return;
             }
+            //判断要删除的工具是否已借出，借出提示先归还再删除
+            if (_outBackStoreService.GetToolInfoNotBackByToolCode(toolCode) != null)
+            {
+                MessageBox.Show("该工具还未归还，请先归还，再操作");
+                return;
+            }
+            //更新工具信息去掉包编码，包名称
+            var toolInfo = _toolPackManageService.GetToolInfoByToolCode(toolCode);
+            toolInfo.PackCode = "";
+            toolInfo.PackName = "";
+            _toolInfoService.UpdateTool(toolInfo);
             foreach (var item in resultEntity)
             {
                 if (item.ToolCode == toolCode)
@@ -321,6 +336,12 @@ namespace toolstrackingsystem
                 {
                     MessageBox.Show("请输入有效的包编码");
                     Pack_Code_textBox.Focus();
+                    return;
+                }
+                //判断如果删除的包是还未归还的信息，则提示
+                if (_outBackStoreService.GetToolInfoNotBackByPackCode(packCode).Count <= 0)
+                {
+                    MessageBox.Show("该包已经借出，请先归还后再删除包信息");
                     return;
                 }
                 if (_toolPackManageService.DeletePackInfo(packCode))
