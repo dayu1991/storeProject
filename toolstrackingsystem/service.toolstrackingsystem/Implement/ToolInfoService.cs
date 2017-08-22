@@ -278,7 +278,7 @@ namespace service.toolstrackingsystem
                                   ,[InStoreTime]
                               FROM [t_InStore] WHERE 1=1";
             string sqlNotStr = "[InStoreID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [InStoreID] FROM [dbo].[t_InStore] WHERE 1=1 ";
-            string sqlCount = "SELECT COUNT(*) FROM [dbo].[t_InStore]";
+            string sqlCount = "SELECT COUNT(*) FROM [dbo].[t_InStore]  WHERE 1=1";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
             {

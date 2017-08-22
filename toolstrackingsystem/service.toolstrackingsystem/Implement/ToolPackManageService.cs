@@ -92,7 +92,7 @@ namespace service.toolstrackingsystem
         }
         public t_ToolInfo GetToolInfoByToolCode(string toolCode)
         {
-            string sql = "SELECT * FROM t_ToolInfo WHERE ToolCode=@toolCode";
+            string sql = "SELECT * FROM t_ToolInfo WHERE IsActive='1' AND ToolCode=@toolCode";
             DynamicParameters parameter = new DynamicParameters();
             parameter.Add("toolCode",toolCode);
             return _toolPackManageRepository.GetModel(sql,parameter);

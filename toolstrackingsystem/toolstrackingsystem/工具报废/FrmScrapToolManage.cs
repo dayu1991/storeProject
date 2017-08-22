@@ -133,6 +133,7 @@ namespace toolstrackingsystem
                 toolInfo.Remarks = scrapToolInfo.Remarks;
                 toolInfo.OptionPerson = scrapToolInfo.OptionPerson;
                 infoList.Add(toolInfo);
+                ScrapTool_dataGridViewX2.DataSource = null;
                 ScrapTool_dataGridViewX2.DataSource = infoList;
                 for (int i = 0; i < ScrapTool_dataGridViewX2.Columns.Count; i++)
                 {

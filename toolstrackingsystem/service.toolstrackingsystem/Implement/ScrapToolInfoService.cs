@@ -28,14 +28,14 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         public List<ToolInfoForScrapFrmEntity> GetToolInfoForScrapList(string toolCode)
         {
-            string sql = "SELECT TypeName,ChildTypeName,ToolCode,ToolName,PackCode,PackName,Models,Location,Remarks FROM t_ToolInfo WHERE 1=1 AND IsActive=1 AND ToolCode=@toolCode";
+            string sql = "SELECT TypeName,ChildTypeName,ToolCode,ToolName,PackCode,PackName,Models,Location,Remarks FROM t_ToolInfo WHERE 1=1 AND IsActive='1' AND ToolCode=@toolCode";
             DynamicParameters parameter = new DynamicParameters();
             parameter.Add("toolCode",toolCode);
             return _mutiTableQueryRepository.QueryList<ToolInfoForScrapFrmEntity>(sql, parameter).ToList();
         }
         public t_ToolInfo GetToolInfoByToolCode(string toolCode)
         {
-            string sql = "SELECT * FROM t_ToolInfo WHERE ToolCode = @toolCode AND IsActive=1";
+            string sql = "SELECT * FROM t_ToolInfo WHERE ToolCode = @toolCode AND IsActive='1'";
             DynamicParameters parameter = new DynamicParameters();
             parameter.Add("toolCode",toolCode);
             return _toolPackManageRepository.GetModel(sql,parameter);
@@ -61,7 +61,6 @@ namespace service.toolstrackingsystem
             if (_toolPackManageRepository.Update(toolInfo))
             {
                 //2.在作废信息表中插入作废的ToolInfo
-
                 scrapToolInfo.ToolCode = toolInfo.ToolCode;
                 scrapToolInfo.ToolName = toolInfo.ToolName;
                 scrapToolInfo.ScrapTime = DateTime.Now.ToString();
