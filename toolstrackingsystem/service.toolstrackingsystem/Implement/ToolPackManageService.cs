@@ -38,7 +38,7 @@ namespace service.toolstrackingsystem
         }
         public List<t_ToolInfo> GetToolInfoInPack(t_ToolInfo toolInfo)
         {
-            string sql = "SELECT * FROM t_ToolInfo WHERE 1=1 ";
+            string sql = "SELECT * FROM t_ToolInfo WHERE 1=1 AND IsActive='1'";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrEmpty(toolInfo.PackCode))
             {
@@ -126,7 +126,7 @@ namespace service.toolstrackingsystem
                 toolInfo.PackName = packName;
                 toolInfo.CarGroupInfo = carGroupInfo;
                 //2.更新最新的包信息
-                if (!_toolPackManageRepository.Update(toolInfo))
+                if (!_toolPackManageRepository.UpdateToolPackInfo(toolInfo))
                 {
                     return IsSuccess;
                 }

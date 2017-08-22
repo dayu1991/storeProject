@@ -58,7 +58,8 @@ namespace service.toolstrackingsystem
                 return scrapToolInfo;
             }
             toolInfo.IsActive = "0";
-            if (_toolPackManageRepository.Update(toolInfo))
+            IsSuccess =_toolPackManageRepository.UpdateToolStatus(toolInfo.ToolCode);
+            if (_toolPackManageRepository.UpdateToolStatus(toolInfo.ToolCode))
             {
                 //2.在作废信息表中插入作废的ToolInfo
                 scrapToolInfo.ToolCode = toolInfo.ToolCode;
@@ -66,7 +67,7 @@ namespace service.toolstrackingsystem
                 scrapToolInfo.ScrapTime = DateTime.Now.ToString();
                 scrapToolInfo.Remarks = toolInfo.Remarks;
                 scrapToolInfo.OptionPerson = optionPerson;
-                IsSuccess = _scrapToolInfoManageRepository.InsertScrapToolInfo(scrapToolInfo);
+                //IsSuccess = _scrapToolInfoManageRepository.InsertScrapToolInfo(scrapToolInfo);
             }
             else {
                 return scrapToolInfo;

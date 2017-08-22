@@ -20,6 +20,7 @@ namespace service.toolstrackingsystem
         private ICurrentCountInfoRepository _currentCountInfoRepository;
         private IOutBackStoreRepository _outBackStoreRepository;
         private IToolPrepairRecordRepository _toolPrepairRecordRepository;
+        private IToolPackManageRepository _toolPackManageRepository;
 
         private IMultiTableQueryRepository _multiTableQueryRepository;
         public ToolInfoService(IToolCategoryInfoRepository toolCategoryInfoRepository,
@@ -27,7 +28,8 @@ namespace service.toolstrackingsystem
             IMultiTableQueryRepository multiTableQueryRepository,
             IInStoreRepository inStoreRepository,
             ICurrentCountInfoRepository currentCountInfoRepository,
-            IOutBackStoreRepository outBackStoreRepository,IToolPrepairRecordRepository toolPrepairRecordRepository)
+            IOutBackStoreRepository outBackStoreRepository,IToolPrepairRecordRepository toolPrepairRecordRepository,
+            IToolPackManageRepository toolPackManageRepository)
        {
            _toolCategoryInfoRepository = toolCategoryInfoRepository;
            _toolInfoRepository = toolInfoRepository;
@@ -36,6 +38,7 @@ namespace service.toolstrackingsystem
             _currentCountInfoRepository = currentCountInfoRepository;
             _outBackStoreRepository = outBackStoreRepository;
             _toolPrepairRecordRepository = toolPrepairRecordRepository;
+            _toolPackManageRepository = toolPackManageRepository;
        }
 
         public List<t_ToolType> GetCategoryByClassify(int classifyType, string name = "")
@@ -137,7 +140,7 @@ namespace service.toolstrackingsystem
 
         public bool UpdateTool(t_ToolInfo entity)
         {
-            return _toolInfoRepository.UpdateTool(entity);
+            return _toolPackManageRepository.UpdateToolPackInfo(entity);
         }
 
         public bool DelToolByCode(string ToolCode)
