@@ -44,11 +44,11 @@ namespace toolstrackingsystem
                 string sql = "select * from [dbo].[t_ToolInfo]  where 1=1 ";
                 if (!string.IsNullOrEmpty(toolInfo.TypeName))
                 {
-                    sql += " and  [TypeName]=" + toolInfo.TypeName;
+                    sql += " and  [TypeName] LIKE " + string.Format("'%{0}%'", toolInfo.TypeName);
                 }
                 if (!string.IsNullOrEmpty(toolInfo.ChildTypeName))
                 {
-                    sql += " AND ChildTypeName = "+toolInfo.ChildTypeName;
+                    sql += " AND ChildTypeName LIKE " + string.Format("'%{0}%'", toolInfo.ChildTypeName);
                 }
                 if (!string.IsNullOrEmpty(toolInfo.ToolCode))
                 {
@@ -58,6 +58,7 @@ namespace toolstrackingsystem
                 {
                     sql += " AND ToolName LIKE " + string.Format("'%{0}%'", toolInfo.ToolName);
                 }
+                sql += " ORDER BY ChildTypeName,[ToolId] desc ";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataSet c_ds = new DataSet();

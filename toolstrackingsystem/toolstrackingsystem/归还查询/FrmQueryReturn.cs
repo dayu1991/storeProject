@@ -20,7 +20,7 @@ namespace toolstrackingsystem
 {
     public partial class FrmQueryReturn : Office2007RibbonForm
     {
-        ILog logger = log4net.LogManager.GetLogger(typeof(FormLogin));
+        ILog logger = log4net.LogManager.GetLogger(typeof(FrmQueryReturn));
         private IOutBackStoreService _outBackStoreService;
         private List<ToolReturnEntity> resultList = new List<ToolReturnEntity>();
         public FrmQueryReturn()

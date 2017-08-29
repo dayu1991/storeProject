@@ -84,5 +84,25 @@ namespace service.toolstrackingsystem
         t_ToolType GetCategoryById(string SelectedToolCode);
 
         bool IsExistToolByType(string p1, int p2);
+        /// <summary>
+        /// 查询工具包的分页信息
+        /// </summary>
+        /// <param name="packCode"></param>
+        /// <param name="packName"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="Count"></param>
+        /// <returns></returns>
+        List<ToolPackViewEntity> GetPackInfoList(string packCode, string packName, int pageIndex, int pageSize, out long Count);
+        /// <summary>
+        /// 查询工具包的导出信息
+        /// </summary>
+        /// <param name="packCode"></param>
+        /// <param name="packName"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="Count"></param>
+        /// <returns></returns>
+        List<ToolPackViewEntity> GetPackInfoList(string packCode, string packName);
     }
 }

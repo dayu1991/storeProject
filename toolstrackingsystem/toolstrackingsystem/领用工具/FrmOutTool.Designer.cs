@@ -81,7 +81,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(6, 417);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1056, 157);
+            this.groupPanel2.Size = new System.Drawing.Size(1228, 157);
             // 
             // 
             // 
@@ -123,7 +123,7 @@
             this.dtiSelect.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtiSelect.ButtonDropDown.Visible = true;
             this.dtiSelect.IsPopupCalendarOpen = false;
-            this.dtiSelect.Location = new System.Drawing.Point(206, 54);
+            this.dtiSelect.Location = new System.Drawing.Point(339, 54);
             // 
             // 
             // 
@@ -163,7 +163,7 @@
             // 
             this.btnAddTool.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddTool.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddTool.Location = new System.Drawing.Point(309, 20);
+            this.btnAddTool.Location = new System.Drawing.Point(442, 20);
             this.btnAddTool.Name = "btnAddTool";
             this.btnAddTool.Size = new System.Drawing.Size(40, 23);
             this.btnAddTool.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -175,7 +175,7 @@
             // 
             this.btnOutContinue.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnOutContinue.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOutContinue.Location = new System.Drawing.Point(739, 72);
+            this.btnOutContinue.Location = new System.Drawing.Point(872, 72);
             this.btnOutContinue.Name = "btnOutContinue";
             this.btnOutContinue.Size = new System.Drawing.Size(84, 44);
             this.btnOutContinue.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -190,7 +190,7 @@
             // 
             this.tbEditCodeOut.Border.Class = "TextBoxBorder";
             this.tbEditCodeOut.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditCodeOut.Location = new System.Drawing.Point(99, 20);
+            this.tbEditCodeOut.Location = new System.Drawing.Point(232, 20);
             this.tbEditCodeOut.Name = "tbEditCodeOut";
             this.tbEditCodeOut.PreventEnterBeep = true;
             this.tbEditCodeOut.Size = new System.Drawing.Size(204, 21);
@@ -204,7 +204,7 @@
             // 
             // 
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(13, 22);
+            this.labelX11.Location = new System.Drawing.Point(146, 22);
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(123, 23);
             this.labelX11.TabIndex = 27;
@@ -214,7 +214,7 @@
             // 
             this.btnOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOut.Location = new System.Drawing.Point(739, 22);
+            this.btnOut.Location = new System.Drawing.Point(872, 22);
             this.btnOut.Name = "btnOut";
             this.btnOut.Size = new System.Drawing.Size(84, 44);
             this.btnOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -229,7 +229,7 @@
             // 
             this.tbEditoutdescribes.Border.Class = "TextBoxBorder";
             this.tbEditoutdescribes.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditoutdescribes.Location = new System.Drawing.Point(73, 94);
+            this.tbEditoutdescribes.Location = new System.Drawing.Point(206, 94);
             this.tbEditoutdescribes.Name = "tbEditoutdescribes";
             this.tbEditoutdescribes.PreventEnterBeep = true;
             this.tbEditoutdescribes.Size = new System.Drawing.Size(660, 21);
@@ -242,7 +242,7 @@
             // 
             // 
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(13, 92);
+            this.labelX10.Location = new System.Drawing.Point(146, 92);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(101, 23);
             this.labelX10.TabIndex = 18;
@@ -255,7 +255,7 @@
             // 
             this.tbEditPersonName.Border.Class = "TextBoxBorder";
             this.tbEditPersonName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditPersonName.Location = new System.Drawing.Point(446, 60);
+            this.tbEditPersonName.Location = new System.Drawing.Point(579, 60);
             this.tbEditPersonName.Name = "tbEditPersonName";
             this.tbEditPersonName.PreventEnterBeep = true;
             this.tbEditPersonName.Size = new System.Drawing.Size(287, 21);
@@ -268,7 +268,7 @@
             // 
             // 
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(383, 56);
+            this.labelX9.Location = new System.Drawing.Point(516, 56);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(83, 23);
             this.labelX9.TabIndex = 13;
@@ -281,7 +281,7 @@
             // 
             this.tbEditPersonCode.Border.Class = "TextBoxBorder";
             this.tbEditPersonCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditPersonCode.Location = new System.Drawing.Point(446, 22);
+            this.tbEditPersonCode.Location = new System.Drawing.Point(579, 22);
             this.tbEditPersonCode.Name = "tbEditPersonCode";
             this.tbEditPersonCode.PreventEnterBeep = true;
             this.tbEditPersonCode.Size = new System.Drawing.Size(287, 21);
@@ -295,7 +295,7 @@
             // 
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(383, 22);
+            this.labelX8.Location = new System.Drawing.Point(516, 22);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(83, 23);
             this.labelX8.TabIndex = 11;
@@ -307,7 +307,7 @@
             this.cbEditOutTime.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbEditOutTime.FormattingEnabled = true;
             this.cbEditOutTime.ItemHeight = 15;
-            this.cbEditOutTime.Location = new System.Drawing.Point(73, 55);
+            this.cbEditOutTime.Location = new System.Drawing.Point(206, 55);
             this.cbEditOutTime.Name = "cbEditOutTime";
             this.cbEditOutTime.Size = new System.Drawing.Size(126, 21);
             this.cbEditOutTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -321,7 +321,7 @@
             // 
             // 
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(8, 56);
+            this.labelX6.Location = new System.Drawing.Point(141, 56);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(85, 23);
             this.labelX6.TabIndex = 6;
@@ -358,7 +358,7 @@
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1056, 408);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1228, 408);
             this.dataGridViewX1.TabIndex = 4;
             // 
             // tbTypeName
@@ -435,7 +435,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 630);
+            this.ClientSize = new System.Drawing.Size(1251, 592);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.groupPanel2);
             this.Name = "FrmOutTool";

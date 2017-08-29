@@ -30,8 +30,6 @@ namespace sqlserver.toolstrackingsystem
             }
             return false;
         }
-
-
         public bool IsExistToolByType(string typeName, int type)
         {
             string sql="";
@@ -61,12 +59,11 @@ namespace sqlserver.toolstrackingsystem
             }
             return false;
         }
-
         public List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount)
         {
             List<t_ToolInfo> list = new List<t_ToolInfo>();
             string sql = @"select * from (
-       select *,ROW_NUMBER() OVER (ORDER BY [ToolId] desc) as rank from [dbo].[t_ToolInfo]  where 1=1 {0}
+       select *,ROW_NUMBER() OVER (ORDER BY ChildTypeName,[ToolId] desc) as rank from [dbo].[t_ToolInfo]  where 1=1 {0}
 )  as t where  t.rank between @startPos and @endPos ";
             string sqlCount = "select count(1) from [dbo].[t_ToolInfo] where 1=1 {0}";
             string sqlWhere = "";
@@ -95,7 +92,7 @@ namespace sqlserver.toolstrackingsystem
             {
              sqlWhere += " and [ToolName] LIKE @ToolName";
                 parameters.Add("ToolName", string.Format("%{0}%", toolName));
-         }
+            }
             sql= string.Format(sql,sqlWhere);
             sqlCount = string.Format(sqlCount, sqlWhere);
 
@@ -109,7 +106,6 @@ namespace sqlserver.toolstrackingsystem
             sqlDy.Add("ToolCode", ToolCode);
             return GetModel(sql, sqlDy);
         }
-
         public bool UpdateTool(t_ToolInfo entity)
         {
             return Update(entity);
@@ -135,7 +131,6 @@ namespace sqlserver.toolstrackingsystem
             }
             return false;
         }
-
         public List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName)
         {
             List<t_ToolInfo> list = new List<t_ToolInfo>();

@@ -17,7 +17,7 @@ namespace ViewEntity.toolstrackingsystem
         public string Models { get; set; }
         public string Location { get; set; }
         public string Remarks { get; set; }
-
+        public string OutDescribes { get; set; }
         public string OutStoreTime { get; set; }
         public string PersonCode { get; set; }
         public string PersonName { get; set; }

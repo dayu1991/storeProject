@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.tbTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbChildTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +39,7 @@
             this.tbModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbOutStoreTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbOutDescribe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPersonCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPersonName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCheckTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,24 +75,25 @@
             this.tbModel,
             this.tbPosition,
             this.tbOutStoreTime,
+            this.tbOutDescribe,
             this.tbPersonCode,
             this.tbPersonName,
             this.tbCheckTime});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(6, 4);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1056, 408);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1226, 408);
             this.dataGridViewX1.TabIndex = 5;
             // 
             // tbTypeName
@@ -157,6 +159,13 @@
             this.tbOutStoreTime.Name = "tbOutStoreTime";
             this.tbOutStoreTime.ReadOnly = true;
             // 
+            // tbOutDescribe
+            // 
+            this.tbOutDescribe.DataPropertyName = "OutDescribes";
+            this.tbOutDescribe.HeaderText = "领用说明";
+            this.tbOutDescribe.Name = "tbOutDescribe";
+            this.tbOutDescribe.ReadOnly = true;
+            // 
             // tbPersonCode
             // 
             this.tbPersonCode.DataPropertyName = "PersonCode";
@@ -196,7 +205,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(6, 418);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1056, 172);
+            this.groupPanel2.Size = new System.Drawing.Size(1226, 172);
             // 
             // 
             // 
@@ -232,7 +241,7 @@
             // 
             this.btnAddTool.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddTool.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddTool.Location = new System.Drawing.Point(304, 22);
+            this.btnAddTool.Location = new System.Drawing.Point(357, 22);
             this.btnAddTool.Name = "btnAddTool";
             this.btnAddTool.Size = new System.Drawing.Size(40, 23);
             this.btnAddTool.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -244,7 +253,7 @@
             // 
             this.btnReturnContinue.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnReturnContinue.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnReturnContinue.Location = new System.Drawing.Point(739, 72);
+            this.btnReturnContinue.Location = new System.Drawing.Point(792, 72);
             this.btnReturnContinue.Name = "btnReturnContinue";
             this.btnReturnContinue.Size = new System.Drawing.Size(84, 44);
             this.btnReturnContinue.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -259,7 +268,7 @@
             // 
             this.tbEditCode.Border.Class = "TextBoxBorder";
             this.tbEditCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditCode.Location = new System.Drawing.Point(94, 22);
+            this.tbEditCode.Location = new System.Drawing.Point(147, 22);
             this.tbEditCode.Name = "tbEditCode";
             this.tbEditCode.PreventEnterBeep = true;
             this.tbEditCode.Size = new System.Drawing.Size(204, 21);
@@ -273,7 +282,7 @@
             // 
             // 
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(13, 22);
+            this.labelX11.Location = new System.Drawing.Point(66, 22);
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(123, 23);
             this.labelX11.TabIndex = 27;
@@ -283,7 +292,7 @@
             // 
             this.btnReturn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnReturn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnReturn.Location = new System.Drawing.Point(739, 22);
+            this.btnReturn.Location = new System.Drawing.Point(792, 22);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(84, 44);
             this.btnReturn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -298,7 +307,7 @@
             // 
             this.tbEditoutdescribes.Border.Class = "TextBoxBorder";
             this.tbEditoutdescribes.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditoutdescribes.Location = new System.Drawing.Point(73, 94);
+            this.tbEditoutdescribes.Location = new System.Drawing.Point(126, 94);
             this.tbEditoutdescribes.Name = "tbEditoutdescribes";
             this.tbEditoutdescribes.PreventEnterBeep = true;
             this.tbEditoutdescribes.Size = new System.Drawing.Size(660, 21);
@@ -311,7 +320,7 @@
             // 
             // 
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(13, 92);
+            this.labelX10.Location = new System.Drawing.Point(66, 92);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(101, 23);
             this.labelX10.TabIndex = 18;
@@ -324,7 +333,7 @@
             // 
             this.tbEditPersonName.Border.Class = "TextBoxBorder";
             this.tbEditPersonName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditPersonName.Location = new System.Drawing.Point(446, 60);
+            this.tbEditPersonName.Location = new System.Drawing.Point(499, 60);
             this.tbEditPersonName.Name = "tbEditPersonName";
             this.tbEditPersonName.PreventEnterBeep = true;
             this.tbEditPersonName.Size = new System.Drawing.Size(287, 21);
@@ -337,7 +346,7 @@
             // 
             // 
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(383, 56);
+            this.labelX9.Location = new System.Drawing.Point(436, 56);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(83, 23);
             this.labelX9.TabIndex = 13;
@@ -350,7 +359,7 @@
             // 
             this.tbEditPersonCode.Border.Class = "TextBoxBorder";
             this.tbEditPersonCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditPersonCode.Location = new System.Drawing.Point(446, 22);
+            this.tbEditPersonCode.Location = new System.Drawing.Point(499, 22);
             this.tbEditPersonCode.Name = "tbEditPersonCode";
             this.tbEditPersonCode.PreventEnterBeep = true;
             this.tbEditPersonCode.Size = new System.Drawing.Size(287, 21);
@@ -364,7 +373,7 @@
             // 
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(383, 22);
+            this.labelX8.Location = new System.Drawing.Point(436, 22);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(83, 23);
             this.labelX8.TabIndex = 11;
@@ -374,7 +383,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1101, 632);
+            this.ClientSize = new System.Drawing.Size(1267, 632);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.dataGridViewX1);
             this.Name = "FrmReturnTool";
@@ -411,6 +420,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tbModel;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbPosition;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbOutStoreTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tbOutDescribe;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbPersonCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbPersonName;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbCheckTime;

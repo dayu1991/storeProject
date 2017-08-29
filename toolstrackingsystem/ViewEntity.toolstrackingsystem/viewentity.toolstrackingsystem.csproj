@@ -64,6 +64,7 @@
     <Compile Include="view\ToolInfoForScrapFrmEntity.cs" />
     <Compile Include="view\ToolInfoForStockInfoEntity.cs" />
     <Compile Include="view\ToolInfoInStoreEntity.cs" />
+    <Compile Include="view\ToolPackViewEntity.cs" />
     <Compile Include="view\ToolPrepairEntity.cs" />
     <Compile Include="view\ToolReturnEntity.cs" />
     <Compile Include="view\UserInfoEntity.cs" />

@@ -63,10 +63,6 @@
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="NodaTime">
       <HintPath>..\packages\NodaTime.1.3.4\lib\net35-Client\NodaTime.dll</HintPath>
     </Reference>
@@ -186,6 +182,12 @@
     </Compile>
     <Compile Include="地址管理\FrmEditAddress.Designer.cs">
       <DependentUpon>FrmEditAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="工具包查询\ToolPackView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="工具包查询\ToolPackView.Designer.cs">
+      <DependentUpon>ToolPackView.cs</DependentUpon>
     </Compile>
     <Compile Include="工具包管理\FrmToolPackManage.cs">
       <SubType>Form</SubType>
@@ -508,6 +510,9 @@
     <EmbeddedResource Include="入库查询\Report4.rdlc" />
     <EmbeddedResource Include="地址管理\FrmEditAddress.resx">
       <DependentUpon>FrmEditAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="工具包查询\ToolPackView.resx">
+      <DependentUpon>ToolPackView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="工具包管理\FrmToolPackManage.resx">
       <DependentUpon>FrmToolPackManage.cs</DependentUpon>

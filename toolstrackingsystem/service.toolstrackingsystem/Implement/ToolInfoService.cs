@@ -88,7 +88,6 @@ namespace service.toolstrackingsystem
         {
             return _toolInfoRepository.IsExistsByCode(toolCode);
         }
-
         /// <summary>
         /// 获取工具列表
         /// </summary>
@@ -519,7 +518,60 @@ namespace service.toolstrackingsystem
         {
             return _toolInfoRepository.IsExistToolByType(typeName, type);
         }
-
-
+       /// <summary>
+       /// 查询所有的包分页信息
+       /// </summary>
+       /// <param name="packCode"></param>
+       /// <param name="packName"></param>
+       /// <param name="pageIndex"></param>
+       /// <param name="pageSize"></param>
+       /// <param name="Count"></param>
+       /// <returns></returns>
+        public List<ToolPackViewEntity> GetPackInfoList(string packCode, string packName, int pageIndex, int pageSize, out long Count)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            string sql = "SELECT TOP " + pageSize + " a.* FROM (select PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a WHERE 1=1 ";
+            string sqlNot = " a.PackCode NOT IN (SELECT TOP " + (pageIndex - 1) * pageSize + " a.PackCode FROM  (select PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a WHERE 1=1 ";
+            string sqlCount = "SELECT COUNT(1) FROM (select PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a WHERE 1=1 ";
+            if (!string.IsNullOrEmpty(packCode))
+            {
+                sql += " AND a.PackCode LIKE @packCode ";
+                sqlNot += " AND a.PackCode LIKE @packCode ";
+                sqlCount += " AND a.PackCode LIKE @packCode ";
+                parameters.Add("packCode",string.Format("%{0}%",packCode));
+            }
+            if (!string.IsNullOrEmpty(packName))
+            {
+                sql += " AND a.PackName LIKE @packName ";
+                sqlNot += " AND a.PackName LIKE @packName ";
+                sqlCount += " AND a.PackName LIKE @packName ";
+                parameters.Add("packName", string.Format("%{0}%", packName));
+            }
+            sqlNot += ")";
+            string sqlFinal = string.Format("{0} AND {1}",sql,sqlNot);
+            return _multiTableQueryRepository.QueryList<ToolPackViewEntity>(sqlFinal, parameters, out Count, sqlCount).ToList();
+        }
+       /// <summary>
+       /// 查询导出的包信息
+       /// </summary>
+       /// <param name="packCode"></param>
+       /// <param name="packName"></param>
+       /// <returns></returns>
+        public List<ToolPackViewEntity> GetPackInfoList(string packCode, string packName)
+        {
+            string sql = "SELECT * FROM (select PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a WHERE 1=1 ";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrEmpty(packCode))
+            {
+                sql += " AND a.PackCode LIKE @packCode ";
+                parameters.Add("packCode", string.Format("%{0}%", packCode));
+            }
+            if (!string.IsNullOrEmpty(packName))
+            {
+                sql += " AND a.PackName LIKE @packName ";
+                parameters.Add("packName", string.Format("%{0}%", packName));
+            }
+            return _multiTableQueryRepository.QueryList<ToolPackViewEntity>(sql, parameters).ToList();
+        }
     }
 }

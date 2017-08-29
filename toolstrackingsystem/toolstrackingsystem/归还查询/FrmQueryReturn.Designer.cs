@@ -147,6 +147,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ToolList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.ToolList_dataGridViewX.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.ToolList_dataGridViewX.RowTemplate.Height = 23;
             this.ToolList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.ToolList_dataGridViewX.Size = new System.Drawing.Size(882, 361);

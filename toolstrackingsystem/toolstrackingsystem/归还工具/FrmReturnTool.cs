@@ -47,14 +47,11 @@ namespace toolstrackingsystem
         private static Socket SocketClient;
         private static string ScanIpAddress = CommonHelper.GetConfigValue("scanAddress");
         private static string ScanPort = CommonHelper.GetConfigValue("scanPort");
-
-
         public FrmReturnTool()
         {
             this.EnableGlass = false;
             InitializeComponent();
         }
-
         private void btnAddTool_Click(object sender, EventArgs e)
         {
             LoadToolData();
@@ -91,6 +88,7 @@ namespace toolstrackingsystem
                             entity.Location = tool.Location;
                             entity.Remarks = tool.Remarks;
                             entity.OutStoreTime = toolOut.OutStoreTime;
+                            entity.OutDescribes = toolOut.outdescribes;
                             entity.PersonCode = toolOut.PersonCode;
                             entity.PersonName = toolOut.PersonName;
                             entity.OutBackStoreID = toolOut.OutBackStoreID;
@@ -139,6 +137,7 @@ namespace toolstrackingsystem
                                     entity.Location = item.Location;
                                     entity.Remarks = item.Remarks;
                                     entity.OutStoreTime = toolOut.OutStoreTime;
+                                    entity.OutDescribes = toolOut.outdescribes;
                                     entity.PersonCode = toolOut.PersonCode;
                                     entity.PersonName = toolOut.PersonName;
                                     entity.OutBackStoreID = toolOut.OutBackStoreID;
@@ -154,7 +153,6 @@ namespace toolstrackingsystem
                 }
             }
         }
-
         private void btnReturn_Click(object sender, EventArgs e)
         {
             if (ToolInfoList.Count == 0)
@@ -203,7 +201,6 @@ namespace toolstrackingsystem
                 return;
             }
         }
-
         private void btnReturnContinue_Click(object sender, EventArgs e)
         {
             ToolInfoList = new List<OutBackStoreEntity>();
@@ -213,7 +210,6 @@ namespace toolstrackingsystem
             tbEditPersonName.Text = "";
             tbEditoutdescribes.Text = "";
         }
-
         private void FrmReturnTool_Load(object sender, EventArgs e)
         {
             StartScanListion(logger);
@@ -314,13 +310,11 @@ namespace toolstrackingsystem
         }
 
         #endregion
-
         private void tbEditCode_TextChanged(object sender, EventArgs e)
         {
             LoadToolData();
 
         }
-
         private void tbEditPersonCode_TextChanged(object sender, EventArgs e)
         {
             tbEditPersonName.Text = "";
@@ -343,9 +337,6 @@ namespace toolstrackingsystem
 
             }
         }
-
-
-
         private void StartScanListion(ILog logger)
         {
             if (string.IsNullOrWhiteSpace(ScanIpAddress) || string.IsNullOrWhiteSpace(ScanPort))
@@ -413,7 +404,6 @@ namespace toolstrackingsystem
                 }
             }
         }
-
         private void FrmReturnTool_FormClosed(object sender, FormClosedEventArgs e)
         {
             IsConnect = false;

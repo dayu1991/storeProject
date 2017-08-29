@@ -241,9 +241,9 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         public List<ToolReturnEntity> GetToolReturnList(string toolCode, string backPersonCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count)
         {
-            string sql = "select top " + pageSize + " tl.TypeName,tl.ChildTypeName,tl.PackCode,tl.PackName,obs.ToolCode,obs.ToolName,obs.BackPesonCode,obs.BackPersonName,obs.BackTime,obs.backdescribes,sui.UserName as OptionPerson from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode join Sys_User_Info sui on obs.OptionPerson=sui.UserCode  WHERE 1=1 ";
-            string sqlNotStr = "ob.OutBackStoreID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [OutBackStoreID] FROM [t_OutBackStore] WHERE 1=1 ";
-            string sqlCount = "SELECT COUNT(*) FROM [t_OutBackStore] WHERE 1=1 ";
+            string sql = "select top " + pageSize + " tl.TypeName,tl.ChildTypeName,tl.PackCode,tl.PackName,obs.ToolCode,obs.ToolName,obs.BackPesonCode,obs.BackPersonName,obs.BackTime,obs.backdescribes,OptionPerson = case  when sui.UserName is null then tpi.PersonName  else  sui.UserName end from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode left join Sys_User_Info sui on obs.OptionPerson=sui.UserCode left join t_PersonInfo tpi on obs.OptionPerson=tpi.PersonCode  WHERE obs.IsBack='0' ";
+            string sqlNotStr = "obs.OutBackStoreID NOT IN (SELECT TOP "+(pageIndex-1)*pageSize+" obs.[OutBackStoreID] from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode left join Sys_User_Info sui on obs.OptionPerson=sui.UserCode left join t_PersonInfo tpi on obs.OptionPerson=tpi.PersonCode  WHERE obs.IsBack='0' ";
+            string sqlCount = "SELECT COUNT(*) FROM [t_OutBackStore] WHERE IsBack='0' ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
@@ -279,8 +279,7 @@ namespace service.toolstrackingsystem
             }
             sqlNotStr += ")";
             string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
-            return _mutiTableQueryRepository.QueryList<ToolReturnEntity>(sql, parameters, out Count, sqlCount, false).ToList();
-
+            return _mutiTableQueryRepository.QueryList<ToolReturnEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
         }
         /// <summary>
         /// 获取领用查询所需的归还工具导出信息
