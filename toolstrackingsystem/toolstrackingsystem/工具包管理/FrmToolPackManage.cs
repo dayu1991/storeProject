@@ -365,5 +365,13 @@ namespace toolstrackingsystem
                 cargroupinfo_textBox.Enabled = false;
             }
         }
+
+        private void clear_button_Click(object sender, EventArgs e)
+        {
+            Pack_Code_textBox.Text = "";
+            Pack_Name_textBox.Text = "";
+            cargroupinfo_textBox.Text = "";
+            type_comboBox.SelectedValue = 1;
+        }
     }
 }

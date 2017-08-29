@@ -195,6 +195,11 @@ namespace toolstrackingsystem
                 pagerControl1.DrawControl(Convert.ToInt32(Count));
                 this.dataGridViewX1.AutoGenerateColumns = false;
                 this.dataGridViewX1.DataSource = resultEntity;
+                for (int i = 0; i < dataGridViewX1.Columns.Count; i++)
+                {
+                    dataGridViewX1.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
+                }
+                dataGridViewX1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 this.dataGridViewX1.Rows[0].Selected = true;
                 slectedIndex = 0;
                 SelectedToolCode = dataGridViewX1.Rows[0].Cells[4].Value.ToString();
@@ -273,8 +278,16 @@ namespace toolstrackingsystem
                 }
                 else
                 {
-                    bool toolEntity = _toolInfoService.DelToolByCode(SelectedToolCode);
-                    LoadData();
+                    //bool toolEntity = _toolInfoService.DelToolByCode(SelectedToolCode);
+                    if (_toolInfoService.DelToolByCode(SelectedToolCode))
+                    {
+                        MessageBox.Show("删除成功");
+                        LoadData();
+                    }
+                    else {
+                        MessageBox.Show("删除失败");
+                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -395,7 +408,6 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--ToolInfoManage--ExcelOutBtn_Click", ex.Message, ex.StackTrace, ex.Source);
             }
         }
-
         private void ExcelIn_button_Click(object sender, EventArgs e)
         {
             try
@@ -596,34 +608,44 @@ namespace toolstrackingsystem
                                 MessageBox.Show("文档数据为空");
                                 return;
                             }
-                            bool IsSuccess = false;
-                            LoadingHandler.Show(this, args =>
-                            {
-                                for (int i = 0; i < 100; i++)
-                                {
-                                    args.Execute(ex =>
-                                    {
-                                        IsSuccess = _toolInfoService.ImportToolInfoExcel(InfoList);
-                                        //if (_toolInfoService.ImportToolInfoExcel(InfoList))
-                                        //{
-                                        //    MessageBox.Show(string.Format("成功导入{0}条数据", InfoList.Count));
-                                        //    Search_buttonX_Click(sender, e);
-                                        //}
-                                        //else
-                                        //{
-                                        //    MessageBox.Show("导入数据失败");
-                                        //    return;
-                                        //}
-                                    });
-                                    System.Threading.Thread.Sleep(50);
-                                }
-                            });
-                            if (IsSuccess)
+                            //bool IsSuccess = false;
+                            //LoadingHandler.Show(this, args =>
+                            //{
+                            //    for (int i = 0; i < 100; i++)
+                            //    {
+                            //        args.Execute(ex =>
+                            //        {
+                            //            IsSuccess = _toolInfoService.ImportToolInfoExcel(InfoList);
+                            //            //if (_toolInfoService.ImportToolInfoExcel(InfoList))
+                            //            //{
+                            //            //    MessageBox.Show(string.Format("成功导入{0}条数据", InfoList.Count));
+                            //            //    Search_buttonX_Click(sender, e);
+                            //            //}
+                            //            //else
+                            //            //{
+                            //            //    MessageBox.Show("导入数据失败");
+                            //            //    return;
+                            //            //}
+                            //        });
+                            //        System.Threading.Thread.Sleep(50);
+                            //    }
+                            //});
+                            //if (IsSuccess)
+                            //{
+                            //    MessageBox.Show(string.Format("成功导入{0}条数据", InfoList.Count));
+                            //    Search_buttonX_Click(sender, e);
+                            //}
+                            //else {
+                            //    MessageBox.Show("导入数据失败");
+                            //    return;
+                            //}
+                            if (_toolInfoService.ImportToolInfoExcel(InfoList))
                             {
                                 MessageBox.Show(string.Format("成功导入{0}条数据", InfoList.Count));
                                 Search_buttonX_Click(sender, e);
                             }
-                            else {
+                            else
+                            {
                                 MessageBox.Show("导入数据失败");
                                 return;
                             }
@@ -658,7 +680,7 @@ namespace toolstrackingsystem
         }
 
 
-        //#region 接收服务端发来信息的方法
+        #region 接收服务端发来信息的方法
         //private void RecMsg()
         //{
         //    while (true) //持续监听服务端发来的消息
@@ -702,7 +724,7 @@ namespace toolstrackingsystem
         //    }
         //}
 
-        //#endregion
+        #endregion
 
         private void Print_button_Click(object sender, EventArgs e)
         {

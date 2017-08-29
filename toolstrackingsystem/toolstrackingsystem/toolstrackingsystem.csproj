@@ -271,6 +271,12 @@
     <Compile Include="归还查询\FrmQueryReturn.Designer.cs">
       <DependentUpon>FrmQueryReturn.cs</DependentUpon>
     </Compile>
+    <Compile Include="报废工具说明\FrmScrapToolManageDescribe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="报废工具说明\FrmScrapToolManageDescribe.Designer.cs">
+      <DependentUpon>FrmScrapToolManageDescribe.cs</DependentUpon>
+    </Compile>
     <Compile Include="数据管理\FrmDBOption.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -558,6 +564,9 @@
       <DependentUpon>FrmQueryReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="归还查询\Report9.rdlc" />
+    <EmbeddedResource Include="报废工具说明\FrmScrapToolManageDescribe.resx">
+      <DependentUpon>FrmScrapToolManageDescribe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="数据管理\FrmDBOption.resx">
       <DependentUpon>FrmDBOption.cs</DependentUpon>
     </EmbeddedResource>

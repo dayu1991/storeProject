@@ -20,5 +20,9 @@ namespace dbentity.toolstrackingsystem
         public string ScrapTime { get; set; }
         public string Remarks { get; set; }
         public string OptionPerson { get; set; }
+        public string PackCode { get; set; }
+        public string PackName { get; set; }
+        public string RemarkPerson { get; set; }
+        public string RemarkTime { get; set; }
     }
 }

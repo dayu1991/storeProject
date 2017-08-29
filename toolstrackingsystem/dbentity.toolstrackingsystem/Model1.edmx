@@ -139,14 +139,18 @@
         </EntityType>
         <EntityType Name="t_ScrapToolInfo">
           <Key>
-            <PropertyRef Name="ToolCode" />
+            <PropertyRef Name="ScrapID" />
           </Key>
           <Property Name="ScrapID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ToolCode" Type="varchar" MaxLength="24" Nullable="false" />
           <Property Name="ToolName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="PackCode" Type="varchar" MaxLength="50" />
+          <Property Name="PackName" Type="varchar" MaxLength="50" />
           <Property Name="ScrapTime" Type="varchar" MaxLength="24" />
           <Property Name="Remarks" Type="varchar" MaxLength="1024" />
           <Property Name="OptionPerson" Type="varchar" MaxLength="32" />
+          <Property Name="RemarkPerson" Type="varchar" MaxLength="50" />
+          <Property Name="RemarkTime" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="t_ToolInfo">
           <Key>
@@ -350,7 +354,7 @@
         </EntityType>
         <EntityType Name="t_ScrapToolInfo">
           <Key>
-            <PropertyRef Name="ToolCode" />
+            <PropertyRef Name="ScrapID" />
           </Key>
           <Property Name="ScrapID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ToolCode" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
@@ -358,6 +362,10 @@
           <Property Name="ScrapTime" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
           <Property Name="Remarks" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
           <Property Name="OptionPerson" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="PackCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PackName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RemarkPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RemarkTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t_ToolInfo">
           <Key>
@@ -551,6 +559,10 @@
           <EntitySetMapping Name="t_ScrapToolInfo">
             <EntityTypeMapping TypeName="cangku_manage_dbModel.t_ScrapToolInfo">
               <MappingFragment StoreEntitySet="t_ScrapToolInfo">
+                <ScalarProperty Name="RemarkTime" ColumnName="RemarkTime" />
+                <ScalarProperty Name="RemarkPerson" ColumnName="RemarkPerson" />
+                <ScalarProperty Name="PackName" ColumnName="PackName" />
+                <ScalarProperty Name="PackCode" ColumnName="PackCode" />
                 <ScalarProperty Name="OptionPerson" ColumnName="OptionPerson" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="ScrapTime" ColumnName="ScrapTime" />

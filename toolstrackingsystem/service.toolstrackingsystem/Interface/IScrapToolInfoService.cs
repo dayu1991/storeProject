@@ -27,6 +27,6 @@ namespace service.toolstrackingsystem
         /// </summary>
         /// <param name="toolCode"></param>
         /// <returns></returns>
-        List<ScrapToolInfoEntity> GetScrapToolInfoList(string toolCode);
+        List<t_ScrapToolInfo> GetScrapToolInfoList(string toolCode);
     }
 }
