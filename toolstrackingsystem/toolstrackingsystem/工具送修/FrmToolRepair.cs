@@ -58,6 +58,15 @@ namespace toolstrackingsystem
             long Count;
             //获取分页的数据
             resultList =_toolInfoService.GetToolInfoForRepair(toolCode, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
+            //如果查询的数据存在，则清空对话框内容
+            if (resultList.Count > 0)
+            {
+                ToolCode_textBox.Text = "";
+            }
+            else {
+                MessageBox.Show("工具不存在，请重新输入工具编码！");
+                return;
+            }
             TollList_dataGridViewX.DataSource = resultList;
             pagerControl1.DrawControl(Convert.ToInt32(Count));
             for (int i = 0; i < TollList_dataGridViewX.Columns.Count; i++)
@@ -127,6 +136,16 @@ namespace toolstrackingsystem
             {
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmToolRepair--Reset_button_Click", ex.Message, ex.StackTrace, ex.Source);
             }
+        }
+        /// <summary>
+        /// 清空对话框和列表内容
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Clear_button_Click(object sender, EventArgs e)
+        {
+            ToolCode_textBox.Text = "";
+            TollList_dataGridViewX.DataSource = "";
         }
     }
 }

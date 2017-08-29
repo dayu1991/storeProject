@@ -15,11 +15,14 @@ namespace service.toolstrackingsystem
         private readonly IScrapToolInfoManageRepository _scrapToolInfoManageRepository;
         private readonly IMultiTableQueryRepository _mutiTableQueryRepository;
         private readonly IToolPackManageRepository _toolPackManageRepository;
-        public ScrapToolInfoService(IScrapToolInfoManageRepository scrapToolInfoManageRepository, IMultiTableQueryRepository multiTableQueryRepository, IToolPackManageRepository toolPackManageRepository)
+        private readonly IInStoreRepository _inStoreRepository;
+        public ScrapToolInfoService(IScrapToolInfoManageRepository scrapToolInfoManageRepository, IMultiTableQueryRepository multiTableQueryRepository, IToolPackManageRepository toolPackManageRepository,
+            InStoreRepository inStoreRepository)
         {
             this._scrapToolInfoManageRepository = scrapToolInfoManageRepository;
             this._mutiTableQueryRepository = multiTableQueryRepository;
             this._toolPackManageRepository = toolPackManageRepository;
+            this._inStoreRepository = inStoreRepository;
         }
         /// <summary>
         /// 通过工具编码精确查找工具信息
@@ -52,43 +55,43 @@ namespace service.toolstrackingsystem
             t_ScrapToolInfo scrapToolInfo = new t_ScrapToolInfo();
             t_ToolInfo toolInfo = new t_ToolInfo();
             toolInfo = GetToolInfoByToolCode(toolCode);
-            //1.查询toolInfo信息，更新IsActive为0
-            if (toolInfo== null)
+            //1.删除工具表中基础信息
+            IsSuccess =_toolPackManageRepository.Delete(toolInfo);
+            //2.清除库存中该工具的信息
+            IsSuccess = _inStoreRepository.DeleteByCode(toolCode);
+            //3.在作废信息表中插入作废的ToolInfo
+            scrapToolInfo.ToolCode = toolInfo.ToolCode;
+            scrapToolInfo.ToolName = toolInfo.ToolName;
+            scrapToolInfo.PackCode = toolInfo.PackCode;
+            scrapToolInfo.PackName = toolInfo.PackName;
+            scrapToolInfo.ScrapTime = DateTime.Now.ToString();
+            scrapToolInfo.Remarks = toolInfo.Remarks;
+            scrapToolInfo.OptionPerson = optionPerson;
+            IsSuccess = _scrapToolInfoManageRepository.InsertScrapToolInfo(scrapToolInfo);
+            if (IsSuccess)
             {
                 return scrapToolInfo;
-            }
-            toolInfo.IsActive = "0";
-            IsSuccess =_toolPackManageRepository.UpdateToolStatus(toolInfo.ToolCode);
-            if (_toolPackManageRepository.UpdateToolStatus(toolInfo.ToolCode))
-            {
-                //2.在作废信息表中插入作废的ToolInfo
-                scrapToolInfo.ToolCode = toolInfo.ToolCode;
-                scrapToolInfo.ToolName = toolInfo.ToolName;
-                scrapToolInfo.ScrapTime = DateTime.Now.ToString();
-                scrapToolInfo.Remarks = toolInfo.Remarks;
-                scrapToolInfo.OptionPerson = optionPerson;
-                //IsSuccess = _scrapToolInfoManageRepository.InsertScrapToolInfo(scrapToolInfo);
             }
             else {
-                return scrapToolInfo;
+                return null;
             }
-            return scrapToolInfo;
         }
         /// <summary>
         /// 查找满足条件的废除的工具信息
         /// </summary>
         /// <param name="toolCode"></param>
         /// <returns></returns>
-        public List<ScrapToolInfoEntity> GetScrapToolInfoList(string toolCode)
+        public List<t_ScrapToolInfo> GetScrapToolInfoList(string toolCode)
         {
-            string sql = "SELECT ToolCode,ToolName,ScrapTime,Remarks,OptionPerson FROM t_ScrapToolInfo WHERE 1=1 ";
+            string sql = "SELECT * FROM t_ScrapToolInfo WHERE 1=1 ";
             DynamicParameters parameter = new DynamicParameters();
             if (!string.IsNullOrEmpty(toolCode))
             {
-                sql += " AND ToolCode = @toolCode";
-                parameter.Add("toolCode",toolCode);            
+                sql += " AND ToolCode LIKE @toolCode";
+                parameter.Add("toolCode", string.Format("%{0}%", toolCode));            
             }
-            return _mutiTableQueryRepository.QueryList<ScrapToolInfoEntity>(sql, parameter).ToList();
+            //return _mutiTableQueryRepository.QueryList<ScrapToolInfoEntity>(sql, parameter).ToList();
+            return _scrapToolInfoManageRepository.QueryList(sql, parameter).ToList();
         }
     }
 }
