@@ -193,12 +193,8 @@ namespace toolstrackingsystem
                 ToolInfoList_dataGridViewX.Columns[4].HeaderText = "型号";
                 ToolInfoList_dataGridViewX.Columns[5].HeaderText = "位置";
                 ToolInfoList_dataGridViewX.Columns[6].HeaderText = "备注";
-<<<<<<< HEAD
-                ToolInfoList_dataGridViewX.FirstDisplayedScrollingRowIndex = ToolInfoList_dataGridViewX.RowCount-1;
-=======
                 //光标定位到最下行
                 ToolInfoList_dataGridViewX.FirstDisplayedScrollingRowIndex = ToolInfoList_dataGridViewX.RowCount - 1;
->>>>>>> 48e3576962c93a89bf5e210be9769fb8a7e3b49c
             }
             catch (Exception ex) {
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmToolPackManage--Add_button_Click", ex.Message, ex.StackTrace, ex.Source);
