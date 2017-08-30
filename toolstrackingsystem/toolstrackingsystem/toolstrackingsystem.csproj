@@ -676,7 +676,10 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="工具返回确认\" />
+    <Folder Include="工具送修接收%28服务端%29\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\common.toolstrackingsystem\common.toolstrackingsystem.csproj">
       <Project>{65449b5a-59b0-414f-991e-6f4a1b995150}</Project>

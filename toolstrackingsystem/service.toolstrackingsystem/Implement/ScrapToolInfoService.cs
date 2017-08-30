@@ -29,7 +29,7 @@ namespace service.toolstrackingsystem
         /// </summary>
         /// <param name="toolCode"></param>
         /// <returns></returns>
-        public List<ToolInfoForScrapFrmEntity> GetToolInfoForScrapList(string toolCode,string packCode)
+        public List<ToolInfoForScrapFrmEntity> GetToolInfoForScrapList(string toolCode,string childTypeName)
         {
             string sql = "SELECT TypeName,ChildTypeName,ToolCode,ToolName,PackCode,PackName,Models,Location,Remarks FROM t_ToolInfo WHERE 1=1 AND IsActive='1'";
             DynamicParameters parameter = new DynamicParameters();
@@ -38,10 +38,10 @@ namespace service.toolstrackingsystem
                 sql += " AND ToolCode LIKE @toolCode ";
                 parameter.Add("toolCode", string.Format("%{0}%", toolCode));
             }
-            if (!string.IsNullOrEmpty(packCode))
+            if (!string.IsNullOrEmpty(childTypeName))
             {
-                sql += " AND PackCode LIKE @packCode ";
-                parameter.Add("packCode", string.Format("%{0}%", packCode));
+                sql += " AND ChildTypeName = @childTypeName ";
+                parameter.Add("childTypeName", childTypeName);
             }
             return _mutiTableQueryRepository.QueryList<ToolInfoForScrapFrmEntity>(sql, parameter).ToList();
         }
@@ -69,6 +69,8 @@ namespace service.toolstrackingsystem
             //2.清除库存中该工具的信息
             IsSuccess = _inStoreRepository.DeleteByCode(toolCode);
             //3.在作废信息表中插入作废的ToolInfo
+            scrapToolInfo.TypeName = toolInfo.TypeName;
+            scrapToolInfo.ChildTypeName = toolInfo.ChildTypeName;
             scrapToolInfo.ToolCode = toolInfo.ToolCode;
             scrapToolInfo.ToolName = toolInfo.ToolName;
             scrapToolInfo.PackCode = toolInfo.PackCode;
@@ -90,9 +92,11 @@ namespace service.toolstrackingsystem
         /// </summary>
         /// <param name="toolCode"></param>
         /// <returns></returns>
-        public List<t_ScrapToolInfo> GetScrapToolInfoList(string toolCode,string packCode)
+        public List<t_ScrapToolInfo> GetScrapToolInfoList(string toolCode, string childTypeName)
         {
             string sql = @"SELECT sti.[ScrapID]
+      ,sti.[TypeName] 
+      ,sti.[ChildTypeName]
       ,sti.[ToolCode]
       ,sti.[ToolName]
       ,sti.[PackCode]
@@ -112,10 +116,10 @@ namespace service.toolstrackingsystem
                 sql += " AND sti.ToolCode LIKE @toolCode ";
                 parameter.Add("toolCode", string.Format("%{0}%", toolCode));            
             }
-            if (!string.IsNullOrEmpty(packCode))
+            if (!string.IsNullOrEmpty(childTypeName))
             {
-                sql += " AND sti.PackCode LIKE @packCode ";
-                parameter.Add("packCode", string.Format("%{0}%", packCode));
+                sql += " AND sti.CchildTypeName = @childTypeName ";
+                parameter.Add("childTypeName", childTypeName);
             }
             //return _mutiTableQueryRepository.QueryList<ScrapToolInfoEntity>(sql, parameter).ToList();
             return _scrapToolInfoManageRepository.QueryList(sql, parameter).ToList();
@@ -125,9 +129,11 @@ namespace service.toolstrackingsystem
         /// </summary>
         /// <param name="toolCode"></param>
         /// <returns></returns>
-        public List<t_ScrapToolInfo> GetScrapToolInfoList(string toolCode, string packCode, int pageIndex, int pageSize, out long Count)
+        public List<t_ScrapToolInfo> GetScrapToolInfoList(string toolCode, string childTypeName, int pageIndex, int pageSize, out long Count)
         {
-            string sql = "SELECT TOP "+pageSize+@" sti.[ScrapID]
+            string sql = "SELECT TOP "+pageSize+ @" sti.[ScrapID]
+      ,sti.[TypeName] 
+      ,sti.[ChildTypeName]
       ,sti.[ToolCode]
       ,sti.[ToolName]
       ,sti.[PackCode]
@@ -153,12 +159,12 @@ namespace service.toolstrackingsystem
                 sqlCount += " AND sti.ToolCode LIKE @toolCode ";
                 parameter.Add("toolCode", string.Format("%{0}%", toolCode));
             }
-            if (!string.IsNullOrEmpty(packCode))
+            if (!string.IsNullOrEmpty(childTypeName))
             {
-                sql += " AND sti.PackCode LIKE @packCode ";
-                sqlNot += " AND sti.PackCode LIKE @packCode ";
-                sqlCount += " AND sti.PackCode LIKE @packCode ";
-                parameter.Add("packCode", string.Format("%{0}%", packCode));
+                sql += " AND sti.ChildTypeName = @childTypeName ";
+                sqlNot += " AND sti.ChildTypeName = @childTypeName ";
+                sqlCount += " AND sti.ChildTypeName = @childTypeName ";
+                parameter.Add("packCode", childTypeName);
             }
             sqlNot += ")";
             string sqlFinal = string.Format("{0} AND {1} ",sql,sqlNot);

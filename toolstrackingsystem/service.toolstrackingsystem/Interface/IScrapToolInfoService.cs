@@ -28,13 +28,13 @@ namespace service.toolstrackingsystem
         /// </summary>
         /// <param name="toolCode"></param>
         /// <returns></returns>
-        List<t_ScrapToolInfo> GetScrapToolInfoList(string toolCode,string packCode);
+        List<t_ScrapToolInfo> GetScrapToolInfoList(string toolCode,string childTypeName);
         /// <summary>
         /// 查找满足条件的废除的工具信息(有分页)
         /// </summary>
         /// <param name="toolCode"></param>
         /// <returns></returns>
-        List<t_ScrapToolInfo> GetScrapToolInfoList(string toolCode, string packCode, int pageIndex, int pageSize, out long Count);
+        List<t_ScrapToolInfo> GetScrapToolInfoList(string toolCode, string childTypeName, int pageIndex, int pageSize, out long Count);
         /// <summary>
         /// 更新报废的工具备注
         /// </summary>

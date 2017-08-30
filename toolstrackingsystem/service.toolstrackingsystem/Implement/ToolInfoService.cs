@@ -19,7 +19,7 @@ namespace service.toolstrackingsystem
 
         private ICurrentCountInfoRepository _currentCountInfoRepository;
         private IOutBackStoreRepository _outBackStoreRepository;
-        private IToolPrepairRecordRepository _toolPrepairRecordRepository;
+        private IToolRepairRecordRepository _toolPrepairRecordRepository;
         private IToolPackManageRepository _toolPackManageRepository;
 
         private IMultiTableQueryRepository _multiTableQueryRepository;
@@ -28,7 +28,7 @@ namespace service.toolstrackingsystem
             IMultiTableQueryRepository multiTableQueryRepository,
             IInStoreRepository inStoreRepository,
             ICurrentCountInfoRepository currentCountInfoRepository,
-            IOutBackStoreRepository outBackStoreRepository,IToolPrepairRecordRepository toolPrepairRecordRepository,
+            IOutBackStoreRepository outBackStoreRepository,IToolRepairRecordRepository toolPrepairRecordRepository,
             IToolPackManageRepository toolPackManageRepository)
        {
            _toolCategoryInfoRepository = toolCategoryInfoRepository;

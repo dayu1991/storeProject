@@ -1,6 +1,6 @@
 ﻿namespace toolstrackingsystem
 {
-    partial class FrmPrepairTool
+    partial class FrmRepairTool
     {
         /// <summary>
         /// Required designer variable.

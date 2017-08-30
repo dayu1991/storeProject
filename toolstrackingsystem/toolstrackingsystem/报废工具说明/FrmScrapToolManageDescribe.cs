@@ -30,6 +30,7 @@ namespace toolstrackingsystem
         private IScrapToolInfoService _scrapToolInfoService;
         private IToolInfoService _toolInfoService;
         private IOutBackStoreService _outBackStoreService;
+        private IToolTypeService _toolTypeService;
         private int selectIndex=0;
         public FrmScrapToolManageDescribe()
         {
@@ -41,6 +42,17 @@ namespace toolstrackingsystem
             _scrapToolInfoService  =Program.container.Resolve<IScrapToolInfoService>() as ScrapToolInfoService;
             _toolInfoService = Program.container.Resolve<IToolInfoService>() as ToolInfoService;
             _outBackStoreService = Program.container.Resolve<IOutBackStoreService>() as OutBackStoreService;
+            _toolTypeService = Program.container.Resolve<IToolTypeService>() as ToolTypeService;
+            #region 初始化工具类别
+            List<t_ToolType> resultList = _toolTypeService.GetToolChildTypeList();
+            t_ToolType toolType = new t_ToolType();
+            toolType.TypeName = "全部";
+            resultList.Add(toolType);
+            this.ChildTypeName_comboBox.DataSource = resultList;
+            this.ChildTypeName_comboBox.DisplayMember = "TypeName";
+            this.ChildTypeName_comboBox.ValueMember = "TypeName";
+            this.ChildTypeName_comboBox.SelectedValue = "全部";
+            #endregion
         }
         private void ToolInfo_dataGridView_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
@@ -79,10 +91,10 @@ namespace toolstrackingsystem
         private void LoadData()
         {
             string toolCode = Scrap_ToolInfoCode_Detail_textBox.Text;
-            string packCode = packCode_textBox.Text;
+            string ChildTypeName = ChildTypeName_comboBox.SelectedValue.ToString()!="全部"?ChildTypeName_comboBox.SelectedValue.ToString():"";
             //数据总记录数
             long Count;
-            infoList = _scrapToolInfoService.GetScrapToolInfoList(toolCode,packCode,pagerControl1.PageIndex,pagerControl1.PageSize,out Count);
+            infoList = _scrapToolInfoService.GetScrapToolInfoList(toolCode, ChildTypeName, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
             ScrapTool_dataGridViewX2.DataSource = infoList;
             pagerControl1.DrawControl(Convert.ToInt32(Count));
             for (int i = 0; i < ScrapTool_dataGridViewX2.Columns.Count; i++)
@@ -92,15 +104,17 @@ namespace toolstrackingsystem
             ScrapTool_dataGridViewX2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             ScrapTool_dataGridViewX2.Columns[0].HeaderText = "ID";
             ScrapTool_dataGridViewX2.Columns[0].Visible = false;
-            ScrapTool_dataGridViewX2.Columns[0].HeaderText = "工具编码";
-            ScrapTool_dataGridViewX2.Columns[1].HeaderText = "名称";
-            ScrapTool_dataGridViewX2.Columns[2].HeaderText = "包编码";
-            ScrapTool_dataGridViewX2.Columns[3].HeaderText = "包名称";
-            ScrapTool_dataGridViewX2.Columns[4].HeaderText = "报废时间";
-            ScrapTool_dataGridViewX2.Columns[5].HeaderText = "备注";
-            ScrapTool_dataGridViewX2.Columns[6].HeaderText = "操作人员";
-            ScrapTool_dataGridViewX2.Columns[7].HeaderText = "备注操作人员";
-            ScrapTool_dataGridViewX2.Columns[8].HeaderText = "备注时间";
+            ScrapTool_dataGridViewX2.Columns[1].HeaderText = "配属";
+            ScrapTool_dataGridViewX2.Columns[2].HeaderText = "工具类别";
+            ScrapTool_dataGridViewX2.Columns[3].HeaderText = "工具编码";
+            ScrapTool_dataGridViewX2.Columns[4].HeaderText = "名称";
+            ScrapTool_dataGridViewX2.Columns[5].HeaderText = "包编码";
+            ScrapTool_dataGridViewX2.Columns[6].HeaderText = "包名称";
+            ScrapTool_dataGridViewX2.Columns[7].HeaderText = "报废时间";
+            ScrapTool_dataGridViewX2.Columns[8].HeaderText = "备注";
+            ScrapTool_dataGridViewX2.Columns[9].HeaderText = "操作人员";
+            ScrapTool_dataGridViewX2.Columns[10].HeaderText = "备注操作人员";
+            ScrapTool_dataGridViewX2.Columns[11].HeaderText = "备注时间";
 
         }
         /// <summary>
@@ -113,7 +127,7 @@ namespace toolstrackingsystem
             try
             {
                 string toolCode = Scrap_ToolInfoCode_Detail_textBox.Text;
-                string packCode = packCode_textBox.Text;
+                string ChildTypeName = ChildTypeName_comboBox.SelectedValue.ToString() != "全部" ? ChildTypeName_comboBox.SelectedValue.ToString() : "";
                 SaveFileDialog fileDialog = new SaveFileDialog();
                 fileDialog.Filter = "Excel(*.xls)|*.xls|Excel(*.xlsx)|*.xlsx";
                 if (fileDialog.ShowDialog() == DialogResult.OK)
@@ -138,7 +152,7 @@ namespace toolstrackingsystem
                         cell.SetCellValue(item.HeaderText);
                     }
                     //获取无分页数据
-                    infoList = _scrapToolInfoService.GetScrapToolInfoList(toolCode,packCode);
+                    infoList = _scrapToolInfoService.GetScrapToolInfoList(toolCode, ChildTypeName);
                     // 添加数据
                     for (int i = 0; i < infoList.Count; i++)
                     {
@@ -146,29 +160,35 @@ namespace toolstrackingsystem
                         row = sheet.CreateRow(i + 1);
                         NPOI.SS.UserModel.ICell cell = row.CreateCell(0);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.ToolCode);
+                        cell.SetCellValue(item.TypeName);
                         cell = row.CreateCell(1);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.ToolName);
+                        cell.SetCellValue(item.ChildTypeName);
                         cell = row.CreateCell(2);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.PackCode);
+                        cell.SetCellValue(item.ToolCode);
                         cell = row.CreateCell(3);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.PackName);
+                        cell.SetCellValue(item.ToolName);
                         cell = row.CreateCell(4);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.ScrapTime);
+                        cell.SetCellValue(item.PackCode);
                         cell = row.CreateCell(5);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.Remarks);
+                        cell.SetCellValue(item.PackName);
                         cell = row.CreateCell(6);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.OptionPerson);
+                        cell.SetCellValue(item.ScrapTime);
                         cell = row.CreateCell(7);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.RemarkPerson);
+                        cell.SetCellValue(item.Remarks);
                         cell = row.CreateCell(8);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.OptionPerson);
+                        cell = row.CreateCell(9);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.RemarkPerson);
+                        cell = row.CreateCell(10);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.RemarkTime);
                     }

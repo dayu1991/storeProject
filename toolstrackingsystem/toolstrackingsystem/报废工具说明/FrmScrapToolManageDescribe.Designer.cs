@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.packCode_textBox = new System.Windows.Forms.TextBox();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.Set_Instead_button = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -42,6 +41,7 @@
             this.Scrap_ToolInfoCode_Detail_textBox = new System.Windows.Forms.TextBox();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.Search_Scraptool_button = new DevComponents.DotNetBar.ButtonX();
+            this.ChildTypeName_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.groupPanel3.SuspendLayout();
             this.groupPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScrapTool_dataGridViewX2)).BeginInit();
@@ -51,7 +51,7 @@
             // 
             this.groupPanel3.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel3.Controls.Add(this.packCode_textBox);
+            this.groupPanel3.Controls.Add(this.ChildTypeName_comboBox);
             this.groupPanel3.Controls.Add(this.labelX1);
             this.groupPanel3.Controls.Add(this.Set_Instead_button);
             this.groupPanel3.Controls.Add(this.groupPanel4);
@@ -93,13 +93,6 @@
             this.groupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel3.TabIndex = 11;
             // 
-            // packCode_textBox
-            // 
-            this.packCode_textBox.Location = new System.Drawing.Point(94, 22);
-            this.packCode_textBox.Name = "packCode_textBox";
-            this.packCode_textBox.Size = new System.Drawing.Size(125, 21);
-            this.packCode_textBox.TabIndex = 24;
-            // 
             // labelX1
             // 
             this.labelX1.BackColor = System.Drawing.Color.Transparent;
@@ -111,7 +104,7 @@
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(66, 23);
             this.labelX1.TabIndex = 23;
-            this.labelX1.Text = "包编码:";
+            this.labelX1.Text = "工具类别:";
             // 
             // Set_Instead_button
             // 
@@ -260,6 +253,18 @@
             this.Search_Scraptool_button.Text = "查询";
             this.Search_Scraptool_button.Click += new System.EventHandler(this.Search_Scraptool_button_Click);
             // 
+            // ChildTypeName_comboBox
+            // 
+            this.ChildTypeName_comboBox.DisplayMember = "Text";
+            this.ChildTypeName_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ChildTypeName_comboBox.FormattingEnabled = true;
+            this.ChildTypeName_comboBox.ItemHeight = 15;
+            this.ChildTypeName_comboBox.Location = new System.Drawing.Point(93, 22);
+            this.ChildTypeName_comboBox.Name = "ChildTypeName_comboBox";
+            this.ChildTypeName_comboBox.Size = new System.Drawing.Size(121, 21);
+            this.ChildTypeName_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ChildTypeName_comboBox.TabIndex = 25;
+            // 
             // FrmScrapToolManageDescribe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -288,7 +293,7 @@
         private DevComponents.DotNetBar.ButtonX Search_Scraptool_button;
         private DevComponents.DotNetBar.ButtonX Set_Instead_button;
         private PageControl.PagerControl pagerControl1;
-        private System.Windows.Forms.TextBox packCode_textBox;
         private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx ChildTypeName_comboBox;
     }
 }

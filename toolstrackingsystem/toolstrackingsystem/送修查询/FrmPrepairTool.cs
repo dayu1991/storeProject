@@ -19,21 +19,21 @@ using System.Runtime.Caching;
 
 namespace toolstrackingsystem
 {
-    public partial class FrmPrepairTool : Office2007RibbonForm
+    public partial class FrmRepairTool : Office2007RibbonForm
     {
         ILog logger = log4net.LogManager.GetLogger(typeof(FormLogin));
-        private IToolPrepairRecordService _toolPrepairRecordService;
+        private IToolRepairRecordService _toolRepairRecordService;
         private IPersonManageService _personManageService;
 
         List<ToolPrepairEntity> resultList = new List<ToolPrepairEntity>();
-        public FrmPrepairTool()
+        public FrmRepairTool()
         {
             this.EnableGlass = false;
             InitializeComponent();
         }
         private void FrmPrepairTool_Load(object sender, EventArgs e)
         {
-            _toolPrepairRecordService = Program.container.Resolve<IToolPrepairRecordService>() as ToolPrepairRecordService;
+            _toolRepairRecordService = Program.container.Resolve<IToolRepairRecordService>() as ToolRepairRecordService;
         }
         private void pagerControl1_OnPageChanged(object sender, EventArgs e)
         {
@@ -46,7 +46,7 @@ namespace toolstrackingsystem
             //数据总记录数
             long Count;
             //获取分页的数据
-            resultList = _toolPrepairRecordService.GetToolPrepairRecordList(PrepairInfo, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
+            resultList = _toolRepairRecordService.GetToolPrepairRecordList(PrepairInfo, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
             TollList_dataGridViewX.DataSource = resultList;
             pagerControl1.DrawControl(Convert.ToInt32(Count));
             for (int i = 0; i < TollList_dataGridViewX.Columns.Count; i++)
@@ -114,7 +114,7 @@ namespace toolstrackingsystem
                     //获取数据
                     t_ToolRepairRecord PrepairInfo = new t_ToolRepairRecord();
                     PrepairInfo.ToolCode = ToolCode_textBox.Text;
-                    resultList = _toolPrepairRecordService.GetToolPrepairRecordList(PrepairInfo);
+                    resultList = _toolRepairRecordService.GetToolPrepairRecordList(PrepairInfo);
                     // 添加数据
                     for (int i = 0; i < resultList.Count; i++)
                     {

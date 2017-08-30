@@ -28,16 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Delete_Pack_button = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.packCode_textBox = new System.Windows.Forms.TextBox();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
             this.ScrapTool_dataGridViewX2 = new DevComponents.DotNetBar.Controls.DataGridViewX();
@@ -48,12 +46,14 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.Tool_Code_textBox = new System.Windows.Forms.TextBox();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.search_button = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.ToolInfo_dataGridView = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Scrap_buttonX = new DevComponents.DotNetBar.ButtonX();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.pack_code_textBox = new System.Windows.Forms.TextBox();
-            this.search_button = new DevComponents.DotNetBar.ButtonX();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.ChildTypeName_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel3.SuspendLayout();
             this.groupPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScrapTool_dataGridViewX2)).BeginInit();
@@ -77,7 +77,7 @@
             // 
             this.groupPanel3.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel3.Controls.Add(this.packCode_textBox);
+            this.groupPanel3.Controls.Add(this.ChildTypeName_comboBox);
             this.groupPanel3.Controls.Add(this.labelX2);
             this.groupPanel3.Controls.Add(this.groupPanel4);
             this.groupPanel3.Controls.Add(this.buttonX2);
@@ -118,26 +118,6 @@
             // 
             this.groupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel3.TabIndex = 11;
-            // 
-            // packCode_textBox
-            // 
-            this.packCode_textBox.Location = new System.Drawing.Point(101, 22);
-            this.packCode_textBox.Name = "packCode_textBox";
-            this.packCode_textBox.Size = new System.Drawing.Size(71, 21);
-            this.packCode_textBox.TabIndex = 26;
-            // 
-            // labelX2
-            // 
-            this.labelX2.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(40, 22);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(55, 23);
-            this.labelX2.TabIndex = 25;
-            this.labelX2.Text = "包编码:";
             // 
             // groupPanel4
             // 
@@ -195,35 +175,35 @@
             // ScrapTool_dataGridViewX2
             // 
             this.ScrapTool_dataGridViewX2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ScrapTool_dataGridViewX2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ScrapTool_dataGridViewX2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.ScrapTool_dataGridViewX2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ScrapTool_dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ScrapTool_dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle8;
             this.ScrapTool_dataGridViewX2.EnableHeadersVisualStyles = false;
             this.ScrapTool_dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.ScrapTool_dataGridViewX2.Location = new System.Drawing.Point(0, 0);
             this.ScrapTool_dataGridViewX2.Name = "ScrapTool_dataGridViewX2";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ScrapTool_dataGridViewX2.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ScrapTool_dataGridViewX2.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.ScrapTool_dataGridViewX2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.ScrapTool_dataGridViewX2.RowTemplate.Height = 23;
             this.ScrapTool_dataGridViewX2.Size = new System.Drawing.Size(583, 395);
@@ -340,6 +320,18 @@
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 9;
             // 
+            // search_button
+            // 
+            this.search_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.search_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.search_button.Location = new System.Drawing.Point(324, 22);
+            this.search_button.Name = "search_button";
+            this.search_button.Size = new System.Drawing.Size(75, 23);
+            this.search_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.search_button.TabIndex = 29;
+            this.search_button.Text = "查询";
+            this.search_button.Click += new System.EventHandler(this.search_button_Click);
+            // 
             // groupPanel2
             // 
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
@@ -382,36 +374,36 @@
             // ToolInfo_dataGridView
             // 
             this.ToolInfo_dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ToolInfo_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ToolInfo_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.ToolInfo_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ToolInfo_dataGridView.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ToolInfo_dataGridView.DefaultCellStyle = dataGridViewCellStyle11;
             this.ToolInfo_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ToolInfo_dataGridView.EnableHeadersVisualStyles = false;
             this.ToolInfo_dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.ToolInfo_dataGridView.Location = new System.Drawing.Point(0, 0);
             this.ToolInfo_dataGridView.Name = "ToolInfo_dataGridView";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ToolInfo_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ToolInfo_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.ToolInfo_dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.ToolInfo_dataGridView.RowTemplate.Height = 23;
             this.ToolInfo_dataGridView.Size = new System.Drawing.Size(490, 441);
@@ -432,6 +424,13 @@
             this.Scrap_buttonX.Text = "报废";
             this.Scrap_buttonX.Click += new System.EventHandler(this.Scrap_buttonX_Click);
             // 
+            // pack_code_textBox
+            // 
+            this.pack_code_textBox.Location = new System.Drawing.Point(70, 22);
+            this.pack_code_textBox.Name = "pack_code_textBox";
+            this.pack_code_textBox.Size = new System.Drawing.Size(82, 21);
+            this.pack_code_textBox.TabIndex = 28;
+            // 
             // labelX4
             // 
             this.labelX4.BackColor = System.Drawing.Color.Transparent;
@@ -445,24 +444,30 @@
             this.labelX4.TabIndex = 27;
             this.labelX4.Text = "包编码:";
             // 
-            // pack_code_textBox
+            // ChildTypeName_comboBox
             // 
-            this.pack_code_textBox.Location = new System.Drawing.Point(70, 22);
-            this.pack_code_textBox.Name = "pack_code_textBox";
-            this.pack_code_textBox.Size = new System.Drawing.Size(82, 21);
-            this.pack_code_textBox.TabIndex = 28;
+            this.ChildTypeName_comboBox.DisplayMember = "Text";
+            this.ChildTypeName_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ChildTypeName_comboBox.FormattingEnabled = true;
+            this.ChildTypeName_comboBox.ItemHeight = 15;
+            this.ChildTypeName_comboBox.Location = new System.Drawing.Point(68, 21);
+            this.ChildTypeName_comboBox.Name = "ChildTypeName_comboBox";
+            this.ChildTypeName_comboBox.Size = new System.Drawing.Size(121, 21);
+            this.ChildTypeName_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ChildTypeName_comboBox.TabIndex = 27;
             // 
-            // search_button
+            // labelX2
             // 
-            this.search_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.search_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.search_button.Location = new System.Drawing.Point(324, 22);
-            this.search_button.Name = "search_button";
-            this.search_button.Size = new System.Drawing.Size(75, 23);
-            this.search_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.search_button.TabIndex = 29;
-            this.search_button.Text = "查询";
-            this.search_button.Click += new System.EventHandler(this.search_button_Click);
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(8, 21);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(66, 23);
+            this.labelX2.TabIndex = 26;
+            this.labelX2.Text = "工具类别:";
             // 
             // FrmScrapToolManage
             // 
@@ -503,10 +508,10 @@
         private DevComponents.DotNetBar.Controls.DataGridViewX ToolInfo_dataGridView;
         private DevComponents.DotNetBar.ButtonX Scrap_buttonX;
         private PageControl.PagerControl pagerControl1;
-        private System.Windows.Forms.TextBox packCode_textBox;
-        private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.ButtonX search_button;
         private System.Windows.Forms.TextBox pack_code_textBox;
         private DevComponents.DotNetBar.LabelX labelX4;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx ChildTypeName_comboBox;
+        private DevComponents.DotNetBar.LabelX labelX2;
     }
 }
