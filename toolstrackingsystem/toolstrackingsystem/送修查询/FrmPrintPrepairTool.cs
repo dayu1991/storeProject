@@ -35,7 +35,7 @@ namespace toolstrackingsystem
             #endregion
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
-                t_ToolPrepairRecord prepairInfo = (t_ToolPrepairRecord)this.Tag;
+                t_ToolRepairRecord prepairInfo = (t_ToolRepairRecord)this.Tag;
                 string sql = @"SELECT tpr.[ToolCode]
                                       ,tpr.[ToolName]
                                       ,tpr.[PrepairTime]

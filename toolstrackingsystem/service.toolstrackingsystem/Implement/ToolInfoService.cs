@@ -443,23 +443,23 @@ namespace service.toolstrackingsystem
         {
             bool IsSuccess = false;
             t_ToolInfo toolInfo = GetToolByCode(toolCode);
-            if (toolInfo == null)
-            {
-                return IsSuccess;
-            }
-            toolInfo.IsActive = "2";//2为送修状态
-            IsSuccess = UpdateTool(toolInfo);
-            //往送修表插入一条记录
-            t_ToolPrepairRecord prepairInfo = new t_ToolPrepairRecord();
-            if(!IsSuccess)
-            {
-                return IsSuccess;
-            }
-            prepairInfo.ToolCode = toolInfo.ToolCode;
-            prepairInfo.ToolName = toolInfo.ToolName;
-            prepairInfo.OptionPerson = userCode;
-            prepairInfo.PrepairTime = DateTime.Now.ToString();
-            prepairInfo.IsActive = 0;
+            //if (toolInfo == null)
+            //{
+            //    return IsSuccess;
+            //}
+            //toolInfo.IsActive = "2";//2为送修状态
+            //IsSuccess = UpdateTool(toolInfo);
+            ////往送修表插入一条记录
+            t_ToolRepairRecord prepairInfo = new t_ToolRepairRecord();
+            //if(!IsSuccess)
+            //{
+            //    return IsSuccess;
+            //}
+            //prepairInfo.ToolCode = toolInfo.ToolCode;
+            //prepairInfo.ToolName = toolInfo.ToolName;
+            //prepairInfo.OptionPerson = userCode;
+            //prepairInfo.PrepairTime = DateTime.Now.ToString();
+            //prepairInfo.IsActive = 0;
             return IsSuccess =  _toolPrepairRecordRepository.Add(prepairInfo)>0;
         }
 
@@ -471,22 +471,22 @@ namespace service.toolstrackingsystem
         public bool UpdateToolReparedIsActive(string toolCode,string userCode)
         {
             bool IsSuccess = false;
-            t_ToolPrepairRecord toolPrepairInfo = new t_ToolPrepairRecord();
-            toolPrepairInfo = _toolPrepairRecordRepository.GetToolPrepairRecordByToolCode(toolCode);
-            if (toolPrepairInfo == null)
-            {
-                return IsSuccess;
-            }
-            toolPrepairInfo.BackTime = DateTime.Now.ToString();
-            toolPrepairInfo.BackOptionPerson = userCode;
-            toolPrepairInfo.IsActive = 1;
-            IsSuccess = _toolPrepairRecordRepository.Update(toolPrepairInfo);
-            if (!IsSuccess)
-            {
-                return IsSuccess;
-            }
+            //t_ToolRepairRecord toolPrepairInfo = new t_ToolRepairRecord();
+            //toolPrepairInfo = _toolPrepairRecordRepository.GetToolPrepairRecordByToolCode(toolCode);
+            //if (toolPrepairInfo == null)
+            //{
+            //    return IsSuccess;
+            //}
+            //toolPrepairInfo.BackTime = DateTime.Now.ToString();
+            //toolPrepairInfo.BackOptionPerson = userCode;
+            //toolPrepairInfo.IsActive = 1;
+            //IsSuccess = _toolPrepairRecordRepository.Update(toolPrepairInfo);
+            //if (!IsSuccess)
+            //{
+            //    return IsSuccess;
+            //}
             t_ToolInfo toolInfo = GetToolByCode(toolCode);
-            toolInfo.IsActive = "1";//2为送修状态
+            //toolInfo.IsActive = "1";//2为送修状态
             return IsSuccess = UpdateTool(toolInfo);
         }
         /// <summary>

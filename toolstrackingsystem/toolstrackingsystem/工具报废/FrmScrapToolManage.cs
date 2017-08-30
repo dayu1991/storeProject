@@ -61,33 +61,7 @@ namespace toolstrackingsystem
         /// <param name="e"></param>
         private void Tool_Code_textBox_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                    string toolCode = Tool_Code_textBox.Text;
-                if (string.IsNullOrEmpty(toolCode))
-                {
-                    return;
-                }
-                ToolInfo_dataGridView.DataSource = _scrapToolInfoService.GetToolInfoForScrapList(toolCode);
-                for (int i = 0; i < ToolInfo_dataGridView.Columns.Count; i++)
-                {
-                    ToolInfo_dataGridView.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
-                }
-                ToolInfo_dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                ToolInfo_dataGridView.Columns[0].HeaderText = "包编码";
-                ToolInfo_dataGridView.Columns[1].HeaderText = "包名称";
-                ToolInfo_dataGridView.Columns[2].HeaderText = "配属";
-                ToolInfo_dataGridView.Columns[3].HeaderText = "类别";
-                ToolInfo_dataGridView.Columns[4].HeaderText = "工具编码";
-                ToolInfo_dataGridView.Columns[5].HeaderText = "名称";
-                ToolInfo_dataGridView.Columns[6].HeaderText = "型号";
-                ToolInfo_dataGridView.Columns[7].HeaderText = "位置";
-                ToolInfo_dataGridView.Columns[8].HeaderText = "备注";
-            }
-            catch (Exception ex)
-            {
-                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmScrapToolManage--Tool_Code_textBox_TextChanged", ex.Message, ex.StackTrace, ex.Source);
-            }
+
         }
         private void ScrapTool_dataGridViewX2_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
@@ -110,7 +84,7 @@ namespace toolstrackingsystem
                 string toolCode = ToolInfo_dataGridView.Rows[selectIndex].Cells[4].Value.ToString();
                 if (string.IsNullOrEmpty(toolCode))
                 {
-                    MessageBox.Show("请选择需要报废的工具");
+                    MessageBox.Show("报废的工具不存在，请重试");
                     return;
                 }
                 t_ScrapToolInfo scrapToolInfo = new t_ScrapToolInfo();
@@ -298,6 +272,37 @@ namespace toolstrackingsystem
         private void pagerControl1_OnPageChanged(object sender, EventArgs e)
         {
             LoadData();
+        }
+        private void search_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string toolCode = Tool_Code_textBox.Text;
+                string packCode = pack_code_textBox.Text;
+                if (string.IsNullOrEmpty(toolCode)&&string.IsNullOrEmpty(packCode))
+                {
+                    MessageBox.Show("请输入需要查找的包编码或工具编码");
+                }
+                ToolInfo_dataGridView.DataSource = _scrapToolInfoService.GetToolInfoForScrapList(toolCode,packCode);
+                for (int i = 0; i < ToolInfo_dataGridView.Columns.Count; i++)
+                {
+                    ToolInfo_dataGridView.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
+                }
+                ToolInfo_dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                ToolInfo_dataGridView.Columns[0].HeaderText = "包编码";
+                ToolInfo_dataGridView.Columns[1].HeaderText = "包名称";
+                ToolInfo_dataGridView.Columns[2].HeaderText = "配属";
+                ToolInfo_dataGridView.Columns[3].HeaderText = "类别";
+                ToolInfo_dataGridView.Columns[4].HeaderText = "工具编码";
+                ToolInfo_dataGridView.Columns[5].HeaderText = "名称";
+                ToolInfo_dataGridView.Columns[6].HeaderText = "型号";
+                ToolInfo_dataGridView.Columns[7].HeaderText = "位置";
+                ToolInfo_dataGridView.Columns[8].HeaderText = "备注";
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmScrapToolManage--Tool_Code_textBox_TextChanged", ex.Message, ex.StackTrace, ex.Source);
+            }
         }
     }
 }

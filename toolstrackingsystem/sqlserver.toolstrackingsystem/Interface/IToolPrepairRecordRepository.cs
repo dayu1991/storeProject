@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace sqlserver.toolstrackingsystem
 {
-    public interface IToolPrepairRecordRepository:IRepositoryBase<t_ToolPrepairRecord>
+    public interface IToolPrepairRecordRepository:IRepositoryBase<t_ToolRepairRecord>
     {
-        t_ToolPrepairRecord GetToolPrepairRecordByToolCode(string toolCode);
+        t_ToolRepairRecord GetToolPrepairRecordByToolCode(string toolCode);
     }
 }

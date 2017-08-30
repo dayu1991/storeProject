@@ -16,7 +16,7 @@ namespace service.toolstrackingsystem
         /// </summary>
         /// <param name="toolCode"></param>
         /// <returns></returns>
-        List<ToolInfoForScrapFrmEntity> GetToolInfoForScrapList(string toolCode);
+        List<ToolInfoForScrapFrmEntity> GetToolInfoForScrapList(string toolCode,string packCode);
         /// <summary>
         /// 作废单个工具
         /// </summary>

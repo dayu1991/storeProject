@@ -16,7 +16,6 @@ using Microsoft.Practices.Unity.Configuration;
 using System.IO;
 using dbentity.toolstrackingsystem;
 using System.Runtime.Caching;
-using service.toolstrackingsystem;
 
 namespace toolstrackingsystem
 {
@@ -42,7 +41,7 @@ namespace toolstrackingsystem
         }
         private void LoadData()
         {
-            t_ToolPrepairRecord PrepairInfo = new t_ToolPrepairRecord();
+            t_ToolRepairRecord PrepairInfo = new t_ToolRepairRecord();
             PrepairInfo.ToolCode = ToolCode_textBox.Text;
             //数据总记录数
             long Count;
@@ -113,7 +112,7 @@ namespace toolstrackingsystem
                         cell.SetCellValue(item.HeaderText);
                     }
                     //获取数据
-                    t_ToolPrepairRecord PrepairInfo = new t_ToolPrepairRecord();
+                    t_ToolRepairRecord PrepairInfo = new t_ToolRepairRecord();
                     PrepairInfo.ToolCode = ToolCode_textBox.Text;
                     resultList = _toolPrepairRecordService.GetToolPrepairRecordList(PrepairInfo);
                     // 添加数据
@@ -171,7 +170,7 @@ namespace toolstrackingsystem
             try
             {
                 FrmPrintPrepairTool prepairFrm = new FrmPrintPrepairTool();
-                t_ToolPrepairRecord PrepairInfo = new t_ToolPrepairRecord();
+                t_ToolRepairRecord PrepairInfo = new t_ToolRepairRecord();
                 PrepairInfo.ToolCode = ToolCode_textBox.Text;
                 prepairFrm.Tag = PrepairInfo;
                 prepairFrm.ShowDialog();

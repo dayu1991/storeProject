@@ -19,7 +19,7 @@ namespace service.toolstrackingsystem
             _toolPrepairRecordRepository = toolPrepairRecordRepository;
             _multiTableQueryRepository = multiTableQueryRepository;
         }
-        public List<ToolPrepairEntity> GetToolPrepairRecordList(t_ToolPrepairRecord prepairInfo, int pageIndex, int pageSize, out long Count)
+        public List<ToolPrepairEntity> GetToolPrepairRecordList(t_ToolRepairRecord prepairInfo, int pageIndex, int pageSize, out long Count)
         {
             string sql = @"SELECT TOP " + pageSize + @"
                                   tpr.[ToolCode]
@@ -45,7 +45,7 @@ namespace service.toolstrackingsystem
             string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
             return _multiTableQueryRepository.QueryList<ToolPrepairEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
         }
-        public List<ToolPrepairEntity> GetToolPrepairRecordList(t_ToolPrepairRecord prepairInfo)
+        public List<ToolPrepairEntity> GetToolPrepairRecordList(t_ToolRepairRecord prepairInfo)
         {
             string sql = @"SELECT tpr.[ToolCode]
                                   ,tpr.[ToolName]

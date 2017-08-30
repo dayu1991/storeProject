@@ -15,7 +15,7 @@ namespace common.toolstrackingsystem
             {
                 return System.Configuration.ConfigurationManager.ConnectionStrings[clientName.ToString()].ConnectionString;
             }
-            return System.Configuration.ConfigurationManager.ConnectionStrings["NanSuo"].ConnectionString;
+            return System.Configuration.ConfigurationManager.ConnectionStrings[CommonHelper.GetConfigValue("defaultDataBase")].ConnectionString;
         }
     }
 }

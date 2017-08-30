@@ -51,6 +51,9 @@
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.ToolInfo_dataGridView = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Scrap_buttonX = new DevComponents.DotNetBar.ButtonX();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.pack_code_textBox = new System.Windows.Forms.TextBox();
+            this.search_button = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel3.SuspendLayout();
             this.groupPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScrapTool_dataGridViewX2)).BeginInit();
@@ -278,7 +281,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(71, 26);
+            this.labelX1.Location = new System.Drawing.Point(157, 21);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(65, 23);
             this.labelX1.TabIndex = 0;
@@ -286,9 +289,9 @@
             // 
             // Tool_Code_textBox
             // 
-            this.Tool_Code_textBox.Location = new System.Drawing.Point(131, 26);
+            this.Tool_Code_textBox.Location = new System.Drawing.Point(217, 21);
             this.Tool_Code_textBox.Name = "Tool_Code_textBox";
-            this.Tool_Code_textBox.Size = new System.Drawing.Size(152, 21);
+            this.Tool_Code_textBox.Size = new System.Drawing.Size(98, 21);
             this.Tool_Code_textBox.TabIndex = 1;
             this.Tool_Code_textBox.TextChanged += new System.EventHandler(this.Tool_Code_textBox_TextChanged);
             // 
@@ -296,6 +299,9 @@
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.search_button);
+            this.groupPanel1.Controls.Add(this.pack_code_textBox);
+            this.groupPanel1.Controls.Add(this.labelX4);
             this.groupPanel1.Controls.Add(this.groupPanel2);
             this.groupPanel1.Controls.Add(this.Scrap_buttonX);
             this.groupPanel1.Controls.Add(this.Tool_Code_textBox);
@@ -418,13 +424,45 @@
             // 
             this.Scrap_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Scrap_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Scrap_buttonX.Location = new System.Drawing.Point(302, 26);
+            this.Scrap_buttonX.Location = new System.Drawing.Point(410, 22);
             this.Scrap_buttonX.Name = "Scrap_buttonX";
             this.Scrap_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Scrap_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Scrap_buttonX.TabIndex = 4;
             this.Scrap_buttonX.Text = "报废";
             this.Scrap_buttonX.Click += new System.EventHandler(this.Scrap_buttonX_Click);
+            // 
+            // labelX4
+            // 
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Location = new System.Drawing.Point(20, 22);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(55, 23);
+            this.labelX4.TabIndex = 27;
+            this.labelX4.Text = "包编码:";
+            // 
+            // pack_code_textBox
+            // 
+            this.pack_code_textBox.Location = new System.Drawing.Point(70, 22);
+            this.pack_code_textBox.Name = "pack_code_textBox";
+            this.pack_code_textBox.Size = new System.Drawing.Size(82, 21);
+            this.pack_code_textBox.TabIndex = 28;
+            // 
+            // search_button
+            // 
+            this.search_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.search_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.search_button.Location = new System.Drawing.Point(324, 22);
+            this.search_button.Name = "search_button";
+            this.search_button.Size = new System.Drawing.Size(75, 23);
+            this.search_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.search_button.TabIndex = 29;
+            this.search_button.Text = "查询";
+            this.search_button.Click += new System.EventHandler(this.search_button_Click);
             // 
             // FrmScrapToolManage
             // 
@@ -467,5 +505,8 @@
         private PageControl.PagerControl pagerControl1;
         private System.Windows.Forms.TextBox packCode_textBox;
         private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.DotNetBar.ButtonX search_button;
+        private System.Windows.Forms.TextBox pack_code_textBox;
+        private DevComponents.DotNetBar.LabelX labelX4;
     }
 }

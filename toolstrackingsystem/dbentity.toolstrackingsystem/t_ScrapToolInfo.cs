@@ -24,5 +24,7 @@ namespace dbentity.toolstrackingsystem
         public string PackName { get; set; }
         public string RemarkPerson { get; set; }
         public string RemarkTime { get; set; }
+        public string TypeName { get; set; }
+        public string ChildTypeName { get; set; }
     }
 }

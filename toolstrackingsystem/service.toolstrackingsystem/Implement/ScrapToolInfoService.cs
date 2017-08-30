@@ -29,11 +29,20 @@ namespace service.toolstrackingsystem
         /// </summary>
         /// <param name="toolCode"></param>
         /// <returns></returns>
-        public List<ToolInfoForScrapFrmEntity> GetToolInfoForScrapList(string toolCode)
+        public List<ToolInfoForScrapFrmEntity> GetToolInfoForScrapList(string toolCode,string packCode)
         {
-            string sql = "SELECT TypeName,ChildTypeName,ToolCode,ToolName,PackCode,PackName,Models,Location,Remarks FROM t_ToolInfo WHERE 1=1 AND IsActive='1' AND ToolCode=@toolCode";
+            string sql = "SELECT TypeName,ChildTypeName,ToolCode,ToolName,PackCode,PackName,Models,Location,Remarks FROM t_ToolInfo WHERE 1=1 AND IsActive='1'";
             DynamicParameters parameter = new DynamicParameters();
-            parameter.Add("toolCode",toolCode);
+            if (!string.IsNullOrEmpty(toolCode))
+            {
+                sql += " AND ToolCode LIKE @toolCode ";
+                parameter.Add("toolCode", string.Format("%{0}%", toolCode));
+            }
+            if (!string.IsNullOrEmpty(packCode))
+            {
+                sql += " AND PackCode LIKE @packCode ";
+                parameter.Add("packCode", string.Format("%{0}%", packCode));
+            }
             return _mutiTableQueryRepository.QueryList<ToolInfoForScrapFrmEntity>(sql, parameter).ToList();
         }
         public t_ToolInfo GetToolInfoByToolCode(string toolCode)
@@ -65,7 +74,7 @@ namespace service.toolstrackingsystem
             scrapToolInfo.PackCode = toolInfo.PackCode;
             scrapToolInfo.PackName = toolInfo.PackName;
             scrapToolInfo.ScrapTime = DateTime.Now.ToString();
-            scrapToolInfo.Remarks = toolInfo.Remarks;
+            //scrapToolInfo.Remarks = toolInfo.Remarks;
             scrapToolInfo.OptionPerson = optionPerson;
             IsSuccess = _scrapToolInfoManageRepository.InsertScrapToolInfo(scrapToolInfo);
             if (IsSuccess)
