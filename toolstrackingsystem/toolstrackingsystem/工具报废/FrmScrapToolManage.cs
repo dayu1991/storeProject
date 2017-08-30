@@ -175,30 +175,38 @@ namespace toolstrackingsystem
         {
             try
             {
-                string toolCode = Scrap_ToolInfoCode_Detail_textBox.Text;
-                infoList = _scrapToolInfoService.GetScrapToolInfoList(toolCode);
-                ScrapTool_dataGridViewX2.DataSource = infoList;
-                for (int i = 0; i < ScrapTool_dataGridViewX2.Columns.Count; i++)
-                {
-                    ScrapTool_dataGridViewX2.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
-                }
-                ScrapTool_dataGridViewX2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                ScrapTool_dataGridViewX2.Columns[0].HeaderText = "ID";
-                ScrapTool_dataGridViewX2.Columns[0].Visible = false;
-                ScrapTool_dataGridViewX2.Columns[0].HeaderText = "工具编码";
-                ScrapTool_dataGridViewX2.Columns[1].HeaderText = "名称";
-                ScrapTool_dataGridViewX2.Columns[2].HeaderText = "包编码";
-                ScrapTool_dataGridViewX2.Columns[3].HeaderText = "包名称";
-                ScrapTool_dataGridViewX2.Columns[4].HeaderText = "报废时间";
-                ScrapTool_dataGridViewX2.Columns[5].HeaderText = "备注";
-                ScrapTool_dataGridViewX2.Columns[6].HeaderText = "操作人员";
-                ScrapTool_dataGridViewX2.Columns[7].HeaderText = "备注操作人员";
-                ScrapTool_dataGridViewX2.Columns[8].HeaderText = "备注时间";
+                pagerControl1.OnPageChanged += new EventHandler(pagerControl1_OnPageChanged);
+                LoadData();
             }
             catch (Exception ex)
             {
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmScrapToolManage--Scrap_buttonX_Click", ex.Message, ex.StackTrace, ex.Source);
             }
+        }
+        private void LoadData()
+        {
+            string toolCode = Scrap_ToolInfoCode_Detail_textBox.Text;
+            string packCode = packCode_textBox.Text;
+            long Count = 0;
+            infoList = _scrapToolInfoService.GetScrapToolInfoList(toolCode,packCode,pagerControl1.PageIndex,pagerControl1.PageSize,out Count);
+            pagerControl1.DrawControl(Convert.ToInt32(Count));
+            ScrapTool_dataGridViewX2.DataSource = infoList;
+            for (int i = 0; i < ScrapTool_dataGridViewX2.Columns.Count; i++)
+            {
+                ScrapTool_dataGridViewX2.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+            ScrapTool_dataGridViewX2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            ScrapTool_dataGridViewX2.Columns[0].HeaderText = "ID";
+            ScrapTool_dataGridViewX2.Columns[0].Visible = false;
+            ScrapTool_dataGridViewX2.Columns[0].HeaderText = "工具编码";
+            ScrapTool_dataGridViewX2.Columns[1].HeaderText = "名称";
+            ScrapTool_dataGridViewX2.Columns[2].HeaderText = "包编码";
+            ScrapTool_dataGridViewX2.Columns[3].HeaderText = "包名称";
+            ScrapTool_dataGridViewX2.Columns[4].HeaderText = "报废时间";
+            ScrapTool_dataGridViewX2.Columns[5].HeaderText = "备注";
+            ScrapTool_dataGridViewX2.Columns[6].HeaderText = "操作人员";
+            ScrapTool_dataGridViewX2.Columns[7].HeaderText = "备注操作人员";
+            ScrapTool_dataGridViewX2.Columns[8].HeaderText = "备注时间";
         }
         /// <summary>
         /// 导出Excel
@@ -286,6 +294,10 @@ namespace toolstrackingsystem
             FrmPrintScrapTools printFrm = new FrmPrintScrapTools();
             printFrm.Tag = Scrap_ToolInfoCode_Detail_textBox.Text;
             printFrm.ShowDialog();
+        }
+        private void pagerControl1_OnPageChanged(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

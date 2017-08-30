@@ -109,19 +109,6 @@ namespace toolstrackingsystem
             }
             MessageBox.Show("删除成功");
             Search_buttonX_Click(sender,e);
-            //if (string.IsNullOrEmpty(ID))
-            //{
-            //    MessageBox.Show("请选择一条需要删除的记录");
-            //    return;
-            //}
-            //if (MessageBox.Show("您确定要删除“" + TollList_dataGridViewX.Rows[slectedIndex].Cells[1].Value.ToString() + "”包信息吗", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            //{
-            //    if (_outBackStoreService.DeleteOutBackInfo(ID))
-            //    {
-            //        MessageBox.Show("删除成功");
-            //        Search_buttonX_Click(sender,e);
-            //    }
-            //}
         }
     }
 }

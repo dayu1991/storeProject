@@ -81,17 +81,96 @@ namespace service.toolstrackingsystem
         /// </summary>
         /// <param name="toolCode"></param>
         /// <returns></returns>
-        public List<t_ScrapToolInfo> GetScrapToolInfoList(string toolCode)
+        public List<t_ScrapToolInfo> GetScrapToolInfoList(string toolCode,string packCode)
         {
-            string sql = "SELECT * FROM t_ScrapToolInfo WHERE 1=1 ";
+            string sql = @"SELECT sti.[ScrapID]
+      ,sti.[ToolCode]
+      ,sti.[ToolName]
+      ,sti.[PackCode]
+      ,sti.[PackName]
+      ,sti.[ScrapTime]
+      ,sti.[Remarks]
+      ,[OptionPerson] = 
+	  case when sui.UserName is null then tpi.PersonName else sui.UserName end
+      ,[RemarkPerson] = 
+	  case when sui1.UserName is null then tpi1.PersonCode else sui1.UserName end
+      ,sti.[RemarkTime]
+  FROM [dbo].[t_ScrapToolInfo] sti left join Sys_User_Info sui on sti.OptionPerson = sui.UserCode left join t_PersonInfo tpi on sti.OptionPerson = tpi.PersonCode
+  left join Sys_User_Info sui1 on sti.RemarkPerson = sui1.UserCode left join t_PersonInfo tpi1 on sti.RemarkPerson = tpi1.PersonCode WHERE 1=1";
             DynamicParameters parameter = new DynamicParameters();
             if (!string.IsNullOrEmpty(toolCode))
             {
-                sql += " AND ToolCode LIKE @toolCode";
+                sql += " AND sti.ToolCode LIKE @toolCode ";
                 parameter.Add("toolCode", string.Format("%{0}%", toolCode));            
+            }
+            if (!string.IsNullOrEmpty(packCode))
+            {
+                sql += " AND sti.PackCode LIKE @packCode ";
+                parameter.Add("packCode", string.Format("%{0}%", packCode));
             }
             //return _mutiTableQueryRepository.QueryList<ScrapToolInfoEntity>(sql, parameter).ToList();
             return _scrapToolInfoManageRepository.QueryList(sql, parameter).ToList();
+        }
+        /// <summary>
+        /// 查找满足条件的废除的工具信息(有分页)
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <returns></returns>
+        public List<t_ScrapToolInfo> GetScrapToolInfoList(string toolCode, string packCode, int pageIndex, int pageSize, out long Count)
+        {
+            string sql = "SELECT TOP "+pageSize+@" sti.[ScrapID]
+      ,sti.[ToolCode]
+      ,sti.[ToolName]
+      ,sti.[PackCode]
+      ,sti.[PackName]
+      ,sti.[ScrapTime]
+      ,sti.[Remarks]
+      ,[OptionPerson] = 
+	  case when sui.UserName is null then tpi.PersonName else sui.UserName end
+      ,[RemarkPerson] = 
+	  case when sui1.UserName is null then tpi1.PersonCode else sui1.UserName end
+      ,sti.[RemarkTime]
+  FROM [dbo].[t_ScrapToolInfo] sti left join Sys_User_Info sui on sti.OptionPerson = sui.UserCode left join t_PersonInfo tpi on sti.OptionPerson = tpi.PersonCode
+  left join Sys_User_Info sui1 on sti.RemarkPerson = sui1.UserCode left join t_PersonInfo tpi1 on sti.RemarkPerson = tpi1.PersonCode WHERE 1=1 ";
+            string sqlNot = " sti.[ScrapID] not in (SELECT TOP " + (pageIndex - 1) * pageSize + @" sti.[ScrapID] FROM [dbo].[t_ScrapToolInfo] sti left join Sys_User_Info sui on sti.OptionPerson = sui.UserCode left join t_PersonInfo tpi on sti.OptionPerson = tpi.PersonCode
+  left join Sys_User_Info sui1 on sti.RemarkPerson = sui1.UserCode left join t_PersonInfo tpi1 on sti.RemarkPerson = tpi1.PersonCode WHERE 1=1 )";
+            DynamicParameters parameter = new DynamicParameters();
+            string sqlCount = @"SELECT COUNT(1) FROM [dbo].[t_ScrapToolInfo] sti left join Sys_User_Info sui on sti.OptionPerson = sui.UserCode left join t_PersonInfo tpi on sti.OptionPerson = tpi.PersonCode
+  left join Sys_User_Info sui1 on sti.RemarkPerson = sui1.UserCode left join t_PersonInfo tpi1 on sti.RemarkPerson = tpi1.PersonCode WHERE 1=1 ";
+            if (!string.IsNullOrEmpty(toolCode))
+            {
+                sql += " AND sti.ToolCode LIKE @toolCode ";
+                sqlNot += " AND sti.ToolCode LIKE @toolCode ";
+                sqlCount += " AND sti.ToolCode LIKE @toolCode ";
+                parameter.Add("toolCode", string.Format("%{0}%", toolCode));
+            }
+            if (!string.IsNullOrEmpty(packCode))
+            {
+                sql += " AND sti.PackCode LIKE @packCode ";
+                sqlNot += " AND sti.PackCode LIKE @packCode ";
+                sqlCount += " AND sti.PackCode LIKE @packCode ";
+                parameter.Add("packCode", string.Format("%{0}%", packCode));
+            }
+            sqlNot += ")";
+            string sqlFinal = string.Format("{0} AND {1} ",sql,sqlNot);
+            return _mutiTableQueryRepository.QueryList<t_ScrapToolInfo>(sql, parameter, out Count, sqlCount, false).ToList();
+            //return _scrapToolInfoManageRepository.QueryList(sqlFinal, parameter, out Count,sqlCount,false).ToList();
+        }
+        /// <summary>
+        /// 更新报废的工具备注
+        /// </summary>
+        /// <param name="scrapID"></param>
+        /// <param name="remark"></param>
+        /// <returns></returns>
+        public bool SetScrapToolRemark(string scrapID, string remark, string userCode)
+        {
+            string sql = "UPDATE t_ScrapToolInfo SET Remark = @remark,RemarkPerson=@remarkPerson,RemarkTime@remarkTime WHERE ScrapID=@scrapID";
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("scrapID", scrapID);
+            parameters.Add("remark", remark);
+            parameters.Add("remarkPerson",userCode);
+            parameters.Add("remarkTime", DateTime.Now.ToString());
+            return _scrapToolInfoManageRepository.ExecuteSql(sql, parameters) > 0;
         }
     }
 }

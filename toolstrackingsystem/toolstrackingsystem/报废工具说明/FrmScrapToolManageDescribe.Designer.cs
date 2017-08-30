@@ -32,14 +32,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.packCode_textBox = new System.Windows.Forms.TextBox();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.Set_Instead_button = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
             this.ScrapTool_dataGridViewX2 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.Scrap_ToolInfoCode_Detail_textBox = new System.Windows.Forms.TextBox();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.Search_Scraptool_button = new DevComponents.DotNetBar.ButtonX();
-            this.Set_Instead_button = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel3.SuspendLayout();
             this.groupPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScrapTool_dataGridViewX2)).BeginInit();
@@ -49,17 +51,18 @@
             // 
             this.groupPanel3.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel3.Controls.Add(this.packCode_textBox);
+            this.groupPanel3.Controls.Add(this.labelX1);
             this.groupPanel3.Controls.Add(this.Set_Instead_button);
             this.groupPanel3.Controls.Add(this.groupPanel4);
             this.groupPanel3.Controls.Add(this.buttonX2);
-            this.groupPanel3.Controls.Add(this.buttonX1);
             this.groupPanel3.Controls.Add(this.Scrap_ToolInfoCode_Detail_textBox);
             this.groupPanel3.Controls.Add(this.labelX3);
             this.groupPanel3.Controls.Add(this.Search_Scraptool_button);
             this.groupPanel3.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel3.Location = new System.Drawing.Point(17, 8);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(982, 543);
+            this.groupPanel3.Size = new System.Drawing.Size(906, 522);
             // 
             // 
             // 
@@ -90,15 +93,48 @@
             this.groupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel3.TabIndex = 11;
             // 
+            // packCode_textBox
+            // 
+            this.packCode_textBox.Location = new System.Drawing.Point(94, 22);
+            this.packCode_textBox.Name = "packCode_textBox";
+            this.packCode_textBox.Size = new System.Drawing.Size(125, 21);
+            this.packCode_textBox.TabIndex = 24;
+            // 
+            // labelX1
+            // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(33, 22);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(66, 23);
+            this.labelX1.TabIndex = 23;
+            this.labelX1.Text = "包编码:";
+            // 
+            // Set_Instead_button
+            // 
+            this.Set_Instead_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.Set_Instead_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.Set_Instead_button.Location = new System.Drawing.Point(578, 22);
+            this.Set_Instead_button.Name = "Set_Instead_button";
+            this.Set_Instead_button.Size = new System.Drawing.Size(75, 23);
+            this.Set_Instead_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Set_Instead_button.TabIndex = 22;
+            this.Set_Instead_button.Text = "设为已补充";
+            this.Set_Instead_button.Click += new System.EventHandler(this.Set_Instead_button_Click);
+            // 
             // groupPanel4
             // 
             this.groupPanel4.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel4.Controls.Add(this.pagerControl1);
             this.groupPanel4.Controls.Add(this.ScrapTool_dataGridViewX2);
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Location = new System.Drawing.Point(5, 65);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(968, 447);
+            this.groupPanel4.Size = new System.Drawing.Size(890, 447);
             // 
             // 
             // 
@@ -129,6 +165,19 @@
             this.groupPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel4.TabIndex = 21;
             // 
+            // pagerControl1
+            // 
+            this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pagerControl1.JumpText = "Go";
+            this.pagerControl1.Location = new System.Drawing.Point(0, 394);
+            this.pagerControl1.Name = "pagerControl1";
+            this.pagerControl1.PageIndex = 1;
+            this.pagerControl1.PageSize = 50;
+            this.pagerControl1.RecordCount = 0;
+            this.pagerControl1.Size = new System.Drawing.Size(882, 44);
+            this.pagerControl1.TabIndex = 2;
+            this.pagerControl1.OnPageChanged += new System.EventHandler(this.pagerControl1_OnPageChanged);
+            // 
             // ScrapTool_dataGridViewX2
             // 
             this.ScrapTool_dataGridViewX2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -149,7 +198,6 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ScrapTool_dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ScrapTool_dataGridViewX2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ScrapTool_dataGridViewX2.EnableHeadersVisualStyles = false;
             this.ScrapTool_dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.ScrapTool_dataGridViewX2.Location = new System.Drawing.Point(0, 0);
@@ -164,7 +212,7 @@
             this.ScrapTool_dataGridViewX2.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ScrapTool_dataGridViewX2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.ScrapTool_dataGridViewX2.RowTemplate.Height = 23;
-            this.ScrapTool_dataGridViewX2.Size = new System.Drawing.Size(962, 441);
+            this.ScrapTool_dataGridViewX2.Size = new System.Drawing.Size(882, 393);
             this.ScrapTool_dataGridViewX2.TabIndex = 1;
             this.ScrapTool_dataGridViewX2.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.ScrapTool_dataGridViewX2_RowStateChanged);
             // 
@@ -172,7 +220,7 @@
             // 
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(612, 22);
+            this.buttonX2.Location = new System.Drawing.Point(672, 22);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(75, 23);
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -180,21 +228,9 @@
             this.buttonX2.Text = "导出";
             this.buttonX2.Click += new System.EventHandler(this.buttonX2_Click);
             // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(716, 22);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(75, 23);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 19;
-            this.buttonX1.Text = "打印";
-            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
-            // 
             // Scrap_ToolInfoCode_Detail_textBox
             // 
-            this.Scrap_ToolInfoCode_Detail_textBox.Location = new System.Drawing.Point(241, 22);
+            this.Scrap_ToolInfoCode_Detail_textBox.Location = new System.Drawing.Point(301, 22);
             this.Scrap_ToolInfoCode_Detail_textBox.Name = "Scrap_ToolInfoCode_Detail_textBox";
             this.Scrap_ToolInfoCode_Detail_textBox.Size = new System.Drawing.Size(125, 21);
             this.Scrap_ToolInfoCode_Detail_textBox.TabIndex = 4;
@@ -206,7 +242,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(180, 22);
+            this.labelX3.Location = new System.Drawing.Point(240, 22);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(66, 23);
             this.labelX3.TabIndex = 3;
@@ -216,7 +252,7 @@
             // 
             this.Search_Scraptool_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Search_Scraptool_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Search_Scraptool_button.Location = new System.Drawing.Point(415, 22);
+            this.Search_Scraptool_button.Location = new System.Drawing.Point(475, 22);
             this.Search_Scraptool_button.Name = "Search_Scraptool_button";
             this.Search_Scraptool_button.Size = new System.Drawing.Size(75, 23);
             this.Search_Scraptool_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -224,22 +260,11 @@
             this.Search_Scraptool_button.Text = "查询";
             this.Search_Scraptool_button.Click += new System.EventHandler(this.Search_Scraptool_button_Click);
             // 
-            // Set_Instead_button
-            // 
-            this.Set_Instead_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.Set_Instead_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Set_Instead_button.Location = new System.Drawing.Point(518, 22);
-            this.Set_Instead_button.Name = "Set_Instead_button";
-            this.Set_Instead_button.Size = new System.Drawing.Size(75, 23);
-            this.Set_Instead_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.Set_Instead_button.TabIndex = 22;
-            this.Set_Instead_button.Text = "设为已补充";
-            // 
             // FrmScrapToolManageDescribe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1040, 612);
+            this.ClientSize = new System.Drawing.Size(985, 612);
             this.Controls.Add(this.groupPanel3);
             this.Name = "FrmScrapToolManageDescribe";
             this.Text = "FrmScrapToolManage";
@@ -258,10 +283,12 @@
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel4;
         private DevComponents.DotNetBar.Controls.DataGridViewX ScrapTool_dataGridViewX2;
         private DevComponents.DotNetBar.ButtonX buttonX2;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
         private System.Windows.Forms.TextBox Scrap_ToolInfoCode_Detail_textBox;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.ButtonX Search_Scraptool_button;
         private DevComponents.DotNetBar.ButtonX Set_Instead_button;
+        private PageControl.PagerControl pagerControl1;
+        private System.Windows.Forms.TextBox packCode_textBox;
+        private DevComponents.DotNetBar.LabelX labelX1;
     }
 }
