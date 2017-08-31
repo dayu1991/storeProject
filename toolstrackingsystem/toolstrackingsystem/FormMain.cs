@@ -302,7 +302,6 @@ namespace toolstrackingsystem
 
             }
         }
-
         private void superTabControl2_TabItemClose(object sender, SuperTabStripTabItemCloseEventArgs e)
         {
             string slectedTab = e.Tab.Text; ;//获取当前TabItem的显示文本
@@ -320,7 +319,6 @@ namespace toolstrackingsystem
             }
             //this.superTabControl2.SelectedPanel.Controls.Find()     
         }
-
         private void superTabControl2_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
         {
             if (i != 0)

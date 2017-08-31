@@ -157,6 +157,12 @@ namespace toolstrackingsystem
                     ToolInfoCode_Detail_textBox.Focus();
                     return;
                 }
+                //判断要添加的工具是否已借出，借出提示先归还再删除
+                if (_outBackStoreService.GetToolInfoNotBackByToolCode(toolCode) != null)
+                {
+                    MessageBox.Show("该工具还未归还，请先归还，再操作");
+                    return;
+                }
                 ToolInfoForPackEntity result = new ToolInfoForPackEntity();
                 result.TypeName = toolInfo.TypeName;
                 result.ChildTypeName = toolInfo.ChildTypeName;
@@ -200,12 +206,10 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmToolPackManage--Add_button_Click", ex.Message, ex.StackTrace, ex.Source);
             }
         }
-
         private void Print_button_Click(object sender, EventArgs e)
         {
             ToolInfoCode_Detail_textBox.Text = "";
         }
-
         private void ToolInfoList_dataGridViewX_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             selectIndex = e.RowIndex;
@@ -267,13 +271,11 @@ namespace toolstrackingsystem
             }
 
         }
-
         private void Delete_button_CheckedChanged(object sender, EventArgs e)
         {
             //selectIndex = ;
             //this.Tag = ToolInfoList_dataGridViewX.Rows[selectIndex].Cells[2].Value.ToString();
         }
-
         private void ToolInfoList_dataGridViewX_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
         }
@@ -341,7 +343,7 @@ namespace toolstrackingsystem
                     return;
                 }
                 //判断如果删除的包是还未归还的信息，则提示
-                if (_outBackStoreService.GetToolInfoNotBackByPackCode(packCode).Count <= 0)
+                if (_outBackStoreService.GetToolInfoNotBackByPackCode(packCode).Count > 0)
                 {
                     MessageBox.Show("该包已经借出，请先归还后再删除包信息");
                     return;
@@ -353,7 +355,6 @@ namespace toolstrackingsystem
                 }
             }
         }
-
         private void type_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (type_comboBox.SelectedValue.ToString() == "2")
@@ -365,7 +366,6 @@ namespace toolstrackingsystem
                 cargroupinfo_textBox.Enabled = false;
             }
         }
-
         private void clear_button_Click(object sender, EventArgs e)
         {
             Pack_Code_textBox.Text = "";

@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.Clear_button = new DevComponents.DotNetBar.ButtonX();
             this.Reset_button = new DevComponents.DotNetBar.ButtonX();
             this.export_button = new DevComponents.DotNetBar.ButtonX();
             this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
@@ -42,7 +43,8 @@
             this.TollList_dataGridViewX = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
-            this.Clear_button = new DevComponents.DotNetBar.ButtonX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.ToolType_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TollList_dataGridViewX)).BeginInit();
             this.groupPanel2.SuspendLayout();
@@ -53,6 +55,8 @@
             this.groupPanel1.BackColor = System.Drawing.Color.White;
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.ToolType_comboBox);
+            this.groupPanel1.Controls.Add(this.labelX1);
             this.groupPanel1.Controls.Add(this.Clear_button);
             this.groupPanel1.Controls.Add(this.Reset_button);
             this.groupPanel1.Controls.Add(this.export_button);
@@ -93,11 +97,23 @@
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 12;
             // 
+            // Clear_button
+            // 
+            this.Clear_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.Clear_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.Clear_button.Location = new System.Drawing.Point(724, 21);
+            this.Clear_button.Name = "Clear_button";
+            this.Clear_button.Size = new System.Drawing.Size(75, 23);
+            this.Clear_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Clear_button.TabIndex = 18;
+            this.Clear_button.Text = "清空";
+            this.Clear_button.Click += new System.EventHandler(this.Clear_button_Click);
+            // 
             // Reset_button
             // 
             this.Reset_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Reset_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Reset_button.Location = new System.Drawing.Point(607, 22);
+            this.Reset_button.Location = new System.Drawing.Point(624, 21);
             this.Reset_button.Name = "Reset_button";
             this.Reset_button.Size = new System.Drawing.Size(75, 23);
             this.Reset_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -109,7 +125,7 @@
             // 
             this.export_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.export_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.export_button.Location = new System.Drawing.Point(505, 24);
+            this.export_button.Location = new System.Drawing.Point(522, 23);
             this.export_button.Name = "export_button";
             this.export_button.Size = new System.Drawing.Size(75, 23);
             this.export_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -121,7 +137,7 @@
             // 
             this.Search_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Search_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Search_buttonX.Location = new System.Drawing.Point(396, 24);
+            this.Search_buttonX.Location = new System.Drawing.Point(413, 23);
             this.Search_buttonX.Name = "Search_buttonX";
             this.Search_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Search_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -139,7 +155,7 @@
             this.ToolCode_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ToolCode_textBox.DisabledBackColor = System.Drawing.Color.White;
             this.ToolCode_textBox.ForeColor = System.Drawing.Color.Black;
-            this.ToolCode_textBox.Location = new System.Drawing.Point(263, 24);
+            this.ToolCode_textBox.Location = new System.Drawing.Point(280, 23);
             this.ToolCode_textBox.Name = "ToolCode_textBox";
             this.ToolCode_textBox.PreventEnterBeep = true;
             this.ToolCode_textBox.Size = new System.Drawing.Size(105, 21);
@@ -152,7 +168,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(197, 24);
+            this.labelX2.Location = new System.Drawing.Point(214, 23);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(75, 23);
             this.labelX2.TabIndex = 2;
@@ -257,17 +273,30 @@
             this.pagerControl1.TabIndex = 1;
             this.pagerControl1.OnPageChanged += new System.EventHandler(this.pagerControl1_OnPageChanged);
             // 
-            // Clear_button
+            // labelX1
             // 
-            this.Clear_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.Clear_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Clear_button.Location = new System.Drawing.Point(707, 22);
-            this.Clear_button.Name = "Clear_button";
-            this.Clear_button.Size = new System.Drawing.Size(75, 23);
-            this.Clear_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.Clear_button.TabIndex = 18;
-            this.Clear_button.Text = "清空";
-            this.Clear_button.Click += new System.EventHandler(this.Clear_button_Click);
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(19, 23);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(75, 23);
+            this.labelX1.TabIndex = 19;
+            this.labelX1.Text = "工具类别:";
+            // 
+            // ToolType_comboBox
+            // 
+            this.ToolType_comboBox.DisplayMember = "Text";
+            this.ToolType_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ToolType_comboBox.FormattingEnabled = true;
+            this.ToolType_comboBox.ItemHeight = 15;
+            this.ToolType_comboBox.Location = new System.Drawing.Point(78, 23);
+            this.ToolType_comboBox.Name = "ToolType_comboBox";
+            this.ToolType_comboBox.Size = new System.Drawing.Size(121, 21);
+            this.ToolType_comboBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ToolType_comboBox.TabIndex = 20;
             // 
             // FrmToolRepair
             // 
@@ -300,5 +329,7 @@
         private PageControl.PagerControl pagerControl1;
         private DevComponents.DotNetBar.ButtonX Reset_button;
         private DevComponents.DotNetBar.ButtonX Clear_button;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx ToolType_comboBox;
+        private DevComponents.DotNetBar.LabelX labelX1;
     }
 }

@@ -25,15 +25,28 @@ namespace toolstrackingsystem
         private IToolInfoService _toolInfoService;
         private List<ToolInfoForRepairEntity> resultList = new List<ToolInfoForRepairEntity>();
         private Sys_User_Info userInfo = MemoryCache.Default.Get("userinfo") as Sys_User_Info;
+        private IToolTypeService _toolTypeService;
         private int selectedIndex;
-        public FrmToolRepair()
+        public FrmToolRepair(IToolTypeService toolTypeService)
         {
             this.EnableGlass = false;
+            //_toolTypeService = toolTypeService;
             InitializeComponent();
+            
         }
         private void FrmToolRepair_Load(object sender, EventArgs e)
         {
             _toolInfoService = Program.container.Resolve<IToolInfoService>() as IToolInfoService;
+            #region 初始化工具类别
+            List<t_ToolType> resultList = _toolTypeService.GetToolChildTypeList();
+            t_ToolType toolType = new t_ToolType();
+            toolType.TypeName = "全部";
+            resultList.Add(toolType);
+            this.ToolType_comboBox.DataSource = resultList;
+            this.ToolType_comboBox.DisplayMember = "TypeName";
+            this.ToolType_comboBox.ValueMember = "TypeName";
+            this.ToolType_comboBox.SelectedValue = "全部";
+            #endregion
         }
         private void TollList_dataGridViewX_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {

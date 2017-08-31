@@ -101,6 +101,7 @@ namespace toolstrackingsystem
             {
                 ScrapTool_dataGridViewX2.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
             }
+            ScrapTool_dataGridViewX2.MultiSelect = true;
             ScrapTool_dataGridViewX2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             ScrapTool_dataGridViewX2.Columns[0].HeaderText = "ID";
             ScrapTool_dataGridViewX2.Columns[0].Visible = false;

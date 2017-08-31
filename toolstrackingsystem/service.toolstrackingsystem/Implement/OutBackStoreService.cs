@@ -250,7 +250,7 @@ namespace service.toolstrackingsystem
                 string str = " AND obs.ToolCode LIKE @toolCode ";
                 sql += str;
                 sqlCount += " AND ToolCode LIKE @toolCode ";
-                sqlNotStr += " AND ToolCode LIKE @toolCode ";
+                sqlNotStr += " AND obs.ToolCode LIKE @toolCode ";
                 parameters.Add("toolCode", string.Format("%{0}%", toolCode));
             }
             if (!string.IsNullOrWhiteSpace(backPersonCode))
@@ -258,7 +258,7 @@ namespace service.toolstrackingsystem
                 string str = " AND obs.BackPesonCode LIKE @backPersonCode ";
                 sql += str;
                 sqlCount += " AND BackPesonCode LIKE @backPersonCode ";
-                sqlNotStr += " AND BackPesonCode LIKE @backPersonCode ";
+                sqlNotStr += " AND obs.BackPesonCode LIKE @backPersonCode ";
                 parameters.Add("backPersonCode", string.Format("%{0}%", backPersonCode));
             }
             if (!string.IsNullOrWhiteSpace(dateTimeFrom))
@@ -266,7 +266,7 @@ namespace service.toolstrackingsystem
                 string str = " AND obs.BackTime >=  @dateTimeFrom ";
                 sql += str;
                 sqlCount += " AND BackTime >=  @dateTimeFrom  ";
-                sqlNotStr += " AND BackTime >=  @dateTimeFrom  ";
+                sqlNotStr += " AND obs.BackTime >=  @dateTimeFrom  ";
                 parameters.Add("dateTimeFrom", dateTimeFrom);
             }
             if (!string.IsNullOrWhiteSpace(dateTimeTo))
@@ -274,7 +274,7 @@ namespace service.toolstrackingsystem
                 string str = " AND obs.BackTime <=  @dateTimeTo ";
                 sql += str;
                 sqlCount += " AND BackTime <=  @dateTimeTo  ";
-                sqlNotStr += " AND BackTime <=  @dateTimeTo  ";
+                sqlNotStr += " AND obs.BackTime <=  @dateTimeTo  ";
                 parameters.Add("dateTimeFrom", dateTimeTo);
             }
             sqlNotStr += ")";
