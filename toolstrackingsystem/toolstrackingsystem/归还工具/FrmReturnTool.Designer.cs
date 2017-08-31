@@ -241,7 +241,7 @@
             // 
             this.btnAddTool.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddTool.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddTool.Location = new System.Drawing.Point(357, 22);
+            this.btnAddTool.Location = new System.Drawing.Point(458, 27);
             this.btnAddTool.Name = "btnAddTool";
             this.btnAddTool.Size = new System.Drawing.Size(40, 23);
             this.btnAddTool.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -253,7 +253,7 @@
             // 
             this.btnReturnContinue.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnReturnContinue.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnReturnContinue.Location = new System.Drawing.Point(792, 72);
+            this.btnReturnContinue.Location = new System.Drawing.Point(893, 77);
             this.btnReturnContinue.Name = "btnReturnContinue";
             this.btnReturnContinue.Size = new System.Drawing.Size(84, 44);
             this.btnReturnContinue.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -268,7 +268,7 @@
             // 
             this.tbEditCode.Border.Class = "TextBoxBorder";
             this.tbEditCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditCode.Location = new System.Drawing.Point(147, 22);
+            this.tbEditCode.Location = new System.Drawing.Point(248, 27);
             this.tbEditCode.Name = "tbEditCode";
             this.tbEditCode.PreventEnterBeep = true;
             this.tbEditCode.Size = new System.Drawing.Size(204, 21);
@@ -282,7 +282,7 @@
             // 
             // 
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(66, 22);
+            this.labelX11.Location = new System.Drawing.Point(167, 27);
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(123, 23);
             this.labelX11.TabIndex = 27;
@@ -292,7 +292,7 @@
             // 
             this.btnReturn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnReturn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnReturn.Location = new System.Drawing.Point(792, 22);
+            this.btnReturn.Location = new System.Drawing.Point(893, 27);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(84, 44);
             this.btnReturn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -307,7 +307,7 @@
             // 
             this.tbEditoutdescribes.Border.Class = "TextBoxBorder";
             this.tbEditoutdescribes.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditoutdescribes.Location = new System.Drawing.Point(126, 94);
+            this.tbEditoutdescribes.Location = new System.Drawing.Point(227, 99);
             this.tbEditoutdescribes.Name = "tbEditoutdescribes";
             this.tbEditoutdescribes.PreventEnterBeep = true;
             this.tbEditoutdescribes.Size = new System.Drawing.Size(660, 21);
@@ -320,7 +320,7 @@
             // 
             // 
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(66, 92);
+            this.labelX10.Location = new System.Drawing.Point(167, 97);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(101, 23);
             this.labelX10.TabIndex = 18;
@@ -333,7 +333,7 @@
             // 
             this.tbEditPersonName.Border.Class = "TextBoxBorder";
             this.tbEditPersonName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditPersonName.Location = new System.Drawing.Point(499, 60);
+            this.tbEditPersonName.Location = new System.Drawing.Point(600, 65);
             this.tbEditPersonName.Name = "tbEditPersonName";
             this.tbEditPersonName.PreventEnterBeep = true;
             this.tbEditPersonName.Size = new System.Drawing.Size(287, 21);
@@ -346,7 +346,7 @@
             // 
             // 
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(436, 56);
+            this.labelX9.Location = new System.Drawing.Point(537, 61);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(83, 23);
             this.labelX9.TabIndex = 13;
@@ -359,7 +359,7 @@
             // 
             this.tbEditPersonCode.Border.Class = "TextBoxBorder";
             this.tbEditPersonCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditPersonCode.Location = new System.Drawing.Point(499, 22);
+            this.tbEditPersonCode.Location = new System.Drawing.Point(600, 27);
             this.tbEditPersonCode.Name = "tbEditPersonCode";
             this.tbEditPersonCode.PreventEnterBeep = true;
             this.tbEditPersonCode.Size = new System.Drawing.Size(287, 21);
@@ -373,7 +373,7 @@
             // 
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(436, 22);
+            this.labelX8.Location = new System.Drawing.Point(537, 27);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(83, 23);
             this.labelX8.TabIndex = 11;

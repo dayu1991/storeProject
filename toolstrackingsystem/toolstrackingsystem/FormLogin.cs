@@ -40,7 +40,7 @@ namespace toolstrackingsystem
                 MessageBox.Show("用户名不能为空");
                 return;
             }
-            if (string.IsNullOrEmpty(Pass))
+            if (!scan_checkBox.Checked&&string.IsNullOrEmpty(Pass))
             {
                 MessageBox.Show("密码不能为空");
                 return;
@@ -61,18 +61,10 @@ namespace toolstrackingsystem
                         MessageBox.Show("用户名不存在");
                         return;
                     }
-                    if (Pass != "1")
-                    {
-                        MessageBox.Show("密码不正确");
-                        return;
-                    }
-                    else
-                    {
-                        userInfo.UserCode = personInfo.PersonCode;
-                        userInfo.UserName = personInfo.PersonName;
-                        userInfo.UserRole = "SuperAuthority";
-                        userInfo.IsActive = 1;
-                    }
+                    userInfo.UserCode = personInfo.PersonCode;
+                    userInfo.UserName = personInfo.PersonName;
+                    userInfo.UserRole = "SuperAuthority";
+                    userInfo.IsActive = 1;
                 }
                 if (userInfo != null)
                 {
