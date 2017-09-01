@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ToolInfoList_dataGridViewX = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Add_button = new DevComponents.DotNetBar.ButtonX();
@@ -47,12 +47,12 @@
             this.Pack_Name_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.clear_button = new DevComponents.DotNetBar.ButtonX();
             this.cargroupinfo_textBox = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.type_comboBox = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.clear_button = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.ToolInfoList_dataGridViewX)).BeginInit();
             this.groupPanel2.SuspendLayout();
             this.groupPanel3.SuspendLayout();
@@ -62,38 +62,38 @@
             // ToolInfoList_dataGridViewX
             // 
             this.ToolInfoList_dataGridViewX.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ToolInfoList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ToolInfoList_dataGridViewX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.ToolInfoList_dataGridViewX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ToolInfoList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ToolInfoList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle8;
             this.ToolInfoList_dataGridViewX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ToolInfoList_dataGridViewX.EnableHeadersVisualStyles = false;
-            this.ToolInfoList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.ToolInfoList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.ToolInfoList_dataGridViewX.Location = new System.Drawing.Point(0, 0);
             this.ToolInfoList_dataGridViewX.MultiSelect = false;
             this.ToolInfoList_dataGridViewX.Name = "ToolInfoList_dataGridViewX";
             this.ToolInfoList_dataGridViewX.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ToolInfoList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ToolInfoList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.ToolInfoList_dataGridViewX.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.ToolInfoList_dataGridViewX.RowTemplate.Height = 23;
             this.ToolInfoList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -283,10 +283,11 @@
             // 
             // Pack_Code_textBox
             // 
-            this.Pack_Code_textBox.Location = new System.Drawing.Point(244, 21);
+            this.Pack_Code_textBox.Location = new System.Drawing.Point(245, 21);
             this.Pack_Code_textBox.Name = "Pack_Code_textBox";
             this.Pack_Code_textBox.Size = new System.Drawing.Size(115, 21);
             this.Pack_Code_textBox.TabIndex = 1;
+            this.Pack_Code_textBox.TextChanged += new System.EventHandler(this.Pack_Code_textBox_TextChanged);
             // 
             // labelX2
             // 
@@ -313,6 +314,7 @@
             this.Pack_Name_textBox.PreventEnterBeep = true;
             this.Pack_Name_textBox.Size = new System.Drawing.Size(109, 21);
             this.Pack_Name_textBox.TabIndex = 3;
+            this.Pack_Name_textBox.TextChanged += new System.EventHandler(this.Pack_Name_textBox_TextChanged);
             // 
             // Search_buttonX
             // 
@@ -374,6 +376,18 @@
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 6;
+            // 
+            // clear_button
+            // 
+            this.clear_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.clear_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.clear_button.Location = new System.Drawing.Point(808, 19);
+            this.clear_button.Name = "clear_button";
+            this.clear_button.Size = new System.Drawing.Size(75, 23);
+            this.clear_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.clear_button.TabIndex = 10;
+            this.clear_button.Text = "清空";
+            this.clear_button.Click += new System.EventHandler(this.clear_button_Click);
             // 
             // cargroupinfo_textBox
             // 
@@ -440,18 +454,6 @@
             this.labelX5.Size = new System.Drawing.Size(51, 23);
             this.labelX5.TabIndex = 5;
             this.labelX5.Text = "包类别:";
-            // 
-            // clear_button
-            // 
-            this.clear_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.clear_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.clear_button.Location = new System.Drawing.Point(808, 19);
-            this.clear_button.Name = "clear_button";
-            this.clear_button.Size = new System.Drawing.Size(75, 23);
-            this.clear_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.clear_button.TabIndex = 10;
-            this.clear_button.Text = "清空";
-            this.clear_button.Click += new System.EventHandler(this.clear_button_Click);
             // 
             // FrmToolPackManage
             // 

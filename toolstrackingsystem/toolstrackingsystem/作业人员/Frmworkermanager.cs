@@ -68,6 +68,7 @@ namespace toolstrackingsystem
             long Count;
             //获取分页的数据
             PersonList_dataGridViewX.DataSource = _personManageService.GetPersonInfoList(personInfo,pagerControl1.PageIndex,pagerControl1.PageSize,out Count);
+            PersonList_dataGridViewX.MultiSelect = true;
             pagerControl1.DrawControl(Convert.ToInt32(Count));
             for (int i = 0; i < PersonList_dataGridViewX.Columns.Count; i++)
             {
@@ -338,28 +339,48 @@ namespace toolstrackingsystem
         {
             try
             {
-                string personCode = this.Tag.ToString();
-                if (string.IsNullOrEmpty(personCode))
+                //string personCode = this.Tag.ToString();
+                //if (string.IsNullOrEmpty(personCode))
+                //{
+                //    MessageBox.Show("请选择要删除的数据");
+                //    return;
+                //}
+                //if (MessageBox.Show("您确定要删除“" + personCode + "”吗", "询问", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                //{
+                //    if (_personManageService.DeletePersonInfo(personCode))
+                //    {
+                //        MessageBox.Show("删除成功");
+                //        Search_buttonX_Click(sender, e);
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("删除失败");
+                //    }
+                //}
+                if (PersonList_dataGridViewX.SelectedRows.Count <= 0)
                 {
                     MessageBox.Show("请选择要删除的数据");
                     return;
                 }
-                if (MessageBox.Show("您确定要删除“" + personCode + "”吗", "询问", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                bool IsSuccess = false;
+                foreach (DataGridViewRow item in PersonList_dataGridViewX.SelectedRows)
                 {
-                    if (_personManageService.DeletePersonInfo(personCode))
-                    {
-                        MessageBox.Show("删除成功");
-                        Search_buttonX_Click(sender, e);
-                    }
-                    else
-                    {
-                        MessageBox.Show("删除失败");
-                    }
+                    string personCode = item.Cells[0].Value.ToString();
+                    IsSuccess = _personManageService.DeletePersonInfo(personCode);
+                }
+                if (IsSuccess)
+                {
+                    MessageBox.Show("删除成功");
+                    Search_buttonX_Click(sender, e);
+                }
+                else {
+                    MessageBox.Show("删除失败");
                 }
             }
             catch (Exception ex)
             {
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmWorkerManager--Delete_button_Click", ex.Message, ex.StackTrace, ex.Source);
+                MessageBox.Show("删除失败，请联系管理员");
             }
         }
         /// <summary>

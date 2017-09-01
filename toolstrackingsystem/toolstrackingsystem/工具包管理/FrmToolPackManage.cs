@@ -373,5 +373,15 @@ namespace toolstrackingsystem
             cargroupinfo_textBox.Text = "";
             type_comboBox.SelectedValue = 1;
         }
+
+        private void Pack_Name_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Pack_Code_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

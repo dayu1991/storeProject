@@ -23,7 +23,7 @@ namespace toolstrackingsystem
 {
     public partial class FormMain : Office2007RibbonForm
     {
-        private Sys_User_Info userInfo = MemoryCache.Default.Get("userinfo") as Sys_User_Info;
+        //private Sys_User_Info userInfo = MemoryCache.Default.Get("userinfo") as Sys_User_Info;
         private IRoleManageService _roleManageService;
         private IMenuManageService _menuManageService;
         ILog logger = log4net.LogManager.GetLogger(typeof(FormMain));
@@ -33,6 +33,7 @@ namespace toolstrackingsystem
         {
             this.EnableGlass = false;
             InitializeComponent();
+            this.IsMdiContainer = true;
         }
         private void FormTest_Load(object sender, EventArgs e)
         {
@@ -41,10 +42,10 @@ namespace toolstrackingsystem
             //默认清空所有的tab页
             SuperTabControl superTabControl = new SuperTabControl();
             superTabControl.Tabs.Clear();
-            //获取用户信息
-            Sys_User_Info userInfo = MemoryCache.Default.Get("userinfo") as Sys_User_Info;
-            ribbonControl1.TitleText = "北京动车段工具管理应用系统v1.1[" + userInfo.UserName + "]";
-            label_login_user.Text = userInfo.UserName;
+            ////获取用户信息
+            //Sys_User_Info userInfo = MemoryCache.Default.Get("userinfo") as Sys_User_Info;
+            ribbonControl1.TitleText = "北京动车段工具管理应用系统v1.1[" + LoginHelper.UserName + "]";
+            label_login_user.Text = LoginHelper.UserName;
 
             #region 手动添加菜单项test
             //RibbonTabItem tabItem = new RibbonTabItem();
@@ -70,7 +71,7 @@ namespace toolstrackingsystem
             #region 获取用户角色权限
             _roleManageService = Program.container.Resolve<IRoleManageService>() as RoleManageService;
             _menuManageService = Program.container.Resolve<IMenuManageService>() as MenuManageService;
-            Sys_User_Role roleInfo = _roleManageService.GetRoleInfo(userInfo.UserRole);
+            Sys_User_Role roleInfo = _roleManageService.GetRoleInfo(LoginHelper.UserRole);
             
             List<MenuInfoEntity> resultEntity = _menuManageService.GetUserMenuInfoList(roleInfo.MenuID);
             foreach (var item in resultEntity)
@@ -100,7 +101,7 @@ namespace toolstrackingsystem
             #endregion
 
             #region 判断用户是否为服务端用户
-            if (userInfo.UserRole != "ServerRole")
+            if (LoginHelper.UserRole != "ServerRole")
             {
                 Select_buttonItem.Visible = false;
             }
@@ -134,7 +135,7 @@ namespace toolstrackingsystem
             //timer启动
             this.timer1.Start();           
         }
-        private void SetTabShow(string tabName, string sfrmName)
+        private void SetTabShow(string tabName,Type formType)
         {
             try
             {
@@ -171,16 +172,21 @@ namespace toolstrackingsystem
                 }
                 if (!isOpen)
                 {
-                   
+
                     //反射取得子窗体对象。
-                    object obj = Assembly.GetExecutingAssembly().CreateInstance("toolstrackingsystem." + sfrmName, false);
-                    //需要强转
-                    Form form = (Form)obj;
+                    //object obj = Assembly.GetExecutingAssembly().CreateInstance("toolstrackingsystem." + sfrmName, false);
+                    ////需要强转
+                    //Office2007Form form = (Office2007Form)obj;
+                    DevComponents.DotNetBar.Office2007RibbonForm form = ChildWinManagement.LoadMdiForm(this, formType)
+    as DevComponents.DotNetBar.Office2007RibbonForm;
                     //设置该子窗体不为顶级窗体，否则不能加入到别的控件中
+
                     form.TopLevel = false;
                     form.Visible = true;
+                    //解决textbox里的内容无法被鼠标选中的问题
+                    form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
                     //布满父控件
-                    //form.Dock = DockStyle.Fill;
+                    form.Dock = DockStyle.Fill;
                     //创建一个tab
                     SuperTabItem item = superTabControl2.CreateTab(tabName);
                     //设置显示名和控件名
@@ -192,7 +198,7 @@ namespace toolstrackingsystem
                     superTabControl2.SelectedTab = item;
                     if (!tablItemDic.ContainsKey(tabName))
                     {
-                        tablItemDic.Add(tabName, sfrmName);
+                        tablItemDic.Add(tabName, form.Name);
 
                     }
                 }
@@ -203,20 +209,99 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FormMain--SetTabShow", ex.Message, ex.StackTrace, ex.Source);
 
             }
+
+        }
+    //    private void SetTabShow(string tabName, string sfrmName)
+    //    {
+    //        try
+    //        {
+    //            bool isOpen = false;
+    //            foreach (SuperTabItem item in superTabControl2.Tabs)
+    //            {
+    //                if (tabName == "领用工具")
+    //                {
+    //                    if (item.Text == "归还工具")
+    //                    {
+    //                        //关闭领用
+    //                        FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
+    //                        toolFrm.IsConnect = false;
+    //                        toolFrm.IsListening = false;
+    //                    }
+    //                }
+    //                else if (tabName == "归还工具")
+    //                {
+    //                    if (item.Text == "领用工具")
+    //                    {
+    //                        //关闭领用
+    //                        FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
+    //                        toolFrm.IsConnect = false;
+    //                        toolFrm.IsListening = false;
+    //                    }
+    //                }
+    //                //已打开
+    //                if (item.Name == tabName)
+    //                {
+    //                    superTabControl2.SelectedTab = item;
+    //                    isOpen = true;
+    //                    break;
+    //                }
+    //            }
+    //            if (!isOpen)
+    //            {
+
+    //                //反射取得子窗体对象。
+    //                //object obj = Assembly.GetExecutingAssembly().CreateInstance("toolstrackingsystem." + sfrmName, false);
+    //                ////需要强转
+    //                //Office2007Form form = (Office2007Form)obj;
+    //                DevComponents.DotNetBar.Office2007Form form = ChildWinManagement.LoadMdiForm(Portal.gc.MainDialog, formType)
+    //as DevComponents.DotNetBar.Office2007Form;
+    //                //设置该子窗体不为顶级窗体，否则不能加入到别的控件中
+
+    //                form.TopLevel = false;
+    //                form.Visible = true;
+    //                //解决textbox里的内容无法被鼠标选中的问题
+    //                form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+    //                //布满父控件
+    //                //form.Dock = DockStyle.Fill;
+    //                //创建一个tab
+    //                SuperTabItem item = superTabControl2.CreateTab(tabName);
+    //                //设置显示名和控件名
+    //                item.Text = tabName;
+    //                item.Name = tabName;
+    //                //将子窗体添加到Tab中
+    //                item.AttachedControl.Controls.Add(form);
+    //                //选择该子窗体。
+    //                superTabControl2.SelectedTab = item;
+    //                if (!tablItemDic.ContainsKey(tabName))
+    //                {
+    //                    tablItemDic.Add(tabName, sfrmName);
+
+    //                }
+    //            }
+    //        }
+    //        catch (Exception ex)
+    //        {
+
+    //            logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FormMain--SetTabShow", ex.Message, ex.StackTrace, ex.Source);
+
+    //        }
            
-        }
-        private void ToolInfo_Click(object sender, EventArgs e)
-        {
-            SetTabShow("常规工具", "ToolInfoManage");
-        }
+    //    }
+        //private void ToolInfo_Click(object sender, EventArgs e)
+        //{
+        //    SetTabShow("常规工具", "ToolInfoManage");
+        //}
         private void FrmPerson(object sender, EventArgs e)
         {
-            SetTabShow("常规工具", "ToolInfoManage");
+            //SetTabShow("常规工具", "ToolInfoManage");
         }
         #region 给动态添加的按钮绑定的事件
         private void Custom_Click(object sender, EventArgs e)
         {
-            SetTabShow(sender.ToString(), ((ButtonItem)sender).Tag.ToString());
+            //SetTabShow(sender.ToString(), ((ButtonItem)sender).Tag.ToString());
+                                //反射取得子窗体对象。
+            object obj = Assembly.GetExecutingAssembly().CreateInstance("toolstrackingsystem." + ((ButtonItem)sender).Tag.ToString(), false);
+            SetTabShow(sender.ToString(), obj.GetType());
             i++;
         }
         #endregion
@@ -254,7 +339,7 @@ namespace toolstrackingsystem
             try
             {
                 FrmSelectClient FrmClient = new FrmSelectClient();
-                if (userInfo.UserRole == "ServerRole")
+                if (LoginHelper.UserRole == "ServerRole")
                 {
                     FrmClient.ShowDialog();
                     if (FrmClient.DialogResult == DialogResult.OK)
