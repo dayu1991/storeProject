@@ -41,9 +41,9 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
             this.ToolPackList_dataGridViewX = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ToolPackList_dataGridViewX)).BeginInit();
@@ -64,7 +64,7 @@
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(4, 3);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(896, 70);
+            this.groupPanel1.Size = new System.Drawing.Size(1460, 70);
             // 
             // 
             // 
@@ -99,7 +99,7 @@
             // 
             this.Print_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Print_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Print_button.Location = new System.Drawing.Point(662, 18);
+            this.Print_button.Location = new System.Drawing.Point(739, 18);
             this.Print_button.Name = "Print_button";
             this.Print_button.Size = new System.Drawing.Size(75, 23);
             this.Print_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -119,7 +119,7 @@
             this.ToolPackCode_textBox.Location = new System.Drawing.Point(120, 18);
             this.ToolPackCode_textBox.Name = "ToolPackCode_textBox";
             this.ToolPackCode_textBox.PreventEnterBeep = true;
-            this.ToolPackCode_textBox.Size = new System.Drawing.Size(105, 21);
+            this.ToolPackCode_textBox.Size = new System.Drawing.Size(205, 21);
             this.ToolPackCode_textBox.TabIndex = 20;
             // 
             // labelX1
@@ -139,7 +139,7 @@
             // 
             this.Export_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Export_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Export_button.Location = new System.Drawing.Point(573, 18);
+            this.Export_button.Location = new System.Drawing.Point(650, 18);
             this.Export_button.Name = "Export_button";
             this.Export_button.Size = new System.Drawing.Size(75, 23);
             this.Export_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -151,7 +151,7 @@
             // 
             this.Search_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Search_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Search_buttonX.Location = new System.Drawing.Point(479, 18);
+            this.Search_buttonX.Location = new System.Drawing.Point(556, 18);
             this.Search_buttonX.Name = "Search_buttonX";
             this.Search_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Search_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -169,10 +169,10 @@
             this.ToolPackName_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ToolPackName_textBox.DisabledBackColor = System.Drawing.Color.White;
             this.ToolPackName_textBox.ForeColor = System.Drawing.Color.Black;
-            this.ToolPackName_textBox.Location = new System.Drawing.Point(306, 18);
+            this.ToolPackName_textBox.Location = new System.Drawing.Point(397, 18);
             this.ToolPackName_textBox.Name = "ToolPackName_textBox";
             this.ToolPackName_textBox.PreventEnterBeep = true;
-            this.ToolPackName_textBox.Size = new System.Drawing.Size(105, 21);
+            this.ToolPackName_textBox.Size = new System.Drawing.Size(137, 21);
             this.ToolPackName_textBox.TabIndex = 3;
             // 
             // labelX2
@@ -182,7 +182,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(254, 18);
+            this.labelX2.Location = new System.Drawing.Point(345, 18);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(67, 23);
             this.labelX2.TabIndex = 2;
@@ -198,7 +198,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(4, 79);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(896, 418);
+            this.groupPanel2.Size = new System.Drawing.Size(1460, 653);
             // 
             // 
             // 
@@ -229,6 +229,19 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 19;
             // 
+            // pagerControl1
+            // 
+            this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pagerControl1.JumpText = "Go";
+            this.pagerControl1.Location = new System.Drawing.Point(-3, 600);
+            this.pagerControl1.Name = "pagerControl1";
+            this.pagerControl1.PageIndex = 1;
+            this.pagerControl1.PageSize = 50;
+            this.pagerControl1.RecordCount = 0;
+            this.pagerControl1.Size = new System.Drawing.Size(1460, 44);
+            this.pagerControl1.TabIndex = 1;
+            this.pagerControl1.OnPageChanged += new System.EventHandler(this.pagerControl1_OnPageChanged);
+            // 
             // ToolPackList_dataGridViewX
             // 
             this.ToolPackList_dataGridViewX.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -250,7 +263,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ToolPackList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.ToolPackList_dataGridViewX.EnableHeadersVisualStyles = false;
-            this.ToolPackList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.ToolPackList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.ToolPackList_dataGridViewX.Location = new System.Drawing.Point(-4, 3);
             this.ToolPackList_dataGridViewX.MultiSelect = false;
             this.ToolPackList_dataGridViewX.Name = "ToolPackList_dataGridViewX";
@@ -266,7 +279,7 @@
             this.ToolPackList_dataGridViewX.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.ToolPackList_dataGridViewX.RowTemplate.Height = 23;
             this.ToolPackList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.ToolPackList_dataGridViewX.Size = new System.Drawing.Size(891, 361);
+            this.ToolPackList_dataGridViewX.Size = new System.Drawing.Size(1461, 597);
             this.ToolPackList_dataGridViewX.TabIndex = 0;
             this.ToolPackList_dataGridViewX.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.ToolPackList_dataGridViewX_RowStateChanged);
             // 
@@ -274,24 +287,11 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
-            // pagerControl1
-            // 
-            this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(-4, 366);
-            this.pagerControl1.Name = "pagerControl1";
-            this.pagerControl1.PageIndex = 1;
-            this.pagerControl1.PageSize = 50;
-            this.pagerControl1.RecordCount = 0;
-            this.pagerControl1.Size = new System.Drawing.Size(891, 44);
-            this.pagerControl1.TabIndex = 1;
-            this.pagerControl1.OnPageChanged += new System.EventHandler(this.pagerControl1_OnPageChanged);
-            // 
             // ToolPackView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 560);
+            this.ClientSize = new System.Drawing.Size(1468, 736);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.groupPanel2);
             this.Name = "ToolPackView";

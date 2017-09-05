@@ -76,8 +76,8 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ToolList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.ToolList_dataGridViewX.EnableHeadersVisualStyles = false;
-            this.ToolList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.ToolList_dataGridViewX.Location = new System.Drawing.Point(5, 3);
+            this.ToolList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.ToolList_dataGridViewX.Location = new System.Drawing.Point(0, 0);
             this.ToolList_dataGridViewX.MultiSelect = false;
             this.ToolList_dataGridViewX.Name = "ToolList_dataGridViewX";
             this.ToolList_dataGridViewX.ReadOnly = true;
@@ -92,7 +92,7 @@
             this.ToolList_dataGridViewX.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.ToolList_dataGridViewX.RowTemplate.Height = 23;
             this.ToolList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.ToolList_dataGridViewX.Size = new System.Drawing.Size(882, 361);
+            this.ToolList_dataGridViewX.Size = new System.Drawing.Size(1451, 599);
             this.ToolList_dataGridViewX.TabIndex = 0;
             this.ToolList_dataGridViewX.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.ToolList_dataGridViewX_RowStateChanged);
             // 
@@ -115,7 +115,7 @@
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(9, 7);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(896, 70);
+            this.groupPanel1.Size = new System.Drawing.Size(1454, 70);
             // 
             // 
             // 
@@ -156,7 +156,7 @@
             this.dateTime_from_Input1.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dateTime_from_Input1.ButtonDropDown.Visible = true;
             this.dateTime_from_Input1.IsPopupCalendarOpen = false;
-            this.dateTime_from_Input1.Location = new System.Drawing.Point(40, 18);
+            this.dateTime_from_Input1.Location = new System.Drawing.Point(121, 21);
             // 
             // 
             // 
@@ -186,7 +186,7 @@
             this.dateTime_from_Input1.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dateTime_from_Input1.MonthCalendar.TodayButtonVisible = true;
             this.dateTime_from_Input1.Name = "dateTime_from_Input1";
-            this.dateTime_from_Input1.Size = new System.Drawing.Size(106, 21);
+            this.dateTime_from_Input1.Size = new System.Drawing.Size(153, 21);
             this.dateTime_from_Input1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dateTime_from_Input1.TabIndex = 23;
             // 
@@ -200,7 +200,7 @@
             this.dateTime_to_Input.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dateTime_to_Input.ButtonDropDown.Visible = true;
             this.dateTime_to_Input.IsPopupCalendarOpen = false;
-            this.dateTime_to_Input.Location = new System.Drawing.Point(157, 18);
+            this.dateTime_to_Input.Location = new System.Drawing.Point(297, 21);
             // 
             // 
             // 
@@ -230,7 +230,7 @@
             this.dateTime_to_Input.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dateTime_to_Input.MonthCalendar.TodayButtonVisible = true;
             this.dateTime_to_Input.Name = "dateTime_to_Input";
-            this.dateTime_to_Input.Size = new System.Drawing.Size(106, 21);
+            this.dateTime_to_Input.Size = new System.Drawing.Size(160, 21);
             this.dateTime_to_Input.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dateTime_to_Input.TabIndex = 22;
             // 
@@ -238,7 +238,7 @@
             // 
             this.Print_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Print_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Print_button.Location = new System.Drawing.Point(804, 18);
+            this.Print_button.Location = new System.Drawing.Point(1206, 21);
             this.Print_button.Name = "Print_button";
             this.Print_button.Size = new System.Drawing.Size(75, 23);
             this.Print_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -256,10 +256,10 @@
             this.ToolCode_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ToolCode_textBox.DisabledBackColor = System.Drawing.Color.White;
             this.ToolCode_textBox.ForeColor = System.Drawing.Color.Black;
-            this.ToolCode_textBox.Location = new System.Drawing.Point(331, 18);
+            this.ToolCode_textBox.Location = new System.Drawing.Point(535, 21);
             this.ToolCode_textBox.Name = "ToolCode_textBox";
             this.ToolCode_textBox.PreventEnterBeep = true;
-            this.ToolCode_textBox.Size = new System.Drawing.Size(105, 21);
+            this.ToolCode_textBox.Size = new System.Drawing.Size(209, 21);
             this.ToolCode_textBox.TabIndex = 20;
             // 
             // labelX1
@@ -269,7 +269,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(270, 18);
+            this.labelX1.Location = new System.Drawing.Point(474, 21);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(75, 23);
             this.labelX1.TabIndex = 19;
@@ -279,7 +279,7 @@
             // 
             this.Export_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Export_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Export_button.Location = new System.Drawing.Point(715, 18);
+            this.Export_button.Location = new System.Drawing.Point(1117, 21);
             this.Export_button.Name = "Export_button";
             this.Export_button.Size = new System.Drawing.Size(75, 23);
             this.Export_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -291,7 +291,7 @@
             // 
             this.Search_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Search_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Search_buttonX.Location = new System.Drawing.Point(621, 18);
+            this.Search_buttonX.Location = new System.Drawing.Point(1023, 21);
             this.Search_buttonX.Name = "Search_buttonX";
             this.Search_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Search_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -309,10 +309,10 @@
             this.PersonCode_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.PersonCode_textBox.DisabledBackColor = System.Drawing.Color.White;
             this.PersonCode_textBox.ForeColor = System.Drawing.Color.Black;
-            this.PersonCode_textBox.Location = new System.Drawing.Point(501, 18);
+            this.PersonCode_textBox.Location = new System.Drawing.Point(831, 21);
             this.PersonCode_textBox.Name = "PersonCode_textBox";
             this.PersonCode_textBox.PreventEnterBeep = true;
-            this.PersonCode_textBox.Size = new System.Drawing.Size(105, 21);
+            this.PersonCode_textBox.Size = new System.Drawing.Size(162, 21);
             this.PersonCode_textBox.TabIndex = 3;
             // 
             // labelX2
@@ -322,7 +322,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(440, 18);
+            this.labelX2.Location = new System.Drawing.Point(770, 21);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(67, 23);
             this.labelX2.TabIndex = 2;
@@ -335,9 +335,9 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(9, 18);
+            this.labelX3.Location = new System.Drawing.Point(78, 21);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(75, 23);
+            this.labelX3.Size = new System.Drawing.Size(54, 23);
             this.labelX3.TabIndex = 24;
             this.labelX3.Text = "时间:";
             // 
@@ -348,9 +348,9 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(142, 18);
+            this.labelX4.Location = new System.Drawing.Point(275, 21);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(75, 23);
+            this.labelX4.Size = new System.Drawing.Size(34, 23);
             this.labelX4.TabIndex = 25;
             this.labelX4.Text = "---";
             // 
@@ -368,7 +368,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(9, 83);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(896, 433);
+            this.groupPanel2.Size = new System.Drawing.Size(1454, 651);
             // 
             // 
             // 
@@ -403,12 +403,12 @@
             // 
             this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(5, 366);
+            this.pagerControl1.Location = new System.Drawing.Point(0, 599);
             this.pagerControl1.Name = "pagerControl1";
             this.pagerControl1.PageIndex = 1;
             this.pagerControl1.PageSize = 50;
             this.pagerControl1.RecordCount = 0;
-            this.pagerControl1.Size = new System.Drawing.Size(882, 44);
+            this.pagerControl1.Size = new System.Drawing.Size(1451, 44);
             this.pagerControl1.TabIndex = 1;
             this.pagerControl1.OnPageChanged += new System.EventHandler(this.pagerControl1_OnPageChanged);
             // 
@@ -416,7 +416,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 580);
+            this.ClientSize = new System.Drawing.Size(1468, 736);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.groupPanel2);
             this.Name = "FrmQueryBorrow";

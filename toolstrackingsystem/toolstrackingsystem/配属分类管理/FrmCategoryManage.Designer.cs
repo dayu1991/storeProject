@@ -66,13 +66,13 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(8, 69);
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(8, 85);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(921, 337);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1454, 569);
             this.dataGridViewX1.TabIndex = 8;
             this.dataGridViewX1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellClick);
             this.dataGridViewX1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewX1_RowStateChanged);
@@ -131,11 +131,11 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(76, 13);
+            this.labelX4.Location = new System.Drawing.Point(59, 15);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(57, 23);
+            this.labelX4.Size = new System.Drawing.Size(74, 23);
             this.labelX4.TabIndex = 8;
-            this.labelX4.Text = "名称：";
+            this.labelX4.Text = "工具类别：";
             // 
             // groupPanel1
             // 
@@ -147,7 +147,7 @@
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(8, 9);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(921, 54);
+            this.groupPanel1.Size = new System.Drawing.Size(1454, 70);
             // 
             // 
             // 
@@ -209,11 +209,11 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(76, 20);
+            this.labelX5.Location = new System.Drawing.Point(59, 20);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(57, 23);
+            this.labelX5.Size = new System.Drawing.Size(74, 23);
             this.labelX5.TabIndex = 1;
-            this.labelX5.Text = "配属：";
+            this.labelX5.Text = "工具类别：";
             // 
             // groupPanel2
             // 
@@ -225,9 +225,9 @@
             this.groupPanel2.Controls.Add(this.tbEditName);
             this.groupPanel2.Controls.Add(this.labelX5);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(8, 412);
+            this.groupPanel2.Location = new System.Drawing.Point(8, 660);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(921, 69);
+            this.groupPanel2.Size = new System.Drawing.Size(1454, 69);
             // 
             // 
             // 
@@ -287,7 +287,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(973, 536);
+            this.ClientSize = new System.Drawing.Size(1468, 736);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.groupPanel2);
