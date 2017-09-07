@@ -47,7 +47,6 @@
     <Compile Include="view\AddressInfoEntity.cs" />
     <Compile Include="view\CountToolInfoEntity.cs" />
     <Compile Include="view\CurrentToolInfoEntity.cs" />
-    <Compile Include="view\DbManageEntity.cs" />
     <Compile Include="view\DropDownCtrolObj.cs" />
     <Compile Include="view\MenuInfoEntity.cs" />
     <Compile Include="view\OutBackInfoForDeleteEntity.cs" />

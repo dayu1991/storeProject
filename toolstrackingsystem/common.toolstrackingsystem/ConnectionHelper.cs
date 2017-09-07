@@ -13,50 +13,7 @@ namespace common.toolstrackingsystem
     /// </summary>
     public class ConnectionHelper
     {
-
         public static string defaultConnectionString = MemoryCacheHelper.GetConnectionStr();
-        public static SqlConnection GetConnection()
-        {
-            return new SqlConnection(defaultConnectionString);
-        }
-        /// <summary>
-        /// 自定义数据库连接字符串的Mysql库连接对象
-        /// </summary>
-        /// <param name="connectionString"></param>
-        /// <returns></returns>
-        public static SqlConnection GetConnection(string connectionString)
-        {
-            if (!string.IsNullOrEmpty(connectionString))
-            {
-                return new SqlConnection(connectionString);
-            }
-            else
-            {
-                return (SqlConnection)null;
-            }
-            //return new MySql.Data.MySqlClient.MySqlConnection(defaultConnectionConfig);
-        }
-        /// <summary>
-        /// 根据配置链接字符串的Key名称获取Mysql库连接对象
-        /// </summary>
-        /// <param name="connectionStringKeyName"></param>
-        /// <returns></returns>
-        public static SqlConnection GetConnectionByKey(string connectionStringKeyName)
-        {
-            if (!string.IsNullOrEmpty(connectionStringKeyName))
-            {
-                string connString = System.Configuration.ConfigurationManager.ConnectionStrings[connectionStringKeyName].ConnectionString;
-                if (!string.IsNullOrEmpty(connString))
-                {
-                    return new SqlConnection(connString);
-                }
-                return (SqlConnection)null;
-
-            }
-            else
-            {
-                return (SqlConnection)null;
-            }
-        }
+      
     }
 }
