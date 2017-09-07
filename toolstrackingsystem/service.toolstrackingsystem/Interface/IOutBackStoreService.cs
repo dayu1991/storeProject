@@ -66,7 +66,7 @@ namespace service.toolstrackingsystem
         /// <param name="dateTimeFrom"></param>
         /// <param name="dateTimeTo"></param>
         /// <returns></returns>
-        List<ToolReturnEntity> GetToolReturnList(string toolCode, string backPersonCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count);
+        List<ToolReturnEntity> GetToolReturnList(string toolCode, string PersonCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count);
         /// <summary>
         /// 获取领用查询所需的归还工具导出信息
         /// </summary>
@@ -75,7 +75,31 @@ namespace service.toolstrackingsystem
         /// <param name="dateTimeFrom"></param>
         /// <param name="dateTimeTo"></param>
         /// <returns></returns>
-        List<ToolReturnEntity> GetToolReturnList(string toolCode, string backPersonCode, string dateTimeFrom, string dateTimeTo);
+        List<ToolReturnEntity> GetToolReturnList(string toolCode, string PersonCode, string dateTimeFrom, string dateTimeTo);
+        /// <summary>
+        /// 获取流水账分页信息
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="personCode"></param>
+        /// <param name="dateTimeFrom"></param>
+        /// <param name="dateTimeTo"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="Count"></param>
+        /// <returns></returns>
+        List<CurrentToolInfoEntity> GetCurrentToolInfoList(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count);
+        /// <summary>
+        /// 获取流水账信息(导出)
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="personCode"></param>
+        /// <param name="dateTimeFrom"></param>
+        /// <param name="dateTimeTo"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="Count"></param>
+        /// <returns></returns>
+        List<CurrentToolInfoEntity> GetCurrentToolInfoForExport(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo);
         /// <summary>
         /// 查询未归还的工具
         /// </summary>

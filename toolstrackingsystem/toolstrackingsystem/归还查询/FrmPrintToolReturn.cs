@@ -37,25 +37,42 @@ namespace toolstrackingsystem
             #endregion
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
-                string sql = "select  tl.TypeName as OutBackStoreID,tl.ChildTypeName as IsBack,tl.PackCode as OutStoreTime,tl.PackName as IsBack,obs.ToolCode,obs.ToolName,obs.BackPesonCode,obs.BackPersonName,obs.BackTime,obs.backdescribes,sui.UserName as OptionPerson from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode join Sys_User_Info sui on obs.OptionPerson=sui.UserCode  WHERE 1=1 ";
+                string sql = @"select   ti.TypeName,
+		                                ti.ChildTypeName,
+		                                ti.PackCode,
+		                                ti.PackName,
+		                                obs.ToolCode,
+		                                obs.ToolName,
+		                                obs.PersonCode,
+		                                obs.PersonName,
+		                                obs.OutStoreTime,
+		                                obs.BackPesonCode,
+		                                obs.BackPersonName,
+		                                obs.BackTime,
+		                                obs.backdescribes,
+		                                OptionPerson = case when sui.UserName is null then tpi1.PersonName else sui.UserName end
+                                    from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                                left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                                left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+                                    where 1=1 AND obs.IsBack='0' ";
                 t_OutBackStore outbackInfo = this.Tag as t_OutBackStore;
                 if (!string.IsNullOrWhiteSpace(outbackInfo.ToolCode))
                 {
                     string str = " AND obs.ToolCode LIKE '" + outbackInfo.ToolCode + "'";
                     sql += str;
                 }
-                if (!string.IsNullOrWhiteSpace(outbackInfo.ToolName))
+                if (!string.IsNullOrWhiteSpace(outbackInfo.PersonCode))
                 {
-                    string str = " AND obs.PersonCode LIKE '" + outbackInfo.ToolName + "'";
+                    string str = " AND obs.PersonCode LIKE '" + outbackInfo.PersonCode + "'";
                 }
                 if (!string.IsNullOrWhiteSpace(outbackInfo.OutStoreTime))
                 {
-                    string str = " AND obs.BackTime >=  '" + outbackInfo.OutStoreTime + "'";
+                    string str = " AND obs.OutStoreTime >=  '" + outbackInfo.BackTime + "'";
                     sql += str;
                 }
                 if (!string.IsNullOrWhiteSpace(outbackInfo.BackTime))
                 {
-                    string str = " AND obs.BackTime <=  '" + outbackInfo.BackTime + "'";
+                    string str = " AND obs.OutStoreTime <=  '" + outbackInfo.BackTime + "'";
                     sql += str;
                 }
                 SqlCommand cmd = new SqlCommand(sql, conn);

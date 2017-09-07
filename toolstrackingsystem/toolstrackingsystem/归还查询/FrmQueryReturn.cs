@@ -30,13 +30,14 @@ namespace toolstrackingsystem
         }
         private void FrmQueryReturn_Load(object sender, EventArgs e)
         {
-            _outBackStoreService = Program.container.Resolve<IOutBackStoreService>() as OutBackStoreService; 
+            _outBackStoreService = Program.container.Resolve<IOutBackStoreService>() as OutBackStoreService;
+            dateTime_from_Input1.CustomFormat = "yyyy-MM-dd";
+            dateTime_to_Input.CustomFormat = "yyyy-MM-dd";
         }
         private void ToolList_dataGridViewX_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
             e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
         }
-
         private void Search_buttonX_Click(object sender, EventArgs e)
         {
             try
@@ -74,12 +75,16 @@ namespace toolstrackingsystem
             ToolList_dataGridViewX.Columns[5].HeaderText = "工具名称";
             ToolList_dataGridViewX.Columns[6].HeaderText = "人员编码";
             ToolList_dataGridViewX.Columns[7].HeaderText = "人员名称";
-            ToolList_dataGridViewX.Columns[8].HeaderText = "归还时间";
-            ToolList_dataGridViewX.Columns[9].HeaderText = "归还说明";
-            ToolList_dataGridViewX.Columns[10].HeaderText = "操作人员";
+            ToolList_dataGridViewX.Columns[8].HeaderText = "领用时间";
+            ToolList_dataGridViewX.Columns[9].HeaderText = "归还人员编码";
+            ToolList_dataGridViewX.Columns[9].Width = 120;
+            ToolList_dataGridViewX.Columns[10].HeaderText = "归还人员名称";
+            ToolList_dataGridViewX.Columns[10].Width = 120;
+            ToolList_dataGridViewX.Columns[11].HeaderText = "归还时间";
+            ToolList_dataGridViewX.Columns[12].HeaderText = "归还说明";
+            ToolList_dataGridViewX.Columns[13].HeaderText = "操作人员";
             pagerControl1.DrawControl(Convert.ToInt32(Count));
         }
-
         private void pagerControl1_OnPageChanged(object sender, EventArgs e)
         {
             LoadData();
@@ -153,11 +158,26 @@ namespace toolstrackingsystem
                         cell.SetCellValue(item.ToolName);
                         cell = row.CreateCell(6);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.BackTime);
+                        cell.SetCellValue(item.PersonCode);
                         cell = row.CreateCell(7);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.backdescribes);
+                        cell.SetCellValue(item.PersonName);
                         cell = row.CreateCell(8);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.OutStoreTime);
+                        cell = row.CreateCell(9);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.BackPesonCode);
+                        cell = row.CreateCell(10);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.BackPersonName);
+                        cell = row.CreateCell(11);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.BackTime);
+                        cell = row.CreateCell(12);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.backdescribes);
+                        cell = row.CreateCell(13);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.OptionPerson);
                     }
