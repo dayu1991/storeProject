@@ -37,7 +37,22 @@ namespace toolstrackingsystem
             #endregion
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
-                string sql = "select  tl.TypeName as OutBackStoreID,tl.ChildTypeName as IsBack,tl.PackCode as BackTime,tl.PackName as backdescribes,obs.ToolCode,obs.ToolName,obs.PersonCode,obs.PersonName,obs.OutStoreTime,obs.outdescribes,sui.UserName as OptionPerson from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode join Sys_User_Info sui on obs.OptionPerson=sui.UserCode  WHERE 1=1 ";
+                string sql = @"select   ti.TypeName,
+		                            ti.ChildTypeName,
+		                            ti.PackCode,
+		                            ti.PackName,
+		                            obs.ToolCode,
+		                            obs.ToolName,
+		                            obs.PersonCode,
+		                            obs.PersonName,
+		                            obs.OutStoreTime,
+		                            obs.outdescribes,
+		                            OptionPerson = case when sui.UserName is null then tpi1.PersonName else sui.UserName end
+                                from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                            left join t_PersonInfo tpi on obs.PersonCode = tpi.PersonCode 
+	                            left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                            left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+                                where 1=1  ";
             t_OutBackStore outbackInfo = this.Tag as t_OutBackStore;
             if (!string.IsNullOrWhiteSpace(outbackInfo.ToolCode))
             {

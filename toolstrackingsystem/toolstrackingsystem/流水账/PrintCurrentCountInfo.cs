@@ -38,63 +38,62 @@ namespace toolstrackingsystem
             #endregion
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
-                t_CurrentCountInfo countInfo = (t_CurrentCountInfo)this.Tag;
-                string sql = @"SELECT tci.[TypeName]
-                                  ,tci.[ChildTypeName]
-                                  ,tci.[PackCode]
-                                  ,tci.[PackName]
-                                  ,tci.[ToolCode]
-                                  ,tci.[ToolName]
-                                  ,tci.[Models]
-                                  ,tci.[Location]
-                                  ,tci.[Remarks]
-                                  ,tci.[InStoreTime]
-                                  ,tci.[OutStoreTime]
-                                  ,tci.[BackTime]
-                                  ,tci.[OptionType]
-                                  ,tci.[PersonCode]
-                                  ,tci.[PersonName]
-                                  ,tci.[BackPesonCode]
-                                  ,tci.[BackPersonName]
-                                  ,tci.[describes]
-                                  ,sui.UserName as [OptionPerson]
-                              FROM [dbo].[t_CurrentCountInfo] tci JOIN Sys_User_Info  sui ON tci.[OptionPerson] = sui.UserCode WHERE 1=1 ";
-                if (!string.IsNullOrEmpty(countInfo.OptionType))
-                {
-                    string str = " AND tci.OptionType LIKE '" + countInfo.OptionType + "'";
-                    sql += str;
-                }
+                t_OutBackStore countInfo = (t_OutBackStore)this.Tag;
+                string sql = @"select   ti.TypeName,
+		                                ti.ChildTypeName,
+		                                ti.PackCode,
+		                                ti.PackName,
+		                                obs.ToolCode,
+		                                obs.ToolName,
+		                                IsBack = case obs.IsBack when '1' then '是' else '否' end,
+		                                obs.PersonCode,
+		                                obs.PersonName,
+		                                obs.OutStoreTime,
+		                                obs.outdescribes,
+		                                obs.BackPesonCode,
+		                                obs.BackPersonName,
+		                                obs.BackTime,
+		                                obs.backdescribes,
+		                                OptionPerson = case when sui.UserName is null then tpi1.PersonName else sui.UserName end
+                                    from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                                left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                                left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+                                    where 1=1  ";
                 if (!string.IsNullOrEmpty(countInfo.ToolCode))
                 {
-                    string str = " AND tci.ToolCode LIKE '" + countInfo.ToolCode + "'";
+                    string str = " AND obs.ToolCode LIKE '" + countInfo.ToolCode + "'";
                     sql += str;
                 }
                 if (!string.IsNullOrEmpty(countInfo.PersonCode))
                 {
-                    string str = " AND tci.PersonCode LIKE '" + countInfo.PersonCode + "'";
+                    string str = " AND obs.PersonCode LIKE '" + countInfo.PersonCode + "'";
                     sql += str;
                 }
-                if (!string.IsNullOrEmpty(countInfo.OptionPerson))
+                if (!string.IsNullOrEmpty(countInfo.OutStoreTime))
                 {
-                    string str = " AND tci.OptionPerson LIKE '" + countInfo.OptionPerson + "'";
+                    string str = " AND obs.OutStoreTime >= '" + countInfo.OutStoreTime + "'";
                     sql += str;
                 }
-                if (!string.IsNullOrEmpty(countInfo.OutStoreTime) && !string.IsNullOrEmpty(countInfo.BackTime))
+                if (!string.IsNullOrEmpty(countInfo.BackTime))
                 {
-                    string str = " AND((tci.OutStoreTime>= '" + countInfo.OutStoreTime + "' AND tci.OutStoreTime<='" + countInfo.BackTime + "') OR (tci.BackTime>= '" + countInfo.OutStoreTime + "'  AND tci.BackTime<='" + countInfo.BackTime + "'))";
+                    string str = " AND obs.OutStoreTime <= '" + countInfo.BackTime + "'";
                     sql += str;
                 }
-                else if (string.IsNullOrEmpty(countInfo.OutStoreTime) && !string.IsNullOrEmpty(countInfo.BackTime))
-                {
-                    string str = " AND(tci.OutStoreTime<='" + countInfo.BackTime + "' OR tci.BackTime<='" + countInfo.BackTime + "')";
-                    sql += str;
-                }
-                else if (!string.IsNullOrEmpty(countInfo.OutStoreTime) && string.IsNullOrEmpty(countInfo.BackTime))
-                {
-                    string str = " AND(tci.OutStoreTime>='" + countInfo.OutStoreTime + "' OR tci.BackTime>='" + countInfo.OutStoreTime + "')";
-                    sql += str;
-                }
-
+                //if (!string.IsNullOrEmpty(countInfo.OutStoreTime) && !string.IsNullOrEmpty(countInfo.BackTime))
+                //{
+                //    string str = " AND((tci.OutStoreTime>= '" + countInfo.OutStoreTime + "' AND tci.OutStoreTime<='" + countInfo.BackTime + "') OR (tci.BackTime>= '" + countInfo.OutStoreTime + "'  AND tci.BackTime<='" + countInfo.BackTime + "'))";
+                //    sql += str;
+                //}
+                //else if (string.IsNullOrEmpty(countInfo.OutStoreTime) && !string.IsNullOrEmpty(countInfo.BackTime))
+                //{
+                //    string str = " AND(tci.OutStoreTime<='" + countInfo.BackTime + "' OR tci.BackTime<='" + countInfo.BackTime + "')";
+                //    sql += str;
+                //}
+                //else if (!string.IsNullOrEmpty(countInfo.OutStoreTime) && string.IsNullOrEmpty(countInfo.BackTime))
+                //{
+                //    string str = " AND(tci.OutStoreTime>='" + countInfo.OutStoreTime + "' OR tci.BackTime>='" + countInfo.OutStoreTime + "')";
+                //    sql += str;
+                //}
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataSet c_ds = new DataSet();

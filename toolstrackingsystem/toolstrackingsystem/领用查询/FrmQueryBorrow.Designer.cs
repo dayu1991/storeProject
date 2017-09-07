@@ -76,7 +76,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ToolList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.ToolList_dataGridViewX.EnableHeadersVisualStyles = false;
-            this.ToolList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.ToolList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.ToolList_dataGridViewX.Location = new System.Drawing.Point(0, 0);
             this.ToolList_dataGridViewX.MultiSelect = false;
             this.ToolList_dataGridViewX.Name = "ToolList_dataGridViewX";
@@ -155,6 +155,7 @@
             this.dateTime_from_Input1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dateTime_from_Input1.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dateTime_from_Input1.ButtonDropDown.Visible = true;
+            this.dateTime_from_Input1.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.dateTime_from_Input1.IsPopupCalendarOpen = false;
             this.dateTime_from_Input1.Location = new System.Drawing.Point(121, 21);
             // 
@@ -199,6 +200,7 @@
             this.dateTime_to_Input.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dateTime_to_Input.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dateTime_to_Input.ButtonDropDown.Visible = true;
+            this.dateTime_to_Input.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.dateTime_to_Input.IsPopupCalendarOpen = false;
             this.dateTime_to_Input.Location = new System.Drawing.Point(297, 21);
             // 

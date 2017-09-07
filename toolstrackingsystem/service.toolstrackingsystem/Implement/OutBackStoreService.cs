@@ -152,45 +152,70 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         public List<ToolBorrowEntity> GetToolBorrowList(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count)
         {
-            string sql = "select top " + pageSize + " tl.TypeName,tl.ChildTypeName,tl.PackCode,tl.PackName,obs.ToolCode,obs.ToolName,obs.PersonCode,obs.PersonName,obs.OutStoreTime,obs.outdescribes,sui.UserName as OptionPerson from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode join Sys_User_Info sui on obs.OptionPerson=sui.UserCode  WHERE 1=1 ";
-            string sqlNotStr = "ob.OutBackStoreID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [OutBackStoreID] FROM [t_OutBackStore] WHERE 1=1 ";
-            string sqlCount = "SELECT COUNT(*) FROM [t_OutBackStore] WHERE 1=1 ";
+            string sql = "select top " + pageSize + @" ti.TypeName,
+		                                                ti.ChildTypeName,
+		                                                ti.PackCode,
+		                                                ti.PackName,
+		                                                obs.ToolCode,
+		                                                obs.ToolName,
+		                                                obs.PersonCode,
+		                                                obs.PersonName,
+		                                                obs.OutStoreTime,
+		                                                obs.outdescribes,
+		                                                OptionPerson = case when sui.UserName is null then tpi1.PersonName else sui.UserName end
+                                                 from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                                                left join t_PersonInfo tpi on obs.PersonCode = tpi.PersonCode 
+	                                                left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                                                left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+                                                 where 1=1 ";
+            string sqlNotStr = "obs.OutBackStoreID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + @" obs.OutBackStoreID
+                                                                                                     from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                                                                                                    left join t_PersonInfo tpi on obs.PersonCode = tpi.PersonCode 
+	                                                                                                    left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                                                                                                    left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+                                                                                                     where 1=1 ";
+            string sqlCount = @"select	count(1)
+                                 from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                                left join t_PersonInfo tpi on obs.PersonCode = tpi.PersonCode 
+	                                left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                                left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+                                 where 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
                 string str = " AND obs.ToolCode LIKE @toolCode ";
                 sql += str;
-                sqlCount += " AND ToolCode LIKE @toolCode ";
-                sqlNotStr += " AND ToolCode LIKE @toolCode ";
+                sqlCount += str;
+                sqlNotStr += str;
                 parameters.Add("toolCode", string.Format("%{0}%", toolCode));
             }
             if (!string.IsNullOrWhiteSpace(personCode))
             {
                 string str = " AND obs.PersonCode LIKE @personCode ";
                 sql += str;
-                sqlCount += " AND PersonCode LIKE @personCode ";
-                sqlNotStr += " AND PersonCode LIKE @personCode ";
+                sqlCount += str;
+                sqlNotStr += str;
                 parameters.Add("personCode", string.Format("%{0}%", personCode));
             }
             if (!string.IsNullOrWhiteSpace(dateTimeFrom))
             {
                 string str = " AND obs.OutStoreTime >=  @dateTimeFrom ";
                 sql += str;
-                sqlCount += " AND OutStoreTime >=  @dateTimeFrom  ";
-                sqlNotStr += " AND OutStoreTime >=  @dateTimeFrom  ";
+                sqlCount += str;
+                sqlNotStr += str;
                 parameters.Add("dateTimeFrom", dateTimeFrom);
             }
             if (!string.IsNullOrWhiteSpace(dateTimeTo))
             {
                 string str = " AND obs.OutStoreTime <=  @dateTimeTo ";
                 sql += str;
-                sqlCount += " AND OutStoreTime <=  @dateTimeTo  ";
-                sqlNotStr += " AND OutStoreTime <=  @dateTimeTo  ";
-                parameters.Add("dateTimeFrom", dateTimeTo);
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("dateTimeTo", dateTimeTo);
             }
             sqlNotStr += ")";
             string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
-            return _mutiTableQueryRepository.QueryList<ToolBorrowEntity>(sql, parameters, out Count, sqlCount, false).ToList();
+            return _mutiTableQueryRepository.QueryList<ToolBorrowEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
         }
         /// <summary>
         /// 获取领用查询所需的领用工具导出信息
@@ -202,7 +227,22 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         public List<ToolBorrowEntity> GetToolBorrowList(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo)
         {
-            string sql = "select  tl.TypeName,tl.ChildTypeName,tl.PackCode,tl.PackName,obs.ToolCode,obs.ToolName,obs.PersonCode,obs.PersonName,obs.OutStoreTime,obs.outdescribes,sui.UserName as OptionPerson from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode join Sys_User_Info sui on obs.OptionPerson=sui.UserCode  WHERE 1=1 ";
+            string sql = @"select   ti.TypeName,
+		                            ti.ChildTypeName,
+		                            ti.PackCode,
+		                            ti.PackName,
+		                            obs.ToolCode,
+		                            obs.ToolName,
+		                            obs.PersonCode,
+		                            obs.PersonName,
+		                            obs.OutStoreTime,
+		                            obs.outdescribes,
+		                            OptionPerson = case when sui.UserName is null then tpi1.PersonName else sui.UserName end
+                                from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                            left join t_PersonInfo tpi on obs.PersonCode = tpi.PersonCode 
+	                            left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                            left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+                                where 1=1  ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
@@ -226,72 +266,113 @@ namespace service.toolstrackingsystem
             {
                 string str = " AND obs.OutStoreTime <=  @dateTimeTo ";
                 sql += str;
-                parameters.Add("dateTimeFrom", dateTimeTo);
+                parameters.Add("dateTimeTo", dateTimeTo);
             }
             return _mutiTableQueryRepository.QueryList<ToolBorrowEntity>(sql, parameters).ToList();
         }
 
         /// <summary>
-        /// 获取领用查询所需的归还工具导出信息（有分页）
+        /// 获取归还查询所需的归还工具导出信息（有分页）
         /// </summary>
         /// <param name="toolCode"></param>
         /// <param name="personCode"></param>
         /// <param name="dateTimeFrom"></param>
         /// <param name="dateTimeTo"></param>
         /// <returns></returns>
-        public List<ToolReturnEntity> GetToolReturnList(string toolCode, string backPersonCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count)
+        public List<ToolReturnEntity> GetToolReturnList(string toolCode, string PersonCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count)
         {
-            string sql = "select top " + pageSize + " tl.TypeName,tl.ChildTypeName,tl.PackCode,tl.PackName,obs.ToolCode,obs.ToolName,obs.BackPesonCode,obs.BackPersonName,obs.BackTime,obs.backdescribes,OptionPerson = case  when sui.UserName is null then tpi.PersonName  else  sui.UserName end from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode left join Sys_User_Info sui on obs.OptionPerson=sui.UserCode left join t_PersonInfo tpi on obs.OptionPerson=tpi.PersonCode  WHERE obs.IsBack='0' ";
-            string sqlNotStr = "obs.OutBackStoreID NOT IN (SELECT TOP "+(pageIndex-1)*pageSize+" obs.[OutBackStoreID] from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode left join Sys_User_Info sui on obs.OptionPerson=sui.UserCode left join t_PersonInfo tpi on obs.OptionPerson=tpi.PersonCode  WHERE obs.IsBack='0' ";
-            string sqlCount = "SELECT COUNT(*) FROM [t_OutBackStore] WHERE IsBack='0' ";
+            string sql = "select top " + pageSize + @"  ti.TypeName,
+		                                                ti.ChildTypeName,
+		                                                ti.PackCode,
+		                                                ti.PackName,
+		                                                obs.ToolCode,
+		                                                obs.ToolName,
+		                                                obs.PersonCode,
+		                                                obs.PersonName,
+		                                                obs.OutStoreTime,
+		                                                obs.BackPesonCode,
+		                                                obs.BackPersonName,
+		                                                obs.BackTime,
+		                                                obs.backdescribes,
+		                                                OptionPerson = case when sui.UserName is null then tpi1.PersonName else sui.UserName end
+                                                 from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                                                left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                                                left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+                                                 where 1=1 AND obs.IsBack='0' ";
+            string sqlNotStr = "obs.OutBackStoreID NOT IN (SELECT TOP "+(pageIndex-1)*pageSize+@" obs.[OutBackStoreID]  from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+ where 1=1 AND obs.IsBack='0' ";
+            string sqlCount = @"select	count(1)
+                                 from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                                left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                                left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+                                 where 1=1 AND obs.IsBack='0'";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
                 string str = " AND obs.ToolCode LIKE @toolCode ";
                 sql += str;
-                sqlCount += " AND ToolCode LIKE @toolCode ";
-                sqlNotStr += " AND obs.ToolCode LIKE @toolCode ";
+                sqlCount += str;
+                sqlNotStr += str;
                 parameters.Add("toolCode", string.Format("%{0}%", toolCode));
             }
-            if (!string.IsNullOrWhiteSpace(backPersonCode))
+            if (!string.IsNullOrWhiteSpace(PersonCode))
             {
-                string str = " AND obs.BackPesonCode LIKE @backPersonCode ";
+                string str = " AND obs.PesonCode LIKE @personCode ";
                 sql += str;
-                sqlCount += " AND BackPesonCode LIKE @backPersonCode ";
-                sqlNotStr += " AND obs.BackPesonCode LIKE @backPersonCode ";
-                parameters.Add("backPersonCode", string.Format("%{0}%", backPersonCode));
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("personCode", string.Format("%{0}%", PersonCode));
             }
             if (!string.IsNullOrWhiteSpace(dateTimeFrom))
             {
-                string str = " AND obs.BackTime >=  @dateTimeFrom ";
+                string str = " AND obs.OutStoreTime >=  @dateTimeFrom ";
                 sql += str;
-                sqlCount += " AND BackTime >=  @dateTimeFrom  ";
-                sqlNotStr += " AND obs.BackTime >=  @dateTimeFrom  ";
+                sqlCount += str;
+                sqlNotStr += str;
                 parameters.Add("dateTimeFrom", dateTimeFrom);
             }
             if (!string.IsNullOrWhiteSpace(dateTimeTo))
             {
-                string str = " AND obs.BackTime <=  @dateTimeTo ";
+                string str = " AND obs.OutStoreTime <=  @dateTimeTo ";
                 sql += str;
-                sqlCount += " AND BackTime <=  @dateTimeTo  ";
-                sqlNotStr += " AND obs.BackTime <=  @dateTimeTo  ";
-                parameters.Add("dateTimeFrom", dateTimeTo);
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("dateTimeTo", dateTimeTo);
             }
             sqlNotStr += ")";
             string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
             return _mutiTableQueryRepository.QueryList<ToolReturnEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
         }
         /// <summary>
-        /// 获取领用查询所需的归还工具导出信息
+        /// 获取归还查询所需的归还工具导出信息
         /// </summary>
         /// <param name="toolCode"></param>
         /// <param name="personCode"></param>
         /// <param name="dateTimeFrom"></param>
         /// <param name="dateTimeTo"></param>
         /// <returns></returns>
-        public List<ToolReturnEntity> GetToolReturnList(string toolCode, string backPersonCode, string dateTimeFrom, string dateTimeTo)
+        public List<ToolReturnEntity> GetToolReturnList(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo)
         {
-            string sql = "select  tl.TypeName,tl.ChildTypeName,tl.PackCode,tl.PackName,obs.ToolCode,obs.ToolName,obs.BackPesonCode,obs.BackPersonName,obs.BackTime,obs.backdescribes,sui.UserName as OptionPerson from t_OutBackStore obs join t_ToolInfo tl on obs.ToolCode = tl.ToolCode join Sys_User_Info sui on obs.OptionPerson=sui.UserCode  WHERE 1=1 ";
+            string sql = @"select   ti.TypeName,
+		                            ti.ChildTypeName,
+		                            ti.PackCode,
+		                            ti.PackName,
+		                            obs.ToolCode,
+		                            obs.ToolName,
+		                            obs.PersonCode,
+		                            obs.PersonName,
+		                            obs.OutStoreTime,
+		                            obs.BackPesonCode,
+		                            obs.BackPersonName,
+		                            obs.BackTime,
+		                            obs.backdescribes,
+		                            OptionPerson = case when sui.UserName is null then tpi1.PersonName else sui.UserName end
+                                from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                            left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                            left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+                                where 1=1 AND obs.IsBack='0'  ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolCode))
             {
@@ -299,28 +380,27 @@ namespace service.toolstrackingsystem
                 sql += str;
                 parameters.Add("toolCode", string.Format("%{0}%", toolCode));
             }
-            if (!string.IsNullOrWhiteSpace(backPersonCode))
+            if (!string.IsNullOrWhiteSpace(personCode))
             {
-                string str = " AND obs.BackPersonCode LIKE @backPersonCode ";
+                string str = " AND obs.PersonCode LIKE @personCode ";
                 sql += str;
-                parameters.Add("personCode", string.Format("%{0}%", backPersonCode));
+                parameters.Add("personCode", string.Format("%{0}%", personCode));
             }
             if (!string.IsNullOrWhiteSpace(dateTimeFrom))
             {
-                string str = " AND obs.BackTime >=  @dateTimeFrom ";
+                string str = " AND obs.OutStoreTime >=  @dateTimeFrom ";
                 sql += str;
                 parameters.Add("dateTimeFrom", dateTimeFrom);
             }
             if (!string.IsNullOrWhiteSpace(dateTimeTo))
             {
-                string str = " AND obs.BackTime <=  @dateTimeTo ";
+                string str = " AND obs.OutStoreTime <=  @dateTimeTo ";
                 sql += str;
-                parameters.Add("dateTimeFrom", dateTimeTo);
+                parameters.Add("dateTimeTo", dateTimeTo);
             }
             return _mutiTableQueryRepository.QueryList<ToolReturnEntity>(sql, parameters).ToList();
 
         }
-
         /// <summary>
         /// 获取超时未归还的导出工具信息
         /// </summary>
@@ -345,6 +425,147 @@ namespace service.toolstrackingsystem
             }
             return _mutiTableQueryRepository.QueryList<NotBackToolEntity>(sql, parameters).ToList();
 
+
+        }
+        /// <summary>
+        /// 获取流水账分页信息
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="personCode"></param>
+        /// <param name="dateTimeFrom"></param>
+        /// <param name="dateTimeTo"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="Count"></param>
+        /// <returns></returns>
+        public List<CurrentToolInfoEntity> GetCurrentToolInfoList(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count)
+        {
+            string sql = "select top " + pageSize + @"  ti.TypeName,
+		                                                ti.ChildTypeName,
+		                                                ti.PackCode,
+		                                                ti.PackName,
+		                                                obs.ToolCode,
+		                                                obs.ToolName,
+		                                                IsBack = case obs.IsBack when '1' then '是' else '否' end,
+		                                                obs.PersonCode,
+		                                                obs.PersonName,
+		                                                obs.OutStoreTime,
+		                                                obs.outdescribes,
+		                                                obs.BackPesonCode,
+		                                                obs.BackPersonName,
+		                                                obs.BackTime,
+		                                                obs.backdescribes,
+		                                                OptionPerson = case when sui.UserName is null then tpi1.PersonName else sui.UserName end
+                                                 from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                                                left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                                                left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+                                                 where 1=1  ";
+            string sqlNotStr = "obs.OutBackStoreID NOT IN (SELECT TOP " + (pageIndex - 1) * pageSize + @" obs.[OutBackStoreID]  from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+ where 1=1 ";
+            string sqlCount = @"select	count(1)
+                                 from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                                left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                                left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+                                 where 1=1 ";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrWhiteSpace(toolCode))
+            {
+                string str = " AND obs.ToolCode LIKE @toolCode ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("toolCode", string.Format("%{0}%", toolCode));
+            }
+            if (!string.IsNullOrWhiteSpace(personCode))
+            {
+                string str = " AND obs.PersonCode LIKE @personCode ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("personCode", string.Format("%{0}%", personCode));
+            }
+            if (!string.IsNullOrWhiteSpace(dateTimeFrom))
+            {
+                string str = " AND obs.OutStoreTime >=  @dateTimeFrom ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("dateTimeFrom", dateTimeFrom);
+            }
+            if (!string.IsNullOrWhiteSpace(dateTimeTo))
+            {
+                string str = " AND obs.OutStoreTime <=  @dateTimeTo ";
+                sql += str;
+                sqlCount += str;
+                sqlNotStr += str;
+                parameters.Add("dateTimeTo", dateTimeTo);
+            }
+            sqlNotStr += ")";
+            string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
+            return _mutiTableQueryRepository.QueryList<CurrentToolInfoEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
+
+        }
+        /// <summary>
+        /// 获取流水账信息(导出)
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="personCode"></param>
+        /// <param name="dateTimeFrom"></param>
+        /// <param name="dateTimeTo"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="Count"></param>
+        /// <returns></returns>
+        public List<CurrentToolInfoEntity> GetCurrentToolInfoForExport(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo)
+        {
+            string sql = @"select   ti.TypeName,
+		                            ti.ChildTypeName,
+		                            ti.PackCode,
+		                            ti.PackName,
+		                            obs.ToolCode,
+		                            obs.ToolName,
+		                            IsBack = case obs.IsBack when '1' then '是' else '否' end,
+		                            obs.PersonCode,
+		                            obs.PersonName,
+		                            obs.OutStoreTime,
+		                            obs.outdescribes,
+		                            obs.BackPesonCode,
+		                            obs.BackPersonName,
+		                            obs.BackTime,
+		                            obs.backdescribes,
+		                            OptionPerson = case when sui.UserName is null then tpi1.PersonName else sui.UserName end
+                                from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                            left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                            left join t_PersonInfo tpi1 on obs.OptionPerson = tpi1.PersonCode
+                                where 1=1  ";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrWhiteSpace(toolCode))
+            {
+                string str = " AND obs.ToolCode LIKE @toolCode ";
+                sql += str;
+                parameters.Add("toolCode", string.Format("%{0}%", toolCode));
+            }
+            if (!string.IsNullOrWhiteSpace(personCode))
+            {
+                string str = " AND obs.PersonCode LIKE @personCode ";
+                sql += str;
+                parameters.Add("personCode", string.Format("%{0}%", personCode));
+            }
+            if (!string.IsNullOrWhiteSpace(dateTimeFrom))
+            {
+                string str = " AND obs.OutStoreTime >=  @dateTimeFrom ";
+                sql += str;
+                parameters.Add("dateTimeFrom", dateTimeFrom);
+            }
+            if (!string.IsNullOrWhiteSpace(dateTimeTo))
+            {
+                string str = " AND obs.OutStoreTime <=  @dateTimeTo ";
+                sql += str;
+                parameters.Add("dateTimeTo", dateTimeTo);
+            }
+            return _mutiTableQueryRepository.QueryList<CurrentToolInfoEntity>(sql, parameters).ToList();
 
         }
         public t_OutBackStore GetOutBackStoreInfoByID(string outBackStoreID)

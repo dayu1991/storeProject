@@ -28,10 +28,11 @@ namespace toolstrackingsystem
             this.EnableGlass = false;
             InitializeComponent();
         }
-
         private void FrmQueryBorrow_Load(object sender, EventArgs e)
         {
-            _outBackStoreService = Program.container.Resolve<IOutBackStoreService>() as OutBackStoreService; 
+            _outBackStoreService = Program.container.Resolve<IOutBackStoreService>() as OutBackStoreService;
+            dateTime_from_Input1.CustomFormat = "yyyy-MM-dd";
+            dateTime_to_Input.CustomFormat = "yyyy-MM-dd";
         }
         private void LoadData()
         {
@@ -63,7 +64,6 @@ namespace toolstrackingsystem
             ToolList_dataGridViewX.Columns[10].HeaderText = "操作人员";
             pagerControl1.DrawControl(Convert.ToInt32(Count));
         }
-
         private void Search_buttonX_Click(object sender, EventArgs e)
         {
             try
@@ -76,12 +76,10 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmQueryBorrow--Search_buttonX_Click", ex.Message, ex.StackTrace, ex.Source);
             }
         }
-
         private void pagerControl1_OnPageChanged(object sender, EventArgs e)
         {
             LoadData();
         }
-
         private void ToolList_dataGridViewX_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
             e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
@@ -155,11 +153,17 @@ namespace toolstrackingsystem
                         cell.SetCellValue(item.ToolName);
                         cell = row.CreateCell(6);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.OutStoreTime);
+                        cell.SetCellValue(item.PersonCode);
                         cell = row.CreateCell(7);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.outdescribes);
+                        cell.SetCellValue(item.PersonName);
                         cell = row.CreateCell(8);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.OutStoreTime);
+                        cell = row.CreateCell(9);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.outdescribes);
+                        cell = row.CreateCell(10);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.OptionPerson);
                     }
@@ -186,7 +190,6 @@ namespace toolstrackingsystem
             }
 
         }
-
         private void Print_button_Click(object sender, EventArgs e)
         {
             try
