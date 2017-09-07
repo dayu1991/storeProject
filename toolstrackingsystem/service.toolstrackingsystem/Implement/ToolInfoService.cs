@@ -15,7 +15,6 @@ namespace service.toolstrackingsystem
     {
         private IToolCategoryInfoRepository _toolCategoryInfoRepository;
         private IToolInfoRepository _toolInfoRepository;
-        private IInStoreRepository _inStoreRepository;
 
         private ICurrentCountInfoRepository _currentCountInfoRepository;
         private IOutBackStoreRepository _outBackStoreRepository;
@@ -26,7 +25,6 @@ namespace service.toolstrackingsystem
         public ToolInfoService(IToolCategoryInfoRepository toolCategoryInfoRepository,
             IToolInfoRepository toolInfoRepository, 
             IMultiTableQueryRepository multiTableQueryRepository,
-            IInStoreRepository inStoreRepository,
             ICurrentCountInfoRepository currentCountInfoRepository,
             IOutBackStoreRepository outBackStoreRepository,IToolRepairRecordRepository toolPrepairRecordRepository,
             IToolPackManageRepository toolPackManageRepository)
@@ -34,7 +32,6 @@ namespace service.toolstrackingsystem
            _toolCategoryInfoRepository = toolCategoryInfoRepository;
            _toolInfoRepository = toolInfoRepository;
            _multiTableQueryRepository = multiTableQueryRepository;
-            _inStoreRepository=inStoreRepository;
             _currentCountInfoRepository = currentCountInfoRepository;
             _outBackStoreRepository = outBackStoreRepository;
             _toolPrepairRecordRepository = toolPrepairRecordRepository;
@@ -51,30 +48,19 @@ namespace service.toolstrackingsystem
             if (_toolInfoRepository.GetToolByCode(toolInfo.ToolCode) == null)
             {
                 _toolInfoRepository.InsertToolInfo(toolInfo);
-                var entity = new t_InStore();
-                entity.InStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                entity.OptionPerson = toolInfo.OptionPerson;
-                entity.ToolCode = toolInfo.ToolCode;
-                entity.ToolName = toolInfo.ToolName;
-                entity.TypeName = toolInfo.TypeName;
-                entity.ChildTypeName = toolInfo.ChildTypeName;
-                entity.OptionPerson = toolInfo.OptionPerson;
-                if (!_inStoreRepository.IsExistsInStoryByCode(entity.ToolCode))
-                { 
-                    _inStoreRepository.Add(entity);
-                    var entity1 = new t_CurrentCountInfo();
-                    entity1.TypeName = toolInfo.TypeName;
-                    entity1.ChildTypeName = toolInfo.ChildTypeName;
-                    entity1.ToolCode = toolInfo.ToolCode;
-                    entity1.ToolName = toolInfo.ToolName;
-                    entity1.Models = toolInfo.Models;
-                    entity1.Location = toolInfo.Location;
-                    entity1.Remarks = toolInfo.Remarks;
-                    entity1.InStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    entity1.OptionType = OptionType;
-                    entity1.OptionPerson = toolInfo.OptionPerson;
-                    return _currentCountInfoRepository.Add(entity1);
-                }
+
+                var entity1 = new t_CurrentCountInfo();
+                entity1.TypeName = toolInfo.TypeName;
+                entity1.ChildTypeName = toolInfo.ChildTypeName;
+                entity1.ToolCode = toolInfo.ToolCode;
+                entity1.ToolName = toolInfo.ToolName;
+                entity1.Models = toolInfo.Models;
+                entity1.Location = toolInfo.Location;
+                entity1.Remarks = toolInfo.Remarks;
+                entity1.InStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                entity1.OptionType = OptionType;
+                entity1.OptionPerson = toolInfo.OptionPerson;
+                return _currentCountInfoRepository.Add(entity1);
             }
             return 0;
         }
@@ -167,15 +153,14 @@ namespace service.toolstrackingsystem
 
         }
 
-        public bool IsExistsInStoryByCode(string toolCode)
-        {
-            return _inStoreRepository.IsExistsInStoryByCode(toolCode);
-        }
+       
 
         public bool OutStore(t_ToolInfo entity, t_PersonInfo person, string userCode,string toDate,string describ)
         {
             //1.删除库存
-            _inStoreRepository.DeleteByCode(entity.ToolCode);
+            entity.IsBack = "0";
+            _toolInfoRepository.Update(entity);
+
             var outBackStore = new t_OutBackStore();
             outBackStore.ToolCode = entity.ToolCode;
             outBackStore.ToolName = entity.ToolName;
@@ -225,14 +210,8 @@ namespace service.toolstrackingsystem
         }
         public bool BackStore(OutBackStoreEntity entity, t_PersonInfo person, string opeartPerson, string desc)
         {
-            var entityInStory = new t_InStore();
-            entityInStory.InStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            entityInStory.ToolCode = entity.ToolCode;
-            entityInStory.ToolName = entity.ToolName;
-            entityInStory.TypeName = entity.TypeName;
-            entityInStory.ChildTypeName = entity.ChildTypeName;
-            entityInStory.OptionPerson = opeartPerson;
-            _inStoreRepository.Add(entityInStory);
+           
+            _toolInfoRepository.SetToolIsBack(entity.ToolCode, "1"); //设置工具信息为已归还
 
             t_OutBackStore entityOut = _outBackStoreRepository.GetToolOutByCode(entity.ToolCode);
             entityOut.IsBack = "1";

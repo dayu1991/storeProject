@@ -15,16 +15,16 @@ namespace dbentity.toolstrackingsystem
     public partial class t_ScrapToolInfo
     {
         public long ScrapID { get; set; }
+        public string TypeName { get; set; }
+        public string ChildTypeName { get; set; }
         public string ToolCode { get; set; }
         public string ToolName { get; set; }
+        public string PackCode { get; set; }
+        public string PackName { get; set; }
         public string ScrapTime { get; set; }
         public string Remarks { get; set; }
         public string OptionPerson { get; set; }
-        public string PackCode { get; set; }
-        public string PackName { get; set; }
         public string RemarkPerson { get; set; }
         public string RemarkTime { get; set; }
-        public string TypeName { get; set; }
-        public string ChildTypeName { get; set; }
     }
 }

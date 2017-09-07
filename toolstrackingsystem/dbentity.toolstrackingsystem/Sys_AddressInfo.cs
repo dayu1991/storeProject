@@ -15,8 +15,8 @@ namespace dbentity.toolstrackingsystem
     public partial class Sys_AddressInfo
     {
         public int ID { get; set; }
+        public string MacAddress { get; set; }
         public string Address { get; set; }
         public int IsActive { get; set; }
-        public string MacAddress { get; set; }
     }
 }

@@ -15,12 +15,12 @@ namespace service.toolstrackingsystem
     {
         private readonly IMultiTableQueryRepository _mutiTableQueryRepository;
         private readonly IOutBackStoreRepository _outBackStoreRepository;
-        private readonly IInStoreRepository _inStoreRepository;
-        public OutBackStoreService(IMultiTableQueryRepository multiTableQueryRepository, IOutBackStoreRepository outBackStoreRepository, IInStoreRepository inStoreRepository)
+        private readonly IToolInfoRepository _toolInfoRepository;
+        public OutBackStoreService(IMultiTableQueryRepository multiTableQueryRepository, IOutBackStoreRepository outBackStoreRepository, IToolInfoRepository toolInfoRepository)
         {
             _mutiTableQueryRepository = multiTableQueryRepository;
             _outBackStoreRepository = outBackStoreRepository;
-            _inStoreRepository = inStoreRepository;
+            _toolInfoRepository = toolInfoRepository;
         }
         /// <summary>
         /// 获取超时未归还的工具信息
@@ -117,22 +117,14 @@ namespace service.toolstrackingsystem
             outBackInfo = GetOutBackStoreInfoByID(OutBackStoreID);
             if (outBackInfo != null)
             {
-                if (outBackInfo.IsBack != "1")
+                if (outBackInfo.IsBack == "0")
                 {
-                    //1.判断该条信息是否归还，未归还则在仓库中手动增加一条信息
+                    //1.更新工具信息为已归还
                     var toolInfo = GetToolInfoByToolCode(outBackInfo.ToolCode);
                     if(toolInfo!=null)
-                    {
-                        t_InStore instore = new t_InStore();
-                    
-                        instore.InStoreTime = DateTime.Now.ToString();
-                        instore.TypeName = toolInfo.TypeName;
-                        instore.ToolCode = toolInfo.ToolCode;
-                        instore.ChildTypeName = toolInfo.ChildTypeName;
-                        instore.ToolName = toolInfo.ToolName;
-                        instore.OptionPerson = LoginHelper.UserCode;
-
-                        IsSuccess = _inStoreRepository.InsertInstoreInfo(instore);
+                    {                        
+                        toolInfo.IsBack = "1";
+                        IsSuccess = _toolInfoRepository.Update(toolInfo);
                     }
                 }
             }
@@ -361,31 +353,7 @@ namespace service.toolstrackingsystem
             parameter.Add("toolCode",toolCode);
             return _mutiTableQueryRepository.QueryList<t_ToolInfo>(sql, parameter).FirstOrDefault();
         }
-        public bool InsertIntoStoreToolInfo(t_InStore toolInfo)
-        {
-            string sql = @"INSERT INTO [dbo].[t_InStore]
-           ([TypeName]
-           ,[ChildTypeName]
-           ,[ToolCode]
-           ,[ToolName]
-           ,[InStoreTime]
-           ,[OptionPerson])
-     VALUES
-           ('@typeName'
-           ,'@childTypeName'
-           ,'@toolCode'
-           ,'@toolName'
-           ,'@inStoreTime'
-           ,'@optionPerson'";
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("typeName",toolInfo.TypeName);
-            parameters.Add("childTypeName", toolInfo.ChildTypeName);
-            parameters.Add("toolCode", toolInfo.ToolCode);
-            parameters.Add("toolName", toolInfo.ToolName);
-            parameters.Add("inStoreTime", toolInfo.InStoreTime);
-            parameters.Add("optionPerson", toolInfo.OptionPerson);
-            return _inStoreRepository.ExecuteSql(sql,parameters)>0;
-        }
+      
         /// <summary>
         /// 获取未归还的工具信息
         /// </summary>

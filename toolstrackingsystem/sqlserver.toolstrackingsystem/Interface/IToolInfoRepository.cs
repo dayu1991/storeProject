@@ -30,5 +30,7 @@ namespace sqlserver.toolstrackingsystem
         bool IsExistToolByType(string typeName, int type);
 
         bool InsertToolInfo(t_ToolInfo toolInfo);
+
+        int SetToolIsBack(string toolCode, string isBack);
     }
 }

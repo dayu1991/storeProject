@@ -89,8 +89,8 @@ namespace toolstrackingsystem
                 int successCount = 0;
                 foreach (var entity in ToolInfoList)
                 {
-
-                    if (_toolInfoService.IsExistsInStoryByCode(entity.ToolCode) && _toolInfoService.OutStore(entity, person, LoginHelper.UserCode, endDate, desc))
+                    var toolInfoEntity = _toolInfoService.GetToolByCode(entity.ToolCode);
+                    if (toolInfoEntity.IsBack!="0" &&_toolInfoService.OutStore(entity, person, LoginHelper.UserCode, endDate, desc))
                     {
                         successCount += 1;
                     }
@@ -332,7 +332,7 @@ namespace toolstrackingsystem
                 {
                     if (tool.IsActive == "1") //不存在包
                     {
-                        if (_toolInfoService.IsExistsInStoryByCode(toolCode)) //有库存
+                        if (tool.IsBack!="0") //有库存
                         {
                             bool isContain = false;
                             foreach (var item in ToolInfoList)
@@ -352,7 +352,7 @@ namespace toolstrackingsystem
                         }
                         else
                         {
-                            MessageBox.Show("此编码的工具仓库中已经没有啦！");
+                            MessageBox.Show("此编码的工具已经被领用！");
                             return;
                         }
                     }
@@ -369,7 +369,7 @@ namespace toolstrackingsystem
                     {
                         foreach (var item in tools)
                         {
-                            if (_toolInfoService.IsExistsInStoryByCode(item.ToolCode)) //有库存
+                            if (item.IsBack!="0") //有库存
                             {
                                 bool isContain = false;
                                 foreach (var itemHave in ToolInfoList)

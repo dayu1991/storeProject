@@ -1,1 +1,5 @@
-update t_ToolInfo set IsBack=0 where ToolCode in (select ToolCode from t_OutBackStore where IsBack='0')
+ALTER TABLE [dbo].[t_ToolInfo] ADD [IsBack] varchar(2) null;
+drop table [dbo].[t_InStore];
+
+
+update t_ToolInfo set IsBack=0 where ToolCode in (select ToolCode from t_OutBackStore where IsBack='0');

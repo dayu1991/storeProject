@@ -199,5 +199,17 @@ namespace sqlserver.toolstrackingsystem
             parameters.Add("optionPerson", toolInfo.OptionPerson);
             return base.ExecuteSql(sql,parameters)>0;
         }
+
+
+        public int SetToolIsBack(string toolCode, string isBack)
+        {
+            string sql = "update [t_ToolInfo] set [IsBack]=@IsBack where [ToolCode] = @ToolCode";
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("IsBack", toolCode);
+            parameters.Add("ToolCode", isBack);
+            return base.ExecuteSql(sql, parameters);
+
+        }
+
     }
 }

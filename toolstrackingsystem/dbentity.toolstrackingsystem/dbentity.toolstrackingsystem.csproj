@@ -91,9 +91,6 @@
     <Compile Include="t_CurrentCountInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="t_InStore.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="t_OutBackStore.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -104,6 +101,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="t_ScrapToolInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_ToolCategoryInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="t_ToolInfo.cs">

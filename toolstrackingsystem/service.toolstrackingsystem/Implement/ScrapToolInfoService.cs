@@ -15,14 +15,12 @@ namespace service.toolstrackingsystem
         private readonly IScrapToolInfoManageRepository _scrapToolInfoManageRepository;
         private readonly IMultiTableQueryRepository _mutiTableQueryRepository;
         private readonly IToolPackManageRepository _toolPackManageRepository;
-        private readonly IInStoreRepository _inStoreRepository;
-        public ScrapToolInfoService(IScrapToolInfoManageRepository scrapToolInfoManageRepository, IMultiTableQueryRepository multiTableQueryRepository, IToolPackManageRepository toolPackManageRepository,
-            InStoreRepository inStoreRepository)
+        public ScrapToolInfoService(IScrapToolInfoManageRepository scrapToolInfoManageRepository, IMultiTableQueryRepository multiTableQueryRepository, IToolPackManageRepository toolPackManageRepository
+            )
         {
             this._scrapToolInfoManageRepository = scrapToolInfoManageRepository;
             this._mutiTableQueryRepository = multiTableQueryRepository;
             this._toolPackManageRepository = toolPackManageRepository;
-            this._inStoreRepository = inStoreRepository;
         }
         /// <summary>
         /// 通过工具编码精确查找工具信息
@@ -67,7 +65,6 @@ namespace service.toolstrackingsystem
             //1.删除工具表中基础信息
             IsSuccess =_toolPackManageRepository.Delete(toolInfo);
             //2.清除库存中该工具的信息
-            IsSuccess = _inStoreRepository.DeleteByCode(toolCode);
             //3.在作废信息表中插入作废的ToolInfo
             scrapToolInfo.TypeName = toolInfo.TypeName;
             scrapToolInfo.ChildTypeName = toolInfo.ChildTypeName;
