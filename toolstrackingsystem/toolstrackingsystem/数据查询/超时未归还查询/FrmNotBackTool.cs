@@ -53,12 +53,13 @@ namespace toolstrackingsystem
             TollList_dataGridViewX.Columns[3].HeaderText = "包名称";
             TollList_dataGridViewX.Columns[4].HeaderText = "工具编码";
             TollList_dataGridViewX.Columns[5].HeaderText = "工具名称";
-            TollList_dataGridViewX.Columns[6].HeaderText = "领用时间";
-            TollList_dataGridViewX.Columns[7].HeaderText = "人员编码";
-            TollList_dataGridViewX.Columns[8].HeaderText = "人员名称";
-            TollList_dataGridViewX.Columns[9].HeaderText = "经办人";
-            TollList_dataGridViewX.Columns[10].HeaderText = "截止归还时间";
-            TollList_dataGridViewX.Columns[10].Width = 120;
+            TollList_dataGridViewX.Columns[6].HeaderText = "人员编码";
+            TollList_dataGridViewX.Columns[7].HeaderText = "人员名称";
+            TollList_dataGridViewX.Columns[8].HeaderText = "截止归还时间";
+            TollList_dataGridViewX.Columns[8].Width = 120;
+            TollList_dataGridViewX.Columns[9].HeaderText = "领用时间";
+            TollList_dataGridViewX.Columns[10].HeaderText = "领用说明";
+            TollList_dataGridViewX.Columns[11].HeaderText = "操作人";
             pagerControl1.DrawControl(Convert.ToInt32(Count));
         }
 
@@ -143,20 +144,22 @@ namespace toolstrackingsystem
                         cell.SetCellValue(item.ToolName);
                         cell = row.CreateCell(6);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.OutStoreTime);
+                        cell.SetCellValue(item.PersonCode);
                         cell = row.CreateCell(7);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.PersonCode);
+                        cell.SetCellValue(item.PersonName);
                         cell = row.CreateCell(8);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.PersonName);
+                        cell.SetCellValue(item.UserTimeInfo);
                         cell = row.CreateCell(9);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.OptionPerson);
+                        cell.SetCellValue(item.OutStoreTime);
                         cell = row.CreateCell(10);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.UserTimeInfo);
+                        cell.SetCellValue(item.outdescribes);
                         cell = row.CreateCell(11);
+                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
+                        cell.SetCellValue(item.OptionPerson);
                     }
                     // 写入 
                     System.IO.MemoryStream ms = new System.IO.MemoryStream();

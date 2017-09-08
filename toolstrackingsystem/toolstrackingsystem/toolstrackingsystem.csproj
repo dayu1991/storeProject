@@ -473,6 +473,7 @@
     <EmbeddedResource Include="loading\LoadingForms.resx">
       <DependentUpon>LoadingForms.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="数据查询\超时未归还查询\Report5.rdlc" />
     <EmbeddedResource Include="系统管理\地址管理\FrmAddressManage.resx">
       <DependentUpon>FrmAddressManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -606,7 +607,6 @@
     <EmbeddedResource Include="数据查询\超时未归还查询\FrmPrintNotBack.resx">
       <DependentUpon>FrmPrintNotBack.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="数据查询\超时未归还查询\Report5.rdlc" />
     <EmbeddedResource Include="数据查询\送修查询\FrmPrepairTool.resx">
       <DependentUpon>FrmPrepairTool.cs</DependentUpon>
     </EmbeddedResource>

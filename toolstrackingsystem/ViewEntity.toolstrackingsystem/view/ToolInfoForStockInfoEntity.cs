@@ -12,7 +12,6 @@ namespace ViewEntity.toolstrackingsystem
         public string ChildTypeName { get; set; }
         public string ToolCode { get; set; }
         public string ToolName { get; set; }
-        public string InStoreTime { get; set; }
 
     }
 }

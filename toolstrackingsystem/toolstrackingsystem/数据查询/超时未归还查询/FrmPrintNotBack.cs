@@ -40,7 +40,22 @@ namespace toolstrackingsystem
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
                 t_OutBackStore countInfo = (t_OutBackStore)this.Tag;
-                string sql = @"SELECT ti.ToolCode,ti.ToolName,obs.PersonCode as Models,obs.PersonName as Location,obs.OutStoreTime as CarGroupInfo,obs.OptionPerson as Remarks,obs.UserTimeInfo as CheckTime,ti.TypeName,ti.ChildTypeName,ti.PackCode,ti.PackName from t_OutBackStore obs join t_ToolInfo ti on obs.ToolCode = ti.ToolCode where obs.IsBack='0' and obs.UserTimeInfo< GETDATE()  ";
+                string sql = @"SELECT   ti.TypeName,
+	                                ti.ChildTypeName,
+	                                ti.PackCode,
+	                                ti.PackName,
+	                                ti.ToolCode,
+	                                ti.ToolName,
+		                            obs.PersonCode,
+		                            obs.PersonName,
+	                                obs.UserTimeInfo,
+	                                OptionPerson = case when sui.UserCode is null then tpi.PersonName else sui.UserName end,
+	                                obs.OutStoreTime,
+	                                obs.outdescribes
+                                from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                            left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                            left join t_PersonInfo tpi on obs.OptionPerson = tpi.PersonCode
+                                where 1=1 AND obs.IsBack='0'  ";
                 if (!string.IsNullOrEmpty(countInfo.ToolCode))
                 {
                     string str = " AND ti.ToolCode LIKE '" + countInfo.ToolCode + "'";

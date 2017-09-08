@@ -30,24 +30,48 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         public List<NotBackToolEntity> GetNotBackToolInfoList(string toolCode, string personCode, int pageIndex, int pageSize, out long Count)
         {
-            string sql = @"SELECT top " + pageSize + @" obs.ToolCode,obs.ToolName,obs.PersonCode,OBS.PersonName,obs.OutStoreTime,obs.OptionPerson,obs.UserTimeInfo,ti.TypeName,ti.ChildTypeName,ti.PackCode,ti.PackName from t_OutBackStore obs join t_ToolInfo ti on obs.ToolCode = ti.ToolCode where obs.IsBack='0' and obs.UserTimeInfo< GETDATE()  ";
-            string sqlNotStr = "ti.ToolID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " ToolID FROM t_ToolInfo WHERE 1=1 ";
-            string sqlCount = "SELECT COUNT(*) FROM t_ToolInfo WHERE 1=1 ";
+            string sql = @"SELECT top " + pageSize + @" ti.TypeName,
+	                                                    ti.ChildTypeName,
+	                                                    ti.PackCode,
+	                                                    ti.PackName,
+	                                                    ti.ToolCode,
+	                                                    ti.ToolName,
+		                                                obs.PersonCode,
+		                                                obs.PersonName,
+	                                                    obs.UserTimeInfo,
+	                                                    OptionPerson = case when sui.UserCode is null then tpi.PersonName else sui.UserName end,
+	                                                    obs.OutStoreTime,
+	                                                    obs.outdescribes
+                                                    from t_OutBackStore obs 
+                                                    left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+                                                    left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+                                                    left join t_PersonInfo tpi on obs.OptionPerson = tpi.PersonCode
+                                                    where obs.IsBack='0' and obs.UserTimeInfo<GETDATE()  ";
+            string sqlNotStr = "obs.OutBackStoreID NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + @" obs.OutBackStoreID from t_OutBackStore obs 
+                                left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+                                left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+                                left join t_PersonInfo tpi on obs.OptionPerson = tpi.PersonCode
+                                where obs.IsBack='0' and obs.UserTimeInfo<GETDATE() ";
+            string sqlCount = @"SELECT COUNT(1) from t_OutBackStore obs 
+                                left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+                                left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+                                left join t_PersonInfo tpi on obs.OptionPerson = tpi.PersonCode
+                                where obs.IsBack='0' and obs.UserTimeInfo<GETDATE() ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrEmpty(toolCode))
             {
                 string str = " AND obs.ToolCode LIKE @toolCode ";
                 sql += str;
-                sqlCount += " AND ToolCode LIKE @toolCode ";
-                sqlNotStr += " AND ToolCode LIKE @toolCode "; ;
+                sqlCount += str;
+                sqlNotStr += str; ;
                 parameters.Add("toolCode", string.Format("%{0}%", toolCode));
             }
             if (!string.IsNullOrEmpty(personCode))
             {
                 string str = " AND obs.PersonCode LIKE @personCode ";
                 sql += str;
-                sqlCount += " AND PersonCode LIKE @personCode ";
-                sqlNotStr += " AND PersonCode LIKE @personCode ";
+                sqlCount += str;
+                sqlNotStr += str;
                 parameters.Add("personCode", string.Format("%{0}%", personCode));
             }
             sqlNotStr += ")";
@@ -401,7 +425,22 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         public List<NotBackToolEntity> GetNotBackToolInfoList(string toolCode, string personCode)
         {
-            string sql = @"SELECT  obs.ToolCode,obs.ToolName,obs.PersonCode,OBS.PersonName,obs.OutStoreTime,obs.OptionPerson,obs.UserTimeInfo,ti.TypeName,ti.ChildTypeName,ti.PackCode,ti.PackName from t_OutBackStore obs join t_ToolInfo ti on obs.ToolCode = ti.ToolCode where obs.IsBack='0' and obs.UserTimeInfo< GETDATE()  ";
+            string sql = @"SELECT   ti.TypeName,
+	                                ti.ChildTypeName,
+	                                ti.PackCode,
+	                                ti.PackName,
+	                                ti.ToolCode,
+	                                ti.ToolName,
+		                            obs.PersonCode,
+		                            obs.PersonName,
+	                                obs.UserTimeInfo,
+	                                OptionPerson = case when sui.UserCode is null then tpi.PersonName else sui.UserName end,
+	                                obs.OutStoreTime,
+	                                obs.outdescribes
+                                from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode
+	                            left join Sys_User_Info sui on obs.OptionPerson = sui.UserCode
+	                            left join t_PersonInfo tpi on obs.OptionPerson = tpi.PersonCode
+                                where 1=1 AND obs.IsBack='0'  ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrEmpty(toolCode))
             {

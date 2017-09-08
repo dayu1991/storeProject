@@ -28,17 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
+            this.ToolReturnEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ToolReturnEntityBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "toolstrackingsystem.归还查询.Report9.rdlc";
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.ToolReturnEntityBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "toolstrackingsystem.数据查询.归还查询.Report9.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(723, 351);
             this.reportViewer1.TabIndex = 0;
+            // 
+            // cangku_manage_dbDataSet
+            // 
+            this.cangku_manage_dbDataSet.DataSetName = "cangku_manage_dbDataSet";
+            this.cangku_manage_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ToolReturnEntityBindingSource
+            // 
+            this.ToolReturnEntityBindingSource.DataMember = "ToolReturnEntity";
+            this.ToolReturnEntityBindingSource.DataSource = this.cangku_manage_dbDataSet;
             // 
             // FrmPrintToolReturn
             // 
@@ -46,9 +65,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 351);
             this.Controls.Add(this.reportViewer1);
+            this.DoubleBuffered = true;
             this.Name = "FrmPrintToolReturn";
             this.Text = "打印预览";
             this.Load += new System.EventHandler(this.FrmPrintToolReturn_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ToolReturnEntityBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -56,5 +78,7 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource ToolReturnEntityBindingSource;
+        private cangku_manage_dbDataSet cangku_manage_dbDataSet;
     }
 }

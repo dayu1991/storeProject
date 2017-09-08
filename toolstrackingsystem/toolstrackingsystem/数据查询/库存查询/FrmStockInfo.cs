@@ -93,7 +93,6 @@ namespace toolstrackingsystem
             TollList_dataGridViewX.Columns[1].HeaderText = "类别";
             TollList_dataGridViewX.Columns[2].HeaderText = "工具编码";
             TollList_dataGridViewX.Columns[3].HeaderText = "工具名称";
-            TollList_dataGridViewX.Columns[4].HeaderText = "入库时间";
             pagerControl1.DrawControl(Convert.ToInt32(Count));
         }
         /// <summary>
@@ -196,9 +195,6 @@ namespace toolstrackingsystem
                         cell = row.CreateCell(4);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.ToolName);
-                        cell = row.CreateCell(5);
-                        cell.SetCellType(NPOI.SS.UserModel.CellType.String);
-                        cell.SetCellValue(item.InStoreTime);
                     }
                     // 写入 
                     System.IO.MemoryStream ms = new System.IO.MemoryStream();

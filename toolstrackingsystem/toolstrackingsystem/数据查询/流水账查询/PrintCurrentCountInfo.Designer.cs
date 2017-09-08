@@ -35,8 +35,10 @@
             this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.t_CurrentCountInfoTableAdapter = new toolstrackingsystem.cangku_manage_dbDataSetTableAdapters.t_CurrentCountInfoTableAdapter();
+            this.CurrentToolInfoEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.t_CurrentCountInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentToolInfoEntityBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // t_CurrentCountInfoBindingSource
@@ -53,9 +55,9 @@
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.t_CurrentCountInfoBindingSource;
+            reportDataSource1.Value = this.CurrentToolInfoEntityBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "toolstrackingsystem.流水账.Report3.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "toolstrackingsystem.数据查询.流水账查询.Report3.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(723, 351);
@@ -64,6 +66,11 @@
             // t_CurrentCountInfoTableAdapter
             // 
             this.t_CurrentCountInfoTableAdapter.ClearBeforeFill = true;
+            // 
+            // CurrentToolInfoEntityBindingSource
+            // 
+            this.CurrentToolInfoEntityBindingSource.DataMember = "CurrentToolInfoEntity";
+            this.CurrentToolInfoEntityBindingSource.DataSource = this.cangku_manage_dbDataSet;
             // 
             // PrintCurrentCountInfo
             // 
@@ -78,6 +85,7 @@
             this.Load += new System.EventHandler(this.PrintCurrentCountInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.t_CurrentCountInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentToolInfoEntityBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -88,5 +96,6 @@
         private System.Windows.Forms.BindingSource t_CurrentCountInfoBindingSource;
         private cangku_manage_dbDataSet cangku_manage_dbDataSet;
         private cangku_manage_dbDataSetTableAdapters.t_CurrentCountInfoTableAdapter t_CurrentCountInfoTableAdapter;
+        private System.Windows.Forms.BindingSource CurrentToolInfoEntityBindingSource;
     }
 }

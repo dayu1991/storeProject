@@ -42,9 +42,7 @@ namespace toolstrackingsystem
                                   ,[ChildTypeName]
                                   ,[ToolCode]
                                   ,[ToolName]
-                                  ,[InStoreTime]
-                                  ,[OptionPerson]
-                              FROM [t_InStore] WHERE 1=1";
+                              FROM [t_ToolInfo] WHERE (IsBack='1' or IsBack is null) ";
                 if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
                 {
                     string str = " AND TypeName LIKE  '"+toolInfo.TypeName+"'";

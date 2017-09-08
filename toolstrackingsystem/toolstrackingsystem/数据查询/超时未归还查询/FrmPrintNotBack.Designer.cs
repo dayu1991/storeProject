@@ -35,8 +35,10 @@
             this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.t_ToolInfoTableAdapter = new toolstrackingsystem.cangku_manage_dbDataSetTableAdapters.t_ToolInfoTableAdapter();
+            this.NotBackToolEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.t_ToolInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NotBackToolEntityBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // t_ToolInfoBindingSource
@@ -53,9 +55,9 @@
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.t_ToolInfoBindingSource;
+            reportDataSource1.Value = this.NotBackToolEntityBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "toolstrackingsystem.超时未归还.Report5.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "toolstrackingsystem.数据查询.超时未归还查询.Report5.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(723, 351);
@@ -64,6 +66,11 @@
             // t_ToolInfoTableAdapter
             // 
             this.t_ToolInfoTableAdapter.ClearBeforeFill = true;
+            // 
+            // NotBackToolEntityBindingSource
+            // 
+            this.NotBackToolEntityBindingSource.DataMember = "NotBackToolEntity";
+            this.NotBackToolEntityBindingSource.DataSource = this.cangku_manage_dbDataSet;
             // 
             // FrmPrintNotBack
             // 
@@ -78,6 +85,7 @@
             this.Load += new System.EventHandler(this.FrmPrintNotBack_Load);
             ((System.ComponentModel.ISupportInitialize)(this.t_ToolInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NotBackToolEntityBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -88,5 +96,6 @@
         private System.Windows.Forms.BindingSource t_ToolInfoBindingSource;
         private cangku_manage_dbDataSet cangku_manage_dbDataSet;
         private cangku_manage_dbDataSetTableAdapters.t_ToolInfoTableAdapter t_ToolInfoTableAdapter;
+        private System.Windows.Forms.BindingSource NotBackToolEntityBindingSource;
     }
 }

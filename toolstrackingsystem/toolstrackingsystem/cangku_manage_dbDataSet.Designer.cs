@@ -54,6 +54,8 @@ namespace toolstrackingsystem {
         
         private CurrentToolInfoEntityDataTable tableCurrentToolInfoEntity;
         
+        private NotBackToolEntityDataTable tableNotBackToolEntity;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -126,6 +128,9 @@ namespace toolstrackingsystem {
                 }
                 if ((ds.Tables["CurrentToolInfoEntity"] != null)) {
                     base.Tables.Add(new CurrentToolInfoEntityDataTable(ds.Tables["CurrentToolInfoEntity"]));
+                }
+                if ((ds.Tables["NotBackToolEntity"] != null)) {
+                    base.Tables.Add(new NotBackToolEntityDataTable(ds.Tables["NotBackToolEntity"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -297,6 +302,16 @@ namespace toolstrackingsystem {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public NotBackToolEntityDataTable NotBackToolEntity {
+            get {
+                return this.tableNotBackToolEntity;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -406,6 +421,9 @@ namespace toolstrackingsystem {
                 }
                 if ((ds.Tables["CurrentToolInfoEntity"] != null)) {
                     base.Tables.Add(new CurrentToolInfoEntityDataTable(ds.Tables["CurrentToolInfoEntity"]));
+                }
+                if ((ds.Tables["NotBackToolEntity"] != null)) {
+                    base.Tables.Add(new NotBackToolEntityDataTable(ds.Tables["NotBackToolEntity"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -530,6 +548,12 @@ namespace toolstrackingsystem {
                     this.tableCurrentToolInfoEntity.InitVars();
                 }
             }
+            this.tableNotBackToolEntity = ((NotBackToolEntityDataTable)(base.Tables["NotBackToolEntity"]));
+            if ((initTable == true)) {
+                if ((this.tableNotBackToolEntity != null)) {
+                    this.tableNotBackToolEntity.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -570,6 +594,8 @@ namespace toolstrackingsystem {
             base.Tables.Add(this.tableToolReturnEntity);
             this.tableCurrentToolInfoEntity = new CurrentToolInfoEntityDataTable();
             base.Tables.Add(this.tableCurrentToolInfoEntity);
+            this.tableNotBackToolEntity = new NotBackToolEntityDataTable();
+            base.Tables.Add(this.tableNotBackToolEntity);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -659,6 +685,12 @@ namespace toolstrackingsystem {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeCurrentToolInfoEntity() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeNotBackToolEntity() {
             return false;
         }
         
@@ -761,6 +793,9 @@ namespace toolstrackingsystem {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void CurrentToolInfoEntityRowChangeEventHandler(object sender, CurrentToolInfoEntityRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void NotBackToolEntityRowChangeEventHandler(object sender, NotBackToolEntityRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -6780,6 +6815,407 @@ namespace toolstrackingsystem {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class NotBackToolEntityDataTable : global::System.Data.TypedTableBase<NotBackToolEntityRow> {
+            
+            private global::System.Data.DataColumn columnTypeName;
+            
+            private global::System.Data.DataColumn columnChildTypeName;
+            
+            private global::System.Data.DataColumn columnPackCode;
+            
+            private global::System.Data.DataColumn columnPackName;
+            
+            private global::System.Data.DataColumn columnToolCode;
+            
+            private global::System.Data.DataColumn columnToolName;
+            
+            private global::System.Data.DataColumn columnPersonCode;
+            
+            private global::System.Data.DataColumn columnPersonName;
+            
+            private global::System.Data.DataColumn columnUserTimeInfo;
+            
+            private global::System.Data.DataColumn columnOutStoreTime;
+            
+            private global::System.Data.DataColumn columnoutdescribes;
+            
+            private global::System.Data.DataColumn columnOptionPerson;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NotBackToolEntityDataTable() {
+                this.TableName = "NotBackToolEntity";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal NotBackToolEntityDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected NotBackToolEntityDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TypeNameColumn {
+                get {
+                    return this.columnTypeName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ChildTypeNameColumn {
+                get {
+                    return this.columnChildTypeName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PackCodeColumn {
+                get {
+                    return this.columnPackCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PackNameColumn {
+                get {
+                    return this.columnPackName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ToolCodeColumn {
+                get {
+                    return this.columnToolCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ToolNameColumn {
+                get {
+                    return this.columnToolName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PersonCodeColumn {
+                get {
+                    return this.columnPersonCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PersonNameColumn {
+                get {
+                    return this.columnPersonName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UserTimeInfoColumn {
+                get {
+                    return this.columnUserTimeInfo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OutStoreTimeColumn {
+                get {
+                    return this.columnOutStoreTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn outdescribesColumn {
+                get {
+                    return this.columnoutdescribes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OptionPersonColumn {
+                get {
+                    return this.columnOptionPerson;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NotBackToolEntityRow this[int index] {
+                get {
+                    return ((NotBackToolEntityRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NotBackToolEntityRowChangeEventHandler NotBackToolEntityRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NotBackToolEntityRowChangeEventHandler NotBackToolEntityRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NotBackToolEntityRowChangeEventHandler NotBackToolEntityRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NotBackToolEntityRowChangeEventHandler NotBackToolEntityRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddNotBackToolEntityRow(NotBackToolEntityRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NotBackToolEntityRow AddNotBackToolEntityRow(string TypeName, string ChildTypeName, string PackCode, string PackName, string ToolCode, string ToolName, string PersonCode, string PersonName, string UserTimeInfo, string OutStoreTime, string outdescribes, string OptionPerson) {
+                NotBackToolEntityRow rowNotBackToolEntityRow = ((NotBackToolEntityRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        TypeName,
+                        ChildTypeName,
+                        PackCode,
+                        PackName,
+                        ToolCode,
+                        ToolName,
+                        PersonCode,
+                        PersonName,
+                        UserTimeInfo,
+                        OutStoreTime,
+                        outdescribes,
+                        OptionPerson};
+                rowNotBackToolEntityRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowNotBackToolEntityRow);
+                return rowNotBackToolEntityRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                NotBackToolEntityDataTable cln = ((NotBackToolEntityDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new NotBackToolEntityDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnTypeName = base.Columns["TypeName"];
+                this.columnChildTypeName = base.Columns["ChildTypeName"];
+                this.columnPackCode = base.Columns["PackCode"];
+                this.columnPackName = base.Columns["PackName"];
+                this.columnToolCode = base.Columns["ToolCode"];
+                this.columnToolName = base.Columns["ToolName"];
+                this.columnPersonCode = base.Columns["PersonCode"];
+                this.columnPersonName = base.Columns["PersonName"];
+                this.columnUserTimeInfo = base.Columns["UserTimeInfo"];
+                this.columnOutStoreTime = base.Columns["OutStoreTime"];
+                this.columnoutdescribes = base.Columns["outdescribes"];
+                this.columnOptionPerson = base.Columns["OptionPerson"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnTypeName = new global::System.Data.DataColumn("TypeName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTypeName);
+                this.columnChildTypeName = new global::System.Data.DataColumn("ChildTypeName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnChildTypeName);
+                this.columnPackCode = new global::System.Data.DataColumn("PackCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPackCode);
+                this.columnPackName = new global::System.Data.DataColumn("PackName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPackName);
+                this.columnToolCode = new global::System.Data.DataColumn("ToolCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnToolCode);
+                this.columnToolName = new global::System.Data.DataColumn("ToolName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnToolName);
+                this.columnPersonCode = new global::System.Data.DataColumn("PersonCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPersonCode);
+                this.columnPersonName = new global::System.Data.DataColumn("PersonName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPersonName);
+                this.columnUserTimeInfo = new global::System.Data.DataColumn("UserTimeInfo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserTimeInfo);
+                this.columnOutStoreTime = new global::System.Data.DataColumn("OutStoreTime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOutStoreTime);
+                this.columnoutdescribes = new global::System.Data.DataColumn("outdescribes", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnoutdescribes);
+                this.columnOptionPerson = new global::System.Data.DataColumn("OptionPerson", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOptionPerson);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NotBackToolEntityRow NewNotBackToolEntityRow() {
+                return ((NotBackToolEntityRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new NotBackToolEntityRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(NotBackToolEntityRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.NotBackToolEntityRowChanged != null)) {
+                    this.NotBackToolEntityRowChanged(this, new NotBackToolEntityRowChangeEvent(((NotBackToolEntityRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.NotBackToolEntityRowChanging != null)) {
+                    this.NotBackToolEntityRowChanging(this, new NotBackToolEntityRowChangeEvent(((NotBackToolEntityRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.NotBackToolEntityRowDeleted != null)) {
+                    this.NotBackToolEntityRowDeleted(this, new NotBackToolEntityRowChangeEvent(((NotBackToolEntityRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.NotBackToolEntityRowDeleting != null)) {
+                    this.NotBackToolEntityRowDeleting(this, new NotBackToolEntityRowChangeEvent(((NotBackToolEntityRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveNotBackToolEntityRow(NotBackToolEntityRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                cangku_manage_dbDataSet ds = new cangku_manage_dbDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "NotBackToolEntityDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class Sys_Menu_InfoRow : global::System.Data.DataRow {
@@ -10687,6 +11123,357 @@ namespace toolstrackingsystem {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class NotBackToolEntityRow : global::System.Data.DataRow {
+            
+            private NotBackToolEntityDataTable tableNotBackToolEntity;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal NotBackToolEntityRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableNotBackToolEntity = ((NotBackToolEntityDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TypeName {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotBackToolEntity.TypeNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NotBackToolEntity”中列“TypeName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNotBackToolEntity.TypeNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ChildTypeName {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotBackToolEntity.ChildTypeNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NotBackToolEntity”中列“ChildTypeName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNotBackToolEntity.ChildTypeNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PackCode {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotBackToolEntity.PackCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NotBackToolEntity”中列“PackCode”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNotBackToolEntity.PackCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PackName {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotBackToolEntity.PackNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NotBackToolEntity”中列“PackName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNotBackToolEntity.PackNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ToolCode {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotBackToolEntity.ToolCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NotBackToolEntity”中列“ToolCode”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNotBackToolEntity.ToolCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ToolName {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotBackToolEntity.ToolNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NotBackToolEntity”中列“ToolName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNotBackToolEntity.ToolNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PersonCode {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotBackToolEntity.PersonCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NotBackToolEntity”中列“PersonCode”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNotBackToolEntity.PersonCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PersonName {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotBackToolEntity.PersonNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NotBackToolEntity”中列“PersonName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNotBackToolEntity.PersonNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string UserTimeInfo {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotBackToolEntity.UserTimeInfoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NotBackToolEntity”中列“UserTimeInfo”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNotBackToolEntity.UserTimeInfoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string OutStoreTime {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotBackToolEntity.OutStoreTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NotBackToolEntity”中列“OutStoreTime”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNotBackToolEntity.OutStoreTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string outdescribes {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotBackToolEntity.outdescribesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NotBackToolEntity”中列“outdescribes”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNotBackToolEntity.outdescribesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string OptionPerson {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotBackToolEntity.OptionPersonColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NotBackToolEntity”中列“OptionPerson”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNotBackToolEntity.OptionPersonColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTypeNameNull() {
+                return this.IsNull(this.tableNotBackToolEntity.TypeNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTypeNameNull() {
+                this[this.tableNotBackToolEntity.TypeNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsChildTypeNameNull() {
+                return this.IsNull(this.tableNotBackToolEntity.ChildTypeNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetChildTypeNameNull() {
+                this[this.tableNotBackToolEntity.ChildTypeNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPackCodeNull() {
+                return this.IsNull(this.tableNotBackToolEntity.PackCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPackCodeNull() {
+                this[this.tableNotBackToolEntity.PackCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPackNameNull() {
+                return this.IsNull(this.tableNotBackToolEntity.PackNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPackNameNull() {
+                this[this.tableNotBackToolEntity.PackNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsToolCodeNull() {
+                return this.IsNull(this.tableNotBackToolEntity.ToolCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetToolCodeNull() {
+                this[this.tableNotBackToolEntity.ToolCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsToolNameNull() {
+                return this.IsNull(this.tableNotBackToolEntity.ToolNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetToolNameNull() {
+                this[this.tableNotBackToolEntity.ToolNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPersonCodeNull() {
+                return this.IsNull(this.tableNotBackToolEntity.PersonCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPersonCodeNull() {
+                this[this.tableNotBackToolEntity.PersonCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPersonNameNull() {
+                return this.IsNull(this.tableNotBackToolEntity.PersonNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPersonNameNull() {
+                this[this.tableNotBackToolEntity.PersonNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUserTimeInfoNull() {
+                return this.IsNull(this.tableNotBackToolEntity.UserTimeInfoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUserTimeInfoNull() {
+                this[this.tableNotBackToolEntity.UserTimeInfoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOutStoreTimeNull() {
+                return this.IsNull(this.tableNotBackToolEntity.OutStoreTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOutStoreTimeNull() {
+                this[this.tableNotBackToolEntity.OutStoreTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsoutdescribesNull() {
+                return this.IsNull(this.tableNotBackToolEntity.outdescribesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetoutdescribesNull() {
+                this[this.tableNotBackToolEntity.outdescribesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOptionPersonNull() {
+                return this.IsNull(this.tableNotBackToolEntity.OptionPersonColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOptionPersonNull() {
+                this[this.tableNotBackToolEntity.OptionPersonColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -11182,6 +11969,40 @@ namespace toolstrackingsystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CurrentToolInfoEntityRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class NotBackToolEntityRowChangeEvent : global::System.EventArgs {
+            
+            private NotBackToolEntityRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NotBackToolEntityRowChangeEvent(NotBackToolEntityRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NotBackToolEntityRow Row {
                 get {
                     return this.eventRow;
                 }

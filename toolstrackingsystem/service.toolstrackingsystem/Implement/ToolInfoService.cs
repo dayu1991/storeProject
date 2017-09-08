@@ -256,10 +256,9 @@ namespace service.toolstrackingsystem
                                   ,[ChildTypeName]
                                   ,[ToolCode]
                                   ,[ToolName]
-                                  ,[InStoreTime]
-                              FROM [t_InStore] WHERE 1=1";
-            string sqlNotStr = "[InStoreID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [InStoreID] FROM [dbo].[t_InStore] WHERE 1=1 ";
-            string sqlCount = "SELECT COUNT(*) FROM [dbo].[t_InStore]  WHERE 1=1";
+                              FROM [t_ToolInfo] WHERE (IsBack='1' or IsBack is null) ";
+            string sqlNotStr = "[ToolID] NOT IN (SELECT TOP " + ((pageIndex - 1) * pageSize) + " [ToolID] FROM [dbo].[t_ToolInfo] WHERE (IsBack='1' or IsBack is null)  ";
+            string sqlCount = "SELECT COUNT(*) FROM [dbo].[t_ToolInfo]  WHERE  (IsBack='1' or IsBack is null) ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
             {
@@ -303,7 +302,7 @@ namespace service.toolstrackingsystem
        /// <returns></returns>
         public List<CountToolInfoEntity> GetCountInToolInfo(t_ToolInfo toolInfo)
         {
-            string sql = "SELECT ChildTypeName AS TypeName, COUNT(1) as Quantity FROM t_ToolInfo WHERE 1=1 ";
+            string sql = "SELECT ChildTypeName AS TypeName, COUNT(1) as Quantity FROM t_ToolInfo WHERE 1=1 AND (IsBack='1' or IsBack is null) ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
             {
@@ -343,9 +342,8 @@ namespace service.toolstrackingsystem
                                   ,[ChildTypeName]
                                   ,[ToolCode]
                                   ,[ToolName]
-                                  ,[InStoreTime]
                                   ,[OptionPerson]
-                              FROM [t_InStore] WHERE 1=1";
+                              FROM [t_ToolInfo] WHERE (IsBack='1' or IsBack is null)  ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrWhiteSpace(toolInfo.TypeName))
             {
