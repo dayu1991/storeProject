@@ -27,7 +27,6 @@ namespace dbentity.toolstrackingsystem
         public string Remarks { get; set; }
         public string CheckTime { get; set; }
         public string IsActive { get; set; }
-        public int IsRepaired { get; set; }
         public string OptionPerson { get; set; }
         public string IsBack { get; set; }
     }

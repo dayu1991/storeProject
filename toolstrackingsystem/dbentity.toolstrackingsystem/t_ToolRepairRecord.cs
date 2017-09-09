@@ -23,12 +23,9 @@ namespace dbentity.toolstrackingsystem
         public string ToolName { get; set; }
         public System.DateTime RepairedTime { get; set; }
         public string RepairedPerson { get; set; }
-        public Nullable<System.DateTime> ReturnedTime { get; set; }
+        public string RepairedRemark { get; set; }
         public string ReturnedPerson { get; set; }
-        public Nullable<System.DateTime> ReceivedTime { get; set; }
-        public string ReceivedPerson { get; set; }
-        public Nullable<System.DateTime> ReceivedBackTime { get; set; }
-        public string ReceivedBackPerson { get; set; }
+        public string ReturnedRemark { get; set; }
         public Nullable<int> ToolStatus { get; set; }
     }
 }

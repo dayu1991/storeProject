@@ -33,10 +33,10 @@ namespace dbentity.toolstrackingsystem
         public virtual DbSet<t_OutBackStore> t_OutBackStore { get; set; }
         public virtual DbSet<t_PersonCreditRecord> t_PersonCreditRecord { get; set; }
         public virtual DbSet<t_PersonInfo> t_PersonInfo { get; set; }
-        public virtual DbSet<t_ScrapToolInfo> t_ScrapToolInfo { get; set; }
         public virtual DbSet<t_ToolCategoryInfo> t_ToolCategoryInfo { get; set; }
         public virtual DbSet<t_ToolInfo> t_ToolInfo { get; set; }
-        public virtual DbSet<t_ToolRepairRecord> t_ToolRepairRecord { get; set; }
         public virtual DbSet<t_ToolType> t_ToolType { get; set; }
+        public virtual DbSet<t_ToolRepairRecord> t_ToolRepairRecord { get; set; }
+        public virtual DbSet<t_ScrapToolInfo> t_ScrapToolInfo { get; set; }
     }
 }
