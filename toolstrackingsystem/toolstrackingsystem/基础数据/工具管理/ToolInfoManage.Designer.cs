@@ -59,8 +59,6 @@
             this.tbEditCode = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.dtiCheckTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.btnDelete = new DevComponents.DotNetBar.ButtonX();
-            this.btnEdit = new DevComponents.DotNetBar.ButtonX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.tbEditMemo = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -79,6 +77,8 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
+            this.cbCheckTime = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.groupPanel2.SuspendLayout();
@@ -89,6 +89,8 @@
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.cbCheckTime);
+            this.groupPanel1.Controls.Add(this.labelX12);
             this.groupPanel1.Controls.Add(this.Search_buttonX);
             this.groupPanel1.Controls.Add(this.tbSearchName);
             this.groupPanel1.Controls.Add(this.labelX4);
@@ -101,7 +103,7 @@
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(10, 13);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(1056, 54);
+            this.groupPanel1.Size = new System.Drawing.Size(1313, 54);
             // 
             // 
             // 
@@ -136,7 +138,7 @@
             // 
             this.Search_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Search_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Search_buttonX.Location = new System.Drawing.Point(635, 20);
+            this.Search_buttonX.Location = new System.Drawing.Point(1222, 18);
             this.Search_buttonX.Name = "Search_buttonX";
             this.Search_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Search_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -151,7 +153,7 @@
             // 
             this.tbSearchName.Border.Class = "TextBoxBorder";
             this.tbSearchName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbSearchName.Location = new System.Drawing.Point(529, 20);
+            this.tbSearchName.Location = new System.Drawing.Point(503, 18);
             this.tbSearchName.Name = "tbSearchName";
             this.tbSearchName.PreventEnterBeep = true;
             this.tbSearchName.Size = new System.Drawing.Size(100, 21);
@@ -164,7 +166,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(492, 20);
+            this.labelX4.Location = new System.Drawing.Point(467, 18);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(57, 23);
             this.labelX4.TabIndex = 8;
@@ -177,7 +179,7 @@
             // 
             this.tbSearchCode.Border.Class = "TextBoxBorder";
             this.tbSearchCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbSearchCode.Location = new System.Drawing.Point(386, 20);
+            this.tbSearchCode.Location = new System.Drawing.Point(361, 18);
             this.tbSearchCode.Name = "tbSearchCode";
             this.tbSearchCode.PreventEnterBeep = true;
             this.tbSearchCode.Size = new System.Drawing.Size(100, 21);
@@ -190,7 +192,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(347, 20);
+            this.labelX3.Location = new System.Drawing.Point(327, 16);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(57, 23);
             this.labelX3.TabIndex = 6;
@@ -202,7 +204,7 @@
             this.cbSearchcategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbSearchcategory.FormattingEnabled = true;
             this.cbSearchcategory.ItemHeight = 15;
-            this.cbSearchcategory.Location = new System.Drawing.Point(220, 20);
+            this.cbSearchcategory.Location = new System.Drawing.Point(200, 16);
             this.cbSearchcategory.Name = "cbSearchcategory";
             this.cbSearchcategory.Size = new System.Drawing.Size(121, 21);
             this.cbSearchcategory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -214,7 +216,7 @@
             this.cbSearchBlong.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbSearchBlong.FormattingEnabled = true;
             this.cbSearchBlong.ItemHeight = 15;
-            this.cbSearchBlong.Location = new System.Drawing.Point(57, 20);
+            this.cbSearchBlong.Location = new System.Drawing.Point(43, 16);
             this.cbSearchBlong.Name = "cbSearchBlong";
             this.cbSearchBlong.Size = new System.Drawing.Size(121, 21);
             this.cbSearchBlong.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -227,7 +229,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(184, 20);
+            this.labelX2.Location = new System.Drawing.Point(170, 16);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(57, 23);
             this.labelX2.TabIndex = 3;
@@ -240,7 +242,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(22, 20);
+            this.labelX1.Location = new System.Drawing.Point(4, 16);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(57, 23);
             this.labelX1.TabIndex = 0;
@@ -277,7 +279,7 @@
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1056, 308);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1313, 411);
             this.dataGridViewX1.TabIndex = 1;
             this.dataGridViewX1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellClick);
             this.dataGridViewX1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewX1_RowStateChanged);
@@ -364,8 +366,6 @@
             this.groupPanel2.Controls.Add(this.tbEditCode);
             this.groupPanel2.Controls.Add(this.labelX11);
             this.groupPanel2.Controls.Add(this.dtiCheckTime);
-            this.groupPanel2.Controls.Add(this.btnDelete);
-            this.groupPanel2.Controls.Add(this.btnEdit);
             this.groupPanel2.Controls.Add(this.buttonX2);
             this.groupPanel2.Controls.Add(this.btnAdd);
             this.groupPanel2.Controls.Add(this.tbEditMemo);
@@ -382,9 +382,9 @@
             this.groupPanel2.Controls.Add(this.cbEditBlong);
             this.groupPanel2.Controls.Add(this.labelX5);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(10, 436);
+            this.groupPanel2.Location = new System.Drawing.Point(10, 533);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1056, 208);
+            this.groupPanel2.Size = new System.Drawing.Size(1313, 149);
             // 
             // 
             // 
@@ -443,9 +443,9 @@
             // 
             this.Print_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Print_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Print_button.Location = new System.Drawing.Point(479, 133);
+            this.Print_button.Location = new System.Drawing.Point(1096, 26);
             this.Print_button.Name = "Print_button";
-            this.Print_button.Size = new System.Drawing.Size(75, 23);
+            this.Print_button.Size = new System.Drawing.Size(75, 91);
             this.Print_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Print_button.TabIndex = 31;
             this.Print_button.Text = "打印";
@@ -455,9 +455,9 @@
             // 
             this.ExcelIn_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.ExcelIn_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.ExcelIn_button.Location = new System.Drawing.Point(386, 133);
+            this.ExcelIn_button.Location = new System.Drawing.Point(1015, 26);
             this.ExcelIn_button.Name = "ExcelIn_button";
-            this.ExcelIn_button.Size = new System.Drawing.Size(75, 23);
+            this.ExcelIn_button.Size = new System.Drawing.Size(75, 91);
             this.ExcelIn_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ExcelIn_button.TabIndex = 30;
             this.ExcelIn_button.Text = "导入Excel";
@@ -467,9 +467,9 @@
             // 
             this.ExcelOut_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.ExcelOut_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.ExcelOut_button.Location = new System.Drawing.Point(295, 133);
+            this.ExcelOut_button.Location = new System.Drawing.Point(934, 26);
             this.ExcelOut_button.Name = "ExcelOut_button";
-            this.ExcelOut_button.Size = new System.Drawing.Size(75, 23);
+            this.ExcelOut_button.Size = new System.Drawing.Size(75, 91);
             this.ExcelOut_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ExcelOut_button.TabIndex = 29;
             this.ExcelOut_button.Text = "导出Excel";
@@ -546,35 +546,11 @@
             this.dtiCheckTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dtiCheckTime.TabIndex = 26;
             // 
-            // btnDelete
-            // 
-            this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDelete.Location = new System.Drawing.Point(200, 133);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDelete.TabIndex = 23;
-            this.btnDelete.Text = "删除";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnEdit.Location = new System.Drawing.Point(103, 133);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnEdit.TabIndex = 22;
-            this.btnEdit.Text = "修改";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
             // buttonX2
             // 
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(798, 22);
+            this.buttonX2.Location = new System.Drawing.Point(844, 24);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(84, 93);
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -586,9 +562,9 @@
             // 
             this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAdd.Location = new System.Drawing.Point(13, 133);
+            this.btnAdd.Location = new System.Drawing.Point(759, 24);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(79, 93);
             this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAdd.TabIndex = 20;
             this.btnAdd.Text = "增加";
@@ -769,19 +745,44 @@
             // 
             this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(10, 379);
+            this.pagerControl1.Location = new System.Drawing.Point(10, 476);
             this.pagerControl1.Name = "pagerControl1";
             this.pagerControl1.PageIndex = 1;
             this.pagerControl1.PageSize = 50;
             this.pagerControl1.RecordCount = 0;
-            this.pagerControl1.Size = new System.Drawing.Size(1056, 51);
+            this.pagerControl1.Size = new System.Drawing.Size(1313, 51);
             this.pagerControl1.TabIndex = 3;
+            // 
+            // cbCheckTime
+            // 
+            this.cbCheckTime.DisplayMember = "Text";
+            this.cbCheckTime.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbCheckTime.FormattingEnabled = true;
+            this.cbCheckTime.ItemHeight = 15;
+            this.cbCheckTime.Location = new System.Drawing.Point(666, 16);
+            this.cbCheckTime.Name = "cbCheckTime";
+            this.cbCheckTime.Size = new System.Drawing.Size(121, 21);
+            this.cbCheckTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbCheckTime.TabIndex = 12;
+            // 
+            // labelX12
+            // 
+            this.labelX12.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX12.Location = new System.Drawing.Point(608, 16);
+            this.labelX12.Name = "labelX12";
+            this.labelX12.Size = new System.Drawing.Size(77, 23);
+            this.labelX12.TabIndex = 11;
+            this.labelX12.Text = "有效时间：";
             // 
             // ToolInfoManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1104, 692);
+            this.ClientSize = new System.Drawing.Size(1327, 687);
             this.Controls.Add(this.pagerControl1);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.dataGridViewX1);
@@ -819,8 +820,6 @@
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbEditBlong;
         private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.ButtonX btnDelete;
-        private DevComponents.DotNetBar.ButtonX btnEdit;
         private DevComponents.DotNetBar.ButtonX buttonX2;
         private DevComponents.DotNetBar.ButtonX btnAdd;
         private DevComponents.DotNetBar.Controls.TextBoxX tbEditMemo;
@@ -849,5 +848,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tbPosition;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbRemarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbCheckTime;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbCheckTime;
+        private DevComponents.DotNetBar.LabelX labelX12;
     }
 }

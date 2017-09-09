@@ -22,6 +22,7 @@ using System.Net.Sockets;
 using NPOI.HSSF.UserModel;
 using NPOI.XSSF.UserModel;
 using toolstrackingsystem.loading;
+using ViewEntity.toolstrackingsystem;
 namespace toolstrackingsystem
 {
     public partial class ToolInfoManage : Office2007RibbonForm
@@ -97,6 +98,38 @@ namespace toolstrackingsystem
             //threadClient.Start();
 
 
+
+            var selectLists = new List<DropDownCtrolObj>();\
+
+            blongs.Add(new DropDownCtrolObj
+            {
+                SelectText = "无限制",
+                SelectValue = "0"
+            });
+            blongs.Add(new DropDownCtrolObj
+            {
+                SelectText = "7天内",
+                SelectValue = "7"
+            });
+            blongs.Add(new DropDownCtrolObj
+            {
+                SelectText = "15天内",
+                SelectValue = "15"
+            });
+            blongs.Add(new DropDownCtrolObj
+            {
+                SelectText = "30天内",
+                SelectValue = "30"
+            });
+            blongs.Add(new DropDownCtrolObj
+            {
+                SelectText = "60天内",
+                SelectValue = "60"
+            });         
+             this.cbCheckTime.DataSource = blongs;
+            this.cbCheckTime.DisplayMember = "SelectText";
+            this.cbCheckTime.ValueMember = "SelectValue";
+            this.cbEditOutTime.SelectedValue = "0";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
