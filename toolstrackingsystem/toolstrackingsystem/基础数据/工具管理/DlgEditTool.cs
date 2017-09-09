@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
+using ViewEntity.toolstrackingsystem.view;
 namespace toolstrackingsystem
 {
     public partial class DlgEditTool : Office2007Form

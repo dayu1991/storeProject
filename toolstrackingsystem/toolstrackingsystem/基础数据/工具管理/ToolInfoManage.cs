@@ -87,7 +87,6 @@ namespace toolstrackingsystem
             pagerControl1.OnPageChanged += new EventHandler(pagerControl1_OnPageChanged);
 
             this.dtiCheckTime.Value = DateTime.Now.AddMonths(1);
-            LoadData();
 
             //threadClient = new Thread(RecMsg);
 
@@ -99,37 +98,45 @@ namespace toolstrackingsystem
 
 
 
-            var selectLists = new List<DropDownCtrolObj>();\
+            var selectLists = new List<DropDownCtrolObj>();
 
-            blongs.Add(new DropDownCtrolObj
+            selectLists.Add(new DropDownCtrolObj
             {
                 SelectText = "无限制",
                 SelectValue = "0"
             });
-            blongs.Add(new DropDownCtrolObj
+            selectLists.Add(new DropDownCtrolObj
+            {
+                SelectText = "已超时",
+                SelectValue = "-1"
+            });
+            selectLists.Add(new DropDownCtrolObj
             {
                 SelectText = "7天内",
                 SelectValue = "7"
             });
-            blongs.Add(new DropDownCtrolObj
+            selectLists.Add(new DropDownCtrolObj
             {
                 SelectText = "15天内",
                 SelectValue = "15"
             });
-            blongs.Add(new DropDownCtrolObj
+            selectLists.Add(new DropDownCtrolObj
             {
                 SelectText = "30天内",
                 SelectValue = "30"
             });
-            blongs.Add(new DropDownCtrolObj
+            selectLists.Add(new DropDownCtrolObj
             {
                 SelectText = "60天内",
                 SelectValue = "60"
-            });         
-             this.cbCheckTime.DataSource = blongs;
+            });
+            this.cbCheckTime.DataSource = selectLists;
             this.cbCheckTime.DisplayMember = "SelectText";
             this.cbCheckTime.ValueMember = "SelectValue";
-            this.cbEditOutTime.SelectedValue = "0";
+            this.cbCheckTime.SelectedValue = "0";
+
+            LoadData();
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -223,8 +230,14 @@ namespace toolstrackingsystem
                 string toolCode = tbSearchCode.Text;
                 string toolName = tbSearchName.Text;
                 long Count;
+                bool is_Out_checkBox = this.Is_Out_checkBox.Checked;
+                bool is_OutTime_checkBox = this.Is_OutTime_checkBox.Checked;
+                bool is_ToRepare_checkBox = this.Is_ToRepare_checkBox.Checked;
 
-                List<t_ToolInfo> resultEntity = _toolInfoService.GetToolList(blongValue, categoryValue, toolCode, toolName, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
+                string cbCheckTime = this.cbCheckTime.SelectedValue.ToString();
+
+
+                List<ToolInfoExtend> resultEntity = _toolInfoService.GetToolList(blongValue, categoryValue, toolCode, toolName, is_Out_checkBox, is_OutTime_checkBox, is_ToRepare_checkBox, cbCheckTime, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
                 pagerControl1.DrawControl(Convert.ToInt32(Count));
                 this.dataGridViewX1.AutoGenerateColumns = false;
                 this.dataGridViewX1.DataSource = resultEntity;
@@ -290,6 +303,10 @@ namespace toolstrackingsystem
                             LoadData();
                         }
                     }
+                    else {
+                        MessageBox.Show("该工具信息已经被删除！");
+                        return;
+                    }
 
                 }
             }
@@ -299,8 +316,9 @@ namespace toolstrackingsystem
 
             }
         }
+       
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -774,6 +792,48 @@ namespace toolstrackingsystem
             printFrm.Tag = tool;
             printFrm.ShowDialog();
         }
+
+        private void Is_OutTime_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.Is_OutTime_checkBox.Checked)
+            {
+                this.Is_Out_checkBox.Checked = true;
+            }
+        }
+
+        private void Is_ToRepare_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.Is_ToRepare_checkBox.Checked)
+            {
+                this.Is_Out_checkBox.Checked = false;
+                this.Is_OutTime_checkBox.Checked = false;
+
+            }
+        }
+
+        private void tbSearchCode_TextChanged(object sender, EventArgs e)
+        {
+            var codeText = this.tbSearchCode.Text;
+            if (!string.IsNullOrWhiteSpace(codeText))
+            {
+                this.cbSearchBlong.SelectedValue = "全部";
+                this.cbSearchcategory.SelectedValue = "全部";
+            }
+        }
+
+        private void dataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                slectedIndex = e.RowIndex;
+                SelectedToolCode = this.dataGridViewX1.Rows[slectedIndex].Cells[4].Value.ToString();
+                btnEdit_Click(sender,e);
+            }
+        }
+
+      
+
+       
 
     }
 }

@@ -17,7 +17,6 @@ namespace sqlserver.toolstrackingsystem
         /// <returns></returns>
         bool IsExistsByCode(string toolCode);
 
-        List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount);
 
         t_ToolInfo GetToolByCode(string ToolCode);
 
