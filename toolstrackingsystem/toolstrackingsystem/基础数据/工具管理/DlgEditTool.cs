@@ -36,31 +36,96 @@ namespace toolstrackingsystem
                 var categoryBlongs = categorys.Where(v => v.classification == 1).Any() ? categorys.Where(v => v.classification == 1).ToList() : new List<t_ToolType>();
                 var categoryCategory = categorys.Where(v => v.classification == 2).Any() ? categorys.Where(v => v.classification == 2).ToList() : new List<t_ToolType>();
                 t_ToolInfo  toolInfo = (t_ToolInfo)this.Tag;
-                this.cbEditBlong.DataSource = categoryBlongs;
-                this.cbEditBlong.DisplayMember = "TypeName";
-                this.cbEditBlong.ValueMember = "TypeName";
-
-
-                this.cbEditCategory.DataSource = categoryCategory;
-                this.cbEditCategory.DisplayMember = "TypeName";
-                this.cbEditCategory.ValueMember = "TypeName";
-                tbEditToolName.Text = toolInfo.ToolName;
-                tbEditLocation.Text = toolInfo.Location;
-                if (string.IsNullOrWhiteSpace(toolInfo.CheckTime.ToString()))
+                if (toolInfo != null)
                 {
-                    cbEditCheckTime.Checked = false;
-                    dtiCheckTime.Value = DateTime.Parse(toolInfo.CheckTime);
+                    ToolInfoExtend toolInfoExtend = _toolInfoService.GetToolInfoExtend(toolInfo.ToolCode);
+                    this.cbEditBlong.DataSource = categoryBlongs;
+                    this.cbEditBlong.DisplayMember = "TypeName";
+                    this.cbEditBlong.ValueMember = "TypeName";
 
+
+                    this.cbEditCategory.DataSource = categoryCategory;
+                    this.cbEditCategory.DisplayMember = "TypeName";
+                    this.cbEditCategory.ValueMember = "TypeName";
+                    tbEditToolName.Text = toolInfoExtend.ToolName;
+                    tbEditLocation.Text = toolInfoExtend.Location;
+                    if (string.IsNullOrWhiteSpace(toolInfoExtend.CheckTime))
+                    {
+                        cbEditCheckTime.Checked = false;
+                        dtiCheckTime.Value = DateTime.Now.AddDays(1);
+
+                    }
+                    else
+                    {
+                        cbEditCheckTime.Checked = true;
+                        DateTime checkTimeFor = DateTime.Parse(toolInfoExtend.CheckTime);
+                        dtiCheckTime.Value = checkTimeFor;
+                        if (checkTimeFor >= DateTime.Now.AddDays(7) && checkTimeFor <= DateTime.Now.AddDays(15))
+                        {
+                            cbEditCheckTime.BackColor = Color.Yellow;
+                            dtiCheckTime.BackColor = Color.Yellow;
+                        }
+                        if (checkTimeFor > DateTime.Now && checkTimeFor <= DateTime.Now.AddDays(7))
+                        {
+                            cbEditCheckTime.BackColor = Color.Red;
+                            dtiCheckTime.BackColor = Color.Red;
+                        }
+                    }
+                    tbEditModel.Text = toolInfoExtend.Models;
+                    tbEditMemo.Text = toolInfoExtend.Remarks;
+                    cbEditBlong.SelectedValue = toolInfoExtend.TypeName;
+                    cbEditCategory.SelectedValue = toolInfoExtend.ChildTypeName;
+                    if (toolInfoExtend.IsBack == "0")//未归还
+                    {
+                        this.labIsOut.Text = "是";
+                        this.labOutPersonValue.Text = toolInfoExtend.PersonName;
+                        this.labOutTimesValue.Text = toolInfoExtend.UserTimeInfo;
+
+                        var dateTime = DateTime.Parse(toolInfoExtend.UserTimeInfo);
+                        if (dateTime < DateTime.Now)
+                        {
+                            this.labIsOutTimeValue.Text = "是";
+                        }
+                        else
+                        {
+                            this.labIsOutTimeValue.Text = "否";
+                        }
+
+                    }
+                    else
+                    {
+                        this.labIsOut.Text = "否";
+                        this.labIsOutTimeValue.Visible = false;
+                        this.labOutTime.Visible = false;
+
+                        this.laOutPerson.Visible = false;
+                        this.labOutPersonValue.Visible = false;
+
+                        this.labOutTimes.Visible = false;
+                        this.labOutTimesValue.Visible = false;
+
+                    }
+
+                    if (toolInfoExtend.IsRepaired == 1)//如果已经送修啦
+                    {
+                        this.labIsToRepareValue.Text = "是";
+                        this.labRepareTimeValue.Text = toolInfoExtend.RepairedTime.ToString("yyyy-MM-dd HH:mm:ss");
+
+                    }
+                    else
+                    {
+                        this.labIsToRepareValue.Text = "否";
+                        this.labRepareTime.Visible = false;
+                        this.labRepareTimeValue.Visible = false;
+
+                    }
                 }
-                else
-                {
-                    cbEditCheckTime.Checked = true;
-                    dtiCheckTime.Value = DateTime.Parse(toolInfo.CheckTime);
+                else {
+                    MessageBox.Show("请选择要编辑的记录！");
+                    return;                
                 }
-                tbEditModel.Text = toolInfo.Models;
-                tbEditMemo.Text = toolInfo.Remarks;
-                cbEditBlong.SelectedValue = toolInfo.TypeName;
-                cbEditCategory.SelectedValue = toolInfo.ChildTypeName;
+              
+
 
             }
             catch (Exception ex)
@@ -80,32 +145,39 @@ namespace toolstrackingsystem
         private void Save_Edit_button_Click(object sender, EventArgs e)
         {
             t_ToolInfo entity = (t_ToolInfo)this.Tag;
-            entity.TypeName = this.cbEditBlong.SelectedValue.ToString();
-            entity.ChildTypeName = this.cbEditCategory.SelectedValue.ToString();
-            entity.ToolName = this.tbEditToolName.Text;
-            entity.Location = this.tbEditLocation.Text;
-            if (cbEditCheckTime.Checked)
+            if (entity != null)
             {
-                if (dtiCheckTime.Value < DateTime.Now)
+                entity.TypeName = this.cbEditBlong.SelectedValue.ToString();
+                entity.ChildTypeName = this.cbEditCategory.SelectedValue.ToString();
+                entity.ToolName = this.tbEditToolName.Text;
+                entity.Location = this.tbEditLocation.Text;
+                if (cbEditCheckTime.Checked)
                 {
-                    MessageBox.Show("下次检测时间不能小于当前时间！");
+                    if (dtiCheckTime.Value < DateTime.Now)
+                    {
+                        MessageBox.Show("下次检测时间不能小于当前时间！");
+                        return;
+                    }
+                    entity.CheckTime = dtiCheckTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                }
+                if (string.IsNullOrWhiteSpace(entity.ToolName))
+                {
+                    MessageBox.Show("工具名称必须填写！");
+                    this.tbEditToolName.Focus();
                     return;
                 }
-                entity.CheckTime = dtiCheckTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                entity.Models = this.tbEditModel.Text;
+                entity.Remarks = this.tbEditMemo.Text;
+                if (_toolInfoService.UpdateTool(entity))
+                {
+                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                    this.Dispose();
+                }
             }
-            if (string.IsNullOrWhiteSpace(entity.ToolName))
-            {
-                MessageBox.Show("工具名称必须填写！");
-                this.tbEditToolName.Focus();
-                return;
-            }
-            entity.Models = this.tbEditModel.Text;
-            entity.Remarks = this.tbEditMemo.Text;
-            if (_toolInfoService.UpdateTool(entity))
-            {
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            else {
                 this.Dispose();
             }
+           
         }
     }
 }

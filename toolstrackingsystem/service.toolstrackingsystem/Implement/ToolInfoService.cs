@@ -258,7 +258,7 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
 
         public bool UpdateTool(t_ToolInfo entity)
         {
-            return _toolPackManageRepository.UpdateToolPackInfo(entity);
+            return _toolPackManageRepository.Update(entity);
         }
 
         public bool DelToolByCode(string ToolCode)
@@ -684,7 +684,51 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
             return _multiTableQueryRepository.QueryList<ToolPackViewEntity>(sql, parameters).ToList();
         }
 
-       
+        public ToolInfoExtend GetToolInfoExtend(string toolCode)
+        {
+            var result = new ToolInfoExtend();
+            var toolInfo = GetToolByCode(toolCode);
+            if (toolInfo != null)
+            {
+                result.ToolID = toolInfo.ToolID;
+                result.ToolCode = toolInfo.ToolCode;
+                result.TypeName = toolInfo.TypeName;
+                result.ChildTypeName = toolInfo.ChildTypeName;
+                result.PackCode = toolInfo.PackCode;
+                result.PackName = toolInfo.PackName;
+                result.CarGroupInfo = toolInfo.CarGroupInfo;
+                result.ToolName = toolInfo.ToolName;
+                result.Models = toolInfo.Models;
+                result.Location = toolInfo.Location;
+                result.Remarks = toolInfo.Remarks;
+                result.CheckTime = toolInfo.CheckTime;
+                result.IsRepaired = toolInfo.IsRepaired;
+                result.OptionPerson = toolInfo.OptionPerson;
+                result.IsBack = toolInfo.IsBack;
+
+                if (toolInfo.IsBack == "0")//未归还
+                {
+                    var OutEntity = _outBackStoreRepository.GetToolOutByCode(toolCode);
+                    if (OutEntity != null && !string.IsNullOrWhiteSpace(OutEntity.ToolCode))
+                    {
+                        result.UserTimeInfo = OutEntity.UserTimeInfo;
+                        result.PersonCode = OutEntity.PersonCode;
+                        result.PersonName = OutEntity.PersonName;
+                    }
+                }
+
+                if (toolInfo.IsRepaired == 1)//如果已经送修啦
+                {
+                    var repaireInfo = _toolPrepairRecordRepository.GetToolRepairByCodeNotReceived(toolCode);
+                        if(repaireInfo!=null)
+                        {
+                            result.RepairedTime = repaireInfo.RepairedTime;
+                        }
+                }
+            }
+            return result;
+        }
+
 
     }
 }

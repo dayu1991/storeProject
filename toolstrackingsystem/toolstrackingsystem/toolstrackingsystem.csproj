@@ -125,6 +125,12 @@
     <Compile Include="loading\LoadingForms.Designer.cs">
       <DependentUpon>LoadingForms.cs</DependentUpon>
     </Compile>
+    <Compile Include="日常操作\领用工具\DlgEnterPersonMsg1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="日常操作\领用工具\DlgEnterPersonMsg1.Designer.cs">
+      <DependentUpon>DlgEnterPersonMsg1.cs</DependentUpon>
+    </Compile>
     <Compile Include="系统管理\地址管理\FrmAddressManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -474,6 +480,9 @@
       <DependentUpon>LoadingForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="数据查询\超时未归还查询\Report5.rdlc" />
+    <EmbeddedResource Include="日常操作\领用工具\DlgEnterPersonMsg1.resx">
+      <DependentUpon>DlgEnterPersonMsg1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="系统管理\地址管理\FrmAddressManage.resx">
       <DependentUpon>FrmAddressManage.cs</DependentUpon>
     </EmbeddedResource>

@@ -619,6 +619,8 @@
             this.dtiCheckTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dtiCheckTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtiCheckTime.ButtonDropDown.Visible = true;
+            this.dtiCheckTime.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.dtiCheckTime.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.dtiCheckTime.IsPopupCalendarOpen = false;
             this.dtiCheckTime.Location = new System.Drawing.Point(103, 94);
             // 

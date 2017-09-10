@@ -13,6 +13,10 @@ namespace ViewEntity.toolstrackingsystem.view
         public string PersonCode { get; set; }
         public string PersonName { get; set; }
 
+
+        public DateTime RepairedTime{get;set;} //送修时间
+
+        //显示字段
         public string IsBackString { get; set; }
         public string IsRepairedString { get; set; }
 

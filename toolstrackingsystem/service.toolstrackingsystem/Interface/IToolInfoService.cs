@@ -16,7 +16,7 @@ namespace service.toolstrackingsystem
         /// </summary>
         /// <param name="classifyType">0:全部 1：分类信息 2：配属信息</param>
         /// <returns></returns>
-        List<t_ToolType> GetCategoryByClassify(int classifyType,string name="");
+        List<t_ToolType> GetCategoryByClassify(int classifyType, string name = "");
 
         long AddToolInfo(t_ToolInfo toolInfo, string OptionType);
 
@@ -103,6 +103,9 @@ namespace service.toolstrackingsystem
         /// <param name="Count"></param>
         /// <returns></returns>
         List<ToolPackViewEntity> GetPackInfoList(string packCode, string packName);
+
+
+        ToolInfoExtend GetToolInfoExtend(string toolCode);
 
     }
 }

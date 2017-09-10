@@ -155,6 +155,8 @@ namespace toolstrackingsystem
                 toolInfo.IsActive = "1";
                 toolInfo.OptionPerson = LoginHelper.UserCode;
                 toolInfo.ToolCode = this.tbEditCode.Text;
+                toolInfo.IsRepaired = 0;
+                toolInfo.IsBack ="1";
 
                 if (string.IsNullOrWhiteSpace(toolInfo.ToolCode))
                 {
@@ -178,6 +180,9 @@ namespace toolstrackingsystem
                     }
 
                     toolInfo.CheckTime = dtiCheckTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                }
+                else {
+                    toolInfo.CheckTime = "";
                 }
                 bool isExists = _toolInfoService.IsExistsByCode(toolInfo.ToolCode);
                 if (isExists)
@@ -330,14 +335,18 @@ namespace toolstrackingsystem
                 else
                 {
                     //bool toolEntity = _toolInfoService.DelToolByCode(SelectedToolCode);
-                    if (_toolInfoService.DelToolByCode(SelectedToolCode))
-                    {
-                        MessageBox.Show("删除成功");
+
+                    _toolInfoService.DelToolByCode(SelectedToolCode);
+                         MessageBox.Show("删除成功");
                         LoadData();
-                    }
-                    else {
-                        MessageBox.Show("删除失败");
-                    }
+                    //if (_toolInfoService.DelToolByCode(SelectedToolCode))
+                    //{
+                    //    MessageBox.Show("删除成功");
+                    //    LoadData();
+                    //}
+                    //else {
+                    //    MessageBox.Show("删除失败");
+                    //}
                     
                 }
             }
@@ -649,6 +658,8 @@ namespace toolstrackingsystem
                                 {
                                     toolInfo.IsActive = "1";
                                     toolInfo.OptionPerson = LoginHelper.UserCode;
+                                    toolInfo.IsRepaired = 0;
+                                    toolInfo.IsBack = "1";                                    
                                     InfoList.Add(toolInfo);
                                 }
                             }
