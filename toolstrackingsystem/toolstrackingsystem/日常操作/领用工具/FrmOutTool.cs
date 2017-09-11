@@ -21,6 +21,7 @@ using ViewEntity.toolstrackingsystem;
 using System.Threading;
 using System.Net.Sockets;
 using System.Net;
+
 namespace toolstrackingsystem
 {
     public partial class FrmOutTool : Office2007RibbonForm
@@ -57,18 +58,18 @@ namespace toolstrackingsystem
         {
             try
             {
-                //if (ToolInfoList == null || ToolInfoList.Count == 0)
-                //{
-                //    MessageBox.Show("请先增加工具信息");
-                //    return;
-                //}
-                //DlgEnterPersonMsg1 dlgEnterPersonMsg = new DlgEnterPersonMsg1();
-                //dlgEnterPersonMsg.Tag = toolEntity;
-                //dlgEnterPersonMsg.ShowDialog();
-                //if (dlgEnterPersonMsg.DialogResult == DialogResult.OK)
-                //{
-                //    LoadData();
-                //}
+                if (ToolInfoList == null || ToolInfoList.Count == 0)
+                {
+                    MessageBox.Show("请先增加工具信息");
+                    return;
+                }
+                DlgEnterPersonMsg1 dlgEnterPersonMsg = new DlgEnterPersonMsg1();
+                dlgEnterPersonMsg.ShowDialog();
+                if (dlgEnterPersonMsg.DialogResult == DialogResult.OK)
+                {
+                    var person = dlgEnterPersonMsg.Tag as t_PersonInfo;
+                    LoadData();
+                }
             }
             catch (Exception ex)
             {
