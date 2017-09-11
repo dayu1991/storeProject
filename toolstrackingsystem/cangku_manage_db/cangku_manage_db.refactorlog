@@ -28,4 +28,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="CategoryId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="f00a3be7-a00b-4e36-8b6c-cd137aedc94c" ChangeDateTime="09/11/2017 10:50:49">
+    <Property Name="ElementName" Value="[dbo].[t_ToolRepairRecord].[RepairedTime]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_ToolRepairRecord]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ToRepairedTime" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="74e210ab-2152-4665-b056-8ec719bab112" ChangeDateTime="09/11/2017 10:54:03">
+    <Property Name="ElementName" Value="[dbo].[t_ToolRepairRecord].[Recuve]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_ToolRepairRecord]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ReceiveTime" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bbf3a9f0-62d9-4035-9e2b-30a202d56747" ChangeDateTime="09/11/2017 10:55:54">
+    <Property Name="ElementName" Value="[dbo].[t_ToolRepairRecord].[ReceiveTime]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_ToolRepairRecord]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ReceivePerName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7fc5d2a4-c22f-4cb9-9e8f-f03ab627f6f8" ChangeDateTime="09/11/2017 11:02:44">
+    <Property Name="ElementName" Value="[dbo].[t_ToolRepairRecord].[Repair]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_ToolRepairRecord]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ToolStatus" />
+  </Operation>
 </Operations>
