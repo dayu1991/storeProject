@@ -57,18 +57,18 @@ namespace toolstrackingsystem
         {
             try
             {
-                if (ToolInfoList == null || ToolInfoList.Count == 0)
-                {
-                    MessageBox.Show("请先增加工具信息");
-                    return;
-                }
-                DlgEnterPersonMsg dlgEnterPersonMsg = new DlgEnterPersonMsg();
-                formEdit.Tag = toolEntity;
-                formEdit.ShowDialog();
-                if (formEdit.DialogResult == DialogResult.OK)
-                {
-                    LoadData();
-                }
+                //if (ToolInfoList == null || ToolInfoList.Count == 0)
+                //{
+                //    MessageBox.Show("请先增加工具信息");
+                //    return;
+                //}
+                //DlgEnterPersonMsg1 dlgEnterPersonMsg = new DlgEnterPersonMsg1();
+                //dlgEnterPersonMsg.Tag = toolEntity;
+                //dlgEnterPersonMsg.ShowDialog();
+                //if (dlgEnterPersonMsg.DialogResult == DialogResult.OK)
+                //{
+                //    LoadData();
+                //}
             }
             catch (Exception ex)
             {
