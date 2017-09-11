@@ -60,5 +60,20 @@ namespace sqlserver.toolstrackingsystem
             string sqlFinal = string.Format("{0} AND {1}",sql,sqlNot);
             return base.QueryList(sql,parameter,out Count,sqlCount,false).ToList();
         }
+
+        /// <summary>
+        /// 获取送修工具信息（未领回的工具（客户端已送修：0，服务端接受：1  服务端维修完成：2   已被客户端领取：3））     
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="isReceived"></param>
+        /// <returns></returns>
+        public t_ToolRepairRecord GetToolRepairByCodeNotReceived(string toolCode)
+        { 
+            
+             string sql = "SELECT * FROM [t_ToolRepairRecord] where [ToolCode]=@ToolCode and [ToolStatus] in (0,1,2)";
+            var sqlDy = new DynamicParameters();
+            sqlDy.Add("ToolCode", toolCode);
+            return GetModel(sql, sqlDy);            
+        }
     }
 }

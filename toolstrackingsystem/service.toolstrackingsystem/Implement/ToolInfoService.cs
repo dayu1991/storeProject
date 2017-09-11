@@ -82,9 +82,142 @@ namespace service.toolstrackingsystem
         /// <param name="toolCode"></param>
         /// <param name="toolName"></param>
         /// <returns></returns>
-        public List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount)
+        public List<ToolInfoExtend> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, bool is_Out_checkBox, bool is_OutTime_checkBox, bool is_ToRepare_checkBox, string cbCheckTime, int pageIndex, int pageSize, out long totalCount)
         {
-            return _toolInfoRepository.GetToolList(blongValue, categoryValue, toolCode, toolName,pageIndex,pageSize,out totalCount);
+            if (is_OutTime_checkBox)//要链接借用表
+            {
+                List<ToolInfoExtend> list = new List<ToolInfoExtend>();
+                string sql = @"select *,(case [IsBack] when '0' then '是' else '否' end) as IsBackString,(case [IsRepaired] when 1 then '是' else '否' end) as IsRepairedString from (
+       select t.*, o.[UserTimeInfo],o.[PersonCode],o.[PersonName], ROW_NUMBER() OVER (ORDER BY t.ChildTypeName,t.[ToolId] desc) as rank from [dbo].[t_ToolInfo] as t 
+left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 and  o.IsBack=0 {0}
+)  as t where  t.rank between @startPos and @endPos ";
+                string sqlCount = @"select count(1) from [dbo].[t_ToolInfo] as t 
+left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 and  o.IsBack=0 {0}";
+                string sqlWhere = "";
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("startPos", ((pageIndex - 1) * pageSize + 1));
+                parameters.Add("endPos", pageIndex * pageSize);
+
+                if (!string.IsNullOrWhiteSpace(blongValue))
+                {
+                    sqlWhere += " and  t.[TypeName]=@TypeName";
+                    parameters.Add("TypeName", blongValue);
+
+                }
+                if (!string.IsNullOrWhiteSpace(categoryValue))
+                {
+                    sqlWhere += " and t.[ChildTypeName] =@ChildTypeName";
+                    parameters.Add("ChildTypeName", categoryValue);
+                }
+                if (!string.IsNullOrWhiteSpace(toolCode))
+                {
+                    sqlWhere += " and t.[ToolCode] LIKE @ToolCode";
+                    parameters.Add("ToolCode", string.Format("%{0}%", toolCode));
+
+                }
+                if (!string.IsNullOrEmpty(toolName))
+                {
+                    sqlWhere += " and t.[ToolName] LIKE @ToolName";
+                    parameters.Add("ToolName", string.Format("%{0}%", toolName));
+                }
+                
+                if (is_ToRepare_checkBox) //如果已经送修
+                {
+                    sqlWhere += " and t.[IsRepaired] = 1";
+                }
+
+                sqlWhere += " and o.[UserTimeInfo]<>'' and o.[UserTimeInfo] <@UserTimeInfo";
+                parameters.Add("UserTimeInfo", DateTime.Now);
+                
+                if (cbCheckTime != "0") //如果不为0，过滤检测时间
+                {
+                    int daysLevel = int.Parse(cbCheckTime);
+                    if (daysLevel == -1)//已过检修时间
+                    {
+                        sqlWhere += " and t.[CheckTime]<>''  and t.[CheckTime] <@thisSetTime ";
+                        parameters.Add("thisSetTime", DateTime.Now);
+
+                    }
+                    else
+                    {
+                        sqlWhere += " and t.[CheckTime]<>'' and t.[CheckTime]>=@thisSetTimeNow and t.[CheckTime] <=@thisSetTime";
+                        parameters.Add("thisSetTime", DateTime.Now.AddDays(daysLevel));
+                        parameters.Add("thisSetTimeNow", DateTime.Now);
+
+                    }
+                }
+                sql = string.Format(sql, sqlWhere);
+                sqlCount = string.Format(sqlCount, sqlWhere);
+
+                var result = _multiTableQueryRepository.QueryList<ToolInfoExtend>(sql, parameters, out totalCount, sqlCount, false);
+                return result.Any() ? result.ToList() : new List<ToolInfoExtend>();
+            }
+            else //不用链接            
+            {
+                List<ToolInfoExtend> list = new List<ToolInfoExtend>();
+                string sql = @"select *,(case [IsBack] when '0' then '是' else '否' end) as IsBackString,(case [IsRepaired] when 1 then '是' else '否' end) as IsRepairedString from (
+       select *,ROW_NUMBER() OVER (ORDER BY ChildTypeName,[ToolId] desc) as rank from [dbo].[t_ToolInfo]  where 1=1 {0}
+)  as t where  t.rank between @startPos and @endPos ";
+                string sqlCount = "select count(1) from [dbo].[t_ToolInfo] where 1=1 {0}";
+                string sqlWhere = "";
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("startPos", ((pageIndex - 1) * pageSize + 1));
+                parameters.Add("endPos", pageIndex * pageSize);
+
+                if (!string.IsNullOrWhiteSpace(blongValue))
+                {
+                    sqlWhere += " and  [TypeName]=@TypeName";
+                    parameters.Add("TypeName", blongValue);
+
+                }
+                if (!string.IsNullOrWhiteSpace(categoryValue))
+                {
+                    sqlWhere += " and [ChildTypeName] =@ChildTypeName";
+                    parameters.Add("ChildTypeName", categoryValue);
+                }
+                if (!string.IsNullOrWhiteSpace(toolCode))
+                {
+                    sqlWhere += " and [ToolCode] LIKE @ToolCode";
+                    parameters.Add("ToolCode", string.Format("%{0}%", toolCode));
+
+                }
+                if (!string.IsNullOrEmpty(toolName))
+                {
+                    sqlWhere += " and [ToolName] LIKE @ToolName";
+                    parameters.Add("ToolName", string.Format("%{0}%", toolName));
+                }
+                if (is_Out_checkBox) //如果已经借出
+                {
+                    sqlWhere += " and [IsBack] = 0";
+                }
+                if (is_ToRepare_checkBox) //如果已经送修
+                {
+                    sqlWhere += " and [IsRepaired] = 1";
+                }
+                if (cbCheckTime != "0") //如果不为0，过滤检测时间
+                {
+                    int daysLevel = int.Parse(cbCheckTime);
+                    if (daysLevel == -1)//已过检修时间
+                    {
+                        sqlWhere += " and [CheckTime]<>''  and [CheckTime] <@thisSetTime";
+                        parameters.Add("thisSetTime", DateTime.Now);
+
+                    }
+                    else
+                    {
+                        sqlWhere += " and [CheckTime]<>'' and [CheckTime]>=@thisSetTimeNow and [CheckTime] <=@thisSetTime";
+                        parameters.Add("thisSetTime", DateTime.Now.AddDays(daysLevel));
+                        parameters.Add("thisSetTimeNow", DateTime.Now);
+
+                    }
+                }
+                sql = string.Format(sql, sqlWhere);
+                sqlCount = string.Format(sqlCount, sqlWhere);
+
+                var result = _multiTableQueryRepository.QueryList<ToolInfoExtend>(sql, parameters, out totalCount, sqlCount, false);
+                return result.Any() ? result.ToList() : new List<ToolInfoExtend>();
+            }
+           
         }
         public t_ToolInfo GetToolByCode(string toolCode)
         {
@@ -124,7 +257,7 @@ namespace service.toolstrackingsystem
         }
         public bool UpdateTool(t_ToolInfo entity)
         {
-            return _toolPackManageRepository.UpdateToolPackInfo(entity);
+            return _toolPackManageRepository.Update(entity);
         }
         public bool DelToolByCode(string ToolCode)
         {
@@ -540,5 +673,52 @@ namespace service.toolstrackingsystem
             }
             return _multiTableQueryRepository.QueryList<ToolPackViewEntity>(sql, parameters).ToList();
         }
+
+        public ToolInfoExtend GetToolInfoExtend(string toolCode)
+        {
+            var result = new ToolInfoExtend();
+            var toolInfo = GetToolByCode(toolCode);
+            if (toolInfo != null)
+            {
+                result.ToolID = toolInfo.ToolID;
+                result.ToolCode = toolInfo.ToolCode;
+                result.TypeName = toolInfo.TypeName;
+                result.ChildTypeName = toolInfo.ChildTypeName;
+                result.PackCode = toolInfo.PackCode;
+                result.PackName = toolInfo.PackName;
+                result.CarGroupInfo = toolInfo.CarGroupInfo;
+                result.ToolName = toolInfo.ToolName;
+                result.Models = toolInfo.Models;
+                result.Location = toolInfo.Location;
+                result.Remarks = toolInfo.Remarks;
+                result.CheckTime = toolInfo.CheckTime;
+                result.IsRepaired = toolInfo.IsRepaired;
+                result.OptionPerson = toolInfo.OptionPerson;
+                result.IsBack = toolInfo.IsBack;
+
+                if (toolInfo.IsBack == "0")//未归还
+                {
+                    var OutEntity = _outBackStoreRepository.GetToolOutByCode(toolCode);
+                    if (OutEntity != null && !string.IsNullOrWhiteSpace(OutEntity.ToolCode))
+                    {
+                        result.UserTimeInfo = OutEntity.UserTimeInfo;
+                        result.PersonCode = OutEntity.PersonCode;
+                        result.PersonName = OutEntity.PersonName;
+                    }
+                }
+
+                if (toolInfo.IsRepaired == 1)//如果已经送修啦
+                {
+                    var repaireInfo = _toolPrepairRecordRepository.GetToolRepairByCodeNotReceived(toolCode);
+                        if(repaireInfo!=null)
+                        {
+                            result.RepairedTime = repaireInfo.RepairedTime;
+                        }
+                }
+            }
+            return result;
+        }
+
+
     }
 }

@@ -22,6 +22,7 @@ using System.Net.Sockets;
 using NPOI.HSSF.UserModel;
 using NPOI.XSSF.UserModel;
 using toolstrackingsystem.loading;
+using ViewEntity.toolstrackingsystem;
 namespace toolstrackingsystem
 {
     public partial class ToolInfoManage : Office2007RibbonForm
@@ -86,7 +87,6 @@ namespace toolstrackingsystem
             pagerControl1.OnPageChanged += new EventHandler(pagerControl1_OnPageChanged);
 
             this.dtiCheckTime.Value = DateTime.Now.AddMonths(1);
-            LoadData();
 
             //threadClient = new Thread(RecMsg);
 
@@ -96,6 +96,46 @@ namespace toolstrackingsystem
             ////启动线程
             //threadClient.Start();
 
+
+
+            var selectLists = new List<DropDownCtrolObj>();
+
+            selectLists.Add(new DropDownCtrolObj
+            {
+                SelectText = "无限制",
+                SelectValue = "0"
+            });
+            selectLists.Add(new DropDownCtrolObj
+            {
+                SelectText = "已超时",
+                SelectValue = "-1"
+            });
+            selectLists.Add(new DropDownCtrolObj
+            {
+                SelectText = "7天内",
+                SelectValue = "7"
+            });
+            selectLists.Add(new DropDownCtrolObj
+            {
+                SelectText = "15天内",
+                SelectValue = "15"
+            });
+            selectLists.Add(new DropDownCtrolObj
+            {
+                SelectText = "30天内",
+                SelectValue = "30"
+            });
+            selectLists.Add(new DropDownCtrolObj
+            {
+                SelectText = "60天内",
+                SelectValue = "60"
+            });
+            this.cbCheckTime.DataSource = selectLists;
+            this.cbCheckTime.DisplayMember = "SelectText";
+            this.cbCheckTime.ValueMember = "SelectValue";
+            this.cbCheckTime.SelectedValue = "0";
+
+            LoadData();
 
         }
 
@@ -115,6 +155,8 @@ namespace toolstrackingsystem
                 toolInfo.IsActive = "1";
                 toolInfo.OptionPerson = LoginHelper.UserCode;
                 toolInfo.ToolCode = this.tbEditCode.Text;
+                toolInfo.IsRepaired = 0;
+                toolInfo.IsBack ="1";
 
                 if (string.IsNullOrWhiteSpace(toolInfo.ToolCode))
                 {
@@ -138,6 +180,9 @@ namespace toolstrackingsystem
                     }
 
                     toolInfo.CheckTime = dtiCheckTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                }
+                else {
+                    toolInfo.CheckTime = "";
                 }
                 bool isExists = _toolInfoService.IsExistsByCode(toolInfo.ToolCode);
                 if (isExists)
@@ -190,8 +235,14 @@ namespace toolstrackingsystem
                 string toolCode = tbSearchCode.Text;
                 string toolName = tbSearchName.Text;
                 long Count;
+                bool is_Out_checkBox = this.Is_Out_checkBox.Checked;
+                bool is_OutTime_checkBox = this.Is_OutTime_checkBox.Checked;
+                bool is_ToRepare_checkBox = this.Is_ToRepare_checkBox.Checked;
 
-                List<t_ToolInfo> resultEntity = _toolInfoService.GetToolList(blongValue, categoryValue, toolCode, toolName, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
+                string cbCheckTime = this.cbCheckTime.SelectedValue.ToString();
+
+
+                List<ToolInfoExtend> resultEntity = _toolInfoService.GetToolList(blongValue, categoryValue, toolCode, toolName, is_Out_checkBox, is_OutTime_checkBox, is_ToRepare_checkBox, cbCheckTime, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
                 pagerControl1.DrawControl(Convert.ToInt32(Count));
                 this.dataGridViewX1.AutoGenerateColumns = false;
                 this.dataGridViewX1.DataSource = resultEntity;
@@ -257,6 +308,10 @@ namespace toolstrackingsystem
                             LoadData();
                         }
                     }
+                    else {
+                        MessageBox.Show("该工具信息已经被删除！");
+                        return;
+                    }
 
                 }
             }
@@ -266,8 +321,9 @@ namespace toolstrackingsystem
 
             }
         }
+       
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -279,14 +335,18 @@ namespace toolstrackingsystem
                 else
                 {
                     //bool toolEntity = _toolInfoService.DelToolByCode(SelectedToolCode);
-                    if (_toolInfoService.DelToolByCode(SelectedToolCode))
-                    {
-                        MessageBox.Show("删除成功");
+
+                    _toolInfoService.DelToolByCode(SelectedToolCode);
+                         MessageBox.Show("删除成功");
                         LoadData();
-                    }
-                    else {
-                        MessageBox.Show("删除失败");
-                    }
+                    //if (_toolInfoService.DelToolByCode(SelectedToolCode))
+                    //{
+                    //    MessageBox.Show("删除成功");
+                    //    LoadData();
+                    //}
+                    //else {
+                    //    MessageBox.Show("删除失败");
+                    //}
                     
                 }
             }
@@ -598,6 +658,8 @@ namespace toolstrackingsystem
                                 {
                                     toolInfo.IsActive = "1";
                                     toolInfo.OptionPerson = LoginHelper.UserCode;
+                                    toolInfo.IsRepaired = 0;
+                                    toolInfo.IsBack = "1";                                    
                                     InfoList.Add(toolInfo);
                                 }
                             }
@@ -741,6 +803,48 @@ namespace toolstrackingsystem
             printFrm.Tag = tool;
             printFrm.ShowDialog();
         }
+
+        private void Is_OutTime_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.Is_OutTime_checkBox.Checked)
+            {
+                this.Is_Out_checkBox.Checked = true;
+            }
+        }
+
+        private void Is_ToRepare_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.Is_ToRepare_checkBox.Checked)
+            {
+                this.Is_Out_checkBox.Checked = false;
+                this.Is_OutTime_checkBox.Checked = false;
+
+            }
+        }
+
+        private void tbSearchCode_TextChanged(object sender, EventArgs e)
+        {
+            var codeText = this.tbSearchCode.Text;
+            if (!string.IsNullOrWhiteSpace(codeText))
+            {
+                this.cbSearchBlong.SelectedValue = "全部";
+                this.cbSearchcategory.SelectedValue = "全部";
+            }
+        }
+
+        private void dataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                slectedIndex = e.RowIndex;
+                SelectedToolCode = this.dataGridViewX1.Rows[slectedIndex].Cells[4].Value.ToString();
+                btnEdit_Click(sender,e);
+            }
+        }
+
+      
+
+       
 
     }
 }

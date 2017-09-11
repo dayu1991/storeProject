@@ -59,46 +59,7 @@ namespace sqlserver.toolstrackingsystem
             }
             return false;
         }
-        public List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, int pageIndex, int pageSize, out long totalCount)
-        {
-            List<t_ToolInfo> list = new List<t_ToolInfo>();
-            string sql = @"select * from (
-       select *,ROW_NUMBER() OVER (ORDER BY ChildTypeName,[ToolId] desc) as rank from [dbo].[t_ToolInfo]  where 1=1 {0}
-)  as t where  t.rank between @startPos and @endPos ";
-            string sqlCount = "select count(1) from [dbo].[t_ToolInfo] where 1=1 {0}";
-            string sqlWhere = "";
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("startPos", ((pageIndex - 1) * pageSize + 1));
-            parameters.Add("endPos", pageIndex*pageSize);
-
-            if (!string.IsNullOrWhiteSpace(blongValue))
-            {
-                sqlWhere += " and  [TypeName]=@TypeName";
-                parameters.Add("TypeName", blongValue);
-
-            }
-            if (!string.IsNullOrWhiteSpace(categoryValue))
-            {
-                sqlWhere += " and [ChildTypeName] =@ChildTypeName";
-                parameters.Add("ChildTypeName", categoryValue);
-            }
-            if (!string.IsNullOrWhiteSpace(toolCode))
-            {
-                sqlWhere += " and [ToolCode] LIKE @ToolCode";
-                parameters.Add("ToolCode", string.Format("%{0}%", toolCode));
-
-            }
-            if (!string.IsNullOrEmpty(toolName))
-            {
-             sqlWhere += " and [ToolName] LIKE @ToolName";
-                parameters.Add("ToolName", string.Format("%{0}%", toolName));
-            }
-            sql= string.Format(sql,sqlWhere);
-            sqlCount = string.Format(sqlCount, sqlWhere);
-
-            var result = base.QueryList(sql, parameters, out totalCount, sqlCount, false);
-            return result.Any() ? result.ToList() : new List<t_ToolInfo>();
-        }
+       
         public t_ToolInfo GetToolByCode(string ToolCode)
         {
             string sql = "select * from [dbo].[t_ToolInfo] where [ToolCode]=@ToolCode";

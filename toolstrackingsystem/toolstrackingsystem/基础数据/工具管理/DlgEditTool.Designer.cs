@@ -44,6 +44,18 @@
             this.tbEditModel = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.cbEditCheckTime = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.labIsOut = new DevComponents.DotNetBar.LabelX();
+            this.labOutPersonValue = new DevComponents.DotNetBar.LabelX();
+            this.laOutPerson = new DevComponents.DotNetBar.LabelX();
+            this.labOutTimesValue = new DevComponents.DotNetBar.LabelX();
+            this.labOutTimes = new DevComponents.DotNetBar.LabelX();
+            this.labIsOutTimeValue = new DevComponents.DotNetBar.LabelX();
+            this.labOutTime = new DevComponents.DotNetBar.LabelX();
+            this.labIsToRepareValue = new DevComponents.DotNetBar.LabelX();
+            this.labelX14 = new DevComponents.DotNetBar.LabelX();
+            this.labRepareTime = new DevComponents.DotNetBar.LabelX();
+            this.labRepareTimeValue = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dtiCheckTime)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,9 +63,9 @@
             // 
             this.Save_Edit_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Save_Edit_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Save_Edit_button.Location = new System.Drawing.Point(146, 260);
+            this.Save_Edit_button.Location = new System.Drawing.Point(100, 386);
             this.Save_Edit_button.Name = "Save_Edit_button";
-            this.Save_Edit_button.Size = new System.Drawing.Size(75, 23);
+            this.Save_Edit_button.Size = new System.Drawing.Size(75, 52);
             this.Save_Edit_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Save_Edit_button.TabIndex = 9;
             this.Save_Edit_button.Text = "保存";
@@ -63,9 +75,9 @@
             // 
             this.Cancel_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Cancel_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Cancel_button.Location = new System.Drawing.Point(270, 260);
+            this.Cancel_button.Location = new System.Drawing.Point(247, 386);
             this.Cancel_button.Name = "Cancel_button";
-            this.Cancel_button.Size = new System.Drawing.Size(75, 23);
+            this.Cancel_button.Size = new System.Drawing.Size(75, 52);
             this.Cancel_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Cancel_button.TabIndex = 10;
             this.Cancel_button.Text = "取消";
@@ -182,6 +194,8 @@
             this.dtiCheckTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dtiCheckTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtiCheckTime.ButtonDropDown.Visible = true;
+            this.dtiCheckTime.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.dtiCheckTime.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.dtiCheckTime.IsPopupCalendarOpen = false;
             this.dtiCheckTime.Location = new System.Drawing.Point(146, 145);
             // 
@@ -283,11 +297,179 @@
             this.cbEditCheckTime.TabIndex = 32;
             this.cbEditCheckTime.Text = "下次检测时间:";
             // 
+            // labelX1
+            // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(76, 271);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(72, 23);
+            this.labelX1.TabIndex = 33;
+            this.labelX1.Text = "是否借出：";
+            // 
+            // labIsOut
+            // 
+            this.labIsOut.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labIsOut.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labIsOut.Location = new System.Drawing.Point(146, 271);
+            this.labIsOut.Name = "labIsOut";
+            this.labIsOut.Size = new System.Drawing.Size(72, 23);
+            this.labIsOut.TabIndex = 34;
+            this.labIsOut.Text = "否";
+            // 
+            // labOutPersonValue
+            // 
+            this.labOutPersonValue.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labOutPersonValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labOutPersonValue.Location = new System.Drawing.Point(147, 306);
+            this.labOutPersonValue.Name = "labOutPersonValue";
+            this.labOutPersonValue.Size = new System.Drawing.Size(72, 23);
+            this.labOutPersonValue.TabIndex = 36;
+            this.labOutPersonValue.Text = "否";
+            // 
+            // laOutPerson
+            // 
+            this.laOutPerson.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.laOutPerson.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.laOutPerson.Location = new System.Drawing.Point(85, 306);
+            this.laOutPerson.Name = "laOutPerson";
+            this.laOutPerson.Size = new System.Drawing.Size(56, 23);
+            this.laOutPerson.TabIndex = 35;
+            this.laOutPerson.Text = "借出人：";
+            // 
+            // labOutTimesValue
+            // 
+            this.labOutTimesValue.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labOutTimesValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labOutTimesValue.Location = new System.Drawing.Point(292, 306);
+            this.labOutTimesValue.Name = "labOutTimesValue";
+            this.labOutTimesValue.Size = new System.Drawing.Size(65, 23);
+            this.labOutTimesValue.TabIndex = 38;
+            this.labOutTimesValue.Text = "否";
+            // 
+            // labOutTimes
+            // 
+            this.labOutTimes.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labOutTimes.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labOutTimes.Location = new System.Drawing.Point(214, 306);
+            this.labOutTimes.Name = "labOutTimes";
+            this.labOutTimes.Size = new System.Drawing.Size(72, 23);
+            this.labOutTimes.TabIndex = 37;
+            this.labOutTimes.Text = "借出时间：";
+            // 
+            // labIsOutTimeValue
+            // 
+            this.labIsOutTimeValue.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labIsOutTimeValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labIsOutTimeValue.Location = new System.Drawing.Point(292, 271);
+            this.labIsOutTimeValue.Name = "labIsOutTimeValue";
+            this.labIsOutTimeValue.Size = new System.Drawing.Size(72, 23);
+            this.labIsOutTimeValue.TabIndex = 40;
+            this.labIsOutTimeValue.Text = "否";
+            // 
+            // labOutTime
+            // 
+            this.labOutTime.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labOutTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labOutTime.Location = new System.Drawing.Point(214, 271);
+            this.labOutTime.Name = "labOutTime";
+            this.labOutTime.Size = new System.Drawing.Size(72, 23);
+            this.labOutTime.TabIndex = 39;
+            this.labOutTime.Text = "是否超时：";
+            // 
+            // labIsToRepareValue
+            // 
+            this.labIsToRepareValue.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labIsToRepareValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labIsToRepareValue.Location = new System.Drawing.Point(146, 242);
+            this.labIsToRepareValue.Name = "labIsToRepareValue";
+            this.labIsToRepareValue.Size = new System.Drawing.Size(72, 23);
+            this.labIsToRepareValue.TabIndex = 42;
+            this.labIsToRepareValue.Text = "否";
+            // 
+            // labelX14
+            // 
+            this.labelX14.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX14.Location = new System.Drawing.Point(76, 242);
+            this.labelX14.Name = "labelX14";
+            this.labelX14.Size = new System.Drawing.Size(72, 23);
+            this.labelX14.TabIndex = 41;
+            this.labelX14.Text = "是否送修：";
+            // 
+            // labRepareTime
+            // 
+            this.labRepareTime.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labRepareTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labRepareTime.Location = new System.Drawing.Point(214, 242);
+            this.labRepareTime.Name = "labRepareTime";
+            this.labRepareTime.Size = new System.Drawing.Size(72, 23);
+            this.labRepareTime.TabIndex = 43;
+            this.labRepareTime.Text = "送修时间：";
+            // 
+            // labRepareTimeValue
+            // 
+            this.labRepareTimeValue.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labRepareTimeValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labRepareTimeValue.Location = new System.Drawing.Point(292, 242);
+            this.labRepareTimeValue.Name = "labRepareTimeValue";
+            this.labRepareTimeValue.Size = new System.Drawing.Size(72, 23);
+            this.labRepareTimeValue.TabIndex = 44;
+            this.labRepareTimeValue.Text = "否";
+            // 
             // DlgEditTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(472, 336);
+            this.ClientSize = new System.Drawing.Size(524, 486);
+            this.Controls.Add(this.labRepareTimeValue);
+            this.Controls.Add(this.labRepareTime);
+            this.Controls.Add(this.labIsToRepareValue);
+            this.Controls.Add(this.labelX14);
+            this.Controls.Add(this.labIsOutTimeValue);
+            this.Controls.Add(this.labOutTime);
+            this.Controls.Add(this.labOutTimesValue);
+            this.Controls.Add(this.labOutTimes);
+            this.Controls.Add(this.labOutPersonValue);
+            this.Controls.Add(this.laOutPerson);
+            this.Controls.Add(this.labIsOut);
+            this.Controls.Add(this.labelX1);
             this.Controls.Add(this.cbEditCheckTime);
             this.Controls.Add(this.tbEditModel);
             this.Controls.Add(this.labelX9);
@@ -334,5 +516,17 @@
         private DevComponents.DotNetBar.Controls.TextBoxX tbEditModel;
         private DevComponents.DotNetBar.LabelX labelX9;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbEditCheckTime;
+        private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.LabelX labIsOut;
+        private DevComponents.DotNetBar.LabelX labOutTimesValue;
+        private DevComponents.DotNetBar.LabelX labOutPersonValue;
+        private DevComponents.DotNetBar.LabelX laOutPerson;
+        private DevComponents.DotNetBar.LabelX labIsOutTimeValue;
+        private DevComponents.DotNetBar.LabelX labOutTime;
+        private DevComponents.DotNetBar.LabelX labIsToRepareValue;
+        private DevComponents.DotNetBar.LabelX labelX14;
+        private DevComponents.DotNetBar.LabelX labRepareTime;
+        private DevComponents.DotNetBar.LabelX labRepareTimeValue;
+        private DevComponents.DotNetBar.LabelX labOutTimes;
     }
 }

@@ -55,6 +55,27 @@ namespace toolstrackingsystem
         
         private void btnOut_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (ToolInfoList == null || ToolInfoList.Count == 0)
+                {
+                    MessageBox.Show("请先增加工具信息");
+                    return;
+                }
+                DlgEnterPersonMsg dlgEnterPersonMsg = new DlgEnterPersonMsg();
+                formEdit.Tag = toolEntity;
+                formEdit.ShowDialog();
+                if (formEdit.DialogResult == DialogResult.OK)
+                {
+                    LoadData();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--Tool--edit", ex.Message, ex.StackTrace, ex.Source);
+
+            }
+
             if (ToolInfoList==null||ToolInfoList.Count == 0)
             {
                 MessageBox.Show("请先增加工具信息");
