@@ -56,82 +56,82 @@ namespace toolstrackingsystem
         
         private void btnOut_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (ToolInfoList == null || ToolInfoList.Count == 0)
-                {
-                    MessageBox.Show("请先增加工具信息");
-                    return;
-                }
-                DlgEnterPersonMsg1 dlgEnterPersonMsg = new DlgEnterPersonMsg1();
-                dlgEnterPersonMsg.ShowDialog();
-                if (dlgEnterPersonMsg.DialogResult == DialogResult.OK)
-                {
-                    var person = dlgEnterPersonMsg.Tag as t_PersonInfo;
-                    LoadData();
-                }
-            }
-            catch (Exception ex)
-            {
-                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--Tool--edit", ex.Message, ex.StackTrace, ex.Source);
+            //try
+            //{
+            //    if (ToolInfoList == null || ToolInfoList.Count == 0)
+            //    {
+            //        MessageBox.Show("请先增加工具信息");
+            //        return;
+            //    }
+            //    DlgEnterPersonMsg1 dlgEnterPersonMsg = new DlgEnterPersonMsg1();
+            //    dlgEnterPersonMsg.ShowDialog();
+            //    if (dlgEnterPersonMsg.DialogResult == DialogResult.OK)
+            //    {
+            //        var person = dlgEnterPersonMsg.Tag as t_PersonInfo;
+            //        //LoadData();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--Tool--edit", ex.Message, ex.StackTrace, ex.Source);
 
-            }
+            //}
 
-            if (ToolInfoList==null||ToolInfoList.Count == 0)
-            {
-                MessageBox.Show("请先增加工具信息");
-                return;
-            }
-            var userCode = tbEditPersonCode.Text;
+            //if (ToolInfoList==null||ToolInfoList.Count == 0)
+            //{
+            //    MessageBox.Show("请先增加工具信息");
+            //    return;
+            //}
+            //var userCode = tbEditPersonCode.Text;
 
-            if (string.IsNullOrWhiteSpace(userCode))
-            {
-                MessageBox.Show("请填写人员编号！");
-                return;
-            }
-            var person = _personManageService.GetPersonInfo(userCode);
-            if (person == null || string.IsNullOrWhiteSpace(person.PersonCode))
-            {
-                MessageBox.Show("不存在的人员编码！");
-                return;
-            }
-            if (person.IsReceive == "1")
-            {
-                string desc = tbEditoutdescribes.Text;
-                string endDate = "";
-                var selectValue = this.cbEditOutTime.SelectedValue.ToString();
-                if (selectValue == "0")
-                {
-                    endDate = dtiSelect.Value.ToString("yyyy-MM-dd HH:mm:ss");
-                }
-                else {
-                    var hours = this.cbEditOutTime.SelectedValue.ToString();
-                    endDate = DateTime.Now.AddHours(int.Parse(hours)).ToString("yyyy-MM-dd HH:mm:ss");
-                }
-                int successCount = 0;
-                foreach (var entity in ToolInfoList)
-                {
-                    var toolInfoEntity = _toolInfoService.GetToolByCode(entity.ToolCode);
-                    if (toolInfoEntity.IsBack!="0" &&_toolInfoService.OutStore(entity, person, LoginHelper.UserCode, endDate, desc))
-                    {
-                        successCount += 1;
-                    }
-                }
+            //if (string.IsNullOrWhiteSpace(userCode))
+            //{
+            //    MessageBox.Show("请填写人员编号！");
+            //    return;
+            //}
+            //var person = _personManageService.GetPersonInfo(userCode);
+            //if (person == null || string.IsNullOrWhiteSpace(person.PersonCode))
+            //{
+            //    MessageBox.Show("不存在的人员编码！");
+            //    return;
+            //}
+            //if (person.IsReceive == "1")
+            //{
+            //    string desc = tbEditoutdescribes.Text;
+            //    string endDate = "";
+            //    var selectValue = this.cbEditOutTime.SelectedValue.ToString();
+            //    if (selectValue == "0")
+            //    {
+            //        endDate = dtiSelect.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            //    }
+            //    else {
+            //        var hours = this.cbEditOutTime.SelectedValue.ToString();
+            //        endDate = DateTime.Now.AddHours(int.Parse(hours)).ToString("yyyy-MM-dd HH:mm:ss");
+            //    }
+            //    int successCount = 0;
+            //    foreach (var entity in ToolInfoList)
+            //    {
+            //        var toolInfoEntity = _toolInfoService.GetToolByCode(entity.ToolCode);
+            //        if (toolInfoEntity.IsBack!="0" &&_toolInfoService.OutStore(entity, person, LoginHelper.UserCode, endDate, desc))
+            //        {
+            //            successCount += 1;
+            //        }
+            //    }
 
-                MessageBox.Show(string.Format("领用成功，领用成功{0}件工具！", successCount));
-                ToolInfoList = new List<t_ToolInfo>();
-                this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
-                tbEditCodeOut.Text = "";
-                tbEditPersonCode.Text = "";
-                tbEditPersonName.Text = "";
-                cbEditOutTime.SelectedValue = "1";
-                tbEditoutdescribes.Text = "";
-                return;
-            }
-            else {
-                MessageBox.Show("用户没有领用权限！");
-                return;
-            }
+            //    MessageBox.Show(string.Format("领用成功，领用成功{0}件工具！", successCount));
+            //    ToolInfoList = new List<t_ToolInfo>();
+            //    this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+            //    tbEditCodeOut.Text = "";
+            //    tbEditPersonCode.Text = "";
+            //    tbEditPersonName.Text = "";
+            //    cbEditOutTime.SelectedValue = "1";
+            //    tbEditoutdescribes.Text = "";
+            //    return;
+            //}
+            //else {
+            //    MessageBox.Show("用户没有领用权限！");
+            //    return;
+            //}
         }
 
         private void btnOutContinue_Click(object sender, EventArgs e)

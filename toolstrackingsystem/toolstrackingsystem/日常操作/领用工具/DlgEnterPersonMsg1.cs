@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
+using dbentity.toolstrackingsystem;
 
 namespace toolstrackingsystem
 {
@@ -42,57 +43,57 @@ namespace toolstrackingsystem
 
         }
 
-        private bool GetPerson()
-        {
-            try
-            {
-                var personCode = this.tbEditPersonCode.Text;
-                if (!string.IsNullOrWhiteSpace(personCode))
-                {
-                    var person = _userManageService.get
-                }
-                t_ToolInfo entity = (t_ToolInfo)this.Tag;
-                if (entity != null)
-                {
-                    entity.TypeName = this.cbEditBlong.SelectedValue.ToString();
-                    entity.ChildTypeName = this.cbEditCategory.SelectedValue.ToString();
-                    entity.ToolName = this.tbEditToolName.Text;
-                    entity.Location = this.tbEditLocation.Text;
-                    if (cbEditCheckTime.Checked)
-                    {
-                        if (dtiCheckTime.Value < DateTime.Now)
-                        {
-                            MessageBox.Show("下次检测时间不能小于当前时间！");
-                            return;
-                        }
-                        entity.CheckTime = dtiCheckTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
-                    }
-                    if (string.IsNullOrWhiteSpace(entity.ToolName))
-                    {
-                        MessageBox.Show("工具名称必须填写！");
-                        this.tbEditToolName.Focus();
-                        return;
-                    }
-                    entity.Models = this.tbEditModel.Text;
-                    entity.Remarks = this.tbEditMemo.Text;
-                    if (_toolInfoService.UpdateTool(entity))
-                    {
-                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                        this.Dispose();
-                    }
-                }
-                else
-                {
-                    this.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--DlgEnterPersonMsg1--GetPerson", ex.Message, ex.StackTrace, ex.Source);
+        //private bool GetPerson()
+        //{
+        //    try
+        //    {
+        //        var personCode = this.tbEditPersonCode.Text;
+        //        if (!string.IsNullOrWhiteSpace(personCode))
+        //        {
+        //            //var person = _userManageService.get
+        //        }
+        //        t_ToolInfo entity = (t_ToolInfo)this.Tag;
+        //        if (entity != null)
+        //        {
+        //            //entity.TypeName = this.cbEditBlong.SelectedValue.ToString();
+        //            //entity.ChildTypeName = this.cbEditCategory.SelectedValue.ToString();
+        //            //entity.ToolName = this.tbEditToolName.Text;
+        //            //entity.Location = this.tbEditLocation.Text;
+        //            //if (cbEditCheckTime.Checked)
+        //            //{
+        //            //    if (dtiCheckTime.Value < DateTime.Now)
+        //            //    {
+        //            //        MessageBox.Show("下次检测时间不能小于当前时间！");
+        //            //        return;
+        //            //    }
+        //            //    entity.CheckTime = dtiCheckTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
+        //            //}
+        //            //if (string.IsNullOrWhiteSpace(entity.ToolName))
+        //            //{
+        //            //    MessageBox.Show("工具名称必须填写！");
+        //            //    this.tbEditToolName.Focus();
+        //            //    return;
+        //            //}
+        //            //entity.Models = this.tbEditModel.Text;
+        //            //entity.Remarks = this.tbEditMemo.Text;
+        //            //if (_toolInfoService.UpdateTool(entity))
+        //            //{
+        //            //    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+        //            //    this.Dispose();
+        //            //}
+        //        }
+        //        else
+        //        {
+        //            this.Dispose();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--DlgEnterPersonMsg1--GetPerson", ex.Message, ex.StackTrace, ex.Source);
 
-            }
+        //    }
             
-        }
+        //}
 
         private void DlgEnterPersonMsg1_Load(object sender, EventArgs e)
         {
