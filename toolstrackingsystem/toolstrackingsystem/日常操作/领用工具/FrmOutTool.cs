@@ -21,6 +21,7 @@ using ViewEntity.toolstrackingsystem;
 using System.Threading;
 using System.Net.Sockets;
 using System.Net;
+
 namespace toolstrackingsystem
 {
     public partial class FrmOutTool : Office2007RibbonForm
@@ -62,11 +63,11 @@ namespace toolstrackingsystem
                     MessageBox.Show("请先增加工具信息");
                     return;
                 }
-                DlgEnterPersonMsg dlgEnterPersonMsg = new DlgEnterPersonMsg();
-                formEdit.Tag = toolEntity;
-                formEdit.ShowDialog();
-                if (formEdit.DialogResult == DialogResult.OK)
+                DlgEnterPersonMsg1 dlgEnterPersonMsg = new DlgEnterPersonMsg1();
+                dlgEnterPersonMsg.ShowDialog();
+                if (dlgEnterPersonMsg.DialogResult == DialogResult.OK)
                 {
+                    var person = dlgEnterPersonMsg.Tag as t_PersonInfo;
                     LoadData();
                 }
             }

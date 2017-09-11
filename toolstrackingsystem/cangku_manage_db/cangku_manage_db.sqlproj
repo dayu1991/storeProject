@@ -64,4 +64,7 @@
   <ItemGroup>
     <None Include="ScriptLog.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="t_ToolRepairRecord.sql" />
+  </ItemGroup>
 </Project>

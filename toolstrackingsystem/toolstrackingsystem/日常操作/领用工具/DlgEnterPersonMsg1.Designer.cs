@@ -127,6 +127,7 @@
             this.DoubleBuffered = true;
             this.Name = "DlgEnterPersonMsg1";
             this.Text = "确认领取";
+            this.Load += new System.EventHandler(this.DlgEnterPersonMsg1_Load);
             this.ResumeLayout(false);
 
         }
