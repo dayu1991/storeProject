@@ -122,12 +122,10 @@ namespace service.toolstrackingsystem
             }
             return list;
         }
-
         public bool UpdateTool(t_ToolInfo entity)
         {
             return _toolPackManageRepository.UpdateToolPackInfo(entity);
         }
-
         public bool DelToolByCode(string ToolCode)
         {
             return _toolInfoRepository.DelToolByCode(ToolCode);
@@ -137,7 +135,6 @@ namespace service.toolstrackingsystem
         {
             return _toolCategoryInfoRepository.DelTypeById(SelectedToolCode);
         }
-
         public List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName)
         {
             return _toolInfoRepository.GetToolList(blongValue, categoryValue, toolCode, toolName);
@@ -152,9 +149,6 @@ namespace service.toolstrackingsystem
             return _toolCategoryInfoRepository.Add(category);
 
         }
-
-       
-
         public bool OutStore(t_ToolInfo entity, t_PersonInfo person, string userCode,string toDate,string describ)
         {
             //1.删除库存
@@ -507,26 +501,22 @@ namespace service.toolstrackingsystem
         public List<ToolPackViewEntity> GetPackInfoList(string packCode, string packName, int pageIndex, int pageSize, out long Count)
         {
             DynamicParameters parameters = new DynamicParameters();
-            string sql = "SELECT TOP " + pageSize + " a.* FROM (select PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a WHERE 1=1 ";
-            string sqlNot = " a.PackCode NOT IN (SELECT TOP " + (pageIndex - 1) * pageSize + " a.PackCode FROM  (select PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a WHERE 1=1 ";
-            string sqlCount = "SELECT COUNT(1) FROM (select PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a WHERE 1=1 ";
+            string sql = @"select top "+pageSize+" a.PackCode,a.PackName from (select  ROW_NUMBER() OVER(ORDER BY PackCode ASC) as ID ,PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a where 1=1 ";
+            string sqlCount = "SELECT COUNT(1) FROM (select  ROW_NUMBER() OVER(ORDER BY PackCode ASC) as ID ,PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a where 1=1 ";
             if (!string.IsNullOrEmpty(packCode))
             {
                 sql += " AND a.PackCode LIKE @packCode ";
-                sqlNot += " AND a.PackCode LIKE @packCode ";
                 sqlCount += " AND a.PackCode LIKE @packCode ";
                 parameters.Add("packCode",string.Format("%{0}%",packCode));
             }
             if (!string.IsNullOrEmpty(packName))
             {
                 sql += " AND a.PackName LIKE @packName ";
-                sqlNot += " AND a.PackName LIKE @packName ";
                 sqlCount += " AND a.PackName LIKE @packName ";
                 parameters.Add("packName", string.Format("%{0}%", packName));
             }
-            sqlNot += ")";
-            string sqlFinal = string.Format("{0} AND {1}",sql,sqlNot);
-            return _multiTableQueryRepository.QueryList<ToolPackViewEntity>(sqlFinal, parameters, out Count, sqlCount).ToList();
+            sql += "AND a.ID>"+(pageIndex-1)*pageSize;
+            return _multiTableQueryRepository.QueryList<ToolPackViewEntity>(sql, parameters, out Count, sqlCount).ToList();
         }
        /// <summary>
        /// 查询导出的包信息
@@ -536,7 +526,7 @@ namespace service.toolstrackingsystem
        /// <returns></returns>
         public List<ToolPackViewEntity> GetPackInfoList(string packCode, string packName)
         {
-            string sql = "SELECT * FROM (select PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a WHERE 1=1 ";
+            string sql = "SELECT  a.PackCode,a.PackName from (select  ROW_NUMBER() OVER(ORDER BY PackCode ASC) as ID ,PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a where 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrEmpty(packCode))
             {
