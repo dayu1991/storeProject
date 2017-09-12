@@ -153,53 +153,61 @@ namespace toolstrackingsystem
                 }
             }
         }
+
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            if (ToolInfoList.Count == 0)
+            if (ToolInfoList == null || ToolInfoList.Count == 0)
             {
-                MessageBox.Show("请先增加领用信息");
+                MessageBox.Show("请先增加需要归还的工具信息");
                 return;
             }
-            var userCode = tbEditPersonCode.Text;
-
-            if (string.IsNullOrWhiteSpace(userCode))
-            {
-                MessageBox.Show("请填写人员编码！");
-                return;
-            }
-            var person = _personManageService.GetPersonInfo(userCode);
-            if (person == null || string.IsNullOrWhiteSpace(person.PersonCode))
-            {
-                MessageBox.Show("不存在的人员编码！");
-                return;
-            }
-            if (person.IsReceive == "1")
-            {
-                string desc = tbEditoutdescribes.Text;
-
-                int successCount = 0;
-                foreach (var entity in ToolInfoList)
+                DlgEnterPersonMsg1 dlgEnterPersonMsg = new DlgEnterPersonMsg1();
+                dlgEnterPersonMsg.ShowDialog();
+                if (dlgEnterPersonMsg.DialogResult == DialogResult.OK)
                 {
-
-                    if (_toolInfoService.IsExistsOutStoreByCode(entity.ToolCode, "0") && _toolInfoService.BackStore(entity, person, LoginHelper.UserCode, desc))
+                    var person = dlgEnterPersonMsg.Tag as t_PersonInfo;
+                    if (person != null && !string.IsNullOrWhiteSpace(person.PersonCode))
                     {
-                        successCount += 1;
-                    }
-                }
+                        if (ToolInfoList == null || ToolInfoList.Count == 0)
+                        {
+                            MessageBox.Show("请先增加需要归还的工具信息");
+                            return;
+                        }
+                        if (person.IsReceive == "1")
+                        {
+                            string desc = tbEditoutdescribes.Text;
 
-                MessageBox.Show(string.Format("归还成功，成功归还{0}件工具！", successCount));
-                ToolInfoList = new List<OutBackStoreEntity>();
-                this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
-                tbEditCode.Text = "";
-                tbEditPersonCode.Text = "";
-                tbEditPersonName.Text = "";
-                tbEditoutdescribes.Text = "";
-            }
-            else
-            {
-                MessageBox.Show("用户没有领用权限！");
-                return;
-            }
+                            int successCount = 0;
+                            foreach (var entity in ToolInfoList)
+                            {
+
+                                if (_toolInfoService.IsExistsOutStoreByCode(entity.ToolCode, "0") && _toolInfoService.BackStore(entity, person, LoginHelper.UserCode, desc))
+                                {
+                                    successCount += 1;
+                                }
+                            }
+
+                            MessageBox.Show(string.Format("归还成功，成功归还{0}件工具，归还人:{1}！", successCount,person.PersonName));
+                            ToolInfoList = new List<OutBackStoreEntity>();
+                            this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+                            tbEditCode.Text = "";
+                            tbEditPersonCode.Text = person.PersonCode;
+                            tbEditPersonName.Text =person.PersonName;
+                            tbEditoutdescribes.Text = "";
+
+                        }
+                        else {
+                            MessageBox.Show("用户没有领用归还权限！");
+                            return;
+                        }
+                    }
+                    else {
+                        MessageBox.Show("此用户可能已经被删除！");
+                        return;
+                    }
+                   
+                }
+            
         }
         private void btnReturnContinue_Click(object sender, EventArgs e)
         {
@@ -315,28 +323,7 @@ namespace toolstrackingsystem
             LoadToolData();
 
         }
-        private void tbEditPersonCode_TextChanged(object sender, EventArgs e)
-        {
-            tbEditPersonName.Text = "";
-            var personCode = tbEditPersonCode.Text;
-            if (!string.IsNullOrWhiteSpace(personCode))
-            {
-                var person = _personManageService.GetPersonInfo(personCode);
-                if (person != null)
-                {
-                    if (person.IsReceive == "1")
-                    {
-                        tbEditPersonName.Text = person.PersonName;
-                    }
-                    else
-                    {
-                        MessageBox.Show("没有领用归还权限！");
-                        return;
-                    }
-                }
-
-            }
-        }
+       
         private void StartScanListion(ILog logger)
         {
             if (string.IsNullOrWhiteSpace(ScanIpAddress) || string.IsNullOrWhiteSpace(ScanPort))
@@ -409,6 +396,14 @@ namespace toolstrackingsystem
             IsConnect = false;
             IsListening = false;
             this.Dispose();
+        }
+
+        private void FrmReturnTool_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)//如果输入的是回车键  
+            {
+                this.btnReturn_Click(sender, e);//触发button事件  
+            }  
         }
 
 

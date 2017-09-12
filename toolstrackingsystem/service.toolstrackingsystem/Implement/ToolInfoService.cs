@@ -341,12 +341,16 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
             _toolInfoRepository.SetToolIsBack(entity.ToolCode, "1"); //设置工具信息为已归还
 
             t_OutBackStore entityOut = _outBackStoreRepository.GetToolOutByCode(entity.ToolCode);
-            entityOut.IsBack = "1";
-            entityOut.BackTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            entityOut.BackPesonCode = person.PersonCode;
-            entityOut.BackPersonName = person.PersonName;
-            entityOut.backdescribes = desc;
-            _outBackStoreRepository.Update(entityOut);
+            if (entityOut != null)
+            {
+                entityOut.IsBack = "1";
+                entityOut.BackTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                entityOut.BackPesonCode = person.PersonCode;
+                entityOut.BackPersonName = person.PersonName;
+                entityOut.backdescribes = desc;
+                _outBackStoreRepository.Update(entityOut);
+            }
+           
 
             var entity1 = new t_CurrentCountInfo();
             entity1.TypeName = entity.TypeName;

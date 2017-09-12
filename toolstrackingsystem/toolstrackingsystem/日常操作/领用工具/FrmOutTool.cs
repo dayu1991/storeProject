@@ -56,82 +56,80 @@ namespace toolstrackingsystem
         
         private void btnOut_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (ToolInfoList == null || ToolInfoList.Count == 0)
-            //    {
-            //        MessageBox.Show("请先增加工具信息");
-            //        return;
-            //    }
-            //    DlgEnterPersonMsg1 dlgEnterPersonMsg = new DlgEnterPersonMsg1();
-            //    dlgEnterPersonMsg.ShowDialog();
-            //    if (dlgEnterPersonMsg.DialogResult == DialogResult.OK)
-            //    {
-            //        var person = dlgEnterPersonMsg.Tag as t_PersonInfo;
-            //        //LoadData();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--Tool--edit", ex.Message, ex.StackTrace, ex.Source);
+            try
+            {
+                if (ToolInfoList == null || ToolInfoList.Count == 0)
+                {
+                    MessageBox.Show("请先增加需要领用的工具信息");
+                    return;
+                }
+                DlgEnterPersonMsg1 dlgEnterPersonMsg = new DlgEnterPersonMsg1();
+                dlgEnterPersonMsg.ShowDialog();
+                if (dlgEnterPersonMsg.DialogResult == DialogResult.OK)
+                {
+                    var person = dlgEnterPersonMsg.Tag as t_PersonInfo;
+                    if (person != null && !string.IsNullOrWhiteSpace(person.PersonCode))
+                    {
+                        if (ToolInfoList == null || ToolInfoList.Count == 0)
+                        {
+                            MessageBox.Show("请先增加需要领用的工具信息");
+                            return;
+                        }
+                        
+                        if (person.IsReceive == "1")
+                        {
+                            string desc = tbEditoutdescribes.Text;
+                            string endDate = "";
+                            var selectValue = this.cbEditOutTime.SelectedValue.ToString();
+                            if (selectValue == "0")
+                            {
+                                endDate = dtiSelect.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                            }
+                            else
+                            {
+                                var hours = this.cbEditOutTime.SelectedValue.ToString();
+                                endDate = DateTime.Now.AddHours(int.Parse(hours)).ToString("yyyy-MM-dd HH:mm:ss");
+                            }
+                            int successCount = 0;
+                            foreach (var entity in ToolInfoList)
+                            {
+                                var toolInfoEntity = _toolInfoService.GetToolByCode(entity.ToolCode);
+                                if (toolInfoEntity.IsBack != "0" && toolInfoEntity.IsRepaired != 1 && _toolInfoService.OutStore(entity, person, LoginHelper.UserCode, endDate, desc))
+                                {
+                                    successCount += 1;
+                                }
+                            }
 
-            //}
+                            MessageBox.Show(string.Format("领用成功，领用成功{0}件工具,领用人:{1}！", successCount,person.PersonName));
+                            ToolInfoList = new List<t_ToolInfo>();
+                            this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+                            tbEditCodeOut.Text = "";
+                            tbEditPersonCode.Text = person.PersonCode;
+                            tbEditPersonName.Text = person.PersonName;
+                            cbEditOutTime.SelectedValue = "1";
+                            tbEditoutdescribes.Text = "";
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("用户没有领用权限！");
+                            return;
+                        }
 
-            //if (ToolInfoList==null||ToolInfoList.Count == 0)
-            //{
-            //    MessageBox.Show("请先增加工具信息");
-            //    return;
-            //}
-            //var userCode = tbEditPersonCode.Text;
+                    }
+                    else {
+                        MessageBox.Show("此用户可能已经被删除！");
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--Tool--edit", ex.Message, ex.StackTrace, ex.Source);
 
-            //if (string.IsNullOrWhiteSpace(userCode))
-            //{
-            //    MessageBox.Show("请填写人员编号！");
-            //    return;
-            //}
-            //var person = _personManageService.GetPersonInfo(userCode);
-            //if (person == null || string.IsNullOrWhiteSpace(person.PersonCode))
-            //{
-            //    MessageBox.Show("不存在的人员编码！");
-            //    return;
-            //}
-            //if (person.IsReceive == "1")
-            //{
-            //    string desc = tbEditoutdescribes.Text;
-            //    string endDate = "";
-            //    var selectValue = this.cbEditOutTime.SelectedValue.ToString();
-            //    if (selectValue == "0")
-            //    {
-            //        endDate = dtiSelect.Value.ToString("yyyy-MM-dd HH:mm:ss");
-            //    }
-            //    else {
-            //        var hours = this.cbEditOutTime.SelectedValue.ToString();
-            //        endDate = DateTime.Now.AddHours(int.Parse(hours)).ToString("yyyy-MM-dd HH:mm:ss");
-            //    }
-            //    int successCount = 0;
-            //    foreach (var entity in ToolInfoList)
-            //    {
-            //        var toolInfoEntity = _toolInfoService.GetToolByCode(entity.ToolCode);
-            //        if (toolInfoEntity.IsBack!="0" &&_toolInfoService.OutStore(entity, person, LoginHelper.UserCode, endDate, desc))
-            //        {
-            //            successCount += 1;
-            //        }
-            //    }
+            }
 
-            //    MessageBox.Show(string.Format("领用成功，领用成功{0}件工具！", successCount));
-            //    ToolInfoList = new List<t_ToolInfo>();
-            //    this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
-            //    tbEditCodeOut.Text = "";
-            //    tbEditPersonCode.Text = "";
-            //    tbEditPersonName.Text = "";
-            //    cbEditOutTime.SelectedValue = "1";
-            //    tbEditoutdescribes.Text = "";
-            //    return;
-            //}
-            //else {
-            //    MessageBox.Show("用户没有领用权限！");
-            //    return;
-            //}
+          
         }
 
         private void btnOutContinue_Click(object sender, EventArgs e)
@@ -352,8 +350,11 @@ namespace toolstrackingsystem
                 var tool = _toolInfoService.GetToolByCode(toolCode);
                 if (tool != null &&string.IsNullOrWhiteSpace(tool.PackCode)) //工具
                 {
-                    if (tool.IsActive == "1") //不存在包
+                    if (tool.IsRepaired ==1)
                     {
+                        MessageBox.Show("该工具已经被送修,不能被领用！");
+                        return;
+                    }
                         if (tool.IsBack!="0") //有库存
                         {
                             bool isContain = false;
@@ -377,11 +378,6 @@ namespace toolstrackingsystem
                             MessageBox.Show("此编码的工具已经被领用！");
                             return;
                         }
-                    }
-                    else {
-                        MessageBox.Show("该工具不能被领用！");
-                        return;
-                    }
                    
                 }
                 else //包
@@ -391,7 +387,7 @@ namespace toolstrackingsystem
                     {
                         foreach (var item in tools)
                         {
-                            if (item.IsBack!="0") //有库存
+                            if (item.IsBack!="0"&&item.IsRepaired!=1) //有库存
                             {
                                 bool isContain = false;
                                 foreach (var itemHave in ToolInfoList)
@@ -417,27 +413,7 @@ namespace toolstrackingsystem
             
         }
 
-        private void tbEditPersonCode_TextChanged(object sender, EventArgs e)
-        {
-            tbEditPersonName.Text = "";
-            var personCode = tbEditPersonCode.Text;
-            if (!string.IsNullOrWhiteSpace(personCode))
-            {
-                var person = _personManageService.GetPersonInfo(personCode);
-                if (person != null)
-                {
-                    if (person.IsReceive == "1")
-                    {
-                        tbEditPersonName.Text = person.PersonName;
-                    }
-                    else {
-                        MessageBox.Show("没有领用权限！");
-                        return;
-                    }
-                }               
 
-            }
-        }
 
         private void FrmOutTool_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -524,6 +500,14 @@ namespace toolstrackingsystem
             IsConnect = false;
             IsListening = false;
             this.Dispose();
+        }
+
+        private void FrmOutTool_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)//如果输入的是回车键  
+            {
+                this.btnOut_Click(sender, e);//触发button事件  
+            }  
         }
 
     }

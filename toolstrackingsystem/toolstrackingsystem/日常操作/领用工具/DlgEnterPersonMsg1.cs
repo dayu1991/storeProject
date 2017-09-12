@@ -35,65 +35,57 @@ namespace toolstrackingsystem
 
         private void Save_Edit_button_Click(object sender, EventArgs e)
         {
-            
+            GetPerson(true);
         }
 
         private void tbEditPersonCode_TextChanged(object sender, EventArgs e)
         {
-
+            GetPerson(false);
         }
 
-        //private bool GetPerson()
-        //{
-        //    try
-        //    {
-        //        var personCode = this.tbEditPersonCode.Text;
-        //        if (!string.IsNullOrWhiteSpace(personCode))
-        //        {
-        //            //var person = _userManageService.get
-        //        }
-        //        t_ToolInfo entity = (t_ToolInfo)this.Tag;
-        //        if (entity != null)
-        //        {
-        //            //entity.TypeName = this.cbEditBlong.SelectedValue.ToString();
-        //            //entity.ChildTypeName = this.cbEditCategory.SelectedValue.ToString();
-        //            //entity.ToolName = this.tbEditToolName.Text;
-        //            //entity.Location = this.tbEditLocation.Text;
-        //            //if (cbEditCheckTime.Checked)
-        //            //{
-        //            //    if (dtiCheckTime.Value < DateTime.Now)
-        //            //    {
-        //            //        MessageBox.Show("下次检测时间不能小于当前时间！");
-        //            //        return;
-        //            //    }
-        //            //    entity.CheckTime = dtiCheckTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
-        //            //}
-        //            //if (string.IsNullOrWhiteSpace(entity.ToolName))
-        //            //{
-        //            //    MessageBox.Show("工具名称必须填写！");
-        //            //    this.tbEditToolName.Focus();
-        //            //    return;
-        //            //}
-        //            //entity.Models = this.tbEditModel.Text;
-        //            //entity.Remarks = this.tbEditMemo.Text;
-        //            //if (_toolInfoService.UpdateTool(entity))
-        //            //{
-        //            //    this.DialogResult = System.Windows.Forms.DialogResult.OK;
-        //            //    this.Dispose();
-        //            //}
-        //        }
-        //        else
-        //        {
-        //            this.Dispose();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--DlgEnterPersonMsg1--GetPerson", ex.Message, ex.StackTrace, ex.Source);
+        private void GetPerson(bool isAlert)
+        {
+            try
+            {
+                var personCode = this.tbEditPersonCode.Text;
+                if (!string.IsNullOrWhiteSpace(personCode))
+                {
+                    var person = _personManageService.GetPersonInfo(personCode);
+                    if (person != null && !string.IsNullOrWhiteSpace(person.PersonCode))
+                    {
+                        if (person.IsReceive == "1")
+                        {
+                            this.Tag = person;
+                            this.DialogResult = System.Windows.Forms.DialogResult.OK;
 
-        //    }
-            
-        //}
+                            this.Dispose();
+                        }
+                        else {
+                            MessageBox.Show("该人员没有领用权限，请开通领用权限！");
+                        }
+                        
+                    }
+                    else {
+                        if (isAlert)
+                        {
+                            MessageBox.Show("找不到此人员，请检查人员编码是否录入正确！");
+                        }
+                    }
+                }
+                else{
+                    if (isAlert) {
+                        MessageBox.Show("请输入人员编码！");
+                    }
+                }
+              
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--DlgEnterPersonMsg1--GetPerson", ex.Message, ex.StackTrace, ex.Source);
+
+            }
+
+        }
 
         private void DlgEnterPersonMsg1_Load(object sender, EventArgs e)
         {

@@ -87,7 +87,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(6, 4);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
@@ -364,7 +364,6 @@
             this.tbEditPersonCode.PreventEnterBeep = true;
             this.tbEditPersonCode.Size = new System.Drawing.Size(287, 21);
             this.tbEditPersonCode.TabIndex = 2;
-            this.tbEditPersonCode.TextChanged += new System.EventHandler(this.tbEditPersonCode_TextChanged);
             // 
             // labelX8
             // 
@@ -390,6 +389,7 @@
             this.Text = "FrmReturnTool";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmReturnTool_FormClosed);
             this.Load += new System.EventHandler(this.FrmReturnTool_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmReturnTool_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.groupPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
