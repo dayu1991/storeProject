@@ -79,9 +79,9 @@
             this.groupPanel2.Controls.Add(this.cbEditOutTime);
             this.groupPanel2.Controls.Add(this.labelX6);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(6, 514);
+            this.groupPanel2.Location = new System.Drawing.Point(6, 608);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1297, 162);
+            this.groupPanel2.Size = new System.Drawing.Size(1471, 162);
             // 
             // 
             // 
@@ -177,9 +177,9 @@
             // 
             this.btnOutContinue.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnOutContinue.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOutContinue.Location = new System.Drawing.Point(901, 75);
+            this.btnOutContinue.Location = new System.Drawing.Point(1011, 14);
             this.btnOutContinue.Name = "btnOutContinue";
-            this.btnOutContinue.Size = new System.Drawing.Size(84, 44);
+            this.btnOutContinue.Size = new System.Drawing.Size(112, 105);
             this.btnOutContinue.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnOutContinue.TabIndex = 32;
             this.btnOutContinue.Text = "继续领用";
@@ -216,9 +216,9 @@
             // 
             this.btnOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOut.Location = new System.Drawing.Point(901, 14);
+            this.btnOut.Location = new System.Drawing.Point(879, 14);
             this.btnOut.Name = "btnOut";
-            this.btnOut.Size = new System.Drawing.Size(84, 44);
+            this.btnOut.Size = new System.Drawing.Size(117, 105);
             this.btnOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnOut.TabIndex = 21;
             this.btnOut.Text = "确认领用";
@@ -353,13 +353,13 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(6, 13);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1297, 495);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1471, 589);
             this.dataGridViewX1.TabIndex = 4;
             // 
             // tbTypeName
@@ -389,6 +389,7 @@
             this.tbPackName.HeaderText = "包名称";
             this.tbPackName.Name = "tbPackName";
             this.tbPackName.ReadOnly = true;
+            this.tbPackName.Width = 150;
             // 
             // tbToolCode
             // 
@@ -396,6 +397,7 @@
             this.tbToolCode.HeaderText = "编号";
             this.tbToolCode.Name = "tbToolCode";
             this.tbToolCode.ReadOnly = true;
+            this.tbToolCode.Width = 150;
             // 
             // tbToolName
             // 
@@ -403,6 +405,7 @@
             this.tbToolName.HeaderText = "名称";
             this.tbToolName.Name = "tbToolName";
             this.tbToolName.ReadOnly = true;
+            this.tbToolName.Width = 150;
             // 
             // tbModel
             // 
@@ -410,6 +413,7 @@
             this.tbModel.HeaderText = "型号";
             this.tbModel.Name = "tbModel";
             this.tbModel.ReadOnly = true;
+            this.tbModel.Width = 150;
             // 
             // tbPosition
             // 
@@ -417,6 +421,7 @@
             this.tbPosition.HeaderText = "位置";
             this.tbPosition.Name = "tbPosition";
             this.tbPosition.ReadOnly = true;
+            this.tbPosition.Width = 150;
             // 
             // tbRemarks
             // 
@@ -424,6 +429,7 @@
             this.tbRemarks.HeaderText = "备注";
             this.tbRemarks.Name = "tbRemarks";
             this.tbRemarks.ReadOnly = true;
+            this.tbRemarks.Width = 200;
             // 
             // tbCheckTime
             // 
@@ -431,12 +437,13 @@
             this.tbCheckTime.HeaderText = "操作人员";
             this.tbCheckTime.Name = "tbCheckTime";
             this.tbCheckTime.ReadOnly = true;
+            this.tbCheckTime.Width = 150;
             // 
             // FrmOutTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1326, 684);
+            this.ClientSize = new System.Drawing.Size(1484, 774);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.groupPanel2);
             this.Name = "FrmOutTool";
@@ -468,6 +475,8 @@
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.ButtonX btnOutContinue;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
+        private DevComponents.DotNetBar.ButtonX btnAddTool;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtiSelect;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbChildTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbPackNo;
@@ -478,7 +487,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tbPosition;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbRemarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbCheckTime;
-        private DevComponents.DotNetBar.ButtonX btnAddTool;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtiSelect;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using common.toolstrackingsystem;
+using Dapper;
 using dbentity.toolstrackingsystem;
 using sqlserver.toolstrackingsystem;
 using System;
@@ -716,13 +717,37 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
                     var repaireInfo = _toolPrepairRecordRepository.GetToolRepairByCodeNotReceived(toolCode);
                         if(repaireInfo!=null)
                         {
-                            result.RepairedTime = repaireInfo.RepairedTime;
+                            result.RepairedTime = repaireInfo.ToRepairedTime??DateTime.MinValue;
                         }
                 }
             }
             return result;
         }
 
+        public bool ToRepaireTool(t_ToolInfo tool)
+        {
+            if (tool.IsRepaired == 1)
+            {
+                return false;
+            }
+            tool.IsRepaired = 1;
+            _toolInfoRepository.Update(tool);
+            var toolRepair = new t_ToolRepairRecord();
+
+            toolRepair.TypeName = toolRepair.TypeName;
+            toolRepair.ChildTypeName = toolRepair.ChildTypeName;
+            toolRepair.PackCode = toolRepair.PackCode;
+            toolRepair.PackName = toolRepair.PackName;
+            toolRepair.ToolCode = toolRepair.ToolCode;
+            toolRepair.ToolName = toolRepair.ToolName;
+            toolRepair.ToRepairedTime = DateTime.Now;
+            toolRepair.ToRepairedPerCode =LoginHelper.UserCode;
+            toolRepair.ToRepairedPerName = toolRepair.TypeName;
+            toolRepair.ToolStatus = 1;
+
+            _toolPrepairRecordRepository.Add(toolRepair);
+            return true;
+        }
 
     }
 }

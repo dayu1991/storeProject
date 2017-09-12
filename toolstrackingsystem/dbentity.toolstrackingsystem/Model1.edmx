@@ -179,24 +179,30 @@
         </EntityType>
         <EntityType Name="t_ToolRepairRecord">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TypeName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ChildTypeName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="PackCode" Type="varchar" MaxLength="50" />
-          <Property Name="PackName" Type="varchar" MaxLength="50" />
-          <Property Name="ToolCode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ToolName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="RepairedTime" Type="datetime" Nullable="false" />
-          <Property Name="RepairedPerson" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ReturnedTime" Type="datetime" />
-          <Property Name="ReturnedPerson" Type="varchar" MaxLength="50" />
-          <Property Name="ReceivedTime" Type="datetime" />
-          <Property Name="ReceivedPerson" Type="varchar" MaxLength="50" />
-          <Property Name="ReceivedBackTime" Type="datetime" />
-          <Property Name="ReceivedBackPerson" Type="varchar" MaxLength="50" />
-          <Property Name="ToolStatus" Type="int" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="ChildTypeName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="PackCode" Type="varchar" MaxLength="24" />
+          <Property Name="PackName" Type="varchar" MaxLength="64" />
+          <Property Name="ToolCode" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="ToolName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="ToRepairedTime" Type="datetime" />
+          <Property Name="ToRepairedPerCode" Type="varchar" MaxLength="50" />
+          <Property Name="ToRepairedPerName" Type="varchar" MaxLength="50" />
+          <Property Name="ReceiveTime" Type="datetime" />
+          <Property Name="ReceivePerCode" Type="varchar" MaxLength="50" />
+          <Property Name="ReceivePerName" Type="varchar" MaxLength="50" />
+          <Property Name="HandleTime" Type="datetime" />
+          <Property Name="HandlePerCode" Type="varchar" MaxLength="50" />
+          <Property Name="HandlePerName" Type="varchar" MaxLength="50" />
+          <Property Name="PullTime" Type="datetime" />
+          <Property Name="PullPerCode" Type="varchar" MaxLength="50" />
+          <Property Name="PullPerName" Type="varchar" MaxLength="50" />
+          <Property Name="ToRepairMemo" Type="varchar" MaxLength="200" />
+          <Property Name="ScrapMemo" Type="varchar" MaxLength="200" />
+          <Property Name="ToolStatus" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="t_ToolType">
           <Key>
@@ -417,24 +423,30 @@
         </EntityType>
         <EntityType Name="t_ToolRepairRecord">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ChildTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PackCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PackName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ToolCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ToolName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RepairedTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="RepairedPerson" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ReturnedTime" Type="DateTime" Precision="3" />
-          <Property Name="ReturnedPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ReceivedTime" Type="DateTime" Precision="3" />
-          <Property Name="ReceivedPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ReceivedBackTime" Type="DateTime" Precision="3" />
-          <Property Name="ReceivedBackPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ToolStatus" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ChildTypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PackCode" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="PackName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ToolCode" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="ToolName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ToRepairedTime" Type="DateTime" Precision="3" />
+          <Property Name="ToRepairedPerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ToRepairedPerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiveTime" Type="DateTime" Precision="3" />
+          <Property Name="ReceivePerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReceivePerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HandleTime" Type="DateTime" Precision="3" />
+          <Property Name="HandlePerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HandlePerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PullTime" Type="DateTime" Precision="3" />
+          <Property Name="PullPerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PullPerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ToRepairMemo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ScrapMemo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ToolStatus" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="t_ToolType">
           <Key>
@@ -640,21 +652,27 @@
             <EntityTypeMapping TypeName="cangku_manage_dbModel.t_ToolRepairRecord">
               <MappingFragment StoreEntitySet="t_ToolRepairRecord">
                 <ScalarProperty Name="ToolStatus" ColumnName="ToolStatus" />
-                <ScalarProperty Name="ReceivedBackPerson" ColumnName="ReceivedBackPerson" />
-                <ScalarProperty Name="ReceivedBackTime" ColumnName="ReceivedBackTime" />
-                <ScalarProperty Name="ReceivedPerson" ColumnName="ReceivedPerson" />
-                <ScalarProperty Name="ReceivedTime" ColumnName="ReceivedTime" />
-                <ScalarProperty Name="ReturnedPerson" ColumnName="ReturnedPerson" />
-                <ScalarProperty Name="ReturnedTime" ColumnName="ReturnedTime" />
-                <ScalarProperty Name="RepairedPerson" ColumnName="RepairedPerson" />
-                <ScalarProperty Name="RepairedTime" ColumnName="RepairedTime" />
+                <ScalarProperty Name="ScrapMemo" ColumnName="ScrapMemo" />
+                <ScalarProperty Name="ToRepairMemo" ColumnName="ToRepairMemo" />
+                <ScalarProperty Name="PullPerName" ColumnName="PullPerName" />
+                <ScalarProperty Name="PullPerCode" ColumnName="PullPerCode" />
+                <ScalarProperty Name="PullTime" ColumnName="PullTime" />
+                <ScalarProperty Name="HandlePerName" ColumnName="HandlePerName" />
+                <ScalarProperty Name="HandlePerCode" ColumnName="HandlePerCode" />
+                <ScalarProperty Name="HandleTime" ColumnName="HandleTime" />
+                <ScalarProperty Name="ReceivePerName" ColumnName="ReceivePerName" />
+                <ScalarProperty Name="ReceivePerCode" ColumnName="ReceivePerCode" />
+                <ScalarProperty Name="ReceiveTime" ColumnName="ReceiveTime" />
+                <ScalarProperty Name="ToRepairedPerName" ColumnName="ToRepairedPerName" />
+                <ScalarProperty Name="ToRepairedPerCode" ColumnName="ToRepairedPerCode" />
+                <ScalarProperty Name="ToRepairedTime" ColumnName="ToRepairedTime" />
                 <ScalarProperty Name="ToolName" ColumnName="ToolName" />
                 <ScalarProperty Name="ToolCode" ColumnName="ToolCode" />
                 <ScalarProperty Name="PackName" ColumnName="PackName" />
                 <ScalarProperty Name="PackCode" ColumnName="PackCode" />
                 <ScalarProperty Name="ChildTypeName" ColumnName="ChildTypeName" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

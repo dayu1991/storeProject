@@ -14,21 +14,27 @@ namespace dbentity.toolstrackingsystem
     
     public partial class t_ToolRepairRecord
     {
-        public long ID { get; set; }
+        public int Id { get; set; }
         public string TypeName { get; set; }
         public string ChildTypeName { get; set; }
         public string PackCode { get; set; }
         public string PackName { get; set; }
         public string ToolCode { get; set; }
         public string ToolName { get; set; }
-        public System.DateTime RepairedTime { get; set; }
-        public string RepairedPerson { get; set; }
-        public Nullable<System.DateTime> ReturnedTime { get; set; }
-        public string ReturnedPerson { get; set; }
-        public Nullable<System.DateTime> ReceivedTime { get; set; }
-        public string ReceivedPerson { get; set; }
-        public Nullable<System.DateTime> ReceivedBackTime { get; set; }
-        public string ReceivedBackPerson { get; set; }
-        public Nullable<int> ToolStatus { get; set; }
+        public Nullable<System.DateTime> ToRepairedTime { get; set; }
+        public string ToRepairedPerCode { get; set; }
+        public string ToRepairedPerName { get; set; }
+        public Nullable<System.DateTime> ReceiveTime { get; set; }
+        public string ReceivePerCode { get; set; }
+        public string ReceivePerName { get; set; }
+        public Nullable<System.DateTime> HandleTime { get; set; }
+        public string HandlePerCode { get; set; }
+        public string HandlePerName { get; set; }
+        public Nullable<System.DateTime> PullTime { get; set; }
+        public string PullPerCode { get; set; }
+        public string PullPerName { get; set; }
+        public string ToRepairMemo { get; set; }
+        public string ScrapMemo { get; set; }
+        public int ToolStatus { get; set; }
     }
 }

@@ -70,7 +70,7 @@ namespace sqlserver.toolstrackingsystem
         public t_ToolRepairRecord GetToolRepairByCodeNotReceived(string toolCode)
         { 
             
-             string sql = "SELECT * FROM [t_ToolRepairRecord] where [ToolCode]=@ToolCode and [ToolStatus] in (0,1,2)";
+             string sql = "SELECT * FROM [t_ToolRepairRecord] where [ToolCode]=@ToolCode and [ToolStatus] in (1,2,3)";
             var sqlDy = new DynamicParameters();
             sqlDy.Add("ToolCode", toolCode);
             return GetModel(sql, sqlDy);            

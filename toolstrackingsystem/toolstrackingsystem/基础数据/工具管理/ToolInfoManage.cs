@@ -156,7 +156,7 @@ namespace toolstrackingsystem
                 toolInfo.OptionPerson = LoginHelper.UserCode;
                 toolInfo.ToolCode = this.tbEditCode.Text;
                 toolInfo.IsRepaired = 0;
-                toolInfo.IsBack ="1";
+                toolInfo.IsBack = "1";
 
                 if (string.IsNullOrWhiteSpace(toolInfo.ToolCode))
                 {
@@ -181,7 +181,8 @@ namespace toolstrackingsystem
 
                     toolInfo.CheckTime = dtiCheckTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
                 }
-                else {
+                else
+                {
                     toolInfo.CheckTime = "";
                 }
                 bool isExists = _toolInfoService.IsExistsByCode(toolInfo.ToolCode);
@@ -192,7 +193,7 @@ namespace toolstrackingsystem
                     return;
                 }
 
-                var result = _toolInfoService.AddToolInfo(toolInfo,"录入");
+                var result = _toolInfoService.AddToolInfo(toolInfo, "录入");
                 if (result > 0)
                 {
                     LoadData();
@@ -308,7 +309,8 @@ namespace toolstrackingsystem
                             LoadData();
                         }
                     }
-                    else {
+                    else
+                    {
                         MessageBox.Show("该工具信息已经被删除！");
                         return;
                     }
@@ -321,7 +323,7 @@ namespace toolstrackingsystem
 
             }
         }
-       
+
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
@@ -334,20 +336,16 @@ namespace toolstrackingsystem
                 }
                 else
                 {
-                    //bool toolEntity = _toolInfoService.DelToolByCode(SelectedToolCode);
+                    MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
 
-                    _toolInfoService.DelToolByCode(SelectedToolCode);
-                         MessageBox.Show("删除成功");
+                    DialogResult dr = MessageBox.Show(string.Format("您确认要删除编号为:{0} 的工具吗?", SelectedToolCode), "删除确认", messButton);
+                    if (dr == DialogResult.OK)//如果点击“确定”按钮
+                    {
+                        _toolInfoService.DelToolByCode(SelectedToolCode);
+                        MessageBox.Show("删除成功");
                         LoadData();
-                    //if (_toolInfoService.DelToolByCode(SelectedToolCode))
-                    //{
-                    //    MessageBox.Show("删除成功");
-                    //    LoadData();
-                    //}
-                    //else {
-                    //    MessageBox.Show("删除失败");
-                    //}
-                    
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -441,7 +439,7 @@ namespace toolstrackingsystem
                         cell = row.CreateCell(8);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.Remarks);
-            //            if (item.CheckTime != null)
+                        //            if (item.CheckTime != null)
                         cell = row.CreateCell(9);
                         cell.SetCellType(NPOI.SS.UserModel.CellType.String);
                         cell.SetCellValue(item.CheckTime);
@@ -539,7 +537,7 @@ namespace toolstrackingsystem
                             for (int i = (sheet.FirstRowNum + 1); i < sheet.LastRowNum + 1; i++)
                             {
                                 IRow row = sheet.GetRow(i);
-                               
+
                                 var toolInfo = new t_ToolInfo();
                                 bool checkSuccess = true;
                                 for (int j = row.FirstCellNum; j < cellCount; j++)
@@ -561,17 +559,18 @@ namespace toolstrackingsystem
                                             {
                                                 toolInfo.TypeName = blongName;
                                             }
-                                            else { 
-                                            //增加配属
+                                            else
+                                            {
+                                                //增加配属
                                                 var toolType = new t_ToolType();
-                                                  toolType.TypeName = blongName;
-                                                  toolType.OptionPerson = LoginHelper.UserCode;
-                                                  toolType.classification = 1;
-                                                  _toolInfoService.AddCateGory(toolType);
-                                                  blongCates.Add(toolType);
-                                                 toolInfo.TypeName = blongName;
+                                                toolType.TypeName = blongName;
+                                                toolType.OptionPerson = LoginHelper.UserCode;
+                                                toolType.classification = 1;
+                                                _toolInfoService.AddCateGory(toolType);
+                                                blongCates.Add(toolType);
+                                                toolInfo.TypeName = blongName;
 
-                                            }                                          
+                                            }
                                         }
                                         else if (j == row.FirstCellNum + 1) //分类
                                         {
@@ -592,12 +591,12 @@ namespace toolstrackingsystem
                                                 var toolType = new t_ToolType();
                                                 toolType.TypeName = thisValue;
                                                 toolType.OptionPerson = LoginHelper.UserCode;
-                                                toolType.classification =2;
+                                                toolType.classification = 2;
                                                 _toolInfoService.AddCateGory(toolType);
                                                 blongCates.Add(toolType);
                                                 toolInfo.ChildTypeName = thisValue;
 
-                                            }                     
+                                            }
                                         }
                                         else if (j == row.FirstCellNum + 2)// 包编码
                                         {
@@ -609,7 +608,7 @@ namespace toolstrackingsystem
                                             var thisValue = row.GetCell(j).ToString().Trim();
                                             toolInfo.PackName = thisValue;
                                         }
-                                        else if (j == row.FirstCellNum +4)//编码
+                                        else if (j == row.FirstCellNum + 4)//编码
                                         {
                                             var thisValue = row.GetCell(j).ToString().Trim();
                                             if (_toolInfoService.IsExistsByCode(thisValue))
@@ -647,7 +646,8 @@ namespace toolstrackingsystem
                                             {
                                                 toolInfo.CheckTime = dt.ToString("yyyy-MM-dd HH:mm:ss");
                                             }
-                                            else {
+                                            else
+                                            {
                                                 toolInfo.CheckTime = "";
                                             }
                                         }
@@ -659,7 +659,7 @@ namespace toolstrackingsystem
                                     toolInfo.IsActive = "1";
                                     toolInfo.OptionPerson = LoginHelper.UserCode;
                                     toolInfo.IsRepaired = 0;
-                                    toolInfo.IsBack = "1";                                    
+                                    toolInfo.IsBack = "1";
                                     InfoList.Add(toolInfo);
                                 }
                             }
@@ -792,7 +792,7 @@ namespace toolstrackingsystem
         {
             FrmPrintToolInfo printFrm = new FrmPrintToolInfo();
             t_ToolInfo tool = new t_ToolInfo();
-            tool.TypeName= cbSearchBlong.SelectedValue.ToString();
+            tool.TypeName = cbSearchBlong.SelectedValue.ToString();
             tool.ChildTypeName = cbSearchcategory.SelectedValue.ToString();
             tool.TypeName = tool.TypeName == "全部" ? "" : tool.TypeName;
             tool.ChildTypeName = tool.ChildTypeName == "全部" ? "" : tool.ChildTypeName;
@@ -838,13 +838,59 @@ namespace toolstrackingsystem
             {
                 slectedIndex = e.RowIndex;
                 SelectedToolCode = this.dataGridViewX1.Rows[slectedIndex].Cells[4].Value.ToString();
-                btnEdit_Click(sender,e);
+                btnEdit_Click(sender, e);
             }
         }
 
-      
+        private void btnToRepaire_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(SelectedToolCode))
+                {
+                    MessageBox.Show("请先选中一条记录");
+                    return;
+                }
+                else
+                {
+                    var toolInfo = _toolInfoService.GetToolByCode(SelectedToolCode);
+                    {
+                        if (toolInfo == null||string.IsNullOrWhiteSpace(toolInfo.ToolCode))
+                        {
+                            MessageBox.Show("此工具已经被删除");
+                            return;
+                        }
+                        if (toolInfo.IsRepaired == 1)
+                        {
+                            MessageBox.Show("此工具已经被送修，不能重复送修！");
+                            return;
+                        }
 
-       
+                        MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
+
+                        DialogResult dr = MessageBox.Show(string.Format("您确认要送修编号为:{0} 的工具吗?", SelectedToolCode), "送修确认", messButton);
+                        if (dr == DialogResult.OK)//如果点击“确定”按钮
+                        {
+                            bool isSuccess = _toolInfoService.ToRepaireTool(toolInfo);
+                            MessageBox.Show("送修成功！");
+                            LoadData();
+                        }
+
+                    }
+                   
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--Tool--Songxiu", ex.Message, ex.StackTrace, ex.Source);
+            }
+        }
+
+
+
+
 
     }
 }

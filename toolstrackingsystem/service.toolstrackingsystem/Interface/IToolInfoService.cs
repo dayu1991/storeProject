@@ -107,5 +107,7 @@ namespace service.toolstrackingsystem
 
         ToolInfoExtend GetToolInfoExtend(string toolCode);
 
+
+        bool ToRepaireTool(t_ToolInfo tool);
     }
 }
