@@ -56,6 +56,9 @@
             this.labRepareTime = new DevComponents.DotNetBar.LabelX();
             this.labRepareTimeValue = new DevComponents.DotNetBar.LabelX();
             this.dtiCheckTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.labToolCode = new DevComponents.DotNetBar.LabelX();
+            this.labDiffTime = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dtiCheckTime)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +66,7 @@
             // 
             this.Save_Edit_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Save_Edit_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Save_Edit_button.Location = new System.Drawing.Point(100, 386);
+            this.Save_Edit_button.Location = new System.Drawing.Point(108, 412);
             this.Save_Edit_button.Name = "Save_Edit_button";
             this.Save_Edit_button.Size = new System.Drawing.Size(75, 52);
             this.Save_Edit_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -75,7 +78,7 @@
             // 
             this.Cancel_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Cancel_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Cancel_button.Location = new System.Drawing.Point(247, 386);
+            this.Cancel_button.Location = new System.Drawing.Point(288, 412);
             this.Cancel_button.Name = "Cancel_button";
             this.Cancel_button.Size = new System.Drawing.Size(75, 52);
             this.Cancel_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -90,7 +93,7 @@
             // 
             this.tbEditLocation.Border.Class = "TextBoxBorder";
             this.tbEditLocation.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditLocation.Location = new System.Drawing.Point(147, 114);
+            this.tbEditLocation.Location = new System.Drawing.Point(153, 156);
             this.tbEditLocation.Name = "tbEditLocation";
             this.tbEditLocation.PreventEnterBeep = true;
             this.tbEditLocation.Size = new System.Drawing.Size(232, 21);
@@ -103,7 +106,7 @@
             // 
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(100, 114);
+            this.labelX8.Location = new System.Drawing.Point(106, 156);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(57, 23);
             this.labelX8.TabIndex = 19;
@@ -116,7 +119,7 @@
             // 
             this.tbEditToolName.Border.Class = "TextBoxBorder";
             this.tbEditToolName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditToolName.Location = new System.Drawing.Point(147, 85);
+            this.tbEditToolName.Location = new System.Drawing.Point(153, 127);
             this.tbEditToolName.Name = "tbEditToolName";
             this.tbEditToolName.PreventEnterBeep = true;
             this.tbEditToolName.Size = new System.Drawing.Size(232, 21);
@@ -129,7 +132,7 @@
             // 
             // 
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(100, 85);
+            this.labelX7.Location = new System.Drawing.Point(106, 127);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(57, 23);
             this.labelX7.TabIndex = 17;
@@ -141,7 +144,7 @@
             this.cbEditCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbEditCategory.FormattingEnabled = true;
             this.cbEditCategory.ItemHeight = 15;
-            this.cbEditCategory.Location = new System.Drawing.Point(149, 56);
+            this.cbEditCategory.Location = new System.Drawing.Point(155, 98);
             this.cbEditCategory.Name = "cbEditCategory";
             this.cbEditCategory.Size = new System.Drawing.Size(230, 21);
             this.cbEditCategory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -154,7 +157,7 @@
             // 
             // 
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(102, 56);
+            this.labelX6.Location = new System.Drawing.Point(108, 98);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(57, 23);
             this.labelX6.TabIndex = 15;
@@ -166,7 +169,7 @@
             this.cbEditBlong.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbEditBlong.FormattingEnabled = true;
             this.cbEditBlong.ItemHeight = 15;
-            this.cbEditBlong.Location = new System.Drawing.Point(149, 27);
+            this.cbEditBlong.Location = new System.Drawing.Point(155, 69);
             this.cbEditBlong.Name = "cbEditBlong";
             this.cbEditBlong.Size = new System.Drawing.Size(230, 21);
             this.cbEditBlong.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -179,7 +182,7 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(102, 27);
+            this.labelX5.Location = new System.Drawing.Point(108, 69);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(57, 23);
             this.labelX5.TabIndex = 13;
@@ -192,7 +195,7 @@
             // 
             // 
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(100, 201);
+            this.labelX10.Location = new System.Drawing.Point(106, 243);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(57, 23);
             this.labelX10.TabIndex = 28;
@@ -205,7 +208,7 @@
             // 
             this.tbEditMemo.Border.Class = "TextBoxBorder";
             this.tbEditMemo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditMemo.Location = new System.Drawing.Point(147, 205);
+            this.tbEditMemo.Location = new System.Drawing.Point(153, 247);
             this.tbEditMemo.Name = "tbEditMemo";
             this.tbEditMemo.PreventEnterBeep = true;
             this.tbEditMemo.Size = new System.Drawing.Size(232, 21);
@@ -218,7 +221,7 @@
             // 
             this.tbEditModel.Border.Class = "TextBoxBorder";
             this.tbEditModel.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditModel.Location = new System.Drawing.Point(147, 172);
+            this.tbEditModel.Location = new System.Drawing.Point(153, 214);
             this.tbEditModel.Name = "tbEditModel";
             this.tbEditModel.PreventEnterBeep = true;
             this.tbEditModel.Size = new System.Drawing.Size(232, 21);
@@ -231,7 +234,7 @@
             // 
             // 
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(100, 172);
+            this.labelX9.Location = new System.Drawing.Point(106, 214);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(57, 23);
             this.labelX9.TabIndex = 30;
@@ -243,12 +246,12 @@
             // 
             // 
             this.cbEditCheckTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbEditCheckTime.Location = new System.Drawing.Point(36, 143);
+            this.cbEditCheckTime.Location = new System.Drawing.Point(82, 185);
             this.cbEditCheckTime.Name = "cbEditCheckTime";
-            this.cbEditCheckTime.Size = new System.Drawing.Size(112, 23);
+            this.cbEditCheckTime.Size = new System.Drawing.Size(63, 23);
             this.cbEditCheckTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbEditCheckTime.TabIndex = 32;
-            this.cbEditCheckTime.Text = "下次检测时间:";
+            this.cbEditCheckTime.Text = "送检：";
             // 
             // labelX1
             // 
@@ -257,7 +260,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(76, 271);
+            this.labelX1.Location = new System.Drawing.Point(82, 313);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(72, 23);
             this.labelX1.TabIndex = 33;
@@ -270,7 +273,7 @@
             // 
             // 
             this.labIsOut.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labIsOut.Location = new System.Drawing.Point(146, 271);
+            this.labIsOut.Location = new System.Drawing.Point(152, 313);
             this.labIsOut.Name = "labIsOut";
             this.labIsOut.Size = new System.Drawing.Size(72, 23);
             this.labIsOut.TabIndex = 34;
@@ -283,7 +286,7 @@
             // 
             // 
             this.labOutPersonValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labOutPersonValue.Location = new System.Drawing.Point(147, 306);
+            this.labOutPersonValue.Location = new System.Drawing.Point(153, 348);
             this.labOutPersonValue.Name = "labOutPersonValue";
             this.labOutPersonValue.Size = new System.Drawing.Size(72, 23);
             this.labOutPersonValue.TabIndex = 36;
@@ -296,7 +299,7 @@
             // 
             // 
             this.laOutPerson.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.laOutPerson.Location = new System.Drawing.Point(85, 306);
+            this.laOutPerson.Location = new System.Drawing.Point(91, 348);
             this.laOutPerson.Name = "laOutPerson";
             this.laOutPerson.Size = new System.Drawing.Size(56, 23);
             this.laOutPerson.TabIndex = 35;
@@ -309,9 +312,9 @@
             // 
             // 
             this.labOutTimesValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labOutTimesValue.Location = new System.Drawing.Point(292, 306);
+            this.labOutTimesValue.Location = new System.Drawing.Point(298, 348);
             this.labOutTimesValue.Name = "labOutTimesValue";
-            this.labOutTimesValue.Size = new System.Drawing.Size(65, 23);
+            this.labOutTimesValue.Size = new System.Drawing.Size(182, 23);
             this.labOutTimesValue.TabIndex = 38;
             this.labOutTimesValue.Text = "否";
             // 
@@ -322,7 +325,7 @@
             // 
             // 
             this.labOutTimes.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labOutTimes.Location = new System.Drawing.Point(214, 306);
+            this.labOutTimes.Location = new System.Drawing.Point(220, 348);
             this.labOutTimes.Name = "labOutTimes";
             this.labOutTimes.Size = new System.Drawing.Size(72, 23);
             this.labOutTimes.TabIndex = 37;
@@ -335,7 +338,7 @@
             // 
             // 
             this.labIsOutTimeValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labIsOutTimeValue.Location = new System.Drawing.Point(292, 271);
+            this.labIsOutTimeValue.Location = new System.Drawing.Point(298, 313);
             this.labIsOutTimeValue.Name = "labIsOutTimeValue";
             this.labIsOutTimeValue.Size = new System.Drawing.Size(72, 23);
             this.labIsOutTimeValue.TabIndex = 40;
@@ -348,7 +351,7 @@
             // 
             // 
             this.labOutTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labOutTime.Location = new System.Drawing.Point(214, 271);
+            this.labOutTime.Location = new System.Drawing.Point(220, 313);
             this.labOutTime.Name = "labOutTime";
             this.labOutTime.Size = new System.Drawing.Size(72, 23);
             this.labOutTime.TabIndex = 39;
@@ -361,7 +364,7 @@
             // 
             // 
             this.labIsToRepareValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labIsToRepareValue.Location = new System.Drawing.Point(146, 242);
+            this.labIsToRepareValue.Location = new System.Drawing.Point(152, 284);
             this.labIsToRepareValue.Name = "labIsToRepareValue";
             this.labIsToRepareValue.Size = new System.Drawing.Size(72, 23);
             this.labIsToRepareValue.TabIndex = 42;
@@ -374,7 +377,7 @@
             // 
             // 
             this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX14.Location = new System.Drawing.Point(76, 242);
+            this.labelX14.Location = new System.Drawing.Point(82, 284);
             this.labelX14.Name = "labelX14";
             this.labelX14.Size = new System.Drawing.Size(72, 23);
             this.labelX14.TabIndex = 41;
@@ -387,7 +390,7 @@
             // 
             // 
             this.labRepareTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labRepareTime.Location = new System.Drawing.Point(214, 242);
+            this.labRepareTime.Location = new System.Drawing.Point(220, 284);
             this.labRepareTime.Name = "labRepareTime";
             this.labRepareTime.Size = new System.Drawing.Size(72, 23);
             this.labRepareTime.TabIndex = 43;
@@ -400,9 +403,9 @@
             // 
             // 
             this.labRepareTimeValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labRepareTimeValue.Location = new System.Drawing.Point(292, 242);
+            this.labRepareTimeValue.Location = new System.Drawing.Point(298, 284);
             this.labRepareTimeValue.Name = "labRepareTimeValue";
-            this.labRepareTimeValue.Size = new System.Drawing.Size(72, 23);
+            this.labRepareTimeValue.Size = new System.Drawing.Size(128, 23);
             this.labRepareTimeValue.TabIndex = 44;
             this.labRepareTimeValue.Text = "否";
             // 
@@ -417,7 +420,7 @@
             this.dtiCheckTime.ButtonDropDown.Visible = true;
             this.dtiCheckTime.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.dtiCheckTime.IsPopupCalendarOpen = false;
-            this.dtiCheckTime.Location = new System.Drawing.Point(146, 145);
+            this.dtiCheckTime.Location = new System.Drawing.Point(152, 187);
             // 
             // 
             // 
@@ -451,11 +454,53 @@
             this.dtiCheckTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dtiCheckTime.TabIndex = 45;
             // 
+            // labelX2
+            // 
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(108, 40);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(57, 23);
+            this.labelX2.TabIndex = 46;
+            this.labelX2.Text = "编号：";
+            // 
+            // labToolCode
+            // 
+            this.labToolCode.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labToolCode.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labToolCode.Location = new System.Drawing.Point(155, 40);
+            this.labToolCode.Name = "labToolCode";
+            this.labToolCode.Size = new System.Drawing.Size(215, 23);
+            this.labToolCode.TabIndex = 47;
+            this.labToolCode.Text = "否";
+            // 
+            // labDiffTime
+            // 
+            this.labDiffTime.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labDiffTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labDiffTime.Location = new System.Drawing.Point(391, 187);
+            this.labDiffTime.Name = "labDiffTime";
+            this.labDiffTime.Size = new System.Drawing.Size(139, 23);
+            this.labDiffTime.TabIndex = 48;
+            this.labDiffTime.Text = "倒计时：";
+            // 
             // DlgEditTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 486);
+            this.Controls.Add(this.labDiffTime);
+            this.Controls.Add(this.labToolCode);
+            this.Controls.Add(this.labelX2);
             this.Controls.Add(this.dtiCheckTime);
             this.Controls.Add(this.labRepareTimeValue);
             this.Controls.Add(this.labRepareTime);
@@ -526,5 +571,8 @@
         private DevComponents.DotNetBar.LabelX labRepareTimeValue;
         private DevComponents.DotNetBar.LabelX labOutTimes;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtiCheckTime;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.DotNetBar.LabelX labToolCode;
+        private DevComponents.DotNetBar.LabelX labDiffTime;
     }
 }

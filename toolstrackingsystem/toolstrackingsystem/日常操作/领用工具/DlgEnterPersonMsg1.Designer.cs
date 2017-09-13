@@ -127,7 +127,7 @@
             this.DoubleBuffered = true;
             this.Name = "DlgEnterPersonMsg1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "确认领取";
+            this.Text = "人员录入";
             this.Load += new System.EventHandler(this.DlgEnterPersonMsg1_Load);
             this.ResumeLayout(false);
 

@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[t_ToolRepairRecord]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [TypeName] VARCHAR(64) NOT NULL, 
     [ChildTypeName] VARCHAR(64) NOT NULL, 
     [PackCode] VARCHAR(24) NULL, 

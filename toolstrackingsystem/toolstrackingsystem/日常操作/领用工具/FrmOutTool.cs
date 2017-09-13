@@ -350,11 +350,20 @@ namespace toolstrackingsystem
                 var tool = _toolInfoService.GetToolByCode(toolCode);
                 if (tool != null &&string.IsNullOrWhiteSpace(tool.PackCode)) //工具
                 {
-                    if (tool.IsRepaired ==1)
-                    {
-                        MessageBox.Show("该工具已经被送修,不能被领用！");
-                        return;
-                    }
+                        if (tool.IsRepaired ==1)
+                        {
+                            MessageBox.Show("该工具已经被送修,不能被领用！");
+                            return;
+                        }
+                        if (!string.IsNullOrWhiteSpace(tool.CheckTime))
+                        {
+                            var checkTime = DateTime.Parse(tool.CheckTime);
+                            if (checkTime < DateTime.Now)
+                            {
+                                MessageBox.Show("该工具已过送检时间，不能领用！");
+                                return;
+                            }
+                        }
                         if (tool.IsBack!="0") //有库存
                         {
                             bool isContain = false;

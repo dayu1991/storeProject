@@ -53,6 +53,7 @@ namespace toolstrackingsystem
                     {
                         cbEditCheckTime.Checked = false;
                         dtiCheckTime.Value = DateTime.Now.AddDays(1);
+                        labDiffTime.Visible = false;
 
                     }
                     else
@@ -62,14 +63,29 @@ namespace toolstrackingsystem
                         dtiCheckTime.Value = checkTimeFor;
                         if (checkTimeFor >= DateTime.Now.AddDays(7) && checkTimeFor <= DateTime.Now.AddDays(15))
                         {
-                            cbEditCheckTime.BackColor = Color.Yellow;
-                            dtiCheckTime.BackColor = Color.Yellow;
+                            dtiCheckTime.ForeColor = Color.Gold;
+                            cbEditCheckTime.BackColor = Color.Gold;
+                         
                         }
                         if (checkTimeFor > DateTime.Now && checkTimeFor <= DateTime.Now.AddDays(7))
                         {
+                            dtiCheckTime.ForeColor = Color.Red;
                             cbEditCheckTime.BackColor = Color.Red;
-                            dtiCheckTime.BackColor = Color.Red;
+
+
                         }
+                        var diffTime = checkTimeFor - DateTime.Now;
+                        string showDiffText = "剩余";
+                        if (diffTime.Days > 0)
+                        {
+                            showDiffText += diffTime.Days+"天";
+                        }
+                        showDiffText += diffTime.Hours+"小时";
+
+                        
+                        labDiffTime.Text = showDiffText; 
+                        labDiffTime.Visible = true;
+
                     }
                     tbEditModel.Text = toolInfoExtend.Models;
                     tbEditMemo.Text = toolInfoExtend.Remarks;
@@ -119,6 +135,8 @@ namespace toolstrackingsystem
                         this.labRepareTimeValue.Visible = false;
 
                     }
+                    labToolCode.Text=toolInfoExtend.ToolCode;
+
                 }
                 else {
                     MessageBox.Show("请选择要编辑的记录！");
