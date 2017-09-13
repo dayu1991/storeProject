@@ -734,18 +734,19 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
             _toolInfoRepository.Update(tool);
             var toolRepair = new t_ToolRepairRecord();
 
-            toolRepair.TypeName = toolRepair.TypeName;
-            toolRepair.ChildTypeName = toolRepair.ChildTypeName;
-            toolRepair.PackCode = toolRepair.PackCode;
-            toolRepair.PackName = toolRepair.PackName;
-            toolRepair.ToolCode = toolRepair.ToolCode;
-            toolRepair.ToolName = toolRepair.ToolName;
+            toolRepair.TypeName = tool.TypeName;
+            toolRepair.ChildTypeName = tool.ChildTypeName;
+            toolRepair.PackCode = tool.PackCode;
+            toolRepair.PackName = tool.PackName;
+            toolRepair.ToolCode = tool.ToolCode;
+            toolRepair.ToolName = tool.ToolName;
             toolRepair.ToRepairedTime = DateTime.Now;
             toolRepair.ToRepairedPerCode =LoginHelper.UserCode;
-            toolRepair.ToRepairedPerName = toolRepair.TypeName;
+            toolRepair.ToRepairedPerName = tool.TypeName;
             toolRepair.ToolStatus = 1;
 
             _toolPrepairRecordRepository.Add(toolRepair);
+            
             return true;
         }
 
