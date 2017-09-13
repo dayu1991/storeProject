@@ -242,7 +242,6 @@ namespace toolstrackingsystem
 
                 string cbCheckTime = this.cbCheckTime.SelectedValue.ToString();
 
-
                 List<ToolInfoExtend> resultEntity = _toolInfoService.GetToolList(blongValue, categoryValue, toolCode, toolName, is_Out_checkBox, is_OutTime_checkBox, is_ToRepare_checkBox, cbCheckTime, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
                 pagerControl1.DrawControl(Convert.ToInt32(Count));
                 this.dataGridViewX1.AutoGenerateColumns = false;
@@ -791,16 +790,21 @@ namespace toolstrackingsystem
         private void Print_button_Click(object sender, EventArgs e)
         {
             FrmPrintToolInfo printFrm = new FrmPrintToolInfo();
-            t_ToolInfo tool = new t_ToolInfo();
-            tool.TypeName = cbSearchBlong.SelectedValue.ToString();
-            tool.ChildTypeName = cbSearchcategory.SelectedValue.ToString();
-            tool.TypeName = tool.TypeName == "全部" ? "" : tool.TypeName;
-            tool.ChildTypeName = tool.ChildTypeName == "全部" ? "" : tool.ChildTypeName;
+            ToolInfoConditionExtend toolExtend = new ToolInfoConditionExtend();
+            string blongValue = cbSearchBlong.SelectedValue.ToString();
+            toolExtend.blongValue = blongValue == "全部" ? "" : blongValue;
+            string categoryValue = cbSearchcategory.SelectedValue.ToString();
+            toolExtend.categoryValue = categoryValue == "全部" ? "" : categoryValue;
 
-            tool.ToolCode = tbSearchCode.Text;
-            tool.ToolName = tbSearchName.Text;
+            toolExtend.toolCode = tbSearchCode.Text;
+            toolExtend.toolName = tbSearchName.Text;
+            toolExtend.IsCheck = this.Is_Out_checkBox.Checked;
+            toolExtend.IsOut = this.Is_OutTime_checkBox.Checked;
+            toolExtend.IsRepair = this.Is_ToRepare_checkBox.Checked;
 
-            printFrm.Tag = tool;
+            toolExtend.CheckTime = this.cbCheckTime.SelectedValue.ToString();
+
+            printFrm.Tag = toolExtend;
             printFrm.ShowDialog();
         }
 

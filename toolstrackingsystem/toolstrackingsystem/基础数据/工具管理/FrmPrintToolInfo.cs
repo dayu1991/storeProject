@@ -13,6 +13,7 @@ using System.Runtime.Caching;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ViewEntity.toolstrackingsystem;
 
 namespace toolstrackingsystem
 {
@@ -40,49 +41,134 @@ namespace toolstrackingsystem
             #endregion
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
-                t_ToolInfo toolInfo = (t_ToolInfo)this.Tag;
-                string sql = "select * from [dbo].[t_ToolInfo]  where 1=1 ";
-                if (!string.IsNullOrEmpty(toolInfo.TypeName))
+                ToolInfoConditionExtend toolInfo = (ToolInfoConditionExtend)this.Tag;
+                if (toolInfo.IsCheck)//要链接借用表
                 {
-                    sql += " and  [TypeName] LIKE " + string.Format("'%{0}%'", toolInfo.TypeName);
-                }
-                if (!string.IsNullOrEmpty(toolInfo.ChildTypeName))
-                {
-                    sql += " AND ChildTypeName LIKE " + string.Format("'%{0}%'", toolInfo.ChildTypeName);
-                }
-                if (!string.IsNullOrEmpty(toolInfo.ToolCode))
-                {
-                    sql += " AND ToolCode LIKE " + string.Format("'%{0}%'", toolInfo.ToolCode);
-                }
-                if (!string.IsNullOrEmpty(toolInfo.ToolName))
-                {
-                    sql += " AND ToolName LIKE " + string.Format("'%{0}%'", toolInfo.ToolName);
-                }
-                sql += " ORDER BY ChildTypeName,[ToolId] desc ";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataSet c_ds = new DataSet();
-
-                try
-                {
-                    if (conn.State != ConnectionState.Open)
+                    string sql = @"select *,(case [IsBack] when '0' then '是' else '否' end) as IsBackString,(case [IsRepaired] when 1 then '是' else '否' end) as IsRepairedString from (
+       select t.*, o.[UserTimeInfo],o.[PersonCode],o.[PersonName], ROW_NUMBER() OVER (ORDER BY t.ChildTypeName,t.[ToolId] desc) as rank from [dbo].[t_ToolInfo] as t 
+left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 and  o.IsBack=0 
+)  as t WHERE 1=1 {0}";
+                    string sqlWhere = "";
+                    if (!string.IsNullOrWhiteSpace(toolInfo.blongValue))
                     {
-                        conn.Open();
+                        sqlWhere += " and  t.[TypeName]='" + toolInfo.blongValue + "'";
+
                     }
-                    adapter.Fill(c_ds);
-                    this.reportViewer1.LocalReport.DataSources.Clear();
+                    if (!string.IsNullOrWhiteSpace(toolInfo.categoryValue))
+                    {
+                        sqlWhere += " and t.[ChildTypeName] ='" + toolInfo.categoryValue + "' ";
+                    }
+                    if (!string.IsNullOrWhiteSpace(toolInfo.toolCode))
+                    {
+                        sqlWhere += " and t.[ToolCode] LIKE '%" + toolInfo.toolCode + "%' ";
 
-                    this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet2", c_ds.Tables[0]));
+                    }
+                    if (!string.IsNullOrEmpty(toolInfo.toolName))
+                    {
+                        sqlWhere += " and t.[ToolName] LIKE '%" + toolInfo.toolName + "%' ";
+                    }
 
-                    //显示报表
+                    if (toolInfo.IsRepair) //如果已经送修
+                    {
+                        sqlWhere += " and t.[IsRepaired] = 1";
+                    }
 
-                    this.reportViewer1.RefreshReport();
+                    sqlWhere += " and o.[UserTimeInfo]<>'' and o.[UserTimeInfo] <'" + DateTime.Now + "' ";
+
+                    if (toolInfo.CheckTime != "0") //如果不为0，过滤检测时间
+                    {
+                        int daysLevel = int.Parse(toolInfo.CheckTime);
+                        if (daysLevel == -1)//已过检修时间
+                        {
+                            sqlWhere += " and t.[CheckTime]<>''  and t.[CheckTime] < '" + DateTime.Now + "' ";
+                        }
+                        else
+                        {
+                            sqlWhere += " and t.[CheckTime]<>'' and t.[CheckTime]>='" + DateTime.Now.AddDays(daysLevel) + "' and t.[CheckTime] <='" + DateTime.Now + "' ";
+
+                        }
+                    }
+                    sql = string.Format(sql, sqlWhere);
                 }
-                catch (Exception ex)
+                else //不用链接            
                 {
-                    logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--frmprinttoolinfo--FrmPrintToolInfo_Load", ex.Message, ex.StackTrace, ex.Source);
+                    string sql = @"select *,(case [IsBack] when '0' then '是' else '否' end) as IsBackString,(case [IsRepaired] when 1 then '是' else '否' end) as IsRepairedString from (
+       select * from [dbo].[t_ToolInfo]  where 1=1 
+)  as t WHERE 1=1 {0}";
+                    string sqlWhere = "";
 
-                }              
+                    if (!string.IsNullOrWhiteSpace(toolInfo.blongValue))
+                    {
+                        sqlWhere += " and  t.[TypeName]='" + toolInfo.blongValue + "'";
+
+                    }
+                    if (!string.IsNullOrWhiteSpace(toolInfo.categoryValue))
+                    {
+                        sqlWhere += " and t.[ChildTypeName] ='" + toolInfo.categoryValue + "' ";
+                    }
+                    if (!string.IsNullOrWhiteSpace(toolInfo.toolCode))
+                    {
+                        sqlWhere += " and t.[ToolCode] LIKE '%" + toolInfo.toolCode + "%' ";
+
+                    }
+                    if (!string.IsNullOrEmpty(toolInfo.toolName))
+                    {
+                        sqlWhere += " and t.[ToolName] LIKE '%" + toolInfo.toolName + "%' ";
+                    }
+
+                    if (toolInfo.IsOut) //如果已经借出
+                    {
+                        sqlWhere += " and [IsBack] = 0";
+                    }
+                    if (toolInfo.IsRepair) //如果已经送修
+                    {
+                        sqlWhere += " and [IsRepaired] = 1";
+                    }
+                    if (toolInfo.CheckTime != "0") //如果不为0，过滤检测时间
+                    {
+                        int daysLevel = int.Parse(toolInfo.CheckTime);
+                        if (daysLevel == -1)//已过检修时间
+                        {
+                            sqlWhere += " and [CheckTime]<>''  and [CheckTime] <'" + DateTime.Now + "' ";
+                        }
+                        else
+                        {
+                            sqlWhere += " and t.[CheckTime]<>'' and t.[CheckTime]>='" + DateTime.Now.AddDays(daysLevel) + "' and t.[CheckTime] <='" + DateTime.Now + "' ";
+                        }
+                    }
+                    sql = string.Format(sql, sqlWhere);
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataSet c_ds = new DataSet();
+
+                    try
+                    {
+                        if (conn.State != ConnectionState.Open)
+                        {
+                            conn.Open();
+                        }
+                        adapter.Fill(c_ds);
+                        //为报表浏览器指定报表文件
+
+                        //this.reportViewer1.LocalReport.ReportEmbeddedResource = "report.Report1.rdlc";
+
+                        //指定数据集,数据集名称后为表,不是DataSet类型的数据集
+
+                        this.reportViewer1.LocalReport.DataSources.Clear();
+
+                        this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", c_ds.Tables[0]));
+
+                        //显示报表
+
+                        this.reportViewer1.RefreshReport();
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--frmprinttoolinfo--FrmPrintToolInfo_Load", ex.Message, ex.StackTrace, ex.Source);
+
+                    }
+                }
             }
         }
     }

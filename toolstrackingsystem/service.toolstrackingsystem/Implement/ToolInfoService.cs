@@ -723,7 +723,6 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
             }
             return result;
         }
-
         public bool ToRepaireTool(t_ToolInfo tool)
         {
             if (tool.IsRepaired == 1)

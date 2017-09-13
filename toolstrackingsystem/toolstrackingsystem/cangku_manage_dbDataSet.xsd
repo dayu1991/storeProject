@@ -1920,6 +1920,24 @@ SELECT TypeID, TypeName, classification, OptionPerson, fatherCode, childCode FRO
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="ToolInfoExtend" msprop:Generator_TableClassName="ToolInfoExtendDataTable" msprop:Generator_TableVarName="tableToolInfoExtend" msprop:Generator_RowChangedName="ToolInfoExtendRowChanged" msprop:Generator_TablePropName="ToolInfoExtend" msprop:Generator_RowDeletingName="ToolInfoExtendRowDeleting" msprop:Generator_RowChangingName="ToolInfoExtendRowChanging" msprop:Generator_RowEvHandlerName="ToolInfoExtendRowChangeEventHandler" msprop:Generator_RowDeletedName="ToolInfoExtendRowDeleted" msprop:Generator_RowClassName="ToolInfoExtendRow" msprop:Generator_UserTableName="ToolInfoExtend" msprop:Generator_RowEvArgName="ToolInfoExtendRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TypeName" msprop:Generator_ColumnVarNameInTable="columnTypeName" msprop:Generator_ColumnPropNameInRow="TypeName" msprop:Generator_ColumnPropNameInTable="TypeNameColumn" msprop:Generator_UserColumnName="TypeName" type="xs:string" minOccurs="0" />
+              <xs:element name="ChildTypeName" msprop:Generator_ColumnVarNameInTable="columnChildTypeName" msprop:Generator_ColumnPropNameInRow="ChildTypeName" msprop:Generator_ColumnPropNameInTable="ChildTypeNameColumn" msprop:Generator_UserColumnName="ChildTypeName" type="xs:string" minOccurs="0" />
+              <xs:element name="PackCode" msprop:Generator_ColumnVarNameInTable="columnPackCode" msprop:Generator_ColumnPropNameInRow="PackCode" msprop:Generator_ColumnPropNameInTable="PackCodeColumn" msprop:Generator_UserColumnName="PackCode" type="xs:string" minOccurs="0" />
+              <xs:element name="PackName" msprop:Generator_ColumnVarNameInTable="columnPackName" msprop:Generator_ColumnPropNameInRow="PackName" msprop:Generator_ColumnPropNameInTable="PackNameColumn" msprop:Generator_UserColumnName="PackName" type="xs:string" minOccurs="0" />
+              <xs:element name="ToolCode" msprop:Generator_ColumnVarNameInTable="columnToolCode" msprop:Generator_ColumnPropNameInRow="ToolCode" msprop:Generator_ColumnPropNameInTable="ToolCodeColumn" msprop:Generator_UserColumnName="ToolCode" type="xs:string" minOccurs="0" />
+              <xs:element name="ToolName" msprop:Generator_ColumnVarNameInTable="columnToolName" msprop:Generator_ColumnPropNameInRow="ToolName" msprop:Generator_ColumnPropNameInTable="ToolNameColumn" msprop:Generator_UserColumnName="ToolName" type="xs:string" minOccurs="0" />
+              <xs:element name="Models" msprop:Generator_ColumnVarNameInTable="columnModels" msprop:Generator_ColumnPropNameInRow="Models" msprop:Generator_ColumnPropNameInTable="ModelsColumn" msprop:Generator_UserColumnName="Models" type="xs:string" minOccurs="0" />
+              <xs:element name="Location" msprop:Generator_ColumnVarNameInTable="columnLocation" msprop:Generator_ColumnPropNameInRow="Location" msprop:Generator_ColumnPropNameInTable="LocationColumn" msprop:Generator_UserColumnName="Location" type="xs:string" minOccurs="0" />
+              <xs:element name="Remarks" msprop:Generator_ColumnVarNameInTable="columnRemarks" msprop:Generator_ColumnPropNameInRow="Remarks" msprop:Generator_ColumnPropNameInTable="RemarksColumn" msprop:Generator_UserColumnName="Remarks" type="xs:string" minOccurs="0" />
+              <xs:element name="CheckTime" msprop:Generator_ColumnVarNameInTable="columnCheckTime" msprop:Generator_ColumnPropNameInRow="CheckTime" msprop:Generator_ColumnPropNameInTable="CheckTimeColumn" msprop:Generator_UserColumnName="CheckTime" type="xs:string" minOccurs="0" />
+              <xs:element name="IsBackString" msprop:Generator_ColumnVarNameInTable="columnIsBackString" msprop:Generator_ColumnPropNameInRow="IsBackString" msprop:Generator_ColumnPropNameInTable="IsBackStringColumn" msprop:Generator_UserColumnName="IsBackString" type="xs:string" minOccurs="0" />
+              <xs:element name="IsRepairedString" msprop:Generator_ColumnVarNameInTable="columnIsRepairedString" msprop:Generator_ColumnPropNameInRow="IsRepairedString" msprop:Generator_ColumnPropNameInTable="IsRepairedStringColumn" msprop:Generator_UserColumnName="IsRepairedString" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
