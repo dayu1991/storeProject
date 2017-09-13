@@ -1,0 +1,714 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="cangku_manage_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Sys_AddressInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MacAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_Menu_Info">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuName" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="GroupCode" Type="varchar" MaxLength="16" />
+          <Property Name="NavigationTitle" Type="varchar" MaxLength="32" />
+          <Property Name="MenuICON" Type="int" />
+          <Property Name="IsMain" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="ShortKey" Type="varchar" MaxLength="32" />
+          <Property Name="FileName" Type="varchar" MaxLength="64" />
+          <Property Name="AddTools" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="MenuOrder" Type="int" />
+          <Property Name="IsActive" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_User_Info">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserCode" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="96" />
+          <Property Name="PassWord" Type="varchar" MaxLength="128" />
+          <Property Name="UserRole" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="256" />
+          <Property Name="IsActive" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sys_User_Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleCode" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MenuID" Type="varchar" MaxLength="512" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_CurrentCountInfo">
+          <Key>
+            <PropertyRef Name="CurrentCountID" />
+          </Key>
+          <Property Name="CurrentCountID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="ChildTypeName" Type="varchar" MaxLength="64" />
+          <Property Name="PackCode" Type="varchar" MaxLength="24" />
+          <Property Name="PackName" Type="varchar" MaxLength="64" />
+          <Property Name="ToolCode" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="ToolName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Models" Type="varchar" MaxLength="32" />
+          <Property Name="Location" Type="varchar" MaxLength="32" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1024" />
+          <Property Name="InStoreTime" Type="varchar" MaxLength="24" />
+          <Property Name="OutStoreTime" Type="varchar" MaxLength="24" />
+          <Property Name="BackTime" Type="varchar" MaxLength="24" />
+          <Property Name="OptionType" Type="varchar" MaxLength="12" />
+          <Property Name="PersonCode" Type="varchar" MaxLength="64" />
+          <Property Name="PersonName" Type="varchar" MaxLength="64" />
+          <Property Name="BackPesonCode" Type="varchar" MaxLength="64" />
+          <Property Name="BackPersonName" Type="varchar" MaxLength="64" />
+          <Property Name="describes" Type="varchar" MaxLength="1024" />
+          <Property Name="OptionPerson" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="t_OutBackStore">
+          <Key>
+            <PropertyRef Name="OutBackStoreID" />
+          </Key>
+          <Property Name="OutBackStoreID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToolCode" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="ToolName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="OutStoreTime" Type="varchar" MaxLength="24" />
+          <Property Name="PersonCode" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="PersonName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="UserTimeInfo" Type="varchar" MaxLength="24" />
+          <Property Name="IsBack" Type="varchar" MaxLength="2" />
+          <Property Name="BackTime" Type="varchar" MaxLength="24" />
+          <Property Name="BackPesonCode" Type="varchar" MaxLength="64" />
+          <Property Name="BackPersonName" Type="varchar" MaxLength="64" />
+          <Property Name="outdescribes" Type="varchar" MaxLength="1024" />
+          <Property Name="backdescribes" Type="varchar" MaxLength="1024" />
+          <Property Name="OptionPerson" Type="varchar" MaxLength="32" />
+          <Property Name="IsCredit" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_PersonCreditRecord">
+          <Key>
+            <PropertyRef Name="CreditID" />
+          </Key>
+          <Property Name="CreditID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackCode" Type="varchar" MaxLength="24" />
+          <Property Name="PackName" Type="varchar" MaxLength="64" />
+          <Property Name="ToolCode" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="ToolName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="PersonCode" Type="varchar" MaxLength="64" />
+          <Property Name="PersonName" Type="varchar" MaxLength="64" />
+          <Property Name="OutStoreTime" Type="varchar" MaxLength="24" />
+          <Property Name="UserTimeInfo" Type="varchar" MaxLength="24" />
+          <Property Name="OptionPerson" Type="varchar" MaxLength="32" />
+          <Property Name="OptionTime" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="t_PersonInfo">
+          <Key>
+            <PropertyRef Name="PersonCode" />
+          </Key>
+          <Property Name="PersonID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonCode" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="PersonName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="RFID" Type="varchar" MaxLength="64" />
+          <Property Name="Remarks" Type="varchar" MaxLength="512" />
+          <Property Name="OptionPerson" Type="varchar" MaxLength="32" />
+          <Property Name="IsReceive" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_ScrapToolInfo">
+          <Key>
+            <PropertyRef Name="ScrapID" />
+          </Key>
+          <Property Name="ScrapID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="50" />
+          <Property Name="ChildTypeName" Type="varchar" MaxLength="50" />
+          <Property Name="ToolCode" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="ToolName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="PackCode" Type="varchar" MaxLength="50" />
+          <Property Name="PackName" Type="varchar" MaxLength="50" />
+          <Property Name="ScrapTime" Type="varchar" MaxLength="24" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1024" />
+          <Property Name="OptionPerson" Type="varchar" MaxLength="32" />
+          <Property Name="RemarkPerson" Type="varchar" MaxLength="50" />
+          <Property Name="RemarkTime" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="t_ToolCategoryInfo">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="OperatorUserId" Type="bigint" Nullable="false" />
+          <Property Name="OperatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="Level" Type="int" Nullable="false" />
+          <Property Name="Classification" Type="int" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="t_ToolInfo">
+          <Key>
+            <PropertyRef Name="ToolCode" />
+          </Key>
+          <Property Name="ToolID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="ChildTypeName" Type="varchar" MaxLength="64" />
+          <Property Name="PackCode" Type="varchar" MaxLength="24" />
+          <Property Name="PackName" Type="varchar" MaxLength="64" />
+          <Property Name="CarGroupInfo" Type="varchar" MaxLength="64" />
+          <Property Name="ToolCode" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="ToolName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Models" Type="varchar" MaxLength="32" />
+          <Property Name="Location" Type="varchar" MaxLength="32" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1024" />
+          <Property Name="CheckTime" Type="varchar" MaxLength="24" />
+          <Property Name="IsActive" Type="varchar" MaxLength="2" />
+          <Property Name="IsRepaired" Type="int" Nullable="false" />
+          <Property Name="OptionPerson" Type="varchar" MaxLength="32" />
+          <Property Name="IsBack" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="t_ToolRepairRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="ChildTypeName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="PackCode" Type="varchar" MaxLength="24" />
+          <Property Name="PackName" Type="varchar" MaxLength="64" />
+          <Property Name="ToolCode" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="ToolName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="ToRepairedTime" Type="datetime" />
+          <Property Name="ToRepairedPerCode" Type="varchar" MaxLength="50" />
+          <Property Name="ToRepairedPerName" Type="varchar" MaxLength="50" />
+          <Property Name="ReceiveTime" Type="datetime" />
+          <Property Name="ReceivePerCode" Type="varchar" MaxLength="50" />
+          <Property Name="ReceivePerName" Type="varchar" MaxLength="50" />
+          <Property Name="HandleTime" Type="datetime" />
+          <Property Name="HandlePerCode" Type="varchar" MaxLength="50" />
+          <Property Name="HandlePerName" Type="varchar" MaxLength="50" />
+          <Property Name="PullTime" Type="datetime" />
+          <Property Name="PullPerCode" Type="varchar" MaxLength="50" />
+          <Property Name="PullPerName" Type="varchar" MaxLength="50" />
+          <Property Name="ToRepairMemo" Type="varchar" MaxLength="200" />
+          <Property Name="ScrapMemo" Type="varchar" MaxLength="200" />
+          <Property Name="ToolStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_ToolType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="classification" Type="int" />
+          <Property Name="OptionPerson" Type="varchar" MaxLength="32" />
+          <Property Name="fatherCode" Type="varchar" MaxLength="4" />
+          <Property Name="childCode" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityContainer Name="cangku_manage_dbModelStoreContainer">
+          <EntitySet Name="Sys_AddressInfo" EntityType="Self.Sys_AddressInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Menu_Info" EntityType="Self.Sys_Menu_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_User_Info" EntityType="Self.Sys_User_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_User_Role" EntityType="Self.Sys_User_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_CurrentCountInfo" EntityType="Self.t_CurrentCountInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_OutBackStore" EntityType="Self.t_OutBackStore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_PersonCreditRecord" EntityType="Self.t_PersonCreditRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_PersonInfo" EntityType="Self.t_PersonInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ScrapToolInfo" EntityType="Self.t_ScrapToolInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ToolCategoryInfo" EntityType="Self.t_ToolCategoryInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ToolInfo" EntityType="Self.t_ToolInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ToolRepairRecord" EntityType="Self.t_ToolRepairRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ToolType" EntityType="Self.t_ToolType" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cangku_manage_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="cangku_manage_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Sys_AddressInfo" EntityType="cangku_manage_dbModel.Sys_AddressInfo" />
+          <EntitySet Name="Sys_Menu_Info" EntityType="cangku_manage_dbModel.Sys_Menu_Info" />
+          <EntitySet Name="Sys_User_Info" EntityType="cangku_manage_dbModel.Sys_User_Info" />
+          <EntitySet Name="Sys_User_Role" EntityType="cangku_manage_dbModel.Sys_User_Role" />
+          <EntitySet Name="t_CurrentCountInfo" EntityType="cangku_manage_dbModel.t_CurrentCountInfo" />
+          <EntitySet Name="t_OutBackStore" EntityType="cangku_manage_dbModel.t_OutBackStore" />
+          <EntitySet Name="t_PersonCreditRecord" EntityType="cangku_manage_dbModel.t_PersonCreditRecord" />
+          <EntitySet Name="t_PersonInfo" EntityType="cangku_manage_dbModel.t_PersonInfo" />
+          <EntitySet Name="t_ScrapToolInfo" EntityType="cangku_manage_dbModel.t_ScrapToolInfo" />
+          <EntitySet Name="t_ToolCategoryInfo" EntityType="cangku_manage_dbModel.t_ToolCategoryInfo" />
+          <EntitySet Name="t_ToolInfo" EntityType="cangku_manage_dbModel.t_ToolInfo" />
+          <EntitySet Name="t_ToolRepairRecord" EntityType="cangku_manage_dbModel.t_ToolRepairRecord" />
+          <EntitySet Name="t_ToolType" EntityType="cangku_manage_dbModel.t_ToolType" />
+        </EntityContainer>
+        <EntityType Name="Sys_AddressInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MacAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_Menu_Info">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="GroupCode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="NavigationTitle" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="MenuICON" Type="Int32" />
+          <Property Name="IsMain" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ShortKey" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="FileName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="AddTools" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="MenuOrder" Type="Int32" />
+          <Property Name="IsActive" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Sys_User_Info">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserCode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="96" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Sys_User_Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MenuID" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_CurrentCountInfo">
+          <Key>
+            <PropertyRef Name="CurrentCountID" />
+          </Key>
+          <Property Name="CurrentCountID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ChildTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PackCode" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="PackName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ToolCode" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="ToolName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Models" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="InStoreTime" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="OutStoreTime" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="BackTime" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="OptionType" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="PersonCode" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PersonName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="BackPesonCode" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="BackPersonName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="describes" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="OptionPerson" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_OutBackStore">
+          <Key>
+            <PropertyRef Name="OutBackStoreID" />
+          </Key>
+          <Property Name="OutBackStoreID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToolCode" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="ToolName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="OutStoreTime" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="PersonCode" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="UserTimeInfo" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="IsBack" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="BackTime" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="BackPesonCode" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="BackPersonName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="outdescribes" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="backdescribes" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="OptionPerson" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="IsCredit" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_PersonCreditRecord">
+          <Key>
+            <PropertyRef Name="CreditID" />
+          </Key>
+          <Property Name="CreditID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackCode" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="PackName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ToolCode" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="ToolName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PersonCode" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PersonName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="OutStoreTime" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="UserTimeInfo" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="OptionPerson" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="OptionTime" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_PersonInfo">
+          <Key>
+            <PropertyRef Name="PersonCode" />
+          </Key>
+          <Property Name="PersonID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonCode" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="RFID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="OptionPerson" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="IsReceive" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_ScrapToolInfo">
+          <Key>
+            <PropertyRef Name="ScrapID" />
+          </Key>
+          <Property Name="ScrapID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChildTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ToolCode" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="ToolName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PackCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PackName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScrapTime" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="OptionPerson" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="RemarkPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RemarkTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_ToolCategoryInfo">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OperatorUserId" Type="Int64" Nullable="false" />
+          <Property Name="OperatorUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <Property Name="Classification" Type="Int32" Nullable="false" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="t_ToolInfo">
+          <Key>
+            <PropertyRef Name="ToolCode" />
+          </Key>
+          <Property Name="ToolID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ChildTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PackCode" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="PackName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="CarGroupInfo" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ToolCode" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="ToolName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Models" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="CheckTime" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="IsRepaired" Type="Int32" Nullable="false" />
+          <Property Name="OptionPerson" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="IsBack" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_ToolRepairRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ChildTypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PackCode" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="PackName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ToolCode" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="ToolName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ToRepairedTime" Type="DateTime" Precision="3" />
+          <Property Name="ToRepairedPerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ToRepairedPerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiveTime" Type="DateTime" Precision="3" />
+          <Property Name="ReceivePerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReceivePerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HandleTime" Type="DateTime" Precision="3" />
+          <Property Name="HandlePerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HandlePerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PullTime" Type="DateTime" Precision="3" />
+          <Property Name="PullPerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PullPerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ToRepairMemo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ScrapMemo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ToolStatus" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_ToolType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="classification" Type="Int32" />
+          <Property Name="OptionPerson" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="fatherCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="childCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cangku_manage_dbModelStoreContainer" CdmEntityContainer="cangku_manage_dbEntities">
+          <EntitySetMapping Name="Sys_AddressInfo">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.Sys_AddressInfo">
+              <MappingFragment StoreEntitySet="Sys_AddressInfo">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_Menu_Info">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.Sys_Menu_Info">
+              <MappingFragment StoreEntitySet="Sys_Menu_Info">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+                <ScalarProperty Name="AddTools" ColumnName="AddTools" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ShortKey" ColumnName="ShortKey" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="MenuICON" ColumnName="MenuICON" />
+                <ScalarProperty Name="NavigationTitle" ColumnName="NavigationTitle" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_User_Info">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.Sys_User_Info">
+              <MappingFragment StoreEntitySet="Sys_User_Info">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_User_Role">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.Sys_User_Role">
+              <MappingFragment StoreEntitySet="Sys_User_Role">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_CurrentCountInfo">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.t_CurrentCountInfo">
+              <MappingFragment StoreEntitySet="t_CurrentCountInfo">
+                <ScalarProperty Name="OptionPerson" ColumnName="OptionPerson" />
+                <ScalarProperty Name="describes" ColumnName="describes" />
+                <ScalarProperty Name="BackPersonName" ColumnName="BackPersonName" />
+                <ScalarProperty Name="BackPesonCode" ColumnName="BackPesonCode" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="PersonCode" ColumnName="PersonCode" />
+                <ScalarProperty Name="OptionType" ColumnName="OptionType" />
+                <ScalarProperty Name="BackTime" ColumnName="BackTime" />
+                <ScalarProperty Name="OutStoreTime" ColumnName="OutStoreTime" />
+                <ScalarProperty Name="InStoreTime" ColumnName="InStoreTime" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Models" ColumnName="Models" />
+                <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+                <ScalarProperty Name="ToolCode" ColumnName="ToolCode" />
+                <ScalarProperty Name="PackName" ColumnName="PackName" />
+                <ScalarProperty Name="PackCode" ColumnName="PackCode" />
+                <ScalarProperty Name="ChildTypeName" ColumnName="ChildTypeName" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="CurrentCountID" ColumnName="CurrentCountID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_OutBackStore">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.t_OutBackStore">
+              <MappingFragment StoreEntitySet="t_OutBackStore">
+                <ScalarProperty Name="IsCredit" ColumnName="IsCredit" />
+                <ScalarProperty Name="OptionPerson" ColumnName="OptionPerson" />
+                <ScalarProperty Name="backdescribes" ColumnName="backdescribes" />
+                <ScalarProperty Name="outdescribes" ColumnName="outdescribes" />
+                <ScalarProperty Name="BackPersonName" ColumnName="BackPersonName" />
+                <ScalarProperty Name="BackPesonCode" ColumnName="BackPesonCode" />
+                <ScalarProperty Name="BackTime" ColumnName="BackTime" />
+                <ScalarProperty Name="IsBack" ColumnName="IsBack" />
+                <ScalarProperty Name="UserTimeInfo" ColumnName="UserTimeInfo" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="PersonCode" ColumnName="PersonCode" />
+                <ScalarProperty Name="OutStoreTime" ColumnName="OutStoreTime" />
+                <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+                <ScalarProperty Name="ToolCode" ColumnName="ToolCode" />
+                <ScalarProperty Name="OutBackStoreID" ColumnName="OutBackStoreID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_PersonCreditRecord">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.t_PersonCreditRecord">
+              <MappingFragment StoreEntitySet="t_PersonCreditRecord">
+                <ScalarProperty Name="OptionTime" ColumnName="OptionTime" />
+                <ScalarProperty Name="OptionPerson" ColumnName="OptionPerson" />
+                <ScalarProperty Name="UserTimeInfo" ColumnName="UserTimeInfo" />
+                <ScalarProperty Name="OutStoreTime" ColumnName="OutStoreTime" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="PersonCode" ColumnName="PersonCode" />
+                <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+                <ScalarProperty Name="ToolCode" ColumnName="ToolCode" />
+                <ScalarProperty Name="PackName" ColumnName="PackName" />
+                <ScalarProperty Name="PackCode" ColumnName="PackCode" />
+                <ScalarProperty Name="CreditID" ColumnName="CreditID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_PersonInfo">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.t_PersonInfo">
+              <MappingFragment StoreEntitySet="t_PersonInfo">
+                <ScalarProperty Name="IsReceive" ColumnName="IsReceive" />
+                <ScalarProperty Name="OptionPerson" ColumnName="OptionPerson" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="RFID" ColumnName="RFID" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="PersonCode" ColumnName="PersonCode" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ScrapToolInfo">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.t_ScrapToolInfo">
+              <MappingFragment StoreEntitySet="t_ScrapToolInfo">
+                <ScalarProperty Name="RemarkTime" ColumnName="RemarkTime" />
+                <ScalarProperty Name="RemarkPerson" ColumnName="RemarkPerson" />
+                <ScalarProperty Name="OptionPerson" ColumnName="OptionPerson" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ScrapTime" ColumnName="ScrapTime" />
+                <ScalarProperty Name="PackName" ColumnName="PackName" />
+                <ScalarProperty Name="PackCode" ColumnName="PackCode" />
+                <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+                <ScalarProperty Name="ToolCode" ColumnName="ToolCode" />
+                <ScalarProperty Name="ChildTypeName" ColumnName="ChildTypeName" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="ScrapID" ColumnName="ScrapID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ToolCategoryInfo">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.t_ToolCategoryInfo">
+              <MappingFragment StoreEntitySet="t_ToolCategoryInfo">
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="Classification" ColumnName="Classification" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="OperatorUserName" ColumnName="OperatorUserName" />
+                <ScalarProperty Name="OperatorUserId" ColumnName="OperatorUserId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ToolInfo">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.t_ToolInfo">
+              <MappingFragment StoreEntitySet="t_ToolInfo">
+                <ScalarProperty Name="IsBack" ColumnName="IsBack" />
+                <ScalarProperty Name="OptionPerson" ColumnName="OptionPerson" />
+                <ScalarProperty Name="IsRepaired" ColumnName="IsRepaired" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Models" ColumnName="Models" />
+                <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+                <ScalarProperty Name="ToolCode" ColumnName="ToolCode" />
+                <ScalarProperty Name="CarGroupInfo" ColumnName="CarGroupInfo" />
+                <ScalarProperty Name="PackName" ColumnName="PackName" />
+                <ScalarProperty Name="PackCode" ColumnName="PackCode" />
+                <ScalarProperty Name="ChildTypeName" ColumnName="ChildTypeName" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ToolRepairRecord">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.t_ToolRepairRecord">
+              <MappingFragment StoreEntitySet="t_ToolRepairRecord">
+                <ScalarProperty Name="ToolStatus" ColumnName="ToolStatus" />
+                <ScalarProperty Name="ScrapMemo" ColumnName="ScrapMemo" />
+                <ScalarProperty Name="ToRepairMemo" ColumnName="ToRepairMemo" />
+                <ScalarProperty Name="PullPerName" ColumnName="PullPerName" />
+                <ScalarProperty Name="PullPerCode" ColumnName="PullPerCode" />
+                <ScalarProperty Name="PullTime" ColumnName="PullTime" />
+                <ScalarProperty Name="HandlePerName" ColumnName="HandlePerName" />
+                <ScalarProperty Name="HandlePerCode" ColumnName="HandlePerCode" />
+                <ScalarProperty Name="HandleTime" ColumnName="HandleTime" />
+                <ScalarProperty Name="ReceivePerName" ColumnName="ReceivePerName" />
+                <ScalarProperty Name="ReceivePerCode" ColumnName="ReceivePerCode" />
+                <ScalarProperty Name="ReceiveTime" ColumnName="ReceiveTime" />
+                <ScalarProperty Name="ToRepairedPerName" ColumnName="ToRepairedPerName" />
+                <ScalarProperty Name="ToRepairedPerCode" ColumnName="ToRepairedPerCode" />
+                <ScalarProperty Name="ToRepairedTime" ColumnName="ToRepairedTime" />
+                <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+                <ScalarProperty Name="ToolCode" ColumnName="ToolCode" />
+                <ScalarProperty Name="PackName" ColumnName="PackName" />
+                <ScalarProperty Name="PackCode" ColumnName="PackCode" />
+                <ScalarProperty Name="ChildTypeName" ColumnName="ChildTypeName" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ToolType">
+            <EntityTypeMapping TypeName="cangku_manage_dbModel.t_ToolType">
+              <MappingFragment StoreEntitySet="t_ToolType">
+                <ScalarProperty Name="childCode" ColumnName="childCode" />
+                <ScalarProperty Name="fatherCode" ColumnName="fatherCode" />
+                <ScalarProperty Name="OptionPerson" ColumnName="OptionPerson" />
+                <ScalarProperty Name="classification" ColumnName="classification" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
