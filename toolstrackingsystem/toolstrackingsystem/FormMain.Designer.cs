@@ -77,7 +77,7 @@
             this.ribbonControl1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.ribbonControl1.QuickToolbarItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.qatCustomizeItem1});
-            this.ribbonControl1.Size = new System.Drawing.Size(1474, 136);
+            this.ribbonControl1.Size = new System.Drawing.Size(1490, 136);
             this.ribbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonControl1.SystemText.MaximizeRibbonText = "放大工具栏";
             this.ribbonControl1.SystemText.MinimizeRibbonText = "缩小工具栏";
@@ -218,7 +218,7 @@
             this.superTabControl2.ReorderTabsEnabled = true;
             this.superTabControl2.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControl2.SelectedTabIndex = -1;
-            this.superTabControl2.Size = new System.Drawing.Size(1474, 802);
+            this.superTabControl2.Size = new System.Drawing.Size(1490, 861);
             this.superTabControl2.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl2.TabIndex = 1;
             this.superTabControl2.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.VisualStudio2008Document;
@@ -234,7 +234,7 @@
             this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupPanel1.Location = new System.Drawing.Point(5, 1);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(1474, 938);
+            this.groupPanel1.Size = new System.Drawing.Size(1490, 997);
             // 
             // 
             // 
@@ -279,9 +279,9 @@
             this.groupPanel2.Controls.Add(this.labelX1);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupPanel2.Location = new System.Drawing.Point(5, 904);
+            this.groupPanel2.Location = new System.Drawing.Point(5, 963);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1474, 35);
+            this.groupPanel2.Size = new System.Drawing.Size(1490, 35);
             // 
             // 
             // 
@@ -415,10 +415,12 @@
             this.Controls.Add(this.superTabControl2);
             this.Controls.Add(this.ribbonControl1);
             this.Controls.Add(this.groupPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "主页面";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormTest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).EndInit();
             this.groupPanel2.ResumeLayout(false);

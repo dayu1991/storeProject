@@ -124,9 +124,7 @@ namespace toolstrackingsystem
                     MessageBox.Show("请选择要编辑的记录！");
                     return;                
                 }
-              
-
-
+                dtiCheckTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             }
             catch (Exception ex)
             {
