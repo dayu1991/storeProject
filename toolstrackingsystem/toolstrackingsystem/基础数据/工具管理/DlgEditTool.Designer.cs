@@ -38,7 +38,6 @@
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.cbEditBlong = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.dtiCheckTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.tbEditMemo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tbEditModel = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -56,6 +55,7 @@
             this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.labRepareTime = new DevComponents.DotNetBar.LabelX();
             this.labRepareTimeValue = new DevComponents.DotNetBar.LabelX();
+            this.dtiCheckTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             ((System.ComponentModel.ISupportInitialize)(this.dtiCheckTime)).BeginInit();
             this.SuspendLayout();
             // 
@@ -184,53 +184,6 @@
             this.labelX5.Size = new System.Drawing.Size(57, 23);
             this.labelX5.TabIndex = 13;
             this.labelX5.Text = "配属：";
-            // 
-            // dtiCheckTime
-            // 
-            // 
-            // 
-            // 
-            this.dtiCheckTime.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.dtiCheckTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dtiCheckTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.dtiCheckTime.ButtonDropDown.Visible = true;
-            this.dtiCheckTime.CustomFormat = "yyyy-MM-dd hh:mm:ss";
-            this.dtiCheckTime.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
-            this.dtiCheckTime.IsPopupCalendarOpen = false;
-            this.dtiCheckTime.Location = new System.Drawing.Point(146, 145);
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.dtiCheckTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dtiCheckTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            this.dtiCheckTime.MonthCalendar.ClearButtonVisible = true;
-            // 
-            // 
-            // 
-            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dtiCheckTime.MonthCalendar.DisplayMonth = new System.DateTime(2017, 7, 1, 0, 0, 0, 0);
-            this.dtiCheckTime.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            // 
-            // 
-            // 
-            this.dtiCheckTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.dtiCheckTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.dtiCheckTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.dtiCheckTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dtiCheckTime.MonthCalendar.TodayButtonVisible = true;
-            this.dtiCheckTime.Name = "dtiCheckTime";
-            this.dtiCheckTime.Size = new System.Drawing.Size(232, 21);
-            this.dtiCheckTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dtiCheckTime.TabIndex = 27;
             // 
             // labelX10
             // 
@@ -453,11 +406,57 @@
             this.labRepareTimeValue.TabIndex = 44;
             this.labRepareTimeValue.Text = "否";
             // 
+            // dtiCheckTime
+            // 
+            // 
+            // 
+            // 
+            this.dtiCheckTime.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dtiCheckTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiCheckTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dtiCheckTime.ButtonDropDown.Visible = true;
+            this.dtiCheckTime.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
+            this.dtiCheckTime.IsPopupCalendarOpen = false;
+            this.dtiCheckTime.Location = new System.Drawing.Point(146, 145);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.dtiCheckTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiCheckTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.dtiCheckTime.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dtiCheckTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiCheckTime.MonthCalendar.DisplayMonth = new System.DateTime(2017, 9, 1, 0, 0, 0, 0);
+            // 
+            // 
+            // 
+            this.dtiCheckTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dtiCheckTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtiCheckTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dtiCheckTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiCheckTime.MonthCalendar.TodayButtonVisible = true;
+            this.dtiCheckTime.Name = "dtiCheckTime";
+            this.dtiCheckTime.Size = new System.Drawing.Size(233, 21);
+            this.dtiCheckTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.dtiCheckTime.TabIndex = 45;
+            // 
             // DlgEditTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 486);
+            this.Controls.Add(this.dtiCheckTime);
             this.Controls.Add(this.labRepareTimeValue);
             this.Controls.Add(this.labRepareTime);
             this.Controls.Add(this.labIsToRepareValue);
@@ -475,7 +474,6 @@
             this.Controls.Add(this.labelX9);
             this.Controls.Add(this.tbEditMemo);
             this.Controls.Add(this.labelX10);
-            this.Controls.Add(this.dtiCheckTime);
             this.Controls.Add(this.tbEditLocation);
             this.Controls.Add(this.labelX8);
             this.Controls.Add(this.tbEditToolName);
@@ -510,7 +508,6 @@
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbEditBlong;
         private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtiCheckTime;
         private DevComponents.DotNetBar.LabelX labelX10;
         private DevComponents.DotNetBar.Controls.TextBoxX tbEditMemo;
         private DevComponents.DotNetBar.Controls.TextBoxX tbEditModel;
@@ -528,5 +525,6 @@
         private DevComponents.DotNetBar.LabelX labRepareTime;
         private DevComponents.DotNetBar.LabelX labRepareTimeValue;
         private DevComponents.DotNetBar.LabelX labOutTimes;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtiCheckTime;
     }
 }
