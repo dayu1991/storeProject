@@ -361,7 +361,7 @@
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1469, 492);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1469, 497);
             this.dataGridViewX1.TabIndex = 1;
             this.dataGridViewX1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellClick);
             this.dataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellDoubleClick);
@@ -465,6 +465,7 @@
             this.groupPanel2.Controls.Add(this.btnDelete);
             this.groupPanel2.Controls.Add(this.btnAddCate);
             this.groupPanel2.Controls.Add(this.btnAddBlong);
+            this.groupPanel2.Controls.Add(this.Print_button);
             this.groupPanel2.Controls.Add(this.ExcelIn_button);
             this.groupPanel2.Controls.Add(this.ExcelOut_button);
             this.groupPanel2.Controls.Add(this.tbEditCode);
@@ -571,7 +572,7 @@
             // 
             this.Print_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Print_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Print_button.Location = new System.Drawing.Point(806, 523);
+            this.Print_button.Location = new System.Drawing.Point(1096, 26);
             this.Print_button.Name = "Print_button";
             this.Print_button.Size = new System.Drawing.Size(75, 91);
             this.Print_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -875,24 +876,23 @@
             // 
             this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(10, 582);
+            this.pagerControl1.Location = new System.Drawing.Point(10, 563);
             this.pagerControl1.Name = "pagerControl1";
             this.pagerControl1.PageIndex = 1;
             this.pagerControl1.PageSize = 50;
             this.pagerControl1.RecordCount = 0;
-            this.pagerControl1.Size = new System.Drawing.Size(1469, 32);
+            this.pagerControl1.Size = new System.Drawing.Size(1469, 51);
             this.pagerControl1.TabIndex = 3;
             // 
             // ToolInfoManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 774);
+            this.ClientSize = new System.Drawing.Size(1485, 774);
             this.Controls.Add(this.pagerControl1);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.groupPanel1);
-            this.Controls.Add(this.Print_button);
             this.Name = "ToolInfoManage";
             this.Text = "ToolInfoManage";
             this.Load += new System.EventHandler(this.ToolInfoManage_Load);

@@ -1,3 +1,6 @@
+-- -------------------------------------------------------------------------------------东所start
+
+
 use toolInfo_DongSuo
 drop table t_ToolPrepairRecord;
 drop table t_ScrapToolInfo;
@@ -229,6 +232,11 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N't_ToolRepairRecord',
     @level2type = N'COLUMN',
     @level2name = N'ToolStatus'
+-- -------------------------------------------------------------------------------------东所end
+
+
+
+-- -------------------------------------------------------------------------------------南所start
 use toolInfo_NanSuo
 drop table t_ToolPrepairRecord;
 drop table t_ScrapToolInfo;
@@ -460,9 +468,19 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N't_ToolRepairRecord',
     @level2type = N'COLUMN',
     @level2name = N'ToolStatus'
+
+
+-- -------------------------------------------------------------------------------------南所end
+
+
+
+-- -------------------------------------------------------------------------------------石所start
+
 use toolInfo_ShiJiaZhuang
 drop table t_ToolPrepairRecord;
 drop table t_ScrapToolInfo;
+
+
 ALTER TABLE [dbo].[t_ToolInfo] ADD [IsBack] varchar(2) null default '1'; -- 是否归还  0：已借出未归还
 drop table [dbo].[t_InStore];
 ALTER TABLE [dbo].[t_ToolInfo] ADD IsRepaired int not null default 0 ; -- 送修状态  1：已送修  
@@ -691,6 +709,14 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N't_ToolRepairRecord',
     @level2type = N'COLUMN',
     @level2name = N'ToolStatus'
+
+
+
+-- -------------------------------------------------------------------------------------石所end
+
+
+
+-- -------------------------------------------------------------------------------------西所start
 use toolInfo_XiSuo
 drop table t_ToolPrepairRecord;
 drop table t_ScrapToolInfo;
@@ -922,3 +948,6 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N't_ToolRepairRecord',
     @level2type = N'COLUMN',
     @level2name = N'ToolStatus'
+
+
+-- -------------------------------------------------------------------------------------西所end
