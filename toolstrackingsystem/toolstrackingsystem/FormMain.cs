@@ -23,7 +23,6 @@ namespace toolstrackingsystem
 {
     public partial class FormMain : Office2007RibbonForm
     {
-        //private Sys_User_Info userInfo = MemoryCache.Default.Get("userinfo") as Sys_User_Info;
         private IRoleManageService _roleManageService;
         private IMenuManageService _menuManageService;
         ILog logger = log4net.LogManager.GetLogger(typeof(FormMain));
@@ -172,35 +171,56 @@ namespace toolstrackingsystem
                 }
                 if (!isOpen)
                 {
-
-                    //反射取得子窗体对象。
-                    //object obj = Assembly.GetExecutingAssembly().CreateInstance("toolstrackingsystem." + sfrmName, false);
                     ////需要强转
-                    //Office2007Form form = (Office2007Form)obj;
-                    DevComponents.DotNetBar.Office2007RibbonForm form = ChildWinManagement.LoadMdiForm(this, formType)  as DevComponents.DotNetBar.Office2007RibbonForm;
-                    //设置该子窗体不为顶级窗体，否则不能加入到别的控件中
-
-                    form.TopLevel = false;
-                    form.Visible = true;
-                    //解决textbox里的内容无法被鼠标选中的问题
-                    form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-                    //布满父控件
-                    form.Dock = DockStyle.Fill;
-                    //创建一个tab
-                    SuperTabItem item = superTabControl2.CreateTab(tabName);
-                    //form.Size =  item.AttachedControl.Size;
-                    //设置显示名和控件名
-                    item.Text = tabName;
-                    item.Name = tabName;
-                    //将子窗体添加到Tab中
-                    item.AttachedControl.Controls.Add(form);
-                    //选择该子窗体。
-                    superTabControl2.SelectedTab = item;
-                    if (!tablItemDic.ContainsKey(tabName))
+                    if (tabName == "送修工具接收")
                     {
-                        tablItemDic.Add(tabName, form.Name);
-
+                        ToolRepairManageNew form = ChildWinManagement.LoadMdiForm(this, formType) as ToolRepairManageNew;
+                        form.transfDelegate += setText;
+                        form.TopLevel = false;
+                        form.Visible = true;
+                        //解决textbox里的内容无法被鼠标选中的问题
+                        form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                        //布满父控件
+                        form.Dock = DockStyle.Fill;
+                        //创建一个tab
+                        SuperTabItem item = superTabControl2.CreateTab(tabName);
+                        //form.Size =  item.AttachedControl.Size;
+                        //设置显示名和控件名
+                        item.Text = tabName;
+                        item.Name = tabName;
+                        //将子窗体添加到Tab中
+                        item.AttachedControl.Controls.Add(form);
+                        //选择该子窗体。
+                        superTabControl2.SelectedTab = item;
+                        if (!tablItemDic.ContainsKey(tabName))
+                        {
+                            tablItemDic.Add(tabName, form.Name);
+                        }
                     }
+                    else {
+                        DevComponents.DotNetBar.Office2007RibbonForm form = ChildWinManagement.LoadMdiForm(this, formType) as DevComponents.DotNetBar.Office2007RibbonForm;
+                        form.TopLevel = false;
+                        form.Visible = true;
+                        //解决textbox里的内容无法被鼠标选中的问题
+                        form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                        //布满父控件
+                        form.Dock = DockStyle.Fill;
+                        //创建一个tab
+                        SuperTabItem item = superTabControl2.CreateTab(tabName);
+                        //form.Size =  item.AttachedControl.Size;
+                        //设置显示名和控件名
+                        item.Text = tabName;
+                        item.Name = tabName;
+                        //将子窗体添加到Tab中
+                        item.AttachedControl.Controls.Add(form);
+                        //选择该子窗体。
+                        superTabControl2.SelectedTab = item;
+                        if (!tablItemDic.ContainsKey(tabName))
+                        {
+                            tablItemDic.Add(tabName, form.Name);
+                        }
+                    }
+                    //设置该子窗体不为顶级窗体，否则不能加入到别的控件中
                 }
             }
             catch (Exception ex)
@@ -210,92 +230,6 @@ namespace toolstrackingsystem
 
             }
 
-        }
-        #region 展示子窗体方法（已弃用）
-        //    private void SetTabShow(string tabName, string sfrmName)
-        //    {
-        //        try
-        //        {
-        //            bool isOpen = false;
-        //            foreach (SuperTabItem item in superTabControl2.Tabs)
-        //            {
-        //                if (tabName == "领用工具")
-        //                {
-        //                    if (item.Text == "归还工具")
-        //                    {
-        //                        //关闭领用
-        //                        FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
-        //                        toolFrm.IsConnect = false;
-        //                        toolFrm.IsListening = false;
-        //                    }
-        //                }
-        //                else if (tabName == "归还工具")
-        //                {
-        //                    if (item.Text == "领用工具")
-        //                    {
-        //                        //关闭领用
-        //                        FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
-        //                        toolFrm.IsConnect = false;
-        //                        toolFrm.IsListening = false;
-        //                    }
-        //                }
-        //                //已打开
-        //                if (item.Name == tabName)
-        //                {
-        //                    superTabControl2.SelectedTab = item;
-        //                    isOpen = true;
-        //                    break;
-        //                }
-        //            }
-        //            if (!isOpen)
-        //            {
-
-        //                //反射取得子窗体对象。
-        //                //object obj = Assembly.GetExecutingAssembly().CreateInstance("toolstrackingsystem." + sfrmName, false);
-        //                ////需要强转
-        //                //Office2007Form form = (Office2007Form)obj;
-        //                DevComponents.DotNetBar.Office2007Form form = ChildWinManagement.LoadMdiForm(Portal.gc.MainDialog, formType)
-        //as DevComponents.DotNetBar.Office2007Form;
-        //                //设置该子窗体不为顶级窗体，否则不能加入到别的控件中
-
-        //                form.TopLevel = false;
-        //                form.Visible = true;
-        //                //解决textbox里的内容无法被鼠标选中的问题
-        //                form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-        //                //布满父控件
-        //                //form.Dock = DockStyle.Fill;
-        //                //创建一个tab
-        //                SuperTabItem item = superTabControl2.CreateTab(tabName);
-        //                //设置显示名和控件名
-        //                item.Text = tabName;
-        //                item.Name = tabName;
-        //                //将子窗体添加到Tab中
-        //                item.AttachedControl.Controls.Add(form);
-        //                //选择该子窗体。
-        //                superTabControl2.SelectedTab = item;
-        //                if (!tablItemDic.ContainsKey(tabName))
-        //                {
-        //                    tablItemDic.Add(tabName, sfrmName);
-
-        //                }
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-
-        //            logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FormMain--SetTabShow", ex.Message, ex.StackTrace, ex.Source);
-
-        //        }
-
-        //    }
-        //private void ToolInfo_Click(object sender, EventArgs e)
-        //{
-        //    SetTabShow("常规工具", "ToolInfoManage");
-        //}
-        #endregion
-        private void FrmPerson(object sender, EventArgs e)
-        {
-            //SetTabShow("常规工具", "ToolInfoManage");
         }
         #region 给动态添加的按钮绑定的事件
         private void Custom_Click(object sender, EventArgs e)
@@ -471,6 +405,10 @@ namespace toolstrackingsystem
                 }
             }
 
+        }
+        private void setText(string value)
+        {
+            Message_label.Text = value;
         }
     }
 }

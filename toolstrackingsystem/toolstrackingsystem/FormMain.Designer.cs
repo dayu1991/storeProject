@@ -430,7 +430,7 @@
 
         #endregion
 
-        public DevComponents.DotNetBar.StyleManager styleManager1;
+        private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.RibbonControl ribbonControl1;
         private DevComponents.DotNetBar.QatCustomizeItem qatCustomizeItem1;
         private DevComponents.DotNetBar.SuperTabControl superTabControl2;

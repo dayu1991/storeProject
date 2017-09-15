@@ -18,17 +18,20 @@ using System.Runtime.Caching;
 
 namespace toolstrackingsystem
 {
+    public delegate void TransfDelegate(String value);
     public partial class ToolRepairManageNew : Office2007RibbonForm
     {
         ILog logger = log4net.LogManager.GetLogger(typeof(ToolRepairManageNew));
         public IToolRepairRecordService _toolRepairRecordService;
         public IToolInfoService _toolInfoService;
+
         List<RepairedToolForReceiveEntity> resultList = new List<RepairedToolForReceiveEntity>();
         public ToolRepairManageNew()
         {
             this.EnableGlass = false;
             InitializeComponent();
         }
+        public event TransfDelegate transfDelegate;
         private void Form1_Load(object sender, EventArgs e)
         {
             _toolInfoService = Program.container.Resolve<IToolInfoService>();
@@ -117,32 +120,30 @@ namespace toolstrackingsystem
             string name = e.NewValue.Name;
             if (MemoryCacheHelper.SetMemoryCache(name))
             {
-                //FormMain form = new FormMain();
-                //form.styleManager1.ManagerStyle = eStyle.OfficeMobile2014;
-                //string connName = MemoryCache.Default.Get("clientName").ToString();
-                //string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
-                //string ip = connStr.Split(';')[0].Split('=')[1].ToString();
-                //string dataBase = MemoryCache.Default.Get("clientName").ToString();
-                //switch (dataBase)
-                //{
-                //    case "DongSuo":
-                //        dataBase = "东所";
-                //        break;
-                //    case "XiSuo":
-                //        dataBase = "西所";
-                //        break;
-                //    case "NanSuo":
-                //        dataBase = "南所";
-                //        break;
-                //    case "ShiJiaZhuang":
-                //        dataBase = "石家庄所";
-                //        break;
-                //    default:
-                //        dataBase = "东所";
-                //        break;
-                //}
-                //form.Message_label.Text = "";
-                ////form.Message_label.Text = "连接到服务器：" + ip + " 当前数据库：" + dataBase;
+                string connName = MemoryCache.Default.Get("clientName").ToString();
+                string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
+                string ip = connStr.Split(';')[0].Split('=')[1].ToString();
+                string dataBase = MemoryCache.Default.Get("clientName").ToString();
+                switch (dataBase)
+                {
+                    case "DongSuo":
+                        dataBase = "东所";
+                        break;
+                    case "XiSuo":
+                        dataBase = "西所";
+                        break;
+                    case "NanSuo":
+                        dataBase = "南所";
+                        break;
+                    case "ShiJiaZhuang":
+                        dataBase = "石家庄所";
+                        break;
+                    default:
+                        dataBase = "东所";
+                        break;
+                }
+                string txtStr = "连接到服务器：" + ip + " 当前数据库：" + dataBase;
+                transfDelegate(txtStr);
             }
         }
     }
