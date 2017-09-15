@@ -40,7 +40,9 @@
       <HintPath>..\packages\DapperExtensions.1.5.0\lib\net45\DapperExtensions.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.DotNetBar.Schedule, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar2, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.Instrumentation, Version=12.5.0.2, Culture=neutral, PublicKeyToken=bc4a9d761ea44ef0" />
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -124,6 +126,12 @@
     </Compile>
     <Compile Include="loading\LoadingForms.Designer.cs">
       <DependentUpon>LoadingForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="工具送修接收%28服务端%29\ToolRepairManageNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="工具送修接收%28服务端%29\ToolRepairManageNew.Designer.cs">
+      <DependentUpon>ToolRepairManageNew.cs</DependentUpon>
     </Compile>
     <Compile Include="工具送修接收%28服务端%29\ToolRepairManage.cs">
       <SubType>Form</SubType>
@@ -486,6 +494,9 @@
       <DependentUpon>LoadingForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="基础数据\工具管理\Report11.rdlc" />
+    <EmbeddedResource Include="工具送修接收%28服务端%29\ToolRepairManageNew.resx">
+      <DependentUpon>ToolRepairManageNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="工具送修接收%28服务端%29\ToolRepairManage.resx">
       <DependentUpon>ToolRepairManage.cs</DependentUpon>
     </EmbeddedResource>

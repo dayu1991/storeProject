@@ -12,6 +12,24 @@ namespace service.toolstrackingsystem
     {
         List<ToolPrepairEntity> GetToolPrepairRecordList(t_ToolRepairRecord prepairInfo, int pageIndex, int pageSize, out long Count);
         List<ToolPrepairEntity> GetToolPrepairRecordList(t_ToolRepairRecord prepairInfo);
-
+        /// <summary>
+        /// 获取送修工具待接收的信息
+        /// </summary>
+        /// <param name="t_ToolRepairRecord"></param>
+        /// <returns></returns>
+        List<RepairedToolForReceiveEntity> GetRepairedToolForReceive(t_ToolRepairRecord repairedInfo);
+         /// <summary>
+        /// 更新送修工具状态为接收
+        /// </summary>
+        /// <param name="repairInfo"></param>
+        /// <returns></returns>
+        bool UpdateToolReceiveStatus(t_ToolRepairRecord repairInfo);
+        /// <summary>
+        /// 根据工具编码和状态获取送修记录
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        t_ToolRepairRecord GetToolRepairByToolCodeAndStatus(string toolCode, int status = 0);
     }
 }

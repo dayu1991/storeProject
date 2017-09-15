@@ -430,7 +430,7 @@
 
         #endregion
 
-        private DevComponents.DotNetBar.StyleManager styleManager1;
+        public DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.RibbonControl ribbonControl1;
         private DevComponents.DotNetBar.QatCustomizeItem qatCustomizeItem1;
         private DevComponents.DotNetBar.SuperTabControl superTabControl2;
@@ -447,7 +447,7 @@
         private System.Windows.Forms.Timer timer1;
         private DevComponents.DotNetBar.LabelX Current_Time_label;
         private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.LabelX Message_label;
+        public  DevComponents.DotNetBar.LabelX Message_label;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.ButtonItem Select_buttonItem;
         private DevComponents.DotNetBar.LabelX labelX4;

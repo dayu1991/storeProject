@@ -55,6 +55,7 @@
     <Compile Include="view\NotBackToolEntity.cs" />
     <Compile Include="view\PersonCreditRecordEntity.cs" />
     <Compile Include="view\PersonInfoEntity.cs" />
+    <Compile Include="view\RepairedToolForReceiveEntity.cs" />
     <Compile Include="view\RoleInfoEntity.cs" />
     <Compile Include="view\ScrapToolInfoEntity.cs" />
     <Compile Include="view\ToolBorrowEntity.cs" />

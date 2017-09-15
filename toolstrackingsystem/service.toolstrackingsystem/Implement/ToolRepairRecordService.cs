@@ -64,5 +64,66 @@ namespace service.toolstrackingsystem
             }
             return _multiTableQueryRepository.QueryList<ToolPrepairEntity>(sql, parameters).ToList();
         }
+        /// <summary>
+        /// 获取送修工具待接收的信息
+        /// </summary>
+        /// <param name="t_ToolRepairRecord"></param>
+        /// <returns></returns>
+        public List<RepairedToolForReceiveEntity> GetRepairedToolForReceive(t_ToolRepairRecord repairedInfo)
+        {
+            string sql = @"SELECT 
+	                            trr.[TypeName]
+                              ,trr.[ChildTypeName]
+                              ,trr.[ToolCode]
+                              ,trr.[ToolName]
+                              ,trr.[RepairedTime]
+                              ,[RepairedPerson] = case when sui.UserName is null then tpi.PersonName else sui.UserName end
+                              ,trr.[RepairedRemark]
+  FROM [dbo].[t_ToolRepairRecord] trr 
+  left join Sys_User_Info sui on trr.RepairedPerson = sui.UserCode
+  left join t_PersonInfo tpi on trr.RepairedPerson = tpi.PersonCode WHERE ToolStatus=0";
+            DynamicParameters parameters = new DynamicParameters();
+            if (!string.IsNullOrEmpty(repairedInfo.TypeName))
+            {
+                sql += " AND trr.TypeName = @typeName ";
+                parameters.Add("typeName",repairedInfo.TypeName);
+            }
+            if (!string.IsNullOrEmpty(repairedInfo.ChildTypeName))
+            {
+                sql += " AND trr.ChildTypeName = @childTypeName ";
+                parameters.Add("childTypeName", repairedInfo.ChildTypeName);
+            }
+            if (!string.IsNullOrEmpty(repairedInfo.ToolCode))
+            {
+                sql += " AND trr.ToolCode LIKE @toolCode ";
+                parameters.Add("toolCode", string.Format("%{0}%", repairedInfo.ToolCode));
+            }
+            if (!string.IsNullOrEmpty(repairedInfo.ToolName))
+            {
+                sql += " AND trr.ToolName LIKE @toolName ";
+                parameters.Add("toolName", string.Format("%{0}%", repairedInfo.ToolName));
+            }
+            return _multiTableQueryRepository.QueryList<RepairedToolForReceiveEntity>(sql, parameters).ToList();
+
+        }
+        /// <summary>
+        /// 更新送修工具状态为接收
+        /// </summary>
+        /// <param name="repairInfo"></param>
+        /// <returns></returns>
+        public bool UpdateToolReceiveStatus(t_ToolRepairRecord repairInfo)
+        {
+            return _toolPrepairRecordRepository.UpdateToolReceiveStatus(repairInfo);
+        }
+        /// <summary>
+        /// 根据工具编码和状态获取送修记录
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        public t_ToolRepairRecord GetToolRepairByToolCodeAndStatus(string toolCode, int status = 0)
+        {
+            return _toolPrepairRecordRepository.GetToolRepairByToolCodeAndStatus(toolCode,status);
+        }
     }
 }

@@ -27,16 +27,16 @@ namespace toolstrackingsystem
         private Sys_User_Info userInfo = MemoryCache.Default.Get("userinfo") as Sys_User_Info;
         private IToolTypeService _toolTypeService;
         private int selectedIndex;
-        public FrmToolRepair(IToolTypeService toolTypeService)
+        public FrmToolRepair()
         {
             this.EnableGlass = false;
-            //_toolTypeService = toolTypeService;
             InitializeComponent();
             
         }
         private void FrmToolRepair_Load(object sender, EventArgs e)
         {
-            _toolInfoService = Program.container.Resolve<IToolInfoService>() as IToolInfoService;
+            _toolInfoService = Program.container.Resolve<IToolInfoService>() as ToolInfoService;
+            _toolTypeService = Program.container.Resolve<IToolTypeService>() as ToolTypeService;
             #region 初始化工具类别
             List<t_ToolType> resultList = _toolTypeService.GetToolChildTypeList();
             t_ToolType toolType = new t_ToolType();

@@ -151,7 +151,7 @@
             // 
             // 
             this.Is_ToRepare_checkBox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Is_ToRepare_checkBox.Location = new System.Drawing.Point(946, 16);
+            this.Is_ToRepare_checkBox.Location = new System.Drawing.Point(946, 12);
             this.Is_ToRepare_checkBox.Name = "Is_ToRepare_checkBox";
             this.Is_ToRepare_checkBox.Size = new System.Drawing.Size(63, 23);
             this.Is_ToRepare_checkBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -166,7 +166,7 @@
             // 
             // 
             this.Is_OutTime_checkBox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Is_OutTime_checkBox.Location = new System.Drawing.Point(853, 16);
+            this.Is_OutTime_checkBox.Location = new System.Drawing.Point(853, 12);
             this.Is_OutTime_checkBox.Name = "Is_OutTime_checkBox";
             this.Is_OutTime_checkBox.Size = new System.Drawing.Size(87, 23);
             this.Is_OutTime_checkBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -181,7 +181,7 @@
             // 
             // 
             this.Is_Out_checkBox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Is_Out_checkBox.Location = new System.Drawing.Point(793, 16);
+            this.Is_Out_checkBox.Location = new System.Drawing.Point(793, 12);
             this.Is_Out_checkBox.Name = "Is_Out_checkBox";
             this.Is_Out_checkBox.Size = new System.Drawing.Size(63, 23);
             this.Is_Out_checkBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -194,7 +194,7 @@
             this.cbCheckTime.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbCheckTime.FormattingEnabled = true;
             this.cbCheckTime.ItemHeight = 15;
-            this.cbCheckTime.Location = new System.Drawing.Point(666, 16);
+            this.cbCheckTime.Location = new System.Drawing.Point(666, 12);
             this.cbCheckTime.Name = "cbCheckTime";
             this.cbCheckTime.Size = new System.Drawing.Size(121, 21);
             this.cbCheckTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -207,7 +207,7 @@
             // 
             // 
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX12.Location = new System.Drawing.Point(608, 16);
+            this.labelX12.Location = new System.Drawing.Point(608, 12);
             this.labelX12.Name = "labelX12";
             this.labelX12.Size = new System.Drawing.Size(77, 23);
             this.labelX12.TabIndex = 11;
@@ -217,7 +217,7 @@
             // 
             this.Search_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Search_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Search_buttonX.Location = new System.Drawing.Point(1036, 16);
+            this.Search_buttonX.Location = new System.Drawing.Point(1036, 12);
             this.Search_buttonX.Name = "Search_buttonX";
             this.Search_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Search_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -232,7 +232,7 @@
             // 
             this.tbSearchName.Border.Class = "TextBoxBorder";
             this.tbSearchName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbSearchName.Location = new System.Drawing.Point(503, 18);
+            this.tbSearchName.Location = new System.Drawing.Point(503, 14);
             this.tbSearchName.Name = "tbSearchName";
             this.tbSearchName.PreventEnterBeep = true;
             this.tbSearchName.Size = new System.Drawing.Size(100, 21);
@@ -245,7 +245,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(467, 18);
+            this.labelX4.Location = new System.Drawing.Point(467, 14);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(57, 23);
             this.labelX4.TabIndex = 8;
@@ -258,7 +258,7 @@
             // 
             this.tbSearchCode.Border.Class = "TextBoxBorder";
             this.tbSearchCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbSearchCode.Location = new System.Drawing.Point(361, 18);
+            this.tbSearchCode.Location = new System.Drawing.Point(361, 14);
             this.tbSearchCode.Name = "tbSearchCode";
             this.tbSearchCode.PreventEnterBeep = true;
             this.tbSearchCode.Size = new System.Drawing.Size(100, 21);
@@ -272,7 +272,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(327, 16);
+            this.labelX3.Location = new System.Drawing.Point(327, 12);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(57, 23);
             this.labelX3.TabIndex = 6;
@@ -284,7 +284,7 @@
             this.cbSearchcategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbSearchcategory.FormattingEnabled = true;
             this.cbSearchcategory.ItemHeight = 15;
-            this.cbSearchcategory.Location = new System.Drawing.Point(200, 16);
+            this.cbSearchcategory.Location = new System.Drawing.Point(200, 12);
             this.cbSearchcategory.Name = "cbSearchcategory";
             this.cbSearchcategory.Size = new System.Drawing.Size(121, 21);
             this.cbSearchcategory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -296,7 +296,7 @@
             this.cbSearchBlong.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbSearchBlong.FormattingEnabled = true;
             this.cbSearchBlong.ItemHeight = 15;
-            this.cbSearchBlong.Location = new System.Drawing.Point(43, 16);
+            this.cbSearchBlong.Location = new System.Drawing.Point(43, 12);
             this.cbSearchBlong.Name = "cbSearchBlong";
             this.cbSearchBlong.Size = new System.Drawing.Size(121, 21);
             this.cbSearchBlong.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -309,7 +309,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(170, 16);
+            this.labelX2.Location = new System.Drawing.Point(170, 12);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(57, 23);
             this.labelX2.TabIndex = 3;
@@ -322,7 +322,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(4, 16);
+            this.labelX1.Location = new System.Drawing.Point(4, 12);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(57, 23);
             this.labelX1.TabIndex = 0;
@@ -355,13 +355,13 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(10, 65);
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(10, 73);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1469, 497);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1469, 489);
             this.dataGridViewX1.TabIndex = 1;
             this.dataGridViewX1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellClick);
             this.dataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellDoubleClick);

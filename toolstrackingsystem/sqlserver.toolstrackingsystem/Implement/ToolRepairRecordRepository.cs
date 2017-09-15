@@ -75,5 +75,28 @@ namespace sqlserver.toolstrackingsystem
             sqlDy.Add("ToolCode", toolCode);
             return GetModel(sql, sqlDy);            
         }
+        /// <summary>
+        /// 更新送修工具状态为接收
+        /// </summary>
+        /// <param name="repairInfo"></param>
+        /// <returns></returns>
+        public bool UpdateToolReceiveStatus(t_ToolRepairRecord repairInfo)
+        {
+            return base.Update(repairInfo);
+        }
+        /// <summary>
+        /// 根据工具编码和状态获取送修记录
+        /// </summary>
+        /// <param name="toolCode"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        public t_ToolRepairRecord GetToolRepairByToolCodeAndStatus(string toolCode, int status = 0)
+        {
+            string sql = "SELECT * FROM t_ToolRepairRecord WHERE ToolCode=@toolCode AND ToolStatus=@status";
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("toolCode",toolCode);
+            parameters.Add("status",status);
+            return base.GetModel(sql,parameters);
+        }
     }
 }

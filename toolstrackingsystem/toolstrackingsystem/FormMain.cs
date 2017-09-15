@@ -177,8 +177,7 @@ namespace toolstrackingsystem
                     //object obj = Assembly.GetExecutingAssembly().CreateInstance("toolstrackingsystem." + sfrmName, false);
                     ////需要强转
                     //Office2007Form form = (Office2007Form)obj;
-                    DevComponents.DotNetBar.Office2007RibbonForm form = ChildWinManagement.LoadMdiForm(this, formType)
-    as DevComponents.DotNetBar.Office2007RibbonForm;
+                    DevComponents.DotNetBar.Office2007RibbonForm form = ChildWinManagement.LoadMdiForm(this, formType)  as DevComponents.DotNetBar.Office2007RibbonForm;
                     //设置该子窗体不为顶级窗体，否则不能加入到别的控件中
 
                     form.TopLevel = false;
@@ -189,6 +188,7 @@ namespace toolstrackingsystem
                     form.Dock = DockStyle.Fill;
                     //创建一个tab
                     SuperTabItem item = superTabControl2.CreateTab(tabName);
+                    //form.Size =  item.AttachedControl.Size;
                     //设置显示名和控件名
                     item.Text = tabName;
                     item.Name = tabName;
@@ -211,86 +211,88 @@ namespace toolstrackingsystem
             }
 
         }
-    //    private void SetTabShow(string tabName, string sfrmName)
-    //    {
-    //        try
-    //        {
-    //            bool isOpen = false;
-    //            foreach (SuperTabItem item in superTabControl2.Tabs)
-    //            {
-    //                if (tabName == "领用工具")
-    //                {
-    //                    if (item.Text == "归还工具")
-    //                    {
-    //                        //关闭领用
-    //                        FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
-    //                        toolFrm.IsConnect = false;
-    //                        toolFrm.IsListening = false;
-    //                    }
-    //                }
-    //                else if (tabName == "归还工具")
-    //                {
-    //                    if (item.Text == "领用工具")
-    //                    {
-    //                        //关闭领用
-    //                        FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
-    //                        toolFrm.IsConnect = false;
-    //                        toolFrm.IsListening = false;
-    //                    }
-    //                }
-    //                //已打开
-    //                if (item.Name == tabName)
-    //                {
-    //                    superTabControl2.SelectedTab = item;
-    //                    isOpen = true;
-    //                    break;
-    //                }
-    //            }
-    //            if (!isOpen)
-    //            {
+        #region 展示子窗体方法（已弃用）
+        //    private void SetTabShow(string tabName, string sfrmName)
+        //    {
+        //        try
+        //        {
+        //            bool isOpen = false;
+        //            foreach (SuperTabItem item in superTabControl2.Tabs)
+        //            {
+        //                if (tabName == "领用工具")
+        //                {
+        //                    if (item.Text == "归还工具")
+        //                    {
+        //                        //关闭领用
+        //                        FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
+        //                        toolFrm.IsConnect = false;
+        //                        toolFrm.IsListening = false;
+        //                    }
+        //                }
+        //                else if (tabName == "归还工具")
+        //                {
+        //                    if (item.Text == "领用工具")
+        //                    {
+        //                        //关闭领用
+        //                        FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
+        //                        toolFrm.IsConnect = false;
+        //                        toolFrm.IsListening = false;
+        //                    }
+        //                }
+        //                //已打开
+        //                if (item.Name == tabName)
+        //                {
+        //                    superTabControl2.SelectedTab = item;
+        //                    isOpen = true;
+        //                    break;
+        //                }
+        //            }
+        //            if (!isOpen)
+        //            {
 
-    //                //反射取得子窗体对象。
-    //                //object obj = Assembly.GetExecutingAssembly().CreateInstance("toolstrackingsystem." + sfrmName, false);
-    //                ////需要强转
-    //                //Office2007Form form = (Office2007Form)obj;
-    //                DevComponents.DotNetBar.Office2007Form form = ChildWinManagement.LoadMdiForm(Portal.gc.MainDialog, formType)
-    //as DevComponents.DotNetBar.Office2007Form;
-    //                //设置该子窗体不为顶级窗体，否则不能加入到别的控件中
+        //                //反射取得子窗体对象。
+        //                //object obj = Assembly.GetExecutingAssembly().CreateInstance("toolstrackingsystem." + sfrmName, false);
+        //                ////需要强转
+        //                //Office2007Form form = (Office2007Form)obj;
+        //                DevComponents.DotNetBar.Office2007Form form = ChildWinManagement.LoadMdiForm(Portal.gc.MainDialog, formType)
+        //as DevComponents.DotNetBar.Office2007Form;
+        //                //设置该子窗体不为顶级窗体，否则不能加入到别的控件中
 
-    //                form.TopLevel = false;
-    //                form.Visible = true;
-    //                //解决textbox里的内容无法被鼠标选中的问题
-    //                form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-    //                //布满父控件
-    //                //form.Dock = DockStyle.Fill;
-    //                //创建一个tab
-    //                SuperTabItem item = superTabControl2.CreateTab(tabName);
-    //                //设置显示名和控件名
-    //                item.Text = tabName;
-    //                item.Name = tabName;
-    //                //将子窗体添加到Tab中
-    //                item.AttachedControl.Controls.Add(form);
-    //                //选择该子窗体。
-    //                superTabControl2.SelectedTab = item;
-    //                if (!tablItemDic.ContainsKey(tabName))
-    //                {
-    //                    tablItemDic.Add(tabName, sfrmName);
+        //                form.TopLevel = false;
+        //                form.Visible = true;
+        //                //解决textbox里的内容无法被鼠标选中的问题
+        //                form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+        //                //布满父控件
+        //                //form.Dock = DockStyle.Fill;
+        //                //创建一个tab
+        //                SuperTabItem item = superTabControl2.CreateTab(tabName);
+        //                //设置显示名和控件名
+        //                item.Text = tabName;
+        //                item.Name = tabName;
+        //                //将子窗体添加到Tab中
+        //                item.AttachedControl.Controls.Add(form);
+        //                //选择该子窗体。
+        //                superTabControl2.SelectedTab = item;
+        //                if (!tablItemDic.ContainsKey(tabName))
+        //                {
+        //                    tablItemDic.Add(tabName, sfrmName);
 
-    //                }
-    //            }
-    //        }
-    //        catch (Exception ex)
-    //        {
+        //                }
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
 
-    //            logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FormMain--SetTabShow", ex.Message, ex.StackTrace, ex.Source);
+        //            logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FormMain--SetTabShow", ex.Message, ex.StackTrace, ex.Source);
 
-    //        }
-           
-    //    }
+        //        }
+
+        //    }
         //private void ToolInfo_Click(object sender, EventArgs e)
         //{
         //    SetTabShow("常规工具", "ToolInfoManage");
         //}
+        #endregion
         private void FrmPerson(object sender, EventArgs e)
         {
             //SetTabShow("常规工具", "ToolInfoManage");
@@ -299,7 +301,7 @@ namespace toolstrackingsystem
         private void Custom_Click(object sender, EventArgs e)
         {
             //SetTabShow(sender.ToString(), ((ButtonItem)sender).Tag.ToString());
-                                //反射取得子窗体对象。
+            //反射取得子窗体对象。
             object obj = Assembly.GetExecutingAssembly().CreateInstance("toolstrackingsystem." + ((ButtonItem)sender).Tag.ToString(), false);
             SetTabShow(sender.ToString(), obj.GetType());
             i++;
@@ -333,7 +335,7 @@ namespace toolstrackingsystem
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Select_buttonItem_Click(object sender, EventArgs e)
+        public void Select_buttonItem_Click(object sender, EventArgs e)
         {
 
             try
