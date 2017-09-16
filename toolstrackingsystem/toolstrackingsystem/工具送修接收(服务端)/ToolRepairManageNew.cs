@@ -18,13 +18,13 @@ using System.Runtime.Caching;
 
 namespace toolstrackingsystem
 {
-    public delegate void TransfDelegate(String value);
+    public delegate void TransfDelegate();
     public partial class ToolRepairManageNew : Office2007RibbonForm
     {
         ILog logger = log4net.LogManager.GetLogger(typeof(ToolRepairManageNew));
         public IToolRepairRecordService _toolRepairRecordService;
         public IToolInfoService _toolInfoService;
-
+        public string dataBase = MemoryCache.Default.Get("clientName") != null ? MemoryCache.Default.Get("clientName").ToString() : CommonHelper.GetConfigValue("defaultDataBase");
         List<RepairedToolForReceiveEntity> resultList = new List<RepairedToolForReceiveEntity>();
         public ToolRepairManageNew()
         {
@@ -47,6 +47,16 @@ namespace toolstrackingsystem
             this.cbSearchcategory.DataSource = categoryCategory;
             this.cbSearchcategory.DisplayMember = "TypeName";
             this.cbSearchcategory.ValueMember = "TypeName";
+            #endregion
+
+            #region 初始化supertab默认选择的数据库
+            foreach (SuperTabItem tab in superTabStrip1.Tabs)
+            {
+                if (tab.Name == dataBase)
+                {
+                    superTabStrip1.SelectedTab = tab;
+                }
+            }
             #endregion
         }
         private void dataGridViewX1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -120,30 +130,7 @@ namespace toolstrackingsystem
             string name = e.NewValue.Name;
             if (MemoryCacheHelper.SetMemoryCache(name))
             {
-                string connName = MemoryCache.Default.Get("clientName").ToString();
-                string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
-                string ip = connStr.Split(';')[0].Split('=')[1].ToString();
-                string dataBase = MemoryCache.Default.Get("clientName").ToString();
-                switch (dataBase)
-                {
-                    case "DongSuo":
-                        dataBase = "东所";
-                        break;
-                    case "XiSuo":
-                        dataBase = "西所";
-                        break;
-                    case "NanSuo":
-                        dataBase = "南所";
-                        break;
-                    case "ShiJiaZhuang":
-                        dataBase = "石家庄所";
-                        break;
-                    default:
-                        dataBase = "东所";
-                        break;
-                }
-                string txtStr = "连接到服务器：" + ip + " 当前数据库：" + dataBase;
-                transfDelegate(txtStr);
+                transfDelegate();
             }
         }
     }

@@ -363,7 +363,7 @@
 
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
-        private DevComponents.DotNetBar.SuperTabStrip superTabStrip1;
+        public DevComponents.DotNetBar.SuperTabStrip superTabStrip1;
         private DevComponents.DotNetBar.SuperTabItem NanSuo;
         private DevComponents.DotNetBar.SuperTabItem DongSuo;
         private DevComponents.DotNetBar.SuperTabItem XiSuo;

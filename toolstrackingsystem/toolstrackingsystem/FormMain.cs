@@ -136,9 +136,12 @@ namespace toolstrackingsystem
         }
         private void SetTabShow(string tabName,Type formType)
         {
+            
             try
             {
                 bool isOpen = false;
+
+                string dataBase = MemoryCache.Default.Get("clientName") != null ? MemoryCache.Default.Get("clientName").ToString() : CommonHelper.GetConfigValue("defaultDataBase");
                 foreach (SuperTabItem item in superTabControl2.Tabs)
                 {
                     if (tabName == "领用工具")
@@ -161,6 +164,17 @@ namespace toolstrackingsystem
                             toolFrm.IsListening = false;
                         }
                     }
+                    else if (tabName == "送修工具接收")
+                    {
+                        ToolRepairManageNew toolFrm = (ToolRepairManageNew)item.AttachedControl.Controls[0];
+                        foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
+                        {
+                            if (tab.Name == dataBase)
+                            {
+                                toolFrm.superTabStrip1.SelectedTab = tab;
+                            }
+                        }
+                    }
                     //已打开
                     if (item.Name == tabName)
                     {
@@ -171,27 +185,29 @@ namespace toolstrackingsystem
                 }
                 if (!isOpen)
                 {
+                    //创建一个tab
+                    SuperTabItem item = superTabControl2.CreateTab(tabName);
+                    //设置显示名和控件名
+                    item.Text = tabName;
+                    item.Name = tabName;
+                    //选择该子窗体。
+                    superTabControl2.SelectedTab = item;
                     ////需要强转
                     if (tabName == "送修工具接收")
                     {
                         ToolRepairManageNew form = ChildWinManagement.LoadMdiForm(this, formType) as ToolRepairManageNew;
+                        //设置委托绑定到赋值方法上
                         form.transfDelegate += setText;
+                        //设置该子窗体不为顶级窗体，否则不能加入到别的控件中
                         form.TopLevel = false;
                         form.Visible = true;
                         //解决textbox里的内容无法被鼠标选中的问题
                         form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
                         //布满父控件
                         form.Dock = DockStyle.Fill;
-                        //创建一个tab
-                        SuperTabItem item = superTabControl2.CreateTab(tabName);
                         //form.Size =  item.AttachedControl.Size;
-                        //设置显示名和控件名
-                        item.Text = tabName;
-                        item.Name = tabName;
                         //将子窗体添加到Tab中
                         item.AttachedControl.Controls.Add(form);
-                        //选择该子窗体。
-                        superTabControl2.SelectedTab = item;
                         if (!tablItemDic.ContainsKey(tabName))
                         {
                             tablItemDic.Add(tabName, form.Name);
@@ -199,37 +215,25 @@ namespace toolstrackingsystem
                     }
                     else {
                         DevComponents.DotNetBar.Office2007RibbonForm form = ChildWinManagement.LoadMdiForm(this, formType) as DevComponents.DotNetBar.Office2007RibbonForm;
-                        form.TopLevel = false;
+                        //设置该子窗体不为顶级窗体，否则不能加入到别的控件中form.TopLevel = false;
                         form.Visible = true;
                         //解决textbox里的内容无法被鼠标选中的问题
                         form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
                         //布满父控件
                         form.Dock = DockStyle.Fill;
-                        //创建一个tab
-                        SuperTabItem item = superTabControl2.CreateTab(tabName);
-                        //form.Size =  item.AttachedControl.Size;
-                        //设置显示名和控件名
-                        item.Text = tabName;
-                        item.Name = tabName;
                         //将子窗体添加到Tab中
                         item.AttachedControl.Controls.Add(form);
-                        //选择该子窗体。
-                        superTabControl2.SelectedTab = item;
                         if (!tablItemDic.ContainsKey(tabName))
                         {
                             tablItemDic.Add(tabName, form.Name);
                         }
                     }
-                    //设置该子窗体不为顶级窗体，否则不能加入到别的控件中
                 }
             }
             catch (Exception ex)
             {
-
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FormMain--SetTabShow", ex.Message, ex.StackTrace, ex.Source);
-
             }
-
         }
         #region 给动态添加的按钮绑定的事件
         private void Custom_Click(object sender, EventArgs e)
@@ -283,29 +287,7 @@ namespace toolstrackingsystem
                         #region 判断cache里是否有设置好的客户端连接字符串
                         if (MemoryCache.Default.Get("clientName") != null)
                         {
-                            string connName = MemoryCache.Default.Get("clientName").ToString();
-                            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
-                            string ip = connStr.Split(';')[0].Split('=')[1].ToString();
-                            string dataBase = MemoryCache.Default.Get("clientName").ToString();
-                            switch (dataBase)
-                            {
-                                case "DongSuo":
-                                    dataBase = "东所";
-                                    break;
-                                case "XiSuo":
-                                    dataBase = "西所";
-                                    break;
-                                case "NanSuo":
-                                    dataBase = "南所";
-                                    break;
-                                case "ShiJiaZhuang":
-                                    dataBase = "石家庄所";
-                                    break;
-                                default:
-                                    dataBase = "东所";
-                                    break;
-                            }
-                            Message_label.Text = "连接到服务器：" + ip + " 当前数据库：" + dataBase;
+                            setText();
                             MessageBox.Show("设置成功");
                         }
                         #endregion
@@ -406,9 +388,32 @@ namespace toolstrackingsystem
             }
 
         }
-        private void setText(string value)
+        private void setText()
         {
-            Message_label.Text = value;
+            string connName = MemoryCache.Default.Get("clientName").ToString();
+            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
+            string ip = connStr.Split(';')[0].Split('=')[1].ToString();
+            string dataBase = MemoryCache.Default.Get("clientName").ToString();
+            switch (dataBase)
+            {
+                case "DongSuo":
+                    dataBase = "东所";
+                    break;
+                case "XiSuo":
+                    dataBase = "西所";
+                    break;
+                case "NanSuo":
+                    dataBase = "南所";
+                    break;
+                case "ShiJiaZhuang":
+                    dataBase = "石家庄所";
+                    break;
+                default:
+                    dataBase = "东所";
+                    break;
+            }
+            string txtStr = "连接到服务器：" + ip + " 当前数据库：" + dataBase;
+            Message_label.Text = txtStr;
         }
     }
 }
