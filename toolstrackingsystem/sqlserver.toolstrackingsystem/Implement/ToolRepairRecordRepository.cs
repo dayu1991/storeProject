@@ -90,7 +90,7 @@ namespace sqlserver.toolstrackingsystem
         /// <param name="toolCode"></param>
         /// <param name="status"></param>
         /// <returns></returns>
-        public t_ToolRepairRecord GetToolRepairByToolCodeAndStatus(string toolCode, int status = 0)
+        public t_ToolRepairRecord GetToolRepairByToolCodeAndStatus(string toolCode, int status = 1)
         {
             string sql = "SELECT * FROM t_ToolRepairRecord WHERE ToolCode=@toolCode AND ToolStatus=@status";
             DynamicParameters parameters = new DynamicParameters();

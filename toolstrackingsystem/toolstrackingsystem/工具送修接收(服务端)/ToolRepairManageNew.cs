@@ -39,12 +39,27 @@ namespace toolstrackingsystem
             #region 初始化配属，类别combox
             var categorys = _toolInfoService.GetCategoryByClassify(0);
             var categoryBlongs = categorys.Where(v => v.classification == 1).Any() ? categorys.Where(v => v.classification == 1).ToList() : new List<t_ToolType>();
+            var blongs = new List<t_ToolType>();
+            blongs.Add(new t_ToolType
+            {
+                TypeName = "全部"
+
+            });
+            blongs.AddRange(categoryBlongs);
             var categoryCategory = categorys.Where(v => v.classification == 2).Any() ? categorys.Where(v => v.classification == 2).ToList() : new List<t_ToolType>();
-            this.cbSearchBlong.DataSource = categoryBlongs;
+            var cates = new List<t_ToolType>();
+            cates.Add(new t_ToolType
+            {
+
+                TypeName = "全部"
+
+            });
+            cates.AddRange(categoryCategory);
+            this.cbSearchBlong.DataSource = blongs;
             this.cbSearchBlong.DisplayMember = "TypeName";
             this.cbSearchBlong.ValueMember = "TypeName";
 
-            this.cbSearchcategory.DataSource = categoryCategory;
+            this.cbSearchcategory.DataSource = cates;
             this.cbSearchcategory.DisplayMember = "TypeName";
             this.cbSearchcategory.ValueMember = "TypeName";
             #endregion
@@ -69,10 +84,10 @@ namespace toolstrackingsystem
                     string toolCode = tool_RepairdataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
                     //更新送修工具接收状态为1
                     t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
-                    repairInfo = _toolRepairRecordService.GetToolRepairByToolCodeAndStatus(toolCode, 0);
+                    repairInfo = _toolRepairRecordService.GetToolRepairByToolCodeAndStatus(toolCode, 1);
                     if (repairInfo != null)
                     {
-                        repairInfo.ToolStatus = 1;
+                        repairInfo.ToolStatus = 2;
                         if (_toolRepairRecordService.UpdateToolReceiveStatus(repairInfo))
                         {
                             MessageBox.Show("接收成功");
@@ -91,8 +106,8 @@ namespace toolstrackingsystem
             try
             {
                 t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
-                repairInfo.TypeName = cbSearchBlong.SelectedValue.ToString();
-                repairInfo.ChildTypeName = cbSearchcategory.SelectedValue.ToString();
+                repairInfo.TypeName = cbSearchBlong.SelectedValue.ToString()!="全部"?cbSearchBlong.SelectedValue.ToString():"";
+                repairInfo.ChildTypeName = cbSearchcategory.SelectedValue.ToString()!="全部"?cbSearchcategory.SelectedValue.ToString():"";
                 repairInfo.ToolCode = tbSearchCode.Text;
                 repairInfo.ToolName = tbSearchName.Text;
                 resultList = _toolRepairRecordService.GetRepairedToolForReceive(repairInfo);

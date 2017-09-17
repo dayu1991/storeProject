@@ -76,12 +76,10 @@ namespace service.toolstrackingsystem
                               ,trr.[ChildTypeName]
                               ,trr.[ToolCode]
                               ,trr.[ToolName]
-                              ,trr.[RepairedTime]
-                              ,[RepairedPerson] = case when sui.UserName is null then tpi.PersonName else sui.UserName end
-                              ,trr.[RepairedRemark]
-  FROM [dbo].[t_ToolRepairRecord] trr 
-  left join Sys_User_Info sui on trr.RepairedPerson = sui.UserCode
-  left join t_PersonInfo tpi on trr.RepairedPerson = tpi.PersonCode WHERE ToolStatus=0";
+                              ,trr.[ToRepairedTime]
+                              ,trr.[ToRepairedPerName]
+                              ,trr.[ToRepairMemo]
+  FROM [dbo].[t_ToolRepairRecord] trr WHERE ToolStatus=1 ";
             DynamicParameters parameters = new DynamicParameters();
             if (!string.IsNullOrEmpty(repairedInfo.TypeName))
             {
@@ -121,7 +119,7 @@ namespace service.toolstrackingsystem
         /// <param name="toolCode"></param>
         /// <param name="status"></param>
         /// <returns></returns>
-        public t_ToolRepairRecord GetToolRepairByToolCodeAndStatus(string toolCode, int status = 0)
+        public t_ToolRepairRecord GetToolRepairByToolCodeAndStatus(string toolCode, int status = 1)
         {
             return _toolPrepairRecordRepository.GetToolRepairByToolCodeAndStatus(toolCode,status);
         }

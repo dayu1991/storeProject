@@ -164,20 +164,20 @@ namespace toolstrackingsystem
                             toolFrm.IsListening = false;
                         }
                     }
-                    else if (tabName == "送修工具接收")
-                    {
-                        ToolRepairManageNew toolFrm = (ToolRepairManageNew)item.AttachedControl.Controls[0];
-                        foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
-                        {
-                            if (tab.Name == dataBase)
-                            {
-                                toolFrm.superTabStrip1.SelectedTab = tab;
-                            }
-                        }
-                    }
                     //已打开
                     if (item.Name == tabName)
                     {
+                        if (tabName == "送修工具接收")
+                        {
+                            ToolRepairManageNew toolFrm = (ToolRepairManageNew)item.AttachedControl.Controls[0];
+                            foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
+                            {
+                                if (tab.Name == dataBase)
+                                {
+                                    toolFrm.superTabStrip1.SelectedTab = tab;
+                                }
+                            }
+                        }
                         superTabControl2.SelectedTab = item;
                         isOpen = true;
                         break;

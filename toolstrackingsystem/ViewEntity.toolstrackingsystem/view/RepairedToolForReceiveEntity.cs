@@ -15,8 +15,8 @@ namespace ViewEntity.toolstrackingsystem
         public string TypeName { get; set; }
         public string ToolCode { get; set; }
         public string ToolName { get; set; }
-        public DateTime RepairedTime { get; set; }
-        public string RepairedPerson { get; set; }
-        public string RepairedRemark { get; set; }
+        public DateTime ToRepairedTime { get; set; }
+        public string ToRepairedPerName { get; set; }
+        public string ToRepairMemo { get; set; }
     }
 }

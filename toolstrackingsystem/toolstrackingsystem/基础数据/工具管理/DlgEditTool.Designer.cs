@@ -66,7 +66,7 @@
             // 
             this.Save_Edit_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Save_Edit_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Save_Edit_button.Location = new System.Drawing.Point(108, 412);
+            this.Save_Edit_button.Location = new System.Drawing.Point(123, 413);
             this.Save_Edit_button.Name = "Save_Edit_button";
             this.Save_Edit_button.Size = new System.Drawing.Size(75, 52);
             this.Save_Edit_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -78,7 +78,7 @@
             // 
             this.Cancel_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Cancel_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Cancel_button.Location = new System.Drawing.Point(288, 412);
+            this.Cancel_button.Location = new System.Drawing.Point(303, 413);
             this.Cancel_button.Name = "Cancel_button";
             this.Cancel_button.Size = new System.Drawing.Size(75, 52);
             this.Cancel_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -246,9 +246,9 @@
             // 
             // 
             this.cbEditCheckTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbEditCheckTime.Location = new System.Drawing.Point(82, 185);
+            this.cbEditCheckTime.Location = new System.Drawing.Point(90, 185);
             this.cbEditCheckTime.Name = "cbEditCheckTime";
-            this.cbEditCheckTime.Size = new System.Drawing.Size(63, 23);
+            this.cbEditCheckTime.Size = new System.Drawing.Size(64, 23);
             this.cbEditCheckTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbEditCheckTime.TabIndex = 32;
             this.cbEditCheckTime.Text = "送检：";
@@ -340,7 +340,7 @@
             this.labIsOutTimeValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labIsOutTimeValue.Location = new System.Drawing.Point(298, 313);
             this.labIsOutTimeValue.Name = "labIsOutTimeValue";
-            this.labIsOutTimeValue.Size = new System.Drawing.Size(72, 23);
+            this.labIsOutTimeValue.Size = new System.Drawing.Size(168, 23);
             this.labIsOutTimeValue.TabIndex = 40;
             this.labIsOutTimeValue.Text = "否";
             // 
@@ -405,7 +405,7 @@
             this.labRepareTimeValue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labRepareTimeValue.Location = new System.Drawing.Point(298, 284);
             this.labRepareTimeValue.Name = "labRepareTimeValue";
-            this.labRepareTimeValue.Size = new System.Drawing.Size(128, 23);
+            this.labRepareTimeValue.Size = new System.Drawing.Size(168, 23);
             this.labRepareTimeValue.TabIndex = 44;
             this.labRepareTimeValue.Text = "否";
             // 
