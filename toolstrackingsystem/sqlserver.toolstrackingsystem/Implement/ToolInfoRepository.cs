@@ -166,8 +166,8 @@ namespace sqlserver.toolstrackingsystem
         {
             string sql = "update [t_ToolInfo] set [IsBack]=@IsBack where [ToolCode] = @ToolCode";
             DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("IsBack", toolCode);
-            parameters.Add("ToolCode", isBack);
+            parameters.Add("IsBack", isBack);
+            parameters.Add("ToolCode", toolCode);
             return base.ExecuteSql(sql, parameters);
 
         }

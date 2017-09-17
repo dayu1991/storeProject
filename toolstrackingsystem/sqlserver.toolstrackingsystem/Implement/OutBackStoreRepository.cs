@@ -23,7 +23,7 @@ namespace sqlserver.toolstrackingsystem
             string sql = "select count(1) from t_ToolInfo where ToolCode=@ToolCode";
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@ToolCode", toolCode);
-            if (string.IsNullOrWhiteSpace(isReturn))
+            if (!string.IsNullOrWhiteSpace(isReturn))
             {
                 sql += " AND IsBack =@IsBack";
                 parameters.Add("@IsBack", isReturn);

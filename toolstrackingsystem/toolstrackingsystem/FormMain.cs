@@ -153,6 +153,13 @@ namespace toolstrackingsystem
                             toolFrm.IsConnect = false;
                             toolFrm.IsListening = false;
                         }
+                        if (item.Text == "工具包管理")
+                        {
+                            //关闭工具包
+                            FrmToolPackManage toolFrm = (FrmToolPackManage)item.AttachedControl.Controls[0];
+                            toolFrm.IsConnect = false;
+                            toolFrm.IsListening = false;
+                        }
                     }
                     else if (tabName == "归还工具")
                     {
@@ -160,6 +167,30 @@ namespace toolstrackingsystem
                         {
                             //关闭领用
                             FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
+                            toolFrm.IsConnect = false;
+                            toolFrm.IsListening = false;
+                        }
+                        if (item.Text == "工具包管理")
+                        {
+                            //关闭工具包管理
+                            FrmToolPackManage toolFrm = (FrmToolPackManage)item.AttachedControl.Controls[0];
+                            toolFrm.IsConnect = false;
+                            toolFrm.IsListening = false;
+                        }
+                    }
+                    else if (tabName == "工具包管理")
+                    {
+                        if (item.Text == "领用工具")
+                        {
+                            //关闭领用
+                            FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
+                            toolFrm.IsConnect = false;
+                            toolFrm.IsListening = false;
+                        }
+                        if (item.Text == "归还工具")
+                        {
+                            //关闭归还
+                            FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
                             toolFrm.IsConnect = false;
                             toolFrm.IsListening = false;
                         }
@@ -321,6 +352,13 @@ namespace toolstrackingsystem
                                 toolFrm.IsConnect = false;
                                 toolFrm.IsListening = false;
                             }
+                            if (item.Text == "工具包管理")
+                            { 
+                                //关闭工具包
+                                FrmToolPackManage toolFrm = (FrmToolPackManage)item.AttachedControl.Controls[0];
+                                toolFrm.IsConnect = false;
+                                toolFrm.IsListening = false;
+                            }
                     }
                     if (this.superTabControl2.SelectedTab.AttachedControl.Controls.Count>0)
                     {
@@ -341,10 +379,43 @@ namespace toolstrackingsystem
                             toolFrm.IsConnect = false;
                             toolFrm.IsListening = false;
                         }
+                        if (item.Text == "工具包管理")
+                        {
+                            //关闭工具包
+                            FrmToolPackManage toolFrm = (FrmToolPackManage)item.AttachedControl.Controls[0];
+                            toolFrm.IsConnect = false;
+                            toolFrm.IsListening = false;
+                        }
                     }
                     if (this.superTabControl2.SelectedTab.AttachedControl.Controls.Count>0)
                     {
                         FrmReturnTool frmTool = (FrmReturnTool)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
+                        frmTool.IsConnect = true;
+                        frmTool.IsListening = true;
+                    }
+                }
+                else if (this.superTabControl2.SelectedTab.Text == "工具包管理")
+                {
+                    foreach (SuperTabItem item in superTabControl2.Tabs)
+                    {
+                        if (item.Text == "领用工具")
+                        {
+                            //关闭领用
+                            FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
+                            toolFrm.IsConnect = false;
+                            toolFrm.IsListening = false;
+                        }
+                        if (item.Text == "归还工具")
+                        {
+                            //关闭归还
+                            FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
+                            toolFrm.IsConnect = false;
+                            toolFrm.IsListening = false;
+                        }
+                    }
+                    if (this.superTabControl2.SelectedTab.AttachedControl.Controls.Count > 0)
+                    {
+                        FrmToolPackManage frmTool = (FrmToolPackManage)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
                         frmTool.IsConnect = true;
                         frmTool.IsListening = true;
                     }

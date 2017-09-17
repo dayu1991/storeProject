@@ -421,18 +421,11 @@ namespace toolstrackingsystem
             }
             
         }
-
-
-
         private void FrmOutTool_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Dispose();
             //MessageBox.Show("没有领用权限！");
         }
-
-
-
-
         private void StartScanListion(ILog logger)
         {
             if (string.IsNullOrWhiteSpace(ScanIpAddress) || string.IsNullOrWhiteSpace(ScanPort))
