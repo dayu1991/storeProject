@@ -185,48 +185,31 @@ namespace toolstrackingsystem
                 }
                 if (!isOpen)
                 {
+                    ////需要强转
+                    DevComponents.DotNetBar.Office2007RibbonForm form = ChildWinManagement.LoadMdiForm(this, formType) as DevComponents.DotNetBar.Office2007RibbonForm;
+                    //设置该子窗体不为顶级窗体，否则不能加入到别的控件中form.TopLevel = false;
+                    form.Visible = true;
+                    //解决textbox里的内容无法被鼠标选中的问题
+                    form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                    //布满父控件
+                    form.Dock = DockStyle.Fill;
+                    if (tabName == "送修工具接收")
+                    {
+                        //设置委托绑定到赋值方法上
+                        ((ToolRepairManageNew)form).transfDelegate += setText;
+                    }
                     //创建一个tab
                     SuperTabItem item = superTabControl2.CreateTab(tabName);
                     //设置显示名和控件名
                     item.Text = tabName;
                     item.Name = tabName;
+                    //将子窗体添加到Tab中
+                    item.AttachedControl.Controls.Add(form);
                     //选择该子窗体。
                     superTabControl2.SelectedTab = item;
-                    ////需要强转
-                    if (tabName == "送修工具接收")
+                    if (!tablItemDic.ContainsKey(tabName))
                     {
-                        ToolRepairManageNew form = ChildWinManagement.LoadMdiForm(this, formType) as ToolRepairManageNew;
-                        //设置委托绑定到赋值方法上
-                        form.transfDelegate += setText;
-                        //设置该子窗体不为顶级窗体，否则不能加入到别的控件中
-                        form.TopLevel = false;
-                        form.Visible = true;
-                        //解决textbox里的内容无法被鼠标选中的问题
-                        form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-                        //布满父控件
-                        form.Dock = DockStyle.Fill;
-                        //form.Size =  item.AttachedControl.Size;
-                        //将子窗体添加到Tab中
-                        item.AttachedControl.Controls.Add(form);
-                        if (!tablItemDic.ContainsKey(tabName))
-                        {
-                            tablItemDic.Add(tabName, form.Name);
-                        }
-                    }
-                    else {
-                        DevComponents.DotNetBar.Office2007RibbonForm form = ChildWinManagement.LoadMdiForm(this, formType) as DevComponents.DotNetBar.Office2007RibbonForm;
-                        //设置该子窗体不为顶级窗体，否则不能加入到别的控件中form.TopLevel = false;
-                        form.Visible = true;
-                        //解决textbox里的内容无法被鼠标选中的问题
-                        form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-                        //布满父控件
-                        form.Dock = DockStyle.Fill;
-                        //将子窗体添加到Tab中
-                        item.AttachedControl.Controls.Add(form);
-                        if (!tablItemDic.ContainsKey(tabName))
-                        {
-                            tablItemDic.Add(tabName, form.Name);
-                        }
+                        tablItemDic.Add(tabName, form.Name);
                     }
                 }
             }
