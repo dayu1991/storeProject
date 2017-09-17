@@ -201,7 +201,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.TollList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.TollList_dataGridViewX.EnableHeadersVisualStyles = false;
-            this.TollList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.TollList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.TollList_dataGridViewX.Location = new System.Drawing.Point(-4, -1);
             this.TollList_dataGridViewX.MultiSelect = false;
             this.TollList_dataGridViewX.Name = "TollList_dataGridViewX";
@@ -217,7 +217,7 @@
             this.TollList_dataGridViewX.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.TollList_dataGridViewX.RowTemplate.Height = 23;
             this.TollList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.TollList_dataGridViewX.Size = new System.Drawing.Size(1455, 591);
+            this.TollList_dataGridViewX.Size = new System.Drawing.Size(1455, 550);
             this.TollList_dataGridViewX.TabIndex = 0;
             this.TollList_dataGridViewX.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.TollList_dataGridViewX_RowStateChanged);
             // 
@@ -230,7 +230,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(10, 85);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1454, 643);
+            this.groupPanel2.Size = new System.Drawing.Size(1454, 608);
             // 
             // 
             // 
@@ -265,7 +265,7 @@
             // 
             this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(-3, 591);
+            this.pagerControl1.Location = new System.Drawing.Point(-4, 555);
             this.pagerControl1.Name = "pagerControl1";
             this.pagerControl1.PageIndex = 1;
             this.pagerControl1.PageSize = 100;
@@ -278,7 +278,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1469, 733);
+            this.ClientSize = new System.Drawing.Size(1469, 700);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.groupPanel2);
             this.Name = "FrmNotBackTool";

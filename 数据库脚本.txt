@@ -1,7 +1,7 @@
 -- -------------------------------------------------------------------------------------东所start
 
 
-use toolInfo_DongSuo
+use toolInfo_DongSuo;
 drop table t_ToolPrepairRecord;
 drop table t_ScrapToolInfo;
 ALTER TABLE [dbo].[t_ToolInfo] ADD [IsBack] varchar(2) null default '1'; -- 是否归还  0：已借出未归还
@@ -237,7 +237,7 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
 
 
 -- -------------------------------------------------------------------------------------南所start
-use toolInfo_NanSuo
+use toolInfo_NanSuo;
 drop table t_ToolPrepairRecord;
 drop table t_ScrapToolInfo;
 ALTER TABLE [dbo].[t_ToolInfo] ADD [IsBack] varchar(2) null default '1'; -- 是否归还  0：已借出未归还
@@ -476,7 +476,7 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
 
 -- -------------------------------------------------------------------------------------石所start
 
-use toolInfo_ShiJiaZhuang
+use toolInfo_ShiJiaZhuang;
 drop table t_ToolPrepairRecord;
 drop table t_ScrapToolInfo;
 
@@ -717,7 +717,7 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
 
 
 -- -------------------------------------------------------------------------------------西所start
-use toolInfo_XiSuo
+use toolInfo_XiSuo;
 drop table t_ToolPrepairRecord;
 drop table t_ScrapToolInfo;
 ALTER TABLE [dbo].[t_ToolInfo] ADD [IsBack] varchar(2) null default '1'; -- 是否归还  0：已借出未归还

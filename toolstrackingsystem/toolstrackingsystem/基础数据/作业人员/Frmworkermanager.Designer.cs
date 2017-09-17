@@ -70,7 +70,7 @@
             // 
             this.Remark_textBox.Border.Class = "TextBoxBorder";
             this.Remark_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.Remark_textBox.Location = new System.Drawing.Point(1037, 16);
+            this.Remark_textBox.Location = new System.Drawing.Point(1037, 11);
             this.Remark_textBox.Name = "Remark_textBox";
             this.Remark_textBox.PreventEnterBeep = true;
             this.Remark_textBox.Size = new System.Drawing.Size(306, 21);
@@ -83,7 +83,7 @@
             // 
             // 
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(989, 17);
+            this.labelX7.Location = new System.Drawing.Point(989, 12);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(55, 23);
             this.labelX7.TabIndex = 12;
@@ -91,7 +91,7 @@
             // 
             // PersonName_Detail_textBox
             // 
-            this.PersonName_Detail_textBox.Location = new System.Drawing.Point(576, 17);
+            this.PersonName_Detail_textBox.Location = new System.Drawing.Point(576, 12);
             this.PersonName_Detail_textBox.Name = "PersonName_Detail_textBox";
             this.PersonName_Detail_textBox.Size = new System.Drawing.Size(238, 21);
             this.PersonName_Detail_textBox.TabIndex = 6;
@@ -103,7 +103,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(510, 17);
+            this.labelX4.Location = new System.Drawing.Point(510, 12);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(193, 23);
             this.labelX4.TabIndex = 5;
@@ -111,7 +111,7 @@
             // 
             // PersonCode_Detail_textBox
             // 
-            this.PersonCode_Detail_textBox.Location = new System.Drawing.Point(184, 17);
+            this.PersonCode_Detail_textBox.Location = new System.Drawing.Point(184, 12);
             this.PersonCode_Detail_textBox.Name = "PersonCode_Detail_textBox";
             this.PersonCode_Detail_textBox.Size = new System.Drawing.Size(274, 21);
             this.PersonCode_Detail_textBox.TabIndex = 4;
@@ -123,7 +123,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(122, 17);
+            this.labelX3.Location = new System.Drawing.Point(122, 12);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(66, 23);
             this.labelX3.TabIndex = 3;
@@ -133,7 +133,7 @@
             // 
             this.Delete_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Delete_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Delete_button.Location = new System.Drawing.Point(357, 61);
+            this.Delete_button.Location = new System.Drawing.Point(357, 56);
             this.Delete_button.Name = "Delete_button";
             this.Delete_button.Size = new System.Drawing.Size(75, 23);
             this.Delete_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -145,7 +145,7 @@
             // 
             this.Edit_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Edit_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Edit_button.Location = new System.Drawing.Point(245, 61);
+            this.Edit_button.Location = new System.Drawing.Point(245, 56);
             this.Edit_button.Name = "Edit_button";
             this.Edit_button.Size = new System.Drawing.Size(75, 23);
             this.Edit_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -157,7 +157,7 @@
             // 
             this.Add_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Add_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Add_button.Location = new System.Drawing.Point(122, 61);
+            this.Add_button.Location = new System.Drawing.Point(122, 56);
             this.Add_button.Name = "Add_button";
             this.Add_button.Size = new System.Drawing.Size(75, 23);
             this.Add_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -174,7 +174,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(11, 83);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1468, 562);
+            this.groupPanel2.Size = new System.Drawing.Size(1468, 510);
             // 
             // 
             // 
@@ -209,7 +209,7 @@
             // 
             this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(3, 505);
+            this.pagerControl1.Location = new System.Drawing.Point(0, 456);
             this.pagerControl1.Name = "pagerControl1";
             this.pagerControl1.PageIndex = 1;
             this.pagerControl1.PageSize = 100;
@@ -238,7 +238,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.PersonList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.PersonList_dataGridViewX.EnableHeadersVisualStyles = false;
-            this.PersonList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.PersonList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.PersonList_dataGridViewX.Location = new System.Drawing.Point(0, 0);
             this.PersonList_dataGridViewX.MultiSelect = false;
             this.PersonList_dataGridViewX.Name = "PersonList_dataGridViewX";
@@ -254,7 +254,7 @@
             this.PersonList_dataGridViewX.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.PersonList_dataGridViewX.RowTemplate.Height = 23;
             this.PersonList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.PersonList_dataGridViewX.Size = new System.Drawing.Size(1459, 503);
+            this.PersonList_dataGridViewX.Size = new System.Drawing.Size(1459, 456);
             this.PersonList_dataGridViewX.TabIndex = 0;
             this.PersonList_dataGridViewX.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PersonList_dataGridViewX_CellClick);
             this.PersonList_dataGridViewX.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.PersonList_dataGridViewX_RowStateChanged);
@@ -335,9 +335,9 @@
             this.groupPanel3.Controls.Add(this.Edit_button);
             this.groupPanel3.Controls.Add(this.Add_button);
             this.groupPanel3.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel3.Location = new System.Drawing.Point(11, 651);
+            this.groupPanel3.Location = new System.Drawing.Point(11, 596);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(1468, 109);
+            this.groupPanel3.Size = new System.Drawing.Size(1468, 95);
             // 
             // 
             // 
@@ -378,7 +378,7 @@
             this.Can_TakeOut_checkBox.Checked = true;
             this.Can_TakeOut_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Can_TakeOut_checkBox.CheckValue = "Y";
-            this.Can_TakeOut_checkBox.Location = new System.Drawing.Point(842, 16);
+            this.Can_TakeOut_checkBox.Location = new System.Drawing.Point(842, 11);
             this.Can_TakeOut_checkBox.Name = "Can_TakeOut_checkBox";
             this.Can_TakeOut_checkBox.Size = new System.Drawing.Size(115, 23);
             this.Can_TakeOut_checkBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -389,7 +389,7 @@
             // 
             this.Print_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Print_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Print_button.Location = new System.Drawing.Point(695, 61);
+            this.Print_button.Location = new System.Drawing.Point(695, 56);
             this.Print_button.Name = "Print_button";
             this.Print_button.Size = new System.Drawing.Size(75, 23);
             this.Print_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -401,7 +401,7 @@
             // 
             this.Pull_Out_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Pull_Out_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Pull_Out_button.Location = new System.Drawing.Point(587, 61);
+            this.Pull_Out_button.Location = new System.Drawing.Point(587, 56);
             this.Pull_Out_button.Name = "Pull_Out_button";
             this.Pull_Out_button.Size = new System.Drawing.Size(75, 23);
             this.Pull_Out_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -413,7 +413,7 @@
             // 
             this.Put_In_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Put_In_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Put_In_button.Location = new System.Drawing.Point(475, 61);
+            this.Put_In_button.Location = new System.Drawing.Point(475, 56);
             this.Put_In_button.Name = "Put_In_button";
             this.Put_In_button.Size = new System.Drawing.Size(75, 23);
             this.Put_In_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -490,7 +490,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1484, 774);
+            this.ClientSize = new System.Drawing.Size(1484, 700);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.groupPanel3);
             this.Controls.Add(this.groupPanel1);

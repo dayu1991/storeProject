@@ -65,7 +65,7 @@
             this.groupPanel3.Controls.Add(this.Edit_buttonX);
             this.groupPanel3.Controls.Add(this.Add_buttonX);
             this.groupPanel3.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel3.Location = new System.Drawing.Point(11, 647);
+            this.groupPanel3.Location = new System.Drawing.Point(11, 576);
             this.groupPanel3.Name = "groupPanel3";
             this.groupPanel3.Size = new System.Drawing.Size(1461, 78);
             // 
@@ -182,7 +182,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(11, 81);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1461, 560);
+            this.groupPanel2.Size = new System.Drawing.Size(1461, 489);
             // 
             // 
             // 
@@ -250,7 +250,7 @@
             this.RoleList_dataGridViewX.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.RoleList_dataGridViewX.RowTemplate.Height = 23;
             this.RoleList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.RoleList_dataGridViewX.Size = new System.Drawing.Size(1455, 554);
+            this.RoleList_dataGridViewX.Size = new System.Drawing.Size(1455, 483);
             this.RoleList_dataGridViewX.TabIndex = 1;
             this.RoleList_dataGridViewX.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RoleList_dataGridViewX_CellClick);
             this.RoleList_dataGridViewX.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.RoleList_dataGridViewX_RowPostPaint);
@@ -363,7 +363,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1477, 729);
+            this.ClientSize = new System.Drawing.Size(1479, 662);
             this.Controls.Add(this.groupPanel3);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.groupPanel1);

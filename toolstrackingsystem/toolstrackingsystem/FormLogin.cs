@@ -126,6 +126,15 @@ namespace toolstrackingsystem
         }
         private void textBox_UserName_TextChanged(object sender, EventArgs e)
         {
+
+        }
+        private void textBox_UserName_MouseLeave(object sender, EventArgs e)
+        {
+
+
+        }
+        private void textBox_UserName_Leave(object sender, EventArgs e)
+        {
             try
             {
                 string UserCode = textBox_UserName.Text;

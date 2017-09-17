@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.tbSearchName = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -222,7 +222,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(2, 103);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1481, 623);
+            this.groupPanel2.Size = new System.Drawing.Size(1481, 595);
             // 
             // 
             // 
@@ -257,20 +257,20 @@
             // 
             this.tool_RepairdataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.tool_RepairdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tool_RepairdataGridView.DefaultCellStyle = dataGridViewCellStyle3;
-            this.tool_RepairdataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tool_RepairdataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            this.tool_RepairdataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.tool_RepairdataGridView.Location = new System.Drawing.Point(3, 37);
             this.tool_RepairdataGridView.Name = "tool_RepairdataGridView";
             this.tool_RepairdataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.tool_RepairdataGridView.RowTemplate.Height = 23;
-            this.tool_RepairdataGridView.Size = new System.Drawing.Size(1475, 577);
+            this.tool_RepairdataGridView.Size = new System.Drawing.Size(1475, 549);
             this.tool_RepairdataGridView.TabIndex = 1;
             this.tool_RepairdataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellContentClick);
             this.tool_RepairdataGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.tool_RepairdataGridView_RowStateChanged);
@@ -345,7 +345,7 @@
             // 
             // ToolRepairManageNew
             // 
-            this.ClientSize = new System.Drawing.Size(1487, 734);
+            this.ClientSize = new System.Drawing.Size(1487, 702);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.groupPanel1);
             this.Name = "ToolRepairManageNew";

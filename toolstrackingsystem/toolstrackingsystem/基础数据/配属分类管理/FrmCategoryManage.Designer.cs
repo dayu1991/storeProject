@@ -72,7 +72,7 @@
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1454, 569);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1454, 536);
             this.dataGridViewX1.TabIndex = 8;
             this.dataGridViewX1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellClick);
             this.dataGridViewX1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewX1_RowStateChanged);
@@ -225,7 +225,7 @@
             this.groupPanel2.Controls.Add(this.tbEditName);
             this.groupPanel2.Controls.Add(this.labelX5);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(8, 660);
+            this.groupPanel2.Location = new System.Drawing.Point(8, 625);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(1454, 69);
             // 
@@ -287,7 +287,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1468, 736);
+            this.ClientSize = new System.Drawing.Size(1468, 698);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.groupPanel2);

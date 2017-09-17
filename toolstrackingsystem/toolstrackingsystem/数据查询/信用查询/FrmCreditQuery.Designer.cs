@@ -197,7 +197,7 @@
             this.TollList_dataGridViewX.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.TollList_dataGridViewX.RowTemplate.Height = 23;
             this.TollList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.TollList_dataGridViewX.Size = new System.Drawing.Size(1454, 595);
+            this.TollList_dataGridViewX.Size = new System.Drawing.Size(1454, 558);
             this.TollList_dataGridViewX.TabIndex = 0;
             this.TollList_dataGridViewX.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TollList_dataGridViewX_CellContentClick);
             this.TollList_dataGridViewX.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.TollList_dataGridViewX_RowStateChanged);
@@ -212,7 +212,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(7, 85);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1457, 648);
+            this.groupPanel2.Size = new System.Drawing.Size(1457, 608);
             // 
             // 
             // 
@@ -247,7 +247,7 @@
             // 
             this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(0, 597);
+            this.pagerControl1.Location = new System.Drawing.Point(0, 558);
             this.pagerControl1.Name = "pagerControl1";
             this.pagerControl1.PageIndex = 1;
             this.pagerControl1.PageSize = 100;
@@ -260,7 +260,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1468, 736);
+            this.ClientSize = new System.Drawing.Size(1468, 699);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.groupPanel2);
             this.Name = "FrmCreditQuery";

@@ -69,7 +69,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(8, 84);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1454, 649);
+            this.groupPanel2.Size = new System.Drawing.Size(1454, 614);
             // 
             // 
             // 
@@ -104,7 +104,7 @@
             // 
             this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(5, 602);
+            this.pagerControl1.Location = new System.Drawing.Point(3, 563);
             this.pagerControl1.Name = "pagerControl1";
             this.pagerControl1.PageIndex = 1;
             this.pagerControl1.PageSize = 50;
@@ -134,7 +134,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ToolList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.ToolList_dataGridViewX.EnableHeadersVisualStyles = false;
-            this.ToolList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.ToolList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.ToolList_dataGridViewX.Location = new System.Drawing.Point(5, 3);
             this.ToolList_dataGridViewX.MultiSelect = false;
             this.ToolList_dataGridViewX.Name = "ToolList_dataGridViewX";
@@ -150,7 +150,7 @@
             this.ToolList_dataGridViewX.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.ToolList_dataGridViewX.RowTemplate.Height = 23;
             this.ToolList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.ToolList_dataGridViewX.Size = new System.Drawing.Size(1446, 597);
+            this.ToolList_dataGridViewX.Size = new System.Drawing.Size(1446, 560);
             this.ToolList_dataGridViewX.TabIndex = 0;
             this.ToolList_dataGridViewX.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.ToolList_dataGridViewX_RowStateChanged);
             // 
@@ -418,7 +418,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1468, 736);
+            this.ClientSize = new System.Drawing.Size(1468, 702);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.groupPanel1);
             this.Name = "FrmQueryReturn";

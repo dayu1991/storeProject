@@ -197,7 +197,7 @@
             this.TollList_dataGridViewX.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.TollList_dataGridViewX.RowTemplate.Height = 23;
             this.TollList_dataGridViewX.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.TollList_dataGridViewX.Size = new System.Drawing.Size(1448, 598);
+            this.TollList_dataGridViewX.Size = new System.Drawing.Size(1448, 563);
             this.TollList_dataGridViewX.TabIndex = 0;
             // 
             // groupPanel2
@@ -210,7 +210,7 @@
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(13, 82);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1451, 650);
+            this.groupPanel2.Size = new System.Drawing.Size(1451, 617);
             // 
             // 
             // 
@@ -245,7 +245,7 @@
             // 
             this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(0, 598);
+            this.pagerControl1.Location = new System.Drawing.Point(2, 565);
             this.pagerControl1.Name = "pagerControl1";
             this.pagerControl1.PageIndex = 1;
             this.pagerControl1.PageSize = 50;
@@ -258,7 +258,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1468, 736);
+            this.ClientSize = new System.Drawing.Size(1468, 702);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.groupPanel2);
             this.Name = "FrmRepairTool";

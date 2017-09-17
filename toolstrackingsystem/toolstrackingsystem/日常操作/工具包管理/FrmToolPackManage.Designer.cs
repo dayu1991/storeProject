@@ -81,7 +81,7 @@
             this.ToolInfoList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.ToolInfoList_dataGridViewX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ToolInfoList_dataGridViewX.EnableHeadersVisualStyles = false;
-            this.ToolInfoList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.ToolInfoList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.ToolInfoList_dataGridViewX.Location = new System.Drawing.Point(0, 0);
             this.ToolInfoList_dataGridViewX.MultiSelect = false;
             this.ToolInfoList_dataGridViewX.Name = "ToolInfoList_dataGridViewX";
@@ -146,7 +146,7 @@
             // 
             this.Add_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Add_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Add_button.Location = new System.Drawing.Point(467, 38);
+            this.Add_button.Location = new System.Drawing.Point(466, 15);
             this.Add_button.Name = "Add_button";
             this.Add_button.Size = new System.Drawing.Size(75, 23);
             this.Add_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -158,7 +158,7 @@
             // 
             this.Edit_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Edit_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Edit_button.Location = new System.Drawing.Point(581, 38);
+            this.Edit_button.Location = new System.Drawing.Point(580, 15);
             this.Edit_button.Name = "Edit_button";
             this.Edit_button.Size = new System.Drawing.Size(75, 23);
             this.Edit_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -170,7 +170,7 @@
             // 
             this.Delete_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Delete_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Delete_button.Location = new System.Drawing.Point(796, 38);
+            this.Delete_button.Location = new System.Drawing.Point(795, 15);
             this.Delete_button.Name = "Delete_button";
             this.Delete_button.Size = new System.Drawing.Size(75, 23);
             this.Delete_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -186,7 +186,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(154, 38);
+            this.labelX3.Location = new System.Drawing.Point(153, 15);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(66, 23);
             this.labelX3.TabIndex = 3;
@@ -194,7 +194,7 @@
             // 
             // ToolInfoCode_Detail_textBox
             // 
-            this.ToolInfoCode_Detail_textBox.Location = new System.Drawing.Point(226, 38);
+            this.ToolInfoCode_Detail_textBox.Location = new System.Drawing.Point(225, 15);
             this.ToolInfoCode_Detail_textBox.Name = "ToolInfoCode_Detail_textBox";
             this.ToolInfoCode_Detail_textBox.Size = new System.Drawing.Size(204, 21);
             this.ToolInfoCode_Detail_textBox.TabIndex = 4;
@@ -203,7 +203,7 @@
             // 
             this.Print_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Print_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Print_button.Location = new System.Drawing.Point(689, 38);
+            this.Print_button.Location = new System.Drawing.Point(688, 15);
             this.Print_button.Name = "Print_button";
             this.Print_button.Size = new System.Drawing.Size(75, 23);
             this.Print_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -223,9 +223,9 @@
             this.groupPanel3.Controls.Add(this.Edit_button);
             this.groupPanel3.Controls.Add(this.Add_button);
             this.groupPanel3.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel3.Location = new System.Drawing.Point(9, 638);
+            this.groupPanel3.Location = new System.Drawing.Point(6, 635);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(1467, 94);
+            this.groupPanel3.Size = new System.Drawing.Size(1467, 59);
             // 
             // 
             // 
@@ -260,7 +260,7 @@
             // 
             this.Delete_Pack_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Delete_Pack_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Delete_Pack_button.Location = new System.Drawing.Point(903, 38);
+            this.Delete_Pack_button.Location = new System.Drawing.Point(902, 15);
             this.Delete_Pack_button.Name = "Delete_Pack_button";
             this.Delete_Pack_button.Size = new System.Drawing.Size(75, 23);
             this.Delete_Pack_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -459,7 +459,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1481, 736);
+            this.ClientSize = new System.Drawing.Size(1481, 699);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.groupPanel3);
             this.Controls.Add(this.groupPanel2);

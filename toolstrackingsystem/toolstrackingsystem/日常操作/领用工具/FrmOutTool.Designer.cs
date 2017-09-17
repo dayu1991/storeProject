@@ -79,9 +79,9 @@
             this.groupPanel2.Controls.Add(this.cbEditOutTime);
             this.groupPanel2.Controls.Add(this.labelX6);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(6, 608);
+            this.groupPanel2.Location = new System.Drawing.Point(6, 557);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1471, 162);
+            this.groupPanel2.Size = new System.Drawing.Size(1471, 135);
             // 
             // 
             // 
@@ -111,7 +111,6 @@
             // 
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 3;
-            this.groupPanel2.Text = "工具领用信息";
             // 
             // dtiSelect
             // 
@@ -359,7 +358,7 @@
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1471, 589);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1471, 538);
             this.dataGridViewX1.TabIndex = 4;
             // 
             // tbTypeName
@@ -443,7 +442,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1484, 774);
+            this.ClientSize = new System.Drawing.Size(1484, 698);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.groupPanel2);
             this.Name = "FrmOutTool";
