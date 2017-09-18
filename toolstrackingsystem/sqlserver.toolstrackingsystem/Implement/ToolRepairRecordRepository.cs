@@ -62,7 +62,7 @@ namespace sqlserver.toolstrackingsystem
         }
 
         /// <summary>
-        /// 获取送修工具信息（未领回的工具（客户端已送修：0，服务端接受：1  服务端维修完成：2   已被客户端领取：3））     
+        /// 获取送修工具信息（未领回的工具（客户端已送修：1，服务端接受：2  服务端维修完成：3   已被客户端领取：4   已报废：5））     
         /// </summary>
         /// <param name="toolCode"></param>
         /// <param name="isReceived"></param>

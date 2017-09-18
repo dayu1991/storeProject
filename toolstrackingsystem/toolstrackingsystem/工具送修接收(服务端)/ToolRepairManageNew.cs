@@ -82,7 +82,7 @@ namespace toolstrackingsystem
                 if (column is DataGridViewButtonColumn)
                 {
                     string toolCode = tool_RepairdataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
-                    //更新送修工具接收状态为1
+                    //更新送修工具接收状态为2
                     t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
                     repairInfo = _toolRepairRecordService.GetToolRepairByToolCodeAndStatus(toolCode, 1);
                     if (repairInfo != null)
