@@ -209,6 +209,17 @@ namespace toolstrackingsystem
                                 }
                             }
                         }
+                        else if (tabName == "送修工具待完成")
+                        {
+                            FrmToolRepairedComlete toolFrm = (FrmToolRepairedComlete)item.AttachedControl.Controls[0];
+                            foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
+                            {
+                                if (tab.Name == dataBase)
+                                {
+                                    toolFrm.superTabStrip1.SelectedTab = tab;
+                                }
+                            }
+                        }
                         superTabControl2.SelectedTab = item;
                         isOpen = true;
                         break;
@@ -228,6 +239,11 @@ namespace toolstrackingsystem
                     {
                         //设置委托绑定到赋值方法上
                         ((ToolRepairManageNew)form).transfDelegate += setText;
+                    }
+                    else if (tabName == "送修工具待完成")
+                    {
+                        //设置委托绑定到赋值方法上
+                        ((FrmToolRepairedComlete)form).transfDelegate += setText;
                     }
                     //创建一个tab
                     SuperTabItem item = superTabControl2.CreateTab(tabName);
@@ -340,7 +356,7 @@ namespace toolstrackingsystem
         {
             if (i != 0)
             {
-
+                string dataBase = MemoryCache.Default.Get("clientName") != null ? MemoryCache.Default.Get("clientName").ToString() : CommonHelper.GetConfigValue("defaultDataBase");
                 if (this.superTabControl2.SelectedTab.Text == "领用工具")
                 {
                     foreach (SuperTabItem item in superTabControl2.Tabs)
@@ -420,7 +436,30 @@ namespace toolstrackingsystem
                         frmTool.IsListening = true;
                     }
                 }
-                else {
+                else if (this.superTabControl2.SelectedTab.Text == "送修工具接收" && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count>0)
+                {
+                    ToolRepairManageNew toolFrm = (ToolRepairManageNew)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
+                    foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
+                    {
+                        if (tab.Name == dataBase)
+                        {
+                            toolFrm.superTabStrip1.SelectedTab = tab;
+                        }
+                    }
+                }
+                else if (this.superTabControl2.SelectedTab.Text == "送修工具待完成" && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count > 0)
+                {
+                    FrmToolRepairedComlete toolFrm = (FrmToolRepairedComlete)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
+                    foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
+                    {
+                        if (tab.Name == dataBase)
+                        {
+                            toolFrm.superTabStrip1.SelectedTab = tab;
+                        }
+                    }
+                }
+                else
+                {
                     foreach (SuperTabItem item in superTabControl2.Tabs)
                     {
                         if (item.Text == "领用工具")
@@ -434,6 +473,13 @@ namespace toolstrackingsystem
                         {
                             //关闭归还
                             FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
+                            toolFrm.IsConnect = false;
+                            toolFrm.IsListening = false;
+                        }
+                        if (item.Text == "工具包管理")
+                        {
+                            //关闭工具包管理
+                            FrmToolPackManage toolFrm = (FrmToolPackManage)item.AttachedControl.Controls[0];
                             toolFrm.IsConnect = false;
                             toolFrm.IsListening = false;
                         }

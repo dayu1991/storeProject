@@ -65,7 +65,7 @@ namespace service.toolstrackingsystem
             return _multiTableQueryRepository.QueryList<ToolPrepairEntity>(sql, parameters).ToList();
         }
         /// <summary>
-        /// 获取送修工具待接收的信息
+        /// 获取送修工具各个状态的信息
         /// </summary>
         /// <param name="t_ToolRepairRecord"></param>
         /// <returns></returns>
@@ -79,8 +79,10 @@ namespace service.toolstrackingsystem
                               ,trr.[ToRepairedTime]
                               ,trr.[ToRepairedPerName]
                               ,trr.[ToRepairMemo]
-  FROM [dbo].[t_ToolRepairRecord] trr WHERE ToolStatus=1 ";
+  FROM [dbo].[t_ToolRepairRecord] trr WHERE 1=1 ";
             DynamicParameters parameters = new DynamicParameters();
+            sql += " AND trr.ToolStatus = @toolStatus ";
+            parameters.Add("toolStatus",repairedInfo.ToolStatus);
             if (!string.IsNullOrEmpty(repairedInfo.TypeName))
             {
                 sql += " AND trr.TypeName = @typeName ";
