@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.tbTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbChildTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,17 +44,17 @@
             this.tbPersonName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCheckTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.btnAddTool = new DevComponents.DotNetBar.ButtonX();
             this.btnReturnContinue = new DevComponents.DotNetBar.ButtonX();
-            this.tbEditCode = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX11 = new DevComponents.DotNetBar.LabelX();
-            this.btnReturn = new DevComponents.DotNetBar.ButtonX();
             this.tbEditoutdescribes = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.tbEditPersonName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.tbEditPersonCode = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
+            this.btnAddTool = new DevComponents.DotNetBar.ButtonX();
+            this.tbEditCode = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
+            this.btnReturn = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.groupPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -79,21 +79,21 @@
             this.tbPersonCode,
             this.tbPersonName,
             this.tbCheckTime});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(6, 4);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1472, 458);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1472, 563);
             this.dataGridViewX1.TabIndex = 5;
             // 
             // tbTypeName
@@ -193,10 +193,14 @@
             // 
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel2.Controls.Add(this.btnAddTool);
             this.groupPanel2.Controls.Add(this.btnReturnContinue);
+            this.groupPanel2.Controls.Add(this.btnReturn);
             this.groupPanel2.Controls.Add(this.tbEditoutdescribes);
             this.groupPanel2.Controls.Add(this.labelX10);
+            this.groupPanel2.Controls.Add(this.tbEditCode);
             this.groupPanel2.Controls.Add(this.tbEditPersonName);
+            this.groupPanel2.Controls.Add(this.labelX11);
             this.groupPanel2.Controls.Add(this.labelX9);
             this.groupPanel2.Controls.Add(this.tbEditPersonCode);
             this.groupPanel2.Controls.Add(this.labelX8);
@@ -234,18 +238,6 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 6;
             // 
-            // btnAddTool
-            // 
-            this.btnAddTool.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAddTool.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddTool.Location = new System.Drawing.Point(377, 506);
-            this.btnAddTool.Name = "btnAddTool";
-            this.btnAddTool.Size = new System.Drawing.Size(40, 23);
-            this.btnAddTool.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAddTool.TabIndex = 33;
-            this.btnAddTool.Text = "增加";
-            this.btnAddTool.Click += new System.EventHandler(this.btnAddTool_Click);
-            // 
             // btnReturnContinue
             // 
             this.btnReturnContinue.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -257,45 +249,6 @@
             this.btnReturnContinue.TabIndex = 32;
             this.btnReturnContinue.Text = "继续归还";
             this.btnReturnContinue.Click += new System.EventHandler(this.btnReturnContinue_Click);
-            // 
-            // tbEditCode
-            // 
-            // 
-            // 
-            // 
-            this.tbEditCode.Border.Class = "TextBoxBorder";
-            this.tbEditCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditCode.Location = new System.Drawing.Point(167, 506);
-            this.tbEditCode.Name = "tbEditCode";
-            this.tbEditCode.PreventEnterBeep = true;
-            this.tbEditCode.Size = new System.Drawing.Size(204, 21);
-            this.tbEditCode.TabIndex = 1;
-            this.tbEditCode.TextChanged += new System.EventHandler(this.tbEditCode_TextChanged);
-            // 
-            // labelX11
-            // 
-            this.labelX11.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(77, 504);
-            this.labelX11.Name = "labelX11";
-            this.labelX11.Size = new System.Drawing.Size(123, 23);
-            this.labelX11.TabIndex = 27;
-            this.labelX11.Text = "工具/包编码：";
-            // 
-            // btnReturn
-            // 
-            this.btnReturn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnReturn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnReturn.Location = new System.Drawing.Point(1130, 487);
-            this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(98, 69);
-            this.btnReturn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnReturn.TabIndex = 21;
-            this.btnReturn.Text = "确认归还";
-            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // tbEditoutdescribes
             // 
@@ -375,17 +328,64 @@
             this.labelX8.TabIndex = 11;
             this.labelX8.Text = "人员编码：";
             // 
+            // btnAddTool
+            // 
+            this.btnAddTool.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddTool.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAddTool.Location = new System.Drawing.Point(334, 22);
+            this.btnAddTool.Name = "btnAddTool";
+            this.btnAddTool.Size = new System.Drawing.Size(40, 23);
+            this.btnAddTool.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddTool.TabIndex = 33;
+            this.btnAddTool.Text = "增加";
+            this.btnAddTool.Click += new System.EventHandler(this.btnAddTool_Click);
+            // 
+            // tbEditCode
+            // 
+            // 
+            // 
+            // 
+            this.tbEditCode.Border.Class = "TextBoxBorder";
+            this.tbEditCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.tbEditCode.Location = new System.Drawing.Point(124, 22);
+            this.tbEditCode.Name = "tbEditCode";
+            this.tbEditCode.PreventEnterBeep = true;
+            this.tbEditCode.Size = new System.Drawing.Size(204, 21);
+            this.tbEditCode.TabIndex = 1;
+            this.tbEditCode.TextChanged += new System.EventHandler(this.tbEditCode_TextChanged);
+            // 
+            // labelX11
+            // 
+            this.labelX11.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX11.Location = new System.Drawing.Point(34, 20);
+            this.labelX11.Name = "labelX11";
+            this.labelX11.Size = new System.Drawing.Size(123, 23);
+            this.labelX11.TabIndex = 27;
+            this.labelX11.Text = "工具/包编码：";
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnReturn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnReturn.Location = new System.Drawing.Point(1120, 24);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(98, 69);
+            this.btnReturn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnReturn.TabIndex = 21;
+            this.btnReturn.Text = "确认归还";
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
             // FrmReturnTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1378, 700);
-            this.Controls.Add(this.btnAddTool);
+            this.ClientSize = new System.Drawing.Size(1486, 700);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.dataGridViewX1);
-            this.Controls.Add(this.tbEditCode);
-            this.Controls.Add(this.labelX11);
-            this.Controls.Add(this.btnReturn);
             this.Name = "FrmReturnTool";
             this.Text = "FrmReturnTool";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmReturnTool_FormClosed);
