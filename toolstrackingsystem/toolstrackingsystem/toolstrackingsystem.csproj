@@ -134,6 +134,12 @@
     <Compile Include="工具送修已完成报废（服务端）\FrmToolRepairedComlete.Designer.cs">
       <DependentUpon>FrmToolRepairedComlete.cs</DependentUpon>
     </Compile>
+    <Compile Include="工具送修报废查询（服务端）\FrmRepairScrapQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="工具送修报废查询（服务端）\FrmRepairScrapQuery.Designer.cs">
+      <DependentUpon>FrmRepairScrapQuery.cs</DependentUpon>
+    </Compile>
     <Compile Include="工具送修接收%28服务端%29\ToolRepairManageNew.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -516,6 +522,9 @@
     <EmbeddedResource Include="工具送修已完成报废（服务端）\FrmToolRepairedComlete.resx">
       <DependentUpon>FrmToolRepairedComlete.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="工具送修报废查询（服务端）\FrmRepairScrapQuery.resx">
+      <DependentUpon>FrmRepairScrapQuery.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="工具送修接收%28服务端%29\ToolRepairManageNew.resx">
       <DependentUpon>ToolRepairManageNew.cs</DependentUpon>
     </EmbeddedResource>
@@ -729,7 +738,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="工具送修报废查询（服务端）\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\common.toolstrackingsystem\common.toolstrackingsystem.csproj">
