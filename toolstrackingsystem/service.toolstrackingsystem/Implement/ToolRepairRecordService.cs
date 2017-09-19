@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ViewEntity.toolstrackingsystem;
+using ViewEntity.toolstrackingsystem.view;
 
 namespace service.toolstrackingsystem
 {
@@ -125,5 +126,55 @@ namespace service.toolstrackingsystem
         {
             return _toolPrepairRecordRepository.GetToolRepairByToolCodeAndStatus(toolCode,status);
         }
+
+
+        public List<ToolRepairRecordExtend> GetListForQuery(string blongValue, string categoryValue, string toolCode, string toolName,
+            DateTime statTime, DateTime endTime, int pageindex, int pagesize, out long totalCount)
+        {
+            Count = 0;
+            List<ToolInfoExtend> list = new List<ToolInfoExtend>();
+            string sql = @"select *,(case ToolStatus when 1 then '已送修' when 2 then '已接收' when 3 then '已修复' when 4 then '已领回' when 5 then '已报修' else '未知' end) as StatusStr from (
+       select *,ROW_NUMBER() OVER (ORDER BY ChildTypeName,[Id] desc) as rank from [t_ToolRepairRecord]  where 1=1 {0}
+)  as t where  t.rank between @startPos and @endPos ";
+            string sqlCount = "select count(1) from [dbo].[t_ToolRepairRecord] where 1=1 {0}";
+            string sqlWhere = "";
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("startPos", ((pageindex - 1) * pagesize + 1));
+            parameters.Add("endPos", pageindex * pagesize);
+
+            if (!string.IsNullOrWhiteSpace(blongValue))
+            {
+                sqlWhere += " and  [TypeName]=@TypeName";
+                parameters.Add("TypeName", blongValue);
+
+            }
+            if (!string.IsNullOrWhiteSpace(categoryValue))
+            {
+                sqlWhere += " and [ChildTypeName] =@ChildTypeName";
+                parameters.Add("ChildTypeName", categoryValue);
+            }
+            if (!string.IsNullOrWhiteSpace(toolCode))
+            {
+                sqlWhere += " and [ToolCode] LIKE @ToolCode";
+                parameters.Add("ToolCode", string.Format("%{0}%", toolCode));
+
+            }
+            if (!string.IsNullOrEmpty(toolName))
+            {
+                sqlWhere += " and [ToolName] LIKE @ToolName";
+                parameters.Add("ToolName", string.Format("%{0}%", toolName));
+            }
+            sqlWhere += " and [ToRepairedTime]>@startTime and [ToRepairedTime]<@endTime ";
+            parameters.Add("startTime", statTime);
+            parameters.Add("endTime", endTime);
+
+
+            sql = string.Format(sql, sqlWhere);
+            sqlCount = string.Format(sqlCount, sqlWhere);
+
+            var result = _multiTableQueryRepository.QueryList<ToolRepairRecordExtend>(sql, parameters, out totalCount, sqlCount, false);
+            return result.Any() ? result.ToList() : new List<ToolRepairRecordExtend>();
+        }
+
     }
 }

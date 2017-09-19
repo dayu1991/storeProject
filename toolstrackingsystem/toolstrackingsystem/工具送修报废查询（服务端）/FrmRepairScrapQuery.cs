@@ -16,6 +16,7 @@ using System.Runtime.Caching;
 using ViewEntity.toolstrackingsystem;
 using common.toolstrackingsystem;
 using dbentity.toolstrackingsystem;
+using ViewEntity.toolstrackingsystem.view;
 
 namespace toolstrackingsystem
 {
@@ -29,53 +30,10 @@ namespace toolstrackingsystem
         {
             this.EnableGlass = false;
             InitializeComponent();
-        }
-       
-        private void dataGridViewX1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //try
-            //{
-            //    if (e.RowIndex >= 0)
-            //    {
-            //        DataGridViewColumn column = tool_RepairdataGridView.Columns[e.ColumnIndex];
-            //        if (column is DataGridViewButtonColumn)
-            //        {
-            //            string toolCode = tool_RepairdataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
-            //            //更新送修工具接收状态为2
-            //            t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
-            //            repairInfo = _toolRepairRecordService.GetToolRepairByToolCodeAndStatus(toolCode, 1);
-            //            if (repairInfo != null)
-            //            {
-            //                repairInfo.ToolStatus = 2;
-            //                if (_toolRepairRecordService.UpdateToolReceiveStatus(repairInfo))
-            //                {
-            //                    MessageBox.Show("接收成功");
-            //                    Search_buttonX_Click(sender, e);
-            //                }
-            //            }
-            //            else
-            //            {
-            //                MessageBox.Show("该工具送修记录不存在，请重新选择");
-            //                return;
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "ToolRepairManageNew--dataGridViewX1_CellContentClick", ex.Message, ex.StackTrace, ex.Source);
-            //}
-
-        }
-        private void Search_buttonX_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void tool_RepairdataGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
-        {
-            e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1); 
-        }
-
+        }       
+        
+      
+      
         private void FrmRepairScrapQuery_Load(object sender, EventArgs e)
         {
             _toolInfoService = Program.container.Resolve<IToolInfoService>();
@@ -106,10 +64,59 @@ namespace toolstrackingsystem
             this.cbSearchcategory.DataSource = cates;
             this.cbSearchcategory.DisplayMember = "TypeName";
             this.cbSearchcategory.ValueMember = "TypeName";
+            from_dateTimeInput.Value = DateTime.Now.AddMonths(-1);
+            to_dateTimeInput.Value = DateTime.Now.AddMonths(1);
+
+
+
+            LoadData();
+
             #endregion
 
             
         }
-        
+
+        private void Search_buttonX_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        private void LoadData()
+        {
+            try
+            {
+
+                string blongValue = cbSearchBlong.SelectedValue.ToString();
+                blongValue = blongValue == "全部" ? "" : blongValue;
+                string categoryValue = cbSearchcategory.SelectedValue.ToString();
+                categoryValue = categoryValue == "全部" ? "" : categoryValue;
+
+                string toolCode = tbSearchCode.Text;
+                string toolName = tbSearchName.Text;
+                long Count;
+
+                var statTime = from_dateTimeInput.Value;
+                var endTime = to_dateTimeInput.Value;
+                List<ToolRepairRecordExtend> resultEntity = _toolRepairRecordService.GetListForQuery(blongValue, categoryValue, toolCode, toolName, statTime, endTime, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
+                pagerControl1.DrawControl(Convert.ToInt32(Count));
+                this.dataGridViewX1.AutoGenerateColumns = false;
+                this.dataGridViewX1.DataSource = resultEntity;
+                for (int i = 0; i < dataGridViewX1.Columns.Count; i++)
+                {
+                    dataGridViewX1.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
+                }
+                dataGridViewX1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--Tool--Search_buttonX_Click", ex.Message, ex.StackTrace, ex.Source);
+            }
+        }
+
+        private void dataGridViewX1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            var num = (pagerControl1.PageIndex - 1) * pagerControl1.PageSize + 1 + e.Row.Index;
+            e.Row.HeaderCell.Value = string.Format("{0}", num);
+        }
     }
 }

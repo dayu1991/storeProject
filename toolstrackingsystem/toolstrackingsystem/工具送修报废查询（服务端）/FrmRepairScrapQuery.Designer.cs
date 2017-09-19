@@ -30,6 +30,13 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.cbStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX12 = new DevComponents.DotNetBar.LabelX();
+            this.Print_button = new DevComponents.DotNetBar.ButtonX();
+            this.to_dateTimeInput = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.from_dateTimeInput = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.Search_buttonX = new DevComponents.DotNetBar.ButtonX();
             this.tbSearchName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
@@ -39,6 +46,7 @@
             this.cbSearchBlong = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.tbTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbChildTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,14 +54,15 @@
             this.tbPackName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbToolCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbToolName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbCheckTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
+            this.tbToRepairedTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbReceiveTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbHandleTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbPullTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbToolStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbOperate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.to_dateTimeInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.from_dateTimeInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,6 +70,13 @@
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.cbStatus);
+            this.groupPanel1.Controls.Add(this.labelX12);
+            this.groupPanel1.Controls.Add(this.Print_button);
+            this.groupPanel1.Controls.Add(this.to_dateTimeInput);
+            this.groupPanel1.Controls.Add(this.from_dateTimeInput);
+            this.groupPanel1.Controls.Add(this.labelX5);
+            this.groupPanel1.Controls.Add(this.labelX6);
             this.groupPanel1.Controls.Add(this.Search_buttonX);
             this.groupPanel1.Controls.Add(this.tbSearchName);
             this.groupPanel1.Controls.Add(this.labelX4);
@@ -104,16 +120,169 @@
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 2;
             // 
+            // cbStatus
+            // 
+            this.cbStatus.DisplayMember = "Text";
+            this.cbStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.ItemHeight = 15;
+            this.cbStatus.Location = new System.Drawing.Point(741, 30);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(121, 21);
+            this.cbStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbStatus.TabIndex = 31;
+            // 
+            // labelX12
+            // 
+            this.labelX12.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX12.Location = new System.Drawing.Point(694, 30);
+            this.labelX12.Name = "labelX12";
+            this.labelX12.Size = new System.Drawing.Size(77, 23);
+            this.labelX12.TabIndex = 30;
+            this.labelX12.Text = "状态：";
+            // 
+            // Print_button
+            // 
+            this.Print_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.Print_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.Print_button.Location = new System.Drawing.Point(1387, 32);
+            this.Print_button.Name = "Print_button";
+            this.Print_button.Size = new System.Drawing.Size(75, 23);
+            this.Print_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Print_button.TabIndex = 29;
+            this.Print_button.Text = "打印";
+            // 
+            // to_dateTimeInput
+            // 
+            // 
+            // 
+            // 
+            this.to_dateTimeInput.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.to_dateTimeInput.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.to_dateTimeInput.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.to_dateTimeInput.ButtonDropDown.Visible = true;
+            this.to_dateTimeInput.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
+            this.to_dateTimeInput.IsPopupCalendarOpen = false;
+            this.to_dateTimeInput.Location = new System.Drawing.Point(1109, 34);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.to_dateTimeInput.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.to_dateTimeInput.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.to_dateTimeInput.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.to_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.to_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.to_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.to_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.to_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.to_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.to_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.to_dateTimeInput.MonthCalendar.DisplayMonth = new System.DateTime(2017, 8, 1, 0, 0, 0, 0);
+            // 
+            // 
+            // 
+            this.to_dateTimeInput.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.to_dateTimeInput.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.to_dateTimeInput.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.to_dateTimeInput.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.to_dateTimeInput.MonthCalendar.TodayButtonVisible = true;
+            this.to_dateTimeInput.Name = "to_dateTimeInput";
+            this.to_dateTimeInput.Size = new System.Drawing.Size(174, 21);
+            this.to_dateTimeInput.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.to_dateTimeInput.TabIndex = 28;
+            // 
+            // from_dateTimeInput
+            // 
+            // 
+            // 
+            // 
+            this.from_dateTimeInput.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.from_dateTimeInput.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.from_dateTimeInput.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.from_dateTimeInput.ButtonDropDown.Visible = true;
+            this.from_dateTimeInput.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
+            this.from_dateTimeInput.IsPopupCalendarOpen = false;
+            this.from_dateTimeInput.Location = new System.Drawing.Point(930, 34);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.from_dateTimeInput.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.from_dateTimeInput.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.from_dateTimeInput.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.from_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.from_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.from_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.from_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.from_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.from_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.from_dateTimeInput.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.from_dateTimeInput.MonthCalendar.DisplayMonth = new System.DateTime(2017, 8, 1, 0, 0, 0, 0);
+            // 
+            // 
+            // 
+            this.from_dateTimeInput.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.from_dateTimeInput.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.from_dateTimeInput.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.from_dateTimeInput.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.from_dateTimeInput.MonthCalendar.TodayButtonVisible = true;
+            this.from_dateTimeInput.Name = "from_dateTimeInput";
+            this.from_dateTimeInput.Size = new System.Drawing.Size(166, 21);
+            this.from_dateTimeInput.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.from_dateTimeInput.TabIndex = 25;
+            // 
+            // labelX5
+            // 
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Location = new System.Drawing.Point(870, 32);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(72, 23);
+            this.labelX5.TabIndex = 26;
+            this.labelX5.Text = "送修日期";
+            // 
+            // labelX6
+            // 
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Location = new System.Drawing.Point(1094, 33);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(24, 23);
+            this.labelX6.TabIndex = 27;
+            this.labelX6.Text = "--";
+            // 
             // Search_buttonX
             // 
             this.Search_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Search_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Search_buttonX.Location = new System.Drawing.Point(778, 32);
+            this.Search_buttonX.Location = new System.Drawing.Point(1292, 32);
             this.Search_buttonX.Name = "Search_buttonX";
             this.Search_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Search_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.Search_buttonX.TabIndex = 21;
             this.Search_buttonX.Text = "查找";
+            this.Search_buttonX.Click += new System.EventHandler(this.Search_buttonX_Click_1);
             // 
             // tbSearchName
             // 
@@ -122,7 +291,7 @@
             // 
             this.tbSearchName.Border.Class = "TextBoxBorder";
             this.tbSearchName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbSearchName.Location = new System.Drawing.Point(643, 30);
+            this.tbSearchName.Location = new System.Drawing.Point(588, 31);
             this.tbSearchName.Name = "tbSearchName";
             this.tbSearchName.PreventEnterBeep = true;
             this.tbSearchName.Size = new System.Drawing.Size(100, 21);
@@ -135,7 +304,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(577, 30);
+            this.labelX4.Location = new System.Drawing.Point(522, 31);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(75, 23);
             this.labelX4.TabIndex = 19;
@@ -148,7 +317,7 @@
             // 
             this.tbSearchCode.Border.Class = "TextBoxBorder";
             this.tbSearchCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbSearchCode.Location = new System.Drawing.Point(450, 30);
+            this.tbSearchCode.Location = new System.Drawing.Point(409, 31);
             this.tbSearchCode.Name = "tbSearchCode";
             this.tbSearchCode.PreventEnterBeep = true;
             this.tbSearchCode.Size = new System.Drawing.Size(107, 21);
@@ -161,7 +330,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(387, 30);
+            this.labelX3.Location = new System.Drawing.Point(346, 31);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(77, 23);
             this.labelX3.TabIndex = 17;
@@ -173,7 +342,7 @@
             this.cbSearchcategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbSearchcategory.FormattingEnabled = true;
             this.cbSearchcategory.ItemHeight = 15;
-            this.cbSearchcategory.Location = new System.Drawing.Point(254, 30);
+            this.cbSearchcategory.Location = new System.Drawing.Point(214, 30);
             this.cbSearchcategory.Name = "cbSearchcategory";
             this.cbSearchcategory.Size = new System.Drawing.Size(121, 21);
             this.cbSearchcategory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -185,7 +354,7 @@
             this.cbSearchBlong.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbSearchBlong.FormattingEnabled = true;
             this.cbSearchBlong.ItemHeight = 15;
-            this.cbSearchBlong.Location = new System.Drawing.Point(78, 30);
+            this.cbSearchBlong.Location = new System.Drawing.Point(49, 30);
             this.cbSearchBlong.Name = "cbSearchBlong";
             this.cbSearchBlong.Size = new System.Drawing.Size(121, 21);
             this.cbSearchBlong.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -198,7 +367,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(216, 30);
+            this.labelX2.Location = new System.Drawing.Point(176, 30);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(57, 23);
             this.labelX2.TabIndex = 14;
@@ -211,11 +380,23 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(39, 30);
+            this.labelX1.Location = new System.Drawing.Point(10, 30);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(57, 23);
             this.labelX1.TabIndex = 13;
             this.labelX1.Text = "配属：";
+            // 
+            // pagerControl1
+            // 
+            this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pagerControl1.JumpText = "Go";
+            this.pagerControl1.Location = new System.Drawing.Point(4, 644);
+            this.pagerControl1.Name = "pagerControl1";
+            this.pagerControl1.PageIndex = 1;
+            this.pagerControl1.PageSize = 50;
+            this.pagerControl1.RecordCount = 0;
+            this.pagerControl1.Size = new System.Drawing.Size(1480, 51);
+            this.pagerControl1.TabIndex = 4;
             // 
             // dataGridViewX1
             // 
@@ -230,12 +411,12 @@
             this.tbPackName,
             this.tbToolCode,
             this.tbToolName,
-            this.tbModel,
-            this.tbPosition,
-            this.tbRemarks,
-            this.tbCheckTime,
-            this.Column1,
-            this.Column2});
+            this.tbToRepairedTime,
+            this.tbReceiveTime,
+            this.tbHandleTime,
+            this.tbPullTime,
+            this.tbToolStatus,
+            this.tbOperate});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -251,7 +432,8 @@
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.Size = new System.Drawing.Size(1480, 533);
-            this.dataGridViewX1.TabIndex = 3;
+            this.dataGridViewX1.TabIndex = 5;
+            this.dataGridViewX1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewX1_RowStateChanged);
             // 
             // tbTypeName
             // 
@@ -297,76 +479,65 @@
             this.tbToolName.ReadOnly = true;
             this.tbToolName.Width = 150;
             // 
-            // tbModel
+            // tbToRepairedTime
             // 
-            this.tbModel.DataPropertyName = "Models";
-            this.tbModel.HeaderText = "型号";
-            this.tbModel.Name = "tbModel";
-            this.tbModel.ReadOnly = true;
+            this.tbToRepairedTime.DataPropertyName = "ToRepairedTime";
+            this.tbToRepairedTime.HeaderText = "送修时间";
+            this.tbToRepairedTime.Name = "tbToRepairedTime";
+            this.tbToRepairedTime.ReadOnly = true;
             // 
-            // tbPosition
+            // tbReceiveTime
             // 
-            this.tbPosition.DataPropertyName = "Location";
-            this.tbPosition.HeaderText = "位置";
-            this.tbPosition.Name = "tbPosition";
-            this.tbPosition.ReadOnly = true;
+            this.tbReceiveTime.DataPropertyName = "ReceiveTime";
+            this.tbReceiveTime.HeaderText = "接收时间";
+            this.tbReceiveTime.Name = "tbReceiveTime";
+            this.tbReceiveTime.ReadOnly = true;
             // 
-            // tbRemarks
+            // tbHandleTime
             // 
-            this.tbRemarks.DataPropertyName = "Remarks";
-            this.tbRemarks.HeaderText = "备注";
-            this.tbRemarks.Name = "tbRemarks";
-            this.tbRemarks.ReadOnly = true;
-            this.tbRemarks.Width = 150;
+            this.tbHandleTime.DataPropertyName = "HandleTime";
+            this.tbHandleTime.HeaderText = "处理时间";
+            this.tbHandleTime.Name = "tbHandleTime";
+            this.tbHandleTime.ReadOnly = true;
+            this.tbHandleTime.Width = 150;
             // 
-            // tbCheckTime
+            // tbPullTime
             // 
-            this.tbCheckTime.DataPropertyName = "CheckTime";
-            this.tbCheckTime.HeaderText = "下次检测时间";
-            this.tbCheckTime.Name = "tbCheckTime";
-            this.tbCheckTime.ReadOnly = true;
-            this.tbCheckTime.Width = 150;
+            this.tbPullTime.DataPropertyName = "PullTime";
+            this.tbPullTime.HeaderText = "领回时间";
+            this.tbPullTime.Name = "tbPullTime";
+            this.tbPullTime.ReadOnly = true;
+            this.tbPullTime.Width = 90;
             // 
-            // Column1
+            // tbToolStatus
             // 
-            this.Column1.DataPropertyName = "IsBackString";
-            this.Column1.HeaderText = "是否借出";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 90;
+            this.tbToolStatus.DataPropertyName = "ToolStatus";
+            this.tbToolStatus.HeaderText = "状态";
+            this.tbToolStatus.Name = "tbToolStatus";
+            this.tbToolStatus.ReadOnly = true;
+            this.tbToolStatus.Width = 90;
             // 
-            // Column2
+            // tbOperate
             // 
-            this.Column2.DataPropertyName = "IsRepairedString";
-            this.Column2.HeaderText = "是否送修";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 90;
-            // 
-            // pagerControl1
-            // 
-            this.pagerControl1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(4, 644);
-            this.pagerControl1.Name = "pagerControl1";
-            this.pagerControl1.PageIndex = 1;
-            this.pagerControl1.PageSize = 50;
-            this.pagerControl1.RecordCount = 0;
-            this.pagerControl1.Size = new System.Drawing.Size(1480, 51);
-            this.pagerControl1.TabIndex = 4;
+            this.tbOperate.HeaderText = "备注";
+            this.tbOperate.Name = "tbOperate";
+            this.tbOperate.ReadOnly = true;
+            this.tbOperate.Width = 150;
             // 
             // FrmRepairScrapQuery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1490, 699);
-            this.Controls.Add(this.pagerControl1);
             this.Controls.Add(this.dataGridViewX1);
+            this.Controls.Add(this.pagerControl1);
             this.Controls.Add(this.groupPanel1);
             this.Name = "FrmRepairScrapQuery";
             this.Text = "FrmRepairScrapQuery";
             this.Load += new System.EventHandler(this.FrmRepairScrapQuery_Load);
             this.groupPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.to_dateTimeInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.from_dateTimeInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);
 
@@ -384,6 +555,12 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbSearchBlong;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX labelX1;
+        private PageControl.PagerControl pagerControl1;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput to_dateTimeInput;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput from_dateTimeInput;
+        private DevComponents.DotNetBar.LabelX labelX5;
+        private DevComponents.DotNetBar.LabelX labelX6;
+        private DevComponents.DotNetBar.ButtonX Print_button;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbChildTypeName;
@@ -391,12 +568,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tbPackName;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbToolCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbToolName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tbModel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tbPosition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tbRemarks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tbCheckTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private PageControl.PagerControl pagerControl1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tbToRepairedTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tbReceiveTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tbHandleTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tbPullTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tbToolStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tbOperate;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbStatus;
+        private DevComponents.DotNetBar.LabelX labelX12;
     }
 }

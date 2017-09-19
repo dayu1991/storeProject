@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ViewEntity.toolstrackingsystem;
+using ViewEntity.toolstrackingsystem.view;
 
 namespace service.toolstrackingsystem
 {
@@ -31,5 +32,7 @@ namespace service.toolstrackingsystem
         /// <param name="status"></param>
         /// <returns></returns>
         t_ToolRepairRecord GetToolRepairByToolCodeAndStatus(string toolCode, int status = 0);
+
+        List<ToolRepairRecordExtend> GetListForQuery(string blongValue, string categoryValue, string toolCode, string toolName, DateTime statTime, DateTime endTime, int pageindex, int pagesize, out long Count);
     }
 }

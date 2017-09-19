@@ -29,9 +29,32 @@ update t_ToolInfo set IsBack=0 where ToolCode in (select ToolCode from t_OutBack
 
 
 
+INSERT INTO [dbo].[Sys_Menu_Info]
+           ([MenuName]
+           ,[GroupCode]
+           ,[NavigationTitle]
+           ,[MenuICON]
+           ,[IsMain]
+           ,[ShortKey]
+           ,[FileName]
+           ,[AddTools]
+           ,[MenuOrder]
+           ,[IsActive])
+     VALUES
+           ('送修查询'
+           ,'1003'
+           ,'送修查询'
+           ,'25'
+           ,0
+           ,null
+           ,'FrmRepairScrapQuery'
+           ,'1'
+           ,7
+           ,1)
 
-
-
+		   
+  update [Sys_User_Role] set menuid='FrmWorkerManager,ToolInfoManage,FrmDeleteData,FrmToolPackManage,FrmOutTool,FrmReturnTool,FrmScrapToolManage,FrmToolRepair,ToolRepairManageNew,FrmInStoreManage,FrmQueryBorrow,FrmQueryReturn,FrmCurrentCountManage,FrmStockInfo,FrmNotBackTool,FrmCreditQuery,frmEditUserinfo,FrmEditRoleInfo,FrmRepairScrapQuery'
+   where rolecode = 'ServerRole';
 
 
 
