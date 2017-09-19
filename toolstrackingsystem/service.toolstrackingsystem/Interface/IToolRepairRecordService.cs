@@ -31,5 +31,17 @@ namespace service.toolstrackingsystem
         /// <param name="status"></param>
         /// <returns></returns>
         t_ToolRepairRecord GetToolRepairByToolCodeAndStatus(string toolCode, int status = 0);
+        /// <summary>
+        /// 更新维修表工具信息
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        bool UpdateToolRepairInfo(t_ToolRepairRecord entity);
+        /// <summary>
+        /// 通过主键ID获取维修工具信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        t_ToolRepairRecord GetToolRepairByToolCodeById(int id);
     }
 }

@@ -83,7 +83,7 @@ namespace toolstrackingsystem
                     DataGridViewColumn column = tool_RepairdataGridView.Columns[e.ColumnIndex];
                     if (column is DataGridViewButtonColumn)
                     {
-                        string toolCode = tool_RepairdataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        string toolCode = tool_RepairdataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
                         //更新送修工具接收状态为2
                         t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
                         repairInfo = _toolRepairRecordService.GetToolRepairByToolCodeAndStatus(toolCode, 1);
@@ -135,13 +135,15 @@ namespace toolstrackingsystem
                 //tool_RepairdataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 tool_RepairdataGridView.DataSource = null;
                 tool_RepairdataGridView.DataSource = resultList;
-                tool_RepairdataGridView.Columns[0].HeaderText = "配属";
-                tool_RepairdataGridView.Columns[1].HeaderText = "类别";
-                tool_RepairdataGridView.Columns[2].HeaderText = "工具编码";
-                tool_RepairdataGridView.Columns[3].HeaderText = "工具名称";
-                tool_RepairdataGridView.Columns[4].HeaderText = "送修时间";
-                tool_RepairdataGridView.Columns[5].HeaderText = "送修人员";
-                tool_RepairdataGridView.Columns[6].HeaderText = "备注";
+                tool_RepairdataGridView.Columns[0].HeaderText = "ID";
+                tool_RepairdataGridView.Columns[0].Visible = false;
+                tool_RepairdataGridView.Columns[1].HeaderText = "配属";
+                tool_RepairdataGridView.Columns[2].HeaderText = "类别";
+                tool_RepairdataGridView.Columns[3].HeaderText = "工具编码";
+                tool_RepairdataGridView.Columns[4].HeaderText = "工具名称";
+                tool_RepairdataGridView.Columns[5].HeaderText = "送修时间";
+                tool_RepairdataGridView.Columns[6].HeaderText = "送修人员";
+                tool_RepairdataGridView.Columns[7].HeaderText = "备注";
                 DataGridViewButtonColumn button = new DataGridViewButtonColumn();
                 button.HeaderText = "操作";
                 button.Text = "接收";

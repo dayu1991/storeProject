@@ -152,6 +152,12 @@
     <Compile Include="工具送修领取\FrmlPullRepairedTool.Designer.cs">
       <DependentUpon>FrmlPullRepairedTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="报废工具说明%28服务端%29\FrmAddRemarkForScrapedTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="报废工具说明%28服务端%29\FrmAddRemarkForScrapedTool.Designer.cs">
+      <DependentUpon>FrmAddRemarkForScrapedTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="日常操作\领用工具\DlgEnterPersonMsg1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,10 +316,10 @@
     <Compile Include="数据查询\归还查询\FrmQueryReturn.Designer.cs">
       <DependentUpon>FrmQueryReturn.cs</DependentUpon>
     </Compile>
-    <Compile Include="报废工具说明\FrmScrapToolManageDescribe.cs">
+    <Compile Include="报废工具说明%28服务端%29\FrmScrapToolManageDescribe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="报废工具说明\FrmScrapToolManageDescribe.Designer.cs">
+    <Compile Include="报废工具说明%28服务端%29\FrmScrapToolManageDescribe.Designer.cs">
       <DependentUpon>FrmScrapToolManageDescribe.cs</DependentUpon>
     </Compile>
     <Compile Include="数据查询\流水账查询\FrmCurrentCountManage.cs">
@@ -519,6 +525,9 @@
     <EmbeddedResource Include="工具送修领取\FrmlPullRepairedTool.resx">
       <DependentUpon>FrmlPullRepairedTool.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="报废工具说明%28服务端%29\FrmAddRemarkForScrapedTool.resx">
+      <DependentUpon>FrmAddRemarkForScrapedTool.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="数据查询\超时未归还查询\Report5.rdlc" />
     <EmbeddedResource Include="日常操作\领用工具\DlgEnterPersonMsg1.resx">
       <DependentUpon>DlgEnterPersonMsg1.cs</DependentUpon>
@@ -616,7 +625,7 @@
       <DependentUpon>FrmQueryReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="数据查询\归还查询\Report9.rdlc" />
-    <EmbeddedResource Include="报废工具说明\FrmScrapToolManageDescribe.resx">
+    <EmbeddedResource Include="报废工具说明%28服务端%29\FrmScrapToolManageDescribe.resx">
       <DependentUpon>FrmScrapToolManageDescribe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="数据查询\流水账查询\FrmCurrentCountManage.resx">

@@ -11,6 +11,7 @@ namespace ViewEntity.toolstrackingsystem
     /// </summary>
     public class RepairedToolForReceiveEntity
     {
+        public int Id { get; set; }
         public string ChildTypeName { get; set; }
         public string TypeName { get; set; }
         public string ToolCode { get; set; }

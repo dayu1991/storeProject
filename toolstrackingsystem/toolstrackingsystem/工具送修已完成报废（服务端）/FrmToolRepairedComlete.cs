@@ -21,7 +21,7 @@ namespace toolstrackingsystem
 {
     public partial class FrmToolRepairedComlete : Office2007RibbonForm
     {
-        ILog logger = log4net.LogManager.GetLogger(typeof(ToolRepairManageNew));
+        ILog logger = log4net.LogManager.GetLogger(typeof(FrmToolRepairedComlete));
         public IToolRepairRecordService _toolRepairRecordService;
         public IToolInfoService _toolInfoService;
         public string dataBase = MemoryCache.Default.Get("clientName") != null ? MemoryCache.Default.Get("clientName").ToString() : CommonHelper.GetConfigValue("defaultDataBase");
@@ -83,7 +83,7 @@ namespace toolstrackingsystem
                     DataGridViewColumn column = tool_RepairdataGridView.Columns[e.ColumnIndex];
                     if (column is DataGridViewButtonColumn)
                     {
-                        string toolCode = tool_RepairdataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        string toolCode = tool_RepairdataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
 
                         t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
                         repairInfo = _toolRepairRecordService.GetToolRepairByToolCodeAndStatus(toolCode, 2);
@@ -157,13 +157,15 @@ namespace toolstrackingsystem
                 //tool_RepairdataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 
                 tool_RepairdataGridView.DataSource = resultList;
-                tool_RepairdataGridView.Columns[0].HeaderText = "配属";
-                tool_RepairdataGridView.Columns[1].HeaderText = "类别";
-                tool_RepairdataGridView.Columns[2].HeaderText = "工具编码";
-                tool_RepairdataGridView.Columns[3].HeaderText = "工具名称";
-                tool_RepairdataGridView.Columns[4].HeaderText = "送修时间";
-                tool_RepairdataGridView.Columns[5].HeaderText = "送修人员";
-                tool_RepairdataGridView.Columns[6].HeaderText = "备注";
+                tool_RepairdataGridView.Columns[0].HeaderText = "ID";
+                tool_RepairdataGridView.Columns[0].Visible = false;
+                tool_RepairdataGridView.Columns[1].HeaderText = "配属";
+                tool_RepairdataGridView.Columns[2].HeaderText = "类别";
+                tool_RepairdataGridView.Columns[3].HeaderText = "工具编码";
+                tool_RepairdataGridView.Columns[4].HeaderText = "工具名称";
+                tool_RepairdataGridView.Columns[5].HeaderText = "送修时间";
+                tool_RepairdataGridView.Columns[6].HeaderText = "送修人员";
+                tool_RepairdataGridView.Columns[7].HeaderText = "备注";
                 DataGridViewButtonColumn buttonComplete = new DataGridViewButtonColumn();
                 buttonComplete.HeaderText = "操作";
                 buttonComplete.Text = "维修完成";
