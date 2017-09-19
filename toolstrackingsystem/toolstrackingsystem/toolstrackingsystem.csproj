@@ -99,6 +99,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseClass.cs" />
     <Compile Include="cangku_manage_dbDataSet.cs">
       <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -144,6 +145,12 @@
     </Compile>
     <Compile Include="工具送修接收%28服务端%29\ToolRepairManage.Designer.cs">
       <DependentUpon>ToolRepairManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="工具送修领取\FrmlPullRepairedTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="工具送修领取\FrmlPullRepairedTool.Designer.cs">
+      <DependentUpon>FrmlPullRepairedTool.cs</DependentUpon>
     </Compile>
     <Compile Include="日常操作\领用工具\DlgEnterPersonMsg1.cs">
       <SubType>Form</SubType>
@@ -509,6 +516,9 @@
     <EmbeddedResource Include="工具送修接收%28服务端%29\ToolRepairManage.resx">
       <DependentUpon>ToolRepairManage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="工具送修领取\FrmlPullRepairedTool.resx">
+      <DependentUpon>FrmlPullRepairedTool.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="数据查询\超时未归还查询\Report5.rdlc" />
     <EmbeddedResource Include="日常操作\领用工具\DlgEnterPersonMsg1.resx">
       <DependentUpon>DlgEnterPersonMsg1.cs</DependentUpon>
@@ -711,7 +721,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="工具送修报废查询（服务端）\" />
-    <Folder Include="工具送修领取\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\common.toolstrackingsystem\common.toolstrackingsystem.csproj">

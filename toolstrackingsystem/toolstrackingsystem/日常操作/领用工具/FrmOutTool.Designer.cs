@@ -31,19 +31,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.dtiSelect = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.btnAddTool = new DevComponents.DotNetBar.ButtonX();
             this.btnOutContinue = new DevComponents.DotNetBar.ButtonX();
             this.tbEditoutdescribes = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tbEditCodeOut = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.btnOut = new DevComponents.DotNetBar.ButtonX();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.tbEditPersonName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.tbEditPersonCode = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.cbEditOutTime = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.btnAddTool = new DevComponents.DotNetBar.ButtonX();
-            this.tbEditCodeOut = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX11 = new DevComponents.DotNetBar.LabelX();
-            this.btnOut = new DevComponents.DotNetBar.ButtonX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.tbTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbChildTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,16 +68,12 @@
             this.groupPanel2.Controls.Add(this.btnOut);
             this.groupPanel2.Controls.Add(this.labelX11);
             this.groupPanel2.Controls.Add(this.labelX10);
-            this.groupPanel2.Controls.Add(this.tbEditPersonName);
-            this.groupPanel2.Controls.Add(this.labelX9);
-            this.groupPanel2.Controls.Add(this.tbEditPersonCode);
-            this.groupPanel2.Controls.Add(this.labelX8);
             this.groupPanel2.Controls.Add(this.cbEditOutTime);
             this.groupPanel2.Controls.Add(this.labelX6);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(6, 557);
+            this.groupPanel2.Location = new System.Drawing.Point(6, 582);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1471, 135);
+            this.groupPanel2.Size = new System.Drawing.Size(1471, 111);
             // 
             // 
             // 
@@ -124,7 +116,7 @@
             this.dtiSelect.CustomFormat = "yyyy-MM-dd hh:mm:ss";
             this.dtiSelect.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.dtiSelect.IsPopupCalendarOpen = false;
-            this.dtiSelect.Location = new System.Drawing.Point(305, 54);
+            this.dtiSelect.Location = new System.Drawing.Point(767, 13);
             // 
             // 
             // 
@@ -160,13 +152,25 @@
             this.dtiSelect.TabIndex = 34;
             this.dtiSelect.Visible = false;
             // 
+            // btnAddTool
+            // 
+            this.btnAddTool.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddTool.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAddTool.Location = new System.Drawing.Point(444, 14);
+            this.btnAddTool.Name = "btnAddTool";
+            this.btnAddTool.Size = new System.Drawing.Size(40, 23);
+            this.btnAddTool.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddTool.TabIndex = 33;
+            this.btnAddTool.Text = "增加";
+            this.btnAddTool.Click += new System.EventHandler(this.btnAddTool_Click);
+            // 
             // btnOutContinue
             // 
             this.btnOutContinue.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnOutContinue.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOutContinue.Location = new System.Drawing.Point(1011, 14);
+            this.btnOutContinue.Location = new System.Drawing.Point(1118, 13);
             this.btnOutContinue.Name = "btnOutContinue";
-            this.btnOutContinue.Size = new System.Drawing.Size(112, 105);
+            this.btnOutContinue.Size = new System.Drawing.Size(83, 74);
             this.btnOutContinue.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnOutContinue.TabIndex = 32;
             this.btnOutContinue.Text = "继续领用";
@@ -179,114 +183,11 @@
             // 
             this.tbEditoutdescribes.Border.Class = "TextBoxBorder";
             this.tbEditoutdescribes.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditoutdescribes.Location = new System.Drawing.Point(141, 98);
+            this.tbEditoutdescribes.Location = new System.Drawing.Point(141, 64);
             this.tbEditoutdescribes.Name = "tbEditoutdescribes";
             this.tbEditoutdescribes.PreventEnterBeep = true;
-            this.tbEditoutdescribes.Size = new System.Drawing.Size(723, 21);
+            this.tbEditoutdescribes.Size = new System.Drawing.Size(805, 21);
             this.tbEditoutdescribes.TabIndex = 19;
-            // 
-            // labelX10
-            // 
-            this.labelX10.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(52, 98);
-            this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(85, 23);
-            this.labelX10.TabIndex = 18;
-            this.labelX10.Text = "领用说明：";
-            // 
-            // tbEditPersonName
-            // 
-            // 
-            // 
-            // 
-            this.tbEditPersonName.Border.Class = "TextBoxBorder";
-            this.tbEditPersonName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditPersonName.Location = new System.Drawing.Point(577, 52);
-            this.tbEditPersonName.Name = "tbEditPersonName";
-            this.tbEditPersonName.PreventEnterBeep = true;
-            this.tbEditPersonName.Size = new System.Drawing.Size(287, 21);
-            this.tbEditPersonName.TabIndex = 14;
-            // 
-            // labelX9
-            // 
-            this.labelX9.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(514, 52);
-            this.labelX9.Name = "labelX9";
-            this.labelX9.Size = new System.Drawing.Size(66, 23);
-            this.labelX9.TabIndex = 13;
-            this.labelX9.Text = "人员名称：";
-            // 
-            // tbEditPersonCode
-            // 
-            // 
-            // 
-            // 
-            this.tbEditPersonCode.Border.Class = "TextBoxBorder";
-            this.tbEditPersonCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditPersonCode.Location = new System.Drawing.Point(577, 14);
-            this.tbEditPersonCode.Name = "tbEditPersonCode";
-            this.tbEditPersonCode.PreventEnterBeep = true;
-            this.tbEditPersonCode.Size = new System.Drawing.Size(287, 21);
-            this.tbEditPersonCode.TabIndex = 2;
-            // 
-            // labelX8
-            // 
-            this.labelX8.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(514, 14);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(83, 23);
-            this.labelX8.TabIndex = 11;
-            this.labelX8.Text = "人员编码：";
-            // 
-            // cbEditOutTime
-            // 
-            this.cbEditOutTime.DisplayMember = "Text";
-            this.cbEditOutTime.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbEditOutTime.FormattingEnabled = true;
-            this.cbEditOutTime.ItemHeight = 15;
-            this.cbEditOutTime.Location = new System.Drawing.Point(141, 54);
-            this.cbEditOutTime.Name = "cbEditOutTime";
-            this.cbEditOutTime.Size = new System.Drawing.Size(158, 21);
-            this.cbEditOutTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbEditOutTime.TabIndex = 7;
-            this.cbEditOutTime.SelectedIndexChanged += new System.EventHandler(this.cbEditOutTime_SelectedIndexChanged);
-            // 
-            // labelX6
-            // 
-            this.labelX6.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(52, 55);
-            this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(85, 23);
-            this.labelX6.TabIndex = 6;
-            this.labelX6.Text = "使用时间：";
-            // 
-            // btnAddTool
-            // 
-            this.btnAddTool.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAddTool.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddTool.Location = new System.Drawing.Point(444, 14);
-            this.btnAddTool.Name = "btnAddTool";
-            this.btnAddTool.Size = new System.Drawing.Size(40, 23);
-            this.btnAddTool.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAddTool.TabIndex = 33;
-            this.btnAddTool.Text = "增加";
-            this.btnAddTool.Click += new System.EventHandler(this.btnAddTool_Click);
             // 
             // tbEditCodeOut
             // 
@@ -302,6 +203,18 @@
             this.tbEditCodeOut.TabIndex = 1;
             this.tbEditCodeOut.TextChanged += new System.EventHandler(this.tbEditCode_TextChanged);
             // 
+            // btnOut
+            // 
+            this.btnOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnOut.Location = new System.Drawing.Point(995, 13);
+            this.btnOut.Name = "btnOut";
+            this.btnOut.Size = new System.Drawing.Size(81, 74);
+            this.btnOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOut.TabIndex = 21;
+            this.btnOut.Text = "确认领用";
+            this.btnOut.Click += new System.EventHandler(this.btnOut_Click);
+            // 
             // labelX11
             // 
             this.labelX11.BackColor = System.Drawing.Color.Transparent;
@@ -315,17 +228,44 @@
             this.labelX11.TabIndex = 27;
             this.labelX11.Text = "工具/包编码：";
             // 
-            // btnOut
+            // labelX10
             // 
-            this.btnOut.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnOut.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOut.Location = new System.Drawing.Point(879, 14);
-            this.btnOut.Name = "btnOut";
-            this.btnOut.Size = new System.Drawing.Size(117, 105);
-            this.btnOut.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnOut.TabIndex = 21;
-            this.btnOut.Text = "确认领用";
-            this.btnOut.Click += new System.EventHandler(this.btnOut_Click);
+            this.labelX10.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX10.Location = new System.Drawing.Point(52, 64);
+            this.labelX10.Name = "labelX10";
+            this.labelX10.Size = new System.Drawing.Size(83, 23);
+            this.labelX10.TabIndex = 18;
+            this.labelX10.Text = "领用说明：";
+            // 
+            // cbEditOutTime
+            // 
+            this.cbEditOutTime.DisplayMember = "Text";
+            this.cbEditOutTime.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbEditOutTime.FormattingEnabled = true;
+            this.cbEditOutTime.ItemHeight = 15;
+            this.cbEditOutTime.Location = new System.Drawing.Point(603, 13);
+            this.cbEditOutTime.Name = "cbEditOutTime";
+            this.cbEditOutTime.Size = new System.Drawing.Size(158, 21);
+            this.cbEditOutTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbEditOutTime.TabIndex = 7;
+            this.cbEditOutTime.SelectedIndexChanged += new System.EventHandler(this.cbEditOutTime_SelectedIndexChanged);
+            // 
+            // labelX6
+            // 
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Location = new System.Drawing.Point(514, 14);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(85, 23);
+            this.labelX6.TabIndex = 6;
+            this.labelX6.Text = "使用时间：";
             // 
             // dataGridViewX1
             // 
@@ -358,7 +298,7 @@
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1471, 538);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1471, 563);
             this.dataGridViewX1.TabIndex = 4;
             // 
             // tbTypeName
@@ -466,10 +406,6 @@
         private DevComponents.DotNetBar.ButtonX btnOut;
         private DevComponents.DotNetBar.Controls.TextBoxX tbEditoutdescribes;
         private DevComponents.DotNetBar.LabelX labelX10;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbEditPersonName;
-        private DevComponents.DotNetBar.LabelX labelX9;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbEditPersonCode;
-        private DevComponents.DotNetBar.LabelX labelX8;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbEditOutTime;
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.ButtonX btnOutContinue;

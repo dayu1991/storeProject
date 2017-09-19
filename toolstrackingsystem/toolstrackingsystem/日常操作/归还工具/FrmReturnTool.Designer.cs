@@ -44,17 +44,13 @@
             this.tbPersonName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCheckTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnAddTool = new DevComponents.DotNetBar.ButtonX();
             this.btnReturnContinue = new DevComponents.DotNetBar.ButtonX();
+            this.btnReturn = new DevComponents.DotNetBar.ButtonX();
             this.tbEditoutdescribes = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.tbEditPersonName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.tbEditPersonCode = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
-            this.btnAddTool = new DevComponents.DotNetBar.ButtonX();
             this.tbEditCode = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
-            this.btnReturn = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.groupPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -93,7 +89,7 @@
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1472, 563);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1472, 606);
             this.dataGridViewX1.TabIndex = 5;
             // 
             // tbTypeName
@@ -199,15 +195,11 @@
             this.groupPanel2.Controls.Add(this.tbEditoutdescribes);
             this.groupPanel2.Controls.Add(this.labelX10);
             this.groupPanel2.Controls.Add(this.tbEditCode);
-            this.groupPanel2.Controls.Add(this.tbEditPersonName);
             this.groupPanel2.Controls.Add(this.labelX11);
-            this.groupPanel2.Controls.Add(this.labelX9);
-            this.groupPanel2.Controls.Add(this.tbEditPersonCode);
-            this.groupPanel2.Controls.Add(this.labelX8);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(6, 573);
+            this.groupPanel2.Location = new System.Drawing.Point(6, 616);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(1472, 122);
+            this.groupPanel2.Size = new System.Drawing.Size(1472, 78);
             // 
             // 
             // 
@@ -238,17 +230,41 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 6;
             // 
+            // btnAddTool
+            // 
+            this.btnAddTool.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddTool.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAddTool.Location = new System.Drawing.Point(398, 26);
+            this.btnAddTool.Name = "btnAddTool";
+            this.btnAddTool.Size = new System.Drawing.Size(40, 23);
+            this.btnAddTool.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddTool.TabIndex = 33;
+            this.btnAddTool.Text = "增加";
+            this.btnAddTool.Click += new System.EventHandler(this.btnAddTool_Click);
+            // 
             // btnReturnContinue
             // 
             this.btnReturnContinue.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnReturnContinue.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnReturnContinue.Location = new System.Drawing.Point(1244, 24);
+            this.btnReturnContinue.Location = new System.Drawing.Point(1026, 24);
             this.btnReturnContinue.Name = "btnReturnContinue";
-            this.btnReturnContinue.Size = new System.Drawing.Size(101, 69);
+            this.btnReturnContinue.Size = new System.Drawing.Size(101, 25);
             this.btnReturnContinue.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnReturnContinue.TabIndex = 32;
             this.btnReturnContinue.Text = "继续归还";
             this.btnReturnContinue.Click += new System.EventHandler(this.btnReturnContinue_Click);
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnReturn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnReturn.Location = new System.Drawing.Point(891, 24);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(98, 25);
+            this.btnReturn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnReturn.TabIndex = 21;
+            this.btnReturn.Text = "确认归还";
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // tbEditoutdescribes
             // 
@@ -257,10 +273,10 @@
             // 
             this.tbEditoutdescribes.Border.Class = "TextBoxBorder";
             this.tbEditoutdescribes.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditoutdescribes.Location = new System.Drawing.Point(124, 72);
+            this.tbEditoutdescribes.Location = new System.Drawing.Point(562, 26);
             this.tbEditoutdescribes.Name = "tbEditoutdescribes";
             this.tbEditoutdescribes.PreventEnterBeep = true;
-            this.tbEditoutdescribes.Size = new System.Drawing.Size(972, 21);
+            this.tbEditoutdescribes.Size = new System.Drawing.Size(250, 21);
             this.tbEditoutdescribes.TabIndex = 19;
             // 
             // labelX10
@@ -270,75 +286,11 @@
             // 
             // 
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(34, 72);
+            this.labelX10.Location = new System.Drawing.Point(472, 26);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(101, 23);
             this.labelX10.TabIndex = 18;
             this.labelX10.Text = "归还说明：";
-            // 
-            // tbEditPersonName
-            // 
-            // 
-            // 
-            // 
-            this.tbEditPersonName.Border.Class = "TextBoxBorder";
-            this.tbEditPersonName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditPersonName.Location = new System.Drawing.Point(809, 24);
-            this.tbEditPersonName.Name = "tbEditPersonName";
-            this.tbEditPersonName.PreventEnterBeep = true;
-            this.tbEditPersonName.Size = new System.Drawing.Size(287, 21);
-            this.tbEditPersonName.TabIndex = 14;
-            // 
-            // labelX9
-            // 
-            this.labelX9.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(745, 22);
-            this.labelX9.Name = "labelX9";
-            this.labelX9.Size = new System.Drawing.Size(83, 23);
-            this.labelX9.TabIndex = 13;
-            this.labelX9.Text = "人员名称：";
-            // 
-            // tbEditPersonCode
-            // 
-            // 
-            // 
-            // 
-            this.tbEditPersonCode.Border.Class = "TextBoxBorder";
-            this.tbEditPersonCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditPersonCode.Location = new System.Drawing.Point(452, 24);
-            this.tbEditPersonCode.Name = "tbEditPersonCode";
-            this.tbEditPersonCode.PreventEnterBeep = true;
-            this.tbEditPersonCode.Size = new System.Drawing.Size(287, 21);
-            this.tbEditPersonCode.TabIndex = 2;
-            // 
-            // labelX8
-            // 
-            this.labelX8.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(392, 22);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(83, 23);
-            this.labelX8.TabIndex = 11;
-            this.labelX8.Text = "人员编码：";
-            // 
-            // btnAddTool
-            // 
-            this.btnAddTool.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAddTool.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddTool.Location = new System.Drawing.Point(334, 22);
-            this.btnAddTool.Name = "btnAddTool";
-            this.btnAddTool.Size = new System.Drawing.Size(40, 23);
-            this.btnAddTool.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAddTool.TabIndex = 33;
-            this.btnAddTool.Text = "增加";
-            this.btnAddTool.Click += new System.EventHandler(this.btnAddTool_Click);
             // 
             // tbEditCode
             // 
@@ -347,7 +299,7 @@
             // 
             this.tbEditCode.Border.Class = "TextBoxBorder";
             this.tbEditCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.tbEditCode.Location = new System.Drawing.Point(124, 22);
+            this.tbEditCode.Location = new System.Drawing.Point(188, 26);
             this.tbEditCode.Name = "tbEditCode";
             this.tbEditCode.PreventEnterBeep = true;
             this.tbEditCode.Size = new System.Drawing.Size(204, 21);
@@ -361,23 +313,11 @@
             // 
             // 
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(34, 20);
+            this.labelX11.Location = new System.Drawing.Point(98, 24);
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(123, 23);
             this.labelX11.TabIndex = 27;
             this.labelX11.Text = "工具/包编码：";
-            // 
-            // btnReturn
-            // 
-            this.btnReturn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnReturn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnReturn.Location = new System.Drawing.Point(1120, 24);
-            this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(98, 69);
-            this.btnReturn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnReturn.TabIndex = 21;
-            this.btnReturn.Text = "确认归还";
-            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // FrmReturnTool
             // 
@@ -408,10 +348,6 @@
         private DevComponents.DotNetBar.ButtonX btnReturn;
         private DevComponents.DotNetBar.Controls.TextBoxX tbEditoutdescribes;
         private DevComponents.DotNetBar.LabelX labelX10;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbEditPersonName;
-        private DevComponents.DotNetBar.LabelX labelX9;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbEditPersonCode;
-        private DevComponents.DotNetBar.LabelX labelX8;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbChildTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbPackNo;
