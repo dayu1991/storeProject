@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="cangku_manage_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="cangku_manage_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Sys_AddressInfo">
           <Key>
             <PropertyRef Name="ID" />
@@ -173,15 +173,15 @@
           <Property Name="Remarks" Type="varchar" MaxLength="1024" />
           <Property Name="CheckTime" Type="varchar" MaxLength="24" />
           <Property Name="IsActive" Type="varchar" MaxLength="2" />
-          <Property Name="IsRepaired" Type="int" Nullable="false" />
           <Property Name="OptionPerson" Type="varchar" MaxLength="32" />
-          <Property Name="IsBack" Type="varchar" MaxLength="2" />
+          <Property Name="IsBack" Type="varchar" MaxLength="50" />
+          <Property Name="IsRepaired" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="t_ToolRepairRecord">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TypeName" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="ChildTypeName" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="PackCode" Type="varchar" MaxLength="24" />
@@ -194,6 +194,9 @@
           <Property Name="ReceiveTime" Type="datetime" />
           <Property Name="ReceivePerCode" Type="varchar" MaxLength="50" />
           <Property Name="ReceivePerName" Type="varchar" MaxLength="50" />
+          <Property Name="CompletePerCode" Type="varchar" MaxLength="50" />
+          <Property Name="CompletePerName" Type="varchar" MaxLength="50" />
+          <Property Name="CompleteTime" Type="datetime" />
           <Property Name="HandleTime" Type="datetime" />
           <Property Name="HandlePerCode" Type="varchar" MaxLength="50" />
           <Property Name="HandlePerName" Type="varchar" MaxLength="50" />
@@ -202,6 +205,7 @@
           <Property Name="PullPerName" Type="varchar" MaxLength="50" />
           <Property Name="ToRepairMemo" Type="varchar" MaxLength="200" />
           <Property Name="ScrapMemo" Type="varchar" MaxLength="200" />
+          <Property Name="CompleteMemo" Type="varchar" MaxLength="200" />
           <Property Name="ToolStatus" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="t_ToolType">
@@ -419,7 +423,7 @@
           <Property Name="IsActive" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="IsRepaired" Type="Int32" Nullable="false" />
           <Property Name="OptionPerson" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="IsBack" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="IsBack" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t_ToolRepairRecord">
           <Key>
@@ -447,6 +451,10 @@
           <Property Name="ToRepairMemo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ScrapMemo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ToolStatus" Type="Int32" Nullable="false" />
+          <Property Name="CompletePerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompletePerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompleteTime" Type="DateTime" Precision="3" />
+          <Property Name="CompleteMemo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t_ToolType">
           <Key>
@@ -651,6 +659,10 @@
           <EntitySetMapping Name="t_ToolRepairRecord">
             <EntityTypeMapping TypeName="cangku_manage_dbModel.t_ToolRepairRecord">
               <MappingFragment StoreEntitySet="t_ToolRepairRecord">
+                <ScalarProperty Name="CompleteMemo" ColumnName="CompleteMemo" />
+                <ScalarProperty Name="CompleteTime" ColumnName="CompleteTime" />
+                <ScalarProperty Name="CompletePerName" ColumnName="CompletePerName" />
+                <ScalarProperty Name="CompletePerCode" ColumnName="CompletePerCode" />
                 <ScalarProperty Name="ToolStatus" ColumnName="ToolStatus" />
                 <ScalarProperty Name="ScrapMemo" ColumnName="ScrapMemo" />
                 <ScalarProperty Name="ToRepairMemo" ColumnName="ToRepairMemo" />

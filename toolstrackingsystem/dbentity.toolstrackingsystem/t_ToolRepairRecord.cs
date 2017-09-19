@@ -36,5 +36,9 @@ namespace dbentity.toolstrackingsystem
         public string ToRepairMemo { get; set; }
         public string ScrapMemo { get; set; }
         public int ToolStatus { get; set; }
+        public string CompletePerCode { get; set; }
+        public string CompletePerName { get; set; }
+        public Nullable<System.DateTime> CompleteTime { get; set; }
+        public string CompleteMemo { get; set; }
     }
 }

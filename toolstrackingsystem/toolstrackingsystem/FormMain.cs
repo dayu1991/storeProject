@@ -220,6 +220,17 @@ namespace toolstrackingsystem
                                 }
                             }
                         }
+                        else if(tabName == "送修工具领取")
+                        {
+                            FrmlPullRepairedTool toolFrm = (FrmlPullRepairedTool)item.AttachedControl.Controls[0];
+                            foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
+                            {
+                                if (tab.Name == dataBase)
+                                {
+                                    toolFrm.superTabStrip1.SelectedTab = tab;
+                                }
+                            }
+                        }
                         superTabControl2.SelectedTab = item;
                         isOpen = true;
                         break;
@@ -244,6 +255,11 @@ namespace toolstrackingsystem
                     {
                         //设置委托绑定到赋值方法上
                         ((FrmToolRepairedComlete)form).transfDelegate += setText;
+                    }
+                    else if (tabName == "送修工具领取")
+                    {
+                        //设置委托绑定到赋值方法上
+                        ((FrmlPullRepairedTool)form).transfDelegate += setText;
                     }
                     //创建一个tab
                     SuperTabItem item = superTabControl2.CreateTab(tabName);
@@ -450,6 +466,17 @@ namespace toolstrackingsystem
                 else if (this.superTabControl2.SelectedTab.Text == "送修工具待完成" && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count > 0)
                 {
                     FrmToolRepairedComlete toolFrm = (FrmToolRepairedComlete)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
+                    foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
+                    {
+                        if (tab.Name == dataBase)
+                        {
+                            toolFrm.superTabStrip1.SelectedTab = tab;
+                        }
+                    }
+                }
+                else if (this.superTabControl2.SelectedTab.Text == "送修工具领取" && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count > 0)
+                {
+                    FrmlPullRepairedTool toolFrm = (FrmlPullRepairedTool)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
                     foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
                     {
                         if (tab.Name == dataBase)

@@ -104,8 +104,8 @@ namespace toolstrackingsystem
                             ToolInfoList = new List<t_ToolInfo>();
                             this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
                             tbEditCodeOut.Text = "";
-                            tbEditPersonCode.Text = person.PersonCode;
-                            tbEditPersonName.Text = person.PersonName;
+                            //tbEditPersonCode.Text = person.PersonCode;
+                            //tbEditPersonName.Text = person.PersonName;
                             cbEditOutTime.SelectedValue = "1";
                             tbEditoutdescribes.Text = "";
                             return;
@@ -137,8 +137,8 @@ namespace toolstrackingsystem
             ToolInfoList = new List<t_ToolInfo>();
             this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
             tbEditCodeOut.Text = "";
-            tbEditPersonCode.Text = "";
-            tbEditPersonName.Text = "";
+            //tbEditPersonCode.Text = "";
+            //tbEditPersonName.Text = "";
             cbEditOutTime.SelectedValue = "1";
             tbEditoutdescribes.Text = "";
         }
@@ -205,7 +205,7 @@ namespace toolstrackingsystem
             this.cbEditOutTime.SelectedValue = "12";
             this.dataGridViewX1.AutoGenerateColumns = false;
             //人员编码默认获取焦点
-            this.tbEditPersonCode.Focus();
+            //this.tbEditPersonCode.Focus();
             threadClientO = new Thread(RecMsg);
 
             //将窗体线程设置为与后台同步

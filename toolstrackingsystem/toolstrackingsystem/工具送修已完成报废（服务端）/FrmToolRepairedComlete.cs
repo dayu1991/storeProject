@@ -84,7 +84,7 @@ namespace toolstrackingsystem
                     if (column is DataGridViewButtonColumn)
                     {
                         string toolCode = tool_RepairdataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
-                        //更新送修工具接收状态为2
+
                         t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
                         repairInfo = _toolRepairRecordService.GetToolRepairByToolCodeAndStatus(toolCode, 2);
                         if (repairInfo != null)
@@ -92,11 +92,25 @@ namespace toolstrackingsystem
                             if (column.Name == "CompleteButton")
                             {
                                 repairInfo.ToolStatus = 3;
+                                repairInfo.CompletePerCode = LoginHelper.UserCode;
+                                repairInfo.CompletePerName = LoginHelper.UserName;
+                                repairInfo.CompleteTime = DateTime.Now;
                             }
                             else if (column.Name == "ScrapButton")
                             {
+                                repairInfo.HandlePerCode = LoginHelper.UserCode;
+                                repairInfo.HandlePerName = LoginHelper.UserName;
+                                repairInfo.HandleTime = DateTime.Now;
                                 repairInfo.ToolStatus = 5;
+                                t_ToolInfo tooInfo = new t_ToolInfo();
+                                tooInfo = _toolInfoService.GetToolByCode(toolCode);
+                                if (!_toolInfoService.DelToolByCode(toolCode))
+                                {
+                                    MessageBox.Show("工具基本信息不存在，请重新选择");
+                                    return;
+                                }
                             }
+
                             if (_toolRepairRecordService.UpdateToolReceiveStatus(repairInfo))
                             {
                                 MessageBox.Show("状态设置成功");
@@ -173,6 +187,9 @@ namespace toolstrackingsystem
             string name = e.NewValue.Name;
             if (MemoryCacheHelper.SetMemoryCache(name))
             {
+                //1.刷新datagridview页面
+                Search_buttonX_Click(sender, e);
+                //2.更新显示数据库名称
                 transfDelegate();
             }
         }

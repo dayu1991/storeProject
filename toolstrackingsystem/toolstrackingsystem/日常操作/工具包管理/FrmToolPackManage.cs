@@ -21,7 +21,7 @@ using System.Net;
 
 namespace toolstrackingsystem
 {
-    public partial class FrmToolPackManage:Office2007RibbonForm
+    public partial class FrmToolPackManage : Office2007RibbonForm
     {
         ILog logger = log4net.LogManager.GetLogger(typeof(frmEditUserinfo));
         public IToolPackManageService _toolPackManageService;

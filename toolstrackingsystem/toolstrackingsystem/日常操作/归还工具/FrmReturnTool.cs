@@ -191,8 +191,8 @@ namespace toolstrackingsystem
                             ToolInfoList = new List<OutBackStoreEntity>();
                             this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
                             tbEditCode.Text = "";
-                            tbEditPersonCode.Text = person.PersonCode;
-                            tbEditPersonName.Text =person.PersonName;
+                            //tbEditPersonCode.Text = person.PersonCode;
+                            //tbEditPersonName.Text =person.PersonName;
                             tbEditoutdescribes.Text = "";
 
                         }
@@ -214,8 +214,8 @@ namespace toolstrackingsystem
             ToolInfoList = new List<OutBackStoreEntity>();
             this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
             tbEditCode.Text = "";
-            tbEditPersonCode.Text = "";
-            tbEditPersonName.Text = "";
+            //tbEditPersonCode.Text = "";
+            //tbEditPersonName.Text = "";
             tbEditoutdescribes.Text = "";
         }
         private void FrmReturnTool_Load(object sender, EventArgs e)

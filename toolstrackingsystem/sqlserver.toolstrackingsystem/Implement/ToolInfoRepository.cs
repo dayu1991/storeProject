@@ -77,20 +77,9 @@ namespace sqlserver.toolstrackingsystem
             string sql = "delete from [dbo].[t_ToolInfo] where [ToolCode]=@ToolCode";
             var sqlDy = new DynamicParameters();
             sqlDy.Add("ToolCode", ToolCode);
-            var result =  ExcuteScalar(sql, sqlDy);
-            if (result != null && !string.IsNullOrWhiteSpace(result.ToString()))
-            {
-                int resultInt = 0;
-                if (int.TryParse(result.ToString(), out resultInt))
-                {
-                    return resultInt > 0;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            return false;
+            var result =  ExecuteSql(sql, sqlDy);
+
+            return result>0;
         }
         public List<t_ToolInfo> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName)
         {

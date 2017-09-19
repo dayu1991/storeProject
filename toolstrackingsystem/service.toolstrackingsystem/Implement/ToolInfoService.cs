@@ -741,7 +741,7 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
             toolRepair.ToolName = tool.ToolName;
             toolRepair.ToRepairedTime = DateTime.Now;
             toolRepair.ToRepairedPerCode =LoginHelper.UserCode;
-            toolRepair.ToRepairedPerName = tool.TypeName;
+            toolRepair.ToRepairedPerName = LoginHelper.UserName;
             toolRepair.ToolStatus = 1;
 
             _toolPrepairRecordRepository.Add(toolRepair);
