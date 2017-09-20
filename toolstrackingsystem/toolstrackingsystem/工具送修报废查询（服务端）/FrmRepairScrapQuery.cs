@@ -78,7 +78,7 @@ namespace toolstrackingsystem
 
         private void Search_buttonX_Click_1(object sender, EventArgs e)
         {
-
+            LoadData();
         }
         private void LoadData()
         {
