@@ -68,6 +68,7 @@
     <Compile Include="view\ToolInfoInStoreEntity.cs" />
     <Compile Include="view\ToolPackViewEntity.cs" />
     <Compile Include="view\ToolPrepairEntity.cs" />
+    <Compile Include="view\ToolRepairRecordExtend.cs" />
     <Compile Include="view\ToolReturnEntity.cs" />
     <Compile Include="view\UserInfoEntity.cs" />
   </ItemGroup>

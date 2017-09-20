@@ -72,7 +72,7 @@ namespace service.toolstrackingsystem
         /// <returns></returns>
         public List<RepairedToolForReceiveEntity> GetRepairedToolForReceive(t_ToolRepairRecord repairedInfo)
         {
-            string sql = @"SELECT 
+            string sql = @"SELECT trr.Id,
 	                            trr.[TypeName]
                               ,trr.[ChildTypeName]
                               ,trr.[ToolCode]
@@ -131,7 +131,6 @@ namespace service.toolstrackingsystem
         public List<ToolRepairRecordExtend> GetListForQuery(string blongValue, string categoryValue, string toolCode, string toolName,
             DateTime statTime, DateTime endTime, int pageindex, int pagesize, out long totalCount)
         {
-            Count = 0;
             List<ToolInfoExtend> list = new List<ToolInfoExtend>();
             string sql = @"select *,(case ToolStatus when 1 then '已送修' when 2 then '已接收' when 3 then '已修复' when 4 then '已领回' when 5 then '已报修' else '未知' end) as StatusStr from (
        select *,ROW_NUMBER() OVER (ORDER BY ChildTypeName,[Id] desc) as rank from [t_ToolRepairRecord]  where 1=1 {0}
@@ -176,5 +175,26 @@ namespace service.toolstrackingsystem
             return result.Any() ? result.ToList() : new List<ToolRepairRecordExtend>();
         }
 
+        /// <summary>
+        /// 更新维修表工具信息
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool UpdateToolRepairInfo(t_ToolRepairRecord entity)
+        {
+            return _toolPrepairRecordRepository.Update(entity);
+        }
+        /// <summary>
+        /// 通过主键ID获取维修工具信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public t_ToolRepairRecord GetToolRepairByToolCodeById(int id)
+        {
+            string sql = "SELECT * FROM t_ToolRepairRecord WHERE Id = @id";
+            DynamicParameters parameter = new DynamicParameters();
+            parameter.Add("id",id);
+            return _toolPrepairRecordRepository.GetModel(sql,parameter);
+        }
     }
 }

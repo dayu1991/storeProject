@@ -3,36 +3,39 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
-using log4net;
 using service.toolstrackingsystem;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
+using log4net;
 using dbentity.toolstrackingsystem;
-using System.Linq;
-using ViewEntity.toolstrackingsystem;
-using common.toolstrackingsystem;
 using System.Runtime.Caching;
+using ViewEntity.toolstrackingsystem;
+using System.IO;
+using System.Threading;
+using System.Net.Sockets;
+using common.toolstrackingsystem;
 
 namespace toolstrackingsystem
 {
-    public delegate void TransfDelegate();
-    public partial class ToolRepairManageNew : Office2007RibbonForm
+    public partial class FrmScrapToolManageDescribe : Office2007RibbonForm
     {
-        ILog logger = log4net.LogManager.GetLogger(typeof(ToolRepairManageNew));
+        ILog logger = log4net.LogManager.GetLogger(typeof(FrmScrapToolManageDescribe));
         public IToolRepairRecordService _toolRepairRecordService;
         public IToolInfoService _toolInfoService;
         public string dataBase = MemoryCache.Default.Get("clientName") != null ? MemoryCache.Default.Get("clientName").ToString() : CommonHelper.GetConfigValue("defaultDataBase");
         List<RepairedToolForReceiveEntity> resultList = new List<RepairedToolForReceiveEntity>();
-        public ToolRepairManageNew()
+        public event TransfDelegate transfDelegate;
+        public FrmScrapToolManageDescribe()
         {
             this.EnableGlass = false;
             InitializeComponent();
         }
-        public event TransfDelegate transfDelegate;
-        private void Form1_Load(object sender, EventArgs e)
+        private void FrmScrapToolManage_Load(object sender, EventArgs e)
         {
             _toolInfoService = Program.container.Resolve<IToolInfoService>();
             _toolRepairRecordService = Program.container.Resolve<ToolRepairRecordService>();
@@ -74,67 +77,46 @@ namespace toolstrackingsystem
             }
             #endregion
         }
-        private void dataGridViewX1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ToolInfo_dataGridView_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
-            try
-            {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewColumn column = tool_RepairdataGridView.Columns[e.ColumnIndex];
-                    if (column is DataGridViewButtonColumn)
-                    {
-                        string toolCode = tool_RepairdataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
-                        //更新送修工具接收状态为2
-                        t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
-                        repairInfo = _toolRepairRecordService.GetToolRepairByToolCodeAndStatus(toolCode, 1);
-                        if (repairInfo != null)
-                        {
-                            repairInfo.ToolStatus = 2;
-                            repairInfo.ReceiveTime = DateTime.Now;
-                            repairInfo.ReceivePerCode = LoginHelper.UserCode;
-                            repairInfo.ReceivePerName = LoginHelper.UserName;
-                            if (_toolRepairRecordService.UpdateToolReceiveStatus(repairInfo))
-                            {
-                                MessageBox.Show("接收成功");
-                                Search_buttonX_Click(sender, e);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("该工具送修记录不存在，请重新选择");
-                            return;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "ToolRepairManageNew--dataGridViewX1_CellContentClick", ex.Message, ex.StackTrace, ex.Source);
-            }
+
+        }
+        private void ToolInfo_dataGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1); 
+        }
+
+        private void ToolInfo_dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void ScrapTool_dataGridViewX2_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
+        }
+        private void tool_RepairdataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
         private void Search_buttonX_Click(object sender, EventArgs e)
         {
             try
             {
-                if (tool_RepairdataGridView.Columns.Count >= 8)
-                {
-                    tool_RepairdataGridView.Columns.RemoveAt(7);
-                }
                 t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
-                repairInfo.TypeName = cbSearchBlong.SelectedValue.ToString()!="全部"?cbSearchBlong.SelectedValue.ToString():"";
-                repairInfo.ChildTypeName = cbSearchcategory.SelectedValue.ToString()!="全部"?cbSearchcategory.SelectedValue.ToString():"";
+                repairInfo.TypeName = cbSearchBlong.SelectedValue.ToString() != "全部" ? cbSearchBlong.SelectedValue.ToString() : "";
+                repairInfo.ChildTypeName = cbSearchcategory.SelectedValue.ToString() != "全部" ? cbSearchcategory.SelectedValue.ToString() : "";
                 repairInfo.ToolCode = tbSearchCode.Text;
                 repairInfo.ToolName = tbSearchName.Text;
-                repairInfo.ToolStatus = 1;
+                repairInfo.ToolStatus = 5;
                 resultList = _toolRepairRecordService.GetRepairedToolForReceive(repairInfo);
                 for (int i = 0; i < tool_RepairdataGridView.Columns.Count; i++)
                 {
                     tool_RepairdataGridView.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
                 }
-                //tool_RepairdataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                tool_RepairdataGridView.DataSource = null;
+                tool_RepairdataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
                 tool_RepairdataGridView.DataSource = resultList;
+
                 tool_RepairdataGridView.Columns[0].HeaderText = "ID";
                 tool_RepairdataGridView.Columns[0].Visible = false;
                 tool_RepairdataGridView.Columns[1].HeaderText = "配属";
@@ -144,22 +126,41 @@ namespace toolstrackingsystem
                 tool_RepairdataGridView.Columns[5].HeaderText = "送修时间";
                 tool_RepairdataGridView.Columns[6].HeaderText = "送修人员";
                 tool_RepairdataGridView.Columns[7].HeaderText = "备注";
-                DataGridViewButtonColumn button = new DataGridViewButtonColumn();
-                button.HeaderText = "操作";
-                button.Text = "接收";
-                button.Name = "ReceiveButton";
-                button.UseColumnTextForButtonValue = true;
-                tool_RepairdataGridView.Columns.AddRange(button);
             }
             catch (Exception ex)
             {
-                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "ToolRepairManageNew--Search_buttonX_Click", ex.Message, ex.StackTrace, ex.Source);
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "FrmScrapToolManageDescribe--Search_buttonX_Click", ex.Message, ex.StackTrace, ex.Source);
             }
         }
-        private void tool_RepairdataGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        private void tool_RepairdataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    int id = Convert.ToInt32(tool_RepairdataGridView.Rows[e.RowIndex].Cells[0].Value);
+                    t_ToolRepairRecord entity = new t_ToolRepairRecord();
+                    entity = _toolRepairRecordService.GetToolRepairByToolCodeById(id);
+                    if (entity == null)
+                    {
+                        MessageBox.Show("工具查询失败，请重新选择");
+                        return;
+                    }
+                    FrmAddRemarkForScrapedTool toolFrm = new FrmAddRemarkForScrapedTool();
+                    toolFrm.Tag = entity;
+                    toolFrm.ShowDialog();
+                    if (toolFrm.DialogResult == System.Windows.Forms.DialogResult.OK)
+                    {
+                        Search_buttonX_Click(sender,e);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "FrmScrapToolManageDescribe--tool_RepairdataGridView_CellContentDoubleClick", ex.Message, ex.StackTrace, ex.Source);
+            }
         }
+
         private void superTabStrip1_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
         {
             string name = e.NewValue.Name;

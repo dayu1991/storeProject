@@ -231,6 +231,17 @@ namespace toolstrackingsystem
                                 }
                             }
                         }
+                        else if (tabName == "报废工具补充说明")
+                        {
+                            FrmScrapToolManageDescribe toolFrm = (FrmScrapToolManageDescribe)item.AttachedControl.Controls[0];
+                            foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
+                            {
+                                if (tab.Name == dataBase)
+                                {
+                                    toolFrm.superTabStrip1.SelectedTab = tab;
+                                }
+                            }
+                        }
                         superTabControl2.SelectedTab = item;
                         isOpen = true;
                         break;
@@ -260,6 +271,11 @@ namespace toolstrackingsystem
                     {
                         //设置委托绑定到赋值方法上
                         ((FrmlPullRepairedTool)form).transfDelegate += setText;
+                    }
+                    else if (tabName == "报废工具补充说明")
+                    {
+                        //设置委托绑定到赋值方法上
+                        ((FrmScrapToolManageDescribe)form).transfDelegate += setText;
                     }
                     //创建一个tab
                     SuperTabItem item = superTabControl2.CreateTab(tabName);
@@ -477,6 +493,17 @@ namespace toolstrackingsystem
                 else if (this.superTabControl2.SelectedTab.Text == "送修工具领取" && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count > 0)
                 {
                     FrmlPullRepairedTool toolFrm = (FrmlPullRepairedTool)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
+                    foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
+                    {
+                        if (tab.Name == dataBase)
+                        {
+                            toolFrm.superTabStrip1.SelectedTab = tab;
+                        }
+                    }
+                }
+                else if (this.superTabControl2.SelectedTab.Text == "报废工具补充说明" && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count > 0)
+                {
+                    FrmScrapToolManageDescribe toolFrm = (FrmScrapToolManageDescribe)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
                     foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
                     {
                         if (tab.Name == dataBase)
