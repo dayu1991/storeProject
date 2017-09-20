@@ -88,7 +88,7 @@ namespace toolstrackingsystem
                         string toolCode = tool_RepairdataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
 
                         t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
-                        repairInfo = _toolRepairRecordService.GetToolRepairByToolCodeAndStatus(toolCode, 3);
+                        repairInfo = _toolRepairRecordService.GetToolRepairByToolCodeAndStatus(toolCode, ToolStatusResultEntity.IsCompleted);
                         if (repairInfo != null)
                         {
                             t_ToolInfo toolInfo = new t_ToolInfo();
@@ -100,7 +100,7 @@ namespace toolstrackingsystem
                             }
                             toolInfo.IsRepaired = 0;
 
-                            repairInfo.ToolStatus = 4;
+                            repairInfo.ToolStatus = ToolStatusResultEntity.IsPulled;
                             repairInfo.PullPerCode = LoginHelper.UserCode;
                             repairInfo.PullPerName = LoginHelper.UserName;
                             repairInfo.PullTime = DateTime.Now;
@@ -134,16 +134,16 @@ namespace toolstrackingsystem
         {
             try
             {
-                if (tool_RepairdataGridView.Columns.Count >= 8)
+                if (tool_RepairdataGridView.Columns.Count >= 9)
                 {
-                    tool_RepairdataGridView.Columns.RemoveAt(7);
+                    tool_RepairdataGridView.Columns.RemoveAt(8);
                 }
                 t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
                 repairInfo.TypeName = cbSearchBlong.SelectedValue.ToString() != "全部" ? cbSearchBlong.SelectedValue.ToString() : "";
                 repairInfo.ChildTypeName = cbSearchcategory.SelectedValue.ToString() != "全部" ? cbSearchcategory.SelectedValue.ToString() : "";
                 repairInfo.ToolCode = tbSearchCode.Text;
                 repairInfo.ToolName = tbSearchName.Text;
-                repairInfo.ToolStatus = 3;
+                repairInfo.ToolStatus = ToolStatusResultEntity.IsCompleted;
                 resultList = _toolRepairRecordService.GetRepairedToolForReceive(repairInfo);
                 for (int i = 0; i < tool_RepairdataGridView.Columns.Count; i++)
                 {

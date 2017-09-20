@@ -86,12 +86,12 @@ namespace toolstrackingsystem
                         string toolCode = tool_RepairdataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
 
                         t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
-                        repairInfo = _toolRepairRecordService.GetToolRepairByToolCodeAndStatus(toolCode, 2);
+                        repairInfo = _toolRepairRecordService.GetToolRepairByToolCodeAndStatus(toolCode, ToolStatusResultEntity.IsReceived);
                         if (repairInfo != null)
                         {
                             if (column.Name == "CompleteButton")
                             {
-                                repairInfo.ToolStatus = 3;
+                                repairInfo.ToolStatus = ToolStatusResultEntity.IsCompleted;
                                 repairInfo.CompletePerCode = LoginHelper.UserCode;
                                 repairInfo.CompletePerName = LoginHelper.UserName;
                                 repairInfo.CompleteTime = DateTime.Now;
@@ -101,7 +101,7 @@ namespace toolstrackingsystem
                                 repairInfo.HandlePerCode = LoginHelper.UserCode;
                                 repairInfo.HandlePerName = LoginHelper.UserName;
                                 repairInfo.HandleTime = DateTime.Now;
-                                repairInfo.ToolStatus = 5;
+                                repairInfo.ToolStatus = ToolStatusResultEntity.IsScraped;
                                 t_ToolInfo tooInfo = new t_ToolInfo();
                                 tooInfo = _toolInfoService.GetToolByCode(toolCode);
                                 if (!_toolInfoService.DelToolByCode(toolCode))
@@ -138,10 +138,10 @@ namespace toolstrackingsystem
         {
             try
             {
-                if (tool_RepairdataGridView.Columns.Count >= 9)
+                if (tool_RepairdataGridView.Columns.Count >= 10)
                 {
-                    tool_RepairdataGridView.Columns.RemoveAt(7);
-                    tool_RepairdataGridView.Columns.RemoveAt(7);
+                    tool_RepairdataGridView.Columns.RemoveAt(9);
+                    tool_RepairdataGridView.Columns.RemoveAt(9);
                 }
                 t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
                 repairInfo.TypeName = cbSearchBlong.SelectedValue.ToString() != "全部" ? cbSearchBlong.SelectedValue.ToString() : "";

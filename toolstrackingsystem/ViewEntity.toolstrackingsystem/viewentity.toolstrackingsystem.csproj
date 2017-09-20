@@ -70,6 +70,8 @@
     <Compile Include="view\ToolPrepairEntity.cs" />
     <Compile Include="view\ToolRepairRecordExtend.cs" />
     <Compile Include="view\ToolReturnEntity.cs" />
+    <Compile Include="view\ToolScrapedEntity.cs" />
+    <Compile Include="view\ToolStatusResultEntity.cs" />
     <Compile Include="view\UserInfoEntity.cs" />
   </ItemGroup>
   <ItemGroup>

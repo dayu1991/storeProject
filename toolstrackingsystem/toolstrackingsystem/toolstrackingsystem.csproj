@@ -11,6 +11,21 @@
     <AssemblyName>toolstrackingsystem</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -99,7 +114,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseClass.cs" />
     <Compile Include="cangku_manage_dbDataSet.cs">
       <DependentUpon>cangku_manage_dbDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -152,10 +166,10 @@
     <Compile Include="工具送修接收%28服务端%29\ToolRepairManage.Designer.cs">
       <DependentUpon>ToolRepairManage.cs</DependentUpon>
     </Compile>
-    <Compile Include="工具送修领取\FrmlPullRepairedTool.cs">
+    <Compile Include="工具送修领取（服务端）\FrmlPullRepairedTool.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="工具送修领取\FrmlPullRepairedTool.Designer.cs">
+    <Compile Include="工具送修领取（服务端）\FrmlPullRepairedTool.Designer.cs">
       <DependentUpon>FrmlPullRepairedTool.cs</DependentUpon>
     </Compile>
     <Compile Include="报废工具说明%28服务端%29\FrmAddRemarkForScrapedTool.cs">
@@ -531,7 +545,7 @@
     <EmbeddedResource Include="工具送修接收%28服务端%29\ToolRepairManage.resx">
       <DependentUpon>ToolRepairManage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="工具送修领取\FrmlPullRepairedTool.resx">
+    <EmbeddedResource Include="工具送修领取（服务端）\FrmlPullRepairedTool.resx">
       <DependentUpon>FrmlPullRepairedTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="报废工具说明%28服务端%29\FrmAddRemarkForScrapedTool.resx">
@@ -738,6 +752,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\common.toolstrackingsystem\common.toolstrackingsystem.csproj">
