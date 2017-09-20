@@ -28,7 +28,7 @@ namespace toolstrackingsystem
         public IToolRepairRecordService _toolRepairRecordService;
         public IToolInfoService _toolInfoService;
         public string dataBase = MemoryCache.Default.Get("clientName") != null ? MemoryCache.Default.Get("clientName").ToString() : CommonHelper.GetConfigValue("defaultDataBase");
-        List<RepairedToolForReceiveEntity> resultList = new List<RepairedToolForReceiveEntity>();
+        List<ToolScrapedEntity> resultList = new List<ToolScrapedEntity>();
         public event TransfDelegate transfDelegate;
         public FrmScrapToolManageDescribe()
         {
@@ -107,8 +107,8 @@ namespace toolstrackingsystem
                 repairInfo.ChildTypeName = cbSearchcategory.SelectedValue.ToString() != "全部" ? cbSearchcategory.SelectedValue.ToString() : "";
                 repairInfo.ToolCode = tbSearchCode.Text;
                 repairInfo.ToolName = tbSearchName.Text;
-                repairInfo.ToolStatus = 5;
-                resultList = _toolRepairRecordService.GetRepairedToolForReceive(repairInfo);
+                repairInfo.ToolStatus = ToolStatusResultEntity.IsScraped;
+                resultList = _toolRepairRecordService.GetRepairedToolRorScrap(repairInfo);
                 for (int i = 0; i < tool_RepairdataGridView.Columns.Count; i++)
                 {
                     tool_RepairdataGridView.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
@@ -125,7 +125,10 @@ namespace toolstrackingsystem
                 tool_RepairdataGridView.Columns[4].HeaderText = "工具名称";
                 tool_RepairdataGridView.Columns[5].HeaderText = "送修时间";
                 tool_RepairdataGridView.Columns[6].HeaderText = "送修人员";
-                tool_RepairdataGridView.Columns[7].HeaderText = "备注";
+                tool_RepairdataGridView.Columns[7].HeaderText = "送修备注";
+                tool_RepairdataGridView.Columns[8].HeaderText = "报废时间";
+                tool_RepairdataGridView.Columns[9].HeaderText = "报废人员";
+                tool_RepairdataGridView.Columns[10].HeaderText = "报废备注";
             }
             catch (Exception ex)
             {

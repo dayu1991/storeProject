@@ -107,6 +107,52 @@ namespace service.toolstrackingsystem
 
         }
         /// <summary>
+        /// 获取报废的工具列表
+        /// </summary>
+        /// <param name="repairedInfo"></param>
+        /// <returns></returns>
+        public List<ToolScrapedEntity> GetRepairedToolRorScrap(t_ToolRepairRecord repairedInfo) 
+        {
+            string sql = @"SELECT trr.Id,
+	                            trr.[TypeName]
+                              ,trr.[ChildTypeName]
+                              ,trr.[ToolCode]
+                              ,trr.[ToolName]
+                              ,trr.[ToRepairedTime]
+                              ,trr.[ToRepairedPerName]
+                              ,trr.[ToRepairMemo]
+                              ,trr.[HandleTime]
+                              ,trr.[HandlePerName]
+                              ,trr.[ScrapMemo]
+  FROM [dbo].[t_ToolRepairRecord] trr WHERE 1=1 ";
+            DynamicParameters parameters = new DynamicParameters();
+            sql += " AND trr.ToolStatus = @toolStatus ";
+            parameters.Add("toolStatus", repairedInfo.ToolStatus);
+            if (!string.IsNullOrEmpty(repairedInfo.TypeName))
+            {
+                sql += " AND trr.TypeName = @typeName ";
+                parameters.Add("typeName", repairedInfo.TypeName);
+            }
+            if (!string.IsNullOrEmpty(repairedInfo.ChildTypeName))
+            {
+                sql += " AND trr.ChildTypeName = @childTypeName ";
+                parameters.Add("childTypeName", repairedInfo.ChildTypeName);
+            }
+            if (!string.IsNullOrEmpty(repairedInfo.ToolCode))
+            {
+                sql += " AND trr.ToolCode LIKE @toolCode ";
+                parameters.Add("toolCode", string.Format("%{0}%", repairedInfo.ToolCode));
+            }
+            if (!string.IsNullOrEmpty(repairedInfo.ToolName))
+            {
+                sql += " AND trr.ToolName LIKE @toolName ";
+                parameters.Add("toolName", string.Format("%{0}%", repairedInfo.ToolName));
+            }
+            return _multiTableQueryRepository.QueryList<ToolScrapedEntity>(sql, parameters).ToList();
+
+
+        }
+        /// <summary>
         /// 更新送修工具状态为接收
         /// </summary>
         /// <param name="repairInfo"></param>

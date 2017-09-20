@@ -869,7 +869,11 @@ namespace toolstrackingsystem
                             MessageBox.Show("此工具已经被送修，不能重复送修！");
                             return;
                         }
-
+                        if (toolInfo.IsBack == "0")
+                        {
+                            MessageBox.Show("此工具已经被借出，请归还后再送修！");
+                            return;
+                        }
                         MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
 
                         DialogResult dr = MessageBox.Show(string.Format("您确认要送修编号为:{0} 的工具吗?", SelectedToolCode), "送修确认", messButton);

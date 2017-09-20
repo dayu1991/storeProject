@@ -1,0 +1,46 @@
+use toolInfo_XiSuo;
+-- 新增菜单信息
+insert into [dbo].[Sys_Menu_Info] values('送修工具接收','1002','送修工具接收',23,0,'','ToolRepairManageNew',1,5,1);
+insert into [dbo].[Sys_Menu_Info] values('送修工具待完成','1002','送修工具待完成',24,0,'','FrmToolRepairedComlete',1,6,1);
+insert into [dbo].[Sys_Menu_Info] values('送修工具领取','1002','送修工具领取',25,0,'','FrmToolRepairedComlete',1,7,1);
+insert into [dbo].[Sys_Menu_Info] values('报废工具补充说明','1002','报废工具补充说明',26,0,'','FrmScrapToolManageDescribe',1,8,1);
+-- 新增字段
+alter table t_ToolRepairRecord add CompletePerCode varchar(50);
+alter table t_ToolRepairRecord add CompletePerName varchar(50);
+alter table t_ToolRepairRecord add CompleteTime varchar(50);
+alter table t_ToolRepairRecord add CompleteMemo varchar(50);
+
+use toolInfo_DongSuo;
+-- 新增菜单信息
+insert into [dbo].[Sys_Menu_Info] values('送修工具接收','1002','送修工具接收',23,0,'','ToolRepairManageNew',1,5,1);
+insert into [dbo].[Sys_Menu_Info] values('送修工具待完成','1002','送修工具待完成',24,0,'','FrmToolRepairedComlete',1,6,1);
+insert into [dbo].[Sys_Menu_Info] values('送修工具领取','1002','送修工具领取',25,0,'','FrmToolRepairedComlete',1,7,1);
+insert into [dbo].[Sys_Menu_Info] values('报废工具补充说明','1002','报废工具补充说明',26,0,'','FrmScrapToolManageDescribe',1,8,1);
+-- 新增字段
+alter table t_ToolRepairRecord add CompletePerCode varchar(50);
+alter table t_ToolRepairRecord add CompletePerName varchar(50);
+alter table t_ToolRepairRecord add CompleteTime varchar(50);
+alter table t_ToolRepairRecord add CompleteMemo varchar(50);
+
+use toolInfo_ShiJiaZhuang;
+-- 新增菜单信息
+insert into [dbo].[Sys_Menu_Info] values('送修工具接收','1002','送修工具接收',23,0,'','ToolRepairManageNew',1,5,1);
+insert into [dbo].[Sys_Menu_Info] values('送修工具待完成','1002','送修工具待完成',24,0,'','FrmToolRepairedComlete',1,6,1);
+insert into [dbo].[Sys_Menu_Info] values('送修工具领取','1002','送修工具领取',25,0,'','FrmToolRepairedComlete',1,7,1);
+insert into [dbo].[Sys_Menu_Info] values('报废工具补充说明','1002','报废工具补充说明',26,0,'','FrmScrapToolManageDescribe',1,8,1);
+-- 新增字段
+alter table t_ToolRepairRecord add CompletePerCode varchar(50);
+alter table t_ToolRepairRecord add CompletePerName varchar(50);
+alter table t_ToolRepairRecord add CompleteTime varchar(50);
+alter table t_ToolRepairRecord add CompleteMemo varchar(50);
+use toolInfo_NanSuo;
+-- 新增菜单信息
+insert into [dbo].[Sys_Menu_Info] values('送修工具接收','1002','送修工具接收',23,0,'','ToolRepairManageNew',1,5,1);
+insert into [dbo].[Sys_Menu_Info] values('送修工具待完成','1002','送修工具待完成',24,0,'','FrmToolRepairedComlete',1,6,1);
+insert into [dbo].[Sys_Menu_Info] values('送修工具领取','1002','送修工具领取',25,0,'','FrmToolRepairedComlete',1,7,1);
+insert into [dbo].[Sys_Menu_Info] values('报废工具补充说明','1002','报废工具补充说明',26,0,'','FrmScrapToolManageDescribe',1,8,1);
+-- 新增字段
+alter table t_ToolRepairRecord add CompletePerCode varchar(50);
+alter table t_ToolRepairRecord add CompletePerName varchar(50);
+alter table t_ToolRepairRecord add CompleteTime varchar(50);
+alter table t_ToolRepairRecord add CompleteMemo varchar(50);

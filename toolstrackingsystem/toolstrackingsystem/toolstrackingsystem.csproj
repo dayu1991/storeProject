@@ -152,10 +152,10 @@
     <Compile Include="工具送修接收%28服务端%29\ToolRepairManage.Designer.cs">
       <DependentUpon>ToolRepairManage.cs</DependentUpon>
     </Compile>
-    <Compile Include="工具送修领取\FrmlPullRepairedTool.cs">
+    <Compile Include="工具送修领取（服务端）\FrmlPullRepairedTool.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="工具送修领取\FrmlPullRepairedTool.Designer.cs">
+    <Compile Include="工具送修领取（服务端）\FrmlPullRepairedTool.Designer.cs">
       <DependentUpon>FrmlPullRepairedTool.cs</DependentUpon>
     </Compile>
     <Compile Include="报废工具说明%28服务端%29\FrmAddRemarkForScrapedTool.cs">
@@ -531,7 +531,7 @@
     <EmbeddedResource Include="工具送修接收%28服务端%29\ToolRepairManage.resx">
       <DependentUpon>ToolRepairManage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="工具送修领取\FrmlPullRepairedTool.resx">
+    <EmbeddedResource Include="工具送修领取（服务端）\FrmlPullRepairedTool.resx">
       <DependentUpon>FrmlPullRepairedTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="报废工具说明%28服务端%29\FrmAddRemarkForScrapedTool.resx">

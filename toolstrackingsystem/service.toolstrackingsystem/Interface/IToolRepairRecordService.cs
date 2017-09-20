@@ -18,6 +18,12 @@ namespace service.toolstrackingsystem
         /// <param name="t_ToolRepairRecord"></param>
         /// <returns></returns>
         List<RepairedToolForReceiveEntity> GetRepairedToolForReceive(t_ToolRepairRecord repairedInfo);
+        /// <summary>
+        /// 获取报废的工具列表
+        /// </summary>
+        /// <param name="repairedInfo"></param>
+        /// <returns></returns>
+        List<ToolScrapedEntity> GetRepairedToolRorScrap(t_ToolRepairRecord repairedInfo);
          /// <summary>
         /// 更新送修工具状态为接收
         /// </summary>
