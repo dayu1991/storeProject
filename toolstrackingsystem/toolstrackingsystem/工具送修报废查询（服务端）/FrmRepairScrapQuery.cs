@@ -118,5 +118,10 @@ namespace toolstrackingsystem
             var num = (pagerControl1.PageIndex - 1) * pagerControl1.PageSize + 1 + e.Row.Index;
             e.Row.HeaderCell.Value = string.Format("{0}", num);
         }
+
+        private void Print_button_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
