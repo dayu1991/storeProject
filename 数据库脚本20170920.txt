@@ -4,6 +4,8 @@ insert into [dbo].[Sys_Menu_Info] values('送修工具接收','1002','送修工具接收',23
 insert into [dbo].[Sys_Menu_Info] values('送修工具待完成','1002','送修工具待完成',24,0,'','FrmToolRepairedComlete',1,6,1);
 insert into [dbo].[Sys_Menu_Info] values('送修工具领取','1002','送修工具领取',25,0,'','FrmToolRepairedComlete',1,7,1);
 insert into [dbo].[Sys_Menu_Info] values('报废工具补充说明','1002','报废工具补充说明',26,0,'','FrmScrapToolManageDescribe',1,8,1);
+INSERT INTO [dbo].[Sys_Menu_Info] ([MenuName],[GroupCode],[NavigationTitle],[MenuICON],[IsMain],[ShortKey],[FileName],[AddTools],[MenuOrder],[IsActive])
+     VALUES  ('送修查询','1003','送修查询','27',0,null,'FrmRepairScrapQuery','1',7,1);
 -- 新增字段
 alter table t_ToolRepairRecord add CompletePerCode varchar(50);
 alter table t_ToolRepairRecord add CompletePerName varchar(50);
@@ -16,6 +18,8 @@ insert into [dbo].[Sys_Menu_Info] values('送修工具接收','1002','送修工具接收',23
 insert into [dbo].[Sys_Menu_Info] values('送修工具待完成','1002','送修工具待完成',24,0,'','FrmToolRepairedComlete',1,6,1);
 insert into [dbo].[Sys_Menu_Info] values('送修工具领取','1002','送修工具领取',25,0,'','FrmToolRepairedComlete',1,7,1);
 insert into [dbo].[Sys_Menu_Info] values('报废工具补充说明','1002','报废工具补充说明',26,0,'','FrmScrapToolManageDescribe',1,8,1);
+INSERT INTO [dbo].[Sys_Menu_Info] ([MenuName],[GroupCode],[NavigationTitle],[MenuICON],[IsMain],[ShortKey],[FileName],[AddTools],[MenuOrder],[IsActive])
+     VALUES  ('送修查询','1003','送修查询','27',0,null,'FrmRepairScrapQuery','1',7,1);
 -- 新增字段
 alter table t_ToolRepairRecord add CompletePerCode varchar(50);
 alter table t_ToolRepairRecord add CompletePerName varchar(50);
@@ -28,6 +32,8 @@ insert into [dbo].[Sys_Menu_Info] values('送修工具接收','1002','送修工具接收',23
 insert into [dbo].[Sys_Menu_Info] values('送修工具待完成','1002','送修工具待完成',24,0,'','FrmToolRepairedComlete',1,6,1);
 insert into [dbo].[Sys_Menu_Info] values('送修工具领取','1002','送修工具领取',25,0,'','FrmToolRepairedComlete',1,7,1);
 insert into [dbo].[Sys_Menu_Info] values('报废工具补充说明','1002','报废工具补充说明',26,0,'','FrmScrapToolManageDescribe',1,8,1);
+INSERT INTO [dbo].[Sys_Menu_Info] ([MenuName],[GroupCode],[NavigationTitle],[MenuICON],[IsMain],[ShortKey],[FileName],[AddTools],[MenuOrder],[IsActive])
+     VALUES  ('送修查询','1003','送修查询','27',0,null,'FrmRepairScrapQuery','1',7,1);
 -- 新增字段
 alter table t_ToolRepairRecord add CompletePerCode varchar(50);
 alter table t_ToolRepairRecord add CompletePerName varchar(50);
@@ -39,6 +45,8 @@ insert into [dbo].[Sys_Menu_Info] values('送修工具接收','1002','送修工具接收',23
 insert into [dbo].[Sys_Menu_Info] values('送修工具待完成','1002','送修工具待完成',24,0,'','FrmToolRepairedComlete',1,6,1);
 insert into [dbo].[Sys_Menu_Info] values('送修工具领取','1002','送修工具领取',25,0,'','FrmToolRepairedComlete',1,7,1);
 insert into [dbo].[Sys_Menu_Info] values('报废工具补充说明','1002','报废工具补充说明',26,0,'','FrmScrapToolManageDescribe',1,8,1);
+INSERT INTO [dbo].[Sys_Menu_Info] ([MenuName],[GroupCode],[NavigationTitle],[MenuICON],[IsMain],[ShortKey],[FileName],[AddTools],[MenuOrder],[IsActive])
+     VALUES  ('送修查询','1003','送修查询','27',0,null,'FrmRepairScrapQuery','1',7,1);
 -- 新增字段
 alter table t_ToolRepairRecord add CompletePerCode varchar(50);
 alter table t_ToolRepairRecord add CompletePerName varchar(50);
