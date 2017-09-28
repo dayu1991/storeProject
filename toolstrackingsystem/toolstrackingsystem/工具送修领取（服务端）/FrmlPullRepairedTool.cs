@@ -134,10 +134,7 @@ namespace toolstrackingsystem
         {
             try
             {
-                if (tool_RepairdataGridView.Columns.Count >= 9)
-                {
-                    tool_RepairdataGridView.Columns.RemoveAt(8);
-                }
+                tool_RepairdataGridView.Columns.Clear();
                 t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
                 repairInfo.TypeName = cbSearchBlong.SelectedValue.ToString() != "全部" ? cbSearchBlong.SelectedValue.ToString() : "";
                 repairInfo.ChildTypeName = cbSearchcategory.SelectedValue.ToString() != "全部" ? cbSearchcategory.SelectedValue.ToString() : "";

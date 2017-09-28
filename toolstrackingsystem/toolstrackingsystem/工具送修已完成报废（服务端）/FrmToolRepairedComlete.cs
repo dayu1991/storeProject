@@ -138,11 +138,12 @@ namespace toolstrackingsystem
         {
             try
             {
-                if (tool_RepairdataGridView.Columns.Count >= 10)
-                {
-                    tool_RepairdataGridView.Columns.RemoveAt(9);
-                    tool_RepairdataGridView.Columns.RemoveAt(9);
-                }
+                //if (tool_RepairdataGridView.Columns.Count >= 10)
+                //{
+                //    tool_RepairdataGridView.Columns.RemoveAt(9);
+                //    tool_RepairdataGridView.Columns.RemoveAt(9);
+                //}
+                tool_RepairdataGridView.Columns.Clear();
                 t_ToolRepairRecord repairInfo = new t_ToolRepairRecord();
                 repairInfo.TypeName = cbSearchBlong.SelectedValue.ToString() != "全部" ? cbSearchBlong.SelectedValue.ToString() : "";
                 repairInfo.ChildTypeName = cbSearchcategory.SelectedValue.ToString() != "全部" ? cbSearchcategory.SelectedValue.ToString() : "";

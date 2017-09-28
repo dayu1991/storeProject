@@ -104,6 +104,7 @@ namespace service.toolstrackingsystem
                 sql += " AND trr.ToolName LIKE @toolName ";
                 parameters.Add("toolName", string.Format("%{0}%", repairedInfo.ToolName));
             }
+            sql += " ORDER BY trr.ToRepairedTime DESC ";
             return _multiTableQueryRepository.QueryList<RepairedToolForReceiveEntity>(sql, parameters).ToList();
 
         }
@@ -149,6 +150,7 @@ namespace service.toolstrackingsystem
                 sql += " AND trr.ToolName LIKE @toolName ";
                 parameters.Add("toolName", string.Format("%{0}%", repairedInfo.ToolName));
             }
+            sql += " ORDER BY trr.ToRepairedTime DESC ";
             return _multiTableQueryRepository.QueryList<ToolScrapedEntity>(sql, parameters).ToList();
 
 
