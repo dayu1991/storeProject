@@ -35,7 +35,7 @@ namespace service.toolstrackingsystem
         /// <param name="toolCode"></param>
         /// <param name="toolName"></param>
         /// <returns></returns>
-        List<ToolInfoExtend> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, bool is_Out_checkBox, bool is_OutTime_checkBox, bool is_ToRepare_checkBox, string cbCheckTime, int pageIndex, int pageSize, out long totalCount);
+        List<ToolInfoExtend> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, bool is_Out_checkBox, bool is_OutTime_checkBox, bool is_ToRepare_checkBox, string cbCheckTime, int pageIndex, int pageSize,string orderBy,string orderByType, out long totalCount);
 
         t_ToolInfo GetToolByCode(string Toolcode);
         List<t_ToolInfo> GetToolByCodeOrPackCode(string code);

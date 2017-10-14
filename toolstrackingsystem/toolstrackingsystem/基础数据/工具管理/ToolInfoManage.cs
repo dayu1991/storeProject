@@ -37,6 +37,8 @@ namespace toolstrackingsystem
         //private Socket socketClient = Program.SocketClient;
         ////代理用来设置text的值 （实现另一个线程操作主线程的对象）
         //private delegate void SetTextCallback(string text);
+        private string orderBy = "ToolCode";
+        private string orderByType = "asc";
 
         public ToolInfoManage()
         {
@@ -134,8 +136,10 @@ namespace toolstrackingsystem
             this.cbCheckTime.DisplayMember = "SelectText";
             this.cbCheckTime.ValueMember = "SelectValue";
             this.cbCheckTime.SelectedValue = "0";
-
             LoadData();
+            DataGridView dgv = dataGridViewX1 as DataGridView;
+
+            dgv.Columns[4].HeaderCell.SortGlyphDirection = System.Windows.Forms.SortOrder.Ascending;
 
         }
 
@@ -241,15 +245,17 @@ namespace toolstrackingsystem
                 bool is_ToRepare_checkBox = this.Is_ToRepare_checkBox.Checked;
 
                 string cbCheckTime = this.cbCheckTime.SelectedValue.ToString();
-
-                List<ToolInfoExtend> resultEntity = _toolInfoService.GetToolList(blongValue, categoryValue, toolCode, toolName, is_Out_checkBox, is_OutTime_checkBox, is_ToRepare_checkBox, cbCheckTime, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
+                List<ToolInfoExtend> resultEntity = _toolInfoService.GetToolList(blongValue, categoryValue, toolCode,
+                    toolName, is_Out_checkBox, is_OutTime_checkBox, is_ToRepare_checkBox, cbCheckTime, 
+                    pagerControl1.PageIndex, pagerControl1.PageSize,orderBy,orderByType, out Count);
                 pagerControl1.DrawControl(Convert.ToInt32(Count));
                 this.dataGridViewX1.AutoGenerateColumns = false;
                 this.dataGridViewX1.DataSource = resultEntity;
-                for (int i = 0; i < dataGridViewX1.Columns.Count; i++)
-                {
-                    dataGridViewX1.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
-                }
+                this.dataGridViewX1.Refresh();
+                //for (int i = 0; i < dataGridViewX1.Columns.Count; i++)
+                //{
+                //    dataGridViewX1.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
+                //}
                 dataGridViewX1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 this.dataGridViewX1.Rows[0].Selected = true;
                 slectedIndex = 0;
@@ -896,9 +902,30 @@ namespace toolstrackingsystem
             }
         }
 
-
-
-
+        private void dataGridViewX1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+            if (dgv.Columns[e.ColumnIndex].SortMode == DataGridViewColumnSortMode.Programmatic)
+            {
+                string columnBindingName = dgv.Columns[e.ColumnIndex].DataPropertyName;
+                switch (dgv.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection)
+                {
+                    case System.Windows.Forms.SortOrder.None:
+                    case System.Windows.Forms.SortOrder.Ascending:
+                        orderBy = columnBindingName;
+                        orderByType="desc";
+                        LoadData();
+                        dgv.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = System.Windows.Forms.SortOrder.Descending;
+                        break;
+                    case System.Windows.Forms.SortOrder.Descending:
+                        orderBy = columnBindingName;
+                        orderByType = "asc";
+                        LoadData();
+                        dgv.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = System.Windows.Forms.SortOrder.Ascending;
+                        break;
+                }
+            }                  
+        }
 
     }
 }

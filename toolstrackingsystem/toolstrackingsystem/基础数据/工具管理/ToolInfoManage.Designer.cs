@@ -45,18 +45,6 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.tbTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbChildTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbPackNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbPackName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbToolCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbToolName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbCheckTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnToRepaire = new DevComponents.DotNetBar.ButtonX();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
@@ -86,6 +74,18 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
+            this.tbTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbChildTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbPackNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbPackName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbToolCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbToolName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbCheckTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.groupPanel2.SuspendLayout();
@@ -332,6 +332,7 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
+            this.dataGridViewX1.AllowUserToOrderColumns = true;
             this.dataGridViewX1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -355,7 +356,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(10, 73);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
@@ -365,97 +366,8 @@
             this.dataGridViewX1.TabIndex = 1;
             this.dataGridViewX1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellClick);
             this.dataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellDoubleClick);
+            this.dataGridViewX1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewX1_ColumnHeaderMouseClick);
             this.dataGridViewX1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewX1_RowStateChanged);
-            // 
-            // tbTypeName
-            // 
-            this.tbTypeName.DataPropertyName = "TypeName";
-            this.tbTypeName.HeaderText = "工具配属";
-            this.tbTypeName.Name = "tbTypeName";
-            this.tbTypeName.ReadOnly = true;
-            // 
-            // tbChildTypeName
-            // 
-            this.tbChildTypeName.DataPropertyName = "ChildTypeName";
-            this.tbChildTypeName.HeaderText = "工具类别";
-            this.tbChildTypeName.Name = "tbChildTypeName";
-            this.tbChildTypeName.ReadOnly = true;
-            // 
-            // tbPackNo
-            // 
-            this.tbPackNo.DataPropertyName = "PackCode";
-            this.tbPackNo.HeaderText = "包编号";
-            this.tbPackNo.Name = "tbPackNo";
-            this.tbPackNo.ReadOnly = true;
-            // 
-            // tbPackName
-            // 
-            this.tbPackName.DataPropertyName = "PackName";
-            this.tbPackName.HeaderText = "包名称";
-            this.tbPackName.Name = "tbPackName";
-            this.tbPackName.ReadOnly = true;
-            this.tbPackName.Width = 150;
-            // 
-            // tbToolCode
-            // 
-            this.tbToolCode.DataPropertyName = "ToolCode";
-            this.tbToolCode.HeaderText = "编号";
-            this.tbToolCode.Name = "tbToolCode";
-            this.tbToolCode.ReadOnly = true;
-            // 
-            // tbToolName
-            // 
-            this.tbToolName.DataPropertyName = "ToolName";
-            this.tbToolName.HeaderText = "名称";
-            this.tbToolName.Name = "tbToolName";
-            this.tbToolName.ReadOnly = true;
-            this.tbToolName.Width = 150;
-            // 
-            // tbModel
-            // 
-            this.tbModel.DataPropertyName = "Models";
-            this.tbModel.HeaderText = "型号";
-            this.tbModel.Name = "tbModel";
-            this.tbModel.ReadOnly = true;
-            // 
-            // tbPosition
-            // 
-            this.tbPosition.DataPropertyName = "Location";
-            this.tbPosition.HeaderText = "位置";
-            this.tbPosition.Name = "tbPosition";
-            this.tbPosition.ReadOnly = true;
-            // 
-            // tbRemarks
-            // 
-            this.tbRemarks.DataPropertyName = "Remarks";
-            this.tbRemarks.HeaderText = "备注";
-            this.tbRemarks.Name = "tbRemarks";
-            this.tbRemarks.ReadOnly = true;
-            this.tbRemarks.Width = 150;
-            // 
-            // tbCheckTime
-            // 
-            this.tbCheckTime.DataPropertyName = "CheckTime";
-            this.tbCheckTime.HeaderText = "下次检测时间";
-            this.tbCheckTime.Name = "tbCheckTime";
-            this.tbCheckTime.ReadOnly = true;
-            this.tbCheckTime.Width = 150;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "IsBackString";
-            this.Column1.HeaderText = "是否借出";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 90;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "IsRepairedString";
-            this.Column2.HeaderText = "是否送修";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 90;
             // 
             // groupPanel2
             // 
@@ -884,11 +796,102 @@
             this.pagerControl1.Size = new System.Drawing.Size(1469, 51);
             this.pagerControl1.TabIndex = 3;
             // 
+            // tbTypeName
+            // 
+            this.tbTypeName.DataPropertyName = "TypeName";
+            this.tbTypeName.HeaderText = "工具配属";
+            this.tbTypeName.Name = "tbTypeName";
+            this.tbTypeName.ReadOnly = true;
+            // 
+            // tbChildTypeName
+            // 
+            this.tbChildTypeName.DataPropertyName = "ChildTypeName";
+            this.tbChildTypeName.HeaderText = "工具类别";
+            this.tbChildTypeName.Name = "tbChildTypeName";
+            this.tbChildTypeName.ReadOnly = true;
+            // 
+            // tbPackNo
+            // 
+            this.tbPackNo.DataPropertyName = "PackCode";
+            this.tbPackNo.HeaderText = "包编号";
+            this.tbPackNo.Name = "tbPackNo";
+            this.tbPackNo.ReadOnly = true;
+            // 
+            // tbPackName
+            // 
+            this.tbPackName.DataPropertyName = "PackName";
+            this.tbPackName.HeaderText = "包名称";
+            this.tbPackName.Name = "tbPackName";
+            this.tbPackName.ReadOnly = true;
+            this.tbPackName.Width = 150;
+            // 
+            // tbToolCode
+            // 
+            this.tbToolCode.DataPropertyName = "ToolCode";
+            this.tbToolCode.HeaderText = "编号";
+            this.tbToolCode.Name = "tbToolCode";
+            this.tbToolCode.ReadOnly = true;
+            this.tbToolCode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // tbToolName
+            // 
+            this.tbToolName.DataPropertyName = "ToolName";
+            this.tbToolName.HeaderText = "名称";
+            this.tbToolName.Name = "tbToolName";
+            this.tbToolName.ReadOnly = true;
+            this.tbToolName.Width = 150;
+            // 
+            // tbModel
+            // 
+            this.tbModel.DataPropertyName = "Models";
+            this.tbModel.HeaderText = "型号";
+            this.tbModel.Name = "tbModel";
+            this.tbModel.ReadOnly = true;
+            // 
+            // tbPosition
+            // 
+            this.tbPosition.DataPropertyName = "Location";
+            this.tbPosition.HeaderText = "位置";
+            this.tbPosition.Name = "tbPosition";
+            this.tbPosition.ReadOnly = true;
+            // 
+            // tbRemarks
+            // 
+            this.tbRemarks.DataPropertyName = "Remarks";
+            this.tbRemarks.HeaderText = "备注";
+            this.tbRemarks.Name = "tbRemarks";
+            this.tbRemarks.ReadOnly = true;
+            this.tbRemarks.Width = 150;
+            // 
+            // tbCheckTime
+            // 
+            this.tbCheckTime.DataPropertyName = "CheckTime";
+            this.tbCheckTime.HeaderText = "下次检测时间";
+            this.tbCheckTime.Name = "tbCheckTime";
+            this.tbCheckTime.ReadOnly = true;
+            this.tbCheckTime.Width = 150;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "IsBackString";
+            this.Column1.HeaderText = "是否借出";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 90;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "IsRepairedString";
+            this.Column2.HeaderText = "是否送修";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 90;
+            // 
             // ToolInfoManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1490, 699);
+            this.ClientSize = new System.Drawing.Size(1452, 699);
             this.Controls.Add(this.pagerControl1);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.dataGridViewX1);
@@ -950,6 +953,7 @@
         private DevComponents.DotNetBar.Controls.CheckBoxX Is_OutTime_checkBox;
         private DevComponents.DotNetBar.Controls.CheckBoxX Is_Out_checkBox;
         private DevComponents.DotNetBar.ButtonX btnDelete;
+        private DevComponents.DotNetBar.ButtonX btnToRepaire;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbChildTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn tbPackNo;
@@ -962,6 +966,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tbCheckTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private DevComponents.DotNetBar.ButtonX btnToRepaire;
     }
 }

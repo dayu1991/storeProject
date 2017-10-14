@@ -83,14 +83,14 @@ namespace service.toolstrackingsystem
         /// <param name="toolCode"></param>
         /// <param name="toolName"></param>
         /// <returns></returns>
-        public List<ToolInfoExtend> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, bool is_Out_checkBox, bool is_OutTime_checkBox, bool is_ToRepare_checkBox, string cbCheckTime, int pageIndex, int pageSize, out long totalCount)
+        public List<ToolInfoExtend> GetToolList(string blongValue, string categoryValue, string toolCode, string toolName, bool is_Out_checkBox, bool is_OutTime_checkBox, bool is_ToRepare_checkBox, string cbCheckTime, int pageIndex, int pageSize, string orderBy, string orderByType, out long totalCount)
         {
             if (is_OutTime_checkBox)//要链接借用表
             {
                 List<ToolInfoExtend> list = new List<ToolInfoExtend>();
                 string sql = @"select *,(case [IsBack] when '0' then '是' else '否' end) as IsBackString,(case [IsRepaired] when 1 then '是' else '否' end) as IsRepairedString from (
-       select t.*, o.[UserTimeInfo],o.[PersonCode],o.[PersonName], ROW_NUMBER() OVER (ORDER BY t.ChildTypeName,t.[ToolId] desc) as rank from [dbo].[t_ToolInfo] as t 
-left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 and  o.IsBack=0 {0}
+       select top 100 PERCENT t.*, o.[UserTimeInfo],o.[PersonCode],o.[PersonName], ROW_NUMBER() OVER ( {0}) as rank from [dbo].[t_ToolInfo] as t 
+left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 and  o.IsBack=0 {1}
 )  as t where  t.rank between @startPos and @endPos ";
                 string sqlCount = @"select count(1) from [dbo].[t_ToolInfo] as t 
 left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 and  o.IsBack=0 {0}";
@@ -147,7 +147,18 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
 
                     }
                 }
-                sql = string.Format(sql, sqlWhere);
+                string sqlOrderBy = "";
+
+                if (!string.IsNullOrWhiteSpace(orderBy))
+                {
+                    sqlOrderBy = string.Format(" order by t.{0} {1}", orderBy, orderByType);
+                }
+                else
+                {
+                    sqlOrderBy = string.Format(" order by t.ToolCode asc");
+                }
+
+                sql = string.Format(sql,sqlOrderBy,sqlWhere + sqlOrderBy);
                 sqlCount = string.Format(sqlCount, sqlWhere);
 
                 var result = _multiTableQueryRepository.QueryList<ToolInfoExtend>(sql, parameters, out totalCount, sqlCount, false);
@@ -157,7 +168,7 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
             {
                 List<ToolInfoExtend> list = new List<ToolInfoExtend>();
                 string sql = @"select *,(case [IsBack] when '0' then '是' else '否' end) as IsBackString,(case [IsRepaired] when 1 then '是' else '否' end) as IsRepairedString from (
-       select *,ROW_NUMBER() OVER (ORDER BY ChildTypeName,[ToolId] desc) as rank from [dbo].[t_ToolInfo]  where 1=1 {0}
+       select top 100 PERCENT *,ROW_NUMBER() OVER ( {0}) as rank from [dbo].[t_ToolInfo]  where 1=1 {1}
 )  as t where  t.rank between @startPos and @endPos ";
                 string sqlCount = "select count(1) from [dbo].[t_ToolInfo] where 1=1 {0}";
                 string sqlWhere = "";
@@ -212,7 +223,15 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
 
                     }
                 }
-                sql = string.Format(sql, sqlWhere);
+                string sqlOrderBy ="";
+                if (!string.IsNullOrWhiteSpace(orderBy))
+                {
+                    sqlOrderBy = string.Format(" order by {0} {1}", orderBy, orderByType);
+                }
+                else {
+                    sqlOrderBy = string.Format(" order by ToolCode asc");
+                }
+                  sql = string.Format(sql,sqlOrderBy,sqlWhere + sqlOrderBy);
                 sqlCount = string.Format(sqlCount, sqlWhere);
 
                 var result = _multiTableQueryRepository.QueryList<ToolInfoExtend>(sql, parameters, out totalCount, sqlCount, false);
