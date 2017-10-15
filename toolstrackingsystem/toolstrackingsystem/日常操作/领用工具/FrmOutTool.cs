@@ -353,6 +353,7 @@ namespace toolstrackingsystem
                         if (tool.IsRepaired ==1)
                         {
                             MessageBox.Show("该工具已经被送修,不能被领用！");
+                            this.tbEditCodeOut.Text = "";
                             return;
                         }
                         if (!string.IsNullOrWhiteSpace(tool.CheckTime))
@@ -361,6 +362,8 @@ namespace toolstrackingsystem
                             if (checkTime < DateTime.Now)
                             {
                                 MessageBox.Show("该工具已过送检时间，不能领用！");
+                                this.tbEditCodeOut.Text = "";
+
                                 return;
                             }
                         }
@@ -385,6 +388,8 @@ namespace toolstrackingsystem
                         else
                         {
                             MessageBox.Show("此编码的工具已经被领用！");
+                            this.tbEditCodeOut.Text = "";
+
                             return;
                         }
                    
@@ -394,30 +399,48 @@ namespace toolstrackingsystem
                     var tools = _toolInfoService.GetToolByCodeOrPackCode(toolCode);
                     if (tools.Any())
                     {
+                        bool isAnyHaveOut = false;
+                        List<t_ToolInfo> tool_ListPack = new List<t_ToolInfo>(); 
                         foreach (var item in tools)
                         {
-                            if (item.IsBack!="0"&&item.IsRepaired!=1) //有库存
+                            if (item.IsBack != "0") //有库存
                             {
-                                bool isContain = false;
-                                foreach (var itemHave in ToolInfoList)
+                                if (item.IsRepaired != 1)
                                 {
-                                    if (itemHave != null && itemHave.ToolCode == item.ToolCode)
+                                    bool isContain = false;
+                                    foreach (var itemHave in ToolInfoList)
                                     {
-                                        isContain = true;
+                                        if (itemHave != null && itemHave.ToolCode == item.ToolCode)
+                                        {
+                                            isContain = true;
+                                        }
                                     }
-                                }
-                                if (!isContain)
-                                {
-                                    item.OptionPerson = LoginHelper.UserName;
-                                    ToolInfoList.Add(item);
-                                }
-
+                                    if (!isContain)
+                                    {
+                                        item.OptionPerson = LoginHelper.UserName;
+                                        tool_ListPack.Add(item);
+                                    }
+                                }                                
                             }
+                            else { //某一个工具已经被领用
+                                isAnyHaveOut = true;
+                            }                            
+                        }
+                        if (isAnyHaveOut) {
+                            MessageBox.Show("此编码的包已经被领用！");
+                            this.tbEditCodeOut.Text = "";
+
+                            return;
+                        }
+                        if (tool_ListPack.Any()) 
+                        {
+                            ToolInfoList.AddRange(tool_ListPack);
                         }
                         this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
                     }
 
-                }                         
+                }
+                this.tbEditCodeOut.Text = "";       
             }
             
         }

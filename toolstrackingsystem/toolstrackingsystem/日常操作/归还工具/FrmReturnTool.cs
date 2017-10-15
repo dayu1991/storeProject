@@ -101,7 +101,8 @@ namespace toolstrackingsystem
                     }
                     else
                     {
-                        MessageBox.Show("不存在工具的领用信息！");
+                        MessageBox.Show("该工具已经归还！");
+                        this.tbEditCode.Text = "";
                         return;
                     }
                 }
@@ -111,46 +112,64 @@ namespace toolstrackingsystem
                     var tools = _toolInfoService.GetToolByCodeOrPackCode(toolCode);
                     if (tools.Any())
                     {
+                        bool isAnyBack = false;
+                        List<OutBackStoreEntity> outBack_List = new List<OutBackStoreEntity>();
                         foreach (var item in tools)
                         {
                             var toolOut = _toolInfoService.GetToolOutByCode(item.ToolCode);
-                            if (toolOut != null && toolOut.IsBack == "0")
+                            if (toolOut != null&&toolOut.IsBack == "0")
                             {
-                                bool isContain = false;
-                                foreach (var itemHave in ToolInfoList)
-                                {
-                                    if (itemHave != null && itemHave.ToolCode == toolOut.ToolCode)
+                               
+                                    bool isContain = false;
+                                    foreach (var itemHave in ToolInfoList)
                                     {
-                                        isContain = true;
+                                        if (itemHave != null && itemHave.ToolCode == toolOut.ToolCode)
+                                        {
+                                            isContain = true;
+                                        }
                                     }
-                                }
-                                if (!isContain)
-                                {
-                                    OutBackStoreEntity entity = new OutBackStoreEntity();
-                                    entity.TypeName = item.TypeName;
-                                    entity.ChildTypeName = item.ChildTypeName;
-                                    entity.PackCode = item.PackCode;
-                                    entity.PackName = item.PackName;
-                                    entity.ToolCode = item.ToolCode;
-                                    entity.ToolName = item.ToolName;
-                                    entity.Models = item.Models;
-                                    entity.Location = item.Location;
-                                    entity.Remarks = item.Remarks;
-                                    entity.OutStoreTime = toolOut.OutStoreTime;
-                                    entity.OutDescribes = toolOut.outdescribes;
-                                    entity.PersonCode = toolOut.PersonCode;
-                                    entity.PersonName = toolOut.PersonName;
-                                    entity.OutBackStoreID = toolOut.OutBackStoreID;
-                                    entity.OptionPersonCode = LoginHelper.UserCode;
-                                    entity.OptionPersonName = LoginHelper.UserName;
+                                    if (!isContain)
+                                    {
+                                        OutBackStoreEntity entity = new OutBackStoreEntity();
+                                        entity.TypeName = item.TypeName;
+                                        entity.ChildTypeName = item.ChildTypeName;
+                                        entity.PackCode = item.PackCode;
+                                        entity.PackName = item.PackName;
+                                        entity.ToolCode = item.ToolCode;
+                                        entity.ToolName = item.ToolName;
+                                        entity.Models = item.Models;
+                                        entity.Location = item.Location;
+                                        entity.Remarks = item.Remarks;
+                                        entity.OutStoreTime = toolOut.OutStoreTime;
+                                        entity.OutDescribes = toolOut.outdescribes;
+                                        entity.PersonCode = toolOut.PersonCode;
+                                        entity.PersonName = toolOut.PersonName;
+                                        entity.OutBackStoreID = toolOut.OutBackStoreID;
+                                        entity.OptionPersonCode = LoginHelper.UserCode;
+                                        entity.OptionPersonName = LoginHelper.UserName;
 
-                                    ToolInfoList.Add(entity);
-                                }
+                                        outBack_List.Add(entity);
+                                    }
+                            }
+                            else //已经归还
+                            {
+                                isAnyBack = true;
                             }
                         }
-                        this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+                        if (isAnyBack)
+                        {
+                            MessageBox.Show("该工具包已经归还！");
+                            this.tbEditCode.Text = "";
+                            return;
+                        }
+                        if (outBack_List.Any())
+                        {
+                            ToolInfoList.AddRange(outBack_List);
+                            this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+                        }
                     }
                 }
+                this.tbEditCode.Text = "";
             }
         }
 
