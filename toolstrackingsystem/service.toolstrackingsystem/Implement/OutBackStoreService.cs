@@ -229,7 +229,11 @@ namespace service.toolstrackingsystem
                 sqlNotStr += str;
                 parameters.Add("dateTimeTo", dateTimeTo);
             }
+            sql += " order by obs.OutStoreTime";
+            sqlNotStr += " order by obs.OutStoreTime";
+
             sqlNotStr += ")";
+
             string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
             return _mutiTableQueryRepository.QueryList<ToolBorrowEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();
         }
@@ -533,6 +537,9 @@ namespace service.toolstrackingsystem
                 sqlNotStr += str;
                 parameters.Add("dateTimeTo", dateTimeTo);
             }
+            sqlNotStr += " order by obs.OutStoreTime";
+            sql += " order by obs.OutStoreTime";
+
             sqlNotStr += ")";
             string sqlfinal = string.Format("{0} AND {1}", sql, sqlNotStr);
             return _mutiTableQueryRepository.QueryList<CurrentToolInfoEntity>(sqlfinal, parameters, out Count, sqlCount, false).ToList();

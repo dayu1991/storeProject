@@ -612,64 +612,68 @@ namespace toolstrackingsystem
                     Pack_Code_textBox.Focus();
                     return;
                 }
-                if (string.IsNullOrEmpty(toolCode))
+                //if (string.IsNullOrEmpty(toolCode))
+                //{
+                //    MessageBox.Show("工具编码不能为空");
+                //    ToolInfoCode_Detail_textBox.Focus();
+                //    return;
+                //}
+                if (!string.IsNullOrWhiteSpace(toolCode) || toolCode.Length>=12)
                 {
-                    MessageBox.Show("工具编码不能为空");
-                    ToolInfoCode_Detail_textBox.Focus();
-                    return;
-                }
-                t_ToolInfo toolInfo = new t_ToolInfo();
-                toolInfo = _toolPackManageService.GetToolInfoByToolCode(toolCode);
-                if (toolInfo == null)
-                {
-                    MessageBox.Show("工具不存在，请输入正确的工具编码");
-                    ToolInfoCode_Detail_textBox.Focus();
-                    return;
-                }
-                //判断要添加的工具是否已借出，借出提示先归还再删除
-                if (_outBackStoreService.GetToolInfoNotBackByToolCode(toolCode) != null)
-                {
-                    MessageBox.Show("该工具还未归还，请先归还，再操作");
-                    return;
-                }
-                ToolInfoForPackEntity result = new ToolInfoForPackEntity();
-                result.TypeName = toolInfo.TypeName;
-                result.ChildTypeName = toolInfo.ChildTypeName;
-                result.ToolCode = toolInfo.ToolCode;
-                result.ToolName = toolInfo.ToolName;
-                result.Models = toolInfo.Models;
-                result.Remarks = toolInfo.Remarks;
-                result.Location = toolInfo.Location;
-                foreach (var item in resultEntity)
-                {
-                    if (item.ToolCode == result.ToolCode)
+                    t_ToolInfo toolInfo = new t_ToolInfo();
+                    toolInfo = _toolPackManageService.GetToolInfoByToolCode(toolCode);
+                    if (toolInfo == null)
                     {
-                        MessageBox.Show("工具已在工具包内，请重新添加");
+                        MessageBox.Show("工具不存在，请输入正确的工具编码");
+                        ToolInfoCode_Detail_textBox.Focus();
                         return;
                     }
+                    //判断要添加的工具是否已借出，借出提示先归还再删除
+                    if (_outBackStoreService.GetToolInfoNotBackByToolCode(toolCode) != null)
+                    {
+                        MessageBox.Show("该工具还未归还，请先归还，再操作");
+                        return;
+                    }
+                    ToolInfoForPackEntity result = new ToolInfoForPackEntity();
+                    result.TypeName = toolInfo.TypeName;
+                    result.ChildTypeName = toolInfo.ChildTypeName;
+                    result.ToolCode = toolInfo.ToolCode;
+                    result.ToolName = toolInfo.ToolName;
+                    result.Models = toolInfo.Models;
+                    result.Remarks = toolInfo.Remarks;
+                    result.Location = toolInfo.Location;
+                    foreach (var item in resultEntity)
+                    {
+                        if (item.ToolCode == result.ToolCode)
+                        {
+                            MessageBox.Show("工具已在工具包内，请重新添加");
+                            return;
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(toolInfo.PackCode))
+                    {
+                        MessageBox.Show("该工具已经被组合到“" + toolInfo.PackName + "”" + "中");
+                        return;
+                    }
+                    resultEntity.Add(result);
+                    ToolInfoList_dataGridViewX.DataSource = null;
+                    ToolInfoList_dataGridViewX.DataSource = resultEntity;
+                    for (int i = 0; i < ToolInfoList_dataGridViewX.Columns.Count; i++)
+                    {
+                        ToolInfoList_dataGridViewX.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
+                    }
+                    ToolInfoList_dataGridViewX.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    ToolInfoList_dataGridViewX.Columns[0].HeaderText = "工具配属";
+                    ToolInfoList_dataGridViewX.Columns[1].HeaderText = "工具类别";
+                    ToolInfoList_dataGridViewX.Columns[2].HeaderText = "编码";
+                    ToolInfoList_dataGridViewX.Columns[3].HeaderText = "名称";
+                    ToolInfoList_dataGridViewX.Columns[4].HeaderText = "型号";
+                    ToolInfoList_dataGridViewX.Columns[5].HeaderText = "位置";
+                    ToolInfoList_dataGridViewX.Columns[6].HeaderText = "备注";
+                    //光标定位到最下行
+                    ToolInfoList_dataGridViewX.FirstDisplayedScrollingRowIndex = ToolInfoList_dataGridViewX.RowCount - 1;
                 }
-                if (!string.IsNullOrEmpty(toolInfo.PackCode))
-                {
-                    MessageBox.Show("该工具已经被组合到“" + toolInfo.PackName + "”" + "中");
-                    return;
-                }
-                resultEntity.Add(result);
-                ToolInfoList_dataGridViewX.DataSource = null;
-                ToolInfoList_dataGridViewX.DataSource = resultEntity;
-                for (int i = 0; i < ToolInfoList_dataGridViewX.Columns.Count; i++)
-                {
-                    ToolInfoList_dataGridViewX.Columns[i].SortMode = DataGridViewColumnSortMode.Programmatic;
-                }
-                ToolInfoList_dataGridViewX.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                ToolInfoList_dataGridViewX.Columns[0].HeaderText = "工具配属";
-                ToolInfoList_dataGridViewX.Columns[1].HeaderText = "工具类别";
-                ToolInfoList_dataGridViewX.Columns[2].HeaderText = "编码";
-                ToolInfoList_dataGridViewX.Columns[3].HeaderText = "名称";
-                ToolInfoList_dataGridViewX.Columns[4].HeaderText = "型号";
-                ToolInfoList_dataGridViewX.Columns[5].HeaderText = "位置";
-                ToolInfoList_dataGridViewX.Columns[6].HeaderText = "备注";
-                //光标定位到最下行
-                ToolInfoList_dataGridViewX.FirstDisplayedScrollingRowIndex = ToolInfoList_dataGridViewX.RowCount - 1;
+                
             }
             catch (Exception ex)
             {
