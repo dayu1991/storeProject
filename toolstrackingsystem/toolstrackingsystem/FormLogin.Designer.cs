@@ -58,6 +58,7 @@
             this.textBox_UserName.PreventEnterBeep = true;
             this.textBox_UserName.Size = new System.Drawing.Size(100, 21);
             this.textBox_UserName.TabIndex = 0;
+            this.textBox_UserName.TextChanged += new System.EventHandler(this.textBox_UserName_TextChanged_1);
             this.textBox_UserName.Leave += new System.EventHandler(this.textBox_UserName_Leave);
             this.textBox_UserName.MouseLeave += new System.EventHandler(this.textBox_UserName_MouseLeave);
             // 
