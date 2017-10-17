@@ -178,5 +178,51 @@ namespace toolstrackingsystem
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "FormLogin--textBox_UserName_TextChanged", ex.Message, ex.StackTrace, ex.Source);
             }
         }
+
+        private void textBox_UserName_TextChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                string UserCode = textBox_UserName.Text;
+                if (scan_checkBox.Checked && !string.IsNullOrEmpty(UserCode))
+                {
+                    t_PersonInfo personInfo = new t_PersonInfo();
+                    personInfo = _personManageService.GetPersonInfo(UserCode);
+                    if (personInfo == null)
+                    {
+                        MessageBox.Show("用户名不存在");
+                        return;
+                    }
+                    Sys_User_Info userInfo = new Sys_User_Info();
+                    userInfo.UserCode = personInfo.PersonCode;
+                    userInfo.UserName = personInfo.PersonName;
+                    userInfo.UserRole = "SuperAuthority";
+                    userInfo.IsActive = 1;
+                    if (userInfo != null)
+                    {
+                        ObjectCache oCache = MemoryCache.Default;
+                        Sys_User_Info fileContents = oCache["userinfo"] as Sys_User_Info;
+                        if (fileContents == null)
+                        {
+                            CacheItemPolicy policy = new CacheItemPolicy();
+                            //policy.AbsoluteExpiration = DateTime.Now.AddMinutes(120);//取得或设定值，这个值会指定是否应该在指定期间过后清除
+                            fileContents = userInfo; //这里赋值;
+                            oCache.Set("userinfo", fileContents, policy);
+                        }
+                        this.DialogResult = DialogResult.OK;
+                        //MemoryCache.Default.Set("userinfo",userInfo);
+                        this.Tag = UserCode;
+                    }
+                    else
+                    {
+                        MessageBox.Show("用户名或密码错误");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "FormLogin--textBox_UserName_TextChanged", ex.Message, ex.StackTrace, ex.Source);
+            }
+        }
     }
 }
