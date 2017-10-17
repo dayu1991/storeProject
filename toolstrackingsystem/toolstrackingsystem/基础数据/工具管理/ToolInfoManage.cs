@@ -598,7 +598,7 @@ namespace toolstrackingsystem
                                                 toolType.OptionPerson = LoginHelper.UserCode;
                                                 toolType.classification = 2;
                                                 _toolInfoService.AddCateGory(toolType);
-                                                blongCates.Add(toolType);
+                                                cateGoryCates.Add(toolType);
                                                 toolInfo.ChildTypeName = thisValue;
 
                                             }
