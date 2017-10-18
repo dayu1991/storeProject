@@ -65,6 +65,10 @@ INSERT INTO [dbo].[Sys_Menu_Info]
 		   
   update [Sys_User_Role] set menuid='FrmWorkerManager,ToolInfoManage,FrmDeleteData,FrmToolPackManage,FrmOutTool,FrmReturnTool,FrmScrapToolManage,FrmToolRepair,ToolRepairManageNew,FrmInStoreManage,FrmQueryBorrow,FrmQueryReturn,FrmCurrentCountManage,FrmStockInfo,FrmNotBackTool,FrmCreditQuery,frmEditUserinfo,FrmEditRoleInfo,FrmRepairScrapQuery'
    where rolecode = 'ServerRole';
+
+
+   ---------------------------------------10月18日后
+   use [toolInfo_NanSuo];
    -- 添加扫码登录角色
    INSERT INTO [dbo].[Sys_User_Role]
            ([RoleCode]
@@ -73,7 +77,45 @@ INSERT INTO [dbo].[Sys_Menu_Info]
      VALUES
            ('scanRole'
            ,'扫码登录角色'
-           ,'FrmOutTool,FrmReturnTool,FrmQueryBorrow,FrmQueryReturn,FrmCurrentCountManage,FrmRepairScrapQuery')
+           ,'FrmOutTool,FrmReturnTool,FrmQueryBorrow,FrmQueryReturn,FrmCurrentCountManage,FrmRepairScrapQuery');
+	delete from [t_ToolType] where [TypeID] not in (select max([TypeID]) from [t_ToolType] group by [TypeName]); 
+
+		      use [toolInfo_XiSuo];
+   -- 添加扫码登录角色
+   INSERT INTO [dbo].[Sys_User_Role]
+           ([RoleCode]
+           ,[RoleName]
+           ,[MenuID])
+     VALUES
+           ('scanRole'
+           ,'扫码登录角色'
+           ,'FrmOutTool,FrmReturnTool,FrmQueryBorrow,FrmQueryReturn,FrmCurrentCountManage,FrmRepairScrapQuery');
+	delete from [t_ToolType] where [TypeID] not in (select max([TypeID]) from [t_ToolType] group by [TypeName]); 
+
+		         use [toolInfo_ShiJiaZhuang];
+   -- 添加扫码登录角色
+   INSERT INTO [dbo].[Sys_User_Role]
+           ([RoleCode]
+           ,[RoleName]
+           ,[MenuID])
+     VALUES
+           ('scanRole'
+           ,'扫码登录角色'
+           ,'FrmOutTool,FrmReturnTool,FrmQueryBorrow,FrmQueryReturn,FrmCurrentCountManage,FrmRepairScrapQuery');
+	delete from [t_ToolType] where [TypeID] not in (select max([TypeID]) from [t_ToolType] group by [TypeName]); 
+
+
+		         use [toolInfo_DongSuo];
+   -- 添加扫码登录角色
+   INSERT INTO [dbo].[Sys_User_Role]
+           ([RoleCode]
+           ,[RoleName]
+           ,[MenuID])
+     VALUES
+           ('scanRole'
+           ,'扫码登录角色'
+           ,'FrmOutTool,FrmReturnTool,FrmQueryBorrow,FrmQueryReturn,FrmCurrentCountManage,FrmRepairScrapQuery');
+	delete from [t_ToolType] where [TypeID] not in (select max([TypeID]) from [t_ToolType] group by [TypeName]); 
 
 
 

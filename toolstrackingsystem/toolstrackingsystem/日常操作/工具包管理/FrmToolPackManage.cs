@@ -618,7 +618,7 @@ namespace toolstrackingsystem
                 //    ToolInfoCode_Detail_textBox.Focus();
                 //    return;
                 //}
-                if (!string.IsNullOrWhiteSpace(toolCode) || toolCode.Length>=12)
+                if (!string.IsNullOrWhiteSpace(toolCode) && toolCode.Length==12)
                 {
                     t_ToolInfo toolInfo = new t_ToolInfo();
                     toolInfo = _toolPackManageService.GetToolInfoByToolCode(toolCode);
