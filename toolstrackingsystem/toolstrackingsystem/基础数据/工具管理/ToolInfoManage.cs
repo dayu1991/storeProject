@@ -535,9 +535,7 @@ namespace toolstrackingsystem
                             var cates = _toolInfoService.GetCategoryByClassify(0);
                             List<t_ToolType> blongCates = cates.Where(v => v.classification == 1) == null ? new List<t_ToolType>() : cates.Where(v => v.classification == 1).ToList();
                             List<t_ToolType> cateGoryCates = cates.Where(v => v.classification == 2) == null ? new List<t_ToolType>() : cates.Where(v => v.classification == 2).ToList();
-
-                            bool isCheckSuccess = true;
-                            string alertMsg = "";
+                            List<string> noReturnToolCodes = _toolInfoService.GetToolNotReturn();
 
                             for (int i = (sheet.FirstRowNum + 1); i < sheet.LastRowNum + 1; i++)
                             {
@@ -664,7 +662,13 @@ namespace toolstrackingsystem
                                     toolInfo.IsActive = "1";
                                     toolInfo.OptionPerson = LoginHelper.UserCode;
                                     toolInfo.IsRepaired = 0;
-                                    toolInfo.IsBack = "1";
+                                    if (noReturnToolCodes.Contains(toolInfo.ToolCode))  //同步未归还的数据状态
+                                    {
+                                        toolInfo.IsBack = "0";
+                                    }
+                                    else {
+                                        toolInfo.IsBack = "1";
+                                    }
                                     InfoList.Add(toolInfo);
                                 }
                             }

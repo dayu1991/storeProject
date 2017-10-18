@@ -109,5 +109,7 @@ namespace service.toolstrackingsystem
 
 
         bool ToRepaireTool(t_ToolInfo tool);
+
+        List<string> GetToolNotReturn();
     }
 }

@@ -768,5 +768,16 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
             return true;
         }
 
+        public List<string> GetToolNotReturn()
+        {
+            string sql = "SELECT [ToolCode] FROM [toolInfo_NanSuo].[dbo].[t_OutBackStore] where IsBack=0";
+
+            var result = _multiTableQueryRepository.QueryList<string>(sql, null);
+
+            return result.Any()?result.ToList():new List<string>();
+ 
+        }
+
+
     }
 }
