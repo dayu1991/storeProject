@@ -65,6 +65,15 @@ INSERT INTO [dbo].[Sys_Menu_Info]
 		   
   update [Sys_User_Role] set menuid='FrmWorkerManager,ToolInfoManage,FrmDeleteData,FrmToolPackManage,FrmOutTool,FrmReturnTool,FrmScrapToolManage,FrmToolRepair,ToolRepairManageNew,FrmInStoreManage,FrmQueryBorrow,FrmQueryReturn,FrmCurrentCountManage,FrmStockInfo,FrmNotBackTool,FrmCreditQuery,frmEditUserinfo,FrmEditRoleInfo,FrmRepairScrapQuery'
    where rolecode = 'ServerRole';
+   -- 添加扫码登录角色
+   INSERT INTO [dbo].[Sys_User_Role]
+           ([RoleCode]
+           ,[RoleName]
+           ,[MenuID])
+     VALUES
+           ('scanRole'
+           ,'扫码登录角色'
+           ,'FrmOutTool,FrmReturnTool,FrmQueryBorrow,FrmQueryReturn,FrmCurrentCountManage,FrmRepairScrapQuery')
 
 
 

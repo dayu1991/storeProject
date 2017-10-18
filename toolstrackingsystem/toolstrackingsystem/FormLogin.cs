@@ -150,7 +150,7 @@ namespace toolstrackingsystem
                     Sys_User_Info userInfo = new Sys_User_Info();
                     userInfo.UserCode = personInfo.PersonCode;
                     userInfo.UserName = personInfo.PersonName;
-                    userInfo.UserRole = "SuperAuthority";
+                    userInfo.UserRole = "scanRole";
                     userInfo.IsActive = 1;
                     if (userInfo != null)
                     {
@@ -196,7 +196,7 @@ namespace toolstrackingsystem
                     Sys_User_Info userInfo = new Sys_User_Info();
                     userInfo.UserCode = personInfo.PersonCode;
                     userInfo.UserName = personInfo.PersonName;
-                    userInfo.UserRole = "SuperAuthority";
+                    userInfo.UserRole = "scanRole";
                     userInfo.IsActive = 1;
                     if (userInfo != null)
                     {
