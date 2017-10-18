@@ -117,37 +117,7 @@ namespace sqlserver.toolstrackingsystem
         }
         public bool InsertToolInfo(t_ToolInfo toolInfo)
         {
-            string sql = @"INSERT INTO [dbo].[t_ToolInfo]
-                                           ([TypeName]
-                                           ,[ChildTypeName]
-                                           ,[PackCode]
-                                           ,[PackName]
-                                           ,[CarGroupInfo]
-                                           ,[ToolCode]
-                                           ,[ToolName]
-                                           ,[Models]
-                                           ,[Location]
-                                           ,[Remarks]
-                                           ,[CheckTime]
-                                           ,[IsActive]
-                                           ,[OptionPerson])
-                                     VALUES
-                                           (@typeName,@childTypeName,@packCode,@packName,@carGroupInfo,@toolCode,@toolName,@models,@location,@remarks,@checkTime,@isActive,@optionPerson)";
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("typeName",toolInfo.TypeName);
-            parameters.Add("childTypeName", toolInfo.ChildTypeName);
-            parameters.Add("packCode", toolInfo.PackCode);
-            parameters.Add("packName", toolInfo.PackName);
-            parameters.Add("carGroupInfo", toolInfo.CarGroupInfo);
-            parameters.Add("toolCode", toolInfo.ToolCode);
-            parameters.Add("toolName", toolInfo.ToolName);
-            parameters.Add("models", toolInfo.Models);
-            parameters.Add("location", toolInfo.Location);
-            parameters.Add("remarks", toolInfo.Remarks);
-            parameters.Add("checkTime", toolInfo.CheckTime);
-            parameters.Add("isActive", toolInfo.IsActive);
-            parameters.Add("optionPerson", toolInfo.OptionPerson);
-            return base.ExecuteSql(sql,parameters)>0;
+            return Add(toolInfo) > 0;
         }
 
 

@@ -536,6 +536,7 @@ namespace toolstrackingsystem
                             List<t_ToolType> blongCates = cates.Where(v => v.classification == 1) == null ? new List<t_ToolType>() : cates.Where(v => v.classification == 1).ToList();
                             List<t_ToolType> cateGoryCates = cates.Where(v => v.classification == 2) == null ? new List<t_ToolType>() : cates.Where(v => v.classification == 2).ToList();
                             List<string> noReturnToolCodes = _toolInfoService.GetToolNotReturn();
+                            List<string> toRepaireToolCodes = _toolInfoService.GetToRepaireTool();
 
                             for (int i = (sheet.FirstRowNum + 1); i < sheet.LastRowNum + 1; i++)
                             {
@@ -669,6 +670,15 @@ namespace toolstrackingsystem
                                     else {
                                         toolInfo.IsBack = "1";
                                     }
+
+                                    if (toRepaireToolCodes.Contains(toolInfo.ToolCode))  //同步送修的数据状态
+                                    {
+                                        toolInfo.IsRepaired = 1;
+                                    }
+                                    else
+                                    {
+                                        toolInfo.IsRepaired = 0;
+                                    }
                                     InfoList.Add(toolInfo);
                                 }
                             }
@@ -676,7 +686,7 @@ namespace toolstrackingsystem
 
                             if (InfoList == null || InfoList.Count <= 0)
                             {
-                                MessageBox.Show("文档数据为空");
+                                MessageBox.Show("没有需要导入的工具");
                                 return;
                             }
                             //bool IsSuccess = false;
@@ -727,6 +737,7 @@ namespace toolstrackingsystem
             catch (Exception ex)
             {
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--toolInfoManage--ExcelIn_button_Click", ex.Message, ex.StackTrace, ex.Source);
+                MessageBox.Show(ex.Message);
             }
         }
 

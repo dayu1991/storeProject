@@ -777,6 +777,15 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
             return result.Any()?result.ToList():new List<string>();
  
         }
+        public List<string> GetToRepaireTool()
+        {
+            string sql = "SELECT [ToolCode] FROM [t_ToolRepairRecord] where ToolStatus in (1,2,3)";
+
+            var result = _multiTableQueryRepository.QueryList<string>(sql, null);
+
+            return result.Any() ? result.ToList() : new List<string>();
+
+        }
 
 
     }
