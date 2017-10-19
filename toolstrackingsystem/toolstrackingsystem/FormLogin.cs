@@ -138,13 +138,13 @@ namespace toolstrackingsystem
             try
             {
                 string UserCode = textBox_UserName.Text;
-                if (scan_checkBox.Checked && !string.IsNullOrEmpty(UserCode))
+                if (scan_checkBox.Checked && !string.IsNullOrEmpty(UserCode) && UserCode.Contains("BJ"))
                 {
                     t_PersonInfo personInfo = new t_PersonInfo();
                     personInfo = _personManageService.GetPersonInfo(UserCode);
                     if (personInfo == null)
                     {
-                        MessageBox.Show("用户名不存在");
+                        //MessageBox.Show("用户名不存在");
                         return;
                     }
                     Sys_User_Info userInfo = new Sys_User_Info();
@@ -190,7 +190,7 @@ namespace toolstrackingsystem
                     personInfo = _personManageService.GetPersonInfo(UserCode);
                     if (personInfo == null)
                     {
-                        MessageBox.Show("用户名不存在");
+                        //MessageBox.Show("用户名不存在");
                         return;
                     }
                     Sys_User_Info userInfo = new Sys_User_Info();
