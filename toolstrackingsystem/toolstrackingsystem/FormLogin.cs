@@ -184,7 +184,7 @@ namespace toolstrackingsystem
             try
             {
                 string UserCode = textBox_UserName.Text;
-                if (scan_checkBox.Checked && !string.IsNullOrEmpty(UserCode))
+                if (scan_checkBox.Checked && !string.IsNullOrEmpty(UserCode)&&UserCode.Contains("BJ"))
                 {
                     t_PersonInfo personInfo = new t_PersonInfo();
                     personInfo = _personManageService.GetPersonInfo(UserCode);

@@ -115,8 +115,23 @@ INSERT INTO [dbo].[Sys_Menu_Info]
            ('scanRole'
            ,'扫码登录角色'
            ,'FrmOutTool,FrmReturnTool,FrmQueryBorrow,FrmQueryReturn,FrmCurrentCountManage,FrmRepairScrapQuery');
-	delete from [t_ToolType] where [TypeID] not in (select max([TypeID]) from [t_ToolType] group by [TypeName]); 
-
+	delete from [t_ToolType] where [TypeID] not in (select max([TypeID]) from [t_ToolType] group by [TypeName])
+	use [toolInfo_NanSuo];
+	-- 更新送修工具领取菜单名称
+	update Sys_Menu_Info set FileName = 'FrmlPullRepairedTool' where MenuName='送修工具领取';
+	update Sys_User_Role set MenuID = 'ToolRepairManageNew,FrmToolRepairedComlete,FrmlPullRepairedTool,FrmScrapToolManageDescribe,FrmRepairScrapQuery,frmEditUserinfo,FrmEditRoleInfo' where RoleCode='ServerRole';
+	use [toolInfo_XiSuo];
+	-- 更新送修工具领取菜单名称
+	update Sys_Menu_Info set FileName = 'FrmlPullRepairedTool' where MenuName='送修工具领取';
+	update Sys_User_Role set MenuID = 'ToolRepairManageNew,FrmToolRepairedComlete,FrmlPullRepairedTool,FrmScrapToolManageDescribe,FrmRepairScrapQuery,frmEditUserinfo,FrmEditRoleInfo' where RoleCode='ServerRole';
+	use [toolInfo_ShiJiaZhuang];
+	-- 更新送修工具领取菜单名称
+	update Sys_Menu_Info set FileName = 'FrmlPullRepairedTool' where MenuName='送修工具领取';
+	update Sys_User_Role set MenuID = 'ToolRepairManageNew,FrmToolRepairedComlete,FrmlPullRepairedTool,FrmScrapToolManageDescribe,FrmRepairScrapQuery,frmEditUserinfo,FrmEditRoleInfo' where RoleCode='ServerRole';
+	use [toolInfo_DongSuo];
+	-- 更新送修工具领取菜单名称
+	update Sys_Menu_Info set FileName = 'FrmlPullRepairedTool' where MenuName='送修工具领取';
+	update Sys_User_Role set MenuID = 'ToolRepairManageNew,FrmToolRepairedComlete,FrmlPullRepairedTool,FrmScrapToolManageDescribe,FrmRepairScrapQuery,frmEditUserinfo,FrmEditRoleInfo' where RoleCode='ServerRole';
 
 
 
