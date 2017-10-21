@@ -136,3 +136,9 @@ INSERT INTO [dbo].[Sys_Menu_Info]
 
 
 
+--查找工具编码和包编码相同的数据
+SELECT t.ToolCode,t.ToolName,t1.[PackCode],t1.toolname  from [t_ToolInfo] as t join [t_ToolInfo] as t1 on t.[ToolCode]=t1.[PackCode]
+
+
+
+
