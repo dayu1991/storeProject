@@ -174,14 +174,22 @@ namespace toolstrackingsystem
 
         private void superTabStrip1_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
         {
-            string name = e.NewValue.Name;
-            if (MemoryCacheHelper.SetMemoryCache(name))
+            try
             {
-                //1.刷新datagridview页面
-                Search_buttonX_Click(sender, e);
-                //2.更新显示数据库名称
-                transfDelegate();
+                string name = e.NewValue.Name;
+                if (MemoryCacheHelper.SetMemoryCache(name))
+                {
+                    //1.刷新datagridview页面
+                    Search_buttonX_Click(sender, e);
+                    //2.更新显示数据库名称
+                    transfDelegate();
+                }
             }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "FrmlPullRepairedTool--superTabStrip1_SelectedTabChanged", ex.Message, ex.StackTrace, ex.Source);
+            }
+           
         }
 
         private void tool_RepairdataGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)

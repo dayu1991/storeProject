@@ -117,6 +117,9 @@ namespace toolstrackingsystem
             //    MessageBox.Show("该客户端注册秘钥不正确，请联系管理员！");
             //    Application.Exit();
             //}
+            scan_checkBox.Checked = true;
+            textBox_UserName.Text = "";
+            textBox_UserName.Focus();
             #endregion
         }
         private void ResetButton_Click(object sender, EventArgs e)

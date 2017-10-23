@@ -213,6 +213,7 @@ namespace toolstrackingsystem
 
             //启动线程
             threadClientO.Start();
+            tbEditCodeOut.Focus();
         }
 
         private void cbEditOutTime_SelectedIndexChanged(object sender, EventArgs e)
@@ -326,9 +327,8 @@ namespace toolstrackingsystem
                 {
                     //if (tbEditCode.Focused)
                     //{
-             
-                    //tbEditCode.Text = "";
-                    tbEditCodeOut.Text = text;
+
+                    tbEditCodeOut.Text = text.Substring(0,12);
                     //}
                     //btnAddTool_Click(null, null);
                 }
@@ -345,7 +345,7 @@ namespace toolstrackingsystem
         private void LoadToolData()
         {
             var toolCode = this.tbEditCodeOut.Text.Trim();
-            if (!string.IsNullOrWhiteSpace(toolCode))
+            if (!string.IsNullOrWhiteSpace(toolCode) && toolCode.Length==12)
             {
                 var tool = _toolInfoService.GetToolByCode(toolCode);
                 if (tool != null &&string.IsNullOrWhiteSpace(tool.PackCode)) //工具

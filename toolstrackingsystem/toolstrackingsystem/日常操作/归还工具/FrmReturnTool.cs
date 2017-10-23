@@ -58,8 +58,8 @@ namespace toolstrackingsystem
         }
         private void LoadToolData()
         {
-            var toolCode = this.tbEditCode.Text;
-            if (!string.IsNullOrWhiteSpace(toolCode))
+            var toolCode = this.tbEditCode.Text.Trim();
+            if (!string.IsNullOrWhiteSpace(toolCode) && toolCode.Length==12)
             {
                 var tool = _toolInfoService.GetToolByCode(toolCode);
                 if (tool != null && string.IsNullOrWhiteSpace(tool.PackCode))
@@ -251,6 +251,7 @@ namespace toolstrackingsystem
 
             //启动线程
             threadClientR.Start();
+            tbEditCode.Focus();
         }
         #region 接收服务端发来信息的方法
         private void RecMsg()
@@ -330,7 +331,7 @@ namespace toolstrackingsystem
                 }
                 else
                 {
-                    tbEditCode.Text = text;
+                    tbEditCode.Text = text.Substring(0, 12); ;
                 }
             
             

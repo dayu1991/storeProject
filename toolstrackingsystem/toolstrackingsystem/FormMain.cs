@@ -124,6 +124,9 @@ namespace toolstrackingsystem
                 case "toolInfo_ShiJiaZhuang":
                     dataBase = "石家庄所";
                     break;
+                case "toolInfo_SheBei":
+                    dataBase = "设备";
+                    break;
                 default:
                     dataBase = "东所";
                     break;
@@ -561,6 +564,9 @@ namespace toolstrackingsystem
                     break;
                 case "ShiJiaZhuang":
                     dataBase = "石家庄所";
+                    break;
+                case "SheBei":
+                    dataBase = "设备";
                     break;
                 default:
                     dataBase = "东所";
