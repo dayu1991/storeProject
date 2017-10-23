@@ -58,6 +58,8 @@ namespace toolstrackingsystem {
         
         private ToolInfoExtendDataTable tableToolInfoExtend;
         
+        private RepairToolQueryEntityDataTable tableRepairToolQueryEntity;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -136,6 +138,9 @@ namespace toolstrackingsystem {
                 }
                 if ((ds.Tables["ToolInfoExtend"] != null)) {
                     base.Tables.Add(new ToolInfoExtendDataTable(ds.Tables["ToolInfoExtend"]));
+                }
+                if ((ds.Tables["RepairToolQueryEntity"] != null)) {
+                    base.Tables.Add(new RepairToolQueryEntityDataTable(ds.Tables["RepairToolQueryEntity"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -327,6 +332,16 @@ namespace toolstrackingsystem {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public RepairToolQueryEntityDataTable RepairToolQueryEntity {
+            get {
+                return this.tableRepairToolQueryEntity;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -442,6 +457,9 @@ namespace toolstrackingsystem {
                 }
                 if ((ds.Tables["ToolInfoExtend"] != null)) {
                     base.Tables.Add(new ToolInfoExtendDataTable(ds.Tables["ToolInfoExtend"]));
+                }
+                if ((ds.Tables["RepairToolQueryEntity"] != null)) {
+                    base.Tables.Add(new RepairToolQueryEntityDataTable(ds.Tables["RepairToolQueryEntity"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -578,6 +596,12 @@ namespace toolstrackingsystem {
                     this.tableToolInfoExtend.InitVars();
                 }
             }
+            this.tableRepairToolQueryEntity = ((RepairToolQueryEntityDataTable)(base.Tables["RepairToolQueryEntity"]));
+            if ((initTable == true)) {
+                if ((this.tableRepairToolQueryEntity != null)) {
+                    this.tableRepairToolQueryEntity.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -622,6 +646,8 @@ namespace toolstrackingsystem {
             base.Tables.Add(this.tableNotBackToolEntity);
             this.tableToolInfoExtend = new ToolInfoExtendDataTable();
             base.Tables.Add(this.tableToolInfoExtend);
+            this.tableRepairToolQueryEntity = new RepairToolQueryEntityDataTable();
+            base.Tables.Add(this.tableRepairToolQueryEntity);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -723,6 +749,12 @@ namespace toolstrackingsystem {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeToolInfoExtend() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeRepairToolQueryEntity() {
             return false;
         }
         
@@ -831,6 +863,9 @@ namespace toolstrackingsystem {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ToolInfoExtendRowChangeEventHandler(object sender, ToolInfoExtendRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void RepairToolQueryEntityRowChangeEventHandler(object sender, RepairToolQueryEntityRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -7652,6 +7687,407 @@ namespace toolstrackingsystem {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class RepairToolQueryEntityDataTable : global::System.Data.TypedTableBase<RepairToolQueryEntityRow> {
+            
+            private global::System.Data.DataColumn columnTypeName;
+            
+            private global::System.Data.DataColumn columnChildTypeName;
+            
+            private global::System.Data.DataColumn columnPackCode;
+            
+            private global::System.Data.DataColumn columnPackName;
+            
+            private global::System.Data.DataColumn columnToolCode;
+            
+            private global::System.Data.DataColumn columnToolName;
+            
+            private global::System.Data.DataColumn columnToRepairedTime;
+            
+            private global::System.Data.DataColumn columnReceiveTime;
+            
+            private global::System.Data.DataColumn columnCompleteTime;
+            
+            private global::System.Data.DataColumn columnPullTime;
+            
+            private global::System.Data.DataColumn columnHandleTime;
+            
+            private global::System.Data.DataColumn columnStatusStr;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RepairToolQueryEntityDataTable() {
+                this.TableName = "RepairToolQueryEntity";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal RepairToolQueryEntityDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected RepairToolQueryEntityDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TypeNameColumn {
+                get {
+                    return this.columnTypeName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ChildTypeNameColumn {
+                get {
+                    return this.columnChildTypeName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PackCodeColumn {
+                get {
+                    return this.columnPackCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PackNameColumn {
+                get {
+                    return this.columnPackName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ToolCodeColumn {
+                get {
+                    return this.columnToolCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ToolNameColumn {
+                get {
+                    return this.columnToolName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ToRepairedTimeColumn {
+                get {
+                    return this.columnToRepairedTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ReceiveTimeColumn {
+                get {
+                    return this.columnReceiveTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CompleteTimeColumn {
+                get {
+                    return this.columnCompleteTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PullTimeColumn {
+                get {
+                    return this.columnPullTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HandleTimeColumn {
+                get {
+                    return this.columnHandleTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn StatusStrColumn {
+                get {
+                    return this.columnStatusStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RepairToolQueryEntityRow this[int index] {
+                get {
+                    return ((RepairToolQueryEntityRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event RepairToolQueryEntityRowChangeEventHandler RepairToolQueryEntityRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event RepairToolQueryEntityRowChangeEventHandler RepairToolQueryEntityRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event RepairToolQueryEntityRowChangeEventHandler RepairToolQueryEntityRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event RepairToolQueryEntityRowChangeEventHandler RepairToolQueryEntityRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddRepairToolQueryEntityRow(RepairToolQueryEntityRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RepairToolQueryEntityRow AddRepairToolQueryEntityRow(string TypeName, string ChildTypeName, string PackCode, string PackName, string ToolCode, string ToolName, string ToRepairedTime, string ReceiveTime, string CompleteTime, string PullTime, string HandleTime, string StatusStr) {
+                RepairToolQueryEntityRow rowRepairToolQueryEntityRow = ((RepairToolQueryEntityRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        TypeName,
+                        ChildTypeName,
+                        PackCode,
+                        PackName,
+                        ToolCode,
+                        ToolName,
+                        ToRepairedTime,
+                        ReceiveTime,
+                        CompleteTime,
+                        PullTime,
+                        HandleTime,
+                        StatusStr};
+                rowRepairToolQueryEntityRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowRepairToolQueryEntityRow);
+                return rowRepairToolQueryEntityRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                RepairToolQueryEntityDataTable cln = ((RepairToolQueryEntityDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new RepairToolQueryEntityDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnTypeName = base.Columns["TypeName"];
+                this.columnChildTypeName = base.Columns["ChildTypeName"];
+                this.columnPackCode = base.Columns["PackCode"];
+                this.columnPackName = base.Columns["PackName"];
+                this.columnToolCode = base.Columns["ToolCode"];
+                this.columnToolName = base.Columns["ToolName"];
+                this.columnToRepairedTime = base.Columns["ToRepairedTime"];
+                this.columnReceiveTime = base.Columns["ReceiveTime"];
+                this.columnCompleteTime = base.Columns["CompleteTime"];
+                this.columnPullTime = base.Columns["PullTime"];
+                this.columnHandleTime = base.Columns["HandleTime"];
+                this.columnStatusStr = base.Columns["StatusStr"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnTypeName = new global::System.Data.DataColumn("TypeName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTypeName);
+                this.columnChildTypeName = new global::System.Data.DataColumn("ChildTypeName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnChildTypeName);
+                this.columnPackCode = new global::System.Data.DataColumn("PackCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPackCode);
+                this.columnPackName = new global::System.Data.DataColumn("PackName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPackName);
+                this.columnToolCode = new global::System.Data.DataColumn("ToolCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnToolCode);
+                this.columnToolName = new global::System.Data.DataColumn("ToolName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnToolName);
+                this.columnToRepairedTime = new global::System.Data.DataColumn("ToRepairedTime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnToRepairedTime);
+                this.columnReceiveTime = new global::System.Data.DataColumn("ReceiveTime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReceiveTime);
+                this.columnCompleteTime = new global::System.Data.DataColumn("CompleteTime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCompleteTime);
+                this.columnPullTime = new global::System.Data.DataColumn("PullTime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPullTime);
+                this.columnHandleTime = new global::System.Data.DataColumn("HandleTime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHandleTime);
+                this.columnStatusStr = new global::System.Data.DataColumn("StatusStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStatusStr);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RepairToolQueryEntityRow NewRepairToolQueryEntityRow() {
+                return ((RepairToolQueryEntityRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new RepairToolQueryEntityRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(RepairToolQueryEntityRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.RepairToolQueryEntityRowChanged != null)) {
+                    this.RepairToolQueryEntityRowChanged(this, new RepairToolQueryEntityRowChangeEvent(((RepairToolQueryEntityRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.RepairToolQueryEntityRowChanging != null)) {
+                    this.RepairToolQueryEntityRowChanging(this, new RepairToolQueryEntityRowChangeEvent(((RepairToolQueryEntityRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.RepairToolQueryEntityRowDeleted != null)) {
+                    this.RepairToolQueryEntityRowDeleted(this, new RepairToolQueryEntityRowChangeEvent(((RepairToolQueryEntityRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.RepairToolQueryEntityRowDeleting != null)) {
+                    this.RepairToolQueryEntityRowDeleting(this, new RepairToolQueryEntityRowChangeEvent(((RepairToolQueryEntityRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveRepairToolQueryEntityRow(RepairToolQueryEntityRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                cangku_manage_dbDataSet ds = new cangku_manage_dbDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "RepairToolQueryEntityDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class Sys_Menu_InfoRow : global::System.Data.DataRow {
@@ -12261,6 +12697,357 @@ namespace toolstrackingsystem {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class RepairToolQueryEntityRow : global::System.Data.DataRow {
+            
+            private RepairToolQueryEntityDataTable tableRepairToolQueryEntity;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal RepairToolQueryEntityRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableRepairToolQueryEntity = ((RepairToolQueryEntityDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TypeName {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairToolQueryEntity.TypeNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RepairToolQueryEntity”中列“TypeName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairToolQueryEntity.TypeNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ChildTypeName {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairToolQueryEntity.ChildTypeNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RepairToolQueryEntity”中列“ChildTypeName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairToolQueryEntity.ChildTypeNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PackCode {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairToolQueryEntity.PackCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RepairToolQueryEntity”中列“PackCode”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairToolQueryEntity.PackCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PackName {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairToolQueryEntity.PackNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RepairToolQueryEntity”中列“PackName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairToolQueryEntity.PackNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ToolCode {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairToolQueryEntity.ToolCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RepairToolQueryEntity”中列“ToolCode”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairToolQueryEntity.ToolCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ToolName {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairToolQueryEntity.ToolNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RepairToolQueryEntity”中列“ToolName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairToolQueryEntity.ToolNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ToRepairedTime {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairToolQueryEntity.ToRepairedTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RepairToolQueryEntity”中列“ToRepairedTime”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairToolQueryEntity.ToRepairedTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ReceiveTime {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairToolQueryEntity.ReceiveTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RepairToolQueryEntity”中列“ReceiveTime”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairToolQueryEntity.ReceiveTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CompleteTime {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairToolQueryEntity.CompleteTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RepairToolQueryEntity”中列“CompleteTime”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairToolQueryEntity.CompleteTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PullTime {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairToolQueryEntity.PullTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RepairToolQueryEntity”中列“PullTime”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairToolQueryEntity.PullTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HandleTime {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairToolQueryEntity.HandleTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RepairToolQueryEntity”中列“HandleTime”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairToolQueryEntity.HandleTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string StatusStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableRepairToolQueryEntity.StatusStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RepairToolQueryEntity”中列“StatusStr”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableRepairToolQueryEntity.StatusStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTypeNameNull() {
+                return this.IsNull(this.tableRepairToolQueryEntity.TypeNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTypeNameNull() {
+                this[this.tableRepairToolQueryEntity.TypeNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsChildTypeNameNull() {
+                return this.IsNull(this.tableRepairToolQueryEntity.ChildTypeNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetChildTypeNameNull() {
+                this[this.tableRepairToolQueryEntity.ChildTypeNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPackCodeNull() {
+                return this.IsNull(this.tableRepairToolQueryEntity.PackCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPackCodeNull() {
+                this[this.tableRepairToolQueryEntity.PackCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPackNameNull() {
+                return this.IsNull(this.tableRepairToolQueryEntity.PackNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPackNameNull() {
+                this[this.tableRepairToolQueryEntity.PackNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsToolCodeNull() {
+                return this.IsNull(this.tableRepairToolQueryEntity.ToolCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetToolCodeNull() {
+                this[this.tableRepairToolQueryEntity.ToolCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsToolNameNull() {
+                return this.IsNull(this.tableRepairToolQueryEntity.ToolNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetToolNameNull() {
+                this[this.tableRepairToolQueryEntity.ToolNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsToRepairedTimeNull() {
+                return this.IsNull(this.tableRepairToolQueryEntity.ToRepairedTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetToRepairedTimeNull() {
+                this[this.tableRepairToolQueryEntity.ToRepairedTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsReceiveTimeNull() {
+                return this.IsNull(this.tableRepairToolQueryEntity.ReceiveTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetReceiveTimeNull() {
+                this[this.tableRepairToolQueryEntity.ReceiveTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCompleteTimeNull() {
+                return this.IsNull(this.tableRepairToolQueryEntity.CompleteTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCompleteTimeNull() {
+                this[this.tableRepairToolQueryEntity.CompleteTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPullTimeNull() {
+                return this.IsNull(this.tableRepairToolQueryEntity.PullTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPullTimeNull() {
+                this[this.tableRepairToolQueryEntity.PullTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHandleTimeNull() {
+                return this.IsNull(this.tableRepairToolQueryEntity.HandleTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHandleTimeNull() {
+                this[this.tableRepairToolQueryEntity.HandleTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStatusStrNull() {
+                return this.IsNull(this.tableRepairToolQueryEntity.StatusStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStatusStrNull() {
+                this[this.tableRepairToolQueryEntity.StatusStrColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -12824,6 +13611,40 @@ namespace toolstrackingsystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ToolInfoExtendRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class RepairToolQueryEntityRowChangeEvent : global::System.EventArgs {
+            
+            private RepairToolQueryEntityRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RepairToolQueryEntityRowChangeEvent(RepairToolQueryEntityRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RepairToolQueryEntityRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -20014,6 +20835,15 @@ SELECT TypeID, TypeName, classification, OptionPerson, fatherCode, childCode FRO
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._t_PersonInfoTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.t_PersonInfo.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._t_PersonInfoTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._t_PersonCreditRecordTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.t_PersonCreditRecord.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -20068,15 +20898,6 @@ SELECT TypeID, TypeName, classification, OptionPerson, fatherCode, childCode FRO
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._t_PersonInfoTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.t_PersonInfo.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._t_PersonInfoTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -20116,6 +20937,14 @@ SELECT TypeID, TypeName, classification, OptionPerson, fatherCode, childCode FRO
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._t_ScrapToolInfoTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._t_PersonInfoTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.t_PersonInfo.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._t_PersonInfoTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -20167,14 +20996,6 @@ SELECT TypeID, TypeName, classification, OptionPerson, fatherCode, childCode FRO
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._t_PersonInfoTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.t_PersonInfo.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._t_PersonInfoTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -20185,14 +21006,6 @@ SELECT TypeID, TypeName, classification, OptionPerson, fatherCode, childCode FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(cangku_manage_dbDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._t_PersonInfoTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.t_PersonInfo.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._t_PersonInfoTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._sys_User_InfoTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Sys_User_Info.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -20238,6 +21051,14 @@ SELECT TypeID, TypeName, classification, OptionPerson, fatherCode, childCode FRO
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._t_PersonCreditRecordTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._t_PersonInfoTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.t_PersonInfo.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._t_PersonInfoTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

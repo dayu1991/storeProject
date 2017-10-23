@@ -179,7 +179,6 @@ namespace service.toolstrackingsystem
         public List<ToolRepairRecordExtend> GetListForQuery(string blongValue, string categoryValue, string toolCode, string toolName,
             DateTime statTime, DateTime endTime, int pageindex, int pagesize, out long totalCount)
         {
-            List<ToolInfoExtend> list = new List<ToolInfoExtend>();
             string sql = @"select *,(case ToolStatus when 1 then '已送修' when 2 then '已接收' when 3 then '已修复' when 4 then '已领回' when 5 then '已报废' else '未知' end) as StatusStr from (
        select *,ROW_NUMBER() OVER (ORDER BY ChildTypeName,[Id] desc) as rank from [t_ToolRepairRecord]  where 1=1 {0}
 )  as t where  t.rank between @startPos and @endPos ";

@@ -67,7 +67,7 @@ namespace toolstrackingsystem
                 }
                 if (!string.IsNullOrWhiteSpace(outbackInfo.OutStoreTime))
                 {
-                    string str = " AND obs.OutStoreTime >=  '" + outbackInfo.BackTime + "'";
+                    string str = " AND obs.OutStoreTime >=  '" + outbackInfo.OutStoreTime + "'";
                     sql += str;
                 }
                 if (!string.IsNullOrWhiteSpace(outbackInfo.BackTime))

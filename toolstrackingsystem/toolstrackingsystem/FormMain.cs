@@ -245,6 +245,17 @@ namespace toolstrackingsystem
                                 }
                             }
                         }
+                        else if (tabName == "送修查询")
+                        {
+                            FrmRepairScrapQuery toolFrm = (FrmRepairScrapQuery)item.AttachedControl.Controls[0];
+                            foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
+                            {
+                                if (tab.Name == dataBase)
+                                {
+                                    toolFrm.superTabStrip1.SelectedTab = tab;
+                                }
+                            }
+                        }
                         superTabControl2.SelectedTab = item;
                         isOpen = true;
                         break;
@@ -279,6 +290,11 @@ namespace toolstrackingsystem
                     {
                         //设置委托绑定到赋值方法上
                         ((FrmScrapToolManageDescribe)form).transfDelegate += setText;
+                    }
+                    else if (tabName == "送修查询")
+                    {
+                        //设置委托绑定到赋值方法上
+                        ((FrmRepairScrapQuery)form).transfDelegate += setText;
                     }
                     //创建一个tab
                     SuperTabItem item = superTabControl2.CreateTab(tabName);
