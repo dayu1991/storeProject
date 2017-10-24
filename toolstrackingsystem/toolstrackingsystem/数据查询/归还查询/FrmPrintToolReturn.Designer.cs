@@ -33,8 +33,10 @@
             this.ToolReturnEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.RepairToolQueryEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ToolReturnEntityBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RepairToolQueryEntityBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ToolReturnEntityBindingSource
@@ -59,6 +61,11 @@
             this.reportViewer1.Size = new System.Drawing.Size(723, 351);
             this.reportViewer1.TabIndex = 0;
             // 
+            // RepairToolQueryEntityBindingSource
+            // 
+            this.RepairToolQueryEntityBindingSource.DataMember = "RepairToolQueryEntity";
+            this.RepairToolQueryEntityBindingSource.DataSource = this.cangku_manage_dbDataSet;
+            // 
             // FrmPrintToolReturn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -71,6 +78,7 @@
             this.Load += new System.EventHandler(this.FrmPrintToolReturn_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ToolReturnEntityBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RepairToolQueryEntityBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -80,5 +88,6 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource ToolReturnEntityBindingSource;
         private cangku_manage_dbDataSet cangku_manage_dbDataSet;
+        private System.Windows.Forms.BindingSource RepairToolQueryEntityBindingSource;
     }
 }

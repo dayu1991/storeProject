@@ -37,7 +37,7 @@ namespace toolstrackingsystem
             #endregion
             using (SqlConnection conn = new SqlConnection(defaultConnectionString))
             {
-                string sql = @"select TypeName,ChildTypeName,PackCode,PackName,ToolCode,ToolName,ToRepairedTime,ReceiveTime,CompleteTime,PullTime,HandleTime,(case ToolStatus when 1 then '已送修' when 2 then '已接收' when 3 then '已修复' when 4 then '已领回' when 5 then '已报废' else '未知' end) as StatusStr from  [t_ToolRepairRecord]    where 1=1  ";
+                string sql = @"select TypeName,ChildTypeName,PackCode,PackName,ToolCode,ToolName,ToRepairedTime,ReceiveTime,CompleteTime,PullTime,HandleTime,(case ToolStatus when 1 then '已送修' when 2 then '已接收' when 3 then '已修复' when 4 then '已领回' when 5 then '已报废' else '未知' end) as StatusStr from  [t_ToolRepairRecord] where 1=1  ";
                 ToolRepairConditions model = this.Tag as ToolRepairConditions;
                 if (!string.IsNullOrWhiteSpace(model.TypeName))
                 {
@@ -77,7 +77,7 @@ namespace toolstrackingsystem
                 }
                 //为报表浏览器指定报表文件
 
-                this.reportViewer1.LocalReport.ReportEmbeddedResource = "Report12.rdlc";
+                //this.reportViewer1.LocalReport.ReportEmbeddedResource = "Report12.rdlc";
 
                 //指定数据集,数据集名称后为表,不是DataSet类型的数据集
 

@@ -30,12 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
             this.RepairToolQueryEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
+            this.cangku_manage_dbDataSet = new toolstrackingsystem.cangku_manage_dbDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.ToolReturnEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.RepairToolQueryEntityBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ToolReturnEntityBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // RepairToolQueryEntityBindingSource
+            // 
+            this.RepairToolQueryEntityBindingSource.DataMember = "RepairToolQueryEntity";
+            this.RepairToolQueryEntityBindingSource.DataSource = this.cangku_manage_dbDataSet;
+            // 
+            // cangku_manage_dbDataSet
+            // 
+            this.cangku_manage_dbDataSet.DataSetName = "cangku_manage_dbDataSet";
+            this.cangku_manage_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -43,21 +55,16 @@
             reportDataSource1.Name = "DataSet1";
             reportDataSource1.Value = this.RepairToolQueryEntityBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "toolstrackingsystem.工具送修报废查询（服务端）.Report13.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "toolstrackingsystem.工具送修报废查询服务端.Report12.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(723, 351);
             this.reportViewer1.TabIndex = 0;
             // 
-            // cangku_manage_dbDataSet
+            // ToolReturnEntityBindingSource
             // 
-            this.cangku_manage_dbDataSet.DataSetName = "cangku_manage_dbDataSet";
-            this.cangku_manage_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // RepairToolQueryEntityBindingSource
-            // 
-            this.RepairToolQueryEntityBindingSource.DataMember = "RepairToolQueryEntity";
-            this.RepairToolQueryEntityBindingSource.DataSource = this.cangku_manage_dbDataSet;
+            this.ToolReturnEntityBindingSource.DataMember = "ToolReturnEntity";
+            this.ToolReturnEntityBindingSource.DataSource = this.cangku_manage_dbDataSet;
             // 
             // FrmPrintRepairQuery
             // 
@@ -69,8 +76,9 @@
             this.Name = "FrmPrintRepairQuery";
             this.Text = "打印";
             this.Load += new System.EventHandler(this.FrmPrintRepairQuery_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RepairToolQueryEntityBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cangku_manage_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ToolReturnEntityBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -80,5 +88,6 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource RepairToolQueryEntityBindingSource;
         private cangku_manage_dbDataSet cangku_manage_dbDataSet;
+        private System.Windows.Forms.BindingSource ToolReturnEntityBindingSource;
     }
 }

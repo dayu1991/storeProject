@@ -148,16 +148,16 @@
     <Compile Include="工具送修已完成报废（服务端）\FrmToolRepairedComlete.Designer.cs">
       <DependentUpon>FrmToolRepairedComlete.cs</DependentUpon>
     </Compile>
-    <Compile Include="工具送修报废查询（服务端）\FrmPrintRepairQuery.cs">
+    <Compile Include="工具送修报废查询服务端\FrmPrintRepairQuery.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="工具送修报废查询（服务端）\FrmPrintRepairQuery.Designer.cs">
+    <Compile Include="工具送修报废查询服务端\FrmPrintRepairQuery.Designer.cs">
       <DependentUpon>FrmPrintRepairQuery.cs</DependentUpon>
     </Compile>
-    <Compile Include="工具送修报废查询（服务端）\FrmRepairScrapQuery.cs">
+    <Compile Include="工具送修报废查询服务端\FrmRepairScrapQuery.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="工具送修报废查询（服务端）\FrmRepairScrapQuery.Designer.cs">
+    <Compile Include="工具送修报废查询服务端\FrmRepairScrapQuery.Designer.cs">
       <DependentUpon>FrmRepairScrapQuery.cs</DependentUpon>
     </Compile>
     <Compile Include="工具送修接收%28服务端%29\ToolRepairManageNew.cs">
@@ -542,15 +542,13 @@
     <EmbeddedResource Include="工具送修已完成报废（服务端）\FrmToolRepairedComlete.resx">
       <DependentUpon>FrmToolRepairedComlete.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="工具送修报废查询（服务端）\FrmPrintRepairQuery.resx">
+    <EmbeddedResource Include="工具送修报废查询服务端\FrmPrintRepairQuery.resx">
       <DependentUpon>FrmPrintRepairQuery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="工具送修报废查询（服务端）\FrmRepairScrapQuery.resx">
+    <EmbeddedResource Include="工具送修报废查询服务端\FrmRepairScrapQuery.resx">
       <DependentUpon>FrmRepairScrapQuery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="工具送修报废查询（服务端）\Report12.rdlc" />
-    <EmbeddedResource Include="工具送修报废查询（服务端）\Report13.rdlc" />
-    <EmbeddedResource Include="工具送修报废查询（服务端）\Report14.rdlc" />
+    <EmbeddedResource Include="工具送修报废查询服务端\Report12.rdlc" />
     <EmbeddedResource Include="工具送修接收%28服务端%29\ToolRepairManageNew.resx">
       <DependentUpon>ToolRepairManageNew.cs</DependentUpon>
     </EmbeddedResource>
