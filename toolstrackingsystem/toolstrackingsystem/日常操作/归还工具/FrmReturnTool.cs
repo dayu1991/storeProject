@@ -151,17 +151,17 @@ namespace toolstrackingsystem
                                     outBack_List.Add(entity);
                                 }
                             }
-                            else //已经归还
-                            {
-                                isAnyBack = true;
-                            }
+                            //else //已经归还
+                            //{
+                            //    isAnyBack = true;
+                            //}
                         }
-                        if (isAnyBack)
-                        {
-                            MessageBox.Show("该工具包已经归还！");
-                            this.tbEditCode.Text = "";
-                            return;
-                        }
+                        //if (isAnyBack)
+                        //{
+                        //    MessageBox.Show("该工具包已经归还！");
+                        //    this.tbEditCode.Text = "";
+                        //    return;
+                        //}
                         if (outBack_List.Any())
                         {
                             ToolInfoList.AddRange(outBack_List);
