@@ -93,10 +93,16 @@ namespace toolstrackingsystem
                             int successCount = 0;
                             foreach (var entity in ToolInfoList)
                             {
-                                var toolInfoEntity = _toolInfoService.GetToolByCode(entity.ToolCode);
-                                if (toolInfoEntity.IsBack != "0" && toolInfoEntity.IsRepaired != 1 && _toolInfoService.OutStore(entity, person, LoginHelper.UserCode, endDate, desc))
+                                //var toolInfoEntity = _toolInfoService.GetToolByCode(entity.ToolCode);
+                                //if (toolInfoEntity.IsBack != "0" && toolInfoEntity.IsRepaired != 1 && _toolInfoService.OutStore(entity, person, LoginHelper.UserCode, endDate, desc))
+                                //{
+                                //    successCount += 1;
+                                //}
+
+                                if (_toolInfoService.OutStore(entity, person, LoginHelper.UserCode, endDate, desc))
                                 {
                                     successCount += 1;
+
                                 }
                             }
 
@@ -400,6 +406,7 @@ namespace toolstrackingsystem
                     if (tools.Any())
                     {
                         bool isAnyHaveOut = false;
+                        string codeHaveOut = "";
                         List<t_ToolInfo> tool_ListPack = new List<t_ToolInfo>(); 
                         foreach (var item in tools)
                         {
@@ -424,10 +431,11 @@ namespace toolstrackingsystem
                             }
                             else { //某一个工具已经被领用
                                 isAnyHaveOut = true;
+                                codeHaveOut += item.ToolCode + ",";
                             }                            
                         }
                         if (isAnyHaveOut) {
-                            MessageBox.Show("此编码的包已经被领用！");
+                            MessageBox.Show(string.Format("此编码的包已经被领用！已领用的工具编号：{0}", codeHaveOut.Substring(0,codeHaveOut.Length-1)));
                             this.tbEditCodeOut.Text = "";
 
                             return;

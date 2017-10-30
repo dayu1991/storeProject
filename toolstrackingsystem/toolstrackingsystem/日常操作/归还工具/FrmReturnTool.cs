@@ -59,7 +59,7 @@ namespace toolstrackingsystem
         private void LoadToolData()
         {
             var toolCode = this.tbEditCode.Text.Trim();
-            if (!string.IsNullOrWhiteSpace(toolCode) && toolCode.Length==12)
+            if (!string.IsNullOrWhiteSpace(toolCode) && toolCode.Length == 12)
             {
                 var tool = _toolInfoService.GetToolByCode(toolCode);
                 if (tool != null && string.IsNullOrWhiteSpace(tool.PackCode))
@@ -117,39 +117,39 @@ namespace toolstrackingsystem
                         foreach (var item in tools)
                         {
                             var toolOut = _toolInfoService.GetToolOutByCode(item.ToolCode);
-                            if (toolOut != null&&toolOut.IsBack == "0")
+                            if (toolOut != null && toolOut.IsBack == "0")
                             {
-                               
-                                    bool isContain = false;
-                                    foreach (var itemHave in ToolInfoList)
-                                    {
-                                        if (itemHave != null && itemHave.ToolCode == toolOut.ToolCode)
-                                        {
-                                            isContain = true;
-                                        }
-                                    }
-                                    if (!isContain)
-                                    {
-                                        OutBackStoreEntity entity = new OutBackStoreEntity();
-                                        entity.TypeName = item.TypeName;
-                                        entity.ChildTypeName = item.ChildTypeName;
-                                        entity.PackCode = item.PackCode;
-                                        entity.PackName = item.PackName;
-                                        entity.ToolCode = item.ToolCode;
-                                        entity.ToolName = item.ToolName;
-                                        entity.Models = item.Models;
-                                        entity.Location = item.Location;
-                                        entity.Remarks = item.Remarks;
-                                        entity.OutStoreTime = toolOut.OutStoreTime;
-                                        entity.OutDescribes = toolOut.outdescribes;
-                                        entity.PersonCode = toolOut.PersonCode;
-                                        entity.PersonName = toolOut.PersonName;
-                                        entity.OutBackStoreID = toolOut.OutBackStoreID;
-                                        entity.OptionPersonCode = LoginHelper.UserCode;
-                                        entity.OptionPersonName = LoginHelper.UserName;
 
-                                        outBack_List.Add(entity);
+                                bool isContain = false;
+                                foreach (var itemHave in ToolInfoList)
+                                {
+                                    if (itemHave != null && itemHave.ToolCode == toolOut.ToolCode)
+                                    {
+                                        isContain = true;
                                     }
+                                }
+                                if (!isContain)
+                                {
+                                    OutBackStoreEntity entity = new OutBackStoreEntity();
+                                    entity.TypeName = item.TypeName;
+                                    entity.ChildTypeName = item.ChildTypeName;
+                                    entity.PackCode = item.PackCode;
+                                    entity.PackName = item.PackName;
+                                    entity.ToolCode = item.ToolCode;
+                                    entity.ToolName = item.ToolName;
+                                    entity.Models = item.Models;
+                                    entity.Location = item.Location;
+                                    entity.Remarks = item.Remarks;
+                                    entity.OutStoreTime = toolOut.OutStoreTime;
+                                    entity.OutDescribes = toolOut.outdescribes;
+                                    entity.PersonCode = toolOut.PersonCode;
+                                    entity.PersonName = toolOut.PersonName;
+                                    entity.OutBackStoreID = toolOut.OutBackStoreID;
+                                    entity.OptionPersonCode = LoginHelper.UserCode;
+                                    entity.OptionPersonName = LoginHelper.UserName;
+
+                                    outBack_List.Add(entity);
+                                }
                             }
                             else //已经归还
                             {
@@ -180,53 +180,55 @@ namespace toolstrackingsystem
                 MessageBox.Show("请先增加需要归还的工具信息");
                 return;
             }
-                DlgEnterPersonMsg1 dlgEnterPersonMsg = new DlgEnterPersonMsg1();
-                dlgEnterPersonMsg.ShowDialog();
-                if (dlgEnterPersonMsg.DialogResult == DialogResult.OK)
+            DlgEnterPersonMsg1 dlgEnterPersonMsg = new DlgEnterPersonMsg1();
+            dlgEnterPersonMsg.ShowDialog();
+            if (dlgEnterPersonMsg.DialogResult == DialogResult.OK)
+            {
+                var person = dlgEnterPersonMsg.Tag as t_PersonInfo;
+                if (person != null && !string.IsNullOrWhiteSpace(person.PersonCode))
                 {
-                    var person = dlgEnterPersonMsg.Tag as t_PersonInfo;
-                    if (person != null && !string.IsNullOrWhiteSpace(person.PersonCode))
+                    if (ToolInfoList == null || ToolInfoList.Count == 0)
                     {
-                        if (ToolInfoList == null || ToolInfoList.Count == 0)
-                        {
-                            MessageBox.Show("请先增加需要归还的工具信息");
-                            return;
-                        }
-                        if (person.IsReceive == "1")
-                        {
-                            string desc = tbEditoutdescribes.Text;
-
-                            int successCount = 0;
-                            foreach (var entity in ToolInfoList)
-                            {
-
-                                if (_toolInfoService.IsExistsOutStoreByCode(entity.ToolCode, "0") && _toolInfoService.BackStore(entity, person, LoginHelper.UserCode, desc))
-                                {
-                                    successCount += 1;
-                                }
-                            }
-
-                            MessageBox.Show(string.Format("归还成功，成功归还{0}件工具，归还人:{1}！", successCount,person.PersonName));
-                            ToolInfoList = new List<OutBackStoreEntity>();
-                            this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
-                            tbEditCode.Text = "";
-                            //tbEditPersonCode.Text = person.PersonCode;
-                            //tbEditPersonName.Text =person.PersonName;
-                            tbEditoutdescribes.Text = "";
-
-                        }
-                        else {
-                            MessageBox.Show("用户没有领用归还权限！");
-                            return;
-                        }
-                    }
-                    else {
-                        MessageBox.Show("此用户可能已经被删除！");
+                        MessageBox.Show("请先增加需要归还的工具信息");
                         return;
                     }
-                   
+                    if (person.IsReceive == "1")
+                    {
+                        string desc = tbEditoutdescribes.Text;
+
+                        int successCount = 0;
+                        foreach (var entity in ToolInfoList)
+                        {
+
+                            if (_toolInfoService.IsExistsOutStoreByCode(entity.ToolCode, "0") && _toolInfoService.BackStore(entity, person, LoginHelper.UserCode, desc))
+                            {
+                                successCount += 1;
+                            }
+                        }
+
+                        MessageBox.Show(string.Format("归还成功，成功归还{0}件工具，归还人:{1}！", successCount, person.PersonName));
+                        ToolInfoList = new List<OutBackStoreEntity>();
+                        this.dataGridViewX1.DataSource = ToolInfoList.ToArray();
+                        tbEditCode.Text = "";
+                        //tbEditPersonCode.Text = person.PersonCode;
+                        //tbEditPersonName.Text =person.PersonName;
+                        tbEditoutdescribes.Text = "";
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("用户没有领用归还权限！");
+                        return;
+                    }
                 }
-            
+                else
+                {
+                    MessageBox.Show("此用户可能已经被删除！");
+                    return;
+                }
+
+            }
+
         }
         private void btnReturnContinue_Click(object sender, EventArgs e)
         {
@@ -281,7 +283,8 @@ namespace toolstrackingsystem
                     Thread.Sleep(100);
 
                 }
-                else {
+                else
+                {
                     try
                     {
                         //if (threadClientO != null)
@@ -323,18 +326,18 @@ namespace toolstrackingsystem
         }
         private void SetText(string text)
         {
-           
-                if (tbEditCode.InvokeRequired)
-                {
-                    SetTextCallback d = new SetTextCallback(SetText);
-                    this.Invoke(d, new object[] { text });
-                }
-                else
-                {
-                    tbEditCode.Text = text.Substring(0, 12); ;
-                }
-            
-            
+
+            if (tbEditCode.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                tbEditCode.Text = text.Substring(0, 12); ;
+            }
+
+
         }
 
         #endregion
@@ -343,7 +346,7 @@ namespace toolstrackingsystem
             LoadToolData();
 
         }
-       
+
         private void StartScanListion(ILog logger)
         {
             if (string.IsNullOrWhiteSpace(ScanIpAddress) || string.IsNullOrWhiteSpace(ScanPort))
@@ -406,7 +409,8 @@ namespace toolstrackingsystem
                     }
 
                 }
-                else {
+                else
+                {
                     Thread.Sleep(2000);
                 }
             }
@@ -423,7 +427,7 @@ namespace toolstrackingsystem
             if (e.KeyCode == Keys.Enter)//如果输入的是回车键  
             {
                 this.btnReturn_Click(sender, e);//触发button事件  
-            }  
+            }
         }
 
 

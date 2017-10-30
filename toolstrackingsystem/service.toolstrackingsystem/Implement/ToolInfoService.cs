@@ -321,29 +321,29 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
             outBackStore.OptionPerson = userCode;
             outBackStore.IsCredit = "1";
 
-            _outBackStoreRepository.Add(outBackStore);
+            return _outBackStoreRepository.Add(outBackStore)>0;
 
-            var currentCount = new t_CurrentCountInfo();
-            currentCount.TypeName = entity.TypeName;
-            currentCount.ChildTypeName = entity.ChildTypeName;
-            currentCount.PackCode = entity.PackCode;
-            currentCount.PackName = entity.PackName;
-            currentCount.ToolCode = entity.ToolCode;
+            //var currentCount = new t_CurrentCountInfo();
+            //currentCount.TypeName = entity.TypeName;
+            //currentCount.ChildTypeName = entity.ChildTypeName;
+            //currentCount.PackCode = entity.PackCode;
+            //currentCount.PackName = entity.PackName;
+            //currentCount.ToolCode = entity.ToolCode;
 
 
-            currentCount.ToolName = entity.ToolName;
-            currentCount.Models = entity.Models;
-            currentCount.Location = entity.Location;
-            currentCount.Remarks = entity.Remarks;
-            currentCount.OutStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            //currentCount.ToolName = entity.ToolName;
+            //currentCount.Models = entity.Models;
+            //currentCount.Location = entity.Location;
+            //currentCount.Remarks = entity.Remarks;
+            //currentCount.OutStoreTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-            currentCount.OptionType = "领用";
-            currentCount.PersonCode = person.PersonCode;
-            currentCount.PersonName = person.PersonName;
-            currentCount.describes = describ;
-            currentCount.OptionPerson = userCode;
+            //currentCount.OptionType = "领用";
+            //currentCount.PersonCode = person.PersonCode;
+            //currentCount.PersonName = person.PersonName;
+            //currentCount.describes = describ;
+            //currentCount.OptionPerson = userCode;
             //2.outbackstore表增加领用记录
-            return _currentCountInfoRepository.Add(currentCount)>0;
+            //return _currentCountInfoRepository.Add(currentCount)>0;
 
         }
 
@@ -370,28 +370,28 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
                 entityOut.backdescribes = desc;
                 _outBackStoreRepository.Update(entityOut);
             }
-           
 
-            var entity1 = new t_CurrentCountInfo();
-            entity1.TypeName = entity.TypeName;
-            entity1.ChildTypeName = entity.ChildTypeName;
-            entity1.ToolCode = entity.ToolCode;
-            entity1.ToolName = entity.ToolName;
-            entity1.Models = entity.Models;
-            entity1.Location = entity.Location;
-            entity1.Remarks = entity.Remarks;
-            entity1.BackTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            entity1.OptionType = "归还";
-            entity1.PersonCode = entity.PersonCode;
-            entity1.PersonName = entity.PersonName;
+            return true;
+            //var entity1 = new t_CurrentCountInfo();
+            //entity1.TypeName = entity.TypeName;
+            //entity1.ChildTypeName = entity.ChildTypeName;
+            //entity1.ToolCode = entity.ToolCode;
+            //entity1.ToolName = entity.ToolName;
+            //entity1.Models = entity.Models;
+            //entity1.Location = entity.Location;
+            //entity1.Remarks = entity.Remarks;
+            //entity1.BackTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            //entity1.OptionType = "归还";
+            //entity1.PersonCode = entity.PersonCode;
+            //entity1.PersonName = entity.PersonName;
 
-            entity1.BackPesonCode = person.PersonCode;
-            entity1.BackPersonName = person.PersonName;
+            //entity1.BackPesonCode = person.PersonCode;
+            //entity1.BackPersonName = person.PersonName;
 
-            entity1.describes = desc;
+            //entity1.describes = desc;
 
-            entity1.OptionPerson = opeartPerson;
-            return _currentCountInfoRepository.Add(entity1)>0;
+            //entity1.OptionPerson = opeartPerson;
+            //return _currentCountInfoRepository.Add(entity1)>0;
         }
        /// <summary>
        /// 获取库存中的工具信息
