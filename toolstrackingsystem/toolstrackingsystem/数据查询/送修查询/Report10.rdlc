@@ -42,7 +42,7 @@
                             <TextRun>
                               <Value>工具编码</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -78,7 +78,7 @@
                             <TextRun>
                               <Value>工具名称</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -114,7 +114,7 @@
                             <TextRun>
                               <Value>送修时间</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -150,7 +150,7 @@
                             <TextRun>
                               <Value>返回时间</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -186,7 +186,7 @@
                             <TextRun>
                               <Value>送修操作人</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -222,7 +222,7 @@
                             <TextRun>
                               <Value>返回操作人</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -258,7 +258,7 @@
                             <TextRun>
                               <Value>是否可用</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -299,7 +299,7 @@
                             <TextRun>
                               <Value>=Fields!ToolCode.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -332,7 +332,7 @@
                             <TextRun>
                               <Value>=Fields!ToolName.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -365,7 +365,7 @@
                             <TextRun>
                               <Value>=Fields!PrepairTime.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -398,7 +398,7 @@
                             <TextRun>
                               <Value>=Fields!BackTime.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -431,7 +431,7 @@
                             <TextRun>
                               <Value>=Fields!OptionPerson.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -464,7 +464,7 @@
                             <TextRun>
                               <Value>=Fields!BackOptionPerson.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -497,7 +497,7 @@
                             <TextRun>
                               <Value>=Fields!IsActive.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>

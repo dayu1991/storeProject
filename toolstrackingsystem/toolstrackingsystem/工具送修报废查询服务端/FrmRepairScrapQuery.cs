@@ -84,6 +84,14 @@ namespace toolstrackingsystem
                 }
             }
             #endregion
+
+            #region 客户端用户不能切换数据库
+            if (LoginHelper.UserRole != "ServerRole" && LoginHelper.UserRole != "SuperAuthority")
+            {
+                superTabStrip1.Enabled = false;
+            }
+            #endregion
+
             
         }
 
@@ -196,6 +204,16 @@ namespace toolstrackingsystem
             {
                 logger.ErrorFormat("具体位置={0},重要参数Message={1},StackTrace={2},Source={3}", "toolstrackingsystem--FrmQueryBorrow--Print_button_Click", ex.Message, ex.StackTrace, ex.Source);
             }
+        }
+
+        private void superTabStrip1_SelectedTabChanging(object sender, SuperTabStripSelectedTabChangingEventArgs e)
+        {
+
+        }
+
+        private void cbEditOutTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -340,33 +340,33 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>Dapper.dll</td><td>{82B14F2D-BBFB-41F3-8E88-2CEA5EF8CBBF}</td><td>INSTALLDIR</td><td>2</td><td/><td>dapper.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DapperExtensions.dll</td><td>{24E43659-EF21-45C6-A88D-186A766641EC}</td><td>INSTALLDIR</td><td>2</td><td/><td>dapperextensions.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>EntityFramework.dll</td><td>{465B44BA-6033-4911-99F6-B6DEA41F9697}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ICSharpCode.SharpZipLib.dll</td><td>{0227D919-B7CE-4756-B280-9F960919D69D}</td><td>INSTALLDIR</td><td>2</td><td/><td>icsharpcode.sharpziplib.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Dapper.dll</td><td>{28171ECE-B2F5-4041-9284-A40755DEB5FC}</td><td>INSTALLDIR</td><td>2</td><td/><td>dapper.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DapperExtensions.dll</td><td>{A0D77A5A-4929-4BF0-B784-054C70CA9197}</td><td>INSTALLDIR</td><td>2</td><td/><td>dapperextensions.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EntityFramework.dll</td><td>{7C948DAF-08C8-46B1-8A3E-65661E55C09B}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ICSharpCode.SharpZipLib.dll</td><td>{06DE398F-F9F4-4494-905B-B3292E79BD70}</td><td>INSTALLDIR</td><td>2</td><td/><td>icsharpcode.sharpziplib.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{3601E8A0-987E-49D7-BFC6-12D2BC18F390}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{9E6713F8-2AEB-4655-8FB3-09783BB3DADC}</td><td>CONFIGS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{447A64FA-3B5C-4D14-8BD6-70CBAADBE3CD}</td><td>IMAGE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{5B68EE3A-E14D-496F-95CC-9AB66E905DD6}</td><td>CONFIGS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{33A577C4-88AB-4C03-B991-5868636178FD}</td><td>IMAGE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>IS_ININSTALL_SHORTCUT</td><td>{9D4C6061-185C-44B3-9D79-4CD001EB72C7}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Microsoft.Practices.ServiceLocation.dll</td><td>{A3354DBF-2D9E-41A0-878F-ED76808C418E}</td><td>INSTALLDIR</td><td>2</td><td/><td>microsoft.practices.servicel</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Microsoft.Practices.Unity.Configuration.dll</td><td>{14A242D4-A5CB-483D-8327-BD1DD8FC93FB}</td><td>INSTALLDIR</td><td>2</td><td/><td>microsoft.practices.unity.co</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Microsoft.Practices.Unity.RegistrationByConvention.dll</td><td>{020321F8-A3E8-49BF-BB86-E6000710FFCC}</td><td>INSTALLDIR</td><td>2</td><td/><td>microsoft.practices.unity.re</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Microsoft.Practices.Unity.dll</td><td>{56BA687C-537C-4AFC-AC27-AA1C38DFB1EB}</td><td>INSTALLDIR</td><td>2</td><td/><td>microsoft.practices.unity.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Microsoft.QualityTools.Testing.Fakes.dll</td><td>{4B8ABF32-A2CB-4100-A491-38FAF39EC091}</td><td>INSTALLDIR</td><td>2</td><td/><td>microsoft.qualitytools.testi</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>NPOI.OOXML.dll</td><td>{49E75AFA-782A-425A-835D-56D69CC88E75}</td><td>INSTALLDIR</td><td>2</td><td/><td>npoi.ooxml.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>NPOI.OpenXml4Net.dll</td><td>{2968E140-53E1-4AE1-85FB-385EBAE50DBD}</td><td>INSTALLDIR</td><td>2</td><td/><td>npoi.openxml4net.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>NPOI.OpenXmlFormats.dll</td><td>{3B42F63D-8A43-4706-B11D-8D0AA585889C}</td><td>INSTALLDIR</td><td>2</td><td/><td>npoi.openxmlformats.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>NPOI.dll</td><td>{E8370025-727F-4B04-A0C8-74E4E5CA1EE2}</td><td>INSTALLDIR</td><td>2</td><td/><td>npoi.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Newtonsoft.Json.dll</td><td>{7C376F3D-D03D-42B3-BC47-CD0459354FC9}</td><td>INSTALLDIR</td><td>2</td><td/><td>newtonsoft.json.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>NodaTime.dll</td><td>{003F24D3-D3EC-41E7-9A53-481D653D7EF8}</td><td>INSTALLDIR</td><td>2</td><td/><td>nodatime.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ViewEntity.toolstrackingsystem.dll</td><td>{769376E4-B86C-4BF9-995C-808914440AFD}</td><td>INSTALLDIR</td><td>2</td><td/><td>viewentity.toolstrackingsyst</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>common.toolstrackingsystem.dll</td><td>{CDA717B4-188A-4A48-ADCA-CCD51B634230}</td><td>INSTALLDIR</td><td>2</td><td/><td>common.toolstrackingsystem.d</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>dbentity.toolstrackingsystem.dll</td><td>{D4A3635C-43BF-43FC-B4C0-5C22B07B58AF}</td><td>INSTALLDIR</td><td>2</td><td/><td>dbentity.toolstrackingsystem</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>log4net.dll</td><td>{5DF87446-9761-46AE-8416-737A7B3FAAF0}</td><td>INSTALLDIR</td><td>2</td><td/><td>log4net.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>service.toolstrackingsystem.dll</td><td>{7860CF80-1B62-4EFE-BDA0-58C1B105DFE7}</td><td>INSTALLDIR</td><td>2</td><td/><td>service.toolstrackingsystem.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>sqlserver.toolstrackingsystem.dll</td><td>{EBB39357-DB4B-43EE-BE2D-263F74C547C7}</td><td>INSTALLDIR</td><td>2</td><td/><td>sqlserver.toolstrackingsyste</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>toolstrackingsystem.exe</td><td>{F217903D-948D-418C-912A-53FB339EFF3D}</td><td>INSTALLDIR</td><td>2</td><td/><td>toolstrackingsystem.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>toolstrackingsystem.vshost.exe</td><td>{6A0C1EBB-3830-4B3F-983A-85DD39AAFEFC}</td><td>INSTALLDIR</td><td>2</td><td/><td>toolstrackingsystem.vshost.e</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Microsoft.Practices.ServiceLocation.dll</td><td>{C389CD90-26C4-4E99-84FB-0ABCE3F6D294}</td><td>INSTALLDIR</td><td>2</td><td/><td>microsoft.practices.servicel</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Microsoft.Practices.Unity.Configuration.dll</td><td>{77621CB4-83AD-4A40-9C30-267140FFE4F4}</td><td>INSTALLDIR</td><td>2</td><td/><td>microsoft.practices.unity.co</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Microsoft.Practices.Unity.RegistrationByConvention.dll</td><td>{8A4890D5-CF08-4E96-820D-154E8CA0C726}</td><td>INSTALLDIR</td><td>2</td><td/><td>microsoft.practices.unity.re</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Microsoft.Practices.Unity.dll</td><td>{F6397EE1-1998-4D0E-BADB-79E962AFD517}</td><td>INSTALLDIR</td><td>2</td><td/><td>microsoft.practices.unity.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Microsoft.QualityTools.Testing.Fakes.dll</td><td>{A58D66D2-2C5F-4A75-8777-B3D9AB0083AB}</td><td>INSTALLDIR</td><td>2</td><td/><td>microsoft.qualitytools.testi</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>NPOI.OOXML.dll</td><td>{CA2098D1-67F7-4E75-A174-6C11484D16E6}</td><td>INSTALLDIR</td><td>2</td><td/><td>npoi.ooxml.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>NPOI.OpenXml4Net.dll</td><td>{2903172A-1DCB-4948-ADD3-816858D4CAD6}</td><td>INSTALLDIR</td><td>2</td><td/><td>npoi.openxml4net.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>NPOI.OpenXmlFormats.dll</td><td>{97152A88-7E59-4556-96C6-06BB28B90B26}</td><td>INSTALLDIR</td><td>2</td><td/><td>npoi.openxmlformats.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>NPOI.dll</td><td>{4383153A-F204-44FB-B6EE-F5C00FDE20D1}</td><td>INSTALLDIR</td><td>2</td><td/><td>npoi.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Newtonsoft.Json.dll</td><td>{50A91C7E-4DBE-493C-9E91-353616846A92}</td><td>INSTALLDIR</td><td>2</td><td/><td>newtonsoft.json.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>NodaTime.dll</td><td>{92F4A904-3A6C-4E88-A95A-3B8E24E7AB0C}</td><td>INSTALLDIR</td><td>2</td><td/><td>nodatime.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ViewEntity.toolstrackingsystem.dll</td><td>{0B462479-D62F-49B1-B40A-B4C4C50DC6F6}</td><td>INSTALLDIR</td><td>2</td><td/><td>viewentity.toolstrackingsyst</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>common.toolstrackingsystem.dll</td><td>{609FE44D-36E8-477A-8497-C791E7AF2027}</td><td>INSTALLDIR</td><td>2</td><td/><td>common.toolstrackingsystem.d</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>dbentity.toolstrackingsystem.dll</td><td>{9F0E2A24-025A-4F01-808E-C6AF5A7A17AE}</td><td>INSTALLDIR</td><td>2</td><td/><td>dbentity.toolstrackingsystem</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>log4net.dll</td><td>{50D61549-3EC3-4C18-BB63-DEA98D78FB4A}</td><td>INSTALLDIR</td><td>2</td><td/><td>log4net.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>service.toolstrackingsystem.dll</td><td>{90689383-65D4-4348-BC9A-DAA4571F27F1}</td><td>INSTALLDIR</td><td>2</td><td/><td>service.toolstrackingsystem.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>sqlserver.toolstrackingsystem.dll</td><td>{F6716D11-A4F4-4990-8D22-FA575970BE89}</td><td>INSTALLDIR</td><td>2</td><td/><td>sqlserver.toolstrackingsyste</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>toolstrackingsystem.exe</td><td>{C5D319E1-3771-403E-B889-BC43AFB2404D}</td><td>INSTALLDIR</td><td>2</td><td/><td>toolstrackingsystem.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>toolstrackingsystem.vshost.exe</td><td>{C92CF600-A892-4C37-908F-A598EE2D9274}</td><td>INSTALLDIR</td><td>2</td><td/><td>toolstrackingsystem.vshost.e</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1226,8 +1226,10 @@
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
 		<row><td>company_name</td><td>ProgramMenuFolder</td><td>公司名称</td><td/><td>1</td><td/></row>
 		<row><td>company_name1</td><td>ProgramMenuFolder</td><td>北京艾~1|北京艾森博威科技发展有限公司</td><td/><td>1</td><td/></row>
+		<row><td>company_name2</td><td>ProgramMenuFolder</td><td>北京动车段工具管理追溯系统</td><td/><td>1</td><td/></row>
 		<row><td>setup1</td><td>company_name</td><td>Setup1</td><td/><td>1</td><td/></row>
 		<row><td>toolst_1_toolstrackingsystem</td><td>company_name1</td><td>TOOLST~1|toolstrackingsystem</td><td/><td>1</td><td/></row>
+		<row><td>toolstrackingsystem</td><td>company_name2</td><td>toolstrackingsystem</td><td/><td>1</td><td/></row>
 	</table>
 
 	<table name="DrLocator">
@@ -1960,84 +1962,84 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>_.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>1.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\1.ico</td><td>1</td><td/></row>
-		<row><td>_.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>2.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\2.ico</td><td>1</td><td/></row>
-		<row><td>_.ico2</td><td>ISX_DEFAULTCOMPONENT2</td><td>3.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\3.ico</td><td>1</td><td/></row>
-		<row><td>_.ico3</td><td>ISX_DEFAULTCOMPONENT2</td><td>4.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\4.ico</td><td>1</td><td/></row>
-		<row><td>_.ico4</td><td>ISX_DEFAULTCOMPONENT2</td><td>5.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\5.ico</td><td>1</td><td/></row>
-		<row><td>_.ico5</td><td>ISX_DEFAULTCOMPONENT2</td><td>6.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\6.ico</td><td>1</td><td/></row>
-		<row><td>_.ico6</td><td>ISX_DEFAULTCOMPONENT2</td><td>7.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\7.ico</td><td>1</td><td/></row>
-		<row><td>_.ico7</td><td>ISX_DEFAULTCOMPONENT2</td><td>8.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\8.ico</td><td>1</td><td/></row>
-		<row><td>_.ico8</td><td>ISX_DEFAULTCOMPONENT2</td><td>9.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\9.ico</td><td>1</td><td/></row>
-		<row><td>_0.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>10.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\10.ico</td><td>1</td><td/></row>
-		<row><td>_0.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>20.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\20.ico</td><td>1</td><td/></row>
-		<row><td>_1.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>11.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\11.ico</td><td>1</td><td/></row>
-		<row><td>_1.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>21.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\21.ico</td><td>1</td><td/></row>
-		<row><td>_2.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>12.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\12.ico</td><td>1</td><td/></row>
-		<row><td>_2.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>22.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\22.ico</td><td>1</td><td/></row>
-		<row><td>_3.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>13.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\13.ico</td><td>1</td><td/></row>
-		<row><td>_3.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>23.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\23.ico</td><td>1</td><td/></row>
-		<row><td>_4.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>14.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\14.ico</td><td>1</td><td/></row>
-		<row><td>_4.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>24.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\24.ico</td><td>1</td><td/></row>
-		<row><td>_5.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>15.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\15.ico</td><td>1</td><td/></row>
-		<row><td>_5.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>25.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\25.ico</td><td>1</td><td/></row>
-		<row><td>_6.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>16.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\16.ico</td><td>1</td><td/></row>
-		<row><td>_6.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>26.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\26.ico</td><td>1</td><td/></row>
-		<row><td>_7.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>17.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\17.ico</td><td>1</td><td/></row>
-		<row><td>_7.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>27.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\27.ico</td><td>1</td><td/></row>
-		<row><td>_8.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>18.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\18.ico</td><td>1</td><td/></row>
-		<row><td>_9.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>19.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\19.ico</td><td>1</td><td/></row>
-		<row><td>common.toolstrackingsystem.d</td><td>common.toolstrackingsystem.dll</td><td>COMMON~1.DLL|common.toolstrackingsystem.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\common.toolstrackingsystem.dll</td><td>1</td><td/></row>
-		<row><td>common.toolstrackingsystem.p</td><td>ISX_DEFAULTCOMPONENT</td><td>COMMON~1.PDB|common.toolstrackingsystem.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\common.toolstrackingsystem.pdb</td><td>1</td><td/></row>
-		<row><td>dapper.dll</td><td>Dapper.dll</td><td>Dapper.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Dapper.dll</td><td>1</td><td/></row>
-		<row><td>dapper.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>Dapper.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Dapper.xml</td><td>1</td><td/></row>
-		<row><td>dapperextensions.dll</td><td>DapperExtensions.dll</td><td>DAPPER~1.DLL|DapperExtensions.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\DapperExtensions.dll</td><td>1</td><td/></row>
-		<row><td>dapperextensions.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>DAPPER~1.PDB|DapperExtensions.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\DapperExtensions.pdb</td><td>1</td><td/></row>
-		<row><td>dbentity.toolstrackingsystem</td><td>dbentity.toolstrackingsystem.dll</td><td>DBENTI~1.DLL|dbentity.toolstrackingsystem.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\dbentity.toolstrackingsystem.dll</td><td>1</td><td/></row>
-		<row><td>dbentity.toolstrackingsystem1</td><td>ISX_DEFAULTCOMPONENT</td><td>DBENTI~1.PDB|dbentity.toolstrackingsystem.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\dbentity.toolstrackingsystem.pdb</td><td>1</td><td/></row>
-		<row><td>entityframework.dll</td><td>EntityFramework.dll</td><td>ENTITY~1.DLL|EntityFramework.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\EntityFramework.dll</td><td>1</td><td/></row>
-		<row><td>entityframework.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>ENTITY~1.XML|EntityFramework.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\EntityFramework.xml</td><td>1</td><td/></row>
-		<row><td>icsharpcode.sharpziplib.dll</td><td>ICSharpCode.SharpZipLib.dll</td><td>ICSHAR~1.DLL|ICSharpCode.SharpZipLib.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\ICSharpCode.SharpZipLib.dll</td><td>1</td><td/></row>
-		<row><td>log4net.config</td><td>ISX_DEFAULTCOMPONENT</td><td>LOG4NE~1.CON|log4net.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\log4net.config</td><td>1</td><td/></row>
-		<row><td>log4net.dll</td><td>log4net.dll</td><td>log4net.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\log4net.dll</td><td>1</td><td/></row>
-		<row><td>log_out.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>log_out.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\log_out.ico</td><td>1</td><td/></row>
-		<row><td>manage.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>manage.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\manage.ico</td><td>1</td><td/></row>
-		<row><td>microsoft.practices.servicel</td><td>Microsoft.Practices.ServiceLocation.dll</td><td>MICROS~1.DLL|Microsoft.Practices.ServiceLocation.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.ServiceLocation.dll</td><td>1</td><td/></row>
-		<row><td>microsoft.practices.servicel1</td><td>ISX_DEFAULTCOMPONENT</td><td>MICROS~1.PDB|Microsoft.Practices.ServiceLocation.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.ServiceLocation.pdb</td><td>1</td><td/></row>
-		<row><td>microsoft.practices.servicel2</td><td>ISX_DEFAULTCOMPONENT</td><td>MICROS~1.XML|Microsoft.Practices.ServiceLocation.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.ServiceLocation.xml</td><td>1</td><td/></row>
-		<row><td>microsoft.practices.unity.co</td><td>Microsoft.Practices.Unity.Configuration.dll</td><td>MICROS~1.DLL|Microsoft.Practices.Unity.Configuration.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.Unity.Configuration.dll</td><td>1</td><td/></row>
-		<row><td>microsoft.practices.unity.co1</td><td>ISX_DEFAULTCOMPONENT</td><td>MICROS~1.XML|Microsoft.Practices.Unity.Configuration.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.Unity.Configuration.xml</td><td>1</td><td/></row>
-		<row><td>microsoft.practices.unity.dl</td><td>Microsoft.Practices.Unity.dll</td><td>MICROS~1.DLL|Microsoft.Practices.Unity.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.Unity.dll</td><td>1</td><td/></row>
-		<row><td>microsoft.practices.unity.re</td><td>Microsoft.Practices.Unity.RegistrationByConvention.dll</td><td>MICROS~1.DLL|Microsoft.Practices.Unity.RegistrationByConvention.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll</td><td>1</td><td/></row>
-		<row><td>microsoft.practices.unity.re1</td><td>ISX_DEFAULTCOMPONENT</td><td>MICROS~1.XML|Microsoft.Practices.Unity.RegistrationByConvention.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml</td><td>1</td><td/></row>
-		<row><td>microsoft.practices.unity.xm</td><td>ISX_DEFAULTCOMPONENT</td><td>MICROS~1.XML|Microsoft.Practices.Unity.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.Unity.xml</td><td>1</td><td/></row>
-		<row><td>microsoft.qualitytools.testi</td><td>Microsoft.QualityTools.Testing.Fakes.dll</td><td>MICROS~1.DLL|Microsoft.QualityTools.Testing.Fakes.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll</td><td>1</td><td/></row>
-		<row><td>newtonsoft.json.dll</td><td>Newtonsoft.Json.dll</td><td>NEWTON~1.DLL|Newtonsoft.Json.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Newtonsoft.Json.dll</td><td>1</td><td/></row>
-		<row><td>newtonsoft.json.fakes.fakesc</td><td>ISX_DEFAULTCOMPONENT</td><td>NEWTON~1.FAK|Newtonsoft.Json.Fakes.fakesconfig</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Newtonsoft.Json.Fakes.fakesconfig</td><td>1</td><td/></row>
-		<row><td>newtonsoft.json.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>NEWTON~1.XML|Newtonsoft.Json.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Newtonsoft.Json.xml</td><td>1</td><td/></row>
-		<row><td>nodatime.dll</td><td>NodaTime.dll</td><td>NodaTime.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NodaTime.dll</td><td>1</td><td/></row>
-		<row><td>nodatime.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>NodaTime.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NodaTime.xml</td><td>1</td><td/></row>
-		<row><td>npoi.dll</td><td>NPOI.dll</td><td>NPOI.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NPOI.dll</td><td>1</td><td/></row>
-		<row><td>npoi.ooxml.dll</td><td>NPOI.OOXML.dll</td><td>NPOIOO~1.DLL|NPOI.OOXML.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NPOI.OOXML.dll</td><td>1</td><td/></row>
-		<row><td>npoi.openxml4net.dll</td><td>NPOI.OpenXml4Net.dll</td><td>NPOIOP~1.DLL|NPOI.OpenXml4Net.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NPOI.OpenXml4Net.dll</td><td>1</td><td/></row>
-		<row><td>npoi.openxmlformats.dll</td><td>NPOI.OpenXmlFormats.dll</td><td>NPOIOP~1.DLL|NPOI.OpenXmlFormats.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NPOI.OpenXmlFormats.dll</td><td>1</td><td/></row>
-		<row><td>npoi.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>NPOI.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NPOI.xml</td><td>1</td><td/></row>
-		<row><td>re_login.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>re_login.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\re_login.ico</td><td>1</td><td/></row>
-		<row><td>retrospect.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>RETROS~1.ICO|Retrospect.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\Retrospect.ico</td><td>1</td><td/></row>
-		<row><td>select.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>select.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\select.ico</td><td>1</td><td/></row>
-		<row><td>service.toolstrackingsystem.</td><td>service.toolstrackingsystem.dll</td><td>SERVIC~1.DLL|service.toolstrackingsystem.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\service.toolstrackingsystem.dll</td><td>1</td><td/></row>
-		<row><td>service.toolstrackingsystem.1</td><td>ISX_DEFAULTCOMPONENT</td><td>SERVIC~1.PDB|service.toolstrackingsystem.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\service.toolstrackingsystem.pdb</td><td>1</td><td/></row>
-		<row><td>sqlserver.toolstrackingsyste</td><td>sqlserver.toolstrackingsystem.dll</td><td>SQLSER~1.DLL|sqlserver.toolstrackingsystem.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\sqlserver.toolstrackingsystem.dll</td><td>1</td><td/></row>
-		<row><td>sqlserver.toolstrackingsyste1</td><td>ISX_DEFAULTCOMPONENT</td><td>SQLSER~1.PDB|sqlserver.toolstrackingsystem.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\sqlserver.toolstrackingsystem.pdb</td><td>1</td><td/></row>
-		<row><td>toolstrackingsystem.exe</td><td>toolstrackingsystem.exe</td><td>TOOLST~1.EXE|toolstrackingsystem.exe</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.exe</td><td>1</td><td/></row>
-		<row><td>toolstrackingsystem.exe.conf</td><td>ISX_DEFAULTCOMPONENT</td><td>TOOLST~1.CON|toolstrackingsystem.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.exe.config</td><td>1</td><td/></row>
-		<row><td>toolstrackingsystem.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>TOOLST~1.PDB|toolstrackingsystem.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.pdb</td><td>1</td><td/></row>
-		<row><td>toolstrackingsystem.vshost.e</td><td>toolstrackingsystem.vshost.exe</td><td>TOOLST~1.EXE|toolstrackingsystem.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.vshost.exe</td><td>1</td><td/></row>
-		<row><td>toolstrackingsystem.vshost.e1</td><td>ISX_DEFAULTCOMPONENT</td><td>TOOLST~1.CON|toolstrackingsystem.vshost.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.vshost.exe.config</td><td>1</td><td/></row>
-		<row><td>toolstrackingsystem.vshost.e2</td><td>ISX_DEFAULTCOMPONENT</td><td>TOOLST~1.MAN|toolstrackingsystem.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.vshost.exe.manifest</td><td>1</td><td/></row>
-		<row><td>unity.config</td><td>ISX_DEFAULTCOMPONENT1</td><td>UNITY~1.CON|unity.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Configs\unity.config</td><td>1</td><td/></row>
-		<row><td>viewentity.toolstrackingsyst</td><td>ViewEntity.toolstrackingsystem.dll</td><td>VIEWEN~1.DLL|ViewEntity.toolstrackingsystem.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\ViewEntity.toolstrackingsystem.dll</td><td>1</td><td/></row>
-		<row><td>viewentity.toolstrackingsyst1</td><td>ISX_DEFAULTCOMPONENT</td><td>VIEWEN~1.PDB|ViewEntity.toolstrackingsystem.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\ViewEntity.toolstrackingsystem.pdb</td><td>1</td><td/></row>
+		<row><td>_.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>1.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\1.ico</td><td>1</td><td/></row>
+		<row><td>_.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>2.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\2.ico</td><td>1</td><td/></row>
+		<row><td>_.ico2</td><td>ISX_DEFAULTCOMPONENT2</td><td>3.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\3.ico</td><td>1</td><td/></row>
+		<row><td>_.ico3</td><td>ISX_DEFAULTCOMPONENT2</td><td>4.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\4.ico</td><td>1</td><td/></row>
+		<row><td>_.ico4</td><td>ISX_DEFAULTCOMPONENT2</td><td>5.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\5.ico</td><td>1</td><td/></row>
+		<row><td>_.ico5</td><td>ISX_DEFAULTCOMPONENT2</td><td>6.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\6.ico</td><td>1</td><td/></row>
+		<row><td>_.ico6</td><td>ISX_DEFAULTCOMPONENT2</td><td>7.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\7.ico</td><td>1</td><td/></row>
+		<row><td>_.ico7</td><td>ISX_DEFAULTCOMPONENT2</td><td>8.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\8.ico</td><td>1</td><td/></row>
+		<row><td>_.ico8</td><td>ISX_DEFAULTCOMPONENT2</td><td>9.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\9.ico</td><td>1</td><td/></row>
+		<row><td>_0.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>10.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\10.ico</td><td>1</td><td/></row>
+		<row><td>_0.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>20.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\20.ico</td><td>1</td><td/></row>
+		<row><td>_1.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>11.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\11.ico</td><td>1</td><td/></row>
+		<row><td>_1.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>21.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\21.ico</td><td>1</td><td/></row>
+		<row><td>_2.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>12.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\12.ico</td><td>1</td><td/></row>
+		<row><td>_2.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>22.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\22.ico</td><td>1</td><td/></row>
+		<row><td>_3.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>13.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\13.ico</td><td>1</td><td/></row>
+		<row><td>_3.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>23.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\23.ico</td><td>1</td><td/></row>
+		<row><td>_4.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>14.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\14.ico</td><td>1</td><td/></row>
+		<row><td>_4.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>24.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\24.ico</td><td>1</td><td/></row>
+		<row><td>_5.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>15.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\15.ico</td><td>1</td><td/></row>
+		<row><td>_5.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>25.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\25.ico</td><td>1</td><td/></row>
+		<row><td>_6.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>16.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\16.ico</td><td>1</td><td/></row>
+		<row><td>_6.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>26.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\26.ico</td><td>1</td><td/></row>
+		<row><td>_7.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>17.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\17.ico</td><td>1</td><td/></row>
+		<row><td>_7.ico1</td><td>ISX_DEFAULTCOMPONENT2</td><td>27.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\27.ico</td><td>1</td><td/></row>
+		<row><td>_8.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>18.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\18.ico</td><td>1</td><td/></row>
+		<row><td>_9.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>19.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\19.ico</td><td>1</td><td/></row>
+		<row><td>common.toolstrackingsystem.d</td><td>common.toolstrackingsystem.dll</td><td>common.toolstrackingsystem.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\common.toolstrackingsystem.dll</td><td>1</td><td/></row>
+		<row><td>common.toolstrackingsystem.p</td><td>ISX_DEFAULTCOMPONENT</td><td>common.toolstrackingsystem.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\common.toolstrackingsystem.pdb</td><td>1</td><td/></row>
+		<row><td>dapper.dll</td><td>Dapper.dll</td><td>Dapper.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Dapper.dll</td><td>1</td><td/></row>
+		<row><td>dapper.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>Dapper.xml</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Dapper.xml</td><td>1</td><td/></row>
+		<row><td>dapperextensions.dll</td><td>DapperExtensions.dll</td><td>DapperExtensions.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\DapperExtensions.dll</td><td>1</td><td/></row>
+		<row><td>dapperextensions.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>DapperExtensions.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\DapperExtensions.pdb</td><td>1</td><td/></row>
+		<row><td>dbentity.toolstrackingsystem</td><td>dbentity.toolstrackingsystem.dll</td><td>dbentity.toolstrackingsystem.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\dbentity.toolstrackingsystem.dll</td><td>1</td><td/></row>
+		<row><td>dbentity.toolstrackingsystem1</td><td>ISX_DEFAULTCOMPONENT</td><td>dbentity.toolstrackingsystem.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\dbentity.toolstrackingsystem.pdb</td><td>1</td><td/></row>
+		<row><td>entityframework.dll</td><td>EntityFramework.dll</td><td>EntityFramework.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\EntityFramework.dll</td><td>1</td><td/></row>
+		<row><td>entityframework.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>EntityFramework.xml</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\EntityFramework.xml</td><td>1</td><td/></row>
+		<row><td>icsharpcode.sharpziplib.dll</td><td>ICSharpCode.SharpZipLib.dll</td><td>ICSharpCode.SharpZipLib.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\ICSharpCode.SharpZipLib.dll</td><td>1</td><td/></row>
+		<row><td>log4net.config</td><td>ISX_DEFAULTCOMPONENT</td><td>log4net.config</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\log4net.config</td><td>1</td><td/></row>
+		<row><td>log4net.dll</td><td>log4net.dll</td><td>log4net.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\log4net.dll</td><td>1</td><td/></row>
+		<row><td>log_out.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>log_out.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\log_out.ico</td><td>1</td><td/></row>
+		<row><td>manage.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>manage.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\manage.ico</td><td>1</td><td/></row>
+		<row><td>microsoft.practices.servicel</td><td>Microsoft.Practices.ServiceLocation.dll</td><td>Microsoft.Practices.ServiceLocation.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.ServiceLocation.dll</td><td>1</td><td/></row>
+		<row><td>microsoft.practices.servicel1</td><td>ISX_DEFAULTCOMPONENT</td><td>Microsoft.Practices.ServiceLocation.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.ServiceLocation.pdb</td><td>1</td><td/></row>
+		<row><td>microsoft.practices.servicel2</td><td>ISX_DEFAULTCOMPONENT</td><td>Microsoft.Practices.ServiceLocation.xml</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.ServiceLocation.xml</td><td>1</td><td/></row>
+		<row><td>microsoft.practices.unity.co</td><td>Microsoft.Practices.Unity.Configuration.dll</td><td>Microsoft.Practices.Unity.Configuration.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.Unity.Configuration.dll</td><td>1</td><td/></row>
+		<row><td>microsoft.practices.unity.co1</td><td>ISX_DEFAULTCOMPONENT</td><td>Microsoft.Practices.Unity.Configuration.xml</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.Unity.Configuration.xml</td><td>1</td><td/></row>
+		<row><td>microsoft.practices.unity.dl</td><td>Microsoft.Practices.Unity.dll</td><td>Microsoft.Practices.Unity.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.Unity.dll</td><td>1</td><td/></row>
+		<row><td>microsoft.practices.unity.re</td><td>Microsoft.Practices.Unity.RegistrationByConvention.dll</td><td>Microsoft.Practices.Unity.RegistrationByConvention.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll</td><td>1</td><td/></row>
+		<row><td>microsoft.practices.unity.re1</td><td>ISX_DEFAULTCOMPONENT</td><td>Microsoft.Practices.Unity.RegistrationByConvention.xml</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml</td><td>1</td><td/></row>
+		<row><td>microsoft.practices.unity.xm</td><td>ISX_DEFAULTCOMPONENT</td><td>Microsoft.Practices.Unity.xml</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.Practices.Unity.xml</td><td>1</td><td/></row>
+		<row><td>microsoft.qualitytools.testi</td><td>Microsoft.QualityTools.Testing.Fakes.dll</td><td>Microsoft.QualityTools.Testing.Fakes.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll</td><td>1</td><td/></row>
+		<row><td>newtonsoft.json.dll</td><td>Newtonsoft.Json.dll</td><td>Newtonsoft.Json.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Newtonsoft.Json.dll</td><td>1</td><td/></row>
+		<row><td>newtonsoft.json.fakes.fakesc</td><td>ISX_DEFAULTCOMPONENT</td><td>Newtonsoft.Json.Fakes.fakesconfig</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Newtonsoft.Json.Fakes.fakesconfig</td><td>1</td><td/></row>
+		<row><td>newtonsoft.json.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>Newtonsoft.Json.xml</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Newtonsoft.Json.xml</td><td>1</td><td/></row>
+		<row><td>nodatime.dll</td><td>NodaTime.dll</td><td>NodaTime.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NodaTime.dll</td><td>1</td><td/></row>
+		<row><td>nodatime.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>NodaTime.xml</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NodaTime.xml</td><td>1</td><td/></row>
+		<row><td>npoi.dll</td><td>NPOI.dll</td><td>NPOI.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NPOI.dll</td><td>1</td><td/></row>
+		<row><td>npoi.ooxml.dll</td><td>NPOI.OOXML.dll</td><td>NPOI.OOXML.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NPOI.OOXML.dll</td><td>1</td><td/></row>
+		<row><td>npoi.openxml4net.dll</td><td>NPOI.OpenXml4Net.dll</td><td>NPOI.OpenXml4Net.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NPOI.OpenXml4Net.dll</td><td>1</td><td/></row>
+		<row><td>npoi.openxmlformats.dll</td><td>NPOI.OpenXmlFormats.dll</td><td>NPOI.OpenXmlFormats.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NPOI.OpenXmlFormats.dll</td><td>1</td><td/></row>
+		<row><td>npoi.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>NPOI.xml</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\NPOI.xml</td><td>1</td><td/></row>
+		<row><td>re_login.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>re_login.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\re_login.ico</td><td>1</td><td/></row>
+		<row><td>retrospect.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>Retrospect.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\Retrospect.ico</td><td>1</td><td/></row>
+		<row><td>select.ico</td><td>ISX_DEFAULTCOMPONENT2</td><td>select.ico</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\image\select.ico</td><td>1</td><td/></row>
+		<row><td>service.toolstrackingsystem.</td><td>service.toolstrackingsystem.dll</td><td>service.toolstrackingsystem.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\service.toolstrackingsystem.dll</td><td>1</td><td/></row>
+		<row><td>service.toolstrackingsystem.1</td><td>ISX_DEFAULTCOMPONENT</td><td>service.toolstrackingsystem.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\service.toolstrackingsystem.pdb</td><td>1</td><td/></row>
+		<row><td>sqlserver.toolstrackingsyste</td><td>sqlserver.toolstrackingsystem.dll</td><td>sqlserver.toolstrackingsystem.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\sqlserver.toolstrackingsystem.dll</td><td>1</td><td/></row>
+		<row><td>sqlserver.toolstrackingsyste1</td><td>ISX_DEFAULTCOMPONENT</td><td>sqlserver.toolstrackingsystem.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\sqlserver.toolstrackingsystem.pdb</td><td>1</td><td/></row>
+		<row><td>toolstrackingsystem.exe</td><td>toolstrackingsystem.exe</td><td>toolstrackingsystem.exe</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.exe</td><td>1</td><td/></row>
+		<row><td>toolstrackingsystem.exe.conf</td><td>ISX_DEFAULTCOMPONENT</td><td>toolstrackingsystem.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.exe.config</td><td>1</td><td/></row>
+		<row><td>toolstrackingsystem.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>toolstrackingsystem.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.pdb</td><td>1</td><td/></row>
+		<row><td>toolstrackingsystem.vshost.e</td><td>toolstrackingsystem.vshost.exe</td><td>toolstrackingsystem.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.vshost.exe</td><td>1</td><td/></row>
+		<row><td>toolstrackingsystem.vshost.e1</td><td>ISX_DEFAULTCOMPONENT</td><td>toolstrackingsystem.vshost.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.vshost.exe.config</td><td>1</td><td/></row>
+		<row><td>toolstrackingsystem.vshost.e2</td><td>ISX_DEFAULTCOMPONENT</td><td>toolstrackingsystem.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.vshost.exe.manifest</td><td>1</td><td/></row>
+		<row><td>unity.config</td><td>ISX_DEFAULTCOMPONENT1</td><td>unity.config</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\Configs\unity.config</td><td>1</td><td/></row>
+		<row><td>viewentity.toolstrackingsyst</td><td>ViewEntity.toolstrackingsystem.dll</td><td>ViewEntity.toolstrackingsystem.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\ViewEntity.toolstrackingsystem.dll</td><td>1</td><td/></row>
+		<row><td>viewentity.toolstrackingsyst1</td><td>ISX_DEFAULTCOMPONENT</td><td>ViewEntity.toolstrackingsystem.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\ViewEntity.toolstrackingsystem.pdb</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2054,6 +2056,7 @@
 		<col key="yes" def="s72">Tag</col>
 		<col def="S255">Data</col>
 		<row><td>PROJECT_ASSISTANT_DEFAULT_FEATURE</td><td>AlwaysInstall</td></row>
+		<row><td>RegistryPageEnabled</td><td>Yes</td></row>
 	</table>
 
 	<table name="ISBillBoard">
@@ -2180,33 +2183,33 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>Dapper.dll</td><td/><td/><td>_93153823_7831_4FD4_B15C_EC6D90DAE5EF_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DapperExtensions.dll</td><td/><td/><td>_9EDE0985_FA27_46EF_92A4_0D8677C04EE0_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>EntityFramework.dll</td><td/><td/><td>_FFB27D4F_8F6F_47C1_BB51_206607DA91AA_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ICSharpCode.SharpZipLib.dll</td><td/><td/><td>_31DC9BF0_A9F7_4C60_B5C4_E727A5922284_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Dapper.dll</td><td/><td/><td>_285D70A9_7381_43CC_9304_ED17253DFF7A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DapperExtensions.dll</td><td/><td/><td>_DE327788_9266_403E_A98D_ACD0E0AF4938_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EntityFramework.dll</td><td/><td/><td>_30AC08F9_DCEE_428E_BE3A_5A08A44F95D4_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ICSharpCode.SharpZipLib.dll</td><td/><td/><td>_A271DDF0_0FA0_4654_9315_B8D53C2DBF49_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_D1293548_BB95_4D73_AEEC_E57805B96785_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_94ACCE84_EFDE_4962_B22C_FD9B479BE6D6_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_F2859D0B_2E69_464F_9859_4D2F4F4636CE_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_B1E657B1_CAA9_479A_879E_8B651BBEFBDF_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_CD171D70_8A5E_40CC_91AD_61E8646B76E3_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>IS_ININSTALL_SHORTCUT</td><td/><td/><td>_170E1118_B596_4BB1_A7BD_6D91ABE53580_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Microsoft.Practices.ServiceLocation.dll</td><td/><td/><td>_212AF9BA_CAAE_435F_B3EB_29D62DAFFE12_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Microsoft.Practices.Unity.Configuration.dll</td><td/><td/><td>_B5D74370_A9BD_4539_92F3_ADF0D44425E6_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Microsoft.Practices.Unity.RegistrationByConvention.dll</td><td/><td/><td>_2F738ED5_1028_4A3A_B634_A6F8BAF6586E_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Microsoft.Practices.Unity.dll</td><td/><td/><td>_47CE16BE_4E93_469F_9470_BE5167DBE63C_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Microsoft.QualityTools.Testing.Fakes.dll</td><td/><td/><td>_34D593F6_3170_423A_A5D0_143590BD8D34_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>NPOI.OOXML.dll</td><td/><td/><td>_315B4188_00EA_4315_967D_F47234AE7CE1_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>NPOI.OpenXml4Net.dll</td><td/><td/><td>_AA6DBEB8_E8E2_4955_940C_875C687D9D98_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>NPOI.OpenXmlFormats.dll</td><td/><td/><td>_C20EC252_7E1B_4CC3_A96F_E7609A97D5E4_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>NPOI.dll</td><td/><td/><td>_B45FC6F8_E65F_49CE_ACE2_5A6DA3555F2A_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Newtonsoft.Json.dll</td><td/><td/><td>_73443195_1DEC_4D30_A8B1_6775A9841314_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>NodaTime.dll</td><td/><td/><td>_C26DC7D5_D3D3_4E70_B54D_5C73A7C79053_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ViewEntity.toolstrackingsystem.dll</td><td/><td/><td>_A176F643_D82C_441E_A628_CAEA04637465_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>common.toolstrackingsystem.dll</td><td/><td/><td>_D3C9F978_3084_48DD_B549_48EADC212FE7_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>dbentity.toolstrackingsystem.dll</td><td/><td/><td>_6D8E1014_036A_430F_A7AA_58E61011EE50_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>log4net.dll</td><td/><td/><td>_82DDC222_B312_45C8_8496_C245835218B7_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>service.toolstrackingsystem.dll</td><td/><td/><td>_DE575073_187D_49F0_9CA0_008681216873_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>sqlserver.toolstrackingsystem.dll</td><td/><td/><td>_B3789811_540B_4B69_9D1B_875871E9EFEF_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>toolstrackingsystem.exe</td><td/><td/><td>_FE2DA7FF_3C03_46FE_A5FE_74B0B090F941_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>toolstrackingsystem.vshost.exe</td><td/><td/><td>_3859AFD3_E3FC_4AD8_8DF1_84F2BF1440D8_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Microsoft.Practices.ServiceLocation.dll</td><td/><td/><td>_922EAE46_7AC3_4352_8E81_CC6071CC9CF5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Microsoft.Practices.Unity.Configuration.dll</td><td/><td/><td>_98C2C6A3_1BEF_4B67_93F8_61EA94D1D422_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Microsoft.Practices.Unity.RegistrationByConvention.dll</td><td/><td/><td>_5C2070A6_D8E1_4DFF_A4CB_A4D893F81ACD_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Microsoft.Practices.Unity.dll</td><td/><td/><td>_07F5CD9B_A2E3_4232_B2EE_0D1506280B0D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Microsoft.QualityTools.Testing.Fakes.dll</td><td/><td/><td>_4EDCB899_6442_4338_92CA_0E7E5558F0F0_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>NPOI.OOXML.dll</td><td/><td/><td>_D4B0D710_701D_4F66_B52A_96D4766959A2_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>NPOI.OpenXml4Net.dll</td><td/><td/><td>_A22DF4D0_785A_4E86_A543_CCC941A98C28_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>NPOI.OpenXmlFormats.dll</td><td/><td/><td>_D2E7EC5C_1A97_424B_AAE4_7470A7410251_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>NPOI.dll</td><td/><td/><td>_00FD6B6E_47EA_46C2_A500_6B33A56FE8C3_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Newtonsoft.Json.dll</td><td/><td/><td>_19415C04_212D_4304_B451_BD5E25525ABA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>NodaTime.dll</td><td/><td/><td>_8C49325D_EF73_46A4_9A52_3025183B46E2_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ViewEntity.toolstrackingsystem.dll</td><td/><td/><td>_5B3D27CC_1B7D_4044_9A51_440FB6A63882_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>common.toolstrackingsystem.dll</td><td/><td/><td>_1B23CE3C_7CFD_437F_9EAF_CBF9F6991A8D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>dbentity.toolstrackingsystem.dll</td><td/><td/><td>_7E80454F_1DC3_424F_90A1_CE2B932FD56C_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>log4net.dll</td><td/><td/><td>_3776EF77_BEF3_419D_BA9F_FDB253F70DA3_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>service.toolstrackingsystem.dll</td><td/><td/><td>_EA7B58BE_5488_4964_89F6_675512BE6C29_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>sqlserver.toolstrackingsystem.dll</td><td/><td/><td>_15FC0F2C_AF4E_4AC8_86B8_75693899BAF6_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>toolstrackingsystem.exe</td><td/><td/><td>_66279057_1285_4490_B286_1596FD48EB93_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>toolstrackingsystem.vshost.exe</td><td/><td/><td>_FB6B9019_68A9_4A35_82CF_FA8C4FAE3DD8_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2795,7 +2798,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>2052</td><td>北京动车段工具管理追溯系统</td><td>0</td><td/><td>-593159851</td></row>
+		<row><td>COMPANY_NAME</td><td>2052</td><td>北京动车段工具管理追溯系统</td><td>0</td><td/><td>-853193682</td></row>
 		<row><td>DN_AlwaysInstall</td><td>2052</td><td>始终安装</td><td>0</td><td/><td>-1532651217</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>2052</td><td>系统颜色设置不足以运行 [ProductName]。</td><td>0</td><td/><td>-1532651217</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1033</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-1532636881</td></row>
@@ -3623,6 +3626,10 @@
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>2052</td><td>工具追踪系统.exe</td><td>0</td><td/><td>-593109228</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>1033</td><td>卸载工具追踪系统</td><td>0</td><td/><td>-593139916</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>2052</td><td>卸载工具追踪系统</td><td>0</td><td/><td>-593139916</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>1033</td><td/><td>0</td><td/><td>-853183602</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>2052</td><td>Launch toolstrackingsystem.exe</td><td>0</td><td/><td>-853183602</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME9</td><td>1033</td><td/><td>0</td><td/><td>-853183602</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME9</td><td>2052</td><td>Launch toolstrackingsystem.vshost.exe</td><td>0</td><td/><td>-853183602</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>2052</td><td>从以下服务器列表中选择要连接的数据库服务器。</td><td>0</td><td/><td>-1532651217</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>2052</td><td>从以下的编录名称列表中，选择您希望将其作为目标的数据库编录。</td><td>0</td><td/><td>-1532651217</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>2052</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>-1532651217</td></row>
@@ -3911,12 +3918,14 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>2052</td><td>对于运行 [ProductName] 处理器不足。</td><td>0</td><td/><td>-1532651217</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>2052</td><td>对于运行 [ProductName] 内存量不足。</td><td>0</td><td/><td>-1532651217</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>2052</td><td>对于运行 [ProductName] 屏幕分辨率不足。</td><td>0</td><td/><td>-1532651217</td></row>
-		<row><td>ID_STRING1</td><td>2052</td><td>http://www.123.com</td><td>0</td><td/><td>-593139371</td></row>
-		<row><td>ID_STRING2</td><td>2052</td><td>北京动车段工具管理追溯系统</td><td>0</td><td/><td>-593159851</td></row>
+		<row><td>ID_STRING1</td><td>2052</td><td>http://www.北京动车段工具管理追溯系统.com</td><td>0</td><td/><td>-853193682</td></row>
+		<row><td>ID_STRING2</td><td>2052</td><td>北京动车段工具管理追溯系统</td><td>0</td><td/><td>-853193682</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Launch toolstrackingsystem.exe</td><td>0</td><td/><td>-1532655249</td></row>
 		<row><td>ID_STRING3</td><td>2052</td><td>Launch toolstrackingsystem.exe</td><td>0</td><td/><td>-1532655249</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>工具追踪系统.exe</td><td>0</td><td/><td>-593143723</td></row>
 		<row><td>ID_STRING4</td><td>2052</td><td>工具追踪系统.exe</td><td>0</td><td/><td>-593143723</td></row>
+		<row><td>ID_STRING5</td><td>1033</td><td>Launch toolstrackingsystem.exe</td><td>0</td><td/><td>-853154738</td></row>
+		<row><td>ID_STRING5</td><td>2052</td><td>Launch toolstrackingsystem.exe</td><td>0</td><td/><td>-853154738</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>2052</td><td>系统将不安装此功能。</td><td>0</td><td/><td>-1532651217</td></row>
 	</table>
 
@@ -4031,8 +4040,10 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
-		<row><td>UNINST_Uninstall_t_398C1F917E284551A88C2FE2F2E145D0.exe</td><td/><td>G:\Program Files (x86)\InstallShield\2015LE\Redist\Language Independent\OS Independent\uninstall.ico</td><td>0</td></row>
+		<row><td>UNINST_Uninstall_t_658087ED3F9447FBA7DC8940F3D4544F.exe</td><td/><td>C:\Program Files (x86)\InstallShield\2015LE\Redist\Language Independent\OS Independent\uninstall.ico</td><td>0</td></row>
+		<row><td>toolstrackingsyste_5B8F8F2CC9664E778DBAC23F0FEA0843.exe</td><td/><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.exe</td><td>0</td></row>
 		<row><td>toolstrackingsyste_607EF1D149734D5FB3A2F847A51F8D09.exe</td><td/><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.exe</td><td>0</td></row>
+		<row><td>toolstrackingsyste_747C2FE5BC2E4DA1BF884EC00820801D.exe</td><td/><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.exe</td><td>0</td></row>
 		<row><td>toolstrackingsyste_7A24DC274E7546A6B65CA144552E3478.exe</td><td/><td>E:\开发\GitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.exe</td><td>0</td></row>
 		<row><td>toolstrackingsyste_9A3C5465AE864A05B2BE06B1810952A7.exe</td><td/><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.exe</td><td>0</td></row>
 		<row><td>toolstrackingsyste_FD890418BDF14C95A5CF6B01AF02BD37.exe</td><td/><td>D:\gitProject\toolstrackingsystem\toolstrackingsystem\bin\Debug\toolstrackingsystem.exe</td><td>0</td></row>
@@ -4620,10 +4631,10 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
-		<row><td>FileKey1</td><td>toolstrackingsystem.exe</td><td/><td>company_name1</td><td>2</td></row>
-		<row><td>FileKey2</td><td>toolstrackingsystem.exe</td><td/><td>toolst_1_toolstrackingsystem</td><td>2</td></row>
-		<row><td>UNINST_Uninstall_toolstrackingsystem</td><td>IS_ININSTALL_SHORTCUT</td><td/><td>toolst_1_toolstrackingsystem</td><td>2</td></row>
-		<row><td>toolstrackingsystem.exe</td><td>toolstrackingsystem.exe</td><td/><td>toolst_1_toolstrackingsystem</td><td>2</td></row>
+		<row><td>FileKey1</td><td>toolstrackingsystem.exe</td><td/><td>company_name2</td><td>2</td></row>
+		<row><td>FileKey2</td><td>toolstrackingsystem.exe</td><td/><td>toolstrackingsystem</td><td>2</td></row>
+		<row><td>UNINST_Uninstall_toolstrackingsystem</td><td>IS_ININSTALL_SHORTCUT</td><td/><td>toolstrackingsystem</td><td>2</td></row>
+		<row><td>toolstrackingsystem.exe</td><td>toolstrackingsystem.exe</td><td/><td>toolstrackingsystem</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4709,9 +4720,9 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>UNINST_Uninstall_toolstrackingsystem</td><td>toolst_1_toolstrackingsystem</td><td>##IDS_SHORTCUT_DISPLAY_NAME7##</td><td>IS_ININSTALL_SHORTCUT</td><td>[SystemFolder]msiexec.exe</td><td>/x {850629D6-6547-4589-843C-085D9FAE253A}</td><td/><td/><td>UNINST_Uninstall_t_398C1F917E284551A88C2FE2F2E145D0.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>toolstrackingsystem.exe</td><td>toolst_1_toolstrackingsystem</td><td>##IDS_SHORTCUT_DISPLAY_NAME6##</td><td>toolstrackingsystem.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>toolstrackingsyste_FD890418BDF14C95A5CF6B01AF02BD37.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>toolstrackingsystem.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME6##</td><td>toolstrackingsystem.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>toolstrackingsyste_9A3C5465AE864A05B2BE06B1810952A7.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>UNINST_Uninstall_toolstrackingsystem</td><td>toolstrackingsystem</td><td>UNINST|Uninstall toolstrackingsystem</td><td>IS_ININSTALL_SHORTCUT</td><td>[SystemFolder]msiexec.exe</td><td>/x {850629D6-6547-4589-843C-085D9FAE253A}</td><td/><td/><td>UNINST_Uninstall_t_658087ED3F9447FBA7DC8940F3D4544F.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>toolstrackingsystem.exe</td><td>toolstrackingsystem</td><td>##IDS_SHORTCUT_DISPLAY_NAME8##</td><td>toolstrackingsystem.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>toolstrackingsyste_747C2FE5BC2E4DA1BF884EC00820801D.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>toolstrackingsystem.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME8##</td><td>toolstrackingsystem.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>toolstrackingsyste_5B8F8F2CC9664E778DBAC23F0FEA0843.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

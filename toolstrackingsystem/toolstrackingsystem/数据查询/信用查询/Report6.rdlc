@@ -48,7 +48,7 @@
                             <TextRun>
                               <Value>包编码</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -84,7 +84,7 @@
                             <TextRun>
                               <Value>包名称</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -120,7 +120,7 @@
                             <TextRun>
                               <Value>工具编码</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -156,7 +156,7 @@
                             <TextRun>
                               <Value>工具名称</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -192,7 +192,7 @@
                             <TextRun>
                               <Value>人员编码</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -228,7 +228,7 @@
                             <TextRun>
                               <Value>人员名称</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -264,7 +264,7 @@
                             <TextRun>
                               <Value>领用时间</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -300,7 +300,7 @@
                             <TextRun>
                               <Value>截止归还时间</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -336,7 +336,7 @@
                             <TextRun>
                               <Value>检测时间</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -377,7 +377,7 @@
                             <TextRun>
                               <Value>=Fields!PackCode.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -410,7 +410,7 @@
                             <TextRun>
                               <Value>=Fields!PackName.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -443,7 +443,7 @@
                             <TextRun>
                               <Value>=Fields!ToolCode.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -476,7 +476,7 @@
                             <TextRun>
                               <Value>=Fields!ToolName.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -509,7 +509,7 @@
                             <TextRun>
                               <Value>=Fields!PersonCode.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -542,7 +542,7 @@
                             <TextRun>
                               <Value>=Fields!PersonName.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -575,7 +575,7 @@
                             <TextRun>
                               <Value>=Fields!OutStoreTime.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -608,7 +608,7 @@
                             <TextRun>
                               <Value>=Fields!UserTimeInfo.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -641,7 +641,7 @@
                             <TextRun>
                               <Value>=Fields!OptionTime.Value</Value>
                               <Style>
-                                <FontFamily>Tahoma</FontFamily>
+                                <FontFamily>宋体</FontFamily>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -692,7 +692,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Height>1.2cm</Height>
-        <Width>28.09562cm</Width>
+        <Width>28.09563cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
