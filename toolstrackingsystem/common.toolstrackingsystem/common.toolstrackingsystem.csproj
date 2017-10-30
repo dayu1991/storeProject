@@ -47,6 +47,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="CommonHelper.cs" />
     <Compile Include="ConnectionHelper.cs" />
+    <Compile Include="EnumHelper.cs" />
     <Compile Include="IOHelp.cs" />
     <Compile Include="LoginHelper.cs" />
     <Compile Include="MemoryCacheHelper.cs" />

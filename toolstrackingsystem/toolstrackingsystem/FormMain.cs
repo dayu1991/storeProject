@@ -147,16 +147,16 @@ namespace toolstrackingsystem
                 string dataBase = MemoryCache.Default.Get("clientName") != null ? MemoryCache.Default.Get("clientName").ToString() : CommonHelper.GetConfigValue("defaultDataBase");
                 foreach (SuperTabItem item in superTabControl2.Tabs)
                 {
-                    if (tabName == "领用工具")
+                    if (tabName == EnumHelper.MenuName.领用工具.ToString())
                     {
-                        if (item.Text == "归还工具")
+                        if (item.Text == EnumHelper.MenuName.归还工具.ToString())
                         {
                             //关闭领用
                             FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
                             toolFrm.IsConnect = false;
                             toolFrm.IsListening = false;
                         }
-                        if (item.Text == "工具包管理")
+                        if (item.Text == EnumHelper.MenuName.工具包管理.ToString())
                         {
                             //关闭工具包
                             FrmToolPackManage toolFrm = (FrmToolPackManage)item.AttachedControl.Controls[0];
@@ -164,16 +164,16 @@ namespace toolstrackingsystem
                             toolFrm.IsListening = false;
                         }
                     }
-                    else if (tabName == "归还工具")
+                    else if (tabName == EnumHelper.MenuName.归还工具.ToString())
                     {
-                        if (item.Text == "领用工具")
+                        if (item.Text == EnumHelper.MenuName.领用工具.ToString())
                         {
                             //关闭领用
                             FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
                             toolFrm.IsConnect = false;
                             toolFrm.IsListening = false;
                         }
-                        if (item.Text == "工具包管理")
+                        if (item.Text == EnumHelper.MenuName.工具包管理.ToString())
                         {
                             //关闭工具包管理
                             FrmToolPackManage toolFrm = (FrmToolPackManage)item.AttachedControl.Controls[0];
@@ -181,16 +181,16 @@ namespace toolstrackingsystem
                             toolFrm.IsListening = false;
                         }
                     }
-                    else if (tabName == "工具包管理")
+                    else if (tabName == EnumHelper.MenuName.工具包管理.ToString())
                     {
-                        if (item.Text == "领用工具")
+                        if (item.Text == EnumHelper.MenuName.领用工具.ToString())
                         {
                             //关闭领用
                             FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
                             toolFrm.IsConnect = false;
                             toolFrm.IsListening = false;
                         }
-                        if (item.Text == "归还工具")
+                        if (item.Text == EnumHelper.MenuName.归还工具.ToString())
                         {
                             //关闭归还
                             FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
@@ -201,7 +201,7 @@ namespace toolstrackingsystem
                     //已打开
                     if (item.Name == tabName)
                     {
-                        if (tabName == "送修工具接收")
+                        if (tabName == EnumHelper.MenuName.送修工具接收.ToString())
                         {
                             ToolRepairManageNew toolFrm = (ToolRepairManageNew)item.AttachedControl.Controls[0];
                             foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
@@ -212,7 +212,7 @@ namespace toolstrackingsystem
                                 }
                             }
                         }
-                        else if (tabName == "送修工具待完成")
+                        else if (tabName == EnumHelper.MenuName.送修工具待完成.ToString())
                         {
                             FrmToolRepairedComlete toolFrm = (FrmToolRepairedComlete)item.AttachedControl.Controls[0];
                             foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
@@ -223,7 +223,7 @@ namespace toolstrackingsystem
                                 }
                             }
                         }
-                        else if(tabName == "送修工具领取")
+                        else if (tabName == EnumHelper.MenuName.送修工具领取.ToString())
                         {
                             FrmlPullRepairedTool toolFrm = (FrmlPullRepairedTool)item.AttachedControl.Controls[0];
                             foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
@@ -234,7 +234,7 @@ namespace toolstrackingsystem
                                 }
                             }
                         }
-                        else if (tabName == "报废工具补充说明")
+                        else if (tabName == EnumHelper.MenuName.送修工具领取.ToString())
                         {
                             FrmScrapToolManageDescribe toolFrm = (FrmScrapToolManageDescribe)item.AttachedControl.Controls[0];
                             foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
@@ -245,7 +245,7 @@ namespace toolstrackingsystem
                                 }
                             }
                         }
-                        else if (tabName == "送修查询")
+                        else if (tabName == EnumHelper.MenuName.送修查询.ToString())
                         {
                             FrmRepairScrapQuery toolFrm = (FrmRepairScrapQuery)item.AttachedControl.Controls[0];
                             foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
@@ -271,27 +271,27 @@ namespace toolstrackingsystem
                     form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
                     //布满父控件
                     form.Dock = DockStyle.Fill;
-                    if (tabName == "送修工具接收")
+                    if (tabName == EnumHelper.MenuName.送修工具接收.ToString())
                     {
                         //设置委托绑定到赋值方法上
                         ((ToolRepairManageNew)form).transfDelegate += setText;
                     }
-                    else if (tabName == "送修工具待完成")
+                    else if (tabName == EnumHelper.MenuName.送修工具待完成.ToString())
                     {
                         //设置委托绑定到赋值方法上
                         ((FrmToolRepairedComlete)form).transfDelegate += setText;
                     }
-                    else if (tabName == "送修工具领取")
+                    else if (tabName == EnumHelper.MenuName.送修工具领取.ToString())
                     {
                         //设置委托绑定到赋值方法上
                         ((FrmlPullRepairedTool)form).transfDelegate += setText;
                     }
-                    else if (tabName == "报废工具补充说明")
+                    else if (tabName == EnumHelper.MenuName.报废工具补充说明.ToString())
                     {
                         //设置委托绑定到赋值方法上
                         ((FrmScrapToolManageDescribe)form).transfDelegate += setText;
                     }
-                    else if (tabName == "送修查询")
+                    else if (tabName == EnumHelper.MenuName.送修查询.ToString())
                     {
                         //设置委托绑定到赋值方法上
                         ((FrmRepairScrapQuery)form).transfDelegate += setText;
@@ -408,18 +408,18 @@ namespace toolstrackingsystem
             if (i != 0)
             {
                 string dataBase = MemoryCache.Default.Get("clientName") != null ? MemoryCache.Default.Get("clientName").ToString() : CommonHelper.GetConfigValue("defaultDataBase");
-                if (this.superTabControl2.SelectedTab.Text == "领用工具")
+                if (this.superTabControl2.SelectedTab.Text == EnumHelper.MenuName.领用工具.ToString())
                 {
                     foreach (SuperTabItem item in superTabControl2.Tabs)
                     {
-                            if (item.Text == "归还工具")
+                            if(item.Text == EnumHelper.MenuName.归还工具.ToString())
                             {
                                 //关闭归还
                                 FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
                                 toolFrm.IsConnect = false;
                                 toolFrm.IsListening = false;
                             }
-                            if (item.Text == "工具包管理")
+                            if (item.Text == EnumHelper.MenuName.工具包管理.ToString())
                             { 
                                 //关闭工具包
                                 FrmToolPackManage toolFrm = (FrmToolPackManage)item.AttachedControl.Controls[0];
@@ -435,18 +435,18 @@ namespace toolstrackingsystem
                          return;
                     }
                 }
-                else if (this.superTabControl2.SelectedTab.Text == "归还工具")
+                else if (this.superTabControl2.SelectedTab.Text == EnumHelper.MenuName.归还工具.ToString())
                 {
                     foreach (SuperTabItem item in superTabControl2.Tabs)
                     {
-                        if (item.Text == "领用工具")
+                        if (item.Text == EnumHelper.MenuName.领用工具.ToString())
                         {
                             //关闭领用
                             FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
                             toolFrm.IsConnect = false;
                             toolFrm.IsListening = false;
                         }
-                        if (item.Text == "工具包管理")
+                        if (item.Text == EnumHelper.MenuName.工具包管理.ToString())
                         {
                             //关闭工具包
                             FrmToolPackManage toolFrm = (FrmToolPackManage)item.AttachedControl.Controls[0];
@@ -461,18 +461,18 @@ namespace toolstrackingsystem
                         frmTool.IsListening = true;
                     }
                 }
-                else if (this.superTabControl2.SelectedTab.Text == "工具包管理")
+                else if (this.superTabControl2.SelectedTab.Text == EnumHelper.MenuName.工具包管理.ToString())
                 {
                     foreach (SuperTabItem item in superTabControl2.Tabs)
                     {
-                        if (item.Text == "领用工具")
+                        if (item.Text == EnumHelper.MenuName.领用工具.ToString())
                         {
                             //关闭领用
                             FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
                             toolFrm.IsConnect = false;
                             toolFrm.IsListening = false;
                         }
-                        if (item.Text == "归还工具")
+                        if (item.Text == EnumHelper.MenuName.归还工具.ToString())
                         {
                             //关闭归还
                             FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
@@ -487,7 +487,7 @@ namespace toolstrackingsystem
                         frmTool.IsListening = true;
                     }
                 }
-                else if (this.superTabControl2.SelectedTab.Text == "送修工具接收" && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count>0)
+                else if (this.superTabControl2.SelectedTab.Text == EnumHelper.MenuName.送修工具接收.ToString() && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count > 0)
                 {
                     ToolRepairManageNew toolFrm = (ToolRepairManageNew)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
                     foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
@@ -498,7 +498,7 @@ namespace toolstrackingsystem
                         }
                     }
                 }
-                else if (this.superTabControl2.SelectedTab.Text == "送修工具待完成" && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count > 0)
+                else if (this.superTabControl2.SelectedTab.Text == EnumHelper.MenuName.送修工具待完成.ToString() && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count > 0)
                 {
                     FrmToolRepairedComlete toolFrm = (FrmToolRepairedComlete)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
                     foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
@@ -509,7 +509,7 @@ namespace toolstrackingsystem
                         }
                     }
                 }
-                else if (this.superTabControl2.SelectedTab.Text == "送修工具领取" && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count > 0)
+                else if (this.superTabControl2.SelectedTab.Text == EnumHelper.MenuName.送修工具领取.ToString() && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count > 0)
                 {
                     FrmlPullRepairedTool toolFrm = (FrmlPullRepairedTool)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
                     foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
@@ -520,7 +520,7 @@ namespace toolstrackingsystem
                         }
                     }
                 }
-                else if (this.superTabControl2.SelectedTab.Text == "报废工具补充说明" && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count > 0)
+                else if (this.superTabControl2.SelectedTab.Text == EnumHelper.MenuName.报废工具补充说明.ToString() && this.superTabControl2.SelectedTab.AttachedControl.Controls.Count > 0)
                 {
                     FrmScrapToolManageDescribe toolFrm = (FrmScrapToolManageDescribe)this.superTabControl2.SelectedTab.AttachedControl.Controls[0];
                     foreach (SuperTabItem tab in toolFrm.superTabStrip1.Tabs)
@@ -535,21 +535,21 @@ namespace toolstrackingsystem
                 {
                     foreach (SuperTabItem item in superTabControl2.Tabs)
                     {
-                        if (item.Text == "领用工具")
+                        if (item.Text == EnumHelper.MenuName.领用工具.ToString())
                         {
                             //关闭领用
                             FrmOutTool toolFrm = (FrmOutTool)item.AttachedControl.Controls[0];
                             toolFrm.IsConnect = false;
                             toolFrm.IsListening = false;
                         }
-                        if (item.Text == "归还工具")
+                        if (item.Text == EnumHelper.MenuName.归还工具.ToString())
                         {
                             //关闭归还
                             FrmReturnTool toolFrm = (FrmReturnTool)item.AttachedControl.Controls[0];
                             toolFrm.IsConnect = false;
                             toolFrm.IsListening = false;
                         }
-                        if (item.Text == "工具包管理")
+                        if (item.Text == EnumHelper.MenuName.工具包管理.ToString())
                         {
                             //关闭工具包管理
                             FrmToolPackManage toolFrm = (FrmToolPackManage)item.AttachedControl.Controls[0];
@@ -567,27 +567,8 @@ namespace toolstrackingsystem
             string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[connName].ConnectionString;
             string ip = connStr.Split(';')[0].Split('=')[1].ToString();
             string dataBase = MemoryCache.Default.Get("clientName").ToString();
-            switch (dataBase)
-            {
-                case "DongSuo":
-                    dataBase = "东所";
-                    break;
-                case "XiSuo":
-                    dataBase = "西所";
-                    break;
-                case "NanSuo":
-                    dataBase = "南所";
-                    break;
-                case "ShiJiaZhuang":
-                    dataBase = "石家庄所";
-                    break;
-                case "SheBei":
-                    dataBase = "设备";
-                    break;
-                default:
-                    dataBase = "东所";
-                    break;
-            }
+            int value = (int)Enum.Parse(typeof(EnumHelper.DataBaseType), dataBase);
+            dataBase = Enum.GetName(typeof(EnumHelper.DataBaseName), value);
             string txtStr = "连接到服务器：" + ip + " 当前数据库：" + dataBase;
             Message_label.Text = txtStr;
         }
