@@ -88,7 +88,8 @@ namespace toolstrackingsystem
             #region 客户端用户不能切换数据库
             if (LoginHelper.UserRole != "ServerRole" && LoginHelper.UserRole != "SuperAuthority")
             {
-                superTabStrip1.Enabled = false;
+                //superTabStrip1.Enabled = false;
+                superTabStrip1.Visible = false;
             }
             #endregion
 
