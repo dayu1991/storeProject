@@ -658,7 +658,7 @@ left join  [dbo].[t_OutBackStore] o on t.ToolCode = o.ToolCode where t.IsBack=0 
         public List<ToolPackViewEntity> GetPackInfoList(string packCode, string packName, int pageIndex, int pageSize, out long Count)
         {
             DynamicParameters parameters = new DynamicParameters();
-            string sql = @"select top "+pageSize+" a.PackCode,a.PackName from (select  ROW_NUMBER() OVER(ORDER BY PackCode ASC) as ID ,PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a where 1=1 ";
+            string sql = @"select top " + pageSize + " a.PackCode,a.PackName,Number from (select  ROW_NUMBER() OVER(ORDER BY PackCode ASC) as ID ,PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a where 1=1 ";
             string sqlCount = "SELECT COUNT(1) FROM (select  ROW_NUMBER() OVER(ORDER BY PackCode ASC) as ID ,PackCode,PackName, COUNT(1) as Number from t_ToolInfo where packcode !=''  group by PackCode,PackName) a where 1=1 ";
             if (!string.IsNullOrEmpty(packCode))
             {

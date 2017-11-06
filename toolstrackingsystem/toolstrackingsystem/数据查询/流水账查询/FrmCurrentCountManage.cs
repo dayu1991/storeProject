@@ -119,12 +119,14 @@ namespace toolstrackingsystem
         {
             string personCode = PersonCode_textBox.Text;
             string toolCode = ToolCode_textBox.Text;
+            string packCode = this.txtpackCode.Text;
+
             string dateTimeFrom = from_dateTimeInput.Text;
             string dateTimeTo = to_dateTimeInput.Text;
             //数据总记录数
             long Count;
             //获取分页的数据
-            resultList = _outBackStoreService.GetCurrentToolInfoList(toolCode, personCode, dateTimeFrom, dateTimeTo,pagerControl1.PageIndex,pagerControl1.PageSize,out Count);
+            resultList = _outBackStoreService.GetCurrentToolInfoList(toolCode, packCode, personCode, dateTimeFrom, dateTimeTo, pagerControl1.PageIndex, pagerControl1.PageSize, out Count);
             TollList_dataGridViewX.DataSource = resultList;
             pagerControl1.DrawControl(Convert.ToInt32(Count));
             for (int i = 0; i < TollList_dataGridViewX.Columns.Count; i++)

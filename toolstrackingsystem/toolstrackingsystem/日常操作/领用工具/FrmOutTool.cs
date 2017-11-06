@@ -435,7 +435,7 @@ namespace toolstrackingsystem
                             }                            
                         }
                         if (isAnyHaveOut) {
-                            MessageBox.Show(string.Format("此编码的包已经被领用！已领用的工具编号：{0}", codeHaveOut.Substring(0,codeHaveOut.Length-1)));
+                            MessageBox.Show("此编码的包已经被领用!");
                             this.tbEditCodeOut.Text = "";
 
                             return;

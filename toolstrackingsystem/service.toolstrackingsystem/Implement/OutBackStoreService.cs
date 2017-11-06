@@ -464,7 +464,7 @@ namespace service.toolstrackingsystem
         /// <param name="pageSize"></param>
         /// <param name="Count"></param>
         /// <returns></returns>
-        public List<CurrentToolInfoEntity> GetCurrentToolInfoList(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count)
+        public List<CurrentToolInfoEntity> GetCurrentToolInfoList(string toolCode, string packCode, string personCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count)
         {
             string sql = @"select * from (select top 100 PERCENT ti.TypeName,
 																	ti.ChildTypeName,
@@ -489,7 +489,7 @@ namespace service.toolstrackingsystem
 															 where 1=1 {1}) as t where  t.rank between @startPos and @endPos ";
           
             string sqlCount = @"select	count(1)
-                                 from t_OutBackStore obs 
+                                 from t_OutBackStore obs left join t_ToolInfo ti on obs.ToolCode = ti.ToolCode 
                                  where 1=1 {0}";
             DynamicParameters parameters = new DynamicParameters();
             string sqlWhere = "";
@@ -497,6 +497,11 @@ namespace service.toolstrackingsystem
             {
                 sqlWhere += " AND obs.ToolCode LIKE @toolCode ";                
                 parameters.Add("toolCode", string.Format("%{0}%", toolCode));
+            }
+            if (!string.IsNullOrWhiteSpace(packCode))
+            {
+                sqlWhere += " AND ti.PackCode LIKE @packCode ";
+                parameters.Add("packCode", string.Format("%{0}%", packCode));
             }
             if (!string.IsNullOrWhiteSpace(personCode))
             {

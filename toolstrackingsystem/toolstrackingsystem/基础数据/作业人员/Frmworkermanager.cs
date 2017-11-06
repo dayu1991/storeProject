@@ -281,7 +281,8 @@ namespace toolstrackingsystem
                                         }
                                         else if (j == row.FirstCellNum + 2)
                                         {
-                                            personInfo.IsReceive = string.IsNullOrEmpty(row.GetCell(j).ToString()) ? "1" : row.GetCell(j).ToString();
+                                            var ishaveRe = row.GetCell(j).ToString()=="否"?"0":"1";
+                                            personInfo.IsReceive = ishaveRe;
                                             if (personInfo.IsReceive != "1" && personInfo.IsReceive != "0")
                                             {
                                                 MessageBox.Show("领用权限格式不正确");

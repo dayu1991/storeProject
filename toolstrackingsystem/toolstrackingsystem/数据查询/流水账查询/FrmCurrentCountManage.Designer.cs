@@ -48,6 +48,8 @@
             this.TollList_dataGridViewX = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.pagerControl1 = new toolstrackingsystem.PageControl.PagerControl();
+            this.txtpackCode = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.to_dateTimeInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.from_dateTimeInput)).BeginInit();
@@ -59,6 +61,8 @@
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.txtpackCode);
+            this.groupPanel1.Controls.Add(this.labelX3);
             this.groupPanel1.Controls.Add(this.to_dateTimeInput);
             this.groupPanel1.Controls.Add(this.from_dateTimeInput);
             this.groupPanel1.Controls.Add(this.Print_button);
@@ -115,7 +119,7 @@
             this.to_dateTimeInput.ButtonDropDown.Visible = true;
             this.to_dateTimeInput.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.to_dateTimeInput.IsPopupCalendarOpen = false;
-            this.to_dateTimeInput.Location = new System.Drawing.Point(916, 33);
+            this.to_dateTimeInput.Location = new System.Drawing.Point(993, 34);
             // 
             // 
             // 
@@ -160,7 +164,7 @@
             this.from_dateTimeInput.ButtonDropDown.Visible = true;
             this.from_dateTimeInput.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.from_dateTimeInput.IsPopupCalendarOpen = false;
-            this.from_dateTimeInput.Location = new System.Drawing.Point(735, 33);
+            this.from_dateTimeInput.Location = new System.Drawing.Point(812, 34);
             // 
             // 
             // 
@@ -198,7 +202,7 @@
             // 
             this.Print_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Print_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Print_button.Location = new System.Drawing.Point(1273, 31);
+            this.Print_button.Location = new System.Drawing.Point(1350, 32);
             this.Print_button.Name = "Print_button";
             this.Print_button.Size = new System.Drawing.Size(75, 23);
             this.Print_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -210,7 +214,7 @@
             // 
             this.export_button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.export_button.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.export_button.Location = new System.Drawing.Point(1181, 32);
+            this.export_button.Location = new System.Drawing.Point(1258, 33);
             this.export_button.Name = "export_button";
             this.export_button.Size = new System.Drawing.Size(75, 23);
             this.export_button.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -222,7 +226,7 @@
             // 
             this.Search_buttonX.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Search_buttonX.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.Search_buttonX.Location = new System.Drawing.Point(1096, 32);
+            this.Search_buttonX.Location = new System.Drawing.Point(1173, 33);
             this.Search_buttonX.Name = "Search_buttonX";
             this.Search_buttonX.Size = new System.Drawing.Size(75, 23);
             this.Search_buttonX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -237,7 +241,7 @@
             // 
             this.ToolCode_textBox.Border.Class = "TextBoxBorder";
             this.ToolCode_textBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ToolCode_textBox.Location = new System.Drawing.Point(459, 31);
+            this.ToolCode_textBox.Location = new System.Drawing.Point(312, 33);
             this.ToolCode_textBox.Name = "ToolCode_textBox";
             this.ToolCode_textBox.PreventEnterBeep = true;
             this.ToolCode_textBox.Size = new System.Drawing.Size(188, 21);
@@ -250,7 +254,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(393, 31);
+            this.labelX2.Location = new System.Drawing.Point(254, 32);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(75, 23);
             this.labelX2.TabIndex = 2;
@@ -258,7 +262,7 @@
             // 
             // PersonCode_textBox
             // 
-            this.PersonCode_textBox.Location = new System.Drawing.Point(220, 31);
+            this.PersonCode_textBox.Location = new System.Drawing.Point(86, 32);
             this.PersonCode_textBox.Name = "PersonCode_textBox";
             this.PersonCode_textBox.Size = new System.Drawing.Size(162, 21);
             this.PersonCode_textBox.TabIndex = 1;
@@ -270,7 +274,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(137, 31);
+            this.labelX1.Location = new System.Drawing.Point(8, 32);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(89, 23);
             this.labelX1.TabIndex = 0;
@@ -283,7 +287,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(675, 31);
+            this.labelX4.Location = new System.Drawing.Point(752, 32);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(72, 23);
             this.labelX4.TabIndex = 22;
@@ -296,7 +300,7 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(901, 32);
+            this.labelX5.Location = new System.Drawing.Point(978, 33);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(24, 23);
             this.labelX5.TabIndex = 23;
@@ -327,7 +331,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.TollList_dataGridViewX.DefaultCellStyle = dataGridViewCellStyle2;
             this.TollList_dataGridViewX.EnableHeadersVisualStyles = false;
-            this.TollList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.TollList_dataGridViewX.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.TollList_dataGridViewX.Location = new System.Drawing.Point(-3, 0);
             this.TollList_dataGridViewX.MultiSelect = false;
             this.TollList_dataGridViewX.Name = "TollList_dataGridViewX";
@@ -400,11 +404,37 @@
             this.pagerControl1.TabIndex = 1;
             this.pagerControl1.OnPageChanged += new System.EventHandler(this.pagerControl1_OnPageChanged);
             // 
+            // txtpackCode
+            // 
+            // 
+            // 
+            // 
+            this.txtpackCode.Border.Class = "TextBoxBorder";
+            this.txtpackCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtpackCode.Location = new System.Drawing.Point(558, 32);
+            this.txtpackCode.Name = "txtpackCode";
+            this.txtpackCode.PreventEnterBeep = true;
+            this.txtpackCode.Size = new System.Drawing.Size(188, 21);
+            this.txtpackCode.TabIndex = 26;
+            // 
+            // labelX3
+            // 
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(506, 33);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(75, 23);
+            this.labelX3.TabIndex = 25;
+            this.labelX3.Text = "包编码:";
+            // 
             // FrmCurrentCountManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1468, 699);
+            this.ClientSize = new System.Drawing.Size(1444, 699);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.groupPanel2);
             this.Name = "FrmCurrentCountManage";
@@ -439,5 +469,7 @@
         private DevComponents.Editors.DateTimeAdv.DateTimeInput from_dateTimeInput;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.LabelX labelX5;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtpackCode;
+        private DevComponents.DotNetBar.LabelX labelX3;
     }
 }

@@ -87,7 +87,7 @@ namespace service.toolstrackingsystem
         /// <param name="pageSize"></param>
         /// <param name="Count"></param>
         /// <returns></returns>
-        List<CurrentToolInfoEntity> GetCurrentToolInfoList(string toolCode, string personCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count);
+        List<CurrentToolInfoEntity> GetCurrentToolInfoList(string toolCode, string packCode,string personCode, string dateTimeFrom, string dateTimeTo, int pageIndex, int pageSize, out long Count);
         /// <summary>
         /// 获取流水账信息(导出)
         /// </summary>
